@@ -1,0 +1,11 @@
+﻿$PBExportHeader$d_screen_notes_all.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=392 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=screen_id dbname="data_view_screen_notes.screen_id" )
+ column=(type=char(32766) update=yes updatewhereclause=no name=notes dbname="data_view_screen_notes.notes" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"dba.data_view_screen_notes~" ) COLUMN(NAME=~"dba.data_view_screen_notes.screen_id~") COLUMN(NAME=~"dba.data_view_screen_notes.notes~")) " update="dba.data_view_screen_notes" updatewhere=0 updatekeyinplace=yes )
+column(band=detail id=2 alignment="0" tabsequence=10 border="5" color="0" x="9" y="8" height="376" width="2313" format="[general]"  name=notes edit.limit=32000 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autovscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

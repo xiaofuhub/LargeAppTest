@@ -1,0 +1,29 @@
+﻿$PBExportHeader$d_verifs_w_2_flag.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=136 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=verif_info_rec_id dbname="verif_info.rec_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=verif_info_prac_id dbname="verif_info.prac_id" )
+ column=(type=char(100) updatewhereclause=yes name=verif_info_reference_value dbname="verif_info.reference_value" )
+ column=(type=long update=yes updatewhereclause=yes name=exp_credential_flag dbname="verif_info.exp_credential_flag" )
+ column=(type=decimal(0) updatewhereclause=yes name=verif_info_response_code dbname="verif_info.response_code" )
+ column=(type=char(20) updatewhereclause=yes key=yes name=verif_info_doc_id dbname="verif_info.doc_id" )
+ retrieve="PBSELECT( VERSION(400) DISTINCT ()TABLE(NAME=~"pd_affil_stat~" )  TABLE(NAME=~"verif_info~" ) COLUMN(NAME=~"verif_info.rec_id~") COLUMN(NAME=~"verif_info.prac_id~") COLUMN(NAME=~"verif_info.reference_value~") COLUMN(NAME=~"verif_info.exp_credential_flag~") COLUMN(NAME=~"verif_info.response_code~") COLUMN(NAME=~"verif_info.doc_id~")    JOIN (LEFT=~"verif_info.prac_id~"    OP =~"=~"RIGHT=~"pd_affil_stat.prac_id~" )    JOIN (LEFT=~"verif_info.facility_id~"    OP =~"=~"RIGHT=~"pd_affil_stat.verifying_facility~" )WHERE(    EXP1 =~"pd_affil_stat.active_status~"   OP =~"=~"    EXP2 =~"1~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"verif_info.active_status~"   OP =~"=~"    EXP2 =~"1~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"verif_info.exp_credential_flag~"   OP =~"=~"    EXP2 =~"2~" ) ) " update="verif_info" updatewhere=0 updatekeyinplace=no  sort="verif_info_rec_id A " )
+text(band=header alignment="2" text="Verif Info
+Rec Id"border="0" color="0" x="5" y="4" height="128" width="329"  name=verif_info_rec_id_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Verif Info
+Prac Id"border="0" color="0" x="338" y="4" height="128" width="329"  name=verif_info_prac_id_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Verif Info
+Reference Value"border="0" color="0" x="677" y="4" height="128" width="1426"  name=verif_info_reference_value_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Verif Info
+Exp Credential Flag"border="0" color="0" x="2121" y="4" height="128" width="521"  name=verif_info_exp_credential_flag_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="0" x="5" y="4" height="76" width="329" format="[general]"  name=verif_info_rec_id edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="2" tabsequence=32766 border="0" color="0" x="338" y="4" height="76" width="329" format="[general]"  name=verif_info_prac_id edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="672" y="4" height="76" width="1417" format="[general]"  name=verif_info_reference_value edit.limit=100 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="1" tabsequence=32766 border="0" color="0" x="2121" y="4" height="76" width="329" format="[general]"  name=exp_credential_flag edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="2551" y="12" height="64" width="320" format="[general]"  name=verif_info_response_code edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="2935" y="0" height="64" width="539" format="[general]"  name=verif_info_doc_id edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

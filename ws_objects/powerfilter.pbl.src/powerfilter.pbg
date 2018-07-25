@@ -1,0 +1,29 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "powerfilter.pbl" "";
+@end;
+@begin Objects 
+ "d_powerfilter.srd" "powerfilter.pbl";
+ "d_powerfilter_customfilter.srd" "powerfilter.pbl";
+ "d_powerfilter_customparm.srd" "powerfilter.pbl";
+ "d_powerfilter_datetimetree.srd" "powerfilter.pbl";
+ "d_powerfilter_datetimetree_bak.srd" "powerfilter.pbl";
+ "d_powerfilter_datetree.srd" "powerfilter.pbl";
+ "d_powerfilter_ddbuttons.srd" "powerfilter.pbl";
+ "d_powerfilter_filterlist.srd" "powerfilter.pbl";
+ "d_powerfilter_filteropts.srd" "powerfilter.pbl";
+ "d_powerfilter_filteropts_ted.srd" "powerfilter.pbl";
+ "d_powerfilter_languages.srd" "powerfilter.pbl";
+ "d_powerfilter_monthopts.srd" "powerfilter.pbl";
+ "d_powerfilter_parmlist.srd" "powerfilter.pbl";
+ "d_powerfilter_pictureparm.srd" "powerfilter.pbl";
+ "s_powerfilter_parms.srs" "powerfilter.pbl";
+ "s_powerfilter_restore_parms.srs" "powerfilter.pbl";
+ "n_cst_powerfilter.sru" "powerfilter.pbl";
+ "u_powerfilter_checkbox.sru" "powerfilter.pbl";
+ "u_powerfilter_dropdown.sru" "powerfilter.pbl";
+ "u_powerfilter_monthopts.sru" "powerfilter.pbl";
+ "u_powerfilter_predeffilters.sru" "powerfilter.pbl";
+ "w_powerfilter_custom.srw" "powerfilter.pbl";
+ "w_powerfilter_prompt_to_restore.srw" "powerfilter.pbl";
+@end;

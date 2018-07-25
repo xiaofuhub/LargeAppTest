@@ -1,0 +1,83 @@
+﻿$PBExportHeader$d_meeting_attendence_1204.srd
+release 11.5;
+datawindow(units=0 timer_interval=0 color=79741120 brushmode=0 transparency=0 gradient.angle=0 gradient.color=8421504 gradient.focus=0 gradient.repetition.count=0 gradient.repetition.length=100 gradient.repetition.mode=0 gradient.scale=100 gradient.spread=100 gradient.transparency=0 picture.blur=0 picture.clip.bottom=0 picture.clip.left=0 picture.clip.right=0 picture.clip.top=0 picture.mode=0 picture.scale.x=100 picture.scale.y=100 picture.transparency=0 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.background=no print.preview.background=no print.preview.outline=yes hidegrayline=no showbackcoloronxp=no picture.file="" )
+header(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+summary(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+footer(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+detail(height=68 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=meeting_id dbname="attendence.meeting_id" dbalias=".meeting_id" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=prac_id dbname="attendence.prac_id" dbalias=".prac_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=pd_basic_prac_id dbname="pd_basic.prac_id" dbalias=".prac_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=pd_basic_title dbname="pd_basic.title" dbalias=".title" )
+ column=(type=char(15) updatewhereclause=yes name=pd_basic_middle_name dbname="pd_basic.middle_name" dbalias=".middle_name" )
+ column=(type=char(15) updatewhereclause=yes name=pd_basic_first_name dbname="pd_basic.first_name" dbalias=".first_name" )
+ column=(type=decimal(0) updatewhereclause=yes name=pd_basic_name_suffix dbname="pd_basic.name_suffix" dbalias=".name_suffix" )
+ column=(type=char(11) updatewhereclause=yes name=pd_basic_ssn dbname="pd_basic.ssn" dbalias=".ssn" )
+ column=(type=decimal(0) updatewhereclause=yes name=pd_basic_prof_suffix dbname="pd_basic.prof_suffix" dbalias=".prof_suffix" )
+ column=(type=char(1) updatewhereclause=yes name=cfull_name dbname="full_name" )
+ column=(type=long update=yes updatewhereclause=yes name=attendence_status dbname="attendence.attendence_status" dbalias=".attendence_status" )
+ column=(type=char(30) updatewhereclause=yes name=code_lookup_code dbname="code_lookup.code" dbalias="code_lookup_a.code" )
+ column=(type=char(75) updatewhereclause=yes name=code_lookup_description dbname="code_lookup.description" dbalias="code_lookup_a.description" )
+ column=(type=char(100) updatewhereclause=yes name=facility_facility_name dbname="facility.facility_name" dbalias=".facility_name" )
+ column=(type=char(100) updatewhereclause=yes name=meetings_subject dbname="meetings.subject" dbalias=".subject" )
+ column=(type=char(255) updatewhereclause=yes name=meetings_comments dbname="meetings.comments" dbalias=".comments" )
+ column=(type=decimal(2) updatewhereclause=yes name=meetings_cme_credits dbname="meetings.cme_credits" dbalias=".cme_credits" )
+ column=(type=decimal(0) updatewhereclause=yes name=meetings_cme_category dbname="meetings.cme_category" dbalias=".cme_category" )
+ column=(type=char(35) updatewhereclause=yes name=meetings_cme_presenter dbname="meetings.cme_presenter" dbalias=".cme_presenter" )
+ column=(type=char(35) updatewhereclause=yes name=meetings_cme_affiliation dbname="meetings.cme_affiliation" dbalias=".cme_affiliation" )
+ column=(type=char(10) updatewhereclause=yes name=meetings_start_at dbname="meetings.start_at" dbalias=".start_at" )
+ column=(type=char(10) updatewhereclause=yes name=meetings_end_at dbname="meetings.end_at" dbalias=".end_at" )
+ column=(type=char(75) updatewhereclause=yes name=code_lookup_description dbname="code_lookup.description" dbalias="code_lookup_d.description" )
+ column=(type=long update=yes updatewhereclause=yes name=active_status dbname="attendence.active_status" dbalias=".active_status" initial="1" )
+ column=(type=char(100) updatewhereclause=yes name=pd_basic_last_name dbname="pd_basic.last_name" dbalias=".last_name" )
+ retrieve="  SELECT attendence.meeting_id,   
+         attendence.prac_id,   
+         pd_basic.prac_id,   
+         pd_basic.title,   
+         pd_basic.middle_name,   
+         pd_basic.first_name,   
+         pd_basic.name_suffix,   
+         pd_basic.ssn,   
+         pd_basic.prof_suffix,   
+         full_name = '',   
+         attendence.attendence_status,   
+         code_lookup_a.code,   
+         code_lookup_a.description,   
+         facility.facility_name,   
+         meetings.subject,   
+         meetings.comments,   
+         meetings.cme_credits,   
+         meetings.cme_category,   
+         meetings.cme_presenter,   
+         meetings.cme_affiliation,   
+         meetings.start_at,   
+         meetings.end_at, 
+         code_lookup_d.description,   
+         attendence.active_status,   
+         pd_basic.last_name  
+    FROM attendence,   
+         pd_basic,   
+         meetings left outer join code_lookup code_lookup_d on  meetings.location = code_lookup_d.lookup_code ,   
+         code_lookup code_lookup_a, 
+         facility  
+   WHERE ( attendence.prac_id = pd_basic.prac_id ) and  
+         ( attendence.meeting_id = meetings.meeting_id ) and  
+         ( meetings.meeting_type = code_lookup_a.lookup_code ) and
+         ( meetings.facility = facility.facility_id ) and  
+         ( ( attendence.meeting_id = :meeting_id ) )    
+" update="attendence" updatewhere=0 updatekeyinplace=no arguments=(("meeting_id", number))  sort="pd_basic_last_name A " )
+bitmap(band=detail filename="person.bmp" x="9" y="0" height="64" width="73" border="0" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0"  name=p_1 visible="1" transparency="0" )
+column(band=detail id=11 alignment="0" tabsequence=10 border="5" color="0" x="759" y="8" height="56" width="270" format="[General]" html.valueishtml="0"  name=attendence_status visible="1" dddw.name=d_dddw_code_lookup dddw.displaycolumn=description dddw.datacolumn=lookup_code dddw.percentwidth=400 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="101" y="8" height="52" width="635" format="[general]" html.valueishtml="0"  name=cfull_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+compute(band=detail alignment="0" expression=" pd_basic_first_name + ~" ~" +  pd_basic_last_name "border="0" color="12632256" x="1134" y="8" height="52" width="256" format="[general]" html.valueishtml="0"  name=full_name visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

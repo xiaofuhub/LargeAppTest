@@ -1,0 +1,68 @@
+﻿$PBExportHeader$d_rpt_timeline.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 1 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=440 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=8 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=datetime updatewhereclause=yes name=date_rqst_rcvd dbname="pd_affil_stat.date_rqst_rcvd" )
+ column=(type=datetime updatewhereclause=yes name=date_app_sent dbname="pd_affil_stat.date_app_sent" )
+ column=(type=datetime updatewhereclause=yes name=date_app_signed dbname="pd_affil_stat.date_app_signed" )
+ column=(type=datetime updatewhereclause=yes name=date_app_rcvd dbname="pd_affil_stat.date_app_rcvd" )
+ column=(type=datetime updatewhereclause=yes name=date_app_audit_completed dbname="pd_affil_stat.date_app_audit_completed" )
+ column=(type=datetime updatewhereclause=yes name=date_data_entry_completed dbname="pd_affil_stat.date_data_entry_completed" )
+ column=(type=datetime updatewhereclause=yes name=date_verif_completed dbname="pd_affil_stat.date_verif_completed" )
+ column=(type=datetime updatewhereclause=yes name=date_rls_form_exp dbname="pd_affil_stat.date_rls_form_exp" )
+ column=(type=datetime updatewhereclause=yes name=apptmnt_start_date dbname="pd_affil_stat.apptmnt_start_date" )
+ column=(type=datetime updatewhereclause=yes name=apptmnt_end_date dbname="pd_affil_stat.apptmnt_end_date" )
+ column=(type=char(153) updatewhereclause=yes name=v_full_name_full_name dbname="v_full_name.full_name" )
+ column=(type=datetime updatewhereclause=yes name=date_closed dbname="pd_affil_stat.date_comm_review_completed" )
+ column=(type=char(100) updatewhereclause=yes name=last_name dbname="v_full_name.last_name" )
+ column=(type=decimal(0) updatewhereclause=yes name=v_full_name_prac_id dbname="v_full_name.prac_id" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"pd_affil_stat~" )  TABLE(NAME=~"v_full_name~" ) COLUMN(NAME=~"pd_affil_stat.date_rqst_rcvd~") COLUMN(NAME=~"pd_affil_stat.date_app_sent~") COLUMN(NAME=~"pd_affil_stat.date_app_signed~") COLUMN(NAME=~"pd_affil_stat.date_app_rcvd~") COLUMN(NAME=~"pd_affil_stat.date_app_audit_completed~") COLUMN(NAME=~"pd_affil_stat.date_data_entry_completed~") COLUMN(NAME=~"pd_affil_stat.date_verif_completed~") COLUMN(NAME=~"pd_affil_stat.date_rls_form_exp~") COLUMN(NAME=~"pd_affil_stat.apptmnt_start_date~") COLUMN(NAME=~"pd_affil_stat.apptmnt_end_date~") COLUMN(NAME=~"v_full_name.full_name~") COLUMN(NAME=~"pd_affil_stat.date_comm_review_completed~") COLUMN(NAME=~"v_full_name.last_name~") COLUMN(NAME=~"v_full_name.prac_id~")    JOIN (LEFT=~"pd_affil_stat.prac_id~"    OP =~"=~"RIGHT=~"v_full_name.prac_id~" )) " )
+line(band=header x1="64" y1="16" x2="4498" y2="16" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+line(band=header x1="64" y1="52" x2="4498" y2="52" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+compute(band=header alignment="0" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="0" x="4059" y="68" height="76" width="425" format="[general]"  name=page  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+line(band=header x1="64" y1="240" x2="4498" y2="240" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+line(band=header x1="64" y1="276" x2="4498" y2="276" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+text(band=header alignment="2" text="Workflow Days Report"border="0" color="0" x="1787" y="68" height="80" width="768"  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=header alignment="0" expression="today()"border="0" color="0" x="69" y="64" height="76" width="389" format="mm/dd/yyyy"  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="2" text="Name"border="0" color="0" x="69" y="376" height="52" width="174"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Date
+
+ Rqst Rcvd"border="0" color="0" x="896" y="324" height="104" width="297"  name=date_rqst_rcvd_t  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Date
+
+App Sent"border="0" color="0" x="1211" y="324" height="104" width="261"  name=date_app_sent_t  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Date App
+
+ Signed"border="0" color="0" x="1829" y="324" height="104" width="265"  name=date_app_signed_t  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Date Rls
+
+ Form Exp"border="0" color="0" x="2139" y="324" height="104" width="288"  name=date_rls_form_exp_t  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Date
+
+ App Rcvd"border="0" color="0" x="1522" y="324" height="104" width="279"  name=date_app_rcvd_t  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Date Audit
+
+ Completed"border="0" color="0" x="2446" y="324" height="104" width="293"  name=date_app_audit_completed_t  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Date D/E
+
+ Completed"border="0" color="0" x="2757" y="324" height="104" width="293"  name=date_data_entry_completed_t  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Date Verif
+
+ Completed"border="0" color="0" x="3067" y="324" height="104" width="293"  name=date_verif_completed_t  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Date File
+
+Closed"border="0" color="0" x="3387" y="324" height="104" width="265"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="69" y="8" height="60" width="805" format="[general]"  name=v_full_name_full_name edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="896" y="8" height="60" width="293" format="mm/dd/yyyy"  name=date_rqst_rcvd edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1207" y="8" height="60" width="293" format="mm/dd/yyyy"  name=date_app_sent edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="1824" y="8" height="60" width="293" format="mm/dd/yyyy"  name=date_app_signed edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="2135" y="8" height="60" width="293" format="mm/dd/yyyy"  name=date_rls_form_exp edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1518" y="8" height="60" width="293" format="mm/dd/yyyy"  name=date_app_rcvd edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="2446" y="8" height="60" width="293" format="mm/dd/yyyy"  name=date_app_audit_completed edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="2757" y="8" height="60" width="293" format="mm/dd/yyyy"  name=date_data_entry_completed edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="3067" y="8" height="60" width="293" format="mm/dd/yyyy"  name=date_verif_completed edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="0" x="3378" y="8" height="60" width="297" format="[shortdate] [time]"  name=date_closed edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,12 @@
+﻿$PBExportHeader$str_img_prop.srs
+global type str_img_prop from structure
+	integer		image_compression
+	integer		image_resolution
+	integer		image_resolution_x
+	integer		image_resolution_y
+	integer		image_size
+	decimal{0}		image_width
+	decimal{0}		image_height
+	integer		image_size_units
+end type
+

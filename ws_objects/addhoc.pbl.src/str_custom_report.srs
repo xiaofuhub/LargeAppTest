@@ -1,0 +1,8 @@
+﻿$PBExportHeader$str_custom_report.srs
+global type str_custom_report from structure
+	datawindow		adw_view_fields
+	u_dw		adw_preview
+	n_ds		ads_report_object
+	long		al_view_id
+end type
+

@@ -1,0 +1,63 @@
+﻿$PBExportHeader$of_validate_phone.srf
+global type of_validate_phone from function_object
+end type
+
+forward prototypes
+global function integer of_validate_phone (string as_phone, string as_field)
+end prototypes
+
+global function integer of_validate_phone (string as_phone, string as_field);integer r
+string ls_val
+string c
+boolean lb_ok = true
+
+as_phone = of_strip_char("'" ,  as_phone, "") //removes single quote added in validation function
+ls_val = as_phone
+
+for r = 1 to 9
+	choose case r 
+		case 1
+			c = "("
+		case 2
+			c = ")"
+		case 3
+			c = "-"
+		case 4
+			c = "X"
+		case 5
+			c = "x"
+		case 6
+			c = "."
+		case 7
+			c = ","
+		case 8
+			c = "/"
+		case 9
+			c = " "
+	end choose	
+	ls_val = of_strip_char(c , ls_val,"") 
+next
+
+for r = 1 to len(ls_val)
+	c = mid(ls_val,r, 1)
+	if not isnumber(c) then
+		lb_ok  = false
+		exit
+	end if
+next
+
+if lb_ok = false then
+	messagebox("Phone format","The field " + upper(as_field) + " is not in the expected format.~r" + as_phone  )
+	return -1
+end if
+
+return 1
+	
+	
+	
+		
+
+
+		
+end function
+

@@ -1,0 +1,65 @@
+﻿$PBExportHeader$of_move_window.srf
+global type of_move_window from function_object
+end type
+
+forward prototypes
+global function integer of_move_window (window aw_win, long al_x, long al_y, string as_dir_y, string as_dir_x)
+end prototypes
+
+global function integer of_move_window (window aw_win, long al_x, long al_y, string as_dir_y, string as_dir_x); //Start Code Change ----06.02.2017 #V154 maha
+
+integer li_mx = 200
+integer li_my = 200
+long ll_y
+long ll_x
+string dy
+string dx
+
+dy = as_dir_y
+if al_y < 0 then dy = "D"
+if al_y > 8000 then dy = "U"
+dx = as_dir_x
+if al_x < 0 then dx = "R"
+if al_x > 8000 then dx = "L"
+
+//if al_x < 0 then debugbreak()
+
+choose case as_dir_y
+	case "U"
+		ll_y = al_y - li_my
+		if ll_y < 0 then
+			ll_y  = ll_y + 400
+			dy = "D"
+		end if
+	case else
+		ll_y = al_x + aw_win.height - li_my
+		if ll_y > 5000 then
+			ll_y  = ll_y - 400
+			dy = "U"
+		end if
+end choose
+
+
+choose case as_dir_x
+	case "L"
+		ll_x = al_x - li_mx
+		if ll_x  < 0 then
+			//messagebox("x", al_x)
+			ll_x  = ll_x + 200
+			dx = "R"
+		end if
+	case else
+		ll_x = al_x + li_mx
+		if ll_x > 5000 then
+			ll_x  = ll_x - 200
+			dx = "L"
+		end if
+end choose
+
+aw_win.move(ll_x, ll_y)
+gs_dir_y = dy
+gs_dir_x = dx
+
+return 1
+end function
+

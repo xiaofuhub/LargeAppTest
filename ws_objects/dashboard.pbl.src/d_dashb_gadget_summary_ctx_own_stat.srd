@@ -1,0 +1,36 @@
+﻿$PBExportHeader$d_dashb_gadget_summary_ctx_own_stat.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 grid.columnmove=no selected.mouse=no )
+header(height=72 color="553648127" )
+summary(height=68 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=char(30) updatewhereclause=yes name=code_lookup_status_name dbname="status_name" )
+ column=(type=long updatewhereclause=yes name=status_count dbname="status_count" )
+ retrieve="
+Select (Case when A.code is null then 'None' else a.code End) status_name,count(*) status_count
+From ctx_basic_info
+Left Outer Join code_lookup A on A.lookup_code = ctx_basic_info.status,
+ctx_contract_contacts,
+ctx_contacts
+Where ctx_basic_info.ctx_id = ctx_contract_contacts.ctx_id
+AND ctx_basic_info.is_template = 0 	
+AND ctx_contract_contacts.contact_id = ctx_contacts.contact_id 
+AND ctx_contract_contacts.owner = 'Y' 
+AND ctx_contract_contacts.ic_area = 'I'
+AND ctx_contacts.user_d = :as_user_id
+Group By A.code
+Order By A.code Asc" arguments=(("as_user_id", string)) )
+text(band=header alignment="2" text="Status" border="0" color="33554432" x="9" y="8" height="52" width="841" html.valueishtml="0"  name=code_lookup_status_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Count" border="0" color="33554432" x="859" y="8" height="52" width="261" html.valueishtml="0"  name=status_count_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Percent" border="0" color="0" x="1129" y="8" height="52" width="251" html.valueishtml="0"  name=percent_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="9" y="8" height="64" width="841" format="[general]" html.valueishtml="0"  name=code_lookup_status_name visible="1" edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="2" tabsequence=32766 border="0" color="33554432" x="859" y="8" height="64" width="261" format="[general]" html.valueishtml="0"  name=status_count visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="2" expression="String((  status_count /  compute_all ) * 100,'0.00')+'%'"border="0" color="0" x="1129" y="8" height="64" width="251" format="[GENERAL]" html.valueishtml="0"  name=compute_percent visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=summary alignment="2" expression="Sum( status_count )"border="0" color="0" x="859" y="4" height="60" width="261" format="[GENERAL]" html.valueishtml="0"  name=compute_all visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

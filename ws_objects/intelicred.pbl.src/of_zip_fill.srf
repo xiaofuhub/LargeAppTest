@@ -1,0 +1,107 @@
+﻿$PBExportHeader$of_zip_fill.srf
+global type of_zip_fill from function_object
+end type
+
+forward prototypes
+global function integer of_zip_fill (string ls_zip, string ls_from, u_dw dw_detail)
+end prototypes
+
+global function integer of_zip_fill (string ls_zip, string ls_from, u_dw dw_detail);////@@@@ZIP CODE AUTO FILL @@@@@@@@
+////Start Code Change ----04.07.2015 #V15 maha
+//not completed
+string ls_value
+string city_field, state_field, county_field, country_field
+string ls_city, ls_state, ls_county, ls_country
+long ll_code
+
+ls_value = ls_zip
+debugbreak()
+select city_name, state_code, county_name, country_code into :ls_city, :ls_state, :ls_county, :ls_country from zip_lookup where zip_code  = :ls_value;
+if isnull(ls_city) or len(ls_city) < 1 then return -1
+
+ls_county = upper(ls_county)   //Start Code Change ----09.28.2015 #V15 maha
+
+choose case ls_from
+	case "DE", "LOC"
+		city_field = "city"
+		state_field = "state"
+		county_field = "county"
+		country_field = "country"
+	case "ADDLU", "ORG", "REF"  //Start Code Change ----09.16.2016 #V152 maha - added REF
+		city_field = "city"  
+		state_field = "state"
+		county_field = "none"
+		country_field = "country"		
+	case "FAC1", "GROUP"
+		city_field = "city"
+		state_field = "state"
+		county_field = "none"
+		country_field = "none"	
+	case "FAC2"
+		city_field = "return_city"
+		state_field = "return_state"
+		county_field = "none"
+		country_field = "none"
+	case "ENT"
+		city_field = "city"
+		state_field = "state_code"
+		county_field = "none"
+		country_field = "none"		
+end choose
+		
+	
+if dw_detail.Describe(city_field + ".ColType") <> "!" then
+	if len(ls_city) > 0 then 
+		dw_detail.setitem( dw_detail.getrow(),city_field,ls_city)
+	end if
+end if
+
+if dw_detail.Describe(state_field + ".ColType") <> "!" then
+	if len(ls_state) > 0 then 
+		choose case ls_from
+			case "ADDLU" ,"FAC1", "FAC2", "GROUP", "ORG"
+				dw_detail.setitem( dw_detail.getrow(),state_field, ls_state)
+			case "ENT" //has two fields
+				dw_detail.setitem( dw_detail.getrow(),"state", ls_state)
+				select lookup_code into :ll_code from code_lookup where code = :ls_state and lookup_name = 'State';
+				if ll_code > 0 then
+					dw_detail.setitem( dw_detail.getrow(),state_field, ll_code)
+				End if
+			case else
+				select lookup_code into :ll_code from code_lookup where code = :ls_state and lookup_name = 'State';
+				if ll_code > 0 then
+					dw_detail.setitem( dw_detail.getrow(),state_field, ll_code)
+				End if
+		end choose
+	end if
+end if
+
+if dw_detail.Describe(county_field + ".ColType") <> "!" then
+	ll_code = 0
+	if len(ls_county) > 0 then 
+		select lookup_code into :ll_code from code_lookup where upper(description) = :ls_county and lookup_name = 'County';
+		if ll_code= 0 then  //Start Code Change ----09.28.2015 #V15 maha - second check
+			select lookup_code into :ll_code from code_lookup where upper(code) = :ls_county and lookup_name = 'County';
+		end if
+		if ll_code > 0 then
+			dw_detail.setitem( dw_detail.getrow(),county_field,ll_code)
+		end if
+	end if
+end if
+
+if dw_detail.Describe(country_field + ".ColType") <> "!" then
+	ll_code = 0
+	if ls_country = "US" then 
+		choose case ls_from
+			case "ADDLU" 
+				dw_detail.setitem( dw_detail.getrow(),country_field, "United States")
+		case else
+			select lookup_code into :ll_code from code_lookup where code = 'USA' and lookup_name = 'Country';	
+			if ll_code > 0 then dw_detail.setitem( dw_detail.getrow(),country_field, ll_code)
+		end choose
+	end if
+end if
+
+return 1
+end function
+

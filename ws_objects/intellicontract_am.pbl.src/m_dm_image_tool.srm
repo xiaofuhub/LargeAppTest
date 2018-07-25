@@ -1,0 +1,4652 @@
+﻿$PBExportHeader$m_dm_image_tool.srm
+forward
+global type m_dm_image_tool from m_edit
+end type
+type m_image from menu within m_dm_image_tool
+end type
+type m_annotations from menu within m_image
+end type
+type m_3 from menu within m_annotations
+end type
+type m_4 from menu within m_annotations
+end type
+type m_5 from menu within m_annotations
+end type
+type m_6 from menu within m_annotations
+end type
+type m_7 from menu within m_annotations
+end type
+type m_showannotationtoolpalette from menu within m_annotations
+end type
+type m_8 from menu within m_annotations
+end type
+type m_9 from menu within m_annotations
+end type
+type m_10 from menu within m_annotations
+end type
+type m_11 from menu within m_annotations
+end type
+type m_12 from menu within m_annotations
+end type
+type m_13 from menu within m_annotations
+end type
+type m_14 from menu within m_annotations
+end type
+type m_15 from menu within m_annotations
+end type
+type m_16 from menu within m_annotations
+end type
+type m_17 from menu within m_annotations
+end type
+type m_18 from menu within m_annotations
+end type
+type m_initials from menu within m_annotations
+end type
+type m_1 from menu within m_annotations
+end type
+type m_24 from menu within m_annotations
+end type
+type m_48 from menu within m_annotations
+end type
+type m_49 from menu within m_annotations
+end type
+type m_50 from menu within m_annotations
+end type
+type m_annotations from menu within m_image
+m_3 m_3
+m_4 m_4
+m_5 m_5
+m_6 m_6
+m_7 m_7
+m_showannotationtoolpalette m_showannotationtoolpalette
+m_8 m_8
+m_9 m_9
+m_10 m_10
+m_11 m_11
+m_12 m_12
+m_13 m_13
+m_14 m_14
+m_15 m_15
+m_16 m_16
+m_17 m_17
+m_18 m_18
+m_initials m_initials
+m_1 m_1
+m_24 m_24
+m_48 m_48
+m_49 m_49
+m_50 m_50
+end type
+type m_scan from menu within m_image
+end type
+type m_page from menu within m_image
+end type
+type m_firstpage from menu within m_page
+end type
+type m_22 from menu within m_page
+end type
+type m_23 from menu within m_page
+end type
+type m_25 from menu within m_page
+end type
+type m_26 from menu within m_page
+end type
+type m_27 from menu within m_page
+end type
+type m_28 from menu within m_27
+end type
+type m_29 from menu within m_27
+end type
+type m_30 from menu within m_27
+end type
+type m_27 from menu within m_page
+m_28 m_28
+m_29 m_29
+m_30 m_30
+end type
+type m_31 from menu within m_page
+end type
+type m_32 from menu within m_31
+end type
+type m_33 from menu within m_31
+end type
+type m_34 from menu within m_31
+end type
+type m_31 from menu within m_page
+m_32 m_32
+m_33 m_33
+m_34 m_34
+end type
+type m_35 from menu within m_page
+end type
+type m_36 from menu within m_page
+end type
+type m_page from menu within m_image
+m_firstpage m_firstpage
+m_22 m_22
+m_23 m_23
+m_25 m_25
+m_26 m_26
+m_27 m_27
+m_31 m_31
+m_35 m_35
+m_36 m_36
+end type
+type m_ocr from menu within m_image
+end type
+type m_38 from menu within m_ocr
+end type
+type m_39 from menu within m_ocr
+end type
+type m_40 from menu within m_ocr
+end type
+type m_41 from menu within m_ocr
+end type
+type m_drawpicturezone from menu within m_ocr
+end type
+type m_42 from menu within m_ocr
+end type
+type m_ocr from menu within m_image
+m_38 m_38
+m_39 m_39
+m_40 m_40
+m_41 m_41
+m_drawpicturezone m_drawpicturezone
+m_42 m_42
+end type
+type m_43 from menu within m_image
+end type
+type m_44 from menu within m_43
+end type
+type m_45 from menu within m_43
+end type
+type m_46 from menu within m_43
+end type
+type m_47 from menu within m_43
+end type
+type m_43 from menu within m_image
+m_44 m_44
+m_45 m_45
+m_46 m_46
+m_47 m_47
+end type
+type m_image from menu within m_dm_image_tool
+m_annotations m_annotations
+m_scan m_scan
+m_page m_page
+m_ocr m_ocr
+m_43 m_43
+end type
+type m_annotationproperty from menu within m_dm_image_tool
+end type
+type m_cut0 from menu within m_annotationproperty
+end type
+type m_copy0 from menu within m_annotationproperty
+end type
+type m_clear from menu within m_annotationproperty
+end type
+type m_2222 from menu within m_annotationproperty
+end type
+type m_linkto from menu within m_annotationproperty
+end type
+type m_222 from menu within m_annotationproperty
+end type
+type m_properties from menu within m_annotationproperty
+end type
+type m_annotationproperty from menu within m_dm_image_tool
+m_cut0 m_cut0
+m_copy0 m_copy0
+m_clear m_clear
+m_2222 m_2222
+m_linkto m_linkto
+m_222 m_222
+m_properties m_properties
+end type
+type m_thumbproperty from menu within m_dm_image_tool
+end type
+type m_insertblankpage from menu within m_thumbproperty
+end type
+type m_appendblankpage from menu within m_thumbproperty
+end type
+type m_54 from menu within m_thumbproperty
+end type
+type m_showpage from menu within m_thumbproperty
+end type
+type m_45645 from menu within m_thumbproperty
+end type
+type m_copypage from menu within m_thumbproperty
+end type
+type m_deletepage from menu within m_thumbproperty
+end type
+type m_55 from menu within m_thumbproperty
+end type
+type m_printpage from menu within m_thumbproperty
+end type
+type m_gg from menu within m_thumbproperty
+end type
+type m_properties0 from menu within m_thumbproperty
+end type
+type m_thumbnailsize from menu within m_thumbproperty
+end type
+type m_f from menu within m_thumbproperty
+end type
+type m_refresh from menu within m_thumbproperty
+end type
+type m_thumbproperty from menu within m_dm_image_tool
+m_insertblankpage m_insertblankpage
+m_appendblankpage m_appendblankpage
+m_54 m_54
+m_showpage m_showpage
+m_45645 m_45645
+m_copypage m_copypage
+m_deletepage m_deletepage
+m_55 m_55
+m_printpage m_printpage
+m_gg m_gg
+m_properties0 m_properties0
+m_thumbnailsize m_thumbnailsize
+m_f m_f
+m_refresh m_refresh
+end type
+type m_selectionproperty from menu within m_dm_image_tool
+end type
+type m_cut1 from menu within m_selectionproperty
+end type
+type m_copy1 from menu within m_selectionproperty
+end type
+type m_copyastext from menu within m_selectionproperty
+end type
+type m_clear0 from menu within m_selectionproperty
+end type
+type m_paste0 from menu within m_selectionproperty
+end type
+type m_crop from menu within m_selectionproperty
+end type
+type m_gg0 from menu within m_selectionproperty
+end type
+type m_zoomtoselection from menu within m_selectionproperty
+end type
+type m_selectionproperty from menu within m_dm_image_tool
+m_cut1 m_cut1
+m_copy1 m_copy1
+m_copyastext m_copyastext
+m_clear0 m_clear0
+m_paste0 m_paste0
+m_crop m_crop
+m_gg0 m_gg0
+m_zoomtoselection m_zoomtoselection
+end type
+type m_pageproperty from menu within m_dm_image_tool
+end type
+type m_scan0 from menu within m_pageproperty
+end type
+type m_line_scan0 from menu within m_pageproperty
+end type
+type m_copypage0 from menu within m_pageproperty
+end type
+type m_paste1 from menu within m_pageproperty
+end type
+type m_deletepages from menu within m_pageproperty
+end type
+type m_gg1 from menu within m_pageproperty
+end type
+type m_printpage0 from menu within m_pageproperty
+end type
+type m_printall from menu within m_pageproperty
+end type
+type m_0 from menu within m_pageproperty
+end type
+type m_zoomin from menu within m_pageproperty
+end type
+type m_zoomout from menu within m_pageproperty
+end type
+type m_80 from menu within m_pageproperty
+end type
+type m_fittoheight from menu within m_pageproperty
+end type
+type m_fittowidth from menu within m_pageproperty
+end type
+type m_bestfit from menu within m_pageproperty
+end type
+type m_rotate from menu within m_pageproperty
+end type
+type m_rotateright from menu within m_pageproperty
+end type
+type m_rotateleft from menu within m_pageproperty
+end type
+type m_rotate180 from menu within m_pageproperty
+end type
+type m_2 from menu within m_pageproperty
+end type
+type m_delpage from menu within m_pageproperty
+end type
+type m_19 from menu within m_pageproperty
+end type
+type m_saveaspdf from menu within m_pageproperty
+end type
+type m_ocrc_cp from menu within m_pageproperty
+end type
+type m_settings from menu within m_ocrc_cp
+end type
+type m_startocr from menu within m_ocrc_cp
+end type
+type m_viewocrresult from menu within m_ocrc_cp
+end type
+type m_ocrc_cp from menu within m_pageproperty
+m_settings m_settings
+m_startocr m_startocr
+m_viewocrresult m_viewocrresult
+end type
+type m_20 from menu within m_pageproperty
+end type
+type m_properties1 from menu within m_pageproperty
+end type
+type m_pageproperty from menu within m_dm_image_tool
+m_scan0 m_scan0
+m_line_scan0 m_line_scan0
+m_copypage0 m_copypage0
+m_paste1 m_paste1
+m_deletepages m_deletepages
+m_gg1 m_gg1
+m_printpage0 m_printpage0
+m_printall m_printall
+m_0 m_0
+m_zoomin m_zoomin
+m_zoomout m_zoomout
+m_80 m_80
+m_fittoheight m_fittoheight
+m_fittowidth m_fittowidth
+m_bestfit m_bestfit
+m_rotate m_rotate
+m_rotateright m_rotateright
+m_rotateleft m_rotateleft
+m_rotate180 m_rotate180
+m_2 m_2
+m_delpage m_delpage
+m_19 m_19
+m_saveaspdf m_saveaspdf
+m_ocrc_cp m_ocrc_cp
+m_20 m_20
+m_properties1 m_properties1
+end type
+global type m_dm_image_tool from m_edit
+m_image m_image
+m_annotationproperty m_annotationproperty
+m_thumbproperty m_thumbproperty
+m_selectionproperty m_selectionproperty
+m_pageproperty m_pageproperty
+end type
+end forward
+
+global type m_dm_image_tool from m_edit
+m_image m_image
+m_annotationproperty m_annotationproperty
+m_thumbproperty m_thumbproperty
+m_selectionproperty m_selectionproperty
+m_pageproperty m_pageproperty
+end type
+global m_dm_image_tool m_dm_image_tool
+
+on m_dm_image_tool.create
+m_dm_image_tool=this
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_image=create m_image
+this.m_annotationproperty=create m_annotationproperty
+this.m_thumbproperty=create m_thumbproperty
+this.m_selectionproperty=create m_selectionproperty
+this.m_pageproperty=create m_pageproperty
+this.Item[UpperBound(this.Item)+1]=this.m_image
+this.Item[UpperBound(this.Item)+1]=this.m_annotationproperty
+this.Item[UpperBound(this.Item)+1]=this.m_thumbproperty
+this.Item[UpperBound(this.Item)+1]=this.m_selectionproperty
+this.Item[UpperBound(this.Item)+1]=this.m_pageproperty
+end on
+
+on m_dm_image_tool.destroy
+call super::destroy
+destroy(this.m_image)
+destroy(this.m_annotationproperty)
+destroy(this.m_thumbproperty)
+destroy(this.m_selectionproperty)
+destroy(this.m_pageproperty)
+end on
+
+type m_edititem from m_edit`m_edititem within m_dm_image_tool
+end type
+
+on m_edititem.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_edititem.destroy
+call super::destroy
+end on
+
+type m_cut from m_edit`m_cut within m_edititem
+end type
+
+on m_cut.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_cut.destroy
+call super::destroy
+end on
+
+type m_copy from m_edit`m_copy within m_edititem
+end type
+
+on m_copy.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_copy.destroy
+call super::destroy
+end on
+
+type m_paste from m_edit`m_paste within m_edititem
+end type
+
+on m_paste.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_paste.destroy
+call super::destroy
+end on
+
+type m_selectall from m_edit`m_selectall within m_edititem
+end type
+
+on m_selectall.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_selectall.destroy
+call super::destroy
+end on
+
+type m_image from menu within m_dm_image_tool
+m_annotations m_annotations
+m_scan m_scan
+m_page m_page
+m_ocr m_ocr
+m_43 m_43
+end type
+
+on m_image.create
+call super::create
+this.text = "Imaging Tools"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_annotations=create m_annotations
+this.m_scan=create m_scan
+this.m_page=create m_page
+this.m_ocr=create m_ocr
+this.m_43=create m_43
+this.Item[UpperBound(this.Item)+1]=this.m_annotations
+this.Item[UpperBound(this.Item)+1]=this.m_scan
+this.Item[UpperBound(this.Item)+1]=this.m_page
+this.Item[UpperBound(this.Item)+1]=this.m_ocr
+this.Item[UpperBound(this.Item)+1]=this.m_43
+end on
+
+on m_image.destroy
+call super::destroy
+destroy(this.m_annotations)
+destroy(this.m_scan)
+destroy(this.m_page)
+destroy(this.m_ocr)
+destroy(this.m_43)
+end on
+
+type m_annotations from menu within m_image
+m_3 m_3
+m_4 m_4
+m_5 m_5
+m_6 m_6
+m_7 m_7
+m_showannotationtoolpalette m_showannotationtoolpalette
+m_8 m_8
+m_9 m_9
+m_10 m_10
+m_11 m_11
+m_12 m_12
+m_13 m_13
+m_14 m_14
+m_15 m_15
+m_16 m_16
+m_17 m_17
+m_18 m_18
+m_initials m_initials
+m_1 m_1
+m_24 m_24
+m_48 m_48
+m_49 m_49
+m_50 m_50
+end type
+
+on m_annotations.create
+call super::create
+this.text = "Annotations"
+this.microhelp = "Annotations"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_3=create m_3
+this.m_4=create m_4
+this.m_5=create m_5
+this.m_6=create m_6
+this.m_7=create m_7
+this.m_showannotationtoolpalette=create m_showannotationtoolpalette
+this.m_8=create m_8
+this.m_9=create m_9
+this.m_10=create m_10
+this.m_11=create m_11
+this.m_12=create m_12
+this.m_13=create m_13
+this.m_14=create m_14
+this.m_15=create m_15
+this.m_16=create m_16
+this.m_17=create m_17
+this.m_18=create m_18
+this.m_initials=create m_initials
+this.m_1=create m_1
+this.m_24=create m_24
+this.m_48=create m_48
+this.m_49=create m_49
+this.m_50=create m_50
+this.Item[UpperBound(this.Item)+1]=this.m_3
+this.Item[UpperBound(this.Item)+1]=this.m_4
+this.Item[UpperBound(this.Item)+1]=this.m_5
+this.Item[UpperBound(this.Item)+1]=this.m_6
+this.Item[UpperBound(this.Item)+1]=this.m_7
+this.Item[UpperBound(this.Item)+1]=this.m_showannotationtoolpalette
+this.Item[UpperBound(this.Item)+1]=this.m_8
+this.Item[UpperBound(this.Item)+1]=this.m_9
+this.Item[UpperBound(this.Item)+1]=this.m_10
+this.Item[UpperBound(this.Item)+1]=this.m_11
+this.Item[UpperBound(this.Item)+1]=this.m_12
+this.Item[UpperBound(this.Item)+1]=this.m_13
+this.Item[UpperBound(this.Item)+1]=this.m_14
+this.Item[UpperBound(this.Item)+1]=this.m_15
+this.Item[UpperBound(this.Item)+1]=this.m_16
+this.Item[UpperBound(this.Item)+1]=this.m_17
+this.Item[UpperBound(this.Item)+1]=this.m_18
+this.Item[UpperBound(this.Item)+1]=this.m_initials
+this.Item[UpperBound(this.Item)+1]=this.m_1
+this.Item[UpperBound(this.Item)+1]=this.m_24
+this.Item[UpperBound(this.Item)+1]=this.m_48
+this.Item[UpperBound(this.Item)+1]=this.m_49
+this.Item[UpperBound(this.Item)+1]=this.m_50
+end on
+
+on m_annotations.destroy
+call super::destroy
+destroy(this.m_3)
+destroy(this.m_4)
+destroy(this.m_5)
+destroy(this.m_6)
+destroy(this.m_7)
+destroy(this.m_showannotationtoolpalette)
+destroy(this.m_8)
+destroy(this.m_9)
+destroy(this.m_10)
+destroy(this.m_11)
+destroy(this.m_12)
+destroy(this.m_13)
+destroy(this.m_14)
+destroy(this.m_15)
+destroy(this.m_16)
+destroy(this.m_17)
+destroy(this.m_18)
+destroy(this.m_initials)
+destroy(this.m_1)
+destroy(this.m_24)
+destroy(this.m_48)
+destroy(this.m_49)
+destroy(this.m_50)
+end on
+
+type m_3 from menu within m_annotations
+end type
+
+event clicked;idrg_parent.event dynamic ue_annotationtoolselection('SelectAnnoAndZones')
+
+end event
+
+on m_3.create
+call super::create
+this.text = "Select Annotations"
+this.microhelp = "Select Annotations"
+this.toolbaritemvisible = false
+this.toolbaritemname = "arrow!"
+this.toolbaritemtext = "Select Annotations"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_3.destroy
+call super::destroy
+end on
+
+type m_4 from menu within m_annotations
+end type
+
+event clicked;idrg_parent.event dynamic ue_burninannotations()
+
+end event
+
+on m_4.create
+call super::create
+this.text = "Make Annotations Permanent"
+this.microhelp = "Make Annotations Permanent"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_4.destroy
+call super::destroy
+end on
+
+type m_5 from menu within m_annotations
+end type
+
+event clicked;
+int il_index
+
+if this.text = 'Show all Annotations' then
+	il_index =  2
+	this.text = 'Hide all Annotations'
+else
+	il_index =  1
+	this.text = 'Show all Annotations'
+end if
+
+idrg_parent.event dynamic ue_show_anotations(il_index)
+
+end event
+
+on m_5.create
+call super::create
+this.text = "Hide all Annotations"
+this.microhelp = "Hide all Annotations"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_5.destroy
+call super::destroy
+end on
+
+type m_6 from menu within m_annotations
+end type
+
+event clicked;
+int il_index
+string ls_group
+if this.text = 'Show Non-OCR Zones' then
+	il_index =  2
+	this.text = 'Hide Non-OCR Zones'
+else
+	il_index =  1
+	this.text = 'Show Non-OCR Zones'
+end if
+
+idrg_parent.event dynamic ue_hide_add_annotation_groups('other',il_index)
+
+end event
+
+on m_6.create
+call super::create
+this.visible = false
+this.text = "Hide Non-OCR Zones"
+this.microhelp = "Hide Non-OCR Zones"
+this.toolbaritemvisible = false
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_6.destroy
+call super::destroy
+end on
+
+type m_7 from menu within m_annotations
+end type
+
+event clicked;
+int il_index
+string ls_group
+if this.text = 'Show OCR Text Zone Highlights' then
+	il_index =  2
+	this.text = 'Hide OCR Text Zone Highlights'
+else
+	il_index =  1
+	this.text = 'Show OCR Text Zone Highlights'
+end if
+
+idrg_parent.event dynamic ue_hide_add_annotation_groups('mymark',il_index)
+
+
+
+
+
+
+
+
+
+end event
+
+on m_7.create
+call super::create
+this.visible = false
+this.text = "Hide OCR Text Zone Highlights"
+this.microhelp = "Hide OCR Text Zone Highlights"
+this.toolbaritemvisible = false
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_7.destroy
+call super::destroy
+end on
+
+type m_showannotationtoolpalette from menu within m_annotations
+end type
+
+event clicked;idrg_parent.event dynamic ue_ShowAnnotationToolPalette()
+end event
+
+on m_showannotationtoolpalette.create
+call super::create
+this.text = "Show Annotation Tool Palette"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_showannotationtoolpalette.destroy
+call super::destroy
+end on
+
+type m_8 from menu within m_annotations
+end type
+
+on m_8.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_8.destroy
+call super::destroy
+end on
+
+type m_9 from menu within m_annotations
+end type
+
+event clicked;idrg_parent.event dynamic ue_annotationtoolselection('FreehandLine')
+
+end event
+
+on m_9.create
+call super::create
+this.text = "FreeHand Line"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_9.destroy
+call super::destroy
+end on
+
+type m_10 from menu within m_annotations
+end type
+
+event clicked;idrg_parent.event dynamic ue_annotationtoolselection('Highlighter')
+
+end event
+
+on m_10.create
+call super::create
+this.text = "Highlighter"
+this.microhelp = "Select the  Highlighter"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_10.destroy
+call super::destroy
+end on
+
+type m_11 from menu within m_annotations
+end type
+
+event clicked;idrg_parent.event dynamic ue_annotationtoolselection('StraightLine')
+
+end event
+
+on m_11.create
+call super::create
+this.text = "Straight Line"
+this.microhelp = "Select the Straight Line"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_11.destroy
+call super::destroy
+end on
+
+type m_12 from menu within m_annotations
+end type
+
+event clicked;idrg_parent.event dynamic ue_annotationtoolselection('HollowRectangle')
+
+end event
+
+on m_12.create
+call super::create
+this.text = "Hollow Rectangle"
+this.microhelp = "Select the Hollow Rectangle"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_12.destroy
+call super::destroy
+end on
+
+type m_13 from menu within m_annotations
+end type
+
+event clicked;idrg_parent.event dynamic ue_annotationtoolselection('FilledRectangle')
+
+end event
+
+on m_13.create
+call super::create
+this.text = "Filled Rectandle"
+this.microhelp = "Select the Filled Rectandle"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_13.destroy
+call super::destroy
+end on
+
+type m_14 from menu within m_annotations
+end type
+
+event clicked;idrg_parent.event dynamic ue_annotationtoolselection('TypedText')
+
+end event
+
+on m_14.create
+call super::create
+this.text = "Typed Text"
+this.microhelp = "Select the Typed Text"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_14.destroy
+call super::destroy
+end on
+
+type m_15 from menu within m_annotations
+end type
+
+event clicked;idrg_parent.event dynamic ue_annotationtoolselection('Hyperlink')
+
+end event
+
+on m_15.create
+call super::create
+this.text = "Hyperlink"
+this.microhelp = "Select the Hyperlink"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_15.destroy
+call super::destroy
+end on
+
+type m_16 from menu within m_annotations
+end type
+
+event clicked;idrg_parent.event dynamic ue_annotationtoolselection('AttachANote')
+
+end event
+
+on m_16.create
+call super::create
+this.text = "Attach A Note"
+this.microhelp = "Select the Appach A Note"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_16.destroy
+call super::destroy
+end on
+
+type m_17 from menu within m_annotations
+end type
+
+event clicked;idrg_parent.event dynamic ue_annotationtoolselection('TextFromFile')
+
+
+
+end event
+
+on m_17.create
+call super::create
+this.text = "Text From File"
+this.microhelp = "Select the Text From File"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_17.destroy
+call super::destroy
+end on
+
+type m_18 from menu within m_annotations
+end type
+
+event clicked;idrg_parent.event dynamic ue_annotationtoolselection('RubberStamp')
+
+end event
+
+on m_18.create
+call super::create
+this.text = "Rubber Stamp..."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_18.destroy
+call super::destroy
+end on
+
+type m_initials from menu within m_annotations
+end type
+
+on m_initials.create
+call super::create
+this.text = "Initials"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_initials.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.event dynamic ue_annotationtoolselection('Initials')
+
+end event
+
+type m_1 from menu within m_annotations
+end type
+
+on m_1.create
+call super::create
+this.text = "Hollow Polygon"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_1.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.event dynamic ue_annotationtoolselection('HollowPolygon')
+
+end event
+
+type m_24 from menu within m_annotations
+end type
+
+on m_24.create
+call super::create
+this.text = "Filled Polygon"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_24.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.event dynamic ue_annotationtoolselection('FilledPolygon')
+
+end event
+
+type m_48 from menu within m_annotations
+end type
+
+on m_48.create
+call super::create
+this.text = "Auto Polygon"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_48.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.event dynamic ue_annotationtoolselection('AutoPolygon')
+
+end event
+
+type m_49 from menu within m_annotations
+end type
+
+on m_49.create
+call super::create
+this.visible = false
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_49.destroy
+call super::destroy
+end on
+
+type m_50 from menu within m_annotations
+end type
+
+event clicked;idrg_parent.event dynamic ue_ShowAttribsDialog()
+
+end event
+
+on m_50.create
+call super::create
+this.visible = false
+this.text = "Properties..."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_50.destroy
+call super::destroy
+end on
+
+type m_scan from menu within m_image
+end type
+
+event clicked;
+idrg_parent.event dynamic ue_scan()
+
+end event
+
+on m_scan.create
+call super::create
+this.text = "Scan"
+this.microhelp = "Scan"
+this.toolbaritemvisible = false
+this.toolbaritemname = "scan.png"
+this.toolbaritemtext = "Scan"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_scan.destroy
+call super::destroy
+end on
+
+type m_page from menu within m_image
+m_firstpage m_firstpage
+m_22 m_22
+m_23 m_23
+m_25 m_25
+m_26 m_26
+m_27 m_27
+m_31 m_31
+m_35 m_35
+m_36 m_36
+end type
+
+on m_page.create
+call super::create
+this.text = "Page"
+this.microhelp = "Page functions"
+this.toolbaritemvisible = false
+this.toolbaritemtext = "Page"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_firstpage=create m_firstpage
+this.m_22=create m_22
+this.m_23=create m_23
+this.m_25=create m_25
+this.m_26=create m_26
+this.m_27=create m_27
+this.m_31=create m_31
+this.m_35=create m_35
+this.m_36=create m_36
+this.Item[UpperBound(this.Item)+1]=this.m_firstpage
+this.Item[UpperBound(this.Item)+1]=this.m_22
+this.Item[UpperBound(this.Item)+1]=this.m_23
+this.Item[UpperBound(this.Item)+1]=this.m_25
+this.Item[UpperBound(this.Item)+1]=this.m_26
+this.Item[UpperBound(this.Item)+1]=this.m_27
+this.Item[UpperBound(this.Item)+1]=this.m_31
+this.Item[UpperBound(this.Item)+1]=this.m_35
+this.Item[UpperBound(this.Item)+1]=this.m_36
+end on
+
+on m_page.destroy
+call super::destroy
+destroy(this.m_firstpage)
+destroy(this.m_22)
+destroy(this.m_23)
+destroy(this.m_25)
+destroy(this.m_26)
+destroy(this.m_27)
+destroy(this.m_31)
+destroy(this.m_35)
+destroy(this.m_36)
+end on
+
+type m_firstpage from menu within m_page
+end type
+
+event clicked;idrg_parent.event dynamic ue_pagedirection(2)
+
+end event
+
+on m_firstpage.create
+call super::create
+this.visible = false
+this.text = "First Page"
+this.microhelp = "First Page"
+this.toolbaritemvisible = false
+this.toolbaritemname = "first.png"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_firstpage.destroy
+call super::destroy
+end on
+
+type m_22 from menu within m_page
+end type
+
+event clicked;idrg_parent.event dynamic ue_pagedirection(0)
+
+end event
+
+on m_22.create
+call super::create
+this.visible = false
+this.text = "Previous"
+this.microhelp = "Previous Page"
+this.toolbaritemvisible = false
+this.toolbaritemname = "prior.png"
+this.toolbaritemtext = "Previous"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_22.destroy
+call super::destroy
+end on
+
+type m_23 from menu within m_page
+end type
+
+event clicked;idrg_parent.event dynamic ue_pagedirection(1)
+
+end event
+
+on m_23.create
+call super::create
+this.visible = false
+this.text = "Next"
+this.enabled = false
+this.microhelp = "Next Page"
+this.toolbaritemvisible = false
+this.toolbaritemname = "next.png"
+this.toolbaritemtext = "Next Page"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_23.destroy
+call super::destroy
+end on
+
+type m_25 from menu within m_page
+end type
+
+event clicked;idrg_parent.event dynamic ue_pagedirection(3)
+
+end event
+
+on m_25.create
+call super::create
+this.visible = false
+this.text = "Last"
+this.microhelp = "Last Page"
+this.toolbaritemvisible = false
+this.toolbaritemname = "last.png"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_25.destroy
+call super::destroy
+end on
+
+type m_26 from menu within m_page
+end type
+
+on m_26.create
+call super::create
+this.visible = false
+this.text = "-"
+this.microhelp = "-"
+this.toolbaritemvisible = false
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_26.destroy
+call super::destroy
+end on
+
+type m_27 from menu within m_page
+m_28 m_28
+m_29 m_29
+m_30 m_30
+end type
+
+on m_27.create
+call super::create
+this.text = "Rotate Page"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_28=create m_28
+this.m_29=create m_29
+this.m_30=create m_30
+this.Item[UpperBound(this.Item)+1]=this.m_28
+this.Item[UpperBound(this.Item)+1]=this.m_29
+this.Item[UpperBound(this.Item)+1]=this.m_30
+end on
+
+on m_27.destroy
+call super::destroy
+destroy(this.m_28)
+destroy(this.m_29)
+destroy(this.m_30)
+end on
+
+type m_28 from menu within m_27
+event create ( )
+event destroy ( )
+end type
+
+on m_28.create
+call super::create
+this.text = "Right"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_28.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.event dynamic ue_rotatepage(1)
+
+end event
+
+type m_29 from menu within m_27
+event create ( )
+event destroy ( )
+end type
+
+on m_29.create
+call super::create
+this.text = "Left"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_29.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.event dynamic ue_rotatepage(0)
+
+end event
+
+type m_30 from menu within m_27
+event create ( )
+event destroy ( )
+end type
+
+on m_30.create
+call super::create
+this.text = "180"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_30.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.event dynamic ue_rotatepage(2)
+
+end event
+
+type m_31 from menu within m_page
+m_32 m_32
+m_33 m_33
+m_34 m_34
+end type
+
+on m_31.create
+call super::create
+this.text = "Rotate All Pages"
+this.microhelp = "Rotate All Pages"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_32=create m_32
+this.m_33=create m_33
+this.m_34=create m_34
+this.Item[UpperBound(this.Item)+1]=this.m_32
+this.Item[UpperBound(this.Item)+1]=this.m_33
+this.Item[UpperBound(this.Item)+1]=this.m_34
+end on
+
+on m_31.destroy
+call super::destroy
+destroy(this.m_32)
+destroy(this.m_33)
+destroy(this.m_34)
+end on
+
+type m_32 from menu within m_31
+event create ( )
+event destroy ( )
+end type
+
+on m_32.create
+call super::create
+this.text = "Right"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_32.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.event dynamic ue_rotate_all_pages(1)
+
+end event
+
+type m_33 from menu within m_31
+event create ( )
+event destroy ( )
+end type
+
+on m_33.create
+call super::create
+this.text = "Left"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_33.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.event dynamic ue_rotate_all_pages(0)
+
+end event
+
+type m_34 from menu within m_31
+event create ( )
+event destroy ( )
+end type
+
+on m_34.create
+call super::create
+this.text = "180"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_34.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.event dynamic ue_rotate_all_pages(2)
+
+end event
+
+type m_35 from menu within m_page
+end type
+
+event clicked;idrg_parent.dynamic event ue_do('Thumbnail Append Blank Page')
+
+end event
+
+on m_35.create
+call super::create
+this.text = "Append Blank Page"
+this.microhelp = "Append Blank Page"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_35.destroy
+call super::destroy
+end on
+
+type m_36 from menu within m_page
+end type
+
+event clicked;idrg_parent.event dynamic ue_straighten_page()
+
+end event
+
+on m_36.create
+call super::create
+this.text = "Straighten Page..."
+this.microhelp = "Straighten Page"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_36.destroy
+call super::destroy
+end on
+
+type m_ocr from menu within m_image
+m_38 m_38
+m_39 m_39
+m_40 m_40
+m_41 m_41
+m_drawpicturezone m_drawpicturezone
+m_42 m_42
+end type
+
+on m_ocr.create
+call super::create
+this.text = "OCR"
+this.microhelp = "Optical character recognition functions"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_38=create m_38
+this.m_39=create m_39
+this.m_40=create m_40
+this.m_41=create m_41
+this.m_drawpicturezone=create m_drawpicturezone
+this.m_42=create m_42
+this.Item[UpperBound(this.Item)+1]=this.m_38
+this.Item[UpperBound(this.Item)+1]=this.m_39
+this.Item[UpperBound(this.Item)+1]=this.m_40
+this.Item[UpperBound(this.Item)+1]=this.m_41
+this.Item[UpperBound(this.Item)+1]=this.m_drawpicturezone
+this.Item[UpperBound(this.Item)+1]=this.m_42
+end on
+
+on m_ocr.destroy
+call super::destroy
+destroy(this.m_38)
+destroy(this.m_39)
+destroy(this.m_40)
+destroy(this.m_41)
+destroy(this.m_drawpicturezone)
+destroy(this.m_42)
+end on
+
+type m_38 from menu within m_ocr
+end type
+
+on m_38.create
+call super::create
+this.text = "Show OCR Zones"
+this.microhelp = "Show OCR Zones"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_38.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.event dynamic ue_show_ocr_zones()
+
+end event
+
+type m_39 from menu within m_ocr
+end type
+
+event clicked;idrg_parent.event dynamic ue_remove_all_ocr_zones()
+
+end event
+
+on m_39.create
+call super::create
+this.text = "Remove All OCR Zones"
+this.microhelp = "Remove All Ocr Zones"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_39.destroy
+call super::destroy
+end on
+
+type m_40 from menu within m_ocr
+end type
+
+event clicked;//idrg_parent.event dynamic ue_ocr()
+idrg_parent.event dynamic ue_ocr_all( )
+
+
+end event
+
+on m_40.create
+call super::create
+this.text = "OCR..."
+this.microhelp = "OCR..."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_40.destroy
+call super::destroy
+end on
+
+type m_41 from menu within m_ocr
+end type
+
+event clicked;idrg_parent.event dynamic ue_draw_text_zone( )
+
+end event
+
+on m_41.create
+call super::create
+this.text = "Draw Text Zone"
+this.microhelp = "Draw Text Zone"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_41.destroy
+call super::destroy
+end on
+
+type m_drawpicturezone from menu within m_ocr
+end type
+
+event clicked;idrg_parent.event dynamic ue_draw_picture_zone( )
+
+end event
+
+on m_drawpicturezone.create
+call super::create
+this.text = "Draw Picture Zone"
+this.microhelp = "Draw Text Zone"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_drawpicturezone.destroy
+call super::destroy
+end on
+
+type m_42 from menu within m_ocr
+end type
+
+event clicked;idrg_parent.event dynamic ue_ocr_all( )
+
+end event
+
+on m_42.create
+call super::create
+this.visible = false
+this.text = "OCR Whole Image"
+this.microhelp = "OCR Whole Image"
+this.toolbaritemvisible = false
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_42.destroy
+call super::destroy
+end on
+
+type m_43 from menu within m_image
+m_44 m_44
+m_45 m_45
+m_46 m_46
+m_47 m_47
+end type
+
+on m_43.create
+call super::create
+this.visible = false
+this.text = "Edit"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_44=create m_44
+this.m_45=create m_45
+this.m_46=create m_46
+this.m_47=create m_47
+this.Item[UpperBound(this.Item)+1]=this.m_44
+this.Item[UpperBound(this.Item)+1]=this.m_45
+this.Item[UpperBound(this.Item)+1]=this.m_46
+this.Item[UpperBound(this.Item)+1]=this.m_47
+end on
+
+on m_43.destroy
+call super::destroy
+destroy(this.m_44)
+destroy(this.m_45)
+destroy(this.m_46)
+destroy(this.m_47)
+end on
+
+type m_44 from menu within m_43
+end type
+
+event clicked;idrg_parent.event dynamic ue_image_cut( )
+
+end event
+
+on m_44.create
+call super::create
+this.text = "Cut"
+this.microhelp = "Moves the selection to the Clipboard"
+this.toolbaritemtext = "Cut"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_44.destroy
+call super::destroy
+end on
+
+type m_45 from menu within m_43
+end type
+
+event clicked;idrg_parent.event dynamic ue_image_copy( )
+
+end event
+
+on m_45.create
+call super::create
+this.text = "Copy"
+this.microhelp = "Copies the selection to the Clipboard"
+this.toolbaritemtext = "Copy"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_45.destroy
+call super::destroy
+end on
+
+type m_46 from menu within m_43
+end type
+
+event clicked;idrg_parent.event dynamic ue_image_paste( )
+
+end event
+
+on m_46.create
+call super::create
+this.text = "Paste"
+this.microhelp = "Inserts Clipboard contents at current insertion point"
+this.toolbaritemtext = "Past Object"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_46.destroy
+call super::destroy
+end on
+
+type m_47 from menu within m_43
+end type
+
+event clicked;idrg_parent.event dynamic ue_delete_image_object()
+
+end event
+
+on m_47.create
+call super::create
+this.text = "Delete"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_47.destroy
+call super::destroy
+end on
+
+type m_annotationproperty from menu within m_dm_image_tool
+m_cut0 m_cut0
+m_copy0 m_copy0
+m_clear m_clear
+m_2222 m_2222
+m_linkto m_linkto
+m_222 m_222
+m_properties m_properties
+event create ( )
+event destroy ( )
+end type
+
+on m_annotationproperty.create
+call super::create
+this.text = "AnnotationProperty"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_cut0=create m_cut0
+this.m_copy0=create m_copy0
+this.m_clear=create m_clear
+this.m_2222=create m_2222
+this.m_linkto=create m_linkto
+this.m_222=create m_222
+this.m_properties=create m_properties
+this.Item[UpperBound(this.Item)+1]=this.m_cut0
+this.Item[UpperBound(this.Item)+1]=this.m_copy0
+this.Item[UpperBound(this.Item)+1]=this.m_clear
+this.Item[UpperBound(this.Item)+1]=this.m_2222
+this.Item[UpperBound(this.Item)+1]=this.m_linkto
+this.Item[UpperBound(this.Item)+1]=this.m_222
+this.Item[UpperBound(this.Item)+1]=this.m_properties
+end on
+
+on m_annotationproperty.destroy
+call super::destroy
+destroy(this.m_cut0)
+destroy(this.m_copy0)
+destroy(this.m_clear)
+destroy(this.m_2222)
+destroy(this.m_linkto)
+destroy(this.m_222)
+destroy(this.m_properties)
+end on
+
+type m_cut0 from menu within m_annotationproperty
+event create ( )
+event destroy ( )
+end type
+
+on m_cut0.create
+call super::create
+this.text = "Cut"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_cut0.destroy
+call super::destroy
+end on
+
+event clicked;//idrg_parent.event dynamic ue_image_cut( )
+idrg_parent.dynamic event ue_do('Annotation Cut')
+end event
+
+type m_copy0 from menu within m_annotationproperty
+event create ( )
+event destroy ( )
+end type
+
+on m_copy0.create
+call super::create
+this.text = "Copy"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_copy0.destroy
+call super::destroy
+end on
+
+event clicked;//idrg_parent.event dynamic ue_image_copy( )
+
+idrg_parent.dynamic event ue_do('Annotation Copy')
+
+end event
+
+type m_clear from menu within m_annotationproperty
+event create ( )
+event destroy ( )
+end type
+
+on m_clear.create
+call super::create
+this.text = "Clear"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_clear.destroy
+call super::destroy
+end on
+
+event clicked;//idrg_parent.event dynamic ue_delete_image_object()
+
+idrg_parent.dynamic event ue_do('Annotation Clear')
+
+end event
+
+type m_2222 from menu within m_annotationproperty
+event create ( )
+event destroy ( )
+end type
+
+on m_2222.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_2222.destroy
+call super::destroy
+end on
+
+type m_linkto from menu within m_annotationproperty
+event create ( )
+event destroy ( )
+end type
+
+on m_linkto.create
+call super::create
+this.tag = "Annotation Link To"
+this.text = "Link To..."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_linkto.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.dynamic event ue_do('Annotation Link To')
+end event
+
+type m_222 from menu within m_annotationproperty
+event create ( )
+event destroy ( )
+end type
+
+on m_222.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_222.destroy
+call super::destroy
+end on
+
+type m_properties from menu within m_annotationproperty
+event create ( )
+event destroy ( )
+end type
+
+on m_properties.create
+call super::create
+this.text = "Properties"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_properties.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.dynamic event ue_do('Annotation Properties')
+end event
+
+type m_thumbproperty from menu within m_dm_image_tool
+m_insertblankpage m_insertblankpage
+m_appendblankpage m_appendblankpage
+m_54 m_54
+m_showpage m_showpage
+m_45645 m_45645
+m_copypage m_copypage
+m_deletepage m_deletepage
+m_55 m_55
+m_printpage m_printpage
+m_gg m_gg
+m_properties0 m_properties0
+m_thumbnailsize m_thumbnailsize
+m_f m_f
+m_refresh m_refresh
+event create ( )
+event destroy ( )
+end type
+
+on m_thumbproperty.create
+call super::create
+this.text = "ThumbProperty"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_insertblankpage=create m_insertblankpage
+this.m_appendblankpage=create m_appendblankpage
+this.m_54=create m_54
+this.m_showpage=create m_showpage
+this.m_45645=create m_45645
+this.m_copypage=create m_copypage
+this.m_deletepage=create m_deletepage
+this.m_55=create m_55
+this.m_printpage=create m_printpage
+this.m_gg=create m_gg
+this.m_properties0=create m_properties0
+this.m_thumbnailsize=create m_thumbnailsize
+this.m_f=create m_f
+this.m_refresh=create m_refresh
+this.Item[UpperBound(this.Item)+1]=this.m_insertblankpage
+this.Item[UpperBound(this.Item)+1]=this.m_appendblankpage
+this.Item[UpperBound(this.Item)+1]=this.m_54
+this.Item[UpperBound(this.Item)+1]=this.m_showpage
+this.Item[UpperBound(this.Item)+1]=this.m_45645
+this.Item[UpperBound(this.Item)+1]=this.m_copypage
+this.Item[UpperBound(this.Item)+1]=this.m_deletepage
+this.Item[UpperBound(this.Item)+1]=this.m_55
+this.Item[UpperBound(this.Item)+1]=this.m_printpage
+this.Item[UpperBound(this.Item)+1]=this.m_gg
+this.Item[UpperBound(this.Item)+1]=this.m_properties0
+this.Item[UpperBound(this.Item)+1]=this.m_thumbnailsize
+this.Item[UpperBound(this.Item)+1]=this.m_f
+this.Item[UpperBound(this.Item)+1]=this.m_refresh
+end on
+
+on m_thumbproperty.destroy
+call super::destroy
+destroy(this.m_insertblankpage)
+destroy(this.m_appendblankpage)
+destroy(this.m_54)
+destroy(this.m_showpage)
+destroy(this.m_45645)
+destroy(this.m_copypage)
+destroy(this.m_deletepage)
+destroy(this.m_55)
+destroy(this.m_printpage)
+destroy(this.m_gg)
+destroy(this.m_properties0)
+destroy(this.m_thumbnailsize)
+destroy(this.m_f)
+destroy(this.m_refresh)
+end on
+
+type m_insertblankpage from menu within m_thumbproperty
+end type
+
+event clicked;idrg_parent.dynamic event ue_do('Thumbnail Insert Blank Page')
+
+end event
+
+on m_insertblankpage.create
+call super::create
+this.text = "Insert Blank Page"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_insertblankpage.destroy
+call super::destroy
+end on
+
+type m_appendblankpage from menu within m_thumbproperty
+end type
+
+event clicked;idrg_parent.dynamic event ue_do('Thumbnail Append Blank Page')
+
+end event
+
+on m_appendblankpage.create
+call super::create
+this.text = "Append Blank Page"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_appendblankpage.destroy
+call super::destroy
+end on
+
+type m_54 from menu within m_thumbproperty
+end type
+
+on m_54.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_54.destroy
+call super::destroy
+end on
+
+type m_showpage from menu within m_thumbproperty
+end type
+
+on m_showpage.create
+call super::create
+this.text = "Show Page"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_showpage.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.dynamic event ue_do('Thumbnail Show Page')
+end event
+
+type m_45645 from menu within m_thumbproperty
+end type
+
+on m_45645.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_45645.destroy
+call super::destroy
+end on
+
+type m_copypage from menu within m_thumbproperty
+end type
+
+on m_copypage.create
+call super::create
+this.text = "Copy Page"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_copypage.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.dynamic event ue_do('Thumbnail Copy Page')
+end event
+
+type m_deletepage from menu within m_thumbproperty
+end type
+
+on m_deletepage.create
+call super::create
+this.text = "Delete Page"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_deletepage.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.dynamic event ue_do('Thumbnail Delete Page')
+//idrg_parent.event dynamic ue_delete_image_page()
+end event
+
+type m_55 from menu within m_thumbproperty
+end type
+
+on m_55.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_55.destroy
+call super::destroy
+end on
+
+type m_printpage from menu within m_thumbproperty
+end type
+
+on m_printpage.create
+call super::create
+this.text = "Print Page"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_printpage.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.dynamic event ue_do('Thumbnail Print Page')
+
+end event
+
+type m_gg from menu within m_thumbproperty
+end type
+
+on m_gg.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_gg.destroy
+call super::destroy
+end on
+
+type m_properties0 from menu within m_thumbproperty
+end type
+
+on m_properties0.create
+call super::create
+this.text = "Properties"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_properties0.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.dynamic event ue_do('Thumbnail Properties')
+
+end event
+
+type m_thumbnailsize from menu within m_thumbproperty
+end type
+
+event clicked;idrg_parent.dynamic event ue_do('Thumbnail Size')
+
+end event
+
+on m_thumbnailsize.create
+call super::create
+this.text = "Thumbnail Size..."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_thumbnailsize.destroy
+call super::destroy
+end on
+
+type m_f from menu within m_thumbproperty
+end type
+
+on m_f.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_f.destroy
+call super::destroy
+end on
+
+type m_refresh from menu within m_thumbproperty
+end type
+
+on m_refresh.create
+call super::create
+this.text = "Refresh"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_refresh.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.dynamic event ue_do('Thumbnail Refresh')
+
+end event
+
+type m_selectionproperty from menu within m_dm_image_tool
+m_cut1 m_cut1
+m_copy1 m_copy1
+m_copyastext m_copyastext
+m_clear0 m_clear0
+m_paste0 m_paste0
+m_crop m_crop
+m_gg0 m_gg0
+m_zoomtoselection m_zoomtoselection
+end type
+
+on m_selectionproperty.create
+call super::create
+this.text = "SelectionProperty"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_cut1=create m_cut1
+this.m_copy1=create m_copy1
+this.m_copyastext=create m_copyastext
+this.m_clear0=create m_clear0
+this.m_paste0=create m_paste0
+this.m_crop=create m_crop
+this.m_gg0=create m_gg0
+this.m_zoomtoselection=create m_zoomtoselection
+this.Item[UpperBound(this.Item)+1]=this.m_cut1
+this.Item[UpperBound(this.Item)+1]=this.m_copy1
+this.Item[UpperBound(this.Item)+1]=this.m_copyastext
+this.Item[UpperBound(this.Item)+1]=this.m_clear0
+this.Item[UpperBound(this.Item)+1]=this.m_paste0
+this.Item[UpperBound(this.Item)+1]=this.m_crop
+this.Item[UpperBound(this.Item)+1]=this.m_gg0
+this.Item[UpperBound(this.Item)+1]=this.m_zoomtoselection
+end on
+
+on m_selectionproperty.destroy
+call super::destroy
+destroy(this.m_cut1)
+destroy(this.m_copy1)
+destroy(this.m_copyastext)
+destroy(this.m_clear0)
+destroy(this.m_paste0)
+destroy(this.m_crop)
+destroy(this.m_gg0)
+destroy(this.m_zoomtoselection)
+end on
+
+type m_cut1 from menu within m_selectionproperty
+end type
+
+on m_cut1.create
+call super::create
+this.text = "Cut"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_cut1.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.event dynamic ue_do('Selection Cut' )
+
+end event
+
+type m_copy1 from menu within m_selectionproperty
+end type
+
+on m_copy1.create
+call super::create
+this.text = "Copy"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_copy1.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.event dynamic ue_do('Selection Copy' )
+
+end event
+
+type m_copyastext from menu within m_selectionproperty
+end type
+
+on m_copyastext.create
+call super::create
+this.text = "Copy As Text"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_copyastext.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.event dynamic ue_do('Selection Copy As Text' )
+
+end event
+
+type m_clear0 from menu within m_selectionproperty
+end type
+
+on m_clear0.create
+call super::create
+this.text = "Clear"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_clear0.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.event dynamic ue_do('Selection Clear')
+
+end event
+
+type m_paste0 from menu within m_selectionproperty
+end type
+
+on m_paste0.create
+call super::create
+this.text = "Paste"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_paste0.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.event dynamic ue_do('Selection Paste')
+
+end event
+
+type m_crop from menu within m_selectionproperty
+end type
+
+on m_crop.create
+call super::create
+this.text = "Crop"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_crop.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.event dynamic ue_do('Selection Crop')
+
+end event
+
+type m_gg0 from menu within m_selectionproperty
+end type
+
+on m_gg0.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_gg0.destroy
+call super::destroy
+end on
+
+type m_zoomtoselection from menu within m_selectionproperty
+end type
+
+on m_zoomtoselection.create
+call super::create
+this.text = "Zoom to Selection"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_zoomtoselection.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.event dynamic ue_do('Zoom to Selection')
+
+end event
+
+type m_pageproperty from menu within m_dm_image_tool
+m_scan0 m_scan0
+m_line_scan0 m_line_scan0
+m_copypage0 m_copypage0
+m_paste1 m_paste1
+m_deletepages m_deletepages
+m_gg1 m_gg1
+m_printpage0 m_printpage0
+m_printall m_printall
+m_0 m_0
+m_zoomin m_zoomin
+m_zoomout m_zoomout
+m_80 m_80
+m_fittoheight m_fittoheight
+m_fittowidth m_fittowidth
+m_bestfit m_bestfit
+m_rotate m_rotate
+m_rotateright m_rotateright
+m_rotateleft m_rotateleft
+m_rotate180 m_rotate180
+m_2 m_2
+m_delpage m_delpage
+m_19 m_19
+m_saveaspdf m_saveaspdf
+m_ocrc_cp m_ocrc_cp
+m_20 m_20
+m_properties1 m_properties1
+end type
+
+on m_pageproperty.create
+call super::create
+this.text = "PageProperty"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_scan0=create m_scan0
+this.m_line_scan0=create m_line_scan0
+this.m_copypage0=create m_copypage0
+this.m_paste1=create m_paste1
+this.m_deletepages=create m_deletepages
+this.m_gg1=create m_gg1
+this.m_printpage0=create m_printpage0
+this.m_printall=create m_printall
+this.m_0=create m_0
+this.m_zoomin=create m_zoomin
+this.m_zoomout=create m_zoomout
+this.m_80=create m_80
+this.m_fittoheight=create m_fittoheight
+this.m_fittowidth=create m_fittowidth
+this.m_bestfit=create m_bestfit
+this.m_rotate=create m_rotate
+this.m_rotateright=create m_rotateright
+this.m_rotateleft=create m_rotateleft
+this.m_rotate180=create m_rotate180
+this.m_2=create m_2
+this.m_delpage=create m_delpage
+this.m_19=create m_19
+this.m_saveaspdf=create m_saveaspdf
+this.m_ocrc_cp=create m_ocrc_cp
+this.m_20=create m_20
+this.m_properties1=create m_properties1
+this.Item[UpperBound(this.Item)+1]=this.m_scan0
+this.Item[UpperBound(this.Item)+1]=this.m_line_scan0
+this.Item[UpperBound(this.Item)+1]=this.m_copypage0
+this.Item[UpperBound(this.Item)+1]=this.m_paste1
+this.Item[UpperBound(this.Item)+1]=this.m_deletepages
+this.Item[UpperBound(this.Item)+1]=this.m_gg1
+this.Item[UpperBound(this.Item)+1]=this.m_printpage0
+this.Item[UpperBound(this.Item)+1]=this.m_printall
+this.Item[UpperBound(this.Item)+1]=this.m_0
+this.Item[UpperBound(this.Item)+1]=this.m_zoomin
+this.Item[UpperBound(this.Item)+1]=this.m_zoomout
+this.Item[UpperBound(this.Item)+1]=this.m_80
+this.Item[UpperBound(this.Item)+1]=this.m_fittoheight
+this.Item[UpperBound(this.Item)+1]=this.m_fittowidth
+this.Item[UpperBound(this.Item)+1]=this.m_bestfit
+this.Item[UpperBound(this.Item)+1]=this.m_rotate
+this.Item[UpperBound(this.Item)+1]=this.m_rotateright
+this.Item[UpperBound(this.Item)+1]=this.m_rotateleft
+this.Item[UpperBound(this.Item)+1]=this.m_rotate180
+this.Item[UpperBound(this.Item)+1]=this.m_2
+this.Item[UpperBound(this.Item)+1]=this.m_delpage
+this.Item[UpperBound(this.Item)+1]=this.m_19
+this.Item[UpperBound(this.Item)+1]=this.m_saveaspdf
+this.Item[UpperBound(this.Item)+1]=this.m_ocrc_cp
+this.Item[UpperBound(this.Item)+1]=this.m_20
+this.Item[UpperBound(this.Item)+1]=this.m_properties1
+end on
+
+on m_pageproperty.destroy
+call super::destroy
+destroy(this.m_scan0)
+destroy(this.m_line_scan0)
+destroy(this.m_copypage0)
+destroy(this.m_paste1)
+destroy(this.m_deletepages)
+destroy(this.m_gg1)
+destroy(this.m_printpage0)
+destroy(this.m_printall)
+destroy(this.m_0)
+destroy(this.m_zoomin)
+destroy(this.m_zoomout)
+destroy(this.m_80)
+destroy(this.m_fittoheight)
+destroy(this.m_fittowidth)
+destroy(this.m_bestfit)
+destroy(this.m_rotate)
+destroy(this.m_rotateright)
+destroy(this.m_rotateleft)
+destroy(this.m_rotate180)
+destroy(this.m_2)
+destroy(this.m_delpage)
+destroy(this.m_19)
+destroy(this.m_saveaspdf)
+destroy(this.m_ocrc_cp)
+destroy(this.m_20)
+destroy(this.m_properties1)
+end on
+
+type m_scan0 from menu within m_pageproperty
+end type
+
+event clicked;//for Image CP - Alfee 07.28.2008
+
+idrg_parent.event dynamic ue_scan()
+end event
+
+on m_scan0.create
+call super::create
+this.visible = false
+this.text = "Scan"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_scan0.destroy
+call super::destroy
+end on
+
+type m_line_scan0 from menu within m_pageproperty
+end type
+
+on m_line_scan0.create
+call super::create
+this.visible = false
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_line_scan0.destroy
+call super::destroy
+end on
+
+type m_copypage0 from menu within m_pageproperty
+end type
+
+on m_copypage0.create
+call super::create
+this.text = "Copy Page"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_copypage0.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.event dynamic ue_do('Page Copy')
+
+end event
+
+type m_paste1 from menu within m_pageproperty
+end type
+
+on m_paste1.create
+call super::create
+this.text = "Paste"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_paste1.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.event dynamic ue_do('Page Paste')
+
+end event
+
+type m_deletepages from menu within m_pageproperty
+end type
+
+on m_deletepages.create
+call super::create
+this.text = "Delete Pages"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_deletepages.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.event dynamic ue_do('Page Clear')
+
+end event
+
+type m_gg1 from menu within m_pageproperty
+end type
+
+on m_gg1.create
+call super::create
+this.text = "-"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_gg1.destroy
+call super::destroy
+end on
+
+type m_printpage0 from menu within m_pageproperty
+end type
+
+on m_printpage0.create
+call super::create
+this.text = "Print Page"
+this.microhelp = "Print Current Page"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_printpage0.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.event dynamic ue_do('Page Print')
+
+end event
+
+type m_printall from menu within m_pageproperty
+end type
+
+event clicked;idrg_parent.event dynamic ue_do('All Print')
+end event
+
+on m_printall.create
+call super::create
+this.visible = false
+this.text = "Print All"
+this.microhelp = "Print All Pages"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_printall.destroy
+call super::destroy
+end on
+
+type m_0 from menu within m_pageproperty
+end type
+
+on m_0.create
+call super::create
+this.text = "-"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_0.destroy
+call super::destroy
+end on
+
+type m_zoomin from menu within m_pageproperty
+end type
+
+on m_zoomin.create
+call super::create
+this.text = "Zoom In"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_zoomin.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.event dynamic ue_do('Page Zoom In')
+
+end event
+
+type m_zoomout from menu within m_pageproperty
+end type
+
+on m_zoomout.create
+call super::create
+this.text = "Zoom Out"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_zoomout.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.event dynamic ue_do('Page Zoom Out')
+
+end event
+
+type m_80 from menu within m_pageproperty
+end type
+
+on m_80.create
+call super::create
+this.text = "-"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_80.destroy
+call super::destroy
+end on
+
+type m_fittoheight from menu within m_pageproperty
+end type
+
+on m_fittoheight.create
+call super::create
+this.text = "Fit to Height"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_fittoheight.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.event dynamic ue_do('Page Fit To Height')
+
+end event
+
+type m_fittowidth from menu within m_pageproperty
+end type
+
+on m_fittowidth.create
+call super::create
+this.text = "Fit to Width"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_fittowidth.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.event dynamic ue_do('Page Fit To Width')
+
+end event
+
+type m_bestfit from menu within m_pageproperty
+end type
+
+on m_bestfit.create
+call super::create
+this.text = "Best Fit"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_bestfit.destroy
+call super::destroy
+end on
+
+event clicked;idrg_parent.event dynamic ue_do('Page Best Fit')
+
+end event
+
+type m_rotate from menu within m_pageproperty
+end type
+
+on m_rotate.create
+call super::create
+this.text = "-"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_rotate.destroy
+call super::destroy
+end on
+
+type m_rotateright from menu within m_pageproperty
+end type
+
+event clicked;idrg_parent.event dynamic ue_rotatepage(1)
+end event
+
+on m_rotateright.create
+call super::create
+this.text = "Rotate Right"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_rotateright.destroy
+call super::destroy
+end on
+
+type m_rotateleft from menu within m_pageproperty
+end type
+
+event clicked;idrg_parent.event dynamic ue_rotatepage(0)
+end event
+
+on m_rotateleft.create
+call super::create
+this.text = "Rotate Left"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_rotateleft.destroy
+call super::destroy
+end on
+
+type m_rotate180 from menu within m_pageproperty
+end type
+
+event clicked;idrg_parent.event dynamic ue_rotatepage(2)
+end event
+
+on m_rotate180.create
+call super::create
+this.text = "Rotate 180"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_rotate180.destroy
+call super::destroy
+end on
+
+type m_2 from menu within m_pageproperty
+end type
+
+on m_2.create
+call super::create
+this.text = "-"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_2.destroy
+call super::destroy
+end on
+
+type m_delpage from menu within m_pageproperty
+end type
+
+event clicked;
+//for image cp - Alfee 07.28.2008
+idrg_parent.event dynamic ue_do('Delete Page')
+end event
+
+on m_delpage.create
+call super::create
+this.visible = false
+this.text = "Delete Page"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_delpage.destroy
+call super::destroy
+end on
+
+type m_19 from menu within m_pageproperty
+end type
+
+on m_19.create
+call super::create
+this.visible = false
+this.text = "-"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_19.destroy
+call super::destroy
+end on
+
+type m_saveaspdf from menu within m_pageproperty
+end type
+
+event clicked;idrg_parent.event dynamic ue_do('Save As PDF')
+end event
+
+on m_saveaspdf.create
+call super::create
+this.text = "Save/Convert to PDF"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_saveaspdf.destroy
+call super::destroy
+end on
+
+type m_ocrc_cp from menu within m_pageproperty
+m_settings m_settings
+m_startocr m_startocr
+m_viewocrresult m_viewocrresult
+end type
+
+on m_ocrc_cp.create
+call super::create
+this.text = "OCR"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_settings=create m_settings
+this.m_startocr=create m_startocr
+this.m_viewocrresult=create m_viewocrresult
+this.Item[UpperBound(this.Item)+1]=this.m_settings
+this.Item[UpperBound(this.Item)+1]=this.m_startocr
+this.Item[UpperBound(this.Item)+1]=this.m_viewocrresult
+end on
+
+on m_ocrc_cp.destroy
+call super::destroy
+destroy(this.m_settings)
+destroy(this.m_startocr)
+destroy(this.m_viewocrresult)
+end on
+
+type m_settings from menu within m_ocrc_cp
+end type
+
+event clicked;idrg_parent.event dynamic ue_ocr_setting()
+
+end event
+
+on m_settings.create
+call super::create
+this.text = "Settings..."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_settings.destroy
+call super::destroy
+end on
+
+type m_startocr from menu within m_ocrc_cp
+end type
+
+event clicked;idrg_parent.event dynamic ue_ocr()
+end event
+
+on m_startocr.create
+call super::create
+this.text = "Start OCR"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_startocr.destroy
+call super::destroy
+end on
+
+type m_viewocrresult from menu within m_ocrc_cp
+end type
+
+event clicked;idrg_parent.event dynamic ue_ocr_view_result()
+end event
+
+on m_viewocrresult.create
+call super::create
+this.text = "View OCR Result"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_viewocrresult.destroy
+call super::destroy
+end on
+
+type m_20 from menu within m_pageproperty
+end type
+
+on m_20.create
+call super::create
+this.text = "-"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_20.destroy
+call super::destroy
+end on
+
+type m_properties1 from menu within m_pageproperty
+end type
+
+event clicked;idrg_parent.event dynamic ue_do('Page Properties')
+
+end event
+
+on m_properties1.create
+call super::create
+this.text = "Properties"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_properties1.destroy
+call super::destroy
+end on
+

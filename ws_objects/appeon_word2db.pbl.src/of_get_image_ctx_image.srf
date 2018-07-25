@@ -1,0 +1,58 @@
+﻿$PBExportHeader$of_get_image_ctx_image.srf
+global type of_get_image_ctx_image from function_object
+end type
+
+forward prototypes
+global function integer of_get_image_ctx_image (long al_image_id, long ll_max_version, ref blob lb_image_data)
+end prototypes
+
+global function integer of_get_image_ctx_image (long al_image_id, long ll_max_version, ref blob lb_image_data);Long ll_data_length
+Integer li_counter
+Integer li_loops
+Blob lb_data
+Blob lb_all_data
+Long ll_start
+
+// Get file data from database
+SELECT Datalength(image_file)
+INTO :ll_data_length
+FROM CTX_IMAGE 
+WHERE image_id = :al_image_id AND 
+		image_version = :ll_max_version
+USING sqlca ;
+
+IF ll_data_length = 0 OR Isnull(ll_data_length) THEN
+	RETURN 0
+END IF
+
+IF ll_data_length > 8000 THEN 
+  	 IF Mod(ll_data_length,8000) = 0 THEN 
+        li_loops = ll_data_length/8000 
+    ELSE 
+  	     li_loops = (ll_data_length/8000) + 1 
+    END IF 
+ELSE 
+  	 li_loops = 1 
+END IF 
+
+FOR li_counter = 1 to li_loops
+	Yield()
+	SetPointer(HourGlass!)
+	
+	ll_start = (li_counter - 1) * 8000 + 1
+	SELECTBLOB substring(image_file,:ll_start,8000)
+	INTO :lb_data
+	FROM CTX_IMAGE 
+	WHERE image_id = :al_image_id AND 
+			image_version = :ll_max_version
+	USING sqlca ;
+
+	lb_all_data += lb_data
+NEXT 
+
+lb_image_data = lb_all_data
+
+Return 1
+
+end function
+

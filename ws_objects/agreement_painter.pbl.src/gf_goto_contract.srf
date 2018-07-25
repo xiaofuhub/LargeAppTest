@@ -1,0 +1,216 @@
+﻿$PBExportHeader$gf_goto_contract.srf
+global type gf_goto_contract from function_object
+end type
+
+forward prototypes
+global function long gf_goto_contract (long al_ctx_id, string as_tabmark, long al_doc_id, long al_level_id1, long al_level_id2, string as_column)
+end prototypes
+
+global function long gf_goto_contract (long al_ctx_id, string as_tabmark, long al_doc_id, long al_level_id1, long al_level_id2, string as_column);//====================================================================
+// Function: gf_goto_contract()
+//--------------------------------------------------------------------
+// Description:
+//--------------------------------------------------------------------
+// Arguments:
+// 	value	long  	al_ctx_id
+// 	value	string	as_TabMark
+//--------------------------------------------------------------------
+// Returns:  long
+//--------------------------------------------------------------------
+// Author:	Scofield		Date: 2009-03-06
+//--------------------------------------------------------------------
+//	Copyright (c) 1999-2009 Appeon, All rights reserved.
+//--------------------------------------------------------------------
+// Modify History:
+////Modified By Ken.Guo 12/04/2012. Added al_level_id1,al_level_id2 Arguments
+//====================================================================
+
+String	ls_CompName,ls_TabName
+long		ll_RowPos,ll_RowCnt,ll_Category,ll_View_ID
+long		ll_Handle
+Boolean 	lb_TabVisible
+
+CONSTANT long WM_SYSCOMMAND = 274
+CONSTANT long SC_RESTORE    = 61728
+
+if Not gb_IsDocMode and gw_contract.WindowState = Minimized! then
+	ll_Handle = Handle(gw_contract)
+	SendMessage(ll_Handle, WM_SYSCOMMAND, SC_RESTORE, 0)
+end if
+gw_contract.Bringtotop = True
+
+gw_contract.tab_contract_details.tabpage_search.ids_search.SetFilter('')
+gw_contract.tab_contract_details.tabpage_search.ids_search.Filter()
+
+ll_RowCnt = gw_contract.tab_contract_details.tabpage_search.ids_search.RowCount()
+ll_RowPos = gw_contract.tab_contract_details.tabpage_search.ids_search.Find("ctx_id = " + String(al_ctx_id), 1, ll_RowCnt)
+
+if ll_RowPos <= 0 then
+	Messagebox("Warning", 'Access denied for contract ' + String(al_ctx_id)+ '. Contact the contract owner.')
+	gw_contract.tab_contract_details.Selecttab(1)
+	Return 0
+end if
+
+ll_RowCnt = gw_contract.tab_contract_details.tabpage_search.dw_search_det1.RowCount()
+ll_RowPos = gw_contract.tab_contract_details.tabpage_search.dw_search_det1.Find("ctx_id = " +String(al_ctx_id), 1, ll_RowCnt)
+if ll_RowCnt < 1 or ll_RowPos < 1 then
+	//Search for all contracts
+	gw_contract.tab_contract_details.tabpage_search.dw_search.Reset()
+	gw_contract.tab_contract_details.tabpage_search.dw_search.InsertRow(0)
+	gw_contract.tab_contract_details.tabpage_search.cb_3.event Clicked()
+	//Find the contract again
+	ll_RowCnt = gw_contract.tab_contract_details.tabpage_search.dw_search_det1.RowCount() 
+	ll_RowPos = gw_contract.tab_contract_details.tabpage_search.dw_search_det1.Find("ctx_id = " +String(al_ctx_id), 1, ll_RowCnt)	
+end if
+
+if ll_RowPos > 0 then
+	gw_contract.tab_contract_details.tabpage_search.dw_search_det1.ScrolltoRow(ll_RowPos)
+	gw_contract.tab_contract_details.tabpage_search.dw_search_det1.SetRow(ll_RowPos)
+end if
+
+// Get category
+SELECT category,facility_name
+  INTO :ll_Category,:ls_CompName
+  FROM ctx_basic_info,app_facility
+ WHERE app_facility.facility_id = ctx_basic_info.app_facility AND ctx_id = :al_ctx_id;
+
+ll_View_ID = long(gnv_data.of_getitem('code_lookup','ic_n',"lookup_code = " + String(ll_Category)))
+if ll_View_ID <> gi_contract_view_id then
+	gi_contract_view_id = ll_View_ID
+	gw_contract.FUNCTION DYNAMIC wf_tab_visible(ll_View_ID) 
+	gw_contract.FUNCTION DYNAMIC wf_set_select('All',false) 
+end if
+
+// Juage access
+Choose Case as_TabMark
+	Case "20"						//Contract Logix Folder->Detail
+		lb_TabVisible = gw_contract.tab_contract_details.tabpage_details.visible
+		ls_TabName = "Detail"
+	Case "22"
+		lb_TabVisible = ( gw_contract.tab_contract_details.tabpage_details.visible and gw_contract.tab_contract_details.tabpage_details.uo_1.tab_1.tabpage_1.visible )
+		ls_TabName = "Custom 2"
+	Case "40"						//Contract Logix Folder->Contacts
+		lb_TabVisible = gw_contract.tab_contract_details.tabpage_contacts.visible
+		ls_TabName = "Contacts"
+	Case "50"						//Contract Logix Folder->Locations
+		lb_TabVisible = gw_contract.tab_contract_details.tabpage_locations.visible
+		ls_TabName = "Locations"
+	Case "60"						//Contract Logix Folder->Organizations
+		lb_TabVisible = gw_contract.tab_contract_details.tabpage_orgabizations.visible
+		ls_TabName = "Organizations"
+	Case "70"						//Contract Logix Folder->Fee Schedule
+		lb_TabVisible = gw_contract.tab_contract_details.tabpage_fee_schedules.visible
+		ls_TabName = "Fee Schedule"
+	Case "80"						//Contract Logix Folder->Fee Schedule (NM)
+		lb_TabVisible = gw_contract.tab_contract_details.tabpage_fee_sched2.visible
+		ls_TabName = "Fee Schedule (NM)"
+	Case "91","92","93","912"	//Contract Logix Folder->Document Manager
+		lb_TabVisible = gw_contract.tab_contract_details.tabpage_images.visible
+		ls_TabName = "Document Manager"
+	Case "100"						//Contract Logix Folder->Action Items
+		lb_TabVisible = gw_contract.tab_contract_details.tabpage_action_items.visible
+		ls_TabName = "Action Items"
+	Case "111"
+		lb_TabVisible = (gw_contract.tab_contract_details.tabpage_multi.visible and gw_contract.tab_contract_details.tabpage_multi.tab_multi.tabpage_header.visible )
+		ls_TabName = "Custom Multi Header"		
+	Case "112"
+		lb_TabVisible = (gw_contract.tab_contract_details.tabpage_multi.visible and gw_contract.tab_contract_details.tabpage_multi.tab_multi.tabpage_detail.visible )
+		ls_TabName = "Custom Multi Detail"				
+	Case Else
+		lb_TabVisible = True
+End Choose
+
+if Not lb_TabVisible then
+	//---------Begin Modified by (Appeon)Harry 01.23.2014 for V142 ISG-CLX--------
+	//Messagebox("Warning", "Access denied for Contract Logix Folder->" + ls_TabName + " tab.")
+	Messagebox("Warning", "Access denied for IntelliSoft Folder->" + ls_TabName + " tab.")
+	//---------End Modfiied ------------------------------------------------------
+	gw_contract.tab_contract_details.Selecttab(1)
+	Return 0
+end if
+
+// Reset the retived flag to false
+gw_contract.FUNCTION DYNAMIC wf_reset_retrieved()
+gw_contract.FUNCTION DYNAMIC of_select_details_tab_retrieved(false)
+gw_contract.tab_contract_details.tabpage_search.inv_contract_details.is_mode = gw_contract.tab_contract_details.tabpage_search.inv_contract_details.edit
+gw_contract.tab_contract_details.tabpage_images.inv_contract_details.of_set_ctx_id(al_ctx_id)
+
+// Set title
+if as_TabMark <> "detail" then
+	if f_ValidStr(ls_CompName) then
+		ls_CompName = ' Company: ' + ls_CompName
+	else
+		ls_CompName = ""
+	end if
+	//---------Begin Modified by (Appeon)Harry 01.23.2014 for V142 ISG-CLX--------
+	//gw_contract.title = 'Contract Logix ' + ls_CompName + '        Contract ID: ' + String(al_ctx_id)
+	gw_contract.title = 'IntelliContract ' + ls_CompName + '        Contract ID: ' + String(al_ctx_id)
+	//---------End Modfiied ------------------------------------------------------
+end if
+
+// Go to the appropriate tab
+Choose Case as_TabMark
+	Case "20"			//Contract Logix Folder->Detail
+		gw_contract.tab_contract_details.Selecttab( 2 )
+	Case "22"			//Contract Logix Folder->Detail
+		gw_contract.tab_contract_details.Selecttab( 2 )		
+		gw_contract.tab_contract_details.tabpage_details.uo_1.tab_1.SelectTab(2)
+		gw_contract.tab_contract_details.tabpage_details.uo_1.tab_1.tabpage_1.dw_1.Post SetFocus()
+		gw_contract.tab_contract_details.tabpage_details.uo_1.tab_1.tabpage_1.dw_1.Post SetColumn(as_column)
+	Case "40"			//Contract Logix Folder->Contacts
+		gw_contract.tab_contract_details.Selecttab( 4 )
+	Case "50"			//Contract Logix Folder->Locations
+		gw_contract.tab_contract_details.Selecttab( 5 )
+	Case "60"			//Contract Logix Folder->Organizations
+		gw_contract.tab_contract_details.Selecttab( 6 )
+	Case "70"			//Contract Logix Folder->Fee Schedule
+		gw_contract.tab_contract_details.Selecttab( 7 )
+	Case "80"			//Contract Logix Folder->Fee Schedule (NM)
+		gw_contract.tab_contract_details.Selecttab( 8 )
+		gw_contract.tab_contract_details.tabpage_fee_sched2.Post of_goto_row( al_level_id1, as_column )
+	Case "91","912"	//Contract Logix Folder->Document Manager->Document
+		gw_contract.tab_contract_details.Selecttab( 9 )
+		lb_TabVisible = gw_contract.tab_contract_details.tabpage_images.tab_1.tabpage_data.visible
+		ls_TabName = "Document Manager->Document"
+		if lb_TabVisible then
+			gw_contract.tab_contract_details.tabpage_images.Tab_1.Post Selecttab( 1 )
+			If al_doc_id > 0 Then //gl_MoveToDocID replaced with al_doc_id
+				if as_TabMark = "91" then
+					gw_contract.tab_contract_details.tabpage_images.Tab_1.tabpage_data.Post of_goto_row(al_doc_id) 		//Added by Ken.Guo on 2009-04-17
+				elseif as_TabMark = "912" then
+					gw_contract.tab_contract_details.tabpage_images.Tab_1.tabpage_data.Post of_open_document(al_doc_id) //Added by Ken.Guo on 2009-04-17
+				end if
+			End If
+		end if
+	Case "92"			//Contract Logix Folder->Document Manager->Work Flow
+		gw_contract.tab_contract_details.Selecttab( 9 )
+		lb_TabVisible = gw_contract.tab_contract_details.tabpage_images.tab_1.tabpage_action.visible
+		ls_TabName = "Document Manager->Work Flow"
+		if lb_TabVisible then
+			if al_doc_id > 0 then
+				gw_contract.tab_contract_details.tabpage_images.Tab_1.tabpage_data.Post of_goto_row(al_doc_id)
+			end if
+			gw_contract.tab_contract_details.tabpage_images.Tab_1.Post Selecttab( 2 )
+			gw_contract.tab_contract_details.tabpage_images.Tab_1.tabpage_action.Post of_post_goto_row(al_doc_id,al_level_id1,as_column) //Added By Ken.Guo 12/04/2012
+		end if
+	Case "100"			//Contract Logix Folder->Action Items
+		gw_contract.tab_contract_details.Selecttab( 10 )
+		gw_contract.tab_contract_details.tabpage_action_items.Post of_goto_row( al_ctx_id, al_level_id1, as_column) //Added By Ken.Guo 12/04/2012
+	Case "111",'112'
+		gw_contract.tab_contract_details.Selecttab( 11 )
+		gw_contract.tab_contract_details.tabpage_multi.Post of_locate_data(al_level_id1,al_level_id2,as_column) //Added By Ken.Guo 12/04/2012
+End Choose
+
+if Not lb_TabVisible then
+	//---------Begin Modified by (Appeon)Harry 01.23.2014 for V142 ISG-CLX--------
+	//Messagebox("Warning", "Access denied for Contract Logix Folder->" + ls_TabName + " tab.")
+	Messagebox("Warning", "Access denied for IntelliSoft Folder->" + ls_TabName + " tab.")
+	//---------End Modfiied ------------------------------------------------------
+	gw_contract.tab_contract_details.Selecttab(1)
+	Return 0
+end if
+
+Return 1
+
+end function
+

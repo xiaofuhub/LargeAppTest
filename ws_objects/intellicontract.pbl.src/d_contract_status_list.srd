@@ -1,0 +1,64 @@
+﻿$PBExportHeader$d_contract_status_list.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=988 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=96 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=sys_statusaudit_ctx_id dbname="sys_statusaudit.ctx_id" )
+ column=(type=long updatewhereclause=yes name=sys_statusaudit_seq_no dbname="sys_statusaudit.seq_no" )
+ column=(type=char(150) updatewhereclause=yes name=app_facility_facility_name dbname="app_facility.facility_name" )
+ column=(type=char(30) updatewhereclause=yes name=code_lookup_contract_type dbname="code_lookup.contract_type" )
+ column=(type=char(30) updatewhereclause=yes name=code_lookup_category dbname="code_lookup.category" )
+ column=(type=char(30) updatewhereclause=yes name=code_lookup_status dbname="code_lookup.status" )
+ column=(type=char(50) updatewhereclause=yes name=code_lookup_processing_setting dbname="code_lookup.processing_setting" values="In Process	On/On Hold	Off/Executed	Complete/N//A	NA/" )
+ column=(type=datetime updatewhereclause=yes name=sys_statusaudit_start_time dbname="sys_statusaudit.start_time" )
+ column=(type=long updatewhereclause=yes name=sys_statusaudit_delay_days dbname="sys_statusaudit.delay_days" )
+ column=(type=char(10) updatewhereclause=yes name=sys_statusaudit_user_id dbname="sys_statusaudit.user_id" )
+ retrieve="  SELECT sys_statusaudit.ctx_id,
+		   sys_statusaudit.seq_no,
+		   app_facility.facility_name,
+		   code_lookup_a.code as contract_type,
+		   code_lookup_b.code as category,    
+         code_lookup_c.code as status,   
+			code_lookup_c.custom_2 as Processing_Setting,
+         sys_statusaudit.start_time,   
+         sys_statusaudit.delay_days,   
+         sys_statusaudit.user_id  
+    FROM sys_statusaudit,ctx_basic_info,app_facility,code_lookup code_lookup_a,code_lookup code_lookup_b,code_lookup code_lookup_c
+   WHERE sys_statusaudit.ctx_id = ctx_basic_info.ctx_id and
+		   ctx_basic_info.app_facility = app_facility.facility_id and
+		   ctx_basic_info.contract_type = code_lookup_a.lookup_code and
+		   ctx_basic_info.category = code_lookup_b.lookup_code and
+		   sys_statusaudit.status = code_lookup_c.lookup_code and
+		   sys_statusaudit.ctx_id = :ai_ctxid and
+			(sys_statusaudit.field_name = :as_fieldname or (sys_statusaudit.field_name is null and :as_fieldname = 'status'))
+ORDER BY sys_statusaudit.ctx_id,sys_statusaudit.seq_no
+" arguments=(("ai_ctxid", number),("as_fieldname", string)) )
+text(band=header alignment="0" text="Contract Status Track Report" border="0" color="33554432" x="1230" y="68" height="64" width="1285" html.valueishtml="0"  name=t_title visible="1"  font.face="Segoe UI" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=header id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="485" y="288" height="76" width="873" format="[general]" html.valueishtml="0"  name=sys_statusaudit_ctx_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="485" y="392" height="76" width="873" format="[general]" html.valueishtml="0"  name=app_facility_facility_name visible="1" edit.limit=150 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="485" y="496" height="76" width="873" format="[general]" html.valueishtml="0"  name=code_lookup_contract_type visible="1" edit.limit=30 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=5 alignment="0" tabsequence=32766 border="0" color="33554432" x="485" y="600" height="76" width="873" format="[general]" html.valueishtml="0"  name=code_lookup_category visible="1" edit.limit=30 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="0" expression="today()"border="0" color="33554432" x="485" y="704" height="76" width="873" format="[general]" html.valueishtml="0"  name=date_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="0" text="Contract ID:" border="0" color="33554432" x="37" y="288" height="76" width="430" html.valueishtml="0"  name=sys_statusaudit_ctx_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Company Name:" border="0" color="33554432" x="37" y="392" height="76" width="430" html.valueishtml="0"  name=app_facility_facility_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Contract Type:" border="0" color="33554432" x="37" y="496" height="76" width="430" html.valueishtml="0"  name=code_lookup_contract_type_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Category:" border="0" color="33554432" x="37" y="600" height="76" width="430" html.valueishtml="0"  name=code_lookup_category_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Report Date:" border="0" color="33554432" x="37" y="704" height="76" width="430" html.valueishtml="0"  name=t_reportdate visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=header x1="101" y1="968" x2="3305" y2="968"  name=l_1 visible="1" pen.style="0" pen.width="5" pen.color="33554432"  background.mode="2" background.color="1073741824" )
+text(band=header alignment="2" text="User Id" border="0" color="33554432" x="2491" y="888" height="60" width="544" html.valueishtml="0"  name=sys_statusaudit_user_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Start Time" border="0" color="33554432" x="1513" y="888" height="60" width="594" html.valueishtml="0"  name=sys_statusaudit_start_time_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Status" border="0" color="33554432" x="283" y="888" height="60" width="722" html.valueishtml="0"  name=code_lookup_status_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Processing Setting" border="0" color="33554432" x="1019" y="888" height="60" width="480" html.valueishtml="0"  name=t_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Equal Days" border="0" color="33554432" x="2121" y="888" height="60" width="357" html.valueishtml="0"  name=sys_statusaudit_delay_days_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="2" tabsequence=32766 border="0" color="33554432" x="2491" y="8" height="80" width="544" format="[general]" html.valueishtml="0"  name=sys_statusaudit_user_id visible="1" edit.limit=10 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="2" tabsequence=32766 border="0" color="33554432" x="283" y="8" height="80" width="722" format="[general]" html.valueishtml="0"  name=code_lookup_status visible="1" edit.limit=30 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="2" tabsequence=32766 border="0" color="33554432" x="1019" y="8" height="80" width="480" format="[general]" html.valueishtml="0"  name=code_lookup_processing_setting visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="2" tabsequence=32766 border="0" color="33554432" x="1513" y="8" height="80" width="594" format="mm/dd/yyyy" html.valueishtml="0"  name=sys_statusaudit_start_time visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="2" expression="if(getrow()=rowcount(),daysafter(sys_statusaudit_start_time,today()),daysafter(sys_statusaudit_start_time,sys_statusaudit_start_time[1]))"border="0" color="33554432" x="2121" y="8" height="80" width="357" format="[GENERAL]" html.valueishtml="0"  name=compute_equal_days visible="1~tif(getrow()=rowcount(),0,1)"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

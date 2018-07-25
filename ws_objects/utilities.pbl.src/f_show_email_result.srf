@@ -1,0 +1,75 @@
+﻿$PBExportHeader$f_show_email_result.srf
+global type f_show_email_result from function_object
+end type
+
+forward prototypes
+global subroutine f_show_email_result (long al_pre_id)
+end prototypes
+
+global subroutine f_show_email_result (long al_pre_id);//////////////////////////////////////////////////////////////////////
+// Function: f_show_email_result()
+// Arguments:
+// 	value    long    al_pre_id
+//--------------------------------------------------------------------
+// Return:  (none)
+//--------------------------------------------------------------------
+// Author:	Ken.Guo		Date: 2010-12-14
+//--------------------------------------------------------------------
+// Description:
+//--------------------------------------------------------------------
+//////////////////////////////////////////////////////////////////////
+Long ll_em_cnt,ll_failed_cnt, ll_success_cnt
+n_cst_easymail_smtp 	lnv_Mail
+String ls_sendonoff,ls_to,ls_compute_info,ls_message,ls_subject
+Datetime ldt_now
+
+If isnull(al_pre_id) Then al_pre_id = 0
+
+gnv_appeondb.of_startqueue( )
+	Select Count(1)  into :ll_em_cnt From em_mail_audit Where id > :al_pre_id and user_id = :gs_user_id;
+	Select Count(1)  into :ll_failed_cnt From em_mail_audit Where id > :al_pre_id and send_result = -1 and user_id = :gs_user_id;
+	Select Count(1)  into :ll_success_cnt From em_mail_audit Where id > :al_pre_id and send_result = 0 and user_id = :gs_user_id;
+	Select GetDate() into :ldt_now From icred_settings;
+gnv_appeondb.of_commitqueue( )
+
+str_pass lstr_pass
+lstr_pass.s_long[1] = ll_em_cnt
+lstr_pass.s_long[2] = ll_failed_cnt
+lstr_pass.s_long[3] = ll_success_cnt
+lstr_pass.l_facility_id = al_pre_id
+
+If ll_em_cnt > 0 Then
+	ls_sendonoff = gnv_data.of_getitem( 'icred_settings', 'send_email_log', false)
+	ls_to = Trim(gnv_data.of_getitem( 'icred_settings', 'send_email_log_to', false))
+	If ls_sendonoff = '1' and Len(ls_to) > 0 Then 
+		If lnv_Mail.of_CreateObject() = 1 Then
+			ls_compute_info = lnv_Mail.of_get_compute_info( )
+			ls_subject = 'Email Alerts Summary on ' + String(ldt_now,'mm/dd/yyyy hh:mm:ss')
+			//---------Begin Modified by (Appeon)Harry 07.13.2013 for V141 ISG-CLX--------
+			//ls_message = String(ll_em_cnt) + ' email alert(s) has been sent out by '+gs_user_id+' from client ' + ls_compute_info + '.~r~n' + & 
+			//				 String(ll_success_cnt) + ' email(s) has been sent out successfully, and ' + String(ll_failed_cnt) + ' email(s) has failed.~r~n'  + &
+			//				 '~r~nTo view more detailed information in the Sent Emails log window, please login IntelliSoft system, then click System -> Utilities menu and click Sent Emails Log button.'
+			ls_message = String(ll_em_cnt) + ' email alert(s) has been sent out by '+gs_user_id+' from client ' + ls_compute_info + '.~r~n' + & 
+							 String(ll_success_cnt) + ' email(s) has been sent out successfully, and ' + String(ll_failed_cnt) + ' email(s) has failed.~r~n' 
+			if of_get_app_setting("set_9","I") = 4 then
+				ls_message +=	 '~r~nTo view more detailed information in the Sent Emails log window, please login IntelliSoft system, then click System -> Utilities menu and click Sent Emails Log button.'
+			else
+				If gnv_data.of_getitem("icred_settings", "set_cont", false) = "1" then
+					ls_message +=	 '~r~nTo view more detailed information in the Sent Emails log window, please login IntelliSoft system, then click System -> Utilities menu -> click CTX Utilities button -> click Sent Emails Log button.'
+				end if
+			end if
+			//---------End Modfiied ------------------------------------------------------
+			lnv_Mail.of_sendtext( gs_user_id, ls_to, '', '', ls_subject, ls_message, '')				 
+		End If
+	End If
+End If
+
+OpenWithParm(w_send_email_summary,lstr_pass)
+
+If Message.DoubleParm = 1 Then
+	OpenWithParm(w_email_audit,lstr_pass)
+End If
+
+Return 
+end subroutine
+

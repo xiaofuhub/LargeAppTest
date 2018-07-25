@@ -1,0 +1,99 @@
+﻿$PBExportHeader$of_get_prac_list.srf
+global type of_get_prac_list from function_object
+end type
+
+forward prototypes
+global function string of_get_prac_list (string ai_return)
+end prototypes
+
+global function string of_get_prac_list (string ai_return);//maha created 111204 for calls getting a list of pracids used in changed assigned user utility, reports practitoner filter, others
+//returns a string of comma delimited prac_ids
+
+long ll_batch_id
+integer i
+integer ic
+long ll_pracs[]
+long p
+string ls_filt
+string ls_pracs
+integer test = 0
+gs_batch_search lst_search
+
+//Start Code Change ----01.28.2015 #V14.2 maha - coded for new window
+open(w_practitioner_filter_choice_new)
+	
+if message.stringparm = "C" then  //cancel
+	return ""
+else
+	lst_search = message.powerobjectparm
+	ll_pracs = lst_search.li_prac_id
+end if
+	
+//	elseif pos(message.stringparm, "*" ) = 2 then //selcted batch 
+//	//elseif isnumber(message.stringparm) then //selcted batch
+//	//	ll_batch_id  = long(message.stringparm)
+//		ll_batch_id  = long(mid(message.stringparm,3))
+//		if  mid(message.stringparm,1,1) = '1' then //Subselect
+//				openwithparm(w_batch_sub_select,lst_search )
+//				if message.stringparm = "Cancel" then
+//					ll_pracs[1] = 0
+//				else
+//					lst_search = message.powerobjectparm
+//					ll_pracs[] = lst_search.li_prac_id
+//				end if
+//		else  //full list
+//			n_ds lds_batch
+//			lds_batch = CREATE n_ds
+//			lds_batch.DataObject = "d_batch_items_list"
+//			lds_batch.of_SetTransObject( SQLCA )
+//			ic = lds_batch.retrieve(ll_batch_id) 
+//			for i = 1 to ic
+//				ll_pracs[i] = long(lds_batch.getitemnumber(i,"prac_id"))
+//			next
+//		end if
+//	//End Code Change ----01.28.2015
+//	elseif message.stringparm = "B" then //batch window
+//		OpenWithParm( w_batch_prac_select_new , "R" )
+//		//Start Code Change ---- 03.30.2006 #364 maha
+//		if message.stringparm = "Cancel" then
+//			return ""
+//		end if
+//		//End Code Change---03.30.2006		
+//		lst_search = message.powerobjectparm
+//		for i = 1 to upperbound(lst_search.li_prac_id[])
+//			p = lst_search.li_prac_id[i]
+//			//messagebox("",p)
+//			ll_pracs[i] = long(lst_search.li_prac_id[i])
+//		next
+//	elseif message.stringparm = "S" then //single
+//		gs_search lstr_search
+//		lstr_search.stran_transaction = SQLCA
+//		lstr_search.ls_open_for = "ACTIONITEMS"
+//		OpenWithParm( w_extended_search_new , lstr_search )
+//		IF Message.DoubleParm = -1 THEN 
+//			Return ""
+//		else
+//		ll_pracs[1] = long(Message.stringParm)
+//			//messagebox("",ls_pracids)
+//		end if
+//	end if
+//End Code Change ----01.28.2015
+
+for p = 1 to upperbound(ll_pracs[])
+	ls_pracs = ls_pracs + string(ll_pracs[p]) + ","
+next
+
+ls_pracs = MidA(ls_pracs,1,LenA(ls_pracs) - 1)
+
+//messagebox("pracs",is_pracs)
+if ai_return = "L" then //list of ids
+	return ls_pracs
+elseif ai_return = "A" then //for arrays
+	return "A"
+end if
+
+
+
+
+end function
+

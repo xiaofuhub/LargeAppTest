@@ -1,0 +1,13 @@
+﻿$PBExportHeader$d_select_application_facility.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=80269524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=4 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=char(100) update=yes updatewhereclause=yes name=facility_name dbname="app_facility.facility_name" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=facility_id dbname="app_facility.facility_id" )
+ retrieve="  SELECT  app_facility.facility_name ,           app_facility.facility_id     
+        FROM app_facility    " update="app_facility" updatewhere=1 updatekeyinplace=no )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="18" y="8" height="64" width="910" format="[general]"  name=facility_name dddw.name=d_dddw_app_facility dddw.displaycolumn=facility_name dddw.datacolumn=facility_id dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

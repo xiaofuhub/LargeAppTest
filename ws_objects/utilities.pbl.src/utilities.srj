@@ -1,0 +1,10 @@
+﻿$PBExportHeader$utilities.srj
+EXE:c:\development\utilities_icred.exe,,0,1
+CMP:0,0,0,2,0,0
+PBD:s:\development\version 2.current\utilities.pbl,,0
+OBJ:c:\development\utilities.pbl,w_main_pix,w
+OBJ:c:\development\utilities.pbl,d_verifs_child_of_2_flag,d
+OBJ:c:\development\utilities.pbl,w_reset_exp_flag,w
+OBJ:c:\development\utilities.pbl,d_verifs_child_of_2_flag_at_1,d
+OBJ:c:\development\utilities.pbl,d_verifs_w_2_flag,d
+OBJ:C:\Development\utilities.pbl,utilities,a

@@ -1,0 +1,7 @@
+﻿$PBExportHeader$gs_code_lookup.srs
+global type gs_code_lookup from structure
+	long		lookup_code
+	string		code
+	string		description
+end type
+

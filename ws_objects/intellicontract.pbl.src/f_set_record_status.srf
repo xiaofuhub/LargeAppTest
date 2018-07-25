@@ -1,0 +1,28 @@
+﻿$PBExportHeader$f_set_record_status.srf
+global type f_set_record_status from function_object
+end type
+
+forward prototypes
+global function string f_set_record_status (long al_image_id, long al_version)
+end prototypes
+
+global function string f_set_record_status (long al_image_id, long al_version);
+long ll_max_version
+string ls_return
+
+
+select max(ctx_image.image_version)
+into :ll_max_version
+FROM ctx_image
+where ctx_image.image_id = :al_image_id;
+
+if  ll_max_version = al_version then
+	ls_return = 'C'
+ else
+	ls_return = 'H'
+end if 
+	 
+
+return ls_return
+end function
+

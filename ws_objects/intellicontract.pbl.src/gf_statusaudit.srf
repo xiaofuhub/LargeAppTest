@@ -1,0 +1,47 @@
+﻿$PBExportHeader$gf_statusaudit.srf
+global type gf_statusaudit from function_object
+end type
+
+forward prototypes
+global function integer gf_statusaudit (long al_ctx_id, long al_new_status, string as_fieldname)
+end prototypes
+
+global function integer gf_statusaudit (long al_ctx_id, long al_new_status, string as_fieldname);//////////////////////////////////////////////////////////////////////
+// $<function>gf_statusaudit()
+// $<arguments>
+//		value	long	al_ctx_id    		
+//		value	long	al_new_status	
+//		value string as_fieldname  //jervis 04.19.2011
+// $<returns> integer
+// $<description> update contract status audit
+// $<description>
+//////////////////////////////////////////////////////////////////////
+// $<add> 2010-06-11 by Ken.Guo
+//////////////////////////////////////////////////////////////////////
+
+long	ll_LastStatus
+long	ll_Row,ll_SeqNo
+DateTime	ldt_Now
+
+//Add fieldname clause - jervis 04.19.2011
+SELECT Max(sys_statusaudit.seq_no) INTO :ll_SeqNo FROM sys_statusaudit
+WHERE sys_statusaudit.ctx_id = :al_ctx_id  and field_name = :as_fieldname;
+if IsNull(ll_SeqNo) then ll_SeqNo = 0
+if ll_SeqNo > 0 then
+	SELECT sys_statusaudit.status INTO :ll_LastStatus FROM sys_statusaudit 
+	WHERE sys_statusaudit.ctx_id = :al_ctx_id AND sys_statusaudit.seq_no = :ll_SeqNo and field_name = :as_fieldname;
+end if
+
+if IsNull(al_new_status) or al_new_status = ll_LastStatus Then
+	Return 0
+End If
+
+ll_SeqNo++
+ldt_Now = f_get_server_dtm()
+
+INSERT INTO sys_StatusAudit(ctx_id,seq_no,status,start_time,user_id,field_name)
+	  VALUES (:al_ctx_id,:ll_SeqNo,:al_new_status,:ldt_Now,:gs_user_id,:as_fieldname);
+
+Return 1
+end function
+

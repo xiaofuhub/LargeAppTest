@@ -1,0 +1,45 @@
+﻿$PBExportHeader$d_cpt_for_template_bak.srd
+$PBExportComments$[intellicontract]
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=64 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=108 color="536870912" )
+detail(height=60 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=ctx_cpt_codes_cpt_code_id dbname="ctx_cpt_codes.cpt_code_id" )
+ column=(type=char(10) updatewhereclause=yes name=cpt_code dbname="ctx_cpt_codes.cpt_code" )
+ column=(type=char(32766) updatewhereclause=yes name=code_description dbname="ctx_cpt_codes.cpt_code_description" )
+ column=(type=decimal(0) updatewhereclause=yes name=base_price dbname="ctx_cpt_codes.base_price" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=item_id dbname="ctx_cpt_code_item.item_id" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=ctx_cpt_code_item_cpt_code_id dbname="ctx_cpt_code_item.cpt_code_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=location_price dbname="ctx_cpt_code_item.location_price" )
+ column=(type=long updatewhereclause=yes name=selected dbname="selected" values="	1/	0" )
+ retrieve="  SELECT ctx_cpt_codes.cpt_code_id,   
+         ctx_cpt_codes.cpt_code,   
+         ctx_cpt_codes.cpt_code_description,   
+         ctx_cpt_codes.base_price,   
+         ctx_cpt_code_item.item_id,   
+         ctx_cpt_code_item.cpt_code_id,   
+         ctx_cpt_code_item.location_price,   
+         0 selected  
+    FROM {oj ctx_cpt_codes LEFT OUTER JOIN ctx_cpt_code_item ON ctx_cpt_codes.cpt_code_id = ctx_cpt_code_item.cpt_code_id}  
+   WHERE (ctx_cpt_code_item.item_id = :AL_ITEM_ID)
+" update="ctx_cpt_code_item" updatewhere=0 updatekeyinplace=no arguments=(("AL_ITEM_ID", number)) )
+text(band=header alignment="2" text="Cpt Code" border="0" color="33554432" x="128" y="8" height="52" width="288" html.valueishtml="0"  name=ctx_cpt_codes_cpt_code_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Cpt Code Description" border="0" color="33554432" x="425" y="8" height="52" width="2126" html.valueishtml="0"  name=ctx_cpt_codes_cpt_code_description_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Base Price" border="0" color="33554432" x="2560" y="8" height="52" width="338" html.valueishtml="0"  name=ctx_cpt_codes_base_price_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Location Price" border="0" color="33554432" x="2907" y="8" height="52" width="352" html.valueishtml="0"  name=ctx_cpt_code_item_location_price_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="" border="0" color="33554432" x="9" y="4" height="52" width="110" html.valueishtml="0"  name=selected_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+button(band=header text="N" enabled=yes action="0" border="0" color="0" x="14" y="8" height="56" width="105" vtextalign="0" htextalign="0"  name=b_select visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=8 alignment="2" tabsequence=10 border="0" color="33554432" x="9" y="4" height="52" width="110" format="[general]" html.valueishtml="0"  name=selected visible="1" checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=yes checkbox.threed=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="128" y="4" height="52" width="288" format="[general]" html.valueishtml="0"  name=cpt_code visible="1" edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="425" y="4" height="52" width="2126" format="[general]" html.valueishtml="0"  name=code_description visible="1" edit.limit=2000 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="1" tabsequence=32766 border="0" color="33554432" x="2560" y="4" height="52" width="338" format="*********" html.valueishtml="0"  name=base_price visible="1" editmask.mask="###,###.00" editmask.imemode=0 editmask.focusrectangle=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=7 alignment="1" tabsequence=20 border="5" color="33554432" x="2907" y="4" height="52" width="352" format="*********" html.valueishtml="0"  name=location_price visible="1" editmask.mask="###,###.00" editmask.imemode=0 editmask.focusrectangle=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+button(band=footer text="Sort" enabled=yes action="0" border="0" color="0" x="1303" y="4" height="92" width="247" vtextalign="0" htextalign="0"  name=b_sort visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+button(band=footer text="Filter" enabled=yes action="0" border="0" color="0" x="1614" y="4" height="92" width="247" vtextalign="0" htextalign="0"  name=b_filter visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

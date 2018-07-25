@@ -1,0 +1,7 @@
+﻿$PBExportHeader$str_ocx.srs
+$PBExportComments$(Appeon)Toney 06.05.2013 - V141 ISG-CLX
+global type str_ocx from structure
+	integer		ocx_type
+	string		ocx_name
+end type
+

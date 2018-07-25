@@ -1,0 +1,10 @@
+﻿$PBExportHeader$str_web_crawler.srs
+global type str_web_crawler from structure
+	integer		si_wc_id
+	integer		si_step_order
+	string		ss_lookup_name
+	Long		sl_prac_ids[]
+	Integer		si_facility_ids[]
+	string		ss_docid[]
+end type
+

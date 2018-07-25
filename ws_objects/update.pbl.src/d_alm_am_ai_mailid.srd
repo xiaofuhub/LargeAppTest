@@ -1,0 +1,37 @@
+﻿$PBExportHeader$d_alm_am_ai_mailid.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=8 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=doc_id dbname="ctx_am_ai_notification_users.doc_id" )
+ column=(type=long updatewhereclause=yes name=seq_id dbname="ctx_am_ai_notification_users.seq_id" )
+ column=(type=char(40) updatewhereclause=yes name=alm_table dbname="ctx_am_ai_notification_users.alm_table" )
+ column=(type=char(40) updatewhereclause=yes name=alm_column dbname="ctx_am_ai_notification_users.alm_column" )
+ column=(type=char(10) updatewhereclause=yes name=user_id dbname="ctx_am_ai_notification_users.user_id" )
+ column=(type=char(50) updatewhereclause=yes name=email_id dbname="security_users.email_id" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"ctx_am_ai_notification_users~" )  TABLE(NAME=~"security_users~" ) COLUMN(NAME=~"ctx_am_ai_notification_users.doc_id~") COLUMN(NAME=~"ctx_am_ai_notification_users.seq_id~") COLUMN(NAME=~"ctx_am_ai_notification_users.alm_table~") COLUMN(NAME=~"ctx_am_ai_notification_users.alm_column~") COLUMN(NAME=~"ctx_am_ai_notification_users.user_id~") COLUMN(NAME=~"security_users.email_id~")    JOIN (LEFT=~"ctx_am_ai_notification_users.user_id~"    OP =~"=~"RIGHT=~"security_users.user_id~" )) ORDER(NAME=~"ctx_am_ai_notification_users.doc_id~" ASC=yes )  ORDER(NAME=~"ctx_am_ai_notification_users.seq_id~" ASC=yes )  ORDER(NAME=~"ctx_am_ai_notification_users.alm_table~" ASC=yes )  ORDER(NAME=~"ctx_am_ai_notification_users.alm_column~" ASC=yes ) " )
+text(band=header alignment="2" text="Ctx Am Ai Notification Users
+Doc Id" border="0" color="33554432" x="9" y="8" height="104" width="288" html.valueishtml="0"  name=ctx_am_ai_notification_users_doc_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Am Ai Notification Users
+Seq Id" border="0" color="33554432" x="306" y="8" height="104" width="197" html.valueishtml="0"  name=ctx_am_ai_notification_users_seq_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Am Ai Notification Users
+Alm Table" border="0" color="33554432" x="512" y="8" height="104" width="261" html.valueishtml="0"  name=ctx_am_ai_notification_users_alm_table_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Am Ai Notification Users
+Alm Column" border="0" color="33554432" x="782" y="8" height="104" width="329" html.valueishtml="0"  name=ctx_am_ai_notification_users_alm_column_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Am Ai Notification Users
+User Id" border="0" color="33554432" x="1120" y="8" height="104" width="206" html.valueishtml="0"  name=ctx_am_ai_notification_users_user_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Security Users
+Email Id" border="0" color="33554432" x="1335" y="8" height="104" width="1166" html.valueishtml="0"  name=security_users_email_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="33554432" x="9" y="8" height="64" width="288" format="[general]" html.valueishtml="0"  name=doc_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="33554432" x="306" y="8" height="64" width="197" format="[general]" html.valueishtml="0"  name=seq_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="512" y="8" height="64" width="261" format="[general]" html.valueishtml="0"  name=alm_table visible="1" edit.limit=40 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="782" y="8" height="64" width="329" format="[general]" html.valueishtml="0"  name=alm_column visible="1" edit.limit=40 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="33554432" x="1120" y="8" height="64" width="206" format="[general]" html.valueishtml="0"  name=user_id visible="1" edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="33554432" x="1335" y="8" height="64" width="1166" format="[general]" html.valueishtml="0"  name=email_id visible="1" edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

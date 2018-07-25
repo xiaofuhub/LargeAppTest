@@ -1,0 +1,20 @@
+﻿$PBExportHeader$gf_parse_bandinfo.srf
+global type gf_parse_bandinfo from function_object
+end type
+
+forward prototypes
+global function str_dw_band gf_parse_bandinfo (string dw_band)
+end prototypes
+
+global function str_dw_band gf_parse_bandinfo (string dw_band);str_dw_band my_dw_band
+long pos 
+
+pos = pos(dw_band , "~t")
+
+if pos > 0 then 
+	my_dw_band.band = mid(dw_band , 1 , pos - 1)
+	my_dw_band.row = long (mid (dw_band, pos + 1 , len(dw_band)))
+end if
+return my_dw_band
+end function
+

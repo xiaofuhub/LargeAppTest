@@ -1,0 +1,15 @@
+﻿$PBExportHeader$d_dddw_fields.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes identity=yes name=id_number dbname="app_fields.id_number" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=field_label dbname="app_fields.field_label" )
+ column=(type=long updatewhereclause=yes name=section dbname="app_fields.section" )
+ retrieve="  SELECT  app_fields.id_number ,           app_fields.field_label ,           app_fields.section     
+        FROM app_fields      
+        WHERE ( app_fields.section = :section )   " update="app_fields" updatewhere=1 updatekeyinplace=no arguments=(("section", number))  sort="field_label A " )
+data(null null null ) 
+column(band=detail id=2 alignment="0" tabsequence=10 border="0" color="0" x="14" y="8" height="52" width="1147" format="[general]"  name=field_label edit.limit=50 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

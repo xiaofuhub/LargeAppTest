@@ -1,0 +1,4041 @@
+﻿$PBExportHeader$m_req.srm
+forward
+global type m_req from m_pfe_cst_contract
+end type
+type m_deleteimage from menu within m_edit
+end type
+type m_deletecurrentpage from menu within m_edit
+end type
+type m_maximize from menu within m_edit
+end type
+type m_edit from m_pfe_cst_contract`m_edit within m_req
+m_deleteimage m_deleteimage
+m_deletecurrentpage m_deletecurrentpage
+m_maximize m_maximize
+end type
+type m_tools from menu within m_req
+end type
+type m_annotations from menu within m_tools
+end type
+type m_0 from menu within m_annotations
+end type
+type m_makeannotationspermanent from menu within m_annotations
+end type
+type m_hideallannotations from menu within m_annotations
+end type
+type m_hidenon_ocrzones from menu within m_annotations
+end type
+type m_hideocrtextzonehighlights from menu within m_annotations
+end type
+type m_5 from menu within m_annotations
+end type
+type m_freehandline from menu within m_annotations
+end type
+type m_highlighter from menu within m_annotations
+end type
+type m_straightline from menu within m_annotations
+end type
+type m_hollowrectangle from menu within m_annotations
+end type
+type m_filledrectandle from menu within m_annotations
+end type
+type m_typedtext from menu within m_annotations
+end type
+type m_hyperlink from menu within m_annotations
+end type
+type m_appachanote from menu within m_annotations
+end type
+type m_textfromfile from menu within m_annotations
+end type
+type m_rubberstamp from menu within m_annotations
+end type
+type m_annotations from menu within m_tools
+m_0 m_0
+m_makeannotationspermanent m_makeannotationspermanent
+m_hideallannotations m_hideallannotations
+m_hidenon_ocrzones m_hidenon_ocrzones
+m_hideocrtextzonehighlights m_hideocrtextzonehighlights
+m_5 m_5
+m_freehandline m_freehandline
+m_highlighter m_highlighter
+m_straightline m_straightline
+m_hollowrectangle m_hollowrectangle
+m_filledrectandle m_filledrectandle
+m_typedtext m_typedtext
+m_hyperlink m_hyperlink
+m_appachanote m_appachanote
+m_textfromfile m_textfromfile
+m_rubberstamp m_rubberstamp
+end type
+type m_scan from menu within m_tools
+end type
+type m_page from menu within m_tools
+end type
+type m_previous from menu within m_page
+end type
+type m_next from menu within m_page
+end type
+type m_first0 from menu within m_page
+end type
+type m_last from menu within m_page
+end type
+type m_direction from menu within m_page
+end type
+type m_rotatepage from menu within m_page
+end type
+type m_left from menu within m_rotatepage
+end type
+type m_right from menu within m_rotatepage
+end type
+type m_180 from menu within m_rotatepage
+end type
+type m_rotatepage from menu within m_page
+m_left m_left
+m_right m_right
+m_180 m_180
+end type
+type m_rotateallpages from menu within m_page
+end type
+type m_left0 from menu within m_rotateallpages
+end type
+type m_right0 from menu within m_rotateallpages
+end type
+type m_1800 from menu within m_rotateallpages
+end type
+type m_rotateallpages from menu within m_page
+m_left0 m_left0
+m_right0 m_right0
+m_1800 m_1800
+end type
+type m_appendblankpage from menu within m_page
+end type
+type m_straightenpage from menu within m_page
+end type
+type m_page from menu within m_tools
+m_previous m_previous
+m_next m_next
+m_first0 m_first0
+m_last m_last
+m_direction m_direction
+m_rotatepage m_rotatepage
+m_rotateallpages m_rotateallpages
+m_appendblankpage m_appendblankpage
+m_straightenpage m_straightenpage
+end type
+type m_ocr from menu within m_tools
+end type
+type m_showocrzones from menu within m_ocr
+end type
+type m_removeallocrzones from menu within m_ocr
+end type
+type m_ocr0 from menu within m_ocr
+end type
+type m_drawtextzone from menu within m_ocr
+end type
+type m_ocrwholeimage from menu within m_ocr
+end type
+type m_ocr from menu within m_tools
+m_showocrzones m_showocrzones
+m_removeallocrzones m_removeallocrzones
+m_ocr0 m_ocr0
+m_drawtextzone m_drawtextzone
+m_ocrwholeimage m_ocrwholeimage
+end type
+type m_tools from menu within m_req
+m_annotations m_annotations
+m_scan m_scan
+m_page m_page
+m_ocr m_ocr
+end type
+global type m_req from m_pfe_cst_contract
+m_tools m_tools
+end type
+end forward
+
+global type m_req from m_pfe_cst_contract
+m_tools m_tools
+end type
+global m_req m_req
+
+on m_req.create
+m_req=this
+call super::create
+this.text = "m_req"
+this.m_tools=create m_tools
+this.Item[UpperBound(this.Item)+1]=this.m_tools
+end on
+
+on m_req.destroy
+call super::destroy
+destroy(this.m_tools)
+end on
+
+event clicked;call super::clicked;
+
+
+parentwindow.WindowState = Maximized!
+end event
+
+type m_file from m_pfe_cst_contract`m_file within m_req
+end type
+
+on m_file.create
+call super::create
+end on
+
+on m_file.destroy
+call super::destroy
+end on
+
+type m_actionitems from m_pfe_cst_contract`m_actionitems within m_file
+end type
+
+on m_actionitems.create
+call super::create
+this.visible = false
+this.toolbaritemvisible = false
+end on
+
+on m_actionitems.destroy
+call super::destroy
+end on
+
+type m_casepeerreview from m_pfe_cst_contract`m_casepeerreview within m_file
+end type
+
+on m_casepeerreview.create
+call super::create
+this.visible = false
+end on
+
+on m_casepeerreview.destroy
+call super::destroy
+end on
+
+type m_contract from m_pfe_cst_contract`m_contract within m_file
+end type
+
+on m_contract.create
+call super::create
+this.visible = false
+end on
+
+on m_contract.destroy
+call super::destroy
+end on
+
+type m_contacts from m_pfe_cst_contract`m_contacts within m_file
+end type
+
+on m_contacts.create
+call super::create
+end on
+
+on m_contacts.destroy
+call super::destroy
+end on
+
+type m_facility from m_pfe_cst_contract`m_facility within m_file
+end type
+
+on m_facility.create
+call super::create
+end on
+
+on m_facility.destroy
+call super::destroy
+end on
+
+type m_contractglobalsearch from m_pfe_cst_contract`m_contractglobalsearch within m_file
+end type
+
+on m_contractglobalsearch.create
+call super::create
+end on
+
+on m_contractglobalsearch.destroy
+call super::destroy
+end on
+
+type m_grouppractices from m_pfe_cst_contract`m_grouppractices within m_file
+end type
+
+on m_grouppractices.create
+call super::create
+this.visible = false
+end on
+
+on m_grouppractices.destroy
+call super::destroy
+end on
+
+type m_meetings from m_pfe_cst_contract`m_meetings within m_file
+end type
+
+on m_meetings.create
+call super::create
+this.visible = false
+end on
+
+on m_meetings.destroy
+call super::destroy
+end on
+
+type m_privileging from m_pfe_cst_contract`m_privileging within m_file
+end type
+
+on m_privileging.create
+call super::create
+this.visible = false
+end on
+
+on m_privileging.destroy
+call super::destroy
+end on
+
+type m_practitioner from m_pfe_cst_contract`m_practitioner within m_file
+end type
+
+on m_practitioner.create
+call super::create
+this.visible = false
+this.toolbaritemvisible = false
+end on
+
+on m_practitioner.destroy
+call super::destroy
+end on
+
+type m_qualityprofilemeasurements from m_pfe_cst_contract`m_qualityprofilemeasurements within m_file
+end type
+
+on m_qualityprofilemeasurements.create
+call super::create
+this.visible = false
+this.toolbaritemvisible = false
+end on
+
+on m_qualityprofilemeasurements.destroy
+call super::destroy
+end on
+
+type m_sitesurvey from m_pfe_cst_contract`m_sitesurvey within m_file
+end type
+
+on m_sitesurvey.create
+call super::create
+this.visible = false
+end on
+
+on m_sitesurvey.destroy
+call super::destroy
+end on
+
+type m_todolist from m_pfe_cst_contract`m_todolist within m_file
+end type
+
+on m_todolist.create
+call super::create
+end on
+
+on m_todolist.destroy
+call super::destroy
+end on
+
+type m_4 from m_pfe_cst_contract`m_4 within m_file
+end type
+
+on m_4.create
+call super::create
+this.visible = false
+this.enabled = false
+end on
+
+on m_4.destroy
+call super::destroy
+end on
+
+type m_dash11 from m_pfe_cst_contract`m_dash11 within m_file
+end type
+
+on m_dash11.create
+call super::create
+this.visible = false
+this.enabled = false
+end on
+
+on m_dash11.destroy
+call super::destroy
+end on
+
+type m_save from m_pfe_cst_contract`m_save within m_file
+end type
+
+on m_save.create
+call super::create
+this.visible = false
+this.enabled = false
+this.toolbaritemvisible = false
+this.toolbaritemorder = 1
+this.toolbaritemspace = 2
+end on
+
+on m_save.destroy
+call super::destroy
+end on
+
+event m_save::clicked;
+/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+
+if classname(Parentwindow) = 'w_req_work' then
+   parentwindow.event dynamic ue_save()
+else
+	// w_contract
+	of_SendMessage("ue_save")
+end if 
+
+
+
+
+
+end event
+
+type m_dash12 from m_pfe_cst_contract`m_dash12 within m_file
+end type
+
+on m_dash12.create
+call super::create
+this.visible = false
+end on
+
+on m_dash12.destroy
+call super::destroy
+end on
+
+type m_print from m_pfe_cst_contract`m_print within m_file
+end type
+
+on m_print.create
+call super::create
+this.tag = "Print"
+this.toolbaritemname = "print!"
+this.toolbaritemtext = "Print"
+end on
+
+on m_print.destroy
+call super::destroy
+end on
+
+event m_print::clicked;call super::clicked;try
+of_SendMessage ("ue_print")
+catch (runtimeerror tee)
+end try
+end event
+
+type m_printpreview from m_pfe_cst_contract`m_printpreview within m_file
+end type
+
+on m_printpreview.create
+call super::create
+this.visible = false
+this.enabled = false
+end on
+
+on m_printpreview.destroy
+call super::destroy
+end on
+
+type m_pagesetup from m_pfe_cst_contract`m_pagesetup within m_file
+end type
+
+on m_pagesetup.create
+call super::create
+this.visible = false
+this.enabled = false
+end on
+
+on m_pagesetup.destroy
+call super::destroy
+end on
+
+type m_dash13 from m_pfe_cst_contract`m_dash13 within m_file
+end type
+
+on m_dash13.create
+call super::create
+end on
+
+on m_dash13.destroy
+call super::destroy
+end on
+
+type m_properties from m_pfe_cst_contract`m_properties within m_file
+end type
+
+on m_properties.create
+call super::create
+end on
+
+on m_properties.destroy
+call super::destroy
+end on
+
+type m_dash14 from m_pfe_cst_contract`m_dash14 within m_file
+end type
+
+on m_dash14.create
+call super::create
+this.visible = false
+end on
+
+on m_dash14.destroy
+call super::destroy
+end on
+
+type m_close from m_pfe_cst_contract`m_close within m_file
+end type
+
+on m_close.create
+call super::create
+this.toolbaritemtext = "Close Window"
+end on
+
+on m_close.destroy
+call super::destroy
+end on
+
+event m_close::clicked;call super::clicked;
+//parentwindow.event dynamic ue_close()
+end event
+
+type m_exit from m_pfe_cst_contract`m_exit within m_file
+end type
+
+on m_exit.create
+call super::create
+this.visible = false
+end on
+
+on m_exit.destroy
+call super::destroy
+end on
+
+type m_pfcmrudash1 from m_pfe_cst_contract`m_pfcmrudash1 within m_file
+end type
+
+on m_pfcmrudash1.create
+call super::create
+end on
+
+on m_pfcmrudash1.destroy
+call super::destroy
+end on
+
+type m_pfcmru2 from m_pfe_cst_contract`m_pfcmru2 within m_file
+end type
+
+on m_pfcmru2.create
+call super::create
+end on
+
+on m_pfcmru2.destroy
+call super::destroy
+end on
+
+type m_pfcmru3 from m_pfe_cst_contract`m_pfcmru3 within m_file
+end type
+
+on m_pfcmru3.create
+call super::create
+end on
+
+on m_pfcmru3.destroy
+call super::destroy
+end on
+
+type m_pfcmru4 from m_pfe_cst_contract`m_pfcmru4 within m_file
+end type
+
+on m_pfcmru4.create
+call super::create
+end on
+
+on m_pfcmru4.destroy
+call super::destroy
+end on
+
+type m_pfcmru5 from m_pfe_cst_contract`m_pfcmru5 within m_file
+end type
+
+on m_pfcmru5.create
+call super::create
+end on
+
+on m_pfcmru5.destroy
+call super::destroy
+end on
+
+type m_importdata from m_pfe_cst_contract`m_importdata within m_file
+end type
+
+on m_importdata.create
+call super::create
+end on
+
+on m_importdata.destroy
+call super::destroy
+end on
+
+type m_edit from m_pfe_cst_contract`m_edit within m_req
+m_deleteimage m_deleteimage
+m_deletecurrentpage m_deletecurrentpage
+m_maximize m_maximize
+end type
+
+on m_edit.create
+call super::create
+this.m_deleteimage=create m_deleteimage
+this.m_deletecurrentpage=create m_deletecurrentpage
+this.m_maximize=create m_maximize
+this.Item[UpperBound(this.Item)+1]=this.m_deleteimage
+this.Item[UpperBound(this.Item)+1]=this.m_deletecurrentpage
+this.Item[UpperBound(this.Item)+1]=this.m_maximize
+end on
+
+on m_edit.destroy
+call super::destroy
+destroy(this.m_deleteimage)
+destroy(this.m_deletecurrentpage)
+destroy(this.m_maximize)
+end on
+
+type m_insert from m_pfe_cst_contract`m_insert within m_edit
+end type
+
+on m_insert.create
+call super::create
+this.visible = false
+this.enabled = false
+this.toolbaritemvisible = false
+end on
+
+on m_insert.destroy
+call super::destroy
+end on
+
+type m_delete1 from m_pfe_cst_contract`m_delete1 within m_edit
+end type
+
+on m_delete1.create
+call super::create
+this.visible = false
+this.text = "Delete~tD"
+this.enabled = false
+this.shortcut = 68
+this.toolbaritemvisible = false
+end on
+
+on m_delete1.destroy
+call super::destroy
+end on
+
+event m_delete1::clicked;
+
+
+parentwindow.event dynamic ue_delete_image_object()
+
+
+end event
+
+type m_110 from m_pfe_cst_contract`m_110 within m_edit
+end type
+
+on m_110.create
+call super::create
+this.visible = false
+end on
+
+on m_110.destroy
+call super::destroy
+end on
+
+type m_undo from m_pfe_cst_contract`m_undo within m_edit
+end type
+
+on m_undo.create
+call super::create
+this.visible = false
+this.enabled = false
+this.toolbaritemvisible = false
+end on
+
+on m_undo.destroy
+call super::destroy
+end on
+
+event m_undo::clicked;//
+parentwindow.event dynamic ue_undo()
+end event
+
+type m_dash21 from m_pfe_cst_contract`m_dash21 within m_edit
+end type
+
+on m_dash21.create
+call super::create
+this.visible = false
+end on
+
+on m_dash21.destroy
+call super::destroy
+end on
+
+type m_cut from m_pfe_cst_contract`m_cut within m_edit
+end type
+
+on m_cut.create
+call super::create
+this.visible = false
+this.text = "Object Cu&t~tX"
+this.enabled = false
+this.shortcut = 88
+this.toolbaritemvisible = false
+this.toolbaritemdownname = "Cut!"
+this.toolbaritemorder = 1
+end on
+
+on m_cut.destroy
+call super::destroy
+end on
+
+event m_cut::clicked;
+parentwindow.event dynamic ue_image_cut( )
+end event
+
+type m_copy from m_pfe_cst_contract`m_copy within m_edit
+end type
+
+on m_copy.create
+call super::create
+this.visible = false
+this.text = "&Object Copy~tC"
+this.enabled = false
+this.shortcut = 67
+this.toolbaritemvisible = false
+end on
+
+on m_copy.destroy
+call super::destroy
+end on
+
+event m_copy::clicked;call super::clicked;
+
+parentwindow.event dynamic ue_image_copy( )
+end event
+
+type m_paste from m_pfe_cst_contract`m_paste within m_edit
+end type
+
+on m_paste.create
+call super::create
+this.visible = false
+this.text = "&Object Paste~tV"
+this.enabled = false
+this.shortcut = 86
+this.toolbaritemvisible = false
+end on
+
+on m_paste.destroy
+call super::destroy
+end on
+
+event m_paste::clicked;call super::clicked;
+
+parentwindow.event dynamic ue_image_paste( )
+end event
+
+type m_pastespecial from m_pfe_cst_contract`m_pastespecial within m_edit
+end type
+
+on m_pastespecial.create
+call super::create
+this.visible = false
+end on
+
+on m_pastespecial.destroy
+call super::destroy
+end on
+
+type m_clear from m_pfe_cst_contract`m_clear within m_edit
+end type
+
+on m_clear.create
+call super::create
+this.visible = false
+this.enabled = false
+end on
+
+on m_clear.destroy
+call super::destroy
+end on
+
+type m_dash22 from m_pfe_cst_contract`m_dash22 within m_edit
+end type
+
+on m_dash22.create
+call super::create
+this.visible = false
+end on
+
+on m_dash22.destroy
+call super::destroy
+end on
+
+type m_selectall from m_pfe_cst_contract`m_selectall within m_edit
+end type
+
+on m_selectall.create
+call super::create
+this.visible = false
+this.enabled = false
+end on
+
+on m_selectall.destroy
+call super::destroy
+end on
+
+type m_dash23 from m_pfe_cst_contract`m_dash23 within m_edit
+end type
+
+on m_dash23.create
+call super::create
+this.visible = false
+end on
+
+on m_dash23.destroy
+call super::destroy
+end on
+
+type m_find from m_pfe_cst_contract`m_find within m_edit
+end type
+
+on m_find.create
+call super::create
+this.visible = false
+this.enabled = false
+end on
+
+on m_find.destroy
+call super::destroy
+end on
+
+type m_replace from m_pfe_cst_contract`m_replace within m_edit
+end type
+
+on m_replace.create
+call super::create
+this.visible = false
+end on
+
+on m_replace.destroy
+call super::destroy
+end on
+
+type m_3 from m_pfe_cst_contract`m_3 within m_edit
+end type
+
+on m_3.create
+call super::create
+this.visible = false
+end on
+
+on m_3.destroy
+call super::destroy
+end on
+
+type m_restorerow from m_pfe_cst_contract`m_restorerow within m_edit
+end type
+
+on m_restorerow.create
+call super::create
+this.visible = false
+this.enabled = false
+end on
+
+on m_restorerow.destroy
+call super::destroy
+end on
+
+type m_newcontract from m_pfe_cst_contract`m_newcontract within m_edit
+end type
+
+on m_newcontract.create
+call super::create
+this.visible = false
+this.enabled = false
+this.toolbaritemvisible = false
+end on
+
+on m_newcontract.destroy
+call super::destroy
+end on
+
+type m_view from m_pfe_cst_contract`m_view within m_req
+end type
+
+on m_view.create
+call super::create
+end on
+
+on m_view.destroy
+call super::destroy
+end on
+
+type m_ruler from m_pfe_cst_contract`m_ruler within m_view
+end type
+
+on m_ruler.create
+call super::create
+this.visible = false
+this.enabled = false
+end on
+
+on m_ruler.destroy
+call super::destroy
+end on
+
+type m_dash31 from m_pfe_cst_contract`m_dash31 within m_view
+end type
+
+on m_dash31.create
+call super::create
+end on
+
+on m_dash31.destroy
+call super::destroy
+end on
+
+type m_largeicon from m_pfe_cst_contract`m_largeicon within m_view
+end type
+
+on m_largeicon.create
+call super::create
+end on
+
+on m_largeicon.destroy
+call super::destroy
+end on
+
+type m_smallicons from m_pfe_cst_contract`m_smallicons within m_view
+end type
+
+on m_smallicons.create
+call super::create
+end on
+
+on m_smallicons.destroy
+call super::destroy
+end on
+
+type m_list from m_pfe_cst_contract`m_list within m_view
+end type
+
+on m_list.create
+call super::create
+end on
+
+on m_list.destroy
+call super::destroy
+end on
+
+type m_details from m_pfe_cst_contract`m_details within m_view
+end type
+
+on m_details.create
+call super::create
+end on
+
+on m_details.destroy
+call super::destroy
+end on
+
+type m_dash32 from m_pfe_cst_contract`m_dash32 within m_view
+end type
+
+on m_dash32.create
+call super::create
+end on
+
+on m_dash32.destroy
+call super::destroy
+end on
+
+type m_arrangeicons from m_pfe_cst_contract`m_arrangeicons within m_view
+end type
+
+on m_arrangeicons.create
+call super::create
+end on
+
+on m_arrangeicons.destroy
+call super::destroy
+end on
+
+type m_by1 from m_pfe_cst_contract`m_by1 within m_arrangeicons
+end type
+
+on m_by1.create
+call super::create
+end on
+
+on m_by1.destroy
+call super::destroy
+end on
+
+type m_dash33 from m_pfe_cst_contract`m_dash33 within m_arrangeicons
+end type
+
+on m_dash33.create
+call super::create
+end on
+
+on m_dash33.destroy
+call super::destroy
+end on
+
+type m_autoarrange from m_pfe_cst_contract`m_autoarrange within m_arrangeicons
+end type
+
+on m_autoarrange.create
+call super::create
+end on
+
+on m_autoarrange.destroy
+call super::destroy
+end on
+
+type m_dash34 from m_pfe_cst_contract`m_dash34 within m_view
+end type
+
+on m_dash34.create
+call super::create
+end on
+
+on m_dash34.destroy
+call super::destroy
+end on
+
+type m_first from m_pfe_cst_contract`m_first within m_view
+end type
+
+on m_first.create
+call super::create
+this.visible = false
+this.enabled = false
+end on
+
+on m_first.destroy
+call super::destroy
+end on
+
+type m_nextpage from m_pfe_cst_contract`m_nextpage within m_view
+end type
+
+on m_nextpage.create
+call super::create
+end on
+
+on m_nextpage.destroy
+call super::destroy
+end on
+
+event m_nextpage::clicked;
+/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+if classname(Parentwindow) = 'w_req_work' then
+     parentwindow.event dynamic ue_pagedirection(1)
+else
+	// w_contract
+	message.longparm = 1
+	of_SendMessage("ue_pagedirection")
+end if
+
+
+
+end event
+
+type m_priorpage from m_pfe_cst_contract`m_priorpage within m_view
+end type
+
+on m_priorpage.create
+call super::create
+end on
+
+on m_priorpage.destroy
+call super::destroy
+end on
+
+event m_priorpage::clicked;/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+if classname(Parentwindow) = 'w_req_work' then
+     parentwindow.event dynamic ue_pagedirection(0)
+else
+	// w_contract
+	message.longparm = 0
+	of_SendMessage("ue_pagedirection")
+end if
+
+
+
+
+
+
+
+
+end event
+
+type m_lastpage from m_pfe_cst_contract`m_lastpage within m_view
+end type
+
+on m_lastpage.create
+call super::create
+this.visible = false
+end on
+
+on m_lastpage.destroy
+call super::destroy
+end on
+
+type m_dash35 from m_pfe_cst_contract`m_dash35 within m_view
+end type
+
+on m_dash35.create
+call super::create
+this.visible = false
+this.enabled = false
+end on
+
+on m_dash35.destroy
+call super::destroy
+end on
+
+type m_sort from m_pfe_cst_contract`m_sort within m_view
+end type
+
+on m_sort.create
+call super::create
+this.visible = false
+this.enabled = false
+end on
+
+on m_sort.destroy
+call super::destroy
+end on
+
+type m_filter from m_pfe_cst_contract`m_filter within m_view
+end type
+
+on m_filter.create
+call super::create
+this.visible = false
+this.enabled = false
+end on
+
+on m_filter.destroy
+call super::destroy
+end on
+
+type m_dash36 from m_pfe_cst_contract`m_dash36 within m_view
+end type
+
+on m_dash36.create
+call super::create
+this.visible = false
+this.enabled = false
+end on
+
+on m_dash36.destroy
+call super::destroy
+end on
+
+type m_zoom from m_pfe_cst_contract`m_zoom within m_view
+end type
+
+on m_zoom.create
+call super::create
+this.visible = false
+this.enabled = false
+end on
+
+on m_zoom.destroy
+call super::destroy
+end on
+
+type m_reports from m_pfe_cst_contract`m_reports within m_req
+end type
+
+on m_reports.create
+call super::create
+this.visible = false
+this.enabled = false
+this.toolbaritemvisible = false
+end on
+
+on m_reports.destroy
+call super::destroy
+end on
+
+type m_output from m_pfe_cst_contract`m_output within m_reports
+end type
+
+on m_output.create
+call super::create
+this.enabled = false
+this.toolbaritemvisible = false
+end on
+
+on m_output.destroy
+call super::destroy
+end on
+
+type m_120 from m_pfe_cst_contract`m_120 within m_reports
+end type
+
+on m_120.create
+call super::create
+end on
+
+on m_120.destroy
+call super::destroy
+end on
+
+type m_applications from m_pfe_cst_contract`m_applications within m_reports
+end type
+
+on m_applications.create
+call super::create
+end on
+
+on m_applications.destroy
+call super::destroy
+end on
+
+type m_runexport from m_pfe_cst_contract`m_runexport within m_reports
+end type
+
+on m_runexport.create
+call super::create
+end on
+
+on m_runexport.destroy
+call super::destroy
+end on
+
+type m_intellireport from m_pfe_cst_contract`m_intellireport within m_reports
+end type
+
+on m_intellireport.create
+call super::create
+end on
+
+on m_intellireport.destroy
+call super::destroy
+end on
+
+type m_letters from m_pfe_cst_contract`m_letters within m_reports
+end type
+
+on m_letters.create
+call super::create
+end on
+
+on m_letters.destroy
+call super::destroy
+end on
+
+type m_npdbreports from m_pfe_cst_contract`m_npdbreports within m_reports
+end type
+
+on m_npdbreports.create
+call super::create
+end on
+
+on m_npdbreports.destroy
+call super::destroy
+end on
+
+type m_privilegelisting from m_pfe_cst_contract`m_privilegelisting within m_reports
+end type
+
+on m_privilegelisting.create
+call super::create
+this.visible = false
+this.enabled = false
+this.toolbaritemvisible = false
+end on
+
+on m_privilegelisting.destroy
+call super::destroy
+end on
+
+type m_reportsgraphs from m_pfe_cst_contract`m_reportsgraphs within m_reports
+end type
+
+on m_reportsgraphs.create
+call super::create
+end on
+
+on m_reportsgraphs.destroy
+call super::destroy
+end on
+
+type m_system from m_pfe_cst_contract`m_system within m_req
+end type
+
+on m_system.create
+call super::create
+this.visible = false
+end on
+
+on m_system.destroy
+call super::destroy
+end on
+
+type m_applicationmapping from m_pfe_cst_contract`m_applicationmapping within m_painters
+end type
+
+on m_applicationmapping.create
+call super::create
+end on
+
+on m_applicationmapping.destroy
+call super::destroy
+end on
+
+type m_2 from m_pfe_cst_contract`m_2 within m_system
+end type
+
+on m_2.create
+call super::create
+end on
+
+on m_2.destroy
+call super::destroy
+end on
+
+type m_audittrail from m_pfe_cst_contract`m_audittrail within m_system
+end type
+
+on m_audittrail.create
+call super::create
+end on
+
+on m_audittrail.destroy
+call super::destroy
+end on
+
+type m_batchaddapplications from m_pfe_cst_contract`m_batchaddapplications within m_system
+end type
+
+on m_batchaddapplications.create
+call super::create
+end on
+
+on m_batchaddapplications.destroy
+call super::destroy
+end on
+
+type m_batchupdate from m_pfe_cst_contract`m_batchupdate within m_system
+end type
+
+on m_batchupdate.create
+call super::create
+end on
+
+on m_batchupdate.destroy
+call super::destroy
+end on
+
+type m_addbatch from m_pfe_cst_contract`m_addbatch within m_batchupdate
+end type
+
+on m_addbatch.create
+call super::create
+end on
+
+on m_addbatch.destroy
+call super::destroy
+end on
+
+type m_privileges from m_pfe_cst_contract`m_privileges within m_batchupdate
+end type
+
+on m_privileges.create
+call super::create
+end on
+
+on m_privileges.destroy
+call super::destroy
+end on
+
+type m_staffcategory from m_pfe_cst_contract`m_staffcategory within m_batchupdate
+end type
+
+on m_staffcategory.create
+call super::create
+end on
+
+on m_staffcategory.destroy
+call super::destroy
+end on
+
+type m_updatebatch from m_pfe_cst_contract`m_updatebatch within m_batchupdate
+end type
+
+on m_updatebatch.create
+call super::create
+end on
+
+on m_updatebatch.destroy
+call super::destroy
+end on
+
+type m_updatepayorappl from m_pfe_cst_contract`m_updatepayorappl within m_batchupdate
+end type
+
+on m_updatepayorappl.create
+call super::create
+end on
+
+on m_updatepayorappl.destroy
+call super::destroy
+end on
+
+type m_browseweb from m_pfe_cst_contract`m_browseweb within m_system
+end type
+
+on m_browseweb.create
+call super::create
+end on
+
+on m_browseweb.destroy
+call super::destroy
+end on
+
+type m_deletepractitioner from m_pfe_cst_contract`m_deletepractitioner within m_system
+end type
+
+on m_deletepractitioner.create
+call super::create
+end on
+
+on m_deletepractitioner.destroy
+call super::destroy
+end on
+
+type m_intellibatch from m_pfe_cst_contract`m_intellibatch within m_system
+end type
+
+on m_intellibatch.create
+call super::create
+end on
+
+on m_intellibatch.destroy
+call super::destroy
+end on
+
+type m_useridbatchupdate from m_pfe_cst_contract`m_useridbatchupdate within m_system
+end type
+
+on m_useridbatchupdate.create
+call super::create
+end on
+
+on m_useridbatchupdate.destroy
+call super::destroy
+end on
+
+type m_utilities from m_pfe_cst_contract`m_utilities within m_system
+end type
+
+on m_utilities.create
+call super::create
+end on
+
+on m_utilities.destroy
+call super::destroy
+end on
+
+type m_importoigdata from m_pfe_cst_contract`m_importoigdata within m_system
+end type
+
+on m_importoigdata.create
+call super::create
+end on
+
+on m_importoigdata.destroy
+call super::destroy
+end on
+
+type m_batchoig from m_pfe_cst_contract`m_batchoig within m_system
+end type
+
+on m_batchoig.create
+call super::create
+end on
+
+on m_batchoig.destroy
+call super::destroy
+end on
+
+type m_1 from m_pfe_cst_contract`m_1 within m_system
+end type
+
+on m_1.create
+call super::create
+end on
+
+on m_1.destroy
+call super::destroy
+end on
+
+type m_painters from m_pfe_cst_contract`m_painters within m_system
+end type
+
+on m_painters.create
+call super::create
+end on
+
+on m_painters.destroy
+call super::destroy
+end on
+
+type m_contractrequirementprofile from m_pfe_cst_contract`m_contractrequirementprofile within m_painters
+end type
+
+on m_contractrequirementprofile.create
+call super::create
+end on
+
+on m_contractrequirementprofile.destroy
+call super::destroy
+end on
+
+type m_contractrequirementprofile0 from m_pfe_cst_contract`m_contractrequirementprofile0 within m_contractrequirementprofile
+end type
+
+on m_contractrequirementprofile0.create
+call super::create
+end on
+
+on m_contractrequirementprofile0.destroy
+call super::destroy
+end on
+
+type m_cptcode from m_pfe_cst_contract`m_cptcode within m_contractrequirementprofile
+end type
+
+on m_cptcode.create
+call super::create
+end on
+
+on m_cptcode.destroy
+call super::destroy
+end on
+
+type m_agreement from m_pfe_cst_contract`m_agreement within m_painters
+end type
+
+on m_agreement.create
+call super::create
+end on
+
+on m_agreement.destroy
+call super::destroy
+end on
+
+type m_clauselibrarypainter from m_pfe_cst_contract`m_clauselibrarypainter within m_agreement
+end type
+
+on m_clauselibrarypainter.create
+call super::create
+end on
+
+on m_clauselibrarypainter.destroy
+call super::destroy
+end on
+
+type m_documentlibrarypainter from m_pfe_cst_contract`m_documentlibrarypainter within m_agreement
+end type
+
+on m_documentlibrarypainter.create
+call super::create
+end on
+
+on m_documentlibrarypainter.destroy
+call super::destroy
+end on
+
+type m_documentlibrarypainter_l2 from m_pfe_cst_contract`m_documentlibrarypainter_l2 within m_painters
+end type
+
+on m_documentlibrarypainter_l2.create
+call super::create
+end on
+
+on m_documentlibrarypainter_l2.destroy
+call super::destroy
+end on
+
+type m_templatelibrarypainter from m_pfe_cst_contract`m_templatelibrarypainter within m_agreement
+end type
+
+on m_templatelibrarypainter.create
+call super::create
+end on
+
+on m_templatelibrarypainter.destroy
+call super::destroy
+end on
+
+type m_emailpainter from m_pfe_cst_contract`m_emailpainter within m_painters
+end type
+
+on m_emailpainter.create
+call super::create
+end on
+
+on m_emailpainter.destroy
+call super::destroy
+end on
+
+type m_faxemailtemplatepainter from m_pfe_cst_contract`m_faxemailtemplatepainter within m_painters
+end type
+
+on m_faxemailtemplatepainter.create
+call super::create
+end on
+
+on m_faxemailtemplatepainter.destroy
+call super::destroy
+end on
+
+type m_letterpainter from m_pfe_cst_contract`m_letterpainter within m_painters
+end type
+
+on m_letterpainter.create
+call super::create
+end on
+
+on m_letterpainter.destroy
+call super::destroy
+end on
+
+type m_letterstorageareapainter from m_pfe_cst_contract`m_letterstorageareapainter within m_painters
+end type
+
+on m_letterstorageareapainter.create
+call super::create
+end on
+
+on m_letterstorageareapainter.destroy
+call super::destroy
+end on
+
+type m_outputpainter from m_pfe_cst_contract`m_outputpainter within m_painters
+end type
+
+on m_outputpainter.create
+call super::create
+end on
+
+on m_outputpainter.destroy
+call super::destroy
+end on
+
+type m_importpainter from m_pfe_cst_contract`m_importpainter within m_painters
+end type
+
+on m_importpainter.create
+call super::create
+end on
+
+on m_importpainter.destroy
+call super::destroy
+end on
+
+type m_lookuppainter from m_pfe_cst_contract`m_lookuppainter within m_painters
+end type
+
+on m_lookuppainter.create
+call super::create
+end on
+
+on m_lookuppainter.destroy
+call super::destroy
+end on
+
+type m_questionpainter from m_pfe_cst_contract`m_questionpainter within m_painters
+end type
+
+on m_questionpainter.create
+call super::create
+end on
+
+on m_questionpainter.destroy
+call super::destroy
+end on
+
+type m_privilegepainter from m_pfe_cst_contract`m_privilegepainter within m_painters
+end type
+
+on m_privilegepainter.create
+call super::create
+end on
+
+on m_privilegepainter.destroy
+call super::destroy
+end on
+
+type m_reappointmentmeasurements from m_pfe_cst_contract`m_reappointmentmeasurements within m_painters
+end type
+
+on m_reappointmentmeasurements.create
+call super::create
+end on
+
+on m_reappointmentmeasurements.destroy
+call super::destroy
+end on
+
+type m_profilepainter from m_pfe_cst_contract`m_profilepainter within m_painters
+end type
+
+on m_profilepainter.create
+call super::create
+end on
+
+on m_profilepainter.destroy
+call super::destroy
+end on
+
+type m_profilepainter1 from m_pfe_cst_contract`m_profilepainter1 within m_painters
+end type
+
+on m_profilepainter1.create
+call super::create
+end on
+
+on m_profilepainter1.destroy
+call super::destroy
+end on
+
+type m_rolepainter from m_pfe_cst_contract`m_rolepainter within m_painters
+end type
+
+on m_rolepainter.create
+call super::create
+end on
+
+on m_rolepainter.destroy
+call super::destroy
+end on
+
+type m_userpainter from m_pfe_cst_contract`m_userpainter within m_painters
+end type
+
+on m_userpainter.create
+call super::create
+end on
+
+on m_userpainter.destroy
+call super::destroy
+end on
+
+type m_contractdatascreenpainter from m_pfe_cst_contract`m_contractdatascreenpainter within m_painters
+end type
+
+on m_contractdatascreenpainter.create
+call super::create
+end on
+
+on m_contractdatascreenpainter.destroy
+call super::destroy
+end on
+
+type m_screenpainter from m_pfe_cst_contract`m_screenpainter within m_painters
+end type
+
+on m_screenpainter.create
+call super::create
+end on
+
+on m_screenpainter.destroy
+call super::destroy
+end on
+
+type m_contractviewpainter from m_pfe_cst_contract`m_contractviewpainter within m_painters
+end type
+
+on m_contractviewpainter.create
+call super::create
+end on
+
+on m_contractviewpainter.destroy
+call super::destroy
+end on
+
+type m_viewpainter from m_pfe_cst_contract`m_viewpainter within m_painters
+end type
+
+on m_viewpainter.create
+call super::create
+end on
+
+on m_viewpainter.destroy
+call super::destroy
+end on
+
+type m_applicationauditpainter from m_pfe_cst_contract`m_applicationauditpainter within m_painters
+end type
+
+on m_applicationauditpainter.create
+call super::create
+end on
+
+on m_applicationauditpainter.destroy
+call super::destroy
+end on
+
+type m_expiringlettersetting from m_pfe_cst_contract`m_expiringlettersetting within m_painters
+end type
+
+on m_expiringlettersetting.create
+call super::create
+end on
+
+on m_expiringlettersetting.destroy
+call super::destroy
+end on
+
+type m_facilitypainter from m_pfe_cst_contract`m_facilitypainter within m_painters
+end type
+
+on m_facilitypainter.create
+call super::create
+end on
+
+on m_facilitypainter.destroy
+call super::destroy
+end on
+
+type m_imagetypepainter from m_pfe_cst_contract`m_imagetypepainter within m_painters
+end type
+
+on m_imagetypepainter.create
+call super::create
+end on
+
+on m_imagetypepainter.destroy
+call super::destroy
+end on
+
+type m_intellibatchpainter from m_pfe_cst_contract`m_intellibatchpainter within m_painters
+end type
+
+on m_intellibatchpainter.create
+call super::create
+end on
+
+on m_intellibatchpainter.destroy
+call super::destroy
+end on
+
+type m_multiapppainter from m_pfe_cst_contract`m_multiapppainter within m_painters
+end type
+
+on m_multiapppainter.create
+call super::create
+end on
+
+on m_multiapppainter.destroy
+call super::destroy
+end on
+
+type m_surveypainter from m_pfe_cst_contract`m_surveypainter within m_painters
+end type
+
+on m_surveypainter.create
+call super::create
+end on
+
+on m_surveypainter.destroy
+call super::destroy
+end on
+
+type m_todolistpainter from m_pfe_cst_contract`m_todolistpainter within m_painters
+end type
+
+on m_todolistpainter.create
+call super::create
+end on
+
+on m_todolistpainter.destroy
+call super::destroy
+end on
+
+type m_workflowpainter from m_pfe_cst_contract`m_workflowpainter within m_painters
+end type
+
+on m_workflowpainter.create
+call super::create
+end on
+
+on m_workflowpainter.destroy
+call super::destroy
+end on
+
+type m_webview from m_pfe_cst_contract`m_webview within m_painters
+end type
+
+on m_webview.create
+call super::create
+end on
+
+on m_webview.destroy
+call super::destroy
+end on
+
+type m_webviewtemplatepainter from m_pfe_cst_contract`m_webviewtemplatepainter within m_webview
+end type
+
+on m_webviewtemplatepainter.create
+call super::create
+end on
+
+on m_webviewtemplatepainter.destroy
+call super::destroy
+end on
+
+type m_window from m_pfe_cst_contract`m_window within m_req
+end type
+
+on m_window.create
+call super::create
+this.visible = false
+end on
+
+on m_window.destroy
+call super::destroy
+end on
+
+type m_cascade from m_pfe_cst_contract`m_cascade within m_window
+end type
+
+on m_cascade.create
+call super::create
+end on
+
+on m_cascade.destroy
+call super::destroy
+end on
+
+type m_tilehorizontal from m_pfe_cst_contract`m_tilehorizontal within m_window
+end type
+
+on m_tilehorizontal.create
+call super::create
+end on
+
+on m_tilehorizontal.destroy
+call super::destroy
+end on
+
+type m_tilevertical from m_pfe_cst_contract`m_tilevertical within m_window
+end type
+
+on m_tilevertical.create
+call super::create
+end on
+
+on m_tilevertical.destroy
+call super::destroy
+end on
+
+type m_layer from m_pfe_cst_contract`m_layer within m_window
+end type
+
+on m_layer.create
+call super::create
+end on
+
+on m_layer.destroy
+call super::destroy
+end on
+
+type m_dash51 from m_pfe_cst_contract`m_dash51 within m_window
+end type
+
+on m_dash51.create
+call super::create
+end on
+
+on m_dash51.destroy
+call super::destroy
+end on
+
+type m_minimizeall from m_pfe_cst_contract`m_minimizeall within m_window
+end type
+
+on m_minimizeall.create
+call super::create
+end on
+
+on m_minimizeall.destroy
+call super::destroy
+end on
+
+type m_undoarrange from m_pfe_cst_contract`m_undoarrange within m_window
+end type
+
+on m_undoarrange.create
+call super::create
+end on
+
+on m_undoarrange.destroy
+call super::destroy
+end on
+
+type m_5555 from m_pfe_cst_contract`m_5555 within m_window
+end type
+
+on m_5555.create
+call super::create
+end on
+
+on m_5555.destroy
+call super::destroy
+end on
+
+type m_autoresize from m_pfe_cst_contract`m_autoresize within m_window
+end type
+
+on m_autoresize.create
+call super::create
+end on
+
+on m_autoresize.destroy
+call super::destroy
+end on
+
+type m_dashboard from m_pfe_cst_contract`m_dashboard within m_window
+end type
+
+on m_dashboard.create
+call super::create
+end on
+
+on m_dashboard.destroy
+call super::destroy
+end on
+
+type m_help from m_pfe_cst_contract`m_help within m_req
+end type
+
+on m_help.create
+call super::create
+this.visible = false
+this.toolbaritemvisible = false
+end on
+
+on m_help.destroy
+call super::destroy
+end on
+
+type m_about from m_pfe_cst_contract`m_about within m_help
+end type
+
+on m_about.create
+call super::create
+end on
+
+on m_about.destroy
+call super::destroy
+end on
+
+type m_onlinehelp from m_pfe_cst_contract`m_onlinehelp within m_help
+end type
+
+on m_onlinehelp.create
+call super::create
+end on
+
+on m_onlinehelp.destroy
+call super::destroy
+end on
+
+type m_helptopics from m_pfe_cst_contract`m_helptopics within m_help
+end type
+
+on m_helptopics.create
+call super::create
+end on
+
+on m_helptopics.destroy
+call super::destroy
+end on
+
+event m_helptopics::clicked;//
+
+ShowHelp("C:\PB\INQ.HLP", Index!)
+end event
+
+type m_dash61 from m_pfe_cst_contract`m_dash61 within m_help
+end type
+
+on m_dash61.create
+call super::create
+this.visible = false
+end on
+
+on m_dash61.destroy
+call super::destroy
+end on
+
+type m_newdevtesting from m_pfe_cst_contract`m_newdevtesting within m_help
+end type
+
+on m_newdevtesting.create
+call super::create
+this.visible = false
+end on
+
+on m_newdevtesting.destroy
+call super::destroy
+end on
+
+type m_updates from m_pfe_cst_contract`m_updates within m_help
+end type
+
+on m_updates.create
+call super::create
+end on
+
+on m_updates.destroy
+call super::destroy
+end on
+
+type m_viewlets from m_pfe_cst_contract`m_viewlets within m_help
+end type
+
+on m_viewlets.create
+call super::create
+end on
+
+on m_viewlets.destroy
+call super::destroy
+end on
+
+type m_currentobject from m_pfe_cst_contract`m_currentobject within m_help
+end type
+
+on m_currentobject.create
+call super::create
+end on
+
+on m_currentobject.destroy
+call super::destroy
+end on
+
+type m_curobj2 from m_pfe_cst_contract`m_curobj2 within m_help
+end type
+
+on m_curobj2.create
+call super::create
+end on
+
+on m_curobj2.destroy
+call super::destroy
+end on
+
+type m_iapply from m_pfe_cst_contract`m_iapply within m_help
+end type
+
+on m_iapply.create
+call super::create
+end on
+
+on m_iapply.destroy
+call super::destroy
+end on
+
+type m_refreshcache from m_pfe_cst_contract`m_refreshcache within m_help
+end type
+
+on m_refreshcache.create
+call super::create
+end on
+
+on m_refreshcache.destroy
+call super::destroy
+end on
+
+type m_deleteimage from menu within m_edit
+end type
+
+event clicked;//
+
+
+
+
+parentwindow.event dynamic ue_del_thumbs()
+
+end event
+
+on m_deleteimage.create
+call super::create
+this.visible = false
+this.text = "Delete Image"
+this.enabled = false
+end on
+
+on m_deleteimage.destroy
+call super::destroy
+end on
+
+type m_deletecurrentpage from menu within m_edit
+end type
+
+event clicked;
+parentwindow.event dynamic ue_delete_image_page()
+//of_SendMessage ("ue_delete_image_page")
+end event
+
+on m_deletecurrentpage.create
+call super::create
+this.visible = false
+this.text = "Current Page"
+this.toolbaritemvisible = false
+this.toolbaritemname = "DeleteRow!"
+this.toolbaritemdownname = "AlignBottom!"
+this.toolbaritemtext = "Delete Current Page"
+end on
+
+on m_deletecurrentpage.destroy
+call super::destroy
+end on
+
+type m_maximize from menu within m_edit
+end type
+
+on m_maximize.create
+call super::create
+this.text = "Maximize"
+this.toolbaritemname = "SizeBoth!"
+this.toolbaritemtext = "Maximize"
+end on
+
+on m_maximize.destroy
+call super::destroy
+end on
+
+event clicked;
+
+
+if this.toolbaritemtext = 'Maximize' THEN
+  PARENTWindow.windowstate = Maximized!
+  this.toolbaritemtext = 'Normal'
+  this.text = 'Normal'
+ELSE
+	PARENTWindow.windowstate = Normal!
+   this.toolbaritemtext = 'Maximize'
+	this.text = 'Maximize'
+END IF 
+
+
+
+end event
+
+type m_tools from menu within m_req
+m_annotations m_annotations
+m_scan m_scan
+m_page m_page
+m_ocr m_ocr
+end type
+
+on m_tools.create
+call super::create
+this.text = "Tools"
+this.shifttoright = true
+this.m_annotations=create m_annotations
+this.m_scan=create m_scan
+this.m_page=create m_page
+this.m_ocr=create m_ocr
+this.Item[UpperBound(this.Item)+1]=this.m_annotations
+this.Item[UpperBound(this.Item)+1]=this.m_scan
+this.Item[UpperBound(this.Item)+1]=this.m_page
+this.Item[UpperBound(this.Item)+1]=this.m_ocr
+end on
+
+on m_tools.destroy
+call super::destroy
+destroy(this.m_annotations)
+destroy(this.m_scan)
+destroy(this.m_page)
+destroy(this.m_ocr)
+end on
+
+type m_annotations from menu within m_tools
+m_0 m_0
+m_makeannotationspermanent m_makeannotationspermanent
+m_hideallannotations m_hideallannotations
+m_hidenon_ocrzones m_hidenon_ocrzones
+m_hideocrtextzonehighlights m_hideocrtextzonehighlights
+m_5 m_5
+m_freehandline m_freehandline
+m_highlighter m_highlighter
+m_straightline m_straightline
+m_hollowrectangle m_hollowrectangle
+m_filledrectandle m_filledrectandle
+m_typedtext m_typedtext
+m_hyperlink m_hyperlink
+m_appachanote m_appachanote
+m_textfromfile m_textfromfile
+m_rubberstamp m_rubberstamp
+end type
+
+on m_annotations.create
+call super::create
+this.visible = false
+this.text = "Annotations"
+this.enabled = false
+this.m_0=create m_0
+this.m_makeannotationspermanent=create m_makeannotationspermanent
+this.m_hideallannotations=create m_hideallannotations
+this.m_hidenon_ocrzones=create m_hidenon_ocrzones
+this.m_hideocrtextzonehighlights=create m_hideocrtextzonehighlights
+this.m_5=create m_5
+this.m_freehandline=create m_freehandline
+this.m_highlighter=create m_highlighter
+this.m_straightline=create m_straightline
+this.m_hollowrectangle=create m_hollowrectangle
+this.m_filledrectandle=create m_filledrectandle
+this.m_typedtext=create m_typedtext
+this.m_hyperlink=create m_hyperlink
+this.m_appachanote=create m_appachanote
+this.m_textfromfile=create m_textfromfile
+this.m_rubberstamp=create m_rubberstamp
+this.Item[UpperBound(this.Item)+1]=this.m_0
+this.Item[UpperBound(this.Item)+1]=this.m_makeannotationspermanent
+this.Item[UpperBound(this.Item)+1]=this.m_hideallannotations
+this.Item[UpperBound(this.Item)+1]=this.m_hidenon_ocrzones
+this.Item[UpperBound(this.Item)+1]=this.m_hideocrtextzonehighlights
+this.Item[UpperBound(this.Item)+1]=this.m_5
+this.Item[UpperBound(this.Item)+1]=this.m_freehandline
+this.Item[UpperBound(this.Item)+1]=this.m_highlighter
+this.Item[UpperBound(this.Item)+1]=this.m_straightline
+this.Item[UpperBound(this.Item)+1]=this.m_hollowrectangle
+this.Item[UpperBound(this.Item)+1]=this.m_filledrectandle
+this.Item[UpperBound(this.Item)+1]=this.m_typedtext
+this.Item[UpperBound(this.Item)+1]=this.m_hyperlink
+this.Item[UpperBound(this.Item)+1]=this.m_appachanote
+this.Item[UpperBound(this.Item)+1]=this.m_textfromfile
+this.Item[UpperBound(this.Item)+1]=this.m_rubberstamp
+end on
+
+on m_annotations.destroy
+call super::destroy
+destroy(this.m_0)
+destroy(this.m_makeannotationspermanent)
+destroy(this.m_hideallannotations)
+destroy(this.m_hidenon_ocrzones)
+destroy(this.m_hideocrtextzonehighlights)
+destroy(this.m_5)
+destroy(this.m_freehandline)
+destroy(this.m_highlighter)
+destroy(this.m_straightline)
+destroy(this.m_hollowrectangle)
+destroy(this.m_filledrectandle)
+destroy(this.m_typedtext)
+destroy(this.m_hyperlink)
+destroy(this.m_appachanote)
+destroy(this.m_textfromfile)
+destroy(this.m_rubberstamp)
+end on
+
+type m_0 from menu within m_annotations
+end type
+
+on m_0.create
+call super::create
+this.text = "Select Annotations"
+this.microhelp = "Select Annoatations"
+this.toolbaritemvisible = false
+this.toolbaritemname = "Arrow!"
+this.toolbaritemtext = "Select"
+end on
+
+on m_0.destroy
+call super::destroy
+end on
+
+event clicked;/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+
+if classname(Parentwindow) = 'w_req_work' then
+   Parentwindow.event dynamic ue_annotationtoolselection('SelectAnnoAndZones')
+else
+	// w_contract
+	message.stringparm = 'SelectAnnoAndZones'
+	of_SendMessage("ue_annotationtoolselection")
+end if 
+
+
+
+
+
+end event
+
+type m_makeannotationspermanent from menu within m_annotations
+end type
+
+on m_makeannotationspermanent.create
+call super::create
+this.text = "Make Annotations Permanent"
+this.microhelp = "Make Annotations Permanent"
+end on
+
+on m_makeannotationspermanent.destroy
+call super::destroy
+end on
+
+event clicked;/**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+
+if classname(Parentwindow) = 'w_req_work' then
+   Parentwindow.event dynamic ue_burninannotations()
+else
+	of_SendMessage("ue_burninannotations()")
+end if 
+
+
+
+
+end event
+
+type m_hideallannotations from menu within m_annotations
+end type
+
+event clicked;/**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+
+int il_index
+
+if this.text = 'Show all Annotations' then
+	il_index =  2
+	this.text = 'Hide all Annotations'
+else
+	il_index =  1
+	this.text = 'Show all Annotations'
+end if
+
+if classname(Parentwindow) = 'w_req_work' then
+   Parentwindow.event dynamic ue_show_anotations(il_index)
+else
+	message.longparm = il_index
+	of_SendMessage("ue_show_anotations")
+end if 
+
+
+
+
+
+
+end event
+
+on m_hideallannotations.create
+call super::create
+this.text = "Hide all Annotations"
+this.microhelp = "Hide all Annotations"
+this.toolbaritemvisible = false
+end on
+
+on m_hideallannotations.destroy
+call super::destroy
+end on
+
+type m_hidenon_ocrzones from menu within m_annotations
+event create ( )
+event destroy ( )
+end type
+
+on m_hidenon_ocrzones.create
+call super::create
+this.text = "Hide Non-OCR Zones"
+this.microhelp = "Hide Non-OCR Zones"
+this.toolbaritemvisible = false
+end on
+
+on m_hidenon_ocrzones.destroy
+call super::destroy
+end on
+
+event clicked;/**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+
+int il_index
+string ls_group
+if this.text = 'Show Non-OCR Zones' then
+	il_index =  2
+	this.text = 'Hide Non-OCR Zones'
+else
+	il_index =  1
+	this.text = 'Show Non-OCR Zones'
+end if
+
+if classname(Parentwindow) = 'w_req_work' then
+   Parentwindow.event dynamic ue_hide_add_annotation_groups('other',il_index)
+else
+	message.longparm = il_index
+	message.stringparm = 'other'
+	of_SendMessage("ue_hide_add_annotation_groups")
+end if 
+
+
+
+
+
+
+
+
+end event
+
+type m_hideocrtextzonehighlights from menu within m_annotations
+end type
+
+on m_hideocrtextzonehighlights.create
+call super::create
+this.text = "Hide OCR Text Zone Highlights"
+this.microhelp = "Hide OCR Text Zone Highlights"
+this.toolbaritemvisible = false
+end on
+
+on m_hideocrtextzonehighlights.destroy
+call super::destroy
+end on
+
+event clicked;
+/**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+
+int il_index
+string ls_group
+if this.text = 'Show OCR Text Zone Highlights' then
+	il_index =  2
+	this.text = 'Hide OCR Text Zone Highlights'
+else
+	il_index =  1
+	this.text = 'Show OCR Text Zone Highlights'
+end if
+
+if classname(Parentwindow) = 'w_req_work' then
+   Parentwindow.event dynamic ue_hide_add_annotation_groups('mymark',il_index)
+else
+	message.longparm = il_index
+	message.stringparm = 'mymark'
+	of_SendMessage("ue_hide_add_annotation_groups")
+end if 
+
+
+
+
+
+
+
+
+
+
+
+
+
+end event
+
+type m_5 from menu within m_annotations
+end type
+
+on m_5.create
+call super::create
+this.text = "-"
+end on
+
+on m_5.destroy
+call super::destroy
+end on
+
+type m_freehandline from menu within m_annotations
+end type
+
+on m_freehandline.create
+call super::create
+this.text = "FreeHand Line"
+this.microhelp = "Select the FreeHand Line"
+this.toolbaritemvisible = false
+end on
+
+on m_freehandline.destroy
+call super::destroy
+end on
+
+event clicked;/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+
+if classname(Parentwindow) = 'w_req_work' then
+   Parentwindow.event dynamic ue_annotationtoolselection('FreehandLine')
+else
+	// w_contract
+	message.stringparm = 'FreehandLine'
+	of_SendMessage("ue_annotationtoolselection")
+end if 
+
+end event
+
+type m_highlighter from menu within m_annotations
+end type
+
+on m_highlighter.create
+call super::create
+this.text = "Highlighter"
+this.microhelp = "Select the  Highlighter"
+end on
+
+on m_highlighter.destroy
+call super::destroy
+end on
+
+event clicked;/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+
+if classname(Parentwindow) = 'w_req_work' then
+   Parentwindow.event dynamic ue_annotationtoolselection('Highlighter')
+else
+	// w_contract
+	message.stringparm = 'Highlighter'
+	of_SendMessage("ue_annotationtoolselection")
+end if 
+
+
+end event
+
+type m_straightline from menu within m_annotations
+end type
+
+on m_straightline.create
+call super::create
+this.text = "Straight Line"
+this.microhelp = "Select the Straight Line"
+end on
+
+on m_straightline.destroy
+call super::destroy
+end on
+
+event clicked;/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+
+if classname(Parentwindow) = 'w_req_work' then
+   Parentwindow.event dynamic ue_annotationtoolselection('StraightLine')
+else
+	// w_contract
+	message.stringparm = 'StraightLine'
+	of_SendMessage("ue_annotationtoolselection")
+end if 
+
+
+
+end event
+
+type m_hollowrectangle from menu within m_annotations
+end type
+
+on m_hollowrectangle.create
+call super::create
+this.text = "Hollow Rectangle"
+this.microhelp = "Select the Hollow Rectangle"
+end on
+
+on m_hollowrectangle.destroy
+call super::destroy
+end on
+
+event clicked;/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+
+if classname(Parentwindow) = 'w_req_work' then
+   Parentwindow.event dynamic ue_annotationtoolselection('HollowRectangle')
+else
+	// w_contract
+	message.stringparm = 'HollowRectangle'
+	of_SendMessage("ue_annotationtoolselection")
+end if 
+
+
+
+
+
+end event
+
+type m_filledrectandle from menu within m_annotations
+end type
+
+on m_filledrectandle.create
+call super::create
+this.text = "Filled Rectandle"
+this.microhelp = "Select the Filled Rectandle"
+end on
+
+on m_filledrectandle.destroy
+call super::destroy
+end on
+
+event clicked;/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+
+if classname(Parentwindow) = 'w_req_work' then
+  Parentwindow.event dynamic ue_annotationtoolselection('FilledRectangle')
+else
+	// w_contract
+	message.stringparm = 'FilledRectangle'
+	of_SendMessage("ue_annotationtoolselection")
+end if 
+
+
+
+
+
+
+
+end event
+
+type m_typedtext from menu within m_annotations
+end type
+
+on m_typedtext.create
+call super::create
+this.text = "Typed Text"
+this.microhelp = "Select the Typed Text"
+end on
+
+on m_typedtext.destroy
+call super::destroy
+end on
+
+event clicked;/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+
+if classname(Parentwindow) = 'w_req_work' then
+   Parentwindow.event dynamic ue_annotationtoolselection('TypedText')
+else
+	// w_contract
+	message.stringparm = 'TypedText'
+	of_SendMessage("ue_annotationtoolselection")
+end if 
+
+
+
+
+
+
+
+
+
+end event
+
+type m_hyperlink from menu within m_annotations
+end type
+
+on m_hyperlink.create
+call super::create
+this.text = "Hyperlink"
+this.microhelp = "Select the Hyperlink"
+end on
+
+on m_hyperlink.destroy
+call super::destroy
+end on
+
+event clicked;
+/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+
+if classname(Parentwindow) = 'w_req_work' then
+   Parentwindow.event dynamic ue_annotationtoolselection('Hyperlink')
+else
+	// w_contract
+	message.stringparm = 'Hyperlink'
+	of_SendMessage("ue_annotationtoolselection")
+end if 
+
+
+
+
+
+
+
+
+
+
+end event
+
+type m_appachanote from menu within m_annotations
+end type
+
+on m_appachanote.create
+call super::create
+this.text = "Appach A Note"
+this.microhelp = "Select the Appach A Note"
+this.toolbaritemvisible = false
+end on
+
+on m_appachanote.destroy
+call super::destroy
+end on
+
+event clicked;
+/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+
+if classname(Parentwindow) = 'w_req_work' then
+  Parentwindow.event dynamic ue_annotationtoolselection('AttachANote')
+else
+	// w_contract
+	message.stringparm = 'AttachANote'
+	of_SendMessage("ue_annotationtoolselection")
+end if 
+
+
+
+
+
+
+
+
+
+
+
+end event
+
+type m_textfromfile from menu within m_annotations
+end type
+
+on m_textfromfile.create
+call super::create
+this.text = "Text From File"
+this.microhelp = "Select the Text From File"
+this.toolbaritemvisible = false
+end on
+
+on m_textfromfile.destroy
+call super::destroy
+end on
+
+event clicked;/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+
+if classname(Parentwindow) = 'w_req_work' then
+ Parentwindow.event dynamic ue_annotationtoolselection('TextFromFile')
+else
+	// w_contract
+	message.stringparm = 'TextFromFile'
+	of_SendMessage("ue_annotationtoolselection")
+end if 
+
+
+
+
+
+
+
+
+
+
+
+
+end event
+
+type m_rubberstamp from menu within m_annotations
+end type
+
+on m_rubberstamp.create
+call super::create
+this.text = "Rubber Stamp"
+this.microhelp = "Select the Rubber Stamp"
+this.toolbaritemvisible = false
+end on
+
+on m_rubberstamp.destroy
+call super::destroy
+end on
+
+event clicked;
+/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+
+if classname(Parentwindow) = 'w_req_work' then
+Parentwindow.event dynamic ue_annotationtoolselection('RubberStamp')
+else
+	// w_contract
+	message.stringparm = 'RubberStamp'
+	of_SendMessage("ue_annotationtoolselection")
+end if
+
+end event
+
+type m_scan from menu within m_tools
+end type
+
+on m_scan.create
+call super::create
+this.visible = false
+this.text = "Scan"
+this.enabled = false
+this.microhelp = "Scan in document"
+this.toolbaritemvisible = false
+this.toolbaritemname = "Custom087!"
+this.toolbaritemtext = "Scan"
+end on
+
+on m_scan.destroy
+call super::destroy
+end on
+
+event clicked;/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+
+if classname(Parentwindow) = 'w_req_work' then
+   Parentwindow.event dynamic ue_scan()
+else
+	// w_contract
+	of_SendMessage("ue_scan")
+end if 
+
+
+
+end event
+
+type m_page from menu within m_tools
+m_previous m_previous
+m_next m_next
+m_first0 m_first0
+m_last m_last
+m_direction m_direction
+m_rotatepage m_rotatepage
+m_rotateallpages m_rotateallpages
+m_appendblankpage m_appendblankpage
+m_straightenpage m_straightenpage
+end type
+
+on m_page.create
+call super::create
+this.visible = false
+this.text = "Page"
+this.enabled = false
+this.microhelp = "Page functions"
+this.m_previous=create m_previous
+this.m_next=create m_next
+this.m_first0=create m_first0
+this.m_last=create m_last
+this.m_direction=create m_direction
+this.m_rotatepage=create m_rotatepage
+this.m_rotateallpages=create m_rotateallpages
+this.m_appendblankpage=create m_appendblankpage
+this.m_straightenpage=create m_straightenpage
+this.Item[UpperBound(this.Item)+1]=this.m_previous
+this.Item[UpperBound(this.Item)+1]=this.m_next
+this.Item[UpperBound(this.Item)+1]=this.m_first0
+this.Item[UpperBound(this.Item)+1]=this.m_last
+this.Item[UpperBound(this.Item)+1]=this.m_direction
+this.Item[UpperBound(this.Item)+1]=this.m_rotatepage
+this.Item[UpperBound(this.Item)+1]=this.m_rotateallpages
+this.Item[UpperBound(this.Item)+1]=this.m_appendblankpage
+this.Item[UpperBound(this.Item)+1]=this.m_straightenpage
+end on
+
+on m_page.destroy
+call super::destroy
+destroy(this.m_previous)
+destroy(this.m_next)
+destroy(this.m_first0)
+destroy(this.m_last)
+destroy(this.m_direction)
+destroy(this.m_rotatepage)
+destroy(this.m_rotateallpages)
+destroy(this.m_appendblankpage)
+destroy(this.m_straightenpage)
+end on
+
+type m_previous from menu within m_page
+end type
+
+event clicked;/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+if classname(Parentwindow) = 'w_req_work' then
+     parentwindow.event dynamic ue_pagedirection(0)
+else
+	// w_contract
+	message.longparm = 0
+	of_SendMessage("ue_pagedirection")
+end if
+
+
+
+
+
+
+
+
+end event
+
+on m_previous.create
+call super::create
+this.text = "Previous"
+this.microhelp = "Last Page"
+this.toolbaritemname = "VCRPrior!"
+this.toolbaritemtext = "Previous"
+end on
+
+on m_previous.destroy
+call super::destroy
+end on
+
+type m_next from menu within m_page
+end type
+
+event clicked;
+/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+if classname(Parentwindow) = 'w_req_work' then
+     parentwindow.event dynamic ue_pagedirection(1)
+else
+	// w_contract
+	message.longparm = 1
+	of_SendMessage("ue_pagedirection")
+end if
+
+
+
+end event
+
+on m_next.create
+call super::create
+this.text = "Next"
+this.microhelp = "Next Page"
+this.toolbaritemname = "VCRNext!"
+this.toolbaritemtext = "Next"
+end on
+
+on m_next.destroy
+call super::destroy
+end on
+
+type m_first0 from menu within m_page
+end type
+
+event clicked;/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+if classname(Parentwindow) = 'w_req_work' then
+     parentwindow.event dynamic ue_pagedirection(2)
+else
+	// w_contract
+	message.longparm = 2
+	of_SendMessage("ue_pagedirection")
+end if
+
+
+
+end event
+
+on m_first0.create
+call super::create
+this.text = "First"
+this.microhelp = "First Page"
+end on
+
+on m_first0.destroy
+call super::destroy
+end on
+
+type m_last from menu within m_page
+end type
+
+event clicked;
+/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+if classname(Parentwindow) = 'w_req_work' then
+     parentwindow.event dynamic ue_pagedirection(3)
+else
+	// w_contract
+	message.longparm = 3
+	of_SendMessage("ue_pagedirection")
+end if
+
+end event
+
+on m_last.create
+call super::create
+this.text = "Last"
+this.microhelp = "Last Page"
+end on
+
+on m_last.destroy
+call super::destroy
+end on
+
+type m_direction from menu within m_page
+end type
+
+on m_direction.create
+call super::create
+this.text = "-"
+end on
+
+on m_direction.destroy
+call super::destroy
+end on
+
+type m_rotatepage from menu within m_page
+m_left m_left
+m_right m_right
+m_180 m_180
+end type
+
+on m_rotatepage.create
+call super::create
+this.text = "Rotate Page"
+this.m_left=create m_left
+this.m_right=create m_right
+this.m_180=create m_180
+this.Item[UpperBound(this.Item)+1]=this.m_left
+this.Item[UpperBound(this.Item)+1]=this.m_right
+this.Item[UpperBound(this.Item)+1]=this.m_180
+end on
+
+on m_rotatepage.destroy
+call super::destroy
+destroy(this.m_left)
+destroy(this.m_right)
+destroy(this.m_180)
+end on
+
+type m_left from menu within m_rotatepage
+end type
+
+event clicked;/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+
+if classname(Parentwindow) = 'w_req_work' then
+      Parentwindow.event dynamic ue_rotatepage(0)
+else
+	// w_contract
+	message.longparm = 0
+	of_SendMessage("ue_rotatepage")
+end if
+
+end event
+
+on m_left.create
+call super::create
+this.text = "Left"
+this.microhelp = "Flip page left"
+end on
+
+on m_left.destroy
+call super::destroy
+end on
+
+type m_right from menu within m_rotatepage
+end type
+
+event clicked;/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+
+if classname(Parentwindow) = 'w_req_work' then
+      Parentwindow.event dynamic ue_rotatepage(1)
+else
+	// w_contract
+	message.longparm = 1
+	of_SendMessage("ue_rotatepage")
+end if
+
+
+end event
+
+on m_right.create
+call super::create
+this.text = "Right"
+this.microhelp = "Flip page right"
+end on
+
+on m_right.destroy
+call super::destroy
+end on
+
+type m_180 from menu within m_rotatepage
+end type
+
+event clicked;/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+
+if classname(Parentwindow) = 'w_req_work' then
+      Parentwindow.event dynamic ue_rotatepage(2)
+else
+	// w_contract
+	message.longparm = 2
+	of_SendMessage("ue_rotatepage")
+end if
+
+end event
+
+on m_180.create
+call super::create
+this.text = "180"
+this.microhelp = "Flip Image 180"
+end on
+
+on m_180.destroy
+call super::destroy
+end on
+
+type m_rotateallpages from menu within m_page
+m_left0 m_left0
+m_right0 m_right0
+m_1800 m_1800
+end type
+
+on m_rotateallpages.create
+call super::create
+this.text = "Rotate All Pages"
+this.m_left0=create m_left0
+this.m_right0=create m_right0
+this.m_1800=create m_1800
+this.Item[UpperBound(this.Item)+1]=this.m_left0
+this.Item[UpperBound(this.Item)+1]=this.m_right0
+this.Item[UpperBound(this.Item)+1]=this.m_1800
+end on
+
+on m_rotateallpages.destroy
+call super::destroy
+destroy(this.m_left0)
+destroy(this.m_right0)
+destroy(this.m_1800)
+end on
+
+type m_left0 from menu within m_rotateallpages
+end type
+
+on m_left0.create
+call super::create
+this.text = "Left"
+this.microhelp = "Flip all pages left"
+end on
+
+on m_left0.destroy
+call super::destroy
+end on
+
+event clicked;
+/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+
+if classname(Parentwindow) = 'w_req_work' then
+      Parentwindow.event dynamic ue_rotate_all_pages(0)
+else
+	// w_contract
+	message.longparm = 0
+	of_SendMessage("ue_rotate_all_pages")
+end if
+
+end event
+
+type m_right0 from menu within m_rotateallpages
+end type
+
+on m_right0.create
+call super::create
+this.text = "Right"
+this.microhelp = "Flip all pages right"
+end on
+
+on m_right0.destroy
+call super::destroy
+end on
+
+event clicked;/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+
+if classname(Parentwindow) = 'w_req_work' then
+      Parentwindow.event dynamic ue_rotate_all_pages(1)
+else
+	// w_contract
+	message.longparm = 1
+	of_SendMessage("ue_rotate_all_pages")
+end if
+
+
+
+end event
+
+type m_1800 from menu within m_rotateallpages
+end type
+
+on m_1800.create
+call super::create
+this.text = "180"
+this.microhelp = "Flip all pages 180"
+end on
+
+on m_1800.destroy
+call super::destroy
+end on
+
+event clicked;/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+
+if classname(Parentwindow) = 'w_req_work' then
+      Parentwindow.event dynamic ue_rotate_all_pages(2)
+else
+	// w_contract
+	message.longparm = 2
+	of_SendMessage("ue_rotate_all_pages")
+end if
+
+
+
+end event
+
+type m_appendblankpage from menu within m_page
+end type
+
+on m_appendblankpage.create
+call super::create
+this.text = "Append Blank Page"
+this.microhelp = "Append Blank Page"
+end on
+
+on m_appendblankpage.destroy
+call super::destroy
+end on
+
+event clicked;/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+
+if classname(Parentwindow) = 'w_req_work' then
+    Parentwindow.event dynamic ue_add_blank_page( 1, 'Append')
+else
+	// w_contract
+	message.stringparm = 'Append'
+	message.longparm = 1
+	of_SendMessage("ue_add_blank_page")
+end if
+
+
+
+ 
+end event
+
+type m_straightenpage from menu within m_page
+end type
+
+on m_straightenpage.create
+call super::create
+this.text = "Straighten Page"
+this.microhelp = "Straighten Page"
+end on
+
+on m_straightenpage.destroy
+call super::destroy
+end on
+
+event clicked;/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+if classname(Parentwindow) = 'w_req_work' then
+     Parentwindow.event dynamic ue_straighten_page()
+else
+	// w_contract
+	of_SendMessage("ue_straighten_page")
+end if
+
+
+
+end event
+
+type m_ocr from menu within m_tools
+m_showocrzones m_showocrzones
+m_removeallocrzones m_removeallocrzones
+m_ocr0 m_ocr0
+m_drawtextzone m_drawtextzone
+m_ocrwholeimage m_ocrwholeimage
+end type
+
+on m_ocr.create
+call super::create
+this.text = "OCR"
+this.microhelp = "Optical character recognition functions"
+this.m_showocrzones=create m_showocrzones
+this.m_removeallocrzones=create m_removeallocrzones
+this.m_ocr0=create m_ocr0
+this.m_drawtextzone=create m_drawtextzone
+this.m_ocrwholeimage=create m_ocrwholeimage
+this.Item[UpperBound(this.Item)+1]=this.m_showocrzones
+this.Item[UpperBound(this.Item)+1]=this.m_removeallocrzones
+this.Item[UpperBound(this.Item)+1]=this.m_ocr0
+this.Item[UpperBound(this.Item)+1]=this.m_drawtextzone
+this.Item[UpperBound(this.Item)+1]=this.m_ocrwholeimage
+end on
+
+on m_ocr.destroy
+call super::destroy
+destroy(this.m_showocrzones)
+destroy(this.m_removeallocrzones)
+destroy(this.m_ocr0)
+destroy(this.m_drawtextzone)
+destroy(this.m_ocrwholeimage)
+end on
+
+type m_showocrzones from menu within m_ocr
+end type
+
+on m_showocrzones.create
+call super::create
+this.text = "Show OCR Zones"
+this.microhelp = "Show OCR Zones"
+end on
+
+on m_showocrzones.destroy
+call super::destroy
+end on
+
+type m_removeallocrzones from menu within m_ocr
+end type
+
+on m_removeallocrzones.create
+call super::create
+this.text = "Remove All Ocr Zones"
+this.microhelp = "Remove All Ocr Zones"
+end on
+
+on m_removeallocrzones.destroy
+call super::destroy
+end on
+
+event clicked;/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+if classname(Parentwindow) = 'w_req_work' then
+     parentwindow.event dynamic ue_remove_all_ocr_zones()
+else
+	// w_contract
+	of_SendMessage("ue_remove_all_ocr_zones")
+end if
+
+
+end event
+
+type m_ocr0 from menu within m_ocr
+end type
+
+on m_ocr0.create
+call super::create
+this.text = "OCR..."
+this.microhelp = "OCR..."
+this.toolbaritemname = "RunToCursor!"
+this.toolbaritemtext = "OCR"
+end on
+
+on m_ocr0.destroy
+call super::destroy
+end on
+
+event clicked;/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+if classname(Parentwindow) = 'w_req_work' then
+    Parentwindow.event dynamic ue_ocr()
+else
+	// w_contract
+	of_SendMessage("ue_ocr")
+end if
+
+
+end event
+
+type m_drawtextzone from menu within m_ocr
+end type
+
+on m_drawtextzone.create
+call super::create
+this.text = "Draw Text Zone"
+this.microhelp = "Draw Text Zone"
+this.toolbaritemname = "Custom082!"
+this.toolbaritemtext = "Draw Text Zone"
+end on
+
+on m_drawtextzone.destroy
+call super::destroy
+end on
+
+event clicked;/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+if classname(Parentwindow) = 'w_req_work' then
+    Parentwindow.event dynamic ue_draw_text_zone( )
+else
+	// w_contract
+	of_SendMessage("ue_draw_text_zone")
+end if
+
+
+
+
+
+end event
+
+type m_ocrwholeimage from menu within m_ocr
+end type
+
+event clicked;
+/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 24 August 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+if classname(Parentwindow) = 'w_req_work' then
+    Parentwindow.event dynamic ue_ocr_all( )
+else
+	// w_contract
+	of_SendMessage("ue_ocr_all")
+end if
+
+
+end event
+
+on m_ocrwholeimage.create
+call super::create
+this.text = "OCR Whole Image"
+this.microhelp = "OCR Whole Image"
+end on
+
+on m_ocrwholeimage.destroy
+call super::destroy
+end on
+

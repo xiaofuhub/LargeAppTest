@@ -1,0 +1,217 @@
+﻿$PBExportHeader$m_popup_tv.srm
+forward
+global type m_popup_tv from menu
+end type
+type m_expand from menu within m_popup_tv
+end type
+type m_expandall from menu within m_popup_tv
+end type
+type m_collapse from menu within m_popup_tv
+end type
+type m_collapseall from menu within m_popup_tv
+end type
+global type m_popup_tv from menu
+m_expand m_expand
+m_expandall m_expandall
+m_collapse m_collapse
+m_collapseall m_collapseall
+end type
+end forward
+
+global type m_popup_tv from menu
+m_expand m_expand
+m_expandall m_expandall
+m_collapse m_collapse
+m_collapseall m_collapseall
+end type
+global m_popup_tv m_popup_tv
+
+type variables
+long il_row, il_level
+datawindow idw_parent
+
+end variables
+
+forward prototypes
+public subroutine of_set_parent (datawindow adw_1, long al_row, long al_level)
+end prototypes
+
+public subroutine of_set_parent (datawindow adw_1, long al_row, long al_level);//alfee 11.15.2010
+
+idw_parent = adw_1
+il_row = al_row
+il_level = al_level
+end subroutine
+
+on m_popup_tv.create
+m_popup_tv=this
+call super::create
+this.text = "m_popup_tv"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menutitles = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_expand=create m_expand
+this.m_expandall=create m_expandall
+this.m_collapse=create m_collapse
+this.m_collapseall=create m_collapseall
+this.Item[UpperBound(this.Item)+1]=this.m_expand
+this.Item[UpperBound(this.Item)+1]=this.m_expandall
+this.Item[UpperBound(this.Item)+1]=this.m_collapse
+this.Item[UpperBound(this.Item)+1]=this.m_collapseall
+end on
+
+on m_popup_tv.destroy
+call super::destroy
+destroy(this.m_expand)
+destroy(this.m_expandall)
+destroy(this.m_collapse)
+destroy(this.m_collapseall)
+end on
+
+type m_expand from menu within m_popup_tv
+end type
+
+on m_expand.create
+call super::create
+this.text = "Expand"
+this.microhelp = "Expand current item"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menutitles = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_expand.destroy
+call super::destroy
+end on
+
+event clicked;idw_parent.dynamic event ue_rightclick(this.text, il_row, il_level)
+
+end event
+
+type m_expandall from menu within m_popup_tv
+end type
+
+on m_expandall.create
+call super::create
+this.text = "Expand All"
+this.microhelp = "Expand all items"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menutitles = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_expandall.destroy
+call super::destroy
+end on
+
+event clicked;idw_parent.dynamic event ue_rightclick(this.text, il_row, il_level)
+end event
+
+type m_collapse from menu within m_popup_tv
+end type
+
+on m_collapse.create
+call super::create
+this.text = "Collapse"
+this.microhelp = "Collapse current item"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menutitles = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_collapse.destroy
+call super::destroy
+end on
+
+event clicked;idw_parent.dynamic event ue_rightclick(this.text, il_row, il_level)
+end event
+
+type m_collapseall from menu within m_popup_tv
+end type
+
+on m_collapseall.create
+call super::create
+this.text = "Collapse All"
+this.microhelp = "Collapse all items"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menutitles = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_collapseall.destroy
+call super::destroy
+end on
+
+event clicked;idw_parent.dynamic event ue_rightclick(this.text, il_row, il_level)
+end event
+

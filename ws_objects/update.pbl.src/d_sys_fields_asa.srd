@@ -1,0 +1,52 @@
+﻿$PBExportHeader$d_sys_fields_asa.srd
+$PBExportComments$Additional Data Screens V 10
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=68 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=table_id dbname="sys_tables.table_id" )
+ column=(type=char(128) updatewhereclause=yes name=cname dbname="syscolumns.cname" )
+ column=(type=char(1) updatewhereclause=yes name=coltype dbname="coltype" )
+ column=(type=long updatewhereclause=yes name=length dbname="syscolumns.length" )
+ retrieve="select sys_tables.table_id as table_id,
+       sys.syscolumns.cname as cname,
+       coltype=case sys.syscolumns.coltype
+					WHEN 'integer'   THEN 'N'    
+					WHEN 'float'     THEN 'N'    
+					WHEN 'smallint'  THEN 'N'    
+					WHEN 'money'     THEN 'N'    
+					WHEN 'real'      THEN 'N'    
+					WHEN 'decimal'   THEN 'N'    
+					WHEN 'tinyint'   THEN 'N'    
+					WHEN 'numeric'   THEN 'N'    
+					WHEN 'bit'       THEN 'N'    
+					WHEN 'char'      THEN 'C'    
+					WHEN 'nvarchar'  THEN 'C'    
+					WHEN 'varchar'   THEN 'C'    
+					WHEN 'long varchar' THEN 'C'    
+					WHEN 'timestamp' THEN 'D'    
+					WHEN 'date'      THEN 'D'    
+					WHEN 'time'      THEN 'D'    
+                end,
+sys.syscolumns.length as length
+from sys.syscolumns,sys_tables  
+where  sys_tables.table_name= syscolumns.tname and   
+       syscolumns.tname in(:table_name) and
+       convert(varchar,sys_tables.table_id)+ syscolumns.cname  not in(select distinct  convert(varchar,table_id)+field_name from sys_fields )
+order by sys_tables.table_id, sys.syscolumns.colno		 
+" arguments=(("table_name", stringlist)) )
+text(band=header alignment="0" text="Sys Tables Table Id" border="0" color="0" x="9" y="4" height="76" width="1367" html.valueishtml="0"  name=sys_tables_table_id_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Coltype" border="0" color="0" x="1385" y="4" height="76" width="325" html.valueishtml="0"  name=coltype_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Syscolumns Cname" border="0" color="0" x="1719" y="4" height="76" width="3502" html.valueishtml="0"  name=syscolumns_cname_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Syscolumns Length" border="0" color="0" x="5230" y="4" height="76" width="1367" html.valueishtml="0"  name=syscolumns_length_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="0" height="76" width="1367" format="[general]" html.valueishtml="0"  name=table_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="1385" y="0" height="76" width="325" format="[general]" html.valueishtml="0"  name=coltype visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1719" y="0" height="76" width="3502" format="[general]" html.valueishtml="0"  name=cname visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="5230" y="0" height="76" width="1367" format="[general]" html.valueishtml="0"  name=length visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

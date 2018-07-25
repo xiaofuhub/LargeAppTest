@@ -1,0 +1,42 @@
+﻿$PBExportHeader$of_log_sys_report.srf
+global type of_log_sys_report from function_object
+end type
+
+forward prototypes
+global function long of_log_sys_report (string as_type, string as_from, string as_ip, long al_report_id, string as_rpt_name)
+end prototypes
+
+global function long of_log_sys_report (string as_type, string as_from, string as_ip, long al_report_id, string as_rpt_name);//Start Code Change ----06.06.2016 #V152 maha - created for all report logging.
+integer nr
+long ll_id
+datetime ldt_date
+datastore lds_log
+
+lds_log = create datastore
+
+lds_log.dataobject = "d_report_log_de"
+lds_log.settransobject(sqlca)
+
+ldt_date = datetime(today(),now())
+
+nr = lds_log.insertrow(0)
+
+lds_log.setitem(nr,"report_id",al_report_id)
+lds_log.setitem(nr,"user_id",gs_user_id )
+lds_log.setitem(nr,"date_run",ldt_date)
+lds_log.setitem(nr,"run_from",as_from)
+lds_log.setitem(nr,"rpt_type", as_type)  //std report intellireport etc. (R,C,E,1,)
+lds_log.setitem(nr,"user_ip", gs_client_ip )
+lds_log.setitem(nr,"org_rpt_name", as_rpt_name )
+
+select max(log_id  ) into :ll_id from sys_report_log;
+if isnull(ll_id) then ll_id = 0
+ll_id++
+lds_log.setitem(nr,"log_id",ll_id)
+lds_log.update()
+
+destroy lds_log
+
+return ll_id
+end function
+

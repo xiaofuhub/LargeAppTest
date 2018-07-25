@@ -1,0 +1,151 @@
+﻿$PBExportHeader$of_calc_work_gap.srf
+global type of_calc_work_gap from function_object
+end type
+
+forward prototypes
+global function integer of_calc_work_gap (long al_prac)
+end prototypes
+
+global function integer of_calc_work_gap (long al_prac);//Start Code Change ----12.01.2010 #V10 maha - created to calulate work gap records from the profession experience
+
+integer r
+integer rc
+integer li_return = 1
+integer nr
+integer cnt = 0
+long d
+date ld_from
+date ld_to
+date ld_pfrom
+date ld_pto
+date ld_blankfrom
+date ld_blankto
+string ls_type //maha 07.10.2012
+
+datastore lds_exp
+datastore lds_gap
+
+lds_exp = create datastore
+lds_gap = create datastore
+
+lds_exp.dataobject = "d_work_gap_cal_exp_data"
+lds_gap.dataobject = "d_work_gap_cal_data"
+
+lds_exp.settransobject(sqlca)
+lds_gap.settransobject(sqlca)
+
+rc = lds_exp.retrieve(al_prac)  //sorted in ascending order by end date, start data
+
+ld_blankfrom = date("2222-12-31")
+ld_blankto = today()
+
+if rc = 0 then
+	messagebox("Work Gap","There are no Experience records for the practitioner")
+	li_return  = -1
+else
+
+//Start Code Change ----09.15.2011 #V12 maha - added trap for records that fall completely inside the date range of another record.
+	//check for null to dates and fillin with todays date then resort
+	for r = 1 to rc
+		ld_to = date( lds_exp.getitemdatetime(r,"end_date"))
+		if isnull(ld_to) then
+			 lds_exp.setitem(r,"end_date", datetime(ld_blankto,time("00:00:00")))
+		end if
+	next
+	
+	 lds_exp.sort()
+	
+	//Check or records that fall completely inside the date range of another record.
+	for r = 1 to rc
+		if r = rc then continue
+		
+		ld_from = date( lds_exp.getitemdatetime(r,"start_date"))
+		ld_to = date( lds_exp.getitemdatetime(r,"end_date"))
+	
+		for d = r + 1 to rc
+			ld_pfrom = date( lds_exp.getitemdatetime(d,"start_date"))
+			ld_pto = date( lds_exp.getitemdatetime(d,"end_date"))
+			
+			if ld_from > ld_pfrom and ld_to < ld_pto then  
+				lds_exp.rowsdiscard( r, r, primary!)
+				r = r -1
+				rc = lds_exp.rowcount()
+				exit
+			end if
+		next
+	next
+	
+	rc =  lds_exp.rowcount( )
+	//messagebox("",rc)
+	
+//End Code Change ----09.15.2011 
+
+//Create the Gap records
+	for r = 1 to rc
+		//sorted by end date
+		ld_from = date( lds_exp.getitemdatetime(r,"start_date"))
+		ld_to = date( lds_exp.getitemdatetime(r,"end_date"))
+		
+//		if isnull(ld_to) then 
+//			if not isnull(ld_from) then
+//				if ld_from < ld_blankfrom then //set the blank from date to the oldest from date
+//					ld_blankfrom = ld_from
+//				end if
+//				ld_to = ld_blankfrom
+//			end if
+//		end if
+			
+		//debugbreak()
+		if r = 1 then
+			ld_pfrom = ld_from
+			ld_pto = ld_to
+			//messagebox("to", string(ld_to))
+		else
+			d = DaysAfter ( ld_pto, ld_from )
+			if d > 30  then
+				ls_type = lds_exp.getitemstring(r,"type")
+				nr = lds_gap.insertrow(0)
+				lds_gap.setitem(nr,"start_date", datetime(ld_pto,time("00:00:00")))
+				lds_gap.setitem(nr,"end_date", datetime(ld_from,time("00:00:00")))
+				lds_gap.setitem(nr,"prac_id", al_prac)
+				//Start Code Change ----07.10.2012 #V12 maha - mod for addition of educat and traing to gap calc
+				choose case ls_type
+					case "E"
+						lds_gap.setitem(nr,"gap_type", -230)
+					Case "T"
+						lds_gap.setitem(nr,"gap_type", -231)
+					Case "W"
+						lds_gap.setitem(nr,"gap_type", -232)
+				end choose
+				lds_gap.setitem(nr,"w_type", ls_type )
+				//End Code Change ----07.10.2012
+				cnt++
+			end if
+		end if
+		//set date for next round
+		ld_pfrom = ld_from
+		if  ld_to > ld_pto then  //Start Code Change ----09.16.2011 #V12 maha
+			ld_pto = ld_to
+		end if
+		
+	next
+end if
+debugbreak()
+
+if cnt > 0 then
+	//code to open a window allowing save of created gap records
+	openwithparm(w_work_gap_add_records,lds_gap)
+//	messagebox("Work Gaps greater than 30 days",cnt)
+else
+	messagebox("Work Gap","No Work Gaps greater than 30 days found.")
+	
+end if
+	
+
+
+destroy lds_exp
+destroy lds_gap
+
+return li_return
+end function
+

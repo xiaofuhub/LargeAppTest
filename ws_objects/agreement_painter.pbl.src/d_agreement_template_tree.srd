@@ -1,0 +1,47 @@
+﻿$PBExportHeader$d_agreement_template_tree.srd
+$PBExportComments$Created by alfee at 11/6/2006
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=category dbname="code_lookup.category" )
+ column=(type=char(15) updatewhereclause=yes name=category_name dbname="code_lookup.category_name" )
+ column=(type=decimal(0) updatewhereclause=yes name=ctx_acp_template_id dbname="ctx_acp_template.ctx_acp_template_id" )
+ column=(type=char(255) updatewhereclause=yes name=template_name dbname="ctx_acp_template.template_name" )
+ column=(type=char(20) updatewhereclause=yes name=reviewed_by dbname="ctx_acp_template.reviewed_by" )
+ column=(type=datetime updatewhereclause=yes name=date_reviewed dbname="ctx_acp_template.date_reviewed" )
+ column=(type=decimal(0) updatewhereclause=yes name=reviewed_status dbname="ctx_acp_template.reviewed_status" )
+ retrieve="  SELECT	b.lookup_code as category,
+			b.code as category_name,
+         a.ctx_acp_template_id,
+         a.template_name,
+         a.reviewed_by, 
+         a.date_reviewed,  
+         a.reviewed_status
+    FROM code_lookup b,			
+			ctx_acp_template a
+	WHERE b.lookup_code = a.category and b.lookup_name = 'Contract Category'   
+	Order by b.code, b.lookup_code, a.template_name" )
+text(band=header alignment="2" text="Code Lookup
+Category Name" border="0" color="33554432" x="9" y="8" height="104" width="366" html.valueishtml="0"  name=code_lookup_category_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Acp Template
+Ctx Acp Template Id" border="0" color="33554432" x="384" y="8" height="104" width="439" html.valueishtml="0"  name=ctx_acp_template_ctx_acp_template_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Acp Template
+Template Name" border="0" color="33554432" x="832" y="8" height="104" width="754" html.valueishtml="0"  name=ctx_acp_template_template_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Code Lookup Category" border="0" color="0" x="1595" y="4" height="76" width="978" html.valueishtml="0"  name=code_lookup_category_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Ctx Acp Template Reviewed By" border="0" color="0" x="2583" y="4" height="76" width="453" html.valueishtml="0"  name=ctx_acp_template_reviewed_by_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Ctx Acp Template Date Reviewed" border="0" color="0" x="3045" y="4" height="76" width="658" html.valueishtml="0"  name=ctx_acp_template_date_reviewed_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Ctx Acp Template Reviewed Status" border="0" color="0" x="3712" y="4" height="76" width="978" html.valueishtml="0"  name=ctx_acp_template_reviewed_status_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="9" y="8" height="64" width="366" format="[general]" html.valueishtml="0"  name=category_name visible="1" edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="0" color="33554432" x="384" y="8" height="64" width="439" format="[general]" html.valueishtml="0"  name=ctx_acp_template_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="832" y="8" height="64" width="754" format="[general]" html.valueishtml="0"  name=template_name visible="1" edit.limit=255 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="1595" y="8" height="68" width="978" format="[general]" html.valueishtml="0"  name=category visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="33554432" x="2583" y="0" height="52" width="453" format="[general]" html.valueishtml="0"  name=reviewed_by visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="33554432" x="3045" y="0" height="52" width="658" format="[shortdate] [time]" html.valueishtml="0"  name=date_reviewed visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="33554432" x="3712" y="0" height="52" width="978" format="[general]" html.valueishtml="0"  name=reviewed_status visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

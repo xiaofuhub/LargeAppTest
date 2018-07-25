@@ -1,0 +1,12 @@
+﻿$PBExportHeader$d_dddw_multi_app_names.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=multi_app_id dbname="sys_multi_app_hdr.multi_app_id" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=multi_app_description dbname="sys_multi_app_hdr.multi_app_description" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=notes dbname="sys_multi_app_hdr.notes" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"sys_multi_app_hdr~" ) COLUMN(NAME=~"sys_multi_app_hdr.multi_app_id~") COLUMN(NAME=~"sys_multi_app_hdr.multi_app_description~") COLUMN(NAME=~"sys_multi_app_hdr.notes~")) " update="sys_multi_app_hdr" updatewhere=1 updatekeyinplace=no  sort="multi_app_description A " )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="0" x="9" y="4" height="64" width="1166" format="[general]"  name=multi_app_description edit.limit=50 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

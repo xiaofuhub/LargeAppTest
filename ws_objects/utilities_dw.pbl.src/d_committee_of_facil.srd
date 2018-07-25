@@ -1,0 +1,18 @@
+﻿$PBExportHeader$d_committee_of_facil.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=committee_id dbname="committee_lookup.committee_id" )
+ column=(type=long update=yes updatewhereclause=yes name=facility_id dbname="committee_lookup.facility_id" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=committee_name dbname="committee_lookup.committee_name" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"committee_lookup~" ) COLUMN(NAME=~"committee_lookup.committee_id~") COLUMN(NAME=~"committee_lookup.facility_id~") COLUMN(NAME=~"committee_lookup.committee_name~")WHERE(    EXP1 =~"committee_lookup.facility_id~"   OP =~"=~"    EXP2 =~":facid~" ) ) ARG(NAME = ~"facid~" TYPE = number) " update="committee_lookup" updatewhere=1 updatekeyinplace=no arguments=(("facid", number)) )
+text(band=header alignment="2" text="Committee Id"border="0" color="0" x="5" y="4" height="64" width="352"  name=committee_id_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Facility Id"border="0" color="0" x="361" y="4" height="64" width="329"  name=facility_id_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Committee Name"border="0" color="0" x="695" y="4" height="64" width="1399"  name=committee_name_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=10 border="0" color="0" x="5" y="4" height="76" width="329" format="[general]"  name=committee_id edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=20 border="0" color="0" x="361" y="4" height="76" width="329" format="[general]"  name=facility_id edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="0" color="0" x="695" y="4" height="76" width="1399" format="[general]"  name=committee_name edit.limit=50 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

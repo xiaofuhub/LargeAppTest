@@ -1,0 +1,21 @@
+﻿$PBExportHeader$dddw_action.srd
+$PBExportComments$Create by Jack 1/30/2007
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=doc_id dbname="ctx_am_doc_audit.doc_id" )
+ column=(type=char(200) updatewhereclause=yes name=action dbname="ctx_am_doc_audit.action" )
+ retrieve="  SELECT distinct ctx_am_doc_audit.doc_id,   
+         ctx_am_doc_audit.action  
+    FROM ctx_am_doc_audit  
+   WHERE ctx_am_doc_audit.doc_id = :al_doc_id    
+" arguments=(("al_doc_id", number))  sort="action A " )
+text(band=header alignment="2" text="Action" border="0" color="33554432" x="9" y="8" height="52" width="864" html.valueishtml="0"  name=action_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="9" y="8" height="64" width="864" format="[general]" html.valueishtml="0"  name=action visible="1" edit.limit=200 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

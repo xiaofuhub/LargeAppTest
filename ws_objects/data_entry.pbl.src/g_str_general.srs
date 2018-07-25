@@ -1,0 +1,5 @@
+﻿$PBExportHeader$g_str_general.srs
+global type g_str_general from structure
+	long		prac_id
+end type
+

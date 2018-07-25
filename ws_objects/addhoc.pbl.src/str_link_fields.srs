@@ -1,0 +1,9 @@
+﻿$PBExportHeader$str_link_fields.srs
+global type str_link_fields from structure
+	string		table_name
+	long		table_id
+	string		field_name
+	long		field_id
+	string		is_from
+end type
+

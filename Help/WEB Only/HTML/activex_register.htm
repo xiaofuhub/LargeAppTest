@@ -1,0 +1,71 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="content-ie6.css" />
+<title>register an ActiveX control (.ocx) manually</title>
+
+</head>
+<body id="content_body">
+<!--googleoff: index-->
+<!-- BEGIN PAGE CONTENT WRAPPER -->
+<div id="pneumonic">
+  <h1 class="ColdFusion">IntelliSoft Group Inc.</h1>
+</div>
+<div id="page_content_wrapper">
+  <!-- BEGIN BREADCRUMBS -->
+  <div id="breadcrumb">
+    <!-- BEGIN BREADCRUMBS -->
+    <div class="nav">
+      <dl class="page">
+				<dd class="prev"><a accesskey="p" class="prev" href="activex_control.htm" title="About activeX controls (OCX)"><img src="images/prev.gif" alt="Previous" /></a></dd><dd class="next"><a accesskey="n" class="next" href="email_config.htm" title="Email Account Config"><img src="images/next.gif" alt="Next" /></a></dd>
+
+      </dl>
+    </div>
+    <div class="hierarchy"> <a href="index.htm">Intellisoft</a>/ <a href="ActiveX_control.htm"><b>ActiveX controls (OCX) register</b></a></div>
+    <!-- END BREADCRUMBS -->
+  </div>
+  <!-- END BREADCRUMBS -->
+  <!-- BEGIN PAGE TITLE -->
+  <!--googleon: index-->
+  <h1>How to register an ActiveX control (.ocx) manually</h1>
+  <!--googleoff: index-->
+  <!-- END PAGE TITLE -->
+  <!-- BEGIN CONTENT WRAPPER -->
+  <div id="content_wrapper">
+    <!--googleon: index-->
+    <div>
+        <p>In realistic runtime environment, there are some unknown factors  that would cause ActiveX controls (OCX) to fail to register, hence, cause the  Intelli system to malfunction. To enable Intelli system to run correctly, we  will have to manually register ActiveX controls (OCX). Below is the detailed  description for how to manually register them.</p>
+      <h3>More Information</h3>
+		<p>We can use <strong>Microsoft Register Server (Regsvr32.exe)</strong> to manually register a 32-bit  .ocx file under the 32-bit OS.	The syntax of Regsvr32.exe is as below:<br />
+			<strong>Regsvr32	&lt;OCX File Name&gt; </strong><br />
+        The following example registers the EaseMail  ActiveX Control with displaying any messages: <br />
+			<strong>regsvr32 &quot;D:\local  workspace\8.5\Scanner.ocx&quot;</strong><br />
+  <strong>Note:</strong><br />
+        If  an error occurs when registering a control, do the following: </p>
+      <table border="0" cellpadding="0">
+        <tr>
+          <td valign="top">
+            1. </td>
+          <td valign="top"><p align="left">Verify that the directory and the file    name are correct and complete.</p></td>
+        </tr>
+        <tr>
+          <td valign="top"><p align="left">2.</p></td>
+          <td valign="top"><p>Verify that the    following files are in the Windows\System directory: <br />
+                  <strong>MFC42.DLL </strong><br />
+                  <strong>MSVCRT.DLL </strong><br />
+            If one of these files is missing, you    may receive the following error message: <br />
+            <strong>Error: OLE Error Code 0x80040112:    Appropriate license for this class not found.</strong></p></td>
+        </tr>
+      </table>
+      
+      <h2 class="h2nobreak"><br clear="both" />
+</h2>
+</div>
+  </div>
+  </div>
+<div id="related"></div>
+<br clear="both" />
+</body>
+</html>

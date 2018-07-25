@@ -1,0 +1,48 @@
+﻿$PBExportHeader$d_saved_reports_list_security.srd
+release 11.5;
+datawindow(units=0 timer_interval=0 color=16777215 brushmode=0 transparency=0 gradient.angle=0 gradient.color=8421504 gradient.focus=0 gradient.repetition.count=0 gradient.repetition.length=100 gradient.repetition.mode=0 gradient.scale=100 gradient.spread=100 gradient.transparency=0 picture.blur=0 picture.clip.bottom=0 picture.clip.left=0 picture.clip.right=0 picture.clip.top=0 picture.mode=0 picture.scale.x=100 picture.scale.y=100 picture.transparency=0 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.background=no print.preview.background=no print.preview.outline=yes hidegrayline=no showbackcoloronxp=no picture.file="" )
+header(height=76 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+summary(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+footer(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+detail(height=80 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=srs_id dbname="sys_report_storage.srs_id" dbalias=".srs_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=report_id dbname="sys_report_storage.report_id" dbalias=".report_id" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=report_name dbname="sys_report_storage.report_name" dbalias=".report_name" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=report_type dbname="sys_report_storage.report_type" dbalias=".report_type" values="Export	E/iReport	C/Standard	S/One-Click	1/Sched Report	Q/" )
+ column=(type=datetime update=yes updatewhereclause=yes name=last_run dbname="sys_report_storage.last_run" dbalias=".last_run" )
+ column=(type=long update=yes updatewhereclause=yes name=replace_exist dbname="sys_report_storage.replace_exist" dbalias=".replace_exist" values="Yes	1/No	0/" )
+ column=(type=datetime update=yes updatewhereclause=yes name=create_date dbname="sys_report_storage.create_date" dbalias=".create_date" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=create_by dbname="sys_report_storage.create_by" dbalias=".create_by" )
+ column=(type=datetime update=yes updatewhereclause=yes name=mod_date dbname="sys_report_storage.mod_date" dbalias=".mod_date" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=mod_by dbname="sys_report_storage.mod_by" dbalias=".mod_by" )
+ column=(type=long update=yes updatewhereclause=yes name=active_status dbname="sys_report_storage.active_status" dbalias=".active_status" values="Active	1/Inactive	0/" )
+ retrieve="  SELECT  sys_report_storage.srs_id ,           
+			 sys_report_storage.report_id , 
+              sys_report_storage.report_name ,           
+			sys_report_storage.report_type , 
+          sys_report_storage.last_run ,
+           sys_report_storage.replace_exist ,
+           sys_report_storage.create_date ,
+           sys_report_storage.create_by ,
+           sys_report_storage.mod_date , 
+          sys_report_storage.mod_by ,
+           sys_report_storage.active_status     FROM sys_report_storage  
+		 WHERE exists(select 1 from security_user_saved_reports where                        sys_report_storage.srs_id = security_user_saved_reports.srs_id
+  				and  ((security_user_saved_reports.user_id = :as_user and security_user_saved_reports.access_rights = 1    ) or :as_user ='master') )  
+         		
+  " update="sys_report_storage" updatewhere=1 updatekeyinplace=no arguments=(("as_user", string)) )
+text(band=header alignment="0" text="Report Type" border="0" color="0" x="1449" y="20" height="52" width="297" html.valueishtml="0"  name=report_type_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="0" text="Report Name" border="0" color="0" x="23" y="12" height="52" width="1399" html.valueishtml="0"  name=report_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="2" color="0" x="1440" y="8" height="64" width="283" format="[general]" html.valueishtml="0"  name=report_type visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="2" color="0" x="23" y="8" height="64" width="1399" format="[general]" html.valueishtml="0"  name=report_name visible="1" edit.limit=50 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

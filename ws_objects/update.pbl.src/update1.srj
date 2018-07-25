@@ -1,0 +1,6 @@
+﻿$PBExportHeader$update1.srj
+EXE:d:\intellisoft\development\intellicred\version 1.5.3\update_files.exe,,0,1
+CMP:0,0,0,2,0,0
+PBD:D:\IntelliSoft\Development\IntelliCred\Version 1.5.3\update.pbl,,0
+OBJ:D:\IntelliSoft\Development\IntelliCred\Version 1.5.3\update.pbl,update_files,a
+OBJ:d:\intellisoft\development\intellicred\version 1.5.3\update.pbl,w_update_files,w

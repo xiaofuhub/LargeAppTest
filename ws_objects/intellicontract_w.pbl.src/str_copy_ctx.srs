@@ -1,0 +1,37 @@
+﻿$PBExportHeader$str_copy_ctx.srs
+global type str_copy_ctx from structure
+	long		sl_ctx_id
+	integer		sb_contract_detail
+	integer		sb_contract_dates
+	integer		sb_custom_data
+	integer		sb_notes
+	integer		sb_group_access
+	integer		sb_contracted_contacts
+	integer		sb_our_contacts
+	integer		sb_products
+	integer		sb_requirements
+	integer		sb_other_contacts
+	integer		sb_locations
+	integer		sb_organizations
+	integer		sb_fee_schedule
+	integer		sb_action_items
+	integer		sb_document_manager
+	integer		si_is_template
+	string		ss_template_name
+	integer		si_located_tab
+	integer		si_clear_company
+	integer		si_add_contact
+	long		sl_workflow
+	string		ss_template_comment
+	integer		sb_custom_data2
+	integer		sb_custom_multi
+	integer		ai_ib_owner
+	integer		ai_ib_default_email
+	string		as_copy_sub_ctx
+	string		as_master_contract_name
+	integer		ai_ib_create_child
+	integer		ai_ib_copy_m_company
+	integer		ai_ib_copy_m_company_contact
+	integer		sb_link_privider
+end type
+

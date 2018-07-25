@@ -1,0 +1,37 @@
+﻿$PBExportHeader$d_org_search2_copy.srd
+$PBExportComments$Create by Jack 05/31/2007
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=1 )
+summary(height=0 color="536870912" )
+footer(height=12 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=org_type dbname="ctx_orgs.org_type" )
+ column=(type=char(255) updatewhereclause=yes name=org_name dbname="ctx_orgs.org_name" )
+ column=(type=long updatewhereclause=yes name=org_id dbname="ctx_orgs.org_id" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=ctx_id dbname="ctx_orgs_contact.ctx_id" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=ctx_orgs_contact_org_id dbname="ctx_orgs_contact.org_id" )
+ column=(type=char(1) update=yes updatewhereclause=yes key=yes name=ctx_orgs_contact_area dbname="ctx_orgs_contact.area" initial="O" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=record_id dbname="ctx_orgs_contact.record_id" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=notes dbname="ctx_orgs_contact.notes" )
+ retrieve="  SELECT ctx_orgs.org_type,   
+         ctx_orgs.org_name,   
+         ctx_orgs.org_id,   
+         ctx_orgs_contact.ctx_id,   
+         ctx_orgs_contact.org_id,   
+         ctx_orgs_contact.area,   
+         ctx_orgs_contact.record_id,  
+         ctx_orgs_contact.notes  
+    FROM ctx_orgs,   
+         ctx_orgs_contact  
+   WHERE ( ctx_orgs.org_id = ctx_orgs_contact.org_id ) and  
+         ( ( ctx_orgs_contact.ctx_id = :al_ctx_id ))   
+ORDER BY ctx_orgs.org_type ASC   
+" update="ctx_orgs_contact" updatewhere=2 updatekeyinplace=yes arguments=(("al_ctx_id", number)) )
+group(level=1 header.height=60 trailer.height=0 by=("org_type" ) header.color="536870912" trailer.color="536870912" )
+column(band=header.1 id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="4" height="52" width="1943" format="[general]" html.valueishtml="0"  name=org_type  tag="Contract Organization Type" visible="1" dddw.name=d_dddw_code_lookup dddw.displaycolumn=description dddw.datacolumn=lookup_code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="268435456" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="9" y="0" height="64" width="1943" format="[general]" html.valueishtml="0"  name=org_name visible="1" edit.limit=255 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

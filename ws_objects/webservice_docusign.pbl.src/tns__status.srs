@@ -1,0 +1,9 @@
+﻿$PBExportHeader$tns__status.srs
+$PBExportComments$Proxy imported from Web service using Web Service Proxy Generator.
+global type tns__Status from structure
+   string envelopeID
+   string status
+   string subject
+   string errorText
+end type
+

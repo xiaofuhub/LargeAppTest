@@ -1,0 +1,13 @@
+﻿$PBExportHeader$d_prf_att_quest.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=64 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=116 color="536870912" )
+table(column=(type=char(255) updatewhereclause=yes name=data_view_fields_field_label dbname="data_view_fields.field_label" )
+ column=(type=decimal(0) updatewhereclause=yes name=data_view_field_id dbname="data_view_fields.data_view_field_id" )
+ retrieve="PBSELECT( VERSION(400) DISTINCT ()TABLE(NAME=~"data_view_fields~" )  TABLE(NAME=~"facility~" ) COLUMN(NAME=~"data_view_fields.field_label~") COLUMN(NAME=~"data_view_fields.data_view_field_id~")WHERE(    EXP1 =~"( data_view_fields.screen_id~"   OP =~"=~"    EXP2 =~"21 )~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"( data_view_fields.field_id~"   OP =~"<~"    EXP2 =~"215 )~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"data_view_fields.data_view_id~"   OP =~"=~"    EXP2 =~"facility.default_data_view_id~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"facility.facility_id~"   OP =~"=~"    EXP2 =~":facil~" ) ) ARG(NAME = ~"facil~" TYPE = number) " arguments=(("facil", number)) )
+text(band=header alignment="2" text="Questions"border="0" color="0" x="5" y="8" height="52" width="302"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="2" color="0" x="9" y="4" height="108" width="2743" format="[general]"  name=data_view_fields_field_label edit.limit=255 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

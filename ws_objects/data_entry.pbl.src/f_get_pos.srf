@@ -1,0 +1,43 @@
+﻿$PBExportHeader$f_get_pos.srf
+global type f_get_pos from function_object
+end type
+
+forward prototypes
+global function integer f_get_pos (string as_string, string as_word, boolean ab_field)
+end prototypes
+
+global function integer f_get_pos (string as_string, string as_word, boolean ab_field);//====================================================================
+//$<Function>: f_get_pos
+//$<Arguments>:
+// 	%ScriptArgs%
+//$<Return>:  integer
+//$<Description>: 
+//$<Author>: (Appeon) Stephen 08.08.2014 ()
+//--------------------------------------------------------------------
+//$<Modify History>:
+//====================================================================
+integer li_pos, li_len
+string   ls_str_last
+string   ls_filed
+
+li_pos = pos(as_string, as_word)
+if li_pos < 1 then return 0	
+	
+if ab_field = true then
+	ls_filed = "." + as_word
+	li_pos = pos(as_string, ls_filed)
+	if li_pos < 1 then return 0
+	li_len = len(ls_filed) 
+	ls_str_last = trim(as_string)
+	do while li_pos > 0
+		ls_str_last = trim(mid(ls_str_last, li_pos + li_len +1))
+		if left(ls_str_last, 1) = ',' or len(ls_str_last) < 1 then
+			exit
+		end if
+		li_pos = pos(ls_str_last, ls_filed)
+	loop
+		
+end if
+return li_pos
+end function
+

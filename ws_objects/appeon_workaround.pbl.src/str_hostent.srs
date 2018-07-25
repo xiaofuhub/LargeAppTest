@@ -1,0 +1,9 @@
+﻿$PBExportHeader$str_hostent.srs
+global type str_hostent from structure
+	string		name
+	string		aliases
+	ulong		addrtype
+	ulong		length
+	string		addr_list
+end type
+

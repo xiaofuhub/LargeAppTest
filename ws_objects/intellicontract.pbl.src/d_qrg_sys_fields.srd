@@ -1,0 +1,68 @@
+﻿$PBExportHeader$d_qrg_sys_fields.srd
+$PBExportComments$[intellicontract] Used to retrieve the sys_fiels
+release 11.5;
+datawindow(units=0 timer_interval=0 color=33551856 brushmode=0 transparency=0 gradient.angle=0 gradient.color=8421504 gradient.focus=0 gradient.repetition.count=0 gradient.repetition.length=100 gradient.repetition.mode=0 gradient.scale=100 gradient.spread=100 gradient.transparency=0 picture.blur=0 picture.clip.bottom=0 picture.clip.left=0 picture.clip.right=0 picture.clip.top=0 picture.mode=0 picture.scale.x=100 picture.scale.y=100 picture.transparency=0 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.background=no print.preview.background=no print.preview.outline=yes hidegrayline=no showbackcoloronxp=no picture.file="" grid.lines=1 )
+header(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+summary(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+footer(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+detail(height=56 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+table(column=(type=char(50) updatewhereclause=yes name=field_name dbname="sys_fields.field_name" )
+ column=(type=char(100) updatewhereclause=yes name=sys_fields_field_mask dbname="sys_fields.field_mask" )
+ column=(type=char(50) updatewhereclause=yes name=sys_fields_field_name_allias dbname="sys_fields.field_name_allias" )
+ column=(type=long updatewhereclause=yes name=c_selected dbname="c_selected" )
+ column=(type=long updatewhereclause=yes name=selected dbname="selected" initial="1" values="	1/	0" )
+ column=(type=long update=yes updatewhereclause=yes name=profile_det_field_id dbname="ctx_report_profile_det.field_id" )
+ column=(type=long updatewhereclause=yes name=sys_fields_field_id dbname="sys_fields.field_id" )
+ column=(type=long updatewhereclause=yes key=yes name=ctx_rpt_prfl_det_id dbname="ctx_report_profile_det.ctx_rpt_prfl_det_id" initial="1" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=ctx_rpt_prfl_id dbname="ctx_report_profile_det.ctx_rpt_prfl_id" )
+ column=(type=long updatewhereclause=yes name=record_id dbname="record_id" )
+ retrieve="  SELECT distinct sys_fields.field_name,   
+         sys_fields.field_mask,   
+         sys_fields.field_name_allias,   
+         (sys_fields.field_id/ctx_report_profile_det.field_id) c_selected,   
+         0 selected,   
+         ctx_report_profile_det.field_id,   
+         sys_fields.field_id,   
+         ctx_report_profile_det.ctx_rpt_prfl_det_id,   
+         ctx_report_profile_det.ctx_rpt_prfl_id,   
+         0 record_id  
+    FROM {oj sys_fields LEFT OUTER JOIN ctx_report_profile_det ON sys_fields.field_id = ctx_report_profile_det.field_id}  
+   WHERE ( sys_fields.table_id in ( ( SELECT a.table_id FROM sys_tables a WHERE( a.table_name_allias in ( :as_table_alias ) ) ) )) AND  
+         (:al_profile_id is null OR  
+         ctx_report_profile_det.ctx_rpt_prfl_id = :al_profile_id) 
+
+union 
+/* add in columns that do included in above select but do not add them in again*/
+  SELECT distinct sys_fields.field_name,   
+         sys_fields.field_mask,   
+         sys_fields.field_name_allias,   
+         null , 
+         null,   
+         null,   
+         sys_fields.field_id,   
+         null,   
+         null,   
+         0 record_id  
+    FROM {oj sys_fields LEFT OUTER JOIN ctx_report_profile_det ON sys_fields.field_id = ctx_report_profile_det.field_id}  
+   WHERE ( sys_fields.table_id in ( ( SELECT a.table_id FROM sys_tables a WHERE a.table_name_allias in ( :as_table_alias ) ) ) ) and 
+     
+  sys_fields.field_name not in (SELECT d.field_name  
+  FROM  sys_fields d LEFT OUTER JOIN ctx_report_profile_det e ON d.field_id = e.field_id 
+  WHERE (d.table_id in ( ( SELECT a.table_id FROM sys_tables a WHERE a.table_name_allias in ( :as_table_alias ) ) ) ) AND  
+       (:al_profile_id is null OR  e.ctx_rpt_prfl_id = :al_profile_id)) 
+" update="ctx_report_profile_det" updatewhere=1 updatekeyinplace=yes arguments=(("as_table_alias", stringlist),("al_profile_id", number))  sort="sys_fields_field_id A " )
+text(band=header alignment="0" text="Sys Fields Field Name Allias" border="0" color="33554432" x="219" y="4" height="52" width="645" html.valueishtml="0"  name=sys_fields_field_name_allias_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="0" text="Selected" border="0" color="33554432" x="9" y="4" height="52" width="201" html.valueishtml="0"  name=selected_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="219" y="0" height="52" width="645" format="[general]" html.valueishtml="0"  name=sys_fields_field_name_allias visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=5 alignment="2" tabsequence=10 border="0" color="33554432" x="9" y="4" height="52" width="201" format="[general]" html.valueishtml="0"  name=selected visible="1" checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=yes checkbox.threed=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

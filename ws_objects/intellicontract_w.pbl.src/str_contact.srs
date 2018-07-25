@@ -1,0 +1,14 @@
+﻿$PBExportHeader$str_contact.srs
+global type str_contact from structure
+	string		as_last_name
+	string		as_first_name
+	string		as_middle_name
+	long		al_contact_id
+	long		al_contact_type
+	string		as_user_id
+	string		as_phone_number
+	string		as_contact_title
+	long		al_contact_department
+	string		as_email
+end type
+

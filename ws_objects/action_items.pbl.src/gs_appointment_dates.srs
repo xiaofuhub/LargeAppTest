@@ -1,0 +1,13 @@
+﻿$PBExportHeader$gs_appointment_dates.srs
+global type gs_appointment_dates from structure
+	date		d_appt_start
+	date		d_appt_end
+	integer		i_prior
+	integer		i_provisional
+	date		d_prov_start
+	date		d_prov_end
+	date		d_comm_date
+	long		n_comm_status
+	integer		i_birth_years
+end type
+

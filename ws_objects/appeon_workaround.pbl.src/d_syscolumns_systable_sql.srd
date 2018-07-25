@@ -1,0 +1,30 @@
+﻿$PBExportHeader$d_syscolumns_systable_sql.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=120 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=char(128) updatewhereclause=yes name=coltype dbname="v_syscolumns.coltype" )
+ column=(type=char(128) updatewhereclause=yes name=cname dbname="v_syscolumns.cname" )
+ column=(type=char(128) updatewhereclause=yes name=table_name dbname="v_systable.table_name" )
+ retrieve="SELECT v_syscolumns.coltype,
+		 v_syscolumns.cname,
+		 v_systable.table_name 
+ FROM v_syscolumns, v_systable  
+WHERE ( v_systable.table_name = v_syscolumns.tname )
+" )
+text(band=header alignment="2" text="V Syscolumns
+Coltype" border="0" color="33554432" x="9" y="8" height="104" width="2949" html.valueishtml="0"  name=v_syscolumns_coltype_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="V Syscolumns
+Cname" border="0" color="33554432" x="2967" y="8" height="104" width="2949" html.valueishtml="0"  name=v_syscolumns_cname_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="V Systable
+Table Name" border="0" color="33554432" x="5925" y="8" height="104" width="2949" html.valueishtml="0"  name=v_systable_table_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="9" y="8" height="64" width="2949" format="[general]" html.valueishtml="0"  name=coltype visible="1" edit.limit=128 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="2967" y="8" height="64" width="2949" format="[general]" html.valueishtml="0"  name=cname visible="1" edit.limit=128 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="5925" y="8" height="64" width="2949" format="[general]" html.valueishtml="0"  name=table_name visible="1" edit.limit=128 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

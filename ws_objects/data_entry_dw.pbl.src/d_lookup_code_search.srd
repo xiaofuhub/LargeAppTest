@@ -1,0 +1,15 @@
+﻿$PBExportHeader$d_lookup_code_search.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=60 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=char(30) updatewhereclause=yes name=code dbname="code_lookup.code" )
+ column=(type=char(75) updatewhereclause=yes name=description dbname="code_lookup.description" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"code_lookup~" ) COLUMN(NAME=~"code_lookup.code~") COLUMN(NAME=~"code_lookup.description~")WHERE(    EXP1 =~"code_lookup.lookup_code~"   OP =~"=~"    EXP2 =~":lookup_code~" ) ) ARG(NAME = ~"lookup_code~" TYPE = number) " arguments=(("lookup_code", number)) )
+text(band=header alignment="2" text="Code"border="0" color="0" x="5" y="4" height="52" width="366"  name=code_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Entity Name"border="0" color="0" x="375" y="4" height="52" width="1166"  name=entity_name_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="105" y="4" height="76" width="480" format="[general]"  name=code edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="2021" y="0" height="76" width="2400" format="[general]"  name=description edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

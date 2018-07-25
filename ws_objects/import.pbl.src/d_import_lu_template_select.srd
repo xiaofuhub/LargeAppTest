@@ -1,0 +1,17 @@
+﻿$PBExportHeader$d_import_lu_template_select.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=134217739 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=96 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes identity=yes name=ilm_id dbname="import_lookup_mapping.ilm_id" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=map_type dbname="import_lookup_mapping.map_type" values="Address	A/Code	C/Facility	F/" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=lookup_table dbname="import_lookup_mapping.lookup_table" )
+ column=(type=char(40) update=yes updatewhereclause=yes name=template_name dbname="import_lookup_mapping.template_name" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"import_lookup_mapping~" ) COLUMN(NAME=~"import_lookup_mapping.ilm_id~") COLUMN(NAME=~"import_lookup_mapping.map_type~") COLUMN(NAME=~"import_lookup_mapping.lookup_table~") COLUMN(NAME=~"import_lookup_mapping.template_name~")) " update="import_lookup_mapping" updatewhere=1 updatekeyinplace=yes )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="14" y="8" height="68" width="1079" format="[general]" html.valueishtml="0"  name=ilm_id visible="1" dddw.name=d_dddw_import_lu_template dddw.displaycolumn=template_name dddw.datacolumn=ilm_id dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

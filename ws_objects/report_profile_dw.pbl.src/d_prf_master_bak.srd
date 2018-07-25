@@ -1,0 +1,105 @@
+﻿$PBExportHeader$d_prf_master_bak.srd
+release 9;
+datawindow(units=0 timer_interval=60000 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 2 print.margin.left = 40 print.margin.right = 40 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 1 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=380 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=88 color="536870912" )
+detail(height=2188 color="536870912"  height.autosize=yes)
+table(column=(type=char(100) updatewhereclause=yes name=facility_facility_name dbname="facility.facility_name" )
+ column=(type=char(154) updatewhereclause=yes name=v_full_name_full_name dbname="v_full_name.full_name" )
+ column=(type=char(15) updatewhereclause=yes name=v_full_name_first_name dbname="v_full_name.first_name" )
+ column=(type=char(15) updatewhereclause=yes name=v_full_name_middle_name dbname="v_full_name.middle_name" )
+ column=(type=char(100) updatewhereclause=yes name=v_full_name_last_name dbname="v_full_name.last_name" )
+ column=(type=char(15) updatewhereclause=yes name=v_full_name_title dbname="v_full_name.title" )
+ column=(type=char(15) updatewhereclause=yes name=v_full_name_prof_suffix dbname="v_full_name.prof_suffix" )
+ column=(type=char(75) updatewhereclause=yes name=code_lookup_description dbname="code_lookup.description" )
+ column=(type=datetime updatewhereclause=yes name=apptmnt_start_date dbname="pd_affil_stat.apptmnt_start_date" )
+ column=(type=char(1) updatewhereclause=yes name=apptmnt_type dbname="pd_affil_stat.apptmnt_type" )
+ column=(type=datetime updatewhereclause=yes name=apptmnt_end_date dbname="pd_affil_stat.apptmnt_end_date" )
+ column=(type=datetime updatewhereclause=yes name=inital_appmnt_date dbname="pd_affil_stat.inital_appmnt_date" )
+ retrieve="  SELECT facility.facility_name,   
+         v_full_name.full_name,   
+         v_full_name.first_name,   
+         v_full_name.middle_name,   
+         v_full_name.last_name,   
+         v_full_name.title,   
+         v_full_name.prof_suffix,   
+         code_lookup.description,   
+         pd_affil_stat.apptmnt_start_date,   
+         pd_affil_stat.apptmnt_type,   
+         pd_affil_stat.apptmnt_end_date,   
+         pd_affil_stat.inital_appmnt_date  
+    FROM {oj pd_affil_stat  LEFT OUTER JOIN pd_affil_staff_cat  ON pd_affil_stat.rec_id = pd_affil_staff_cat.rec_id and pd_affil_staff_cat.requested = 1} LEFT OUTER JOIN code_lookup  ON pd_affil_staff_cat.staff_category = code_lookup.lookup_code,   
+         facility,   
+         v_full_name  
+   WHERE ( v_full_name.prac_id = pd_affil_stat.prac_id ) and  
+         ( pd_affil_stat.parent_facility_id = facility.facility_id ) and  
+         ( ( pd_affil_stat.parent_facility_id = :facility_id ) AND  
+         ( pd_affil_stat.prac_id = :prac_id ) AND  
+         ( pd_affil_stat.active_status in (1,4,3) ) )    
+" arguments=(("facility_id", number),("prac_id", number)) )
+compute(band=header alignment="0" expression="today()"border="0" color="0" x="82" y="92" height="76" width="407" format="mm/dd/yyyy" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+line(band=header x1="64" y1="44" x2="3378" y2="44"  name=l_1 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+line(band=header x1="64" y1="80" x2="3378" y2="80"  name=l_2 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+compute(band=header alignment="1" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="0" x="2953" y="92" height="76" width="416" format="[general]" html.valueishtml="0"  name=page visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=header alignment="2" expression="~"Profile for ~" +    v_full_name_first_name  + ~" ~" +  if( isnull(v_full_name_middle_name),'',v_full_name_middle_name +  ~" ~") + v_full_name_last_name  + ~", ~" +  v_full_name_prof_suffix"border="0" color="0" x="494" y="92" height="76" width="2441" format="[general]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=header alignment="1" expression="~"Staff Category:  ~" + code_lookup_description"border="0" color="0" x="2002" y="184" height="76" width="1367" format="[general]" html.valueishtml="0"  name=staff_cat visible="1~tif(isnull(code_lookup_description),0,1)"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Appointment Type:" border="0" color="0" x="78" y="184" height="64" width="480" html.valueishtml="0"  name=t_1 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="1" text="Initial Appt. Date:" border="0" color="0" x="965" y="184" height="64" width="503" html.valueishtml="0"  name=t_2 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Current Appointment Dates:" border="0" color="0" x="78" y="264" height="64" width="709" html.valueishtml="0"  name=t_3 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=header alignment="0" expression="if( apptmnt_type = ~"I~",~"Initial~",if( apptmnt_type = ~"R~",~"Reappointmentl~",~"~"))"border="0" color="0" x="571" y="184" height="64" width="366" format="[general]" html.valueishtml="0"  name=appt_type visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header id=9 alignment="0" tabsequence=32766 border="0" color="0" x="800" y="264" height="64" width="274" format="mm/dd/yy" html.valueishtml="0"  name=apptmnt_start_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header id=12 alignment="0" tabsequence=32766 border="0" color="0" x="1486" y="184" height="64" width="274" format="mm/dd/yy" html.valueishtml="0"  name=inital_appmnt_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=header alignment="0" expression="'to '"border="0" color="0" x="1079" y="264" height="64" width="96" format="[general]" html.valueishtml="0"  name=compute_3 visible="1~tif( isNull( apptmnt_end_date ), 0, 1 )"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header id=11 alignment="0" tabsequence=32766 border="0" color="0" x="1184" y="264" height="64" width="274" format="mm/dd/yy" html.valueishtml="0"  name=apptmnt_end_date visible="1~tif( isNull( apptmnt_end_date ), 0, 1 )" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+line(band=header x1="64" y1="336" x2="3378" y2="336"  name=l_3 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+line(band=header x1="64" y1="372" x2="3378" y2="372"  name=l_4 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+report(band=detail dataobject="d_prf_personal" x="55" y="4" height="44" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id")) trail_footer = yes  name=rpt_1 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_license" x="55" y="164" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id")) trail_footer = yes  name=rpt_3 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_csr" x="55" y="216" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id")) trail_footer = yes  name=rpt_4 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_references" x="55" y="424" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id")) trail_footer = yes  name=rpt_8 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_insurance" x="55" y="476" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id")) trail_footer = yes  name=rpt_9 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_societies" x="55" y="580" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id")) trail_footer = yes  name=rpt_11 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_other_ids" x="55" y="684" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id")) trail_footer = yes  name=rpt_13 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_languages" x="55" y="840" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id")) trail_footer = yes  name=rpt_16 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_ecfmg" x="55" y="892" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id")) trail_footer = yes  name=rpt_18 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_claims" x="55" y="1048" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id")) trail_footer = yes  name=rpt_21 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_contracts" x="55" y="1100" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id")) trail_footer = yes  name=rpt_22 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_cpr" x="55" y="1152" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id")) trail_footer = yes  name=rpt_23 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_ansth_contracts" x="55" y="1204" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id")) trail_footer = yes  name=rpt_24 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_sanctions" x="55" y="1256" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id")) trail_footer = yes  name=rpt_25 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_att_quest_master" x="55" y="1308" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id"),("facility_id")) trail_footer = yes  name=rpt_26 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_group_covering_providers" x="55" y="1360" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id"),("facility_id")) trail_footer = yes  name=rpt_27 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_profile_signature" x="55" y="1412" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id")) trail_footer = yes  name=rpt_28 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_affil_stat" x="55" y="1464" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id")) trail_footer = yes  name=rpt_29 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_specialties_bbbs_oki" x="55" y="1516" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id"),("facility_id")) trail_footer = yes  name=rpt_30 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_claims_fs" x="55" y="1568" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id"),("facility_id")) trail_footer = yes  name=rpt_31 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_office_no_hours" x="55" y="1620" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id"),("facility_id")) trail_footer = yes  name=rpt_32 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_education" x="55" y="268" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id")) trail_footer = yes  name=rpt_5 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_hospital_affil" x="55" y="320" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=((" facility_id "),(" prac_id ")) trail_footer = yes  name=rpt_6 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_training" x="55" y="372" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id")) trail_footer = yes  name=rpt_7 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_specialties_new" x="55" y="632" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("facility_id"),("prac_id")) trail_footer = yes  name=rpt_12 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_other_affil" x="55" y="736" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id")) trail_footer = yes  name=rpt_14 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_accademic" x="55" y="788" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id")) trail_footer = yes  name=rpt_15 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_special_certs" x="55" y="944" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id")) trail_footer = yes  name=rpt_19 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_postgrad_train" x="55" y="996" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id")) trail_footer = yes  name=rpt_20 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_specialties_dates" x="55" y="1880" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("facility_id"),("prac_id")) trail_footer = yes  name=rpt_37 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_other_affil_dates" x="55" y="1932" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id")) trail_footer = yes  name=rpt_38 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_academic_dates" x="55" y="1984" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id")) trail_footer = yes  name=rpt_39 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_special_certs_dates" x="55" y="2036" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id")) trail_footer = yes  name=rpt_40 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_license_dates" x="55" y="2088" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id")) trail_footer = yes  name=rpt_41 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_prof_experience_dates" x="55" y="1828" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id")) trail_footer = yes  name=rpt_36 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_education_dates" x="55" y="1672" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id")) trail_footer = yes  name=rpt_33 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_hospital_affil_dates" x="55" y="1724" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("facility_id "),("prac_id ")) trail_footer = yes  name=rpt_34 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_training_dates" x="55" y="1776" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id")) trail_footer = yes  name=rpt_35 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_att_quest_new" x="55" y="2140" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("facility_id"),("prac_id")) trail_footer = yes  name=rpt_42 visible="1"  slideup=allabove )
+text(band=footer alignment="0" text="Facility:" border="0" color="0" x="55" y="12" height="60" width="3333" html.valueishtml="0"  name=t_4 visible="1"  slideup=directlyabove  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=footer alignment="0" text="" border="0" color="0" x="274" y="12" height="60" width="3333" html.valueishtml="0"  name=selected_facility_t visible="1"  slideup=directlyabove  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+report(band=detail dataobject="d_prf_billing_address" x="55" y="112" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("facility_id"),("prac_id")) trail_footer = yes  name=rpt_17 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_prof_experience" x="55" y="528" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("prac_id")) trail_footer = yes  name=rpt_10 visible="1"  slideup=allabove )
+report(band=detail dataobject="d_prf_office" x="55" y="60" height="40" width="3333" border="2"  height.autosize=yes criteria="" nest_arguments=(("facility_id"),("prac_id")) trail_footer = yes  name=rpt_2 visible="1"  slideup=allabove )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

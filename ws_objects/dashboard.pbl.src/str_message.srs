@@ -1,0 +1,13 @@
+﻿$PBExportHeader$str_message.srs
+global type str_message from structure
+	string		users[]
+	string		roles[]
+	string		message_body
+	datetime		send_date
+	long		message_id
+	long		root_message_id
+	string		sender
+	integer		is_read
+	string		ss_flag
+end type
+

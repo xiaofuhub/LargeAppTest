@@ -1,0 +1,6 @@
+﻿$PBExportHeader$str_global_search.srs
+global type str_global_search from structure
+	string		as_search_content
+	string		as_search_option_all
+end type
+

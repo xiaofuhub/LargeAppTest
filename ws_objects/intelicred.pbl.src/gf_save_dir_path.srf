@@ -1,0 +1,31 @@
+﻿$PBExportHeader$gf_save_dir_path.srf
+global type gf_save_dir_path from function_object
+end type
+
+forward prototypes
+global subroutine gf_save_dir_path (string as_dir_path)
+end prototypes
+
+global subroutine gf_save_dir_path (string as_dir_path);//////////////////////////////////////////////////////////////////////
+// $<function>gf_save_dir_path()
+// $<arguments>
+//		value	string	as_dir_path		
+// $<returns> (none)
+// $<description>
+// $<description>
+//////////////////////////////////////////////////////////////////////
+// $<add> 04/03/2009 by Jervis
+//////////////////////////////////////////////////////////////////////
+
+String ls_dir_path
+
+//Save the select dir path
+If as_dir_path <> '' Then //Means selected OK/Save button on Dialog window.
+	gs_select_dir_path = GetCurrentDirectory()
+End If
+
+//Set current path to original path, otherwise some picture don't display.
+ChangeDirectory(gs_current_path)
+
+end subroutine
+

@@ -1,0 +1,43 @@
+﻿$PBExportHeader$of_active_status_value.srf
+global type of_active_status_value from function_object
+end type
+
+forward prototypes
+global function string of_active_status_value (string as_status, string as_table)
+end prototypes
+
+global function string of_active_status_value (string as_status, string as_table);//Start Code Change ----06.14.2010 #V10 maha - function created to get a text value for acvtive status
+
+string ls_val  
+
+ls_val = as_status //in case another value is sent
+
+if pos(as_table,"pd_affil_stat",1) > 0 then
+	choose case as_status
+		case '0'
+			ls_val = "History"
+		case '1'
+			ls_val = "Active"
+		case '2'
+			ls_val = "Purge"
+		case '3'
+			ls_val = "Inactive"
+		case '4'
+			ls_val = "Pending"
+	end choose
+else
+	choose case as_status
+		case '0'
+			ls_val = "Inactive"
+		case '1'
+			ls_val = "Active"
+		case '2'
+			ls_val = "Historical"
+	end choose
+end if
+
+return ls_val
+
+
+end function
+

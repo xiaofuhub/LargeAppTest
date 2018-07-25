@@ -1,0 +1,68 @@
+﻿$PBExportHeader$d_create_custom_screen_field_names.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=79741120 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=selected dbname="selected" )
+ column=(type=long updatewhereclause=yes name=select_for_view dbname="select_for_view" values="	1/	0" )
+ column=(type=char(128) updatewhereclause=yes name=tname dbname="syscolumns.tname" )
+ column=(type=long updatewhereclause=yes name=colno dbname="syscolumns.colno" )
+ column=(type=char(128) updatewhereclause=yes name=field_name_orig dbname="syscolumns.cname" )
+ column=(type=long updatewhereclause=yes name=length dbname="syscolumns.length" )
+ column=(type=char(128) updatewhereclause=yes name=coltype dbname="syscolumns.coltype" )
+ column=(type=char(0) updatewhereclause=yes name=lookup_type dbname="lookup_type" values="Code	C/Address	A/None	N/" )
+ column=(type=char(128) updatewhereclause=yes name=field_name_allias dbname="field_name_allias" )
+ column=(type=char(0) updatewhereclause=yes name=lookup_field dbname="lookup_field" initial="N" values="Yes	Y/No	N/" )
+ column=(type=char(0) updatewhereclause=yes name=lookup_code dbname="lookup_code" )
+ column=(type=char(0) updatewhereclause=yes name=lookup_field_name dbname="lookup_field_name" )
+ column=(type=long updatewhereclause=yes name=tab_order dbname="tab_order" initial="0" )
+ column=(type=long updatewhereclause=yes name=field_len dbname="field_len" )
+ column=(type=char(1) updatewhereclause=yes name=required dbname="required" values="Yes	Y/No	N/" )
+ retrieve="  SELECT selected = 0,   
+         select_for_view = 0,   
+         sys.syscolumns.tname,   
+         sys.syscolumns.colno,   
+         sys.syscolumns.cname,   
+         sys.syscolumns.length,   
+         sys.syscolumns.coltype,   
+         lookup_type='',   
+         field_name_allias=sys.syscolumns.cname,   
+         lookup_field='',   
+         lookup_code='',   
+         lookup_field_name='',   
+         tab_order=0,   
+         field_len=length,   
+         required = 'Y'  
+    FROM sys.syscolumns  
+   WHERE sys.syscolumns.tname = :table_name    
+" arguments=(("table_name", string))  sort="colno A " )
+text(band=header alignment="2" text="Field Name" border="6" color="0" x="9" y="8" height="56" width="608" html.valueishtml="0"  name=t_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="2" text="Length" border="6" color="0" x="626" y="8" height="56" width="192" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="2" text="Coltype" border="6" color="0" x="827" y="8" height="56" width="361" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="2" text="Field Label" border="6" color="0" x="1198" y="8" height="56" width="503" html.valueishtml="0"  name=t_4 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="0" text="Length" border="6" color="0" x="1710" y="8" height="56" width="169" html.valueishtml="0"  name=t_5 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="2" text="Lookup ?" border="6" color="0" x="1888" y="8" height="56" width="242" html.valueishtml="0"  name=t_6 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="2" text="Lookup Type" border="6" color="0" x="2139" y="8" height="56" width="334" html.valueishtml="0"  name=t_7 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="2" text="Lookup Name" border="6" color="0" x="2482" y="8" height="56" width="517" html.valueishtml="0"  name=t_8 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="2" text="Lookup Display Name" border="6" color="0" x="3008" y="8" height="56" width="1138" html.valueishtml="0"  name=t_9 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="0" text="Tab Order" border="6" color="0" x="4155" y="8" height="56" width="265" html.valueishtml="0"  name=t_10 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="0" text="Tab Order" border="6" color="0" x="4155" y="8" height="56" width="265" html.valueishtml="0"  name=t_11 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="2" text="Required" border="6" color="0" x="4430" y="8" height="56" width="288" html.valueishtml="0"  name=t_12 visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=9 alignment="0" tabsequence=10 border="5" color="0" x="1198" y="8" height="56" width="503" format="[general]" html.valueishtml="0"  name=field_name_allias visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=14 alignment="0" tabsequence=20 border="5" color="0" x="1710" y="8" height="56" width="169" format="[general]" html.valueishtml="0"  name=field_len visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=10 alignment="0" tabsequence=30 border="5" color="0" x="1888" y="8" height="56" width="242" format="[general]" html.valueishtml="0"  name=lookup_field visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.useasborder=yes ddlb.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=8 alignment="0" tabsequence=40 border="5" color="0" x="2139" y="8" height="56" width="334" format="[general]" html.valueishtml="0"  name=lookup_type visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.useasborder=yes ddlb.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=11 alignment="0" tabsequence=50 border="5" color="0" x="2482" y="8" height="56" width="517" format="[general]" html.valueishtml="0"  name=lookup_code visible="1" dddw.name=d_dddw_lookup_select dddw.displaycolumn=lookup_name dddw.datacolumn=lookup_name dddw.percentwidth=150 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.vscrollbar=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=12 alignment="0" tabsequence=60 border="5" color="0" x="3008" y="8" height="56" width="1138" format="[general]" html.valueishtml="0"  name=lookup_field_name visible="1" dddw.name=d_dddw_lookup_fld_nms_address dddw.displaycolumn=field_name dddw.datacolumn=field_name dddw.percentwidth=150 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.vscrollbar=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=13 alignment="0" tabsequence=70 border="5" color="0" x="4155" y="8" height="56" width="265" format="[general]" html.valueishtml="0"  name=tab_order visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=15 alignment="0" tabsequence=80 border="5" color="0" x="4430" y="8" height="60" width="288" format="[general]" html.valueishtml="0"  name=required visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.useasborder=yes ddlb.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="Lower(field_name_orig)"border="0" color="0" x="9" y="8" height="64" width="608" format="[general]" html.valueishtml="0"  name=field_name visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="626" y="8" height="64" width="192" format="[general]" html.valueishtml="0"  name=length visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="827" y="8" height="64" width="361" format="[general]" html.valueishtml="0"  name=coltype visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

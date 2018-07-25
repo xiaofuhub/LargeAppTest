@@ -1,0 +1,27 @@
+﻿$PBExportHeader$f_showwait.srf
+global type f_showwait from function_object
+end type
+
+forward prototypes
+global function integer f_showwait (string as_message)
+end prototypes
+
+global function integer f_showwait (string as_message);//////////////////////////////////////////////////////////////////////
+// $<function>f_showwait()
+// $<arguments>
+//			value  	string 		as_message: The message to be displayed.
+// $<returns> integer
+// $<description>Show the waiting window and close it after finish current work.
+// $<description>
+//////////////////////////////////////////////////////////////////////
+// $<add> 01.26.2007 by Frank.Gui
+//////////////////////////////////////////////////////////////////////
+
+Openwithparm(w_appeon_gifofwait, as_message)
+
+//Close it after finish current work. POST is very important.
+post f_closewait()
+
+return 1
+end function
+

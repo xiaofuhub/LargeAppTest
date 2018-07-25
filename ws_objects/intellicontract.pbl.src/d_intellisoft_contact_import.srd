@@ -1,0 +1,65 @@
+﻿$PBExportHeader$d_intellisoft_contact_import.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=136 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=96 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=facility_id dbname="app_facility.facility_id" )
+ column=(type=char(150) updatewhereclause=yes name=facility_name dbname="app_facility.facility_name" )
+ column=(type=char(150) updatewhereclause=yes name=street dbname="app_facility.street" )
+ column=(type=char(150) updatewhereclause=yes name=street_2 dbname="app_facility.street_2" )
+ column=(type=char(35) updatewhereclause=yes name=city dbname="app_facility.city" )
+ column=(type=char(2) updatewhereclause=yes name=state dbname="app_facility.state" )
+ column=(type=char(75) updatewhereclause=yes name=zip dbname="ctx_contacts.custom_1" )
+ column=(type=char(150) updatewhereclause=yes name=contact dbname="ctx_contacts.street_1" )
+ column=(type=char(25) updatewhereclause=yes name=phone dbname="app_facility.phone" )
+ column=(type=char(100) updatewhereclause=yes name=email_address dbname="app_facility.email_address" )
+ column=(type=char(10) updatewhereclause=yes name=ext dbname="app_facility.ext" )
+ column=(type=char(50) updatewhereclause=yes name=contact_title dbname="ctx_contacts.contact_title" )
+ column=(type=char(25) updatewhereclause=yes name=fax dbname="app_facility.fax" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"app_facility~" )  TABLE(NAME=~"ctx_contacts~" ) COLUMN(NAME=~"app_facility.facility_id~") COLUMN(NAME=~"app_facility.facility_name~") COLUMN(NAME=~"app_facility.street~") COLUMN(NAME=~"app_facility.street_2~") COLUMN(NAME=~"app_facility.city~") COLUMN(NAME=~"app_facility.state~") COLUMN(NAME=~"ctx_contacts.custom_1~") COLUMN(NAME=~"ctx_contacts.street_1~") COLUMN(NAME=~"app_facility.phone~") COLUMN(NAME=~"app_facility.email_address~") COLUMN(NAME=~"app_facility.ext~") COLUMN(NAME=~"ctx_contacts.contact_title~") COLUMN(NAME=~"app_facility.fax~")    JOIN (LEFT=~"ctx_contacts.facility_id~"    OP =~"=~"RIGHT=~"app_facility.facility_id~" )) " )
+text(band=header alignment="2" text="App Facility
+Facility Id" border="6" color="33554432" x="18" y="16" height="104" width="274" html.valueishtml="0"  name=app_facility_facility_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="App Facility
+Facility Name" border="6" color="33554432" x="311" y="16" height="104" width="3451" html.valueishtml="0"  name=app_facility_facility_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="App Facility
+Street" border="6" color="33554432" x="3781" y="16" height="104" width="3451" html.valueishtml="0"  name=app_facility_street_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="App Facility
+Street 2" border="6" color="33554432" x="7250" y="16" height="104" width="3447" html.valueishtml="0"  name=app_facility_street_2_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="App Facility
+City" border="6" color="33554432" x="10715" y="16" height="104" width="823" html.valueishtml="0"  name=app_facility_city_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="App Facility
+State" border="6" color="33554432" x="11557" y="16" height="104" width="247" html.valueishtml="0"  name=app_facility_state_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="App Facility
+Zip" border="6" color="33554432" x="11822" y="16" height="104" width="297" html.valueishtml="0"  name=app_facility_zip_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Contacts
+Street 1" border="6" color="33554432" x="12137" y="16" height="104" width="3451" html.valueishtml="0"  name=ctx_contacts_street_1_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="App Facility
+Phone" border="6" color="33554432" x="15607" y="16" height="104" width="389" html.valueishtml="0"  name=app_facility_phone_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="App Facility
+Email Address" border="6" color="33554432" x="16014" y="16" height="104" width="2309" html.valueishtml="0"  name=app_facility_email_address_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="App Facility
+Ext" border="6" color="33554432" x="18341" y="16" height="104" width="251" html.valueishtml="0"  name=app_facility_ext_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Contacts
+Contact Title" border="6" color="33554432" x="18610" y="16" height="104" width="1166" html.valueishtml="0"  name=ctx_contacts_contact_title_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="App Facility
+Fax" border="6" color="33554432" x="19794" y="16" height="104" width="389" html.valueishtml="0"  name=app_facility_fax_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="5" color="33554432" x="18" y="16" height="64" width="274" format="[general]" html.valueishtml="0"  name=facility_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="33554432" x="311" y="16" height="64" width="3451" format="[general]" html.valueishtml="0"  name=facility_name visible="1" edit.limit=150 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="33554432" x="3781" y="16" height="64" width="3451" format="[general]" html.valueishtml="0"  name=street visible="1" edit.limit=150 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="33554432" x="7250" y="16" height="64" width="3447" format="[general]" html.valueishtml="0"  name=street_2 visible="1" edit.limit=150 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="5" color="33554432" x="10715" y="16" height="64" width="823" format="[general]" html.valueishtml="0"  name=city visible="1" edit.limit=35 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="5" color="33554432" x="11557" y="16" height="64" width="69" format="[general]" html.valueishtml="0"  name=state visible="1" edit.limit=2 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="5" color="33554432" x="12137" y="16" height="64" width="3451" format="[general]" html.valueishtml="0"  name=contact visible="1" edit.limit=150 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="5" color="33554432" x="15607" y="16" height="64" width="389" format="[general]" html.valueishtml="0"  name=phone visible="1" edit.limit=25 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="5" color="33554432" x="16014" y="16" height="64" width="2309" format="[general]" html.valueishtml="0"  name=email_address visible="1" edit.limit=100 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="5" color="33554432" x="18341" y="16" height="64" width="251" format="[general]" html.valueishtml="0"  name=ext visible="1" edit.limit=10 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="5" color="33554432" x="18610" y="16" height="64" width="1166" format="[general]" html.valueishtml="0"  name=contact_title visible="1" edit.limit=50 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="5" color="33554432" x="19794" y="16" height="64" width="389" format="[general]" html.valueishtml="0"  name=fax visible="1" edit.limit=25 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="5" color="33554432" x="11813" y="16" height="52" width="297" format="[general]" html.valueishtml="0"  name=zip visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

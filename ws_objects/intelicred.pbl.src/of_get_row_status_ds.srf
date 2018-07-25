@@ -1,0 +1,26 @@
+﻿$PBExportHeader$of_get_row_status_ds.srf
+global type of_get_row_status_ds from function_object
+end type
+
+forward prototypes
+global function string of_get_row_status_ds (long al_row, n_ds adw_dw, integer ai_col)
+end prototypes
+
+global function string of_get_row_status_ds (long al_row, n_ds adw_dw, integer ai_col);//Start Code Change ----11.04.2009 #V10 maha - created to reduce getitem status code in other functions
+//if the ai_col is passed as 0 it will test the row
+string ret
+
+if adw_dw.getitemstatus(al_row,ai_col,primary!) = new! then
+	ret = "N"
+elseif adw_dw.getitemstatus(al_row, ai_col, primary!) = newmodified! then
+	ret = "NM"
+elseif adw_dw.getitemstatus(al_row, ai_col, primary!) = datamodified! then
+	ret = "D"
+elseif adw_dw.getitemstatus(al_row, ai_col, primary!) = notmodified! then
+	ret = "NOT"
+end if
+
+return ret
+
+end function
+

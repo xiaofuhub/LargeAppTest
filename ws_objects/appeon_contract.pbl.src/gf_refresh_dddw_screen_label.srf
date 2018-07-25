@@ -1,0 +1,167 @@
+﻿$PBExportHeader$gf_refresh_dddw_screen_label.srf
+global type gf_refresh_dddw_screen_label from function_object
+end type
+
+forward prototypes
+global subroutine gf_refresh_dddw_screen_label (str_tabpagescreen astr_screen, datawindowchild adwc_child)
+end prototypes
+
+global subroutine gf_refresh_dddw_screen_label (str_tabpagescreen astr_screen, datawindowchild adwc_child);//====================================================================
+// Function: gf_Refresh_dddw_ScreenLabel()
+//--------------------------------------------------------------------
+// Description:
+//--------------------------------------------------------------------
+// Arguments:
+// 	value	str_tabpagescreen 	astr_Screen	
+// 	value	datawindowchild		adwc_child	
+//--------------------------------------------------------------------
+// Returns:  (none)
+//--------------------------------------------------------------------
+// Author:	Scofield		Date: 2009-03-16
+//--------------------------------------------------------------------
+//	Copyright (c) 1999-2009 Appeon, All rights reserved.
+//--------------------------------------------------------------------
+// Modify History:
+//
+//====================================================================
+
+long		ll_Cycle,ll_RowCnts,ll_Pos,ll_View_ID,ll_Screen_ID
+long		ll_ts_id,ll_parts_id,ll_FoundRow,ll_Row,ll_ColCycle,ll_ColCnts
+long		ll_TabPageCycle,ll_ScreenCycle,ll_TabPageCnts,ll_ScreenCnts
+String	ls_LabelText,ls_PageName,ls_TabPage_ts_id,ls_Screen_ts_id,ls_NeedCol[],ls_ColName
+Boolean	lb_Remain,lb_Check,lb_NeedDestroy
+
+DataStore	lds_Tabpage_Screen
+
+CONSTANT STRING SEPMARK = "->"
+CONSTANT STRING SEPCHAR = ","
+
+if IsNull(adwc_Child) then Return
+adwc_Child.Reset()
+
+lds_Tabpage_Screen = astr_Screen.ads_TabPageScreen
+
+if IsValid(lds_Tabpage_Screen) then
+	lb_NeedDestroy = false
+	
+	ls_NeedCol[UpperBound(ls_NeedCol) + 1] = "ctx_tabpage_screen_ts_id"
+	ls_NeedCol[UpperBound(ls_NeedCol) + 1] = "ctx_tabpage_screen_parent_id"
+	ls_NeedCol[UpperBound(ls_NeedCol) + 1] = "ctx_tabpage_screen_screen_id"
+	ls_NeedCol[UpperBound(ls_NeedCol) + 1] = "label_text"
+
+	ls_ColName = SEPCHAR
+	ll_ColCnts = Long(lds_Tabpage_Screen.Describe("DataWindow.Column.Count"))
+	for ll_ColCycle = 1 to ll_ColCnts
+		ls_ColName += lds_Tabpage_Screen.Describe("#" + String(ll_ColCycle) + ".Name") + SEPCHAR
+	next
+	
+	ll_ColCnts = UpperBound(ls_NeedCol)
+	for ll_ColCycle = 1 to ll_ColCnts
+		if Pos(ls_ColName,SEPCHAR + ls_NeedCol[ll_ColCycle] + SEPCHAR) <= 0 then
+			MessageBox("Waring",ls_NeedCol[ll_ColCycle] + " does not exist in datastore. Failed to initialize dddw.",Exclamation!)
+			Return
+		end if
+	next
+	
+	ll_RowCnts = lds_Tabpage_Screen.RowCount()
+	for ll_Cycle = 1 to ll_RowCnts
+		ll_Screen_ID = lds_Tabpage_Screen.GetItemNumber(ll_Cycle,"ctx_tabpage_screen_screen_id")
+		if IsNull(ll_Screen_ID) or ll_Screen_ID <= 0 then CONTINUE
+		ls_LabelText = lds_Tabpage_Screen.GetItemString(ll_Cycle,"label_text")
+
+		ll_parts_id = lds_Tabpage_Screen.GetItemNumber(ll_Cycle,"ctx_tabpage_screen_parent_id")
+		do while ll_parts_id > 0
+			ll_FoundRow = lds_Tabpage_Screen.Find("ctx_tabpage_screen_ts_id = " + String(ll_parts_id),1,ll_RowCnts)
+			if ll_FoundRow > 0 then
+				ls_LabelText = lds_Tabpage_Screen.GetItemString(ll_FoundRow,"label_text") + SEPMARK + ls_LabelText
+				ll_parts_id = lds_Tabpage_Screen.GetItemNumber(ll_FoundRow,"ctx_tabpage_screen_parent_id")
+			else
+				Exit
+			end if
+		loop
+		
+		if ll_parts_id <= 0 then
+			ll_Row = adwc_Child.InsertRow(0)
+			adwc_Child.SetItem(ll_Row,"al_screen_id",ll_Screen_ID)
+			adwc_Child.SetItem(ll_Row,"as_labeltext",ls_LabelText)
+		end if
+	next
+else
+	lb_NeedDestroy = true
+	lds_Tabpage_Screen = Create DataStore
+	lds_Tabpage_Screen.DataObject = "d_tabpage_screen_label"
+	lds_Tabpage_Screen.SetTransObject(SQLCA)
+	ll_RowCnts = lds_Tabpage_Screen.Retrieve(astr_Screen.al_view_id)
+	
+	ll_TabPageCnts = UpperBound(astr_Screen.as_TabPage)
+	ll_ScreenCnts = UpperBound(astr_Screen.as_Screen)
+	
+	if ll_TabPageCnts <> 0 or ll_ScreenCnts <> 0 then
+		ls_TabPage_ts_id = SEPCHAR
+		for ll_TabPageCycle = 1 to ll_TabPageCnts
+			ls_PageName = Trim(astr_Screen.as_TabPage[ll_TabPageCycle])
+			if IsNull(ls_PageName) or ls_PageName = "" then CONTINUE
+			ll_FoundRow = lds_Tabpage_Screen.Find("ctx_tabpage_screen_tabpage_name = '" + ls_PageName + "'",1,ll_RowCnts)
+			if ll_FoundRow > 0 then
+				ll_ts_id = lds_Tabpage_Screen.GetItemNumber(ll_FoundRow,"ctx_tabpage_screen_ts_id")
+				ls_TabPage_ts_id += String(ll_ts_id) + SEPCHAR
+			end if
+		next
+		ls_Screen_ts_id = SEPCHAR
+		for ll_ScreenCycle = 1 to ll_ScreenCnts
+			ll_Screen_ID = astr_Screen.as_Screen[ll_ScreenCycle]
+			if IsNull(ll_Screen_ID) or ll_Screen_ID <= 0 then CONTINUE
+			ll_FoundRow = lds_Tabpage_Screen.Find("ctx_tabpage_screen_screen_id = " + String(ll_Screen_ID),1,ll_RowCnts)
+			if ll_FoundRow > 0 then
+				ll_ts_id = lds_Tabpage_Screen.GetItemNumber(ll_FoundRow,"ctx_tabpage_screen_ts_id")
+				ls_Screen_ts_id += String(ll_ts_id) + SEPCHAR
+			end if
+		next
+		lb_Check = true
+	else
+		lb_Check = false
+	end if
+	
+	for ll_Cycle = 1 to ll_RowCnts
+		ll_View_ID = lds_Tabpage_Screen.GetItemNumber(ll_Cycle,"ctx_screen_data_view_id")
+		if IsNull(ll_View_ID) or ll_View_ID = 0 then CONTINUE
+		
+		lb_Remain = Not lb_Check
+		
+		ll_ts_id = lds_Tabpage_Screen.GetItemNumber(ll_Cycle,"ctx_tabpage_screen_ts_id")
+		if Pos(ls_Screen_ts_id,SEPCHAR + String(ll_ts_id) + SEPCHAR) > 0 then
+			lb_Remain = true
+		end if
+		
+		ll_Screen_ID = lds_Tabpage_Screen.GetItemNumber(ll_Cycle,"ctx_tabpage_screen_screen_id")
+		ls_LabelText = lds_Tabpage_Screen.GetItemString(ll_Cycle,"label_text")
+		
+		ll_parts_id = lds_Tabpage_Screen.GetItemNumber(ll_Cycle,"ctx_tabpage_screen_parent_id")
+		do while ll_parts_id > 0
+			ll_FoundRow = lds_Tabpage_Screen.Find("ctx_tabpage_screen_ts_id = " + String(ll_parts_id),1,ll_RowCnts)
+			if ll_FoundRow > 0 then
+				if lb_Check and Pos(ls_TabPage_ts_id,SEPCHAR + String(ll_parts_id) + SEPCHAR) > 0 then lb_Remain = true
+				ls_LabelText = lds_Tabpage_Screen.GetItemString(ll_FoundRow,"label_text") + SEPMARK + ls_LabelText
+				ll_parts_id = lds_Tabpage_Screen.GetItemNumber(ll_FoundRow,"ctx_tabpage_screen_parent_id")
+			else
+				Exit
+			end if
+		loop
+		
+		if lb_Remain and ll_parts_id <= 0 then
+			ll_Row = adwc_Child.InsertRow(0)
+			adwc_Child.SetItem(ll_Row,"al_screen_id",ll_Screen_ID)
+			adwc_Child.SetItem(ll_Row,"as_labeltext",ls_LabelText)
+		end if
+	next
+end if
+
+adwc_Child.SetSort("as_labeltext A")
+adwc_Child.Sort()
+
+if lb_NeedDestroy then
+	Destroy lds_Tabpage_Screen
+end if
+
+end subroutine
+

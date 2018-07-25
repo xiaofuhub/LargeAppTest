@@ -1,0 +1,59 @@
+﻿$PBExportHeader$d_prf_master_test.srd
+release 6;
+datawindow(units=0 timer_interval=60000 color=16777215 processing=0 print.documentname="" print.orientation = 2 print.margin.left = 40 print.margin.right = 40 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 1 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=412 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=88 color="536870912" )
+detail(height=0 color="536870912"  height.autosize=yes)
+table(column=(type=char(100) updatewhereclause=yes name=facility_facility_name dbname="facility_name" )
+ column=(type=char(153) updatewhereclause=yes name=v_full_name_full_name dbname="full_name" )
+ column=(type=char(15) updatewhereclause=yes name=v_full_name_first_name dbname="first_name" )
+ column=(type=char(15) updatewhereclause=yes name=v_full_name_middle_name dbname="middle_name" )
+ column=(type=char(100) updatewhereclause=yes name=v_full_name_last_name dbname="last_name" )
+ column=(type=char(15) updatewhereclause=yes name=v_full_name_title dbname="title" )
+ column=(type=char(15) updatewhereclause=yes name=v_full_name_prof_suffix dbname="prof_suffix" )
+ column=(type=char(75) updatewhereclause=yes name=code_lookup_description dbname="description" )
+ column=(type=datetime updatewhereclause=yes name=apptmnt_start_date dbname="apptmnt_start_date" )
+ column=(type=char(1) updatewhereclause=yes name=apptmnt_type dbname="apptmnt_type" )
+ column=(type=datetime updatewhereclause=yes name=apptmnt_end_date dbname="apptmnt_end_date" )
+ column=(type=datetime updatewhereclause=yes name=inital_appmnt_date dbname="inital_appmnt_date" )
+ retrieve="  SELECT facility.facility_name,   
+         v_full_name.full_name,   
+         v_full_name.first_name,   
+         v_full_name.middle_name,   
+         v_full_name.last_name,   
+         v_full_name.title,   
+         v_full_name.prof_suffix,   
+         code_lookup.description,   
+         pd_affil_stat.apptmnt_start_date,   
+         pd_affil_stat.apptmnt_type,   
+         pd_affil_stat.apptmnt_end_date,   
+         pd_affil_stat.inital_appmnt_date  
+    FROM {oj {oj pd_affil_stat  LEFT OUTER JOIN pd_affil_staff_cat  ON pd_affil_stat.rec_id = pd_affil_staff_cat.rec_id and pd_affil_staff_cat.requested = 1} LEFT OUTER JOIN code_lookup  ON pd_affil_staff_cat.staff_category = code_lookup.lookup_code},   
+         facility,   
+         v_full_name  
+   WHERE ( v_full_name.prac_id = pd_affil_stat.prac_id ) and  
+         ( pd_affil_stat.parent_facility_id = facility.facility_id ) and  
+         ( ( pd_affil_stat.parent_facility_id = :facility_id ) AND  
+         ( pd_affil_stat.prac_id = :prac_id ) AND  
+         ( pd_affil_stat.active_status in (1,4,3) ) )    
+" arguments=(("facility_id", number),("prac_id", number)) )
+compute(band=header alignment="0" expression="today()"border="0" color="0" x="82" y="92" height="76" width="407" format="mm/dd/yyyy"  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+line(band=header x1="64" y1="44" x2="3378" y2="44" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+line(band=header x1="64" y1="80" x2="3378" y2="80" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+compute(band=header alignment="1" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="0" x="2953" y="92" height="76" width="416" format="[general]"  name=page  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=header alignment="2" expression="~"Profile for ~" +    v_full_name_first_name  + ~" ~" +  if( isnull(v_full_name_middle_name),'',v_full_name_middle_name +  ~" ~") + v_full_name_last_name  + ~", ~" +  v_full_name_prof_suffix"border="0" color="0" x="494" y="92" height="76" width="2441" format="[general]"  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=header alignment="0" expression="if( apptmnt_type = ~"I~",~"Initial~",if( apptmnt_type = ~"R~",~"Reappointmentl~",~"~"))"border="0" color="0" x="571" y="184" height="64" width="366" format="[general]"  name=appt_type  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=header alignment="1" expression="~"Staff Category:  ~" + code_lookup_description"border="0" color="0" x="2034" y="188" height="76" width="1335" format="[general]"  name=staff_cat visible="1~tif(isnull(code_lookup_description),0,1)"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+line(band=header x1="64" y1="360" x2="3378" y2="360" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+line(band=header x1="64" y1="396" x2="3378" y2="396" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+compute(band=header alignment="0" expression="'to '"border="0" color="0" x="1065" y="264" height="64" width="96" format="[general]" visible="1~tif( isNull( apptmnt_end_date ), 0, 1 )"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header id=11 alignment="0" tabsequence=32766 border="0" color="0" x="1170" y="264" height="64" width="274" format="mm/dd/yy"  name=apptmnt_end_date visible="1~tif( isNull( apptmnt_end_date ), 0, 1 )" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header id=12 alignment="0" tabsequence=32766 border="0" color="0" x="1477" y="184" height="64" width="274" format="mm/dd/yy"  name=inital_appmnt_date edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header id=9 alignment="0" tabsequence=32766 border="0" color="0" x="795" y="260" height="64" width="274" format="mm/dd/yy"  name=apptmnt_start_date edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=footer alignment="0" text="Facility:"border="0" color="0" x="55" y="12" height="60" width="3333"  slideup=directlyabove  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=footer alignment="0" text=""border="0" color="0" x="274" y="12" height="60" width="3127"  name=selected_facility_t  slideup=directlyabove  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Appointment Type:"border="0" color="0" x="73" y="184" height="64" width="480"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Current Appointment Dates:"border="0" color="0" x="73" y="264" height="64" width="709"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="1" text="Initial Appt. Date:"border="0" color="0" x="960" y="184" height="64" width="503"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

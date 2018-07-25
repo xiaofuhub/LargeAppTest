@@ -1,0 +1,50 @@
+﻿$PBExportHeader$gf_getexcelversion.srf
+global type gf_getexcelversion from function_object
+end type
+
+forward prototypes
+global function string gf_getexcelversion ()
+end prototypes
+
+global function string gf_getexcelversion ();//return version
+
+OleObject			lole_Excel
+String					ls_Version
+
+
+lole_Excel = Create OleObject
+
+
+If lole_Excel.ConnectToNewObject( "excel.application" ) = 0 Then
+	ls_Version = String( lole_Excel.Application.Version )
+	
+	Choose Case ls_version
+		Case '9.0'
+			gs_excel_version = 'excel2000'			
+		Case '10.0'
+			gs_excel_version = 'excelxp'			
+		Case '11.0'
+			gs_excel_version = 'excel2003'	
+		Case "12.0"
+			gs_excel_version = 'excel2007'					
+		Case "13.0", "14.0" 	
+			gs_excel_version = 'excel2010'					
+		Case Else
+			gs_excel_version = 'other'
+	End Choose
+	
+	lole_Excel.Quit( )
+
+End If
+
+lole_Excel.DisConnectObject( )
+Destroy( lole_Excel )
+
+If IsNull( ls_Version ) Or Trim( ls_Version ) = '' Then ls_Version = '0'
+
+Return ls_Version
+
+
+
+end function
+

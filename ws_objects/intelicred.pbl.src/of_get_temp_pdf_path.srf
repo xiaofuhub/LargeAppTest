@@ -1,0 +1,47 @@
+﻿$PBExportHeader$of_get_temp_pdf_path.srf
+global type of_get_temp_pdf_path from function_object
+end type
+
+forward prototypes
+global function string of_get_temp_pdf_path (boolean ab_is_os64)
+end prototypes
+
+global function string of_get_temp_pdf_path (boolean ab_is_os64);//====================================================================
+//$<Function>: of_get_temp_pdf_path()
+//$<Arguments>:
+// 	value    boolean    ab_is_os64
+//$<Return>:  string
+//$<Description>: Return the full path of the sampleout.pdf
+//$<Author>: (Appeon) Alfee 03.26.2014 
+//--------------------------------------------------------------------
+//$<Modify History>:
+//====================================================================
+Long ll_pos
+String ls_printer_path, ls_rsp_path
+String ls_temp_pdf_path = "C:\IntelliCred\PDFPrinter\temp\SampleOut.PDF" //default path
+String ls_sub_key = "SYSTEM\CurrentControlSet\Control\Print\Monitors\IntelliSoft PDF Writer Port\Ports\IntelliSoftPDFPort:" //HKEY_LOCAL_MACHINE\
+String ls_key_name = "Arguments"
+
+//Get the path of th rsp file from registry table , like : 
+//@"C:\Program Files\IntelliSoft\PDFPrinter\gs\pdfwrite.rsp" - 
+//@"C:\Program Files (x86)\IntelliSoft\PDFPrinter\gs\pdfwrite.rsp" -
+IF ab_is_os64 THEN
+	gnv_appeondll.of_RegisterGet64(ls_sub_key, ls_key_name, ls_printer_path)	
+ELSE
+	RegistryGet ("HKEY_LOCAL_MACHINE\" + ls_sub_key, ls_key_name, RegString!, ls_printer_path)
+END IF
+
+//Return the default path if the PDF Writer not installed yet
+ls_printer_path = Trim (ls_printer_path)
+ll_pos = Pos (ls_printer_path, '@"')
+IF ll_pos > 0 THEN ls_printer_path = Mid (ls_printer_path, ll_pos + 2)
+
+ll_pos = Pos (ls_printer_path, "PDFPrinter\gs\pdfwrite.rsp")
+IF IsNull(ll_pos) OR ll_pos < 1 THEN RETURN ls_temp_pdf_path
+
+ls_printer_path = Left (ls_printer_path, ll_pos - 1)
+ls_temp_pdf_path = ls_printer_path + "PDFPrinter\temp\SampleOut.PDF"
+
+RETURN ls_temp_pdf_path
+end function
+

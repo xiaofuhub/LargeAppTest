@@ -1,0 +1,11 @@
+﻿$PBExportHeader$ws_pxy_echosign.srj
+GeneratorID:{1B1DCEE2-E514-11D1-B30A-006008925BD4}GENBC00000000
+
+WSDLLOCATION:Gateway_echo.wsdl	
+COMPONENT:0
+PACKAGE:9	EchoSign	tns__DocumentInformation	tns__DownloadSignedDoc	tns__GetDocumentLink	tns__GetFileInfo	tns__RemoveSignedDoc	tns__SendDocument	tns__Signature	tns__SignedDocument
+COMMENT:
+DEPLOYMENT:webservice_echo.pbl	0	0
+PROJECT:
+PREFIX:
+ASSEMBLY:0	0	

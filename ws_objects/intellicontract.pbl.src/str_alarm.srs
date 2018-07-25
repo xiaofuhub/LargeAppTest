@@ -1,0 +1,34 @@
+﻿$PBExportHeader$str_alarm.srs
+global type str_alarm from structure
+	long		ctx_id
+	long		ai_id
+	long		doc_id
+	long		seq_id
+	string		alm_table
+	string		alm_column
+	long		alm_email_template_id
+	string		alm_attachment_name
+	long		alm_message_length
+	long		alm_attachment_length
+	long		wf_id
+	string		alm_mailto
+	string		doc_name
+	string		alm_subject
+	string		autosign
+	string		alm_create
+	string		ctx_company
+	datetime		alm_date_value
+	integer		alm_times_reminded
+	long		ctx_category
+	string		as_from
+	string		as_notes
+	string		as_owner
+	string		as_column_name
+	long		level_id1
+	long		level_id2
+	string		as_appointment
+	string		as_alm_type
+	long		al_alm_times
+	string		as_result
+end type
+

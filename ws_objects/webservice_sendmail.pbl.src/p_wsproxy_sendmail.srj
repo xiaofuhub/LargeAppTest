@@ -1,0 +1,11 @@
+﻿$PBExportHeader$p_wsproxy_sendmail.srj
+GeneratorID:{1B1DCEE2-E514-11D1-B30A-006008925BD4}GENBC00000000
+
+WSDLLOCATION:http://192.0.2.230:8081/webservice/sendmail.asmx?WSDL	
+COMPONENT:0
+PACKAGE:2	sendmail	tns__of_sendmail
+COMMENT:Web Service Proxy Generator
+DEPLOYMENT:webservice_sendmail.pbl	0	1
+PROJECT:p_genapp_wsproxy
+PREFIX:
+ASSEMBLY:0	0	

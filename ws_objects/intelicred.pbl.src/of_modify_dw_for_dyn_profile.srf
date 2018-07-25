@@ -1,0 +1,77 @@
+﻿$PBExportHeader$of_modify_dw_for_dyn_profile.srf
+global type of_modify_dw_for_dyn_profile from function_object
+end type
+
+forward prototypes
+global function string of_modify_dw_for_dyn_profile (datawindow adw_detail, integer ai_screen_id, string as_screen_name, string as_from)
+end prototypes
+
+global function string of_modify_dw_for_dyn_profile (datawindow adw_detail, integer ai_screen_id, string as_screen_name, string as_from);//Start Code Change ---- 01.09.2008 #V7 maha
+// function created to modify screen in preparation to export syntax to profile view
+//called from of_toggle and from running of profile
+string ls_syntax
+string ls_screen
+string s
+string ls_field
+integer li_id
+integer i
+integer ic
+long ll_max_height
+long ll_height
+string ls_height
+string ls_y
+
+
+//debugbreak()
+s = adw_detail.modify('datawindow.header.height = "176"')
+s = adw_detail.modify('datawindow.Text.Background.Color=16777215')
+s = adw_detail.modify('datawindow.color=16777215' )
+//s = adw_detail.modify('datawindow.Detail.Height.AutoSize')
+
+ls_screen = as_screen_name  //dw_select_section.getitemstring(dw_select_section.getrow(),"screen_alias")
+li_id = ai_screen_id //dw_select_section.getitemnumber(dw_select_section.getrow(),"screen_id")
+s = adw_detail.modify('create text(band=header alignment="2" text="' + ls_screen  + '" border="0" color="0" x="9" y="0" height="80" width="3282" html.valueishtml="0"  name=t_1 visible="1"  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )')
+
+ic = integer(adw_detail.Object.DataWindow.Column.Count)
+
+for i = 1 to ic
+	//debugbreak()
+	ls_field = adw_detail.describe("#" + string(i) + ".Name")
+	if integer(adw_detail.describe("#" + string(i) + ".visible")) > 0 then
+		ls_height = adw_detail.describe("#" + string(i) + ".height")
+		ls_y = adw_detail.describe("#" + string(i) + ".y")
+		ll_height = long(ls_height) + long(ls_y)
+		if ll_max_height < ll_height then ll_max_height = ll_height//adw_detail.Modify(ls_field + ".border = '0'")
+		adw_detail.Modify( ls_field + "_t.font.weight = '700'") //Start Code Change ----01.08.2008 #V8 maha - make labels bold
+	else
+		adw_detail.Modify("#" + string(i) + ".visible = '0'")
+	end if
+	
+	adw_detail.Modify("#" + string(i) + ".border = '0'") //removes indented border
+	adw_detail.Modify("#" + string(i) + ".DDLB.UseAsBorder = 'No'") //removes arrow
+	adw_detail.Modify("#" + string(i) + "_t.font.underline = '0'") //removes underline -  DOES NOT WORK
+next
+//messagebox("ll_max_height",ll_max_height)
+s = adw_detail.modify("datawindow.Detail.Height = '" + string(ll_max_height) + "'")
+
+////remove underlines
+//FOR i = 1 TO dw_properties.rowcount()
+//	ls_field = dw_properties.GetItemString( i, "sys_fields_field_name" )
+//	adw_detail.Modify( ls_field + "_t.font.underline = '0'")
+//	if dw_properties.GetItemString( i, "data_view_fields_visible" ) = "N" THEN
+//		adw_detail.Modify( ls_field + "_t.font.visible = '0'") //make label invisible
+//	end if
+//END FOR
+
+//hide buttons
+if li_id = 2 then //address
+	adw_detail.Modify("findbutton.visible = '0'")
+elseif li_id = 13 then //references
+	adw_detail.Modify("peerbutton.visible = '0'")
+end if
+
+ls_syntax = adw_detail.Describe("DataWindow.Syntax")
+
+return ls_syntax
+end function
+

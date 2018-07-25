@@ -1,0 +1,18 @@
+﻿$PBExportHeader$d_auto_align_side.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes key=yes name=app_field_id dbname="app_field_prop.app_field_id" )
+ column=(type=char(100) updatewhereclause=yes name=field_description dbname="app_field_prop.field_description" )
+ column=(type=long update=yes updatewhereclause=yes name=x_pos dbname="app_field_prop.x_pos" )
+ column=(type=long updatewhereclause=yes name=y_pos dbname="app_field_prop.y_pos" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"app_field_prop~" ) COLUMN(NAME=~"app_field_prop.app_field_id~") COLUMN(NAME=~"app_field_prop.field_description~") COLUMN(NAME=~"app_field_prop.x_pos~") COLUMN(NAME=~"app_field_prop.y_pos~")WHERE(    EXP1 =~"app_field_prop.app_id~"   OP =~"=~"    EXP2 =~":app_id~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"app_field_prop.page~"   OP =~"=~"    EXP2 =~":current_page~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"app_field_prop.x_pos~"   OP =~">=~"    EXP2 =~":x_pos - 15~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"app_field_prop.x_pos~"   OP =~"<=~"    EXP2 =~":x_pos + 15~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"app_field_prop.y_pos~"   OP =~">~"    EXP2 =~":ll_min_y~" ) ) ARG(NAME = ~"app_id~" TYPE = number)  ARG(NAME = ~"current_page~" TYPE = number)  ARG(NAME = ~"x_pos~" TYPE = number)  ARG(NAME = ~"ll_min_y~" TYPE = number) " update="app_field_prop" updatewhere=1 updatekeyinplace=no arguments=(("app_id", number),("current_page", number),("x_pos", number),("ll_min_y", number)) )
+text(band=header alignment="2" text="app_field_id"border="0" color="0" x="5" y="4" height="64" width="329"  name=app_field_id_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=10 border="0" color="0" x="5" y="4" height="76" width="329" format="[general]"  name=app_field_id edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="343" y="8" height="64" width="2702" format="[general]"  name=field_description edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="3045" y="0" height="64" width="1161" format="[general]"  name=x_pos edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="4206" y="0" height="64" width="1161" format="[general]"  name=y_pos edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,80 @@
+﻿$PBExportHeader$of_calc_antic_date.srf
+global type of_calc_antic_date from function_object
+end type
+
+forward prototypes
+global function datetime of_calc_antic_date (integer ai_days, datetime ad_start)
+end prototypes
+
+global function datetime of_calc_antic_date (integer ai_days, datetime ad_start);integer li_holidays
+integer li_add = 0
+integer li_loop
+integer i
+integer d
+integer li_days
+integer li_test
+integer w
+date ld_date
+date ld_start
+
+datetime ldt_h
+string ls_day
+string ls_presentation_str
+string ls_dwsyntax_str
+string ERRORS
+string ls_sql
+string ls_count_weekend = "N"
+n_ds lds_holiday
+
+
+//check to see if weekend days should be counted
+if of_get_app_setting("set_7","I") = 1 then ls_count_weekend = "Y"
+
+ld_start = date(ad_start)
+li_days = ai_days
+li_loop = li_days  * 2 //add double days to allow for enough loops
+ld_date = RelativeDate ( ld_start, li_loop )
+
+
+lds_holiday =  CREATE n_ds
+lds_holiday.dataobject = "d_holiday_get"
+lds_holiday.settransobject(sqlca)
+
+li_holidays = lds_holiday.retrieve(ad_start, datetime(ld_date, time("00:00:00")))
+
+//Start Code Change ----12.18.2012 #V12 maha - created as system function for of_psv_update
+ld_start = date(ad_start)
+//maha 020-18.2010 - recaluculated for including week days
+for i = 0 to li_loop //count weekdays //Start Code Change ----08.29.2011 #V11 maha - changed from 1 to 0 to include the start day to match the other calculation
+	ld_date = RelativeDate ( ld_start, i )
+	ls_day = DayName ( ld_date )
+	ls_sql = "date(hol_date) = date('" + string(ld_date) + "')"
+	
+	if ls_count_weekend = "N" then
+		if lower(ls_day)  = "saturday" or  lower(ls_day)  = "sunday"  then
+			//skip
+		else
+			d = lds_holiday.find( ls_sql , 1,li_holidays ) //Start Code Change ----08.29.2011 #V11 maha - changed from w
+			if d > 0 then
+				//skip
+			else
+				li_add++
+			end if
+		end if
+	else //count weekend days
+		d = lds_holiday.find( ls_sql , 1,li_holidays )  //Start Code Change ----08.29.2011 #V11 maha - changed from w
+		if d > 0 then
+			//skip
+		else
+			li_add++
+		end if
+	end if
+		
+	if li_add = li_days then exit
+
+next
+
+			
+return datetime(ld_date, time("00:00:00"))
+end function
+

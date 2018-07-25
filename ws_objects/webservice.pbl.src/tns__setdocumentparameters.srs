@@ -1,0 +1,9 @@
+﻿$PBExportHeader$tns__setdocumentparameters.srs
+$PBExportComments$Proxy imported from Web service using Web Service Proxy Generator.
+global type tns__SetDocumentParameters from structure
+   string p_ApiCode
+   string p_FileID
+   string p_DocumentID
+   string p_XMLContent
+end type
+

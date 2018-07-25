@@ -1,0 +1,21 @@
+﻿$PBExportHeader$d_rpt_par_numbers_par.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=datetime updatewhereclause=yes name=net_dev_action_items_action_date dbname="net_dev_action_items.action_date" )
+ retrieve="  SELECT net_dev_action_items.action_date  
+    FROM net_dev_action_items,   
+         code_lookup code_lookup_a,   
+         code_lookup code_lookup_b  
+   WHERE ( net_dev_action_items.action_type = code_lookup_a.lookup_code ) and  
+         ( net_dev_action_items.action_status = code_lookup_b.lookup_code ) and  
+         ( ( net_dev_action_items.prac_id = :prac_id ) AND  
+         ( net_dev_action_items.app_id = :app_id ) AND  
+         ( net_dev_action_items.active_status = 1 ) AND  
+         ( code_lookup_a.code = 'PAR' ) AND  
+         ( code_lookup_b.code = 'Complete' ) )    
+" arguments=(("prac_id", number),("app_id", number)) )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="18" y="4" height="64" width="503" format="mm/dd/yyyy"  name=net_dev_action_items_action_date edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

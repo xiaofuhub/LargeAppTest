@@ -1,0 +1,12 @@
+﻿$PBExportHeader$str_clause_painter_analysis_option.srs
+global type str_clause_painter_analysis_option from structure
+	string		as_full_analysis
+	string		as_all_clauses
+	string		as_all_contracts
+	string		as_ctx_id
+	string		as_template_usage
+	string		as_dm_usage
+	string		as_negotiated
+	boolean		abn_quit
+end type
+

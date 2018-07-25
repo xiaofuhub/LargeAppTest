@@ -1,0 +1,10 @@
+﻿$PBExportHeader$str_na_email_temp.srs
+global type str_na_email_temp from structure
+	long		il_email_id
+	long		il_export_id
+	blob		iblb_email_message
+	blob		iblb_attachment
+	long		il_prac_id[]
+	datastore		ids_export_data
+end type
+

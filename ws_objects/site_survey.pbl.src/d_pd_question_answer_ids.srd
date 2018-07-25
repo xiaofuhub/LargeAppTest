@@ -1,0 +1,11 @@
+﻿$PBExportHeader$d_pd_question_answer_ids.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=104 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes key=yes name=question_answer_id dbname="review_question_answer.question_answer_id" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"review_question_answer~" ) COLUMN(NAME=~"review_question_answer.question_answer_id~")WHERE(    EXP1 =~"review_question_answer.review_id~"   OP =~"=~"    EXP2 =~":review_id~" ) ) ARG(NAME = ~"review_id~" TYPE = number) " update="review_question_answer" updatewhere=1 updatekeyinplace=no arguments=(("review_id", number)) )
+text(band=detail alignment="0" text="Survey Question"border="0" color="0" x="91" y="164" height="56" width="494"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="14" y="16" height="52" width="992" format="[general]"  name=question_answer_id edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,241 @@
+﻿$PBExportHeader$d_contract_det_master_bak.srd
+$PBExportComments$[intellicontract]
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=2148 color="536870912"  height.autosize=yes)
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=ctx_id dbname="ctx_basic_info.ctx_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=category dbname="ctx_basic_info.category" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=status dbname="ctx_basic_info.status" )
+ column=(type=long update=yes updatewhereclause=yes name=facility_id dbname="ctx_basic_info.facility_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=contract_type dbname="ctx_basic_info.contract_type" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=product_type dbname="ctx_basic_info.product_type" )
+ column=(type=char(150) update=yes updatewhereclause=yes name=product_name dbname="ctx_basic_info.product_name" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=reimbursment_menth dbname="ctx_basic_info.reimbursment_menth" )
+ column=(type=char(150) update=yes updatewhereclause=yes name=file_location dbname="ctx_basic_info.file_location" )
+ column=(type=datetime update=yes updatewhereclause=yes name=effective_date dbname="ctx_basic_info.effective_date" )
+ column=(type=datetime update=yes updatewhereclause=yes name=expriation_date dbname="ctx_basic_info.expriation_date" )
+ column=(type=datetime update=yes updatewhereclause=yes name=review_date dbname="ctx_basic_info.review_date" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=review_by dbname="ctx_basic_info.review_by" )
+ column=(type=datetime update=yes updatewhereclause=yes name=term_date dbname="ctx_basic_info.term_date" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=term_reason dbname="ctx_basic_info.term_reason" )
+ column=(type=datetime update=yes updatewhereclause=yes name=last_revis_date dbname="ctx_basic_info.last_revis_date" )
+ column=(type=datetime update=yes updatewhereclause=yes name=other_date_1 dbname="ctx_basic_info.other_date_1" )
+ column=(type=datetime update=yes updatewhereclause=yes name=other_date_2 dbname="ctx_basic_info.other_date_2" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=oc_signed_by dbname="ctx_basic_info.oc_signed_by" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=oc_title dbname="ctx_basic_info.oc_title" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=oc_department dbname="ctx_basic_info.oc_department" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=oc_legal_rep dbname="ctx_basic_info.oc_legal_rep" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=cc_signed_by dbname="ctx_basic_info.cc_signed_by" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=cc_title dbname="ctx_basic_info.cc_title" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=cc_department dbname="ctx_basic_info.cc_department" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=cc_legal_rep dbname="ctx_basic_info.cc_legal_rep" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=keyword dbname="ctx_basic_info.keyword" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=dvision dbname="ctx_basic_info.dvision" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_1 dbname="ctx_basic_info.custom_1" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_2 dbname="ctx_basic_info.custom_2" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_3 dbname="ctx_basic_info.custom_3" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_4 dbname="ctx_basic_info.custom_4" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_5 dbname="ctx_basic_info.custom_5" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_6 dbname="ctx_basic_info.custom_6" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_7 dbname="ctx_basic_info.custom_7" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_8 dbname="ctx_basic_info.custom_8" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_9 dbname="ctx_basic_info.custom_9" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_10 dbname="ctx_basic_info.custom_10" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=group_multi_loc_id dbname="ctx_basic_info.group_multi_loc_id" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=revision_reason dbname="ctx_basic_info.revision_reason" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=group_id dbname="ctx_basic_info.group_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=record_id dbname="ctx_basic_info.record_id" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_11 dbname="ctx_basic_info.custom_11" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_12 dbname="ctx_basic_info.custom_12" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_13 dbname="ctx_basic_info.custom_13" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_14 dbname="ctx_basic_info.custom_14" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_15 dbname="ctx_basic_info.custom_15" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_16 dbname="ctx_basic_info.custom_16" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_17 dbname="ctx_basic_info.custom_17" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_18 dbname="ctx_basic_info.custom_18" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_19 dbname="ctx_basic_info.custom_19" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_20 dbname="ctx_basic_info.custom_20" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date1 dbname="ctx_basic_info.custom_date1" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date2 dbname="ctx_basic_info.custom_date2" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date3 dbname="ctx_basic_info.custom_date3" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date4 dbname="ctx_basic_info.custom_date4" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date5 dbname="ctx_basic_info.custom_date5" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date6 dbname="ctx_basic_info.custom_date6" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date7 dbname="ctx_basic_info.custom_date7" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date8 dbname="ctx_basic_info.custom_date8" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date9 dbname="ctx_basic_info.custom_date9" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date10 dbname="ctx_basic_info.custom_date10" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=custom_n1 dbname="ctx_basic_info.custom_n1" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=custom_n2 dbname="ctx_basic_info.custom_n2" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=custom_n3 dbname="ctx_basic_info.custom_n3" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=custom_n4 dbname="ctx_basic_info.custom_n4" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=custom_n5 dbname="ctx_basic_info.custom_n5" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=custom_n6 dbname="ctx_basic_info.custom_n6" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=custom_n7 dbname="ctx_basic_info.custom_n7" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=custom_n8 dbname="ctx_basic_info.custom_n8" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=custom_n9 dbname="ctx_basic_info.custom_n9" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=custom_n10 dbname="ctx_basic_info.custom_n10" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=version_number dbname="ctx_basic_info.version_number" )
+ column=(type=datetime update=yes updatewhereclause=yes name=version_date dbname="ctx_basic_info.version_date" )
+ column=(type=char(8000) update=yes updatewhereclause=yes name=notes dbname="ctx_basic_info.notes" )
+ column=(type=decimal(6) update=yes updatewhereclause=yes name=app_facility dbname="ctx_basic_info.app_facility" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=master_contract_id dbname="ctx_basic_info.master_contract_id" values="	0/Contract Search	1/" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=master_contract_name dbname="ctx_basic_info.master_contract_name" values="	/Contract Search	1/" )
+ retrieve="  SELECT ctx_basic_info.ctx_id,   
+         ctx_basic_info.category,   
+         ctx_basic_info.status,   
+         ctx_basic_info.facility_id,   
+         ctx_basic_info.contract_type,   
+         ctx_basic_info.product_type,   
+         ctx_basic_info.product_name,   
+         ctx_basic_info.reimbursment_menth,   
+         ctx_basic_info.file_location,   
+         ctx_basic_info.effective_date,   
+         ctx_basic_info.expriation_date,   
+         ctx_basic_info.review_date,   
+         ctx_basic_info.review_by,   
+         ctx_basic_info.term_date,   
+         ctx_basic_info.term_reason,   
+         ctx_basic_info.last_revis_date,   
+         ctx_basic_info.other_date_1,   
+         ctx_basic_info.other_date_2,   
+         ctx_basic_info.oc_signed_by,   
+         ctx_basic_info.oc_title,   
+         ctx_basic_info.oc_department,   
+         ctx_basic_info.oc_legal_rep,   
+         ctx_basic_info.cc_signed_by,   
+         ctx_basic_info.cc_title,   
+         ctx_basic_info.cc_department,   
+         ctx_basic_info.cc_legal_rep,   
+         ctx_basic_info.keyword,   
+         ctx_basic_info.dvision,   
+         ctx_basic_info.custom_1,   
+         ctx_basic_info.custom_2,   
+         ctx_basic_info.custom_3,   
+         ctx_basic_info.custom_4,   
+         ctx_basic_info.custom_5,   
+         ctx_basic_info.custom_6,   
+         ctx_basic_info.custom_7,   
+         ctx_basic_info.custom_8,   
+         ctx_basic_info.custom_9,   
+         ctx_basic_info.custom_10,   
+         ctx_basic_info.group_multi_loc_id,   
+         ctx_basic_info.revision_reason,   
+         ctx_basic_info.group_id,   
+         ctx_basic_info.record_id,   
+         ctx_basic_info.custom_11,   
+         ctx_basic_info.custom_12,   
+         ctx_basic_info.custom_13,   
+         ctx_basic_info.custom_14,   
+         ctx_basic_info.custom_15,   
+         ctx_basic_info.custom_16,   
+         ctx_basic_info.custom_17,   
+         ctx_basic_info.custom_18,   
+         ctx_basic_info.custom_19,   
+         ctx_basic_info.custom_20,   
+         ctx_basic_info.custom_date1,   
+         ctx_basic_info.custom_date2,   
+         ctx_basic_info.custom_date3,   
+         ctx_basic_info.custom_date4,   
+         ctx_basic_info.custom_date5,   
+         ctx_basic_info.custom_date6,   
+         ctx_basic_info.custom_date7,   
+         ctx_basic_info.custom_date8,   
+         ctx_basic_info.custom_date9,   
+         ctx_basic_info.custom_date10,   
+         ctx_basic_info.custom_n1,   
+         ctx_basic_info.custom_n2,   
+         ctx_basic_info.custom_n3,   
+         ctx_basic_info.custom_n4,   
+         ctx_basic_info.custom_n5,   
+         ctx_basic_info.custom_n6,   
+         ctx_basic_info.custom_n7,   
+         ctx_basic_info.custom_n8,   
+         ctx_basic_info.custom_n9,   
+         ctx_basic_info.custom_n10,   
+         ctx_basic_info.version_number,   
+         ctx_basic_info.version_date,   
+         ctx_basic_info.notes,   
+         ctx_basic_info.app_facility,  
+         ctx_basic_info.master_contract_id,  
+         ctx_basic_info.master_contract_name  
+    FROM ctx_basic_info  
+   WHERE ( ctx_basic_info.ctx_id = :al_ctx_id )    
+" update="ctx_basic_info" updatewhere=0 updatekeyinplace=yes arguments=(("al_ctx_id", number)) )
+groupbox(band=header text="W"border="5" color="128" x="23" y="40" height="1860" width="846"  name=gb_1 visible="0"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Company Name" border="0" color="33554432" x="55" y="328" height="52" width="887" html.valueishtml="0"  name=app_facility_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=280 border="0" color="0" x="3931" y="336" height="76" width="384" format="[general]" html.valueishtml="0"  name=last_revis_date visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=detail alignment="0" text="Reimbursment Method" border="0" color="0" x="3698" y="992" height="76" width="718" html.valueishtml="0"  name=reimbursment_menth_t visible="0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=detail alignment="0" text="Other Date 1" border="0" color="0" x="3698" y="896" height="76" width="718" html.valueishtml="0"  name=other_date_1_t visible="0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=detail alignment="0" text="OC Title" border="0" color="0" x="3698" y="796" height="76" width="718" html.valueishtml="0"  name=t_14 visible="0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=detail alignment="0" text="Effective Date" border="0" color="0" x="3698" y="700" height="76" width="718" html.valueishtml="0"  name=effective_date_t visible="0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=detail alignment="0" text="Expriation Date" border="0" color="0" x="3698" y="604" height="76" width="718" html.valueishtml="0"  name=expriation_date_t visible="0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=detail alignment="0" text="OC Signed By" border="0" color="0" x="3698" y="516" height="76" width="718" html.valueishtml="0"  name=oc_signed_by_t visible="0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=detail alignment="0" text="Other Date 2" border="0" color="0" x="3698" y="1088" height="76" width="718" html.valueishtml="0"  name=other_date_2_t visible="0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=detail alignment="0" text="Review By" border="0" color="0" x="3698" y="1180" height="76" width="718" html.valueishtml="0"  name=review_by_t visible="0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=detail alignment="0" text="Review Date" border="0" color="0" x="3689" y="1280" height="76" width="718" html.valueishtml="0"  name=review_date_t visible="0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=detail alignment="0" text="Revision Reason" border="0" color="0" x="3698" y="1364" height="76" width="718" html.valueishtml="0"  name=revision_reason_t visible="0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=detail alignment="0" text="Term Date" border="0" color="0" x="3698" y="1456" height="76" width="718" html.valueishtml="0"  name=term_date_t visible="0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=detail alignment="0" text="Term Reason" border="0" color="0" x="3698" y="1544" height="76" width="718" html.valueishtml="0"  name=term_reason_t visible="0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=15 alignment="0" tabsequence=180 border="0" color="0" x="4480" y="1540" height="76" width="512" format="[general]" html.valueishtml="0"  name=term_reason  tag="Contract Term Reason" visible="0" dddw.name=d_dddw_code_lookup dddw.displaycolumn=description dddw.datacolumn=lookup_code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0 dddw.autoretrieve=no  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=14 alignment="0" tabsequence=190 border="0" color="0" x="4480" y="1456" height="76" width="512" format="[general]" html.valueishtml="0"  name=term_date visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=40 alignment="0" tabsequence=200 border="0" color="0" x="4480" y="1364" height="76" width="512" format="[general]" html.valueishtml="0"  name=revision_reason visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=12 alignment="0" tabsequence=210 border="0" color="0" x="4480" y="1280" height="76" width="512" format="[general]" html.valueishtml="0"  name=review_date visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=19 alignment="0" tabsequence=270 border="0" color="0" x="4480" y="520" height="76" width="512" format="[general]" html.valueishtml="0"  name=oc_signed_by visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=11 alignment="0" tabsequence=290 border="0" color="0" x="4480" y="600" height="76" width="512" format="[general]" html.valueishtml="0"  name=expriation_date visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=10 alignment="0" tabsequence=300 border="0" color="0" x="4480" y="700" height="76" width="512" format="[general]" html.valueishtml="0"  name=effective_date visible="0" editmask.mask="DD/MM/YYYY" editmask.imemode=0 editmask.focusrectangle=no  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=20 alignment="0" tabsequence=260 border="0" color="0" x="4480" y="796" height="76" width="512" format="[general]" html.valueishtml="0"  name=oc_title visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=17 alignment="0" tabsequence=250 border="0" color="0" x="4480" y="896" height="76" width="512" format="[general]" html.valueishtml="0"  name=other_date_1 visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=8 alignment="0" tabsequence=230 border="0" color="0" x="4480" y="992" height="76" width="512" format="[general]" html.valueishtml="0"  name=reimbursment_menth visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=18 alignment="0" tabsequence=240 border="0" color="0" x="4480" y="1088" height="76" width="512" format="[general]" html.valueishtml="0"  name=other_date_2 visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=13 alignment="0" tabsequence=220 border="0" color="0" x="4480" y="1180" height="76" width="512" format="[general]" html.valueishtml="0"  name=review_by visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=detail alignment="0" text="Custom 10" border="0" color="0" x="5097" y="1472" height="76" width="347" html.valueishtml="0"  name=custom_10_t visible="0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=detail alignment="0" text="Custom 9" border="0" color="0" x="5097" y="1392" height="76" width="306" html.valueishtml="0"  name=custom_9_t visible="0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=detail alignment="0" text="Custom 8" border="0" color="0" x="5102" y="1296" height="76" width="306" html.valueishtml="0"  name=custom_8_t visible="0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=detail alignment="0" text="Custom 7" border="0" color="0" x="5097" y="1196" height="76" width="306" html.valueishtml="0"  name=custom_7_t visible="0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=detail alignment="0" text="Custom 6" border="0" color="0" x="5097" y="1100" height="76" width="306" html.valueishtml="0"  name=custom_6_t visible="0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=detail alignment="0" text="Custom 5" border="0" color="0" x="5097" y="1004" height="76" width="306" html.valueishtml="0"  name=custom_5_t visible="0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=detail alignment="0" text="Custom 4" border="0" color="0" x="5097" y="904" height="76" width="306" html.valueishtml="0"  name=custom_4_t visible="0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=detail alignment="0" text="Custom 3" border="0" color="0" x="5097" y="804" height="76" width="306" html.valueishtml="0"  name=custom_3_t visible="0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=detail alignment="0" text="Custom 2" border="0" color="0" x="5097" y="716" height="76" width="306" html.valueishtml="0"  name=custom_2_t visible="0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=detail alignment="0" text="Custom 1" border="0" color="0" x="5097" y="624" height="76" width="306" html.valueishtml="0"  name=custom_1_t visible="0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=38 alignment="0" tabsequence=160 border="0" color="0" x="5486" y="1472" height="76" width="512" format="[general]" html.valueishtml="0"  name=custom_10 visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=30 alignment="0" tabsequence=150 border="0" color="0" x="5486" y="712" height="76" width="512" format="[general]" html.valueishtml="0"  name=custom_2 visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=31 alignment="0" tabsequence=140 border="0" color="0" x="5486" y="808" height="76" width="512" format="[general]" html.valueishtml="0"  name=custom_3 visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=32 alignment="0" tabsequence=130 border="0" color="0" x="5486" y="904" height="76" width="512" format="[general]" html.valueishtml="0"  name=custom_4 visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=33 alignment="0" tabsequence=120 border="0" color="0" x="5486" y="1004" height="76" width="512" format="[general]" html.valueishtml="0"  name=custom_5 visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=34 alignment="0" tabsequence=110 border="0" color="0" x="5490" y="1100" height="76" width="512" format="[general]" html.valueishtml="0"  name=custom_6 visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=37 alignment="0" tabsequence=70 border="0" color="0" x="5486" y="1388" height="76" width="512" format="[general]" html.valueishtml="0"  name=custom_9 visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=36 alignment="0" tabsequence=90 border="0" color="0" x="5490" y="1300" height="76" width="512" format="[general]" html.valueishtml="0"  name=custom_8 visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=29 alignment="0" tabsequence=170 border="0" color="0" x="5486" y="624" height="76" width="512" format="[general]" html.valueishtml="0"  name=custom_1 visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=35 alignment="0" tabsequence=100 border="0" color="0" x="5486" y="1192" height="76" width="512" format="[general]" html.valueishtml="0"  name=custom_7 visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=detail alignment="0" text="Contract ID" border="0" color="33554432" x="55" y="20" height="52" width="325" html.valueishtml="0"  name=ctx_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="64" y="88" height="64" width="274" format="[general]" html.valueishtml="0"  name=ctx_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Status" border="0" color="33554432" x="379" y="20" height="52" width="567" html.valueishtml="0"  name=status_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=10 border="5" color="33554432" x="384" y="88" height="64" width="567" format="[general]" html.valueishtml="0"  name=status  tag="Contract Status" visible="1" dddw.name=d_dddw_code_lookup dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=300 dddw.lines=20 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.required=yes dddw.imemode=0 dddw.hscrollbar=yes dddw.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+button(band=detail text="Add" enabled=yes action="0" border="0" color="33554432" x="562" y="320" height="64" width="393" vtextalign="0" htextalign="0"  name=b_add visible="0"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=detail alignment="0" text="Version Number" border="0" color="0" x="4923" y="424" height="76" width="553" html.valueishtml="0"  name=version_number_t visible="0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=73 alignment="0" tabsequence=310 border="0" color="0" x="5495" y="424" height="76" width="480" format="[general]" html.valueishtml="0"  name=version_number visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=detail alignment="0" text="Version Date" border="0" color="0" x="5033" y="524" height="76" width="421" html.valueishtml="0"  name=version_date_t visible="0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=74 alignment="0" tabsequence=320 border="0" color="0" x="5490" y="528" height="76" width="494" format="[general]" html.valueishtml="0"  name=version_date visible="0" editmask.mask="DD/MM/YYYY" editmask.imemode=0 editmask.focusrectangle=no  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=detail alignment="0" text="Contracted Parent Organization" border="0" color="33554432" x="3689" y="1660" height="52" width="887" html.valueishtml="0"  name=group_multi_loc_id_t visible="0"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=39 alignment="0" tabsequence=32766 border="0" color="33554432" x="3689" y="1728" height="64" width="882" format="[general]" html.valueishtml="0"  name=group_multi_loc_id visible="0" dddw.name=dddw_contracted_groups dddw.displaycolumn=loc_gp_name dddw.datacolumn=rec_id dddw.percentwidth=300 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0 dddw.autoretrieve=no  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Category" border="0" color="33554432" x="55" y="168" height="52" width="887" html.valueishtml="0"  name=category_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=76 alignment="0" tabsequence=30 border="5" color="33554432" x="64" y="400" height="64" width="887" format="[general]" html.valueishtml="0"  name=app_facility pointer="" visible="1" dddw.name=dddw_contact_company dddw.displaycolumn=facility_name dddw.datacolumn=facility_id dddw.percentwidth=300 dddw.lines=20 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.hscrollbar=yes dddw.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=77 alignment="0" tabsequence=32766 border="5" color="33554432" x="3707" y="1828" height="64" width="887" format="[general]" html.valueishtml="0"  name=master_contract_id visible="0" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.vscrollbar=yes ddlb.useasborder=yes ddlb.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="0" text="Contract Type" border="0" color="33554432" x="55" y="480" height="52" width="887" html.valueishtml="0"  name=contract_type_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=40 border="5" color="33554432" x="64" y="548" height="64" width="887" format="[general]" html.valueishtml="0"  name=contract_type  tag="Contract Type" pointer="" visible="1" dddw.name=d_dddw_code_lookup dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=300 dddw.lines=20 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.hscrollbar=yes dddw.vscrollbar=yes dddw.autoretrieve=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="0" text="Division" border="0" color="33554432" x="55" y="628" height="52" width="887" html.valueishtml="0"  name=dvision_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=28 alignment="0" tabsequence=50 border="5" color="33554432" x="64" y="696" height="64" width="887" format="[general]" html.valueishtml="0"  name=dvision  tag="Contract Division" visible="1" dddw.name=d_dddw_code_lookup dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=300 dddw.lines=20 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.hscrollbar=yes dddw.vscrollbar=yes dddw.autoretrieve=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="0" text="File Location" border="0" color="33554432" x="59" y="784" height="52" width="887" html.valueishtml="0"  name=file_location_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=60 border="5" color="33554432" x="64" y="856" height="132" width="887" format="[general]" html.valueishtml="0"  name=file_location visible="1" edit.limit=150 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.autovscroll=yes edit.hscrollbar=yes edit.imemode=0 edit.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="0" text="Master Contract ID" border="0" color="33554432" x="59" y="1012" height="52" width="471" html.valueishtml="0"  name=t_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=78 alignment="0" tabsequence=80 border="5" color="33554432" x="64" y="1076" height="64" width="887" format="[general]" html.valueishtml="0"  name=master_contract_name visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.useasborder=yes ddlb.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="33554432" x="64" y="240" height="64" width="887" format="[general]" html.valueishtml="0"  name=category  tag="Contract Category" visible="1" dddw.name=d_dddw_code_lookup dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=300 dddw.lines=20 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.hscrollbar=yes dddw.vscrollbar=yes dddw.autoretrieve=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

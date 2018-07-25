@@ -1,0 +1,95 @@
+﻿$PBExportHeader$f_open_image_from_database.srf
+global type f_open_image_from_database from function_object
+end type
+
+forward prototypes
+global function integer f_open_image_from_database (string as_file, blob ab_data)
+end prototypes
+
+global function integer f_open_image_from_database (string as_file, blob ab_data);Long ll_rec_id
+Long ll_prac_id
+Long li_seq_no
+Integer li_start_page
+Integer li_num_pages
+Integer li_screen_id
+Integer li_facility_id
+Long li_filenum
+Long ll_filelen
+Long ll_bytes_written
+Long ll_new_pos
+Integer li_loops
+Integer li_counter
+Integer li_retval
+Blob  lb_image_data
+Blob blob_temp
+Blob lb_tot_b
+Blob total_blob
+Blob blank_blob
+string  ls_file
+
+//debugbreak()
+ls_file = as_file
+ lb_image_data = ab_data
+ 
+ll_filelen = LenA(lb_image_data )
+//Start Code Change ---- 05.17.2006 #460 maha
+FileDelete( ls_file )
+
+//------------------- APPEON BEGIN -------------------
+//$<modify> Stephen 04.17.2012
+//$<reason>  getting error when uploading large pdf. Bug 3015 
+li_filenum = AppeonWriteFile(ls_file, lb_image_data, ll_filelen)
+if li_filenum < 0 then
+	MessageBox("Error", "Error with  AppeonWriteFile command.  Return -1." )
+	Return -1
+end if
+/*
+ IF ll_filelen > 32765 THEN 
+  	 IF Mod(ll_filelen,32765) = 0 THEN 
+        li_loops = ll_filelen/32765 
+    ELSE 
+  	     li_loops = (ll_filelen/32765) + 1 
+    END IF 
+ELSE 
+  	 li_loops = 1 
+END IF 
+
+
+li_filenum =  FileOpen( ls_file, StreamMode!, Write!, LockWrite!, Append!)
+//End Code Change---05.17.2006
+
+ll_new_pos = 1
+
+IF li_filenum <> -1 THEN	
+	//read the file ... 
+	FOR li_counter = 1 to li_loops 
+		 blob_temp = BlobMid( lb_image_data, ll_new_pos, 32765 )
+   	 ll_bytes_written = FileWrite( li_filenum, blob_temp) 		 
+		 IF ll_bytes_written = -1 THEN
+			MessageBox("Error", "Error with FileRead command.  Return -1." )
+			Return -1
+		 END IF
+	    lb_tot_b = lb_tot_b + blob_temp 
+   	 ll_new_pos = ll_new_pos + ll_bytes_written 
+	    //FileSeek(li_filenum, 0, FROMEND!) 
+   	 if LenA(lb_tot_b) > 1000000 then 
+	        total_blob = total_blob + lb_tot_b 
+   	     lb_tot_b = blank_blob 
+	    end if 
+	NEXT 
+
+	total_blob = total_blob + lb_tot_b 
+
+	lb_image_data = total_blob
+	
+	FileClose( li_filenum )
+
+ELSE
+	MessageBox( "File Open Error: f_open_image_from_database", "Could not open " + ls_file + " for StreamMode!" )
+	Return -	1
+END IF
+*/
+return 1
+
+end function
+

@@ -1,0 +1,48 @@
+﻿$PBExportHeader$d_imp_sys_fields.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=144 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=char(50) updatewhereclause=yes name=sys_tables_table_name dbname="sys_tables.table_name" )
+ column=(type=char(50) updatewhereclause=yes name=sys_fields_field_name dbname="sys_fields.field_name" )
+ column=(type=char(2) updatewhereclause=yes name=sys_fields_field_type dbname="sys_fields.field_type" )
+ column=(type=long updatewhereclause=yes name=sys_fields_field_len dbname="sys_fields.field_len" )
+ column=(type=char(1) updatewhereclause=yes name=sys_fields_lookup_type dbname="sys_fields.lookup_type" )
+ column=(type=char(50) updatewhereclause=yes name=sys_fields_field_name_allias dbname="sys_fields.field_name_allias" )
+ column=(type=char(1) updatewhereclause=yes name=sys_fields_field_case dbname="sys_fields.field_case" )
+ column=(type=char(1) updatewhereclause=yes name=sys_fields_lookup_field dbname="sys_fields.lookup_field" )
+ column=(type=char(50) updatewhereclause=yes name=sys_fields_lookup_field_name dbname="sys_fields.lookup_field_name" )
+ column=(type=char(40) updatewhereclause=yes name=lookup_code dbname="sys_fields.lookup_code" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"dba.sys_fields~" )  TABLE(NAME=~"dba.sys_tables~" ) COLUMN(NAME=~"dba.sys_tables.table_name~") COLUMN(NAME=~"dba.sys_fields.field_name~") COLUMN(NAME=~"dba.sys_fields.field_type~") COLUMN(NAME=~"dba.sys_fields.field_len~") COLUMN(NAME=~"dba.sys_fields.lookup_type~") COLUMN(NAME=~"dba.sys_fields.field_name_allias~") COLUMN(NAME=~"dba.sys_fields.field_case~") COLUMN(NAME=~"dba.sys_fields.lookup_field~") COLUMN(NAME=~"dba.sys_fields.lookup_field_name~") COLUMN(NAME=~"dba.sys_fields.lookup_code~")    JOIN (LEFT=~"dba.sys_fields.table_id~"    OP =~"=~"RIGHT=~"dba.sys_tables.table_id~" )WHERE(    EXP1 =~"dba.sys_fields.lookup_field~"   OP =~"=~"    EXP2 =~"'Y'~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"dba.sys_fields.field_type~"   OP =~"<>~"    EXP2 =~"'C'~" ) ) "  sort="sys_tables_table_name A " )
+text(band=header alignment="2" text="Sys Tables
+Table Name"border="0" color="0" x="9" y="8" height="128" width="1065"  name=sys_tables_table_name_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sys Fields
+Field Name"border="0" color="0" x="1083" y="8" height="128" width="882"  name=sys_fields_field_name_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sys Fields
+Field Type"border="0" color="0" x="1975" y="8" height="128" width="283"  name=sys_fields_field_type_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sys Fields
+Field Len"border="0" color="0" x="2267" y="8" height="128" width="329"  name=sys_fields_field_len_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sys Fields
+Lookup Type"border="0" color="0" x="2606" y="8" height="128" width="338"  name=sys_fields_lookup_type_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sys Fields
+Field Name Allias"border="0" color="0" x="2953" y="8" height="128" width="832"  name=sys_fields_field_name_allias_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sys Fields
+Field Case"border="0" color="0" x="3794" y="8" height="128" width="283"  name=sys_fields_field_case_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sys Fields
+Lookup Field"border="0" color="0" x="4087" y="8" height="128" width="338"  name=sys_fields_lookup_field_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sys Fields
+Lookup Field Name"border="0" color="0" x="4434" y="8" height="128" width="1399"  name=sys_fields_lookup_field_name_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Sys Fields Lookup Code"border="0" color="0" x="5842" y="4" height="76" width="1065"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="8" height="76" width="1065" format="[general]"  name=sys_tables_table_name edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1083" y="8" height="76" width="882" format="[general]"  name=sys_fields_field_name edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="1975" y="8" height="76" width="283" format="[general]"  name=sys_fields_field_type edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="1" tabsequence=32766 border="0" color="0" x="2267" y="8" height="76" width="329" format="[general]"  name=sys_fields_field_len edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="2606" y="8" height="76" width="338" format="[general]"  name=sys_fields_lookup_type edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="2953" y="8" height="76" width="832" format="[general]"  name=sys_fields_field_name_allias edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="3794" y="8" height="76" width="283" format="[general]"  name=sys_fields_field_case edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="4087" y="8" height="76" width="338" format="[general]"  name=sys_fields_lookup_field edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="4434" y="8" height="76" width="1399" format="[general]"  name=sys_fields_lookup_field_name edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="5842" y="0" height="64" width="1065" format="[general]"  name=lookup_code edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

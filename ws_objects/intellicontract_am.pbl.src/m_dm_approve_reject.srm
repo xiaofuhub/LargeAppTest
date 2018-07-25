@@ -1,0 +1,216 @@
+﻿$PBExportHeader$m_dm_approve_reject.srm
+forward
+global type m_dm_approve_reject from menu
+end type
+type m_approve from menu within m_dm_approve_reject
+end type
+type m_approve1 from menu within m_approve
+end type
+type m_approve2 from menu within m_approve
+end type
+type m_approve3 from menu within m_approve
+end type
+type m_approve from menu within m_dm_approve_reject
+m_approve1 m_approve1
+m_approve2 m_approve2
+m_approve3 m_approve3
+end type
+type m_reject from menu within m_dm_approve_reject
+end type
+type m_reject1 from menu within m_reject
+end type
+type m_reject2 from menu within m_reject
+end type
+type m_reject3 from menu within m_reject
+end type
+type m_reject from menu within m_dm_approve_reject
+m_reject1 m_reject1
+m_reject2 m_reject2
+m_reject3 m_reject3
+end type
+global type m_dm_approve_reject from menu
+m_approve m_approve
+m_reject m_reject
+end type
+end forward
+
+global type m_dm_approve_reject from menu
+m_approve m_approve
+m_reject m_reject
+end type
+global m_dm_approve_reject m_dm_approve_reject
+
+type variables
+userobject iuo_parent
+end variables
+
+forward prototypes
+public function integer of_setparent (userobject auo_parent)
+end prototypes
+
+public function integer of_setparent (userobject auo_parent);integer	li_rc = 1
+
+if IsValid (auo_parent) then
+	iuo_parent = auo_parent
+else
+	li_rc = -1
+end if
+
+return li_rc
+
+end function
+
+on m_dm_approve_reject.create
+m_dm_approve_reject=this
+call super::create
+this.text = "m_dm_approve_reject"
+this.m_approve=create m_approve
+this.m_reject=create m_reject
+this.Item[UpperBound(this.Item)+1]=this.m_approve
+this.Item[UpperBound(this.Item)+1]=this.m_reject
+end on
+
+on m_dm_approve_reject.destroy
+call super::destroy
+destroy(this.m_approve)
+destroy(this.m_reject)
+end on
+
+type m_approve from menu within m_dm_approve_reject
+m_approve1 m_approve1
+m_approve2 m_approve2
+m_approve3 m_approve3
+end type
+
+on m_approve.create
+call super::create
+this.text = "Approve"
+this.m_approve1=create m_approve1
+this.m_approve2=create m_approve2
+this.m_approve3=create m_approve3
+this.Item[UpperBound(this.Item)+1]=this.m_approve1
+this.Item[UpperBound(this.Item)+1]=this.m_approve2
+this.Item[UpperBound(this.Item)+1]=this.m_approve3
+end on
+
+on m_approve.destroy
+call super::destroy
+destroy(this.m_approve1)
+destroy(this.m_approve2)
+destroy(this.m_approve3)
+end on
+
+type m_approve1 from menu within m_approve
+end type
+
+on m_approve1.create
+call super::create
+this.text = "Accept All Format changes"
+end on
+
+on m_approve1.destroy
+call super::destroy
+end on
+
+event clicked;iuo_parent.dynamic event ue_approve_reject('accept', 'all format')
+end event
+
+type m_approve2 from menu within m_approve
+end type
+
+on m_approve2.create
+call super::create
+this.text = "Accept All changes on current page"
+end on
+
+on m_approve2.destroy
+call super::destroy
+end on
+
+event clicked;iuo_parent.dynamic event ue_approve_reject('accept', 'current page')
+end event
+
+type m_approve3 from menu within m_approve
+end type
+
+on m_approve3.create
+call super::create
+this.text = "Accept All changes on document "
+end on
+
+on m_approve3.destroy
+call super::destroy
+end on
+
+event clicked;iuo_parent.dynamic event ue_approve_reject('accept', 'all changes')
+end event
+
+type m_reject from menu within m_dm_approve_reject
+m_reject1 m_reject1
+m_reject2 m_reject2
+m_reject3 m_reject3
+end type
+
+on m_reject.create
+call super::create
+this.text = "Reject"
+this.m_reject1=create m_reject1
+this.m_reject2=create m_reject2
+this.m_reject3=create m_reject3
+this.Item[UpperBound(this.Item)+1]=this.m_reject1
+this.Item[UpperBound(this.Item)+1]=this.m_reject2
+this.Item[UpperBound(this.Item)+1]=this.m_reject3
+end on
+
+on m_reject.destroy
+call super::destroy
+destroy(this.m_reject1)
+destroy(this.m_reject2)
+destroy(this.m_reject3)
+end on
+
+type m_reject1 from menu within m_reject
+end type
+
+on m_reject1.create
+call super::create
+this.text = "Reject All Format changes"
+end on
+
+on m_reject1.destroy
+call super::destroy
+end on
+
+event clicked;iuo_parent.dynamic event ue_approve_reject('reject', 'all format')
+end event
+
+type m_reject2 from menu within m_reject
+end type
+
+on m_reject2.create
+call super::create
+this.text = "Reject All changes on current page"
+end on
+
+on m_reject2.destroy
+call super::destroy
+end on
+
+event clicked;iuo_parent.dynamic event ue_approve_reject('reject', 'current page')
+end event
+
+type m_reject3 from menu within m_reject
+end type
+
+on m_reject3.create
+call super::create
+this.text = "Reject All changes on document "
+end on
+
+on m_reject3.destroy
+call super::destroy
+end on
+
+event clicked;iuo_parent.dynamic event ue_approve_reject('reject', 'all changes')
+end event
+

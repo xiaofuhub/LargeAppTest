@@ -1,0 +1,8 @@
+﻿$PBExportHeader$str_report_cur.srs
+global type str_report_cur from structure
+	string		s_name
+	datastore		ds_rep
+	datawindow		dw_rep
+	string		s_type
+end type
+

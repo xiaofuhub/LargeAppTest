@@ -1,0 +1,30 @@
+﻿$PBExportHeader$of_log_batch_change.srf
+global type of_log_batch_change from function_object
+end type
+
+forward prototypes
+global function integer of_log_batch_change (long al_org, long al_new, integer ai_batch, string as_user)
+end prototypes
+
+global function integer of_log_batch_change (long al_org, long al_new, integer ai_batch, string as_user);//Start Code Change ----06.04.2013 #V14 maha - created for logging intellibatch changes
+
+n_ds lds_log
+
+lds_log = create n_ds
+lds_log.dataobject = "d_batch_change_log_add"
+lds_log.settransobject(sqlca)
+
+lds_log.insertrow(1)
+lds_log.setitem(1,"batch_id",ai_batch)
+lds_log.setitem(1,"org_count", al_org)
+lds_log.setitem(1,"new_count", al_new)
+lds_log.setitem(1,"change_date", datetime(today(),now()))
+lds_log.setitem(1,"user_id", as_user)
+
+lds_log.update()
+	
+destroy lds_log
+
+return 1
+end function
+

@@ -1,0 +1,99 @@
+﻿$PBExportHeader$of_next_run_time.srf
+global type of_next_run_time from function_object
+end type
+
+forward prototypes
+global function datetime of_next_run_time (integer ai_interval, integer ai_frequency, date ad_date, time at_time)
+end prototypes
+
+global function datetime of_next_run_time (integer ai_interval, integer ai_frequency, date ad_date, time at_time);//Start Code Change ----11.03.2009 #V10 maha - added to reset the run time for imports and exports
+integer li_int
+integer li_newminute
+integer li_newhour
+integer li_newmonth
+integer li_year
+integer li_month
+integer li_day
+integer li_day_add
+integer li_hour_add
+integer w
+datetime ldt_nexttime
+datetime ldt_now
+date ld_date
+time lt_time
+
+ldt_now = datetime(today(),now())
+li_int = ai_interval
+li_newminute = minute(at_time)
+li_newhour = hour(at_time)
+ldt_nexttime = datetime(ad_date,at_time) //this normally will be the last run time
+
+
+do until ldt_nexttime > ldt_now   //Start Code Change ----04.30.2015 #V15 maha - changed do function
+//do while ldt_nexttime < ldt_now
+	ld_date = date(ldt_nexttime)
+	lt_time = time(ldt_nexttime)
+	li_day = day(ld_date)
+	li_month = month(ld_date)
+	li_year = year(ld_date)
+	li_newminute = minute(lt_time)
+	li_newhour = hour(lt_time)
+	choose case ai_frequency		
+		case 1 //minute
+			li_newminute +=  li_int
+			li_hour_add = 0
+			//set appropriate hour/minute
+			do while li_newminute > 59
+				li_hour_add ++
+				li_newminute = li_newminute - 60
+			loop
+			li_newhour +=  li_hour_add
+			li_day_add = 0
+			//set appropriate day/hour
+			do while li_newhour > 23
+				li_day_add ++
+				li_newhour = li_newhour - 24
+			loop
+			
+			ldt_nexttime = datetime(RelativeDate ( ld_date, li_day_add ),time(string(li_newhour) + ":" + string(li_newminute) + ":" + "00"  ))
+		case 2 //hour
+			li_newhour += li_int
+			li_day_add = 0
+			do while li_newhour > 23
+				li_day_add ++
+				li_newhour = li_newhour - 24
+			loop
+			
+			ldt_nexttime = datetime(RelativeDate ( ld_date, li_day_add ),time(string(li_newhour) + ":" + string(li_newminute) + ":" + "00"  ))
+		case 3 //day
+			ldt_nexttime = datetime(RelativeDate ( ld_date, li_int ),lt_time)
+		case 4 //week
+			w = li_int * 7
+			ldt_nexttime = datetime(RelativeDate ( ld_date, w ),lt_time)
+		case 5 //month     note:end of month starts will always eventually end up as 28th of month
+			li_newmonth = li_month + li_int
+			if li_newmonth > 12 then //next year rollover
+				li_newmonth = li_newmonth - li_month
+				li_year = li_year + 1
+			end if
+			li_day = day(ld_date)
+			choose case li_day
+				case 29,30,31
+					choose case li_month
+						case 2
+							li_day = 28 //does not allow for leap year  
+						case 4,6,9,11
+							li_day = 30
+					end choose
+			end choose	
+			string sss
+			sss = string(li_year) + "-" + string(li_newmonth) + "-" + string(li_day)
+			ldt_nexttime = datetime(date( string(li_year) + "-" + string(li_newmonth) + "-" + string(li_day) ),lt_time)
+		case else
+			ldt_nexttime = ldt_now		
+	end choose
+loop
+
+return ldt_nexttime
+end function
+

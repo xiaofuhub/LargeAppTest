@@ -1,0 +1,30 @@
+﻿$PBExportHeader$of_get_color2rgb.srf
+global type of_get_color2rgb from function_object
+end type
+
+forward prototypes
+global function integer of_get_color2rgb (long al_color, ref integer ai_r, ref integer ai_g, ref integer ai_b)
+end prototypes
+
+global function integer of_get_color2rgb (long al_color, ref integer ai_r, ref integer ai_g, ref integer ai_b);//////////////////////////////////////////////////////////////////////
+// $<function>of_get_rgb
+// $<arguments>
+//		Long al_color
+//	ref	int ai_r
+//	ref	int ai_g
+//	ref	int ai_b
+// $<returns>
+// $<description>Get RGB
+//////////////////////////////////////////////////////////////////////
+//Added by (APPEON) Harry 11.14.2017 (V161 Storage of Documents as PDFs)
+//////////////////////////////////////////////////////////////////////
+
+ai_b = al_color / 65536
+
+ai_g = (al_color - ai_b * 65536) / 256
+
+ai_r = al_color - ai_b * 65536 - ai_g * 256
+
+Return 1
+end function
+

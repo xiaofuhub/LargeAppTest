@@ -1,0 +1,17 @@
+﻿$PBExportHeader$gs_multi_app.srs
+global type gs_multi_app from structure
+	integer		i_multi_app_id
+	long		l_staff_category
+	datetime		dt_from_date
+	datetime		dt_to_date
+	long		l_request
+	long		l_department
+	long		l_division
+	datetime		dep_from_date
+	datetime		dep_to_date
+	long		l_section
+	integer		i_department_count
+	integer		i_staff_category_count
+	integer		i_primary
+end type
+

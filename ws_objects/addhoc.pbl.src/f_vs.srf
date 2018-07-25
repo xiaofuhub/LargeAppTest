@@ -1,0 +1,48 @@
+﻿$PBExportHeader$f_vs.srf
+$PBExportComments$addhoc.pbl - Returns TRUE if a string has at least one non-blank character, esp. is not NULL and is not all BLANKs
+global type f_vs from function_object
+end type
+
+forward prototypes
+global function boolean f_vs (string the_string)
+end prototypes
+
+global function boolean f_vs (string the_string);/** Boolean f_vs( string the_string )
+
+VS -> Valid String. f_vs() returns TRUE if the_string is valid, esp. is
+not null, is not the empty string, esp. has at least one non-blank character.
+
+Parameters:
+
+	string the_string -- To be tested whether it is valid
+
+Returns: Boolean, TRUE if the_string is valid, FALSE if it is NULL or empty (or all blanks)
+
+Usage:
+
+This example shows how to use f_vs() to validate a string:
+
+	// Add ServerName if it is really there
+	if f_vs( sqlca.ServerName ) then dw_error.ImportString( "ServerName: ~t" + sqlca.ServerName )
+
+Keywords: valid, string functions
+
+See also: f_ns(), f_is_string(), f_is_string2()
+
+Programmer: Hoyt Nelson, Copyright 2002 PowerSmith LLC, (603) 882-5487
+
+Revision History:
+
+	Hoyt 07/15/2002 Created this function
+
+**/
+
+// It is valid if it is NOT NULL and is NOT ALL BLANK
+if IsNull( the_string ) then return false // NULL
+if LenA( trim( the_string ) ) = 0 then return false // Empty or all blanks
+
+return true // Has at least one non-blank character!
+
+
+end function
+

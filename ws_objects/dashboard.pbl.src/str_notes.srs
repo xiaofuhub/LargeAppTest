@@ -1,0 +1,6 @@
+﻿$PBExportHeader$str_notes.srs
+global type str_notes from structure
+	long		sl_note_id
+	datawindow		sdw_note_list
+end type
+

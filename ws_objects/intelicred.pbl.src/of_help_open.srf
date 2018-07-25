@@ -1,0 +1,41 @@
+﻿$PBExportHeader$of_help_open.srf
+global type of_help_open from function_object
+end type
+
+forward prototypes
+global function integer of_help_open (string as_from)
+end prototypes
+
+global function integer of_help_open (string as_from);string ls_help
+
+//select help_path into :ls_help from ids;
+ //Start Code Change ----.2017 #V153 maha- changed to point to portal
+//ls_help = "http://www.intellisoftgroup.com/helpfiles/"
+
+messagebox("Online Help","User Guides are available on the ISG Customer Portal")
+ls_help = "https://customerportal.intellisoftgroup.com/"
+
+//messagebox("",gs_cust_type)
+//if gs_cust_type = 'CRED' then  //Start Code Change ----04.06.2010 #V10 maha
+//	ls_help+= "IntelliCred_User_Guide_V14.2.pdf"
+//elseif gb_sk_ver then //Start Code Change ----01.17.2012 #V12 maha - moved ahead of the intelliapp option
+//	ls_help+=  "IntelliApp_Smart_User_Guide_V14.2.pdf"
+//elseif gs_cust_type = 'I' then //Start Code Change ----06.15.2010 #V10 maha
+//	ls_help+=  "IntelliApp_User_Guide_V14.2.pdf"
+//elseif gb_contract_version then
+//	ls_help+= "IntelliContract_User_Guide_V14.pdf"
+//else
+//	//messagebox("Help", "Online help is coming soon!")
+//	return 0
+//end if
+
+//if len(as_from) > 0 then ls_help+= "?" + as_from
+
+//ls_help = "https://customerportal.intellisoftgroup.com/"
+ //End Code Change ----02.17.2015
+
+of_open_web(ls_help)
+
+return 1
+end function
+

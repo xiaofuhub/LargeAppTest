@@ -1,0 +1,185 @@
+﻿$PBExportHeader$d_rpt_qa_physician_profile_report.srd
+$PBExportComments$Drop down datawindow listing of practioners
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=120 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=char(132) updatewhereclause=yes name=name dbname="prof_suffix" )
+ column=(type=char(15) updatewhereclause=yes name=pd_basic_middle_name dbname="pd_basic.middle_name" )
+ column=(type=char(15) updatewhereclause=yes name=pd_basic_first_name dbname="pd_basic.first_name" )
+ column=(type=decimal(0) updatewhereclause=yes name=prac_id dbname="pd_basic.prac_id" )
+ column=(type=char(25) updatewhereclause=yes name=pd_basic_rank dbname="pd_basic.rank" )
+ column=(type=char(34) updatewhereclause=yes name=report_name dbname="report_name" )
+ column=(type=datetime updatewhereclause=yes name=apptmnt_start_date dbname="pd_affil_stat.apptmnt_start_date" )
+ column=(type=char(26) updatewhereclause=yes name=prior_appt_start dbname="prior_appt_start" )
+ column=(type=char(20) updatewhereclause=yes name=pd_basic_provider_id dbname="provider_id" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_street dbname="pd_address.street" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_street_2 dbname="pd_address.street_2" )
+ column=(type=char(25) updatewhereclause=yes name=pd_address_city dbname="pd_address.city" )
+ column=(type=decimal(0) updatewhereclause=yes name=pd_address_state dbname="pd_address.state" )
+ column=(type=char(11) updatewhereclause=yes name=pd_address_zip dbname="pd_address.zip" )
+ column=(type=long updatewhereclause=yes name=active_status dbname="pd_affil_stat.active_status" )
+ column=(type=char(25) updatewhereclause=yes name=pd_address_phone dbname="pd_address.phone" )
+ column=(type=char(25) updatewhereclause=yes name=pd_address_fax dbname="pd_address.fax" )
+ column=(type=char(100) updatewhereclause=yes name=facility_facility_name dbname="facility.facility_name" )
+ column=(type=char(15) updatewhereclause=yes name=code_lookup_practicing dbname="code_lookup.practicing" )
+ column=(type=char(15) updatewhereclause=yes name=code_lookup_states dbname="code_lookup.states" )
+ column=(type=char(75) updatewhereclause=yes name=code_lookup_state_full_name dbname="code_lookup.state_full_name" )
+ column=(type=char(43) updatewhereclause=yes name=city_state dbname="city_state" )
+ column=(type=char(75) updatewhereclause=yes name=department dbname="department" )
+ column=(type=char(75) updatewhereclause=yes name=staff_category dbname="staff_category" )
+ column=(type=char(75) updatewhereclause=yes name=division dbname="division" )
+ column=(type=char(75) updatewhereclause=yes name=specialty dbname="specialty" )
+ column=(type=datetime updatewhereclause=yes name=app_data dbname="app_data" )
+ retrieve=" SELECT  pd_basic.last_name + ',' + pd_basic.first_name + ' ' + code_lookup_e.code prof_suffix,   
+         pd_basic.middle_name,   
+         pd_basic.first_name,   
+	 pd_basic.prac_id,
+	 pd_basic.rank, 
+    report_name = '                                  ',
+    pd_affil_stat.apptmnt_start_date,
+	 prior_appt_start = isnull(convert(varchar,convert(datetime,pd_affil_stat.prior_appt_start)), ''),
+    provider_id = isnull((pd_basic.provider_id),''),
+	 pd_address.street,
+	 pd_address.street_2,
+    pd_address.city,   
+    pd_address.state,   
+	 pd_address.zip,
+ 	 pd_AFFIL_STAT.ACTIVE_STATUS,
+    pd_address.phone,  
+	 pd_address.fax,
+	 facility.facility_name,
+	 code_lookup_b.code practicing,   
+    code_lookup_d.code states,
+    code_lookup_d.description state_full_name,
+    city_state = ' ' + pd_address.city + ', ' +  code_lookup_d.code,
+    DEPARTMENT = ISNULL((SELECT top 1 code_lookup_g.description 
+                  FROM code_lookup code_lookup_g , 
+                       pd_affil_dept PAD,
+							  pd_affil_stat PAS,pd_basic
+                  WHERE  PAD.department = code_lookup_g.lookup_code AND
+                          PAD.rec_id = PAS.rec_id AND
+                          PAD.PRAC_ID = pd_basic.prac_id AND PAD.primary_dept = 1 and pd_basic.prac_id = :al_prac_id  ),'No Primary Department')
+   
+    ,staff_category = isnull((select top 1 code_lookup_g.description  
+										from pd_hosp_affil ,code_lookup code_lookup_g ,pd_basic
+										where pd_hosp_affil.prac_id = pd_basic.prac_id and staff_category = code_lookup_g.lookup_code and pd_basic.prac_id = :al_prac_id   ),'No Staff Category')
+ 
+  ,division = isnull((select distinct top 1 code_lookup_g.description  
+								from pd_affil_dept PAD, 
+                             code_lookup code_lookup_g ,pd_basic
+								where PAD.prac_id = pd_basic.prac_id AND
+										PAD.rank = code_lookup_g.lookup_code AND PAD.primary_dept = 1 and pd_basic.prac_id = :al_prac_id   ),'No Division Assigned')
+   ,specialty = isnull(( SELECT top 1 x.description
+						 FROM   code_lookup x,   code_lookup Y ,
+								   pd_board_specialty,pd_basic
+								WHERE ( pd_board_specialty.specialty = x.lookup_code) and  
+										( ( pd_board_specialty.prac_id = pd_basic.prac_id ) AND  
+										( pd_board_specialty.specialty_order =    y.lookup_code and
+											  y.code = 'Primary'  AND  y.lookup_name = 'Specialty Order'  and pd_basic.prac_id = :al_prac_id ))),'No Primary Specialty')
+
+
+, app_data = (select top 1 dd.apptmnt_start_date  from pd_affil_stat dd ,pd_basic where dd.prac_id = pd_basic.prac_id and pd_basic.prac_id = :al_prac_id  and dd.apptmnt_start_date is not null )
+
+
+    FROM pd_basic  LEFT OUTER JOIN code_lookup code_lookup_f  ON pd_basic.name_suffix = code_lookup_f.lookup_code,   
+         pd_address,   
+	 pd_address_link,
+	 pd_affil_stat,
+	 facility,
+	 pd_board_specialty,
+	 pd_spec_facility_link,   
+         code_lookup code_lookup_a,   
+         code_lookup code_lookup_b,   
+         code_lookup code_lookup_d,   
+         code_lookup code_lookup_e  
+   WHERE ( pd_address.prac_id = pd_basic.prac_id ) and  
+			( pd_address.rec_id = pd_address_link.address_id ) and
+			( pd_affil_stat.prac_id = pd_basic.prac_id ) and
+			( pd_affil_stat.parent_facility_id = facility.facility_id ) and
+			( pd_board_specialty.rec_id = pd_spec_facility_link.specialty_id ) and
+			( pd_spec_facility_link.facility_id =  pd_affil_stat.parent_facility_id ) and
+			( pd_address_link.facility_id =  pd_affil_stat.parent_facility_id ) and 
+         ( pd_board_specialty.prac_id = pd_basic.prac_id ) and  
+         ( pd_basic.prof_suffix = code_lookup_e.lookup_code ) and  
+         ( pd_board_specialty.specialty = code_lookup_a.lookup_code ) and  
+         ( pd_spec_facility_link.practicing = code_lookup_b.lookup_code ) and 
+         ( pd_address.state = code_lookup_d.lookup_code ) and  
+         ( pd_address.active_status = 1 ) and
+      pd_address_link.primary_office = 1  AND pd_AFFIL_STAT.ACTIVE_STATUS IN ( 1,4) and pd_basic.prac_id = :al_prac_id  and pd_AFFIL_STAT.parent_facility_id = :al_facil
+" arguments=(("al_prac_id", number),("al_facil", number)) )
+text(band=header alignment="2" text="Prof Suffix" border="0" color="33554432" x="9" y="8" height="52" width="421" html.valueishtml="0"  name=prof_suffix_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Basic
+Middle Name" border="0" color="33554432" x="439" y="8" height="104" width="366" html.valueishtml="0"  name=pd_basic_middle_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Basic
+First Name" border="0" color="33554432" x="814" y="8" height="104" width="366" html.valueishtml="0"  name=pd_basic_first_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Basic
+Prac Id" border="0" color="33554432" x="1189" y="8" height="104" width="274" html.valueishtml="0"  name=pd_basic_prac_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Basic
+Rank" border="0" color="33554432" x="1472" y="8" height="104" width="594" html.valueishtml="0"  name=pd_basic_rank_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Report Name" border="0" color="33554432" x="2075" y="8" height="52" width="800" html.valueishtml="0"  name=report_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Affil Stat
+Apptmnt Start Date" border="0" color="33554432" x="2885" y="8" height="104" width="503" html.valueishtml="0"  name=pd_affil_stat_apptmnt_start_date_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Basic
+Provider Id" border="0" color="33554432" x="3397" y="8" height="104" width="480" html.valueishtml="0"  name=pd_basic_provider_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Address
+Street" border="0" color="33554432" x="3886" y="8" height="104" width="3451" html.valueishtml="0"  name=pd_address_street_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Address
+Street 2" border="0" color="33554432" x="7346" y="8" height="104" width="3451" html.valueishtml="0"  name=pd_address_street_2_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Address
+City" border="0" color="33554432" x="10807" y="8" height="104" width="594" html.valueishtml="0"  name=pd_address_city_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Address
+State" border="0" color="33554432" x="11410" y="8" height="104" width="274" html.valueishtml="0"  name=pd_address_state_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Address
+Zip" border="0" color="33554432" x="11694" y="8" height="104" width="274" html.valueishtml="0"  name=pd_address_zip_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Address
+Phone" border="0" color="33554432" x="11977" y="8" height="104" width="343" html.valueishtml="0"  name=pd_address_phone_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Address
+Fax" border="0" color="33554432" x="12329" y="8" height="104" width="343" html.valueishtml="0"  name=pd_address_fax_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Facility
+Facility Name" border="0" color="33554432" x="12681" y="8" height="104" width="2309" html.valueishtml="0"  name=facility_facility_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="City State" border="0" color="33554432" x="14999" y="8" height="52" width="1006" html.valueishtml="0"  name=city_state_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Pd Affil Stat Active Status" border="0" color="33554432" x="16014" y="4" height="52" width="978" html.valueishtml="0"  name=pd_affil_stat_active_status_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Department" border="0" color="0" x="17001" y="4" height="76" width="1714" html.valueishtml="0"  name=department_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Pd Affil Stat Prior Appt Start" border="0" color="0" x="18725" y="4" height="76" width="658" html.valueishtml="0"  name=pd_affil_stat_prior_appt_start_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Staff Category" border="0" color="33554432" x="19392" y="4" height="52" width="1714" html.valueishtml="0"  name=staff_category_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Division" border="0" color="33554432" x="21115" y="4" height="52" width="1714" html.valueishtml="0"  name=division_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Code Lookup Specialty" border="0" color="0" x="22839" y="4" height="76" width="1714" html.valueishtml="0"  name=code_lookup_specialty_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Code Lookup Practicing" border="0" color="0" x="24562" y="4" height="76" width="334" html.valueishtml="0"  name=code_lookup_practicing_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Code Lookup States" border="0" color="0" x="24905" y="4" height="76" width="334" html.valueishtml="0"  name=code_lookup_states_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Code Lookup State Full Name" border="0" color="0" x="25248" y="4" height="76" width="1714" html.valueishtml="0"  name=code_lookup_state_full_name_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="App Data" border="0" color="0" x="26971" y="4" height="76" width="658" html.valueishtml="0"  name=app_data_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="9" y="8" height="64" width="421" format="[general]" html.valueishtml="0"  name=name visible="1" edit.limit=132 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="439" y="8" height="64" width="366" format="[general]" html.valueishtml="0"  name=pd_basic_middle_name visible="1" edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="814" y="8" height="64" width="366" format="[general]" html.valueishtml="0"  name=pd_basic_first_name visible="1" edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="1" tabsequence=32766 border="0" color="33554432" x="1189" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=prac_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="33554432" x="1472" y="8" height="64" width="594" format="[general]" html.valueishtml="0"  name=pd_basic_rank visible="1" edit.limit=25 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="33554432" x="2075" y="8" height="64" width="800" format="[general]" html.valueishtml="0"  name=report_name visible="1" edit.limit=34 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="33554432" x="2885" y="8" height="64" width="503" format="[shortdate] [time]" html.valueishtml="0"  name=apptmnt_start_date visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="33554432" x="3397" y="8" height="64" width="480" format="[general]" html.valueishtml="0"  name=pd_basic_provider_id visible="1" edit.limit=20 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="33554432" x="3886" y="8" height="64" width="3451" format="[general]" html.valueishtml="0"  name=pd_address_street visible="1" edit.limit=150 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="33554432" x="7346" y="8" height="64" width="3451" format="[general]" html.valueishtml="0"  name=pd_address_street_2 visible="1" edit.limit=150 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="33554432" x="10807" y="8" height="64" width="594" format="[general]" html.valueishtml="0"  name=pd_address_city visible="1" edit.limit=25 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="1" tabsequence=32766 border="0" color="33554432" x="11410" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=pd_address_state visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="33554432" x="11694" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=pd_address_zip visible="1" edit.limit=11 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="33554432" x="11977" y="8" height="64" width="343" format="[general]" html.valueishtml="0"  name=pd_address_phone visible="1" edit.limit=25 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="0" color="33554432" x="12329" y="8" height="64" width="343" format="[general]" html.valueishtml="0"  name=pd_address_fax visible="1" edit.limit=25 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="0" tabsequence=32766 border="0" color="33554432" x="12681" y="8" height="64" width="2309" format="[general]" html.valueishtml="0"  name=facility_facility_name visible="1" edit.limit=100 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=22 alignment="0" tabsequence=32766 border="0" color="33554432" x="14999" y="8" height="64" width="1006" format="[general]" html.valueishtml="0"  name=city_state visible="1" edit.limit=43 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="0" color="33554432" x="16014" y="0" height="52" width="978" format="[general]" html.valueishtml="0"  name=active_status visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=23 alignment="0" tabsequence=32766 border="0" color="33554432" x="17001" y="0" height="52" width="1714" format="[general]" html.valueishtml="0"  name=department visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="33554432" x="18725" y="0" height="52" width="658" format="[general]" html.valueishtml="0"  name=prior_appt_start visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=24 alignment="0" tabsequence=32766 border="0" color="33554432" x="19392" y="0" height="52" width="1714" format="[general]" html.valueishtml="0"  name=staff_category visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=25 alignment="0" tabsequence=32766 border="0" color="33554432" x="21115" y="0" height="52" width="1714" format="[general]" html.valueishtml="0"  name=division visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=26 alignment="0" tabsequence=32766 border="0" color="33554432" x="22839" y="0" height="64" width="1714" format="[general]" html.valueishtml="0"  name=specialty visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=19 alignment="0" tabsequence=32766 border="0" color="33554432" x="24562" y="0" height="64" width="334" format="[general]" html.valueishtml="0"  name=code_lookup_practicing visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="0" color="33554432" x="24905" y="0" height="52" width="334" format="[general]" html.valueishtml="0"  name=code_lookup_states visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=21 alignment="0" tabsequence=32766 border="0" color="33554432" x="25248" y="0" height="52" width="1714" format="[general]" html.valueishtml="0"  name=code_lookup_state_full_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=27 alignment="0" tabsequence=32766 border="0" color="33554432" x="26971" y="0" height="52" width="658" format="[shortdate] [time]" html.valueishtml="0"  name=app_data visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

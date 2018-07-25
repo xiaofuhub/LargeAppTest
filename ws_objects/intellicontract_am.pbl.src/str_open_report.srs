@@ -1,0 +1,8 @@
+﻿$PBExportHeader$str_open_report.srs
+global type str_open_report from structure
+	string		s_style
+	long		l_ctx_id
+	string		s_dataobject
+	long		l_doc_id
+end type
+

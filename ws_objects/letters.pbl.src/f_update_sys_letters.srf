@@ -1,0 +1,132 @@
+﻿$PBExportHeader$f_update_sys_letters.srf
+global type f_update_sys_letters from function_object
+end type
+
+forward prototypes
+global function integer f_update_sys_letters ()
+end prototypes
+
+global function integer f_update_sys_letters ();/******************************************************************************************************************
+**  [PUBLIC]   : f_update_sys_letters
+**==================================================================================================================
+**  Purpose   	: migrate some data over to the sys_letter_module table
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 03 November 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+
+long ll_rowcount
+long ll_count
+long ll_i
+long ll_module
+long ll_desination
+
+string  ls_sql_statments []
+
+////////////////////////////////////////////////////////////////////////////////////////////
+// Create the SYS_LETTER_MODULE table
+////////////////////////////////////////////////////////////////////////////////////////////
+//select count(*)
+//into :ll_count
+//from sys.systable 
+//where table_name='SYS_LETTER_MODULE';
+//
+//if ll_count > 0 then return 0
+//
+
+ls_sql_statments[upperbound(ls_sql_statments) + 1] = "create table SYS_LETTER_MODULE(letter_id integer not null default NULL, letter_module integer  not null default 1, letter_destination integer null, user_comment  varchar(255) null);"
+ls_sql_statments[upperbound(ls_sql_statments) + 1] = "comment on table SYS_LETTER_MODULE is 'Used to keep track of module letters';"
+ls_sql_statments[upperbound(ls_sql_statments) + 1] = "comment on column SYS_LETTER_MODULE.letter_module is 'The Inellicred Section the letter is used for Not to be data drivin';"
+ls_sql_statments[upperbound(ls_sql_statments) + 1] = "comment on column SYS_LETTER_MODULE.letter_destination is 'The destination of the letter (Practitiner,Insurance Company etc...) not to be data drivin';"
+ls_sql_statments[upperbound(ls_sql_statments) + 1] = "alter table SYS_LETTER_MODULE &
+                                                      add foreign key FK_SYS_LETT_REFERENCE_SYS_LETT (letter_id) references sys_letters (letter_id) on update restrict on delete cascade ;"
+	
+	
+	
+	
+	
+FOR ll_i = 1 TO upperbound(ls_sql_statments)
+	EXECUTE IMMEDIATE :ls_sql_statments[LL_I] using sqlca;
+	commit;
+NEXT
+
+//select count(*)
+//into :ll_count
+//from sys_letter_module;
+
+DELETE FROM SYS_LETTER_MODULE WHERE LETTER_MODULE <> 4;
+
+
+
+//if ll_count < 1 or isnull(ll_count) then 
+      // mskinner 21 feb 2006 - begin
+		// changed n_ds to datastore
+		n_ds lds_datastore
+		lds_datastore = create n_ds
+		lds_datastore.dataobject = 'd_ds_sysletter_mod_update'
+		lds_datastore.settransobject(sqlca)
+		ll_rowcount = lds_datastore.retrieve()
+		// mskinner 21 feb 2006 - end 
+		for ll_i = 1 to ll_rowcount
+	
+			 setnull(ll_module)
+			 setnull(ll_desination)
+          
+			 if lds_datastore.getitemNumber(ll_i ,'sys_letters_case_review_letter') = 1 then
+				ll_module = 2
+				ll_desination = lds_datastore.getitemNumber(ll_i ,'sys_letters_case_review_letter_level')
+			 end if 
+			 
+			 if f_validstr(string(lds_datastore.getitemNumber(ll_i ,'sys_letters_qa_letter'))) then
+				ll_module = 3
+				ll_desination = lds_datastore.getitemNumber(ll_i ,'sys_letters_qa_letter_level')
+			 end if
+			 
+			 
+			 
+			 if isnull(ll_module) then ll_module = 1
+			  lds_datastore.SetItemStatus(ll_i, 0, Primary!, NewModified!)
+			  lds_datastore.setitem(ll_i,'sys_letter_module_letter_id',lds_datastore.GetitemNumber(ll_i,'sys_letters_letter_id') ) 
+			  lds_datastore.setitem(ll_i,'sys_letter_module_letter_module',ll_module)
+           lds_datastore.setitem(ll_i,'sys_letter_module_letter_destination',ll_desination)
+			 next
+			 lds_datastore.update()
+			 
+			 
+//end if 
+
+
+
+
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "ALTER TABLE sys_letters DELETE qa_letter_level;"
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "ALTER TABLE sys_letters DELETE qa_letter;"
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "ALTER TABLE sys_letters DELETE case_review_letter_level;"
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "ALTER TABLE sys_letters DELETE case_review_letter;"
+//	
+//	
+//FOR ll_i = 1 TO upperbound(ls_sql_statments)
+//	EXECUTE IMMEDIATE :ls_sql_statments[LL_I] using sqlca;
+//	commit;
+//NEXT
+
+
+
+
+
+return 0 
+
+
+
+
+
+end function
+

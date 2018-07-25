@@ -1,0 +1,17 @@
+﻿$PBExportHeader$d_wc_browse_descrip.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=wc_id dbname="wc_hdr.wc_id" )
+ column=(type=char(100) updatewhereclause=yes name=wc_hdr_wc_description dbname="wc_hdr.wc_description" )
+ column=(type=char(50) updatewhereclause=yes name=data_view_screen_screen_name dbname="data_view_screen.screen_name" )
+ column=(type=datetime updatewhereclause=yes name=wc_hdr_last_updated dbname="wc_hdr.last_updated" )
+ retrieve="PBSELECT( VERSION(400) DISTINCT ()TABLE(NAME=~"wc_hdr~" )  TABLE(NAME=~"data_view_screen~" ) COLUMN(NAME=~"wc_hdr.wc_id~") COLUMN(NAME=~"wc_hdr.wc_description~") COLUMN(NAME=~"data_view_screen.screen_name~") COLUMN(NAME=~"wc_hdr.last_updated~")    JOIN (LEFT=~"wc_hdr.wc_screen_id_link~"    OP =~"=~"RIGHT=~"data_view_screen.screen_id~"    OUTER1 =~"wc_hdr.wc_screen_id_link~" )) "  sort="wc_hdr_wc_description A " )
+column(band=detail id=2 alignment="0" tabsequence=10 border="5" color="33554432" x="9" y="8" height="68" width="1024" format="[general]" html.valueishtml="0"  name=wc_hdr_wc_description visible="1" dddw.name=d_wc_dddw_crawl_list dddw.displaycolumn=wc_hdr_wc_description dddw.datacolumn=wc_id dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

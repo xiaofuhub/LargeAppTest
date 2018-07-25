@@ -1,0 +1,57 @@
+﻿$PBExportHeader$str_app_email.srs
+global type str_app_email from structure
+	string		doc_from
+	long		prac_id
+	long		rec_id
+	long		app_id
+	string		doc_ext
+	string		filename
+	string		fullname
+	string		is_weblink
+	string		action_type
+	string		emailto
+	long		prac_id_list[]
+	long		rec_id_list[]
+	long		app_id_list[]
+	long		faci_id_list[]
+	string		filename_list[]
+	string		fullfilename_list[]
+	string		pathfilename_list[]
+	string		doc_ext_list[]
+	string		as_sertifi_apicode
+	string		as_sertifi_fileid
+	string		as_sertifi_docid[]
+	string		as_batch_file[]
+	long		al_mail_id
+	string		as_mail_from
+	string		as_mail_to
+	string		as_mail_cc
+	datetime		adt_mail_date
+	integer		ai_mail_importance
+	string		as_mail_subject
+	string		as_mail_docname
+	string		as_mail_emlname
+	string		as_mail_attach_name
+	long		al_mail_prac_id
+	long		al_mail_rec_id
+	long		al_mail_action_item_id
+	string		as_mail_save_format
+	string		as_mail_reply_mode
+	integer		ai_fromctx
+	string		as_prac_id_list
+	string		as_rec_id_list
+	string		as_ai_id_list
+	long		ai_create_ai
+	datetime		adt_duedate
+	string		as_sender
+	blob		ablb_message
+	string		as_attach_list[]
+	integer		ai_signature
+	string		as_message
+	boolean		ab_checkinright
+	long		al_approve_id
+	string		as_user_arr[]
+	string		alm_appointment
+	string		as_sertifi_link
+end type
+

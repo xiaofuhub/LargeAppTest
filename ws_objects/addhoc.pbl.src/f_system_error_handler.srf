@@ -1,0 +1,192 @@
+﻿$PBExportHeader$f_system_error_handler.srf
+$PBExportComments$addhoc.pbl - Call in the application's SystemError event
+global type f_system_error_handler from function_object
+end type
+
+forward prototypes
+global subroutine f_system_error_handler (string as_message)
+end prototypes
+
+global subroutine f_system_error_handler (string as_message);/** (None) f_system_error_handler( void )
+
+This function displays the system error in a dedicated window.
+
+Parameters: None
+
+Returns: None
+
+Usage: 
+
+	// In the application's SystemError! event
+	f_system_error_handler()
+
+Programmer: Hoyt Nelson
+
+Revision History:
+
+	Hoyt 07/15/2002 Adapted this function from f_system_error()
+
+**/
+
+string ls_container, ls_message
+
+// If the error text is blank, then supply it using the error number
+// The errors identified are those taken from on-line help from PB4.0, 4/26/95
+if trim( error.text ) = "" then
+	choose case error.number
+			//Start Code Change ---- 04.05.2006 #401 maha
+		case 0 
+			return
+			//End Code Change---04.05.2006
+		case 1
+			error.text = "Divide by zero"
+		case 2
+			error.text = "Null object reference"
+		case 3
+			error.text = "Array boundary exceeded"
+		case 4
+			error.text = "Enumerated value is out of range"
+		case 5
+			error.text = "Negative value encountered in function"
+		case 6
+			error.text = "Invalid DataWindow row/column specified"
+		case 7
+			error.text = "Unresolvable external when linking reference"
+		case 8
+			error.text = "Reference of array with NULL subscript"
+		case 9
+			error.text = "DLL function not found in current application"
+		case 10
+			error.text = "Unsupported argument type in DLL function"
+		case 12
+			error.text = "DataWindow column type does not match GetItem type"
+		case 13
+			error.text = "Unresolved attribute reference"
+		case 14
+			error.text = "Error opening DLL library for external function"
+		case 15
+			error.text = "Error calling external function"
+		case 16
+			error.text = "Maximum string size exceeded"
+		case 17
+			error.text = "DataWindow referenced in Datawindow object does not exist"
+		case 18
+			error.text = "Function doesn't return value"
+		case 19
+			error.text = "Cannot convert <type> in Any variable to <type>"
+		case 20
+			error.text = "Database command has not been successfully prepared"
+		case 21
+			error.text = "Bad runtime function reference"
+		case 22
+			error.text = "Unknown object type"
+		case 23
+			error.text = "Cannot assign object of type <type> to variable of type <type>"
+		case 24
+			error.text = "Function call doesn't match its definition"
+		case 25
+			error.text = "Double or Real expression has overflowed"
+		case 26
+			error.text = "Field <name> assignment not supported"
+		case 27
+			error.text = "Cannot take a negative to a noninteger power"
+		case 28
+			error.text = "VBX error.<name>"
+		case 29
+			error.text = "Nonarray expected in Any variable"
+		case 30
+			error.text = "External object does not support datatype <name>"
+		case 31
+			error.text = "External object data type <name> not supported"
+		case 32
+			error.text = "Name not found calling external object function <name>"
+		case 33
+			error.text = "Invalid parameter type calling external object function <name>"
+		case 34
+			error.text = "Incorrect number of parameters calling external object function <name>"
+		case 35
+			error.text = "Error calling external object <name>"
+		case 36
+			error.text = "Name not found accessing external object property <name>"
+		case 37
+			error.text = "Type mismatch accessing external object property <name>"
+		case 38
+			error.text = "Incorrect number of subscripts accessing external object property <name>"
+		case 39
+			error.text = "Error accessing external object property <name>"
+		case 40
+			error.text = "Mismatched Any datatypes in expression"
+		case 41
+			error.text = "Illegal Nay datatype in expression"
+		case 42
+			error.text = "Specified argument type differs from required argument type at runtime in DLL function <name>"
+		case 43
+			error.text = "Parent object doesn't exist"
+		case 44
+			error.text = "Function has conflicting argument or return type in ancestor"
+		case 45
+			error.text = "Internal table overflow; maximum number of objects exceeded"
+		case 46
+			error.text = "Null object reference cannot be assigned or passed to a variable of this type"
+		case 47
+			error.text = "Array expected in Any variable"
+		case 48
+			error.text = "Size mismatch in array to object conversion"
+		case 49
+			error.text = "Type mismatch in array to object conversion"
+		case 50
+			error.text = "Distributed service error"
+		case 51
+			error.text = "Bad argument list for function / event"
+		case 52
+			error.text = "Distributed communications error"
+		case 53
+			error.text = "Requested server not active"
+		case 54
+			error.text = "Server not accepting requests"
+		case 55
+			error.text = "Request terminated abnormally"
+		case 56
+			error.text = "Response to request incomplete"
+		case 57
+			error.text = "Not connected"
+		case 58
+			error.text = "Object instance does not exist"
+		case 59
+			error.text = "Invalid column range"
+		case 60
+			error.text = "Invalid row range"
+		case 61
+			error.text = "Invalid conversion of <number> dimensional array to object"
+		case 62
+			error.text = "Server busy"
+		case 63
+			error.text = "Function/event with no return value used in expression"
+		case 64
+			error.text = "Object array expected on left side of assignment"
+		// HOYTFIX There are probably more error messages now?
+		case else
+			error.text = "Unknown error code: " + string( error.number )
+	end choose
+end if
+
+///////////////////////////////
+// Build the error message
+///////////////////////////////
+
+// The WindowMenu _can_ be the same as the error.object
+//ls_container = error.WindowMenu
+//if error.object <> error.WindowMenu then ls_container += "." + error.object
+//ls_message = "Error " + string( error.number ) + ": " + error.text + "~r~n~r~nThe error occurred in " + ls_container + "." + error.ObjectEvent + ".line=" + string( error.line ) + "."
+//ClipBoard( ls_message )
+
+// MessageBox( "System Error (it's in the ClipBoard)", ls_message )
+if IsValid( w_system_error_handler ) then close( w_system_error_handler )
+Openwithparm( w_system_error_handler ,as_message)
+
+// Keep on truckin!
+return
+
+
+end subroutine
+

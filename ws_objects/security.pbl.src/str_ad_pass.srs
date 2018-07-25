@@ -1,0 +1,6 @@
+﻿$PBExportHeader$str_ad_pass.srs
+global type str_ad_pass from structure
+	string		ls_server
+	string		ls_user
+end type
+

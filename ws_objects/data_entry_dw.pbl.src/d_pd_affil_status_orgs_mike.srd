@@ -1,0 +1,38 @@
+﻿$PBExportHeader$d_pd_affil_status_orgs_mike.srd
+$PBExportComments$11-16-01 not used
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=prac_id dbname="pd_affil_stat.prac_id" )
+ column=(type=long updatewhereclause=yes name=parent_facility_id dbname="pd_affil_stat.parent_facility_id" )
+ column=(type=long updatewhereclause=yes name=audit_facility dbname="pd_affil_stat.application_audit_facility" )
+ column=(type=long updatewhereclause=yes name=verifying_facility dbname="pd_affil_stat.verifying_facility" )
+ column=(type=long updatewhereclause=yes name=pd_affil_stat_active_status dbname="pd_affil_stat.active_status" )
+ column=(type=char(100) updatewhereclause=yes name=parent_facility dbname="pd_affil_stat.parent_facility" )
+ column=(type=char(100) updatewhereclause=yes name=facility_verifying_facility dbname="pd_affil_stat.verifying_facility" )
+ column=(type=char(100) updatewhereclause=yes name=facility_app_audit_facility dbname="pd_affil_stat.app_audit_facility" )
+ retrieve="SELECT DISTINCT 
+         pd_affil_stat.prac_id,   
+	      pd_affil_stat.parent_facility_id ,  
+         pd_affil_stat.application_audit_facility,    
+         pd_affil_stat.verifying_facility,  
+	pd_affil_stat.active_status, 
+         facility_a.facility_name parent_facility,   
+         facility_c.facility_name verifying_facility,   
+         facility.facility_name app_audit_facility 
+    FROM pd_affil_stat LEFT OUTER JOIN  facility ON pd_affil_stat.application_audit_facility = facility.facility_id, 
+         facility facility_a,      
+         facility facility_c  
+   WHERE ( pd_affil_stat.parent_facility_id = facility_a.facility_id ) and  
+         ( pd_affil_stat.verifying_facility = facility_c.facility_id ) and  
+	 pd_affil_stat.active_status in ( 1,3,4 ) and
+         ( pd_affil_stat.prac_id = :prac_id )      
+" arguments=(("prac_id", number))  sort="parent_facility A " )
+group(level=1 header.height=0 trailer.height=0 by=("parent_facility_id" ) header.color="536870912" trailer.color="536870912" )
+bitmap(band=detail filename="facility.bmp" x="9" y="8" height="64" width="73" border="0~t1" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="101" y="12" height="52" width="1083" format="[general]"  name=parent_facility edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="1769" y="8" height="52" width="69" format="[general]"  name=pd_affil_stat_active_status edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+
+sparse(names="parent_facility")htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,12 @@
+﻿$PBExportHeader$g_str_clin_info.srs
+global type g_str_clin_info from structure
+	integer		row_count
+	long		clin_id
+	long		priv_ids[]
+	long		prac_id
+	integer		appnt
+	long		stat
+	date		dstart
+	date		dend
+end type
+

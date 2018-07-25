@@ -1,0 +1,27 @@
+﻿$PBExportHeader$str_add_doc.srs
+global type str_add_doc from structure
+	long		ctx_id
+	long		doc_id
+	boolean		new
+	string		filename
+	string		doc_from_name
+	string		notes
+	string		status
+	decimal { 1 }		revision
+	boolean		revision_control
+	string		doc_ext
+	string		doc_from
+	string		checkout_status
+	string		operation
+	string		filepathname
+	boolean		ab_batch_new
+	long		al_batch_ctx_id[]
+	u_tabpg_dm_data		au_tabpg_dm_data
+	str_sertifi_doc		astr_sertifi_doc
+	boolean		ab_sertifi_auto
+	boolean		ab_notmodified
+	boolean		ab_approval
+	long		al_approveid
+	datetime		adt_lastupdate
+end type
+

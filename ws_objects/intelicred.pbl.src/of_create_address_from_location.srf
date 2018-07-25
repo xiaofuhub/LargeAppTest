@@ -1,0 +1,276 @@
+﻿$PBExportHeader$of_create_address_from_location.srf
+global type of_create_address_from_location from function_object
+end type
+
+forward prototypes
+global function integer of_create_address_from_location (long al_pracs[], long al_location, string as_addr_type)
+end prototypes
+
+global function integer of_create_address_from_location (long al_pracs[], long al_location, string as_addr_type);//Start Code Change ----05.06.2014 #V14.2 maha  - copied from group practice batch add address and modified for generic function
+
+Integer res
+integer chk
+integer li_b, li_p, li_a, li_m, li_e, li_d, cnt 
+Long  i, j, ll_prac_count, ll_record_id
+Long  li_row_cnt, ll_add_row, ll_new_row, ll_seq_no
+Long  ll_prac_id, li_facility_id, ll_prac_ids[]
+Long 	ll_mailing, ll_billing, ll_home_address, ll_primary_office
+Long  ll_additional_office, ll_include_in_directory, ll_exp_letters
+String ls_new_value, ls_mailing_address, ls_filter, is_praclist
+DateTime ldt_date
+
+ll_prac_count = upperbound(al_pracs)
+IF ll_prac_count <= 0 THEN RETURN 0
+
+if isnull(al_location) or al_location < 1 then return 0  //Start Code Change ----06.13.2016 #V152 maha
+
+//Initialize DataStores
+n_cst_datastore lds_address 
+n_cst_datastore lds_group_practic
+n_cst_datastore lds_group_practic_mailling
+n_cst_datastore lds_address_link_check
+n_cst_datastore lds_facilities
+n_cst_datastore lds_address_update
+n_cst_datastore lds_address_link_update
+n_cst_datastore lds_sys_audit_update 
+
+lds_address = Create n_cst_datastore
+lds_group_practic = Create n_cst_datastore
+lds_group_practic_mailling = Create n_cst_datastore
+lds_address_link_check = Create n_cst_datastore
+lds_facilities = Create n_cst_datastore
+lds_address_update = Create n_cst_datastore
+lds_address_link_update = Create n_cst_datastore
+lds_sys_audit_update = Create n_cst_datastore
+
+lds_address.DataObject = "d_update_address"
+lds_group_practic.DataObject = "d_update_address_group"
+lds_group_practic_mailling.DataObject = "d_update_address_group_mailingaddress"
+lds_address_link_check.DataObject = "d_update_address_link_check"
+lds_facilities.DataObject = "d_address_link_parent_facility_id_bat"
+lds_address_update.DataObject = "d_update_address"
+lds_address_link_update.DataObject = "d_addr_link_check_boxes"
+lds_sys_audit_update.DataObject = "d_view_audit"
+
+lds_address.SetTransObject(sqlca)
+lds_group_practic.SetTransObject(sqlca)
+lds_group_practic_mailling.SetTransObject(sqlca)
+lds_address_link_check.SetTransObject(sqlca)
+lds_facilities.SetTransObject( sqlca )
+lds_address_update.SetTransObject(sqlca)
+lds_address_link_update.SetTransObject( sqlca)
+lds_sys_audit_update.SetTransObject( sqlca)
+
+SetPointer(HourGlass!)
+//st_process.Text = ""
+
+//Get Source Data 
+FOR i = 1 to upperbound(al_pracs)
+	ll_prac_ids[i] = al_pracs[i]
+NEXT
+
+gnv_appeondb.of_StartQueue()
+lds_address.Retrieve(ll_prac_ids, al_location)
+lds_facilities.Retrieve(ll_prac_ids)
+chk = lds_group_practic.Retrieve(al_location)
+lds_group_practic_mailling.Retrieve(al_location)
+lds_address_link_check.Retrieve(ll_prac_ids)
+SELECT isnull(max(seq_no),0) INTO :ll_seq_no	From sys_audit;
+gnv_appeondb.of_CommitQueue()
+
+//Start Code Change ----07.20.2009 #V92 maha
+chk = lds_group_practic.rowcount() //alfee 01.07.2010
+if chk < 1 then
+	//Start Code Change ----06.13.2016 #V152 maha - removed message
+	return 0
+//	messagebox("of_process","Failed to retrieve Group data for id  " + string(al_location) + " Contact ISG support.")
+//	return -1 
+	//End Code Change ----06.13.2016
+end if
+//End Code Change---07.20.2009
+
+
+//IF Not IsNull(is_addr_type) THEN
+//	CHOOSE CASE Lower(String(is_addr_type))
+//		CASE "additional office"
+//			cbx_add.checked = true
+//		CASE "primary office"
+//			cbx_prim.checked = true
+//		CASE "billing"
+//			cbx_bill.checked = true
+//		CASE "mailing"
+//			cbx_mail.checked = true
+//		CASE "exp cred letter"
+//			cbx_exp.checked = true
+//	END CHOOSE
+//END IF
+//Start Code Change ----01.24.2012 #V12 maha - set addr type defaults
+//if cbx_add.checked = true then li_a = 1
+//if cbx_prim.checked = true then li_p = 1
+//if cbx_exp.checked then li_e = 1
+//if cbx_bill.checked then li_b = 1
+//if cbx_mail.checked then li_m = 1
+//if cbx_dir.checked then li_d = 1
+//End Code Change ----01.24.2012
+
+FOR i = 1 To ll_prac_count
+	//st_process.Text = String(i) + '/ ' + String(ll_prac_count)
+
+	//Determine if the address is already existed
+	ll_prac_id = al_pracs[i]
+	res = lds_address.setfilter("prac_id= " + string(ll_prac_id) + " and gp_id="+string(al_location))
+	if res < 0 then messagebox( "Address add","Filter failed in of_process" )
+	lds_address.filter()
+	IF lds_address.rowcount() > 0 THEN CONTINUE
+	
+	cnt++
+//	st_process.Text = String(cnt) + '/ ' + String(ll_prac_count)
+	//--------Begin Added by Nova 09.25.2010------------------------
+	//V10.5 SK Group Practice 
+	if i<ll_prac_count then
+		 is_praclist=is_praclist+string(ll_prac_id)+','
+	else
+		is_praclist=is_praclist+string(ll_prac_id)
+   end if
+	//--------End Added --------------------------------------------
+	//Add Address 
+	ll_record_id = gnv_app.of_get_id( "RECORD_ID")
+	lds_group_practic.RowsCopy( 1, 1, Primary!, lds_address_update, lds_address_update.RowCount() +1, Primary!)
+	
+	lds_address_update.SetItem( lds_address_update.RowCount(), "rec_id", ll_record_id)
+	lds_address_update.SetItem( lds_address_update.RowCount(), "prac_id", ll_prac_id)
+	lds_address_update.SetItem( lds_address_update.RowCount(), "active_status", 1)
+	lds_address_update.SetItem( lds_address_update.RowCount(), "gp_id", al_location)
+			
+	//Add Address Link 
+	ls_mailing_address = lds_group_practic_mailling.GetItemString(1,"code_lookup_description")
+	lds_facilities.setfilter("prac_id="+string(ll_prac_id))
+	lds_facilities.filter()
+	li_row_cnt=lds_facilities.rowcount( )
+	
+	FOR j = 1 To li_row_cnt
+		//Start Code Change ----01.24.2012 #V12 maha - modifed set functionality using instance variable and testing for existing addr types
+		ll_mailing = li_m
+		ll_billing = li_b
+		ll_primary_office = li_p
+		ll_additional_office = li_a
+		ll_include_in_directory = li_d
+		ll_exp_letters = li_e
+		li_facility_id = lds_facilities.GetItemNumber( j, "parent_facility_id" )		
+		//Get address type			
+		
+//		IF Not IsNull(ls_mailing_address) THEN
+
+		IF Not IsNull(as_addr_type) THEN
+			ls_filter = "prac_id="+string(ll_prac_id)+" and facility_id="+string(li_facility_id)
+			if li_p = 1 then //check for primary office
+				res = lds_address_link_check.SetFilter(ls_filter + " and name='primary office'")
+				lds_address_link_check.Filter()
+				IF lds_address_link_check.RowCount() > 0 THEN //if primary exists, set as additional
+					ll_primary_office = 0
+					ll_additional_office = 1
+				end if
+			end if
+			if li_m = 1 then //check for mailing
+				res = lds_address_link_check.SetFilter(ls_filter + " and name='mailing'")
+				lds_address_link_check.Filter()
+				IF lds_address_link_check.RowCount() > 0 THEN ll_mailing = 0
+			end if
+			if li_e = 1 then //check for exp cred
+				res = lds_address_link_check.SetFilter(ls_filter + " and name='exp cred letter'")
+				lds_address_link_check.Filter()
+				IF lds_address_link_check.RowCount() > 0 THEN ll_exp_letters = 0
+			end if		
+//			CHOOSE CASE Lower(String(ls_mailing_address))
+//				CASE "additional office"
+//					ll_additional_office = 1
+//				CASE "primary office"
+//					lds_address_link_check.SetFilter(ls_filter + " and name='primary office'")
+//					lds_address_link_check.Filter()
+//					IF lds_address_link_check.RowCount() = 0 THEN ll_primary_office = 1
+//				CASE "home"
+//					ll_home_address = 1
+//				CASE "billing"
+//					ll_billing = 1
+//				CASE "mailing"
+//					lds_address_link_check.SetFilter(ls_filter + " and name='mailing'")
+//					lds_address_link_check.Filter()
+//					IF lds_address_link_check.RowCount() = 0 THEN ll_mailing = 1
+//				CASE "exp cred letter"
+//					lds_address_link_check.SetFilter(ls_filter + " and name='exp cred letter'")
+//					lds_address_link_check.Filter()
+//					IF lds_address_link_check.RowCount() = 0 THEN ll_exp_letters = 1
+//			END CHOOSE
+	//End Code Change ----01.24.2012
+		END IF
+		//Set address link
+		ll_add_row = lds_address_link_update.InsertRow( 0)
+		lds_address_link_update.SetItem( ll_add_row, "address_id", ll_record_id)
+		lds_address_link_update.SetItem( ll_add_row, "prac_id", ll_prac_id)
+		lds_address_link_update.SetItem( ll_add_row, "facility_id", li_facility_id)
+		lds_address_link_update.SetItem( ll_add_row, "mailing", ll_mailing)
+		lds_address_link_update.SetItem( ll_add_row, "billing", ll_billing)
+		lds_address_link_update.SetItem( ll_add_row, "include_in_directory", 0)
+		lds_address_link_update.SetItem( ll_add_row, "prac_correspondence", 0)
+		lds_address_link_update.SetItem( ll_add_row, "exp_letters", ll_exp_letters)
+		lds_address_link_update.SetItem( ll_add_row, "home_address", ll_home_address)
+		lds_address_link_update.SetItem( ll_add_row, "additional_office", ll_additional_office)
+		lds_address_link_update.SetItem( ll_add_row, "primary_office", ll_primary_office)
+		lds_address_link_update.SetItem( ll_add_row, "include_in_directory", li_d)
+	END FOR 
+		
+	//Add aduit record
+	ldt_date = DateTime( Today(), Now() )
+	ls_new_value = lds_group_practic.GetItemString(1, "street")
+	ll_seq_no++
+	
+	ll_new_row = lds_sys_audit_update.InsertRow(0)
+	lds_sys_audit_update.SetItem( ll_new_row, "rec_id", ll_record_id)
+	lds_sys_audit_update.SetItem( ll_new_row, "field_id", 1000)
+	lds_sys_audit_update.SetItem( ll_new_row, "seq_no", ll_seq_no)
+	lds_sys_audit_update.SetItem( ll_new_row, "table_id", 20)
+	lds_sys_audit_update.SetItem( ll_new_row, "prac_id", ll_prac_id)
+	lds_sys_audit_update.SetItem( ll_new_row, "new_value", ls_new_value)
+	lds_sys_audit_update.SetItem( ll_new_row, "user_id", gs_user_id)
+	lds_sys_audit_update.SetItem( ll_new_row, "date_time_modified", ldt_date)
+	lds_sys_audit_update.SetItem( ll_new_row, "audit_type", 'I')
+	lds_sys_audit_update.SetItem( ll_new_row, "sys_audit_exported", 1)
+	lds_sys_audit_update.SetItem( ll_new_row, "facility_id", 0)
+END FOR
+
+//Update to DB
+SQLCA.AutoCommit = FALSE
+res = gnv_appeondb.of_update(lds_address_update, lds_address_link_update, lds_sys_audit_update)
+CHOOSE CASE res
+	CASE 1
+		//MessageBox("Save", "Update Complete")
+	CASE 103
+		SQLCA.AutoCommit = TRUE
+		MessageBox("Save Error in Address creation", "Unable to Update Sys Audit. Save not made")
+	CASE 102
+		SQLCA.AutoCommit = TRUE
+		MessageBox("Save Error in Address creation", "Unable to Update Address Link. Save not made")
+	CASE 101
+		SQLCA.AutoCommit = TRUE
+		MessageBox("Save Error in Address creation", "Unable to Update Address. Save not made")
+END CHOOSE
+SQLCA.AutoCommit = TRUE
+
+Destroy lds_address
+Destroy lds_group_practic
+Destroy lds_address_update
+Destroy lds_group_practic_mailling
+Destroy lds_address_link_update
+Destroy lds_address_link_check
+Destroy lds_sys_audit_update
+
+SetPointer ( Arrow!)
+
+//st_process.Text+= " records added"  //Start Code Change ----01.24.2012 #V12 maha
+
+IF res <> 1 THEN RETURN -1
+
+RETURN 1
+		
+end function
+

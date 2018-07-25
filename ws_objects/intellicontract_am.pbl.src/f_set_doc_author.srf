@@ -1,0 +1,113 @@
+﻿$PBExportHeader$f_set_doc_author.srf
+global type f_set_doc_author from function_object
+end type
+
+forward prototypes
+global function integer f_set_doc_author (string as_newname)
+end prototypes
+
+global function integer f_set_doc_author (string as_newname);//////////////////////////////////////////////////////////////////////
+// $<function>f_set_doc_author()
+// $<arguments>
+//		string	as_newname		
+// $<returns> integer : 0 success; -1 failed.
+// $<description> Set doc's user name ,this user name is used in revision' author.
+// Because can't modify the author for opened OLEobject(Maybe VBA Bug),
+// So we open a new OLEObject and modify it,then close it.
+// Then other opened OLEObjects for word's version was modified.
+//////////////////////////////////////////////////////////////////////
+// $<add> 23-03-2007 by Ken.Guo
+//////////////////////////////////////////////////////////////////////
+
+
+long ll_fileret
+long ll_oleret
+integer li_version
+OLEObject myoleobject
+
+//----------Begin Modified by Alfee 07.11.2007--------------
+//<$Reason>This will cause an office alert message while a non-typical 
+//<$Reason>or non-full Word installed.
+/*ll_fileret = FileOpen("C:\empty.doc",StreamMode! ,Write! )
+if ll_fileret > 0 then
+	FileClose(ll_fileret)
+	myoleobject = CREATE OLEObject
+	ll_oleret = myoleobject.ConnectToObject("C:\empty.doc")
+	if ll_oleret <> 0  then 
+		destroy myoleobject
+		Filedelete("C:\empty.doc")
+		return -1
+	end if*/	
+	
+try   //add by stephen 01.12.2012 Error accessing external object property normaltemplate 
+
+myoleobject = Create oleobject
+IF myoleobject.Connecttonewobject("word.application") = 0 THEN 
+//-----------End Modified -------------------------------------	
+	//Set Word's Author
+	//--------------Begin Added by Alfee on 07.08.2008--------------
+	//<$Reason>for Contract Module only
+	//myoleobject.application.username = as_newname 
+	myoleobject.Application.NormalTemplate.Saved = TRUE //Added By Ken.Guo 2008-07-22
+	IF gb_contract_module THEN 
+		gs_word_user = myoleobject.application.username
+		myoleobject.application.username = as_newname 
+	END IF
+	//--------------End Added ----------------------------------------
+
+	//--------------------------- APPEON BEGIN ---------------------------
+	//$<add> 04/25/2007 By: Ken.Guo
+	//$<reason> Add function for Get word version in this function
+	//Because wouldn't open a new word,so add it in this function
+	
+	//Get MS Word's Version
+	//---------Begin modified by Alfee 10.23.2007----------------------
+	//<$Reason>In a Genmary OS, the double('9.0') will be equal to 90.
+	String ls_version
+	ls_version = String(myoleobject.Application.version)
+	//---------Begin Added by (Appeon)Harry 01.28.2014 for V142 ISG-CLX--------
+	gs_word_version_num  = 	ls_version				//Added By Mark Lee 06/20/2013
+	//---------End Added ------------------------------------------------------
+	Choose Case ls_version
+		Case '9.0'
+			gs_word_version = 'word2000'			
+		Case '10.0'
+			gs_word_version = 'wordxp'			
+		Case '11.0'
+			gs_word_version = 'word2003'	
+		//---------Begin Modified by (Appeon)Harry 01.28.2014 for V142 ISG-CLX--------
+		//Case "12.0", "13.0", "14.0" //Added by Alfee 10.31.2007				
+		Case "12.0", "13.0", "14.0", "15.0", "16.0" //Modified By Mark Lee 04/16/2013	 13.0 = word2008, 14.0 =word2010, 15.0 =word2013, 16.0 = ?
+		//---------End Modfiied ------------------------------------------------------
+			gs_word_version = 'word2007'					
+		Case Else
+			gs_word_version = 'other'
+	End Choose
+	/*li_version = Int(double(myoleobject.Application.version))
+	//9=word2000 10=wordxp 11=word2003 6=word95 8=word97 0=error
+	Choose Case li_version
+		Case 9
+			gs_word_version = 'word2000'			
+		Case	10
+			gs_word_version = 'wordxp'			
+		Case	11
+			gs_word_version = 'word2003'	
+		Case Else
+			gs_word_version = 'other'
+	End Choose*/	
+	//---------End Modified ---------------------------------------------
+	//---------------------------- APPEON END ----------------------------
+   myoleobject.Quit(0) //Added by alfee 07.11.2007
+	myoleobject.DisconnectObject()	
+	destroy myoleobject
+	//Filedelete("C:\empty.doc") //commented by alfee 07.11.2007	
+END IF
+
+catch(Throwable th)  //add by stephen 01.12.2012 Error accessing external object property normaltemplate 
+    gs_word_version = 'other'
+end try
+return 0
+
+
+end function
+

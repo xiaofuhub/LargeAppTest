@@ -1,0 +1,119 @@
+﻿$PBExportHeader$gf_splitfilesfrombinary.srf
+global type gf_splitfilesfrombinary from function_object
+end type
+
+forward prototypes
+global function string gf_splitfilesfrombinary (string as_filespathlist, blob ablb_filescontent)
+end prototypes
+
+global function string gf_splitfilesfrombinary (string as_filespathlist, blob ablb_filescontent);//====================================================================
+// Function: gf_SplitFilesFromBinary()
+//--------------------------------------------------------------------
+// Description:
+//--------------------------------------------------------------------
+// Arguments:
+// 	value	string	as_FilesPathList 	
+// 	value	blob  	ablb_FilesContent	
+//--------------------------------------------------------------------
+// Returns:  (string)
+//--------------------------------------------------------------------
+// Author:	Scofield		Date: 2009-02-17
+//--------------------------------------------------------------------
+//	Copyright (c) 1999-2009 Appeon, All rights reserved.
+//--------------------------------------------------------------------
+// Modify History:
+//
+//====================================================================
+
+String	ls_FileName[],ls_PathName,ls_Result,ls_Flag,ls_HeadPart
+long		ll_Pos,ll_FileCycle,ll_FileCnts,ll_FileSize[],ll_HeadCharCnt,ll_RemainSize
+long		ll_FileNo,ll_WriteCycle,ll_WriteCnts
+
+CONSTANT STRING SEMICOLON     = ";"
+CONSTANT STRING SEPARATEBAR   = "|"
+CONSTANT LONG   ONCEWRITEBYTE = 32765
+
+as_FilesPathList = Trim(as_FilesPathList)
+if Right(as_FilesPathList,1) <> SEMICOLON then
+	as_FilesPathList += SEMICOLON
+end if
+
+ll_Pos = Pos(as_FilesPathList,SEMICOLON)
+do while ll_Pos > 0
+	ls_PathName = Trim(Left(as_FilesPathList,ll_Pos - 1))
+	if ls_PathName <> "" then
+		ls_FileName[UpperBound(ls_FileName) + 1] = ls_PathName
+	end if
+	as_FilesPathList = Trim(Mid(as_FilesPathList,ll_Pos + 1))
+	ll_Pos = Pos(as_FilesPathList,SEMICOLON)
+loop
+
+ll_FileCnts = UpperBound(ls_FileName)
+if ll_FileCnts > 1 then
+	ll_HeadCharCnt = 1
+	ls_Flag = String(BlobMid(ablb_FilesContent,ll_HeadCharCnt,1))
+	if ls_Flag <> SEPARATEBAR then
+		ls_Result = "Files' store format is incorrect. Please check."
+		Return ls_Result
+	end if
+	
+	ll_HeadCharCnt++
+	ls_Flag = String(BlobMid(ablb_FilesContent,ll_HeadCharCnt,1))
+	do while ls_Flag <> SEPARATEBAR and ll_HeadCharCnt < Len(ablb_FilesContent)
+		ll_HeadCharCnt++
+		ls_Flag = String(BlobMid(ablb_FilesContent,ll_HeadCharCnt,1))
+	loop
+	
+	if ls_Flag <> SEPARATEBAR then
+		ls_Result = "Files' store format is incorrect. Please check."
+		Return ls_Result
+	end if
+	
+	ls_HeadPart = String(BlobMid(ablb_FilesContent,2,ll_HeadCharCnt - 2))
+	ablb_FilesContent = BlobMid(ablb_FilesContent,ll_HeadCharCnt + 1)
+	
+	if Right(ls_HeadPart,1) <> SEMICOLON then
+		ls_HeadPart += SEMICOLON
+	end if
+	
+	ll_Pos = Pos(ls_HeadPart,SEMICOLON)
+	do while ll_Pos > 0
+		ll_FileSize[UpperBound(ll_FileSize) + 1] = long(Left(ls_HeadPart,ll_Pos - 1))
+		ls_HeadPart = Mid(ls_HeadPart,ll_Pos + 1)
+		ll_Pos = Pos(ls_HeadPart,SEMICOLON)
+	loop
+else
+	ll_FileSize[UpperBound(ll_FileSize) + 1] = Len(ablb_FilesContent)
+end if
+
+if UpperBound(ls_FileName) <> UpperBound(ll_FileSize) then
+	ls_Result = "The file count is incorrect. Please check."
+	Return ls_Result
+end if
+
+ll_FileCnts = UpperBound(ll_FileSize)
+for ll_FileCycle = 1 to ll_FileCnts
+	ll_WriteCnts = Ceiling(ll_FileSize[ll_FileCycle]/ONCEWRITEBYTE)
+	
+	ll_FileNo = FileOpen(ls_FileName[ll_FileCycle],StreamMode!,Write!,LockReadWrite!,Replace!)
+	if ll_FileNo < 0 then
+		ls_Result = "Failed to create file " + ls_FileName[ll_FileCycle] + "."
+		Return ls_Result
+	end if
+	
+	for ll_WriteCycle = 1 to ll_WriteCnts - 1
+		FileWrite(ll_FileNo,BlobMid(ablb_FilesContent,1,ONCEWRITEBYTE))
+		ablb_FilesContent = BlobMid(ablb_FilesContent,ONCEWRITEBYTE + 1)
+	next
+	
+	ll_RemainSize = ll_FileSize[ll_FileCycle] - (ll_WriteCnts - 1) * ONCEWRITEBYTE
+	FileWrite(ll_FileNo,BlobMid(ablb_FilesContent,1,ll_RemainSize))
+	ablb_FilesContent = BlobMid(ablb_FilesContent,ll_RemainSize + 1)
+	
+	FileClose(ll_FileNo)
+next
+
+Return ls_Result
+
+end function
+

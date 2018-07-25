@@ -1,0 +1,64 @@
+﻿$PBExportHeader$of_check_is_select.srf
+global type of_check_is_select from function_object
+end type
+
+forward prototypes
+global function integer of_check_is_select (string as_sql)
+end prototypes
+
+global function integer of_check_is_select (string as_sql); //Start Code Change ----06.29.2015 #V15 maha - added called from SQL window and one-click screen
+long ll_pos
+boolean lb_find
+string ls_sql
+integer r
+string ls_word
+
+ls_sql = upper(as_sql)
+
+//if PosA(trim(as_sql),"SELECT",1) <> 1 then
+if PosA(trim(ls_sql),"SELECT",1) <> 1 then //Modified from as_sql to ls_sql, by Appeon long.zhang 07.01.2015
+	messagebox("Retrieve only","This function can only be used select statements.")
+	return -1
+end if
+
+for r = 1 to 3
+	//ls_sql = upper(as_sql) //Comment by Appeon long.zhang 07.01.2015
+	Choose case r
+		case 1
+			ls_word = "UPDATE"
+		case 2
+			ls_word = "DELETE"
+		case 3
+			ls_word = "INSERT"
+	End choose
+//update
+	ll_pos = PosA(ls_sql,ls_word)
+	Do while (ll_pos > 0 and Not lb_find)
+		//Continue when the Character before it or after it is a visible Character
+		If (AscA(MidA(ls_sql,ll_pos - 1, 1)) > 32) or (AscA(MidA(ls_sql,ll_pos + LenA(ls_word), 1)) > 32) Then
+			ls_sql = MidA(ls_sql,ll_pos + LenA(ls_word)) 
+			ll_pos = PosA(ls_sql, ls_word)
+			lb_find = False
+		Else
+			lb_find = True
+		End If
+	Loop
+	
+	if lb_find  then	
+		Choose case r
+			case 1
+				messagebox("Retrieve only","This function can only be used select statements. The word UPDATE occurs in this statement.")
+			case 2
+				messagebox("Retrieve only","This function can only be used select statements. The word DELETE occurs in this statement.")
+			case 3
+				messagebox("Retrieve only","This function can only be used select statements. The word INSERT occurs in this statement.")
+		End choose
+		
+		return -1
+	end if
+next
+
+
+return 1
+end function
+

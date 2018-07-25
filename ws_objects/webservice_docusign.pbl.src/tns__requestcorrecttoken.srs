@@ -1,0 +1,10 @@
+﻿$PBExportHeader$tns__requestcorrecttoken.srs
+$PBExportComments$Proxy imported from Web service using Web Service Proxy Generator.
+global type tns__RequestCorrectToken from structure
+   string userName
+   string password
+   string integratorKey
+   string envelopId
+   boolean SuppressNavigation
+end type
+

@@ -1,0 +1,43 @@
+﻿$PBExportHeader$d_verifying_orgs_facilities.srd
+$PBExportComments$retrieves verifying facility maha 032901
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=104 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=verifying_facility dbname="pd_affil_stat.verifying_facility" )
+ column=(type=char(1) updatewhereclause=yes name=verify_data dbname="facility_ver_rules.verify_data" )
+ column=(type=decimal(0) updatewhereclause=yes name=default_verif_means dbname="facility_ver_rules.default_verif_means" )
+ column=(type=long updatewhereclause=yes name=priority dbname="pd_affil_stat.priority" )
+ column=(type=char(10) updatewhereclause=yes name=priority_user dbname="pd_affil_stat.priority_user" )
+ column=(type=long updatewhereclause=yes name=check_back_years dbname="facility_ver_rules.check_back_years" )
+ column=(type=datetime updatewhereclause=yes name=check_date dbname="pd_affil_stat.check_date" )
+ column=(type=char(1) updatewhereclause=yes name=apptmnt_type dbname="pd_affil_stat.apptmnt_type" )
+ retrieve="  SELECT DISTINCT pd_affil_stat.verifying_facility,   
+         facility_ver_rules.verify_data,   
+         facility_ver_rules.default_verif_means,   
+         pd_affil_stat.priority,   
+         pd_affil_stat.priority_user,   
+         facility_ver_rules.check_back_years,   
+         pd_affil_stat.check_date,   
+         pd_affil_stat.apptmnt_type  
+    FROM pd_affil_stat,   
+         facility_ver_rules  
+   WHERE ( pd_affil_stat.verifying_facility = facility_ver_rules.facility_id ) and  
+         ( pd_affil_stat.prac_id = :al_prac_id ) AND  
+         (pd_affil_stat.verifying_facility = :ai_facility_id ) AND  
+         ( pd_affil_stat.active_status in (1,4) ) AND  
+         facility_ver_rules.screen_id = :al_screen_id    
+" arguments=(("ai_facility_id", number),("al_prac_id", number),("al_screen_id", number)) )
+text(band=header alignment="2" text="organization_id"border="0" color="0" x="50" y="28" height="52" width="325"  name=organization_id_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="parent_facility_id"border="0" color="0" x="393" y="28" height="52" width="361"  name=parent_facility_id_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="50" y="4" height="64" width="1376" format="[General]"  name=verifying_facility edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1659" y="4" height="64" width="585" format="[general]"  name=verify_data edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="2299" y="8" height="64" width="1376" format="[general]"  name=default_verif_means edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="3675" y="0" height="60" width="987" format="[general]"  name=priority edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="4667" y="0" height="60" width="229" format="[general]"  name=priority_user edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="4896" y="0" height="60" width="992" format="[general]"  name=check_back_years edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="5888" y="0" height="60" width="667" format="[shortdate] [time]"  name=check_date edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="6555" y="0" height="60" width="329" format="[general]"  name=apptmnt_type edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

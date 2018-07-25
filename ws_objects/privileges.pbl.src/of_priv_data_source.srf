@@ -1,0 +1,131 @@
+﻿$PBExportHeader$of_priv_data_source.srf
+global type of_priv_data_source from function_object
+end type
+
+forward prototypes
+global function string of_priv_data_source (long al_area, long al_facility, long al_prac)
+end prototypes
+
+global function string of_priv_data_source (long al_area, long al_facility, long al_prac);n_ds lds_data_source
+n_ds lds_privs
+n_ds lds_prac
+
+String ls_section
+String ls_procd_descr
+String ls_header
+String ls_procd_code
+String ls_rqd_for_reapp
+String ls_criteria
+string ls_path
+String ls_file_name
+string ls_area
+string ls_find    //maha 01.10.2017
+string ls_status    //maha 01.10.2017
+Integer li_section_is_core
+Integer li_procd_allow_optout
+Integer li_reapp_num
+Integer r 
+Integer li_rc  
+integer p  //maha 01.10.2017
+integer pc  //maha 01.10.2017
+integer li_find    //maha 01.10.2017
+long ll_procd_id  //maha 01.10.2017
+
+n_appeon_download lnv_download
+If gnv_data.of_getitem('icred_settings' ,'set_50' , False ) = '1' or &
+   Upper( appeongetclienttype() ) = 'WEB' Then
+	lnv_download.of_parsepath( ls_path)
+End If
+
+
+lds_data_source = Create n_ds
+lds_data_source.DataObject = "d_priv_data_source_for_doc_160"
+lds_data_source.of_SetTransObject( SQLCA )
+
+lds_privs = Create n_ds 
+lds_privs.DataObject = "d_privs_for_data_source"
+lds_privs.of_SetTransObject( SQLCA )
+
+lds_prac = Create n_ds 
+lds_prac.DataObject = "d_prac_priv_list_1_clin_area"
+lds_prac.of_SetTransObject( SQLCA )
+
+gnv_appeondb.of_startqueue( )
+
+lds_data_source.Retrieve(al_facility, al_area )
+li_rc = lds_privs.Retrieve(al_facility, al_area )
+pc = lds_prac.Retrieve(al_prac, al_facility, al_area )
+
+gnv_appeondb.of_commitqueue( )
+
+//ls_area = lds_data_source.getitemstring(1,"clinical_area_name")
+
+ //Start Code Change ----01.10.2017 #V153 maha - changed ds name
+//ls_file_name = "priv_data_source.txt"
+ls_file_name = "priv_ds_" + string(al_area) + ".txt"
+ls_path = of_letter_paths("D")
+ls_file_name = ls_path + ls_file_name
+
+if fileexists(ls_file_name) then
+	filedelete( ls_file_name)
+end if
+ //Start Code Change ----01.10.2017
+ 
+if pc > 0 then
+	lds_data_source.SetItem( 1, "full_name", lds_prac.getitemstring(1, "full_name"))
+//	lds_data_source.SetItem( 1, "first_name", lds_prac.getitemstring(1, "first_name"))
+//	lds_data_source.SetItem( 1, "last_name", lds_prac.getitemstring(1, "last_name"))
+//	lds_data_source.SetItem( 1, "prof_suffix", lds_prac.getitemstring(1, "prof_suffix"))
+//	lds_data_source.SetItem( 1, "prac_title", lds_prac.getitemstring(1, "title"))
+end if
+ 
+if li_rc > 160 then  //Start Code Change ----01.18.2017 #V153 maha - changed from 70
+	messagebox("Privilege Data Source","the privilege list for this Clinical area has more than 160 procedures( " + string(li_rc) + " ).  Only the first 160 will be in the data source.")
+	li_rc = 160
+end if
+debugbreak()
+For r = 1 To li_rc
+	ls_procd_descr = lds_privs.GetItemString( r, "procd_description" )
+	ls_section = lds_privs.GetItemString( r, "section" )
+	ls_header = lds_privs.GetItemString( r, "procd_name" )
+	ls_criteria = lds_privs.GetItemString( r, "special_requirement")
+	ls_procd_code = lds_privs.GetItemString( r, "procd_code" )
+	li_procd_allow_optout = lds_privs.GetItemnumber( r, "procd_opt_out" )
+	li_reapp_num = lds_privs.GetItemnumber( r, "req_for_reapp")
+	ll_procd_id  =  lds_privs.GetItemnumber(r ,"procd_id")
+	
+	lds_data_source.SetItem( 1, "priv_desc_" + String( r ), ls_procd_descr )
+	lds_data_source.SetItem( 1, "priv_section_" + String( r ), ls_section )
+	lds_data_source.SetItem( 1, "priv_header_" + String( r ), ls_header )
+	lds_data_source.SetItem( 1, "priv_code_" + String( r ), ls_procd_code )
+	lds_data_source.SetItem( 1, "priv_criteria_" + String( r ), ls_criteria )
+//	lds_data_source.SetItem( 1, "priv_optout_" + String( r ), string(li_procd_allow_optout) )  //Start Code Change ----01.18.2017 #V153 maha - these 2 columns removed from the DS
+//	lds_data_source.SetItem( 1, "priv_req_for_reapp_" + String( r ), string( li_reapp_num) )
+	
+	if pc > 0 then
+		ls_find = "procd_id = " + string(ll_procd_id)
+		li_find = lds_prac.find( ls_find, 1, pc)
+		if li_find > 0 then
+			ls_status = lds_prac.getitemstring(li_find, "code")
+		else
+			ls_status = ""
+		end if
+		lds_data_source.SetItem( 1, "prac_status_" + String( r ), ls_status )
+	end if
+Next
+
+lds_data_source.SaveAs( ls_file_name , Text!, True ) 
+
+if IsValid(lds_data_source) then Destroy lds_data_source
+if IsValid(lds_privs) then Destroy lds_privs
+if IsValid(lds_prac) then Destroy lds_prac
+
+//if fileexists(ls_file_name) then
+//	messagebox("Privilege Data Source","The file is at: " + ls_file_name)
+//end if
+
+Return ls_file_name
+
+
+end function
+

@@ -1,0 +1,49 @@
+﻿$PBExportHeader$echosignsoap.srx
+$PBExportComments$Proxy imported from Web service using Web Service Proxy Generator.
+global type EchoSignSoap from NonVisualObject
+end type
+
+type variables
+Protected:
+   string xmlns = ""
+   string tm = "http://microsoft.com/wsdl/mime/textMatching/"
+   string soapenc = "http://schemas.xmlsoap.org/soap/encoding/"
+   string wsdl = "http://schemas.xmlsoap.org/wsdl/"
+   string http = "http://schemas.xmlsoap.org/wsdl/http/"
+   string mime = "http://schemas.xmlsoap.org/wsdl/mime/"
+   string soap = "http://schemas.xmlsoap.org/wsdl/soap/"
+   string soap12 = "http://schemas.xmlsoap.org/wsdl/soap12/"
+   string tns = "http://tempuri.org/"
+   string s = "http://www.w3.org/2001/XMLSchema"
+   string pb__TargetNamespace = "http://tempuri.org/"
+   string BindingStyle = ""
+
+   string endpoint = "http://clxintranet.contractlogix.com/echosign/signservice.asmx"
+   string __tns__DocumentInformation = "DocumentInformation(s:string documentName,s:string docSatus,s:string errorMessage,tns:Signature[ElementName=tns:Signature] signature)@tns#YES_QUALIFIED"
+   tns__DocumentInformation i__tns__DocumentInformation
+   string __tns__Signature = "Signature(s:string signerEmail,s:string nameSigned,s:string signStatus,s:string signerIP,s:string signedDate,s:string roles)@tns#YES_QUALIFIED"
+   tns__Signature i__tns__Signature
+   string __tns__SignedDocument = "SignedDocument(s:string errorText,s:base64Binary document)@tns#YES_QUALIFIED"
+   tns__SignedDocument i__tns__SignedDocument
+   string __tns__DownloadSignedDoc = "DownloadSignedDoc(s:string apiKey,s:string documentKey)@tns#YES_QUALIFIED"
+   tns__DownloadSignedDoc i__tns__DownloadSignedDoc
+   string __tns__GetDocumentLink = "GetDocumentLink(s:string apiKey,s:string documentKey)@tns#YES_QUALIFIED"
+   tns__GetDocumentLink i__tns__GetDocumentLink
+   string __tns__GetFileInfo = "GetFileInfo(s:string apiKey,s:string documentKey)@tns#YES_QUALIFIED"
+   tns__GetFileInfo i__tns__GetFileInfo
+   string __tns__RemoveSignedDoc = "RemoveSignedDoc(s:string apiKey,s:string documentKey)@tns#YES_QUALIFIED"
+   tns__RemoveSignedDoc i__tns__RemoveSignedDoc
+   string __tns__SendDocument = "SendDocument(s:string apiKey,s:string name,s:string recipients,s:string sign_type,s:string sign_flow,s:string message,s:string fileName,s:base64Binary file,s:string ccs)@tns#YES_QUALIFIED"
+   tns__SendDocument i__tns__SendDocument
+end variables
+
+forward prototypes
+public:
+function tns__SignedDocument DownloadSignedDoc (string apiKey, string documentKey) alias for "DownloadSignedDoc([in] s:string apiKey, [in] s:string documentKey) return tns:SignedDocument DownloadSignedDocResult@http://tempuri.org/@http://tempuri.org/DownloadSignedDoc*DownloadSignedDoc*http://tempuri.org/"
+function string GetDocumentLink (string apiKey, string documentKey) alias for "GetDocumentLink([in] s:string apiKey, [in] s:string documentKey) return s:string GetDocumentLinkResult@http://tempuri.org/@http://tempuri.org/GetDocumentLink*GetDocumentLink*http://tempuri.org/"
+function tns__DocumentInformation GetFileInfo (string apiKey, string documentKey) alias for "GetFileInfo([in] s:string apiKey, [in] s:string documentKey) return tns:DocumentInformation GetFileInfoResult@http://tempuri.org/@http://tempuri.org/GetFileInfo*GetFileInfo*http://tempuri.org/"
+function string RemoveSignedDoc (string apiKey, string documentKey) alias for "RemoveSignedDoc([in] s:string apiKey, [in] s:string documentKey) return s:string RemoveSignedDocResult@http://tempuri.org/@http://tempuri.org/RemoveSignedDoc*RemoveSignedDoc*http://tempuri.org/"
+function string SendDocument (string apiKey, string name, string recipients, string sign_type, string sign_flow, string ws_message, string fileName, blob file, string ccs) alias for "SendDocument([in] s:string apiKey, [in] s:string name, [in] s:string recipients, [in] s:string sign_type, [in] s:string sign_flow, [in] s:string message, [in] s:string fileName, [in] s:base64Binary file, [in] s:string ccs) return s:string SendDocumentResult@http://tempuri.org/@http://tempuri.org/SendDocument*SendDocument*http://tempuri.org/"
+function string TestPing (string apiKey) alias for "TestPing([in] s:string apiKey) return s:string TestPingResult@http://tempuri.org/@http://tempuri.org/TestPing*TestPing*http://tempuri.org/"
+end prototypes
+

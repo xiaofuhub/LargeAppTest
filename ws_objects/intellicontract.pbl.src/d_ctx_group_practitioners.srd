@@ -1,0 +1,41 @@
+﻿$PBExportHeader$d_ctx_group_practitioners.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=80269524 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=128 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=180 color="536870912" )
+table(column=(type=char(153) updatewhereclause=yes name=v_full_name_full_name dbname="v_full_name.full_name" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_street dbname="pd_address.street" )
+ column=(type=decimal(0) updatewhereclause=yes name=accepting_new_patients dbname="pd_address.accepting_new_patients" initial="582" )
+ column=(type=long updatewhereclause=yes name=pd_address_active_status dbname="pd_address.active_status" values="Active	1/Inactive	0/" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_street_2 dbname="pd_address.street_2" )
+ column=(type=long update=yes updatewhereclause=yes name=pd_address_gp_id dbname="pd_address.gp_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=pd_address_rec_id dbname="pd_address.rec_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=group_practice_rec_id dbname="group_practice.rec_id" )
+ column=(type=long updatewhereclause=yes name=group_practice_gp_id dbname="group_practice.gp_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=prac_id dbname="v_full_name.prac_id" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"v_full_name~" )  TABLE(NAME=~"group_practice~" )  TABLE(NAME=~"pd_address~" ) COLUMN(NAME=~"v_full_name.full_name~") COLUMN(NAME=~"pd_address.street~") COLUMN(NAME=~"pd_address.accepting_new_patients~") COLUMN(NAME=~"pd_address.active_status~") COLUMN(NAME=~"pd_address.street_2~") COLUMN(NAME=~"pd_address.gp_id~") COLUMN(NAME=~"pd_address.rec_id~") COLUMN(NAME=~"group_practice.rec_id~") COLUMN(NAME=~"group_practice.gp_id~") COLUMN(NAME=~"v_full_name.prac_id~")    JOIN (LEFT=~"pd_address.prac_id~"    OP =~"=~"RIGHT=~"v_full_name.prac_id~" )    JOIN (LEFT=~"group_practice.rec_id~"    OP =~"=~"RIGHT=~"pd_address.gp_id~" )WHERE(    EXP1 =~"( ( group_practice.rec_id~"   OP =~"=~"    EXP2 =~":ai_group ) )~" ) ) ARG(NAME = ~"ai_group~" TYPE = number) " arguments=(("ai_group", number))  sort="v_full_name_full_name A " )
+text(band=header alignment="2" text="Practitioner" border="6" color="0" x="14" y="8" height="104" width="942" html.valueishtml="0"  name=v_full_name_full_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Active
+
+Status" border="6" color="0" x="974" y="8" height="104" width="210" html.valueishtml="0"  name=pd_address_active_status_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Accepting
+
+ New Patients" border="6" color="0" x="1202" y="8" height="104" width="407" html.valueishtml="0"  name=pd_address_accepting_new_patients_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Specialty
+
+Order" border="6" color="0" x="2821" y="8" height="104" width="274" html.valueishtml="0"  name=t_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Specialty" border="6" color="0" x="1627" y="8" height="104" width="1175" html.valueishtml="0"  name=t_2 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="5" y="4" height="64" width="946" format="[general]" html.valueishtml="0"  name=v_full_name_full_name visible="1" edit.limit=153 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="2" tabsequence=32766 border="0" color="0" x="969" y="4" height="64" width="219" format="[general]" html.valueishtml="0"  name=pd_address_active_status visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="2" tabsequence=32766 border="0" color="0" x="1207" y="4" height="64" width="393" format="[general]" html.valueishtml="0"  name=accepting_new_patients visible="1" dddw.name=d_dddw_code_lookup dddw.displaycolumn=description dddw.datacolumn=lookup_code dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="5074" y="0" height="52" width="992" format="[general]" html.valueishtml="0"  name=group_practice_gp_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=0 border="0" color="0" x="6066" y="0" height="52" width="992" html.valueishtml="0"  name=prac_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=0 border="0" color="0" x="635" y="108" height="52" width="987" html.valueishtml="0"  name=v_full_name_prac_id_1 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+
+sparse(names="v_full_name_full_name")htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

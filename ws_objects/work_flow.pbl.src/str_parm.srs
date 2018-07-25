@@ -1,0 +1,16 @@
+﻿$PBExportHeader$str_parm.srs
+global type str_parm from structure
+	string		s_type
+	string		s_module
+	long		l_wf_id
+	long		l_doc_id
+	long		l_ctx_id
+	long		l_view_id
+	long		l_step_id
+	long		l_status_id
+	datawindow		u_dw
+	long		l_key_id
+	long		l_screen_id
+	string		s_array[]
+end type
+

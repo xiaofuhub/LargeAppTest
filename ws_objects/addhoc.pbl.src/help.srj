@@ -1,0 +1,11 @@
+﻿$PBExportHeader$help.srj
+EXE:Help Data Entry.exe,,0,0
+CMP:0,0,0,2,0,0
+PBD:s:\development\version 4.current\help.pbl,,0
+OBJ:s:\development\version 4.current\help.pbl,w_help_add,w
+OBJ:s:\development\version 4.current\help.pbl,w_user_name,w
+OBJ:s:\development\version 4.current\help.pbl,d_help_browse_alt,d
+OBJ:s:\development\version 4.current\help.pbl,help_de,a
+OBJ:s:\development\version 4.current\help.pbl,d_help_impt,d
+OBJ:s:\development\version 4.current\help.pbl,d_help_category_list,d
+OBJ:s:\development\version 4.current\help.pbl,d_help_de,d

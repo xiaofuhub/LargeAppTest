@@ -1,0 +1,62 @@
+﻿$PBExportHeader$d_prf_special_certs_test.srd
+$PBExportComments$Replaced DDDW with Left Outer Join at 05/07/2007 by Ken
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=96 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=336 color="536870912" )
+table(column=(type=char(75) updatewhereclause=yes name=certified_in dbname="code_lookup.certified_in" )
+ column=(type=long updatewhereclause=yes name=initial_cert_month dbname="pd_special_certs.initial_cert_month" )
+ column=(type=long updatewhereclause=yes name=initial_cert_year dbname="pd_special_certs.initial_cert_year" )
+ column=(type=long updatewhereclause=yes name=cert_expiration_month dbname="pd_special_certs.cert_expiration_month" )
+ column=(type=long updatewhereclause=yes name=cert_expiration_year dbname="pd_special_certs.cert_expiration_year" )
+ column=(type=char(30) updatewhereclause=yes name=certification_number dbname="pd_special_certs.certification_number" )
+ column=(type=long updatewhereclause=yes name=exam_taken dbname="pd_special_certs.exam_taken" )
+ column=(type=char(75) updatewhereclause=yes name=certified_by dbname="code_lookup.certified_by" )
+ column=(type=char(75) updatewhereclause=yes name=certified_in1 dbname="pd_special_certs.certified_in1" )
+ column=(type=char(35) updatewhereclause=yes name=certified_by1 dbname="pd_special_certs.certified_by1" )
+ column=(type=char(30) updatewhereclause=yes name=code_lookup_code dbname="code_lookup.code" )
+ retrieve="  SELECT DISTINCT 
+ 			code_lookup_a.description certified_in,
+         pd_special_certs.initial_cert_month,   
+         pd_special_certs.initial_cert_year,   
+         pd_special_certs.cert_expiration_month,   
+         pd_special_certs.cert_expiration_year,   
+         pd_special_certs.certification_number,   
+         pd_special_certs.exam_taken,   
+ 			code_lookup_b.description certified_by,
+	pd_special_certs.certified_in certified_in1,
+	 pd_special_certs.certified_by  certified_by1,
+         code_lookup.code  
+    FROM pd_special_certs 
+			LEFT OUTER JOIN code_lookup ON pd_special_certs.exam_taken = code_lookup.lookup_code  
+			LEFT OUTER JOIN code_lookup code_lookup_a  ON pd_special_certs.certified_in = code_lookup_a.lookup_code  	
+			LEFT OUTER JOIN code_lookup code_lookup_b  ON pd_special_certs.certified_by = code_lookup_b.lookup_code  	
+   WHERE pd_special_certs.prac_id = :prac_id    
+" arguments=(("prac_id", number)) )
+text(band=header alignment="2" text="Special Certifications" border="0" color="0" x="9" y="8" height="80" width="3383" html.valueishtml="0"  name=t_1 visible="1"  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=detail alignment="1" text="Certification Number:" border="0" color="0" x="91" y="256" height="64" width="622" html.valueishtml="0"  name=t_2 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="741" y="244" height="76" width="690" format="[general]" html.valueishtml="0"  name=certification_number visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Certified By:" border="0" color="0" x="1518" y="256" height="64" width="366" html.valueishtml="0"  name=t_3 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="3090" y="204" height="76" width="690" format="[general]" html.valueishtml="0"  name=certified_by visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Inital Certification Date:" border="0" color="0" x="23" y="152" height="64" width="690" html.valueishtml="0"  name=t_4 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="741" y="140" height="76" width="146" format="[general]" html.valueishtml="0"  name=initial_cert_month visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="974" y="140" height="76" width="146" format="[general]" html.valueishtml="0"  name=initial_cert_year visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Expiration Date:" border="0" color="0" x="1408" y="152" height="64" width="475" html.valueishtml="0"  name=t_5 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1915" y="140" height="76" width="192" format="[general]" html.valueishtml="0"  name=cert_expiration_month visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="2149" y="140" height="76" width="229" format="[general]" html.valueishtml="0"  name=cert_expiration_year visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Certified in :" border="0" color="0" x="357" y="48" height="64" width="357" html.valueishtml="0"  name=t_6 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="2766" y="164" height="76" width="690" format="[general]" html.valueishtml="0"  name=certified_in visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Exam Taken:" border="0" color="0" x="1499" y="48" height="64" width="384" html.valueishtml="0"  name=t_7 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="2181" y="564" height="76" width="251" format="[general]" html.valueishtml="0"  name=exam_taken visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="1915" y="52" height="64" width="407" format="[general]" html.valueishtml="0"  name=code_lookup_code visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=9 alignment="0" tabsequence=0 border="0" color="0" x="2811" y="20" height="64" width="535" html.valueishtml="0"  name=certified_in1 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=10 alignment="0" tabsequence=0 border="0" color="0" x="2830" y="112" height="64" width="517" html.valueishtml="0"  name=certified_by1 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="if (isnull( certified_in) , certified_in1,  certified_in  )"border="0" color="0" x="731" y="48" height="64" width="768" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="if (isnull( certified_by) , certified_by1,  certified_by  )"border="0" color="0" x="1920" y="252" height="64" width="809" format="[GENERAL]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

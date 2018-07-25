@@ -1,0 +1,7 @@
+﻿$PBExportHeader$str_rowset.srs
+global type str_rowset from structure
+	long		l_setid
+	long		l_setts
+	long		l_setorits
+end type
+

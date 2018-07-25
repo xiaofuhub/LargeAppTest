@@ -1,0 +1,145 @@
+﻿$PBExportHeader$d_frm_facility_invoice_summary.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=1968 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=4 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes name=rec_id dbname="pd_invoice.rec_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=prac_id dbname="pd_invoice.prac_id" )
+ column=(type=long update=yes updatewhereclause=yes name=facility_id dbname="pd_invoice.facility_id" )
+ column=(type=datetime update=yes updatewhereclause=yes name=inv_date dbname="pd_invoice.inv_date" )
+ column=(type=datetime update=yes updatewhereclause=yes name=due_date dbname="pd_invoice.due_date" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=tax_a dbname="pd_invoice.tax_a" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=amt_billed dbname="pd_invoice.amt_billed" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=invc_amt dbname="pd_invoice.invc_amt" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=amt_paid dbname="pd_invoice.amt_paid" )
+ column=(type=long update=yes updatewhereclause=yes name=paid dbname="pd_invoice.paid" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=note dbname="pd_invoice.note" )
+ column=(type=char(100) updatewhereclause=yes name=facility_facility_name dbname="facility.facility_name" )
+ column=(type=char(153) updatewhereclause=yes name=v_full_name_full_name dbname="v_full_name.full_name" )
+ column=(type=char(100) updatewhereclause=yes name=inv_company_comp_name dbname="inv_company.comp_name" )
+ column=(type=char(150) updatewhereclause=yes name=inv_company_address dbname="inv_company.address" )
+ column=(type=char(25) updatewhereclause=yes name=inv_company_term_label dbname="inv_company.term_label" )
+ column=(type=real updatewhereclause=yes name=term_days dbname="inv_company.term_days" )
+ column=(type=char(75) updatewhereclause=yes name=facility_street dbname="facility.street" )
+ column=(type=char(75) updatewhereclause=yes name=facility_street_2 dbname="facility.street_2" )
+ column=(type=char(35) updatewhereclause=yes name=facility_city dbname="facility.city" )
+ column=(type=char(2) updatewhereclause=yes name=facility_state dbname="facility.state" )
+ column=(type=char(12) updatewhereclause=yes name=facility_zip dbname="facility.zip" )
+ column=(type=char(25) updatewhereclause=yes name=inv_company_phone dbname="inv_company.phone" )
+ column=(type=char(25) updatewhereclause=yes name=inv_company_fax dbname="inv_company.fax" )
+ column=(type=decimal(2) updatewhereclause=yes name=penalty dbname="inv_company.penalty" )
+ retrieve="  SELECT DISTINCT pd_invoice.rec_id,   
+         pd_invoice.prac_id,   
+         pd_invoice.facility_id,   
+         pd_invoice.inv_date,   
+         pd_invoice.due_date,   
+         pd_invoice.tax_a,   
+         pd_invoice.amt_billed,   
+         pd_invoice.invc_amt,   
+         pd_invoice.amt_paid,   
+         pd_invoice.paid,   
+         pd_invoice.note,   
+         facility.facility_name,   
+         v_full_name.full_name,   
+         inv_company.comp_name,   
+         inv_company.address,   
+         inv_company.term_label,   
+         inv_company.term_days,   
+         facility.street,   
+         facility.street_2,   
+         facility.city,   
+         facility.state,   
+         facility.zip,   
+         inv_company.phone,   
+         inv_company.fax,   
+         inv_company.penalty  
+    FROM pd_invoice,   
+         facility,   
+         v_full_name,   
+         inv_company  
+   WHERE ( pd_invoice.facility_id = facility.facility_id ) and  
+         ( pd_invoice.prac_id = v_full_name.prac_id ) and  
+         ( ( pd_invoice.facility_id = :facid ) AND  
+         ( convert(datetime, convert ( varchar, pd_invoice.inv_date,102 ) ) >= :from_date ) AND  
+         ( convert(datetime, convert ( varchar, pd_invoice.inv_date,102 ) ) <= :to_date ) )  
+
+union
+
+  SELECT DISTINCT pd_invoice.rec_id,   
+         pd_invoice.prac_id,   
+         pd_invoice.facility_id,   
+         pd_invoice.inv_date,   
+         pd_invoice.due_date,   
+         pd_invoice.tax_a,   
+         pd_invoice.amt_billed,   
+         pd_invoice.invc_amt,   
+         pd_invoice.amt_paid,   
+         pd_invoice.paid,   
+         pd_invoice.note,   
+         facility.facility_name,   
+         v_full_name.full_name,   
+         inv_company.comp_name,   
+         inv_company.address,   
+         inv_company.term_label,   
+         inv_company.term_days,   
+         facility.street,   
+         facility.street_2,   
+         facility.city,   
+         facility.state,   
+         facility.zip,   
+         inv_company.phone,   
+         inv_company.fax,   
+         inv_company.penalty  
+    FROM pd_invoice,   
+         facility,   
+         v_full_name,   
+         inv_company  
+   WHERE ( pd_invoice.facility_id = facility.facility_id ) and  
+         ( pd_invoice.prac_id = v_full_name.prac_id ) and  
+         ( ( pd_invoice.facility_id = :facid ) AND  
+         ( pd_invoice.paid <> 1) and   
+         ( convert(datetime, convert(varchar,pd_invoice.inv_date,102)) <= :to_date ) )  
+" arguments=(("facid", number),("from_date", date),("to_date", date)) )
+text(band=header alignment="0" text="Statement of Invoice" border="0" color="0" x="174" y="100" height="112" width="1317" html.valueishtml="0"  name=t_1 visible="1"  font.face="Times New Roman" font.height="-18" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=header x1="46" y1="272" x2="2501" y2="272"  name=l_1 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="1" background.color="536870912" )
+compute(band=header alignment="0" expression="today()"border="0" color="0" x="169" y="320" height="72" width="873" format="mmmm dd, yyyy" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Times New Roman" font.height="-12" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="1" text="Summary of Activity from:" border="0" color="0" x="256" y="780" height="64" width="759" html.valueishtml="0"  name=inv_date_t visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="0" expression=" from_date "border="0" color="0" x="1038" y="780" height="80" width="334" format="mm/dd/yyyy" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="1" text="to" border="0" color="0" x="1394" y="780" height="64" width="55" html.valueishtml="0"  name=t_2 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="0" expression=" to_date "border="0" color="0" x="1472" y="780" height="80" width="466" format="mm/dd/yyyy" html.valueishtml="0"  name=compute_3 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Amount Past Due" border="0" color="0" x="562" y="952" height="64" width="507" html.valueishtml="0"  name=t_3 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="0" expression="sum(over_due)"border="0" color="0" x="1143" y="952" height="64" width="256" format="$##,##0.00" html.valueishtml="0"  name=past_due visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Past due Penalty" border="0" color="0" x="562" y="1032" height="64" width="503" html.valueishtml="0"  name=t_4 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="0" expression="past_due *  (penalty /100)"border="0" color="0" x="1147" y="1032" height="64" width="251" format="$##,##0.00" html.valueishtml="0"  name=pen_amt visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Current Charges" border="0" color="0" x="562" y="1108" height="64" width="480" html.valueishtml="0"  name=t_5 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="0" expression="sum(current)"border="0" color="0" x="1143" y="1112" height="56" width="251" format="$##,##0.00" html.valueishtml="0"  name=cur_due visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Total Due:" border="0" color="0" x="562" y="1272" height="64" width="302" html.valueishtml="0"  name=amt_billed_t visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="0" expression="past_due + pen_amt + cur_due"border="0" color="0" x="1138" y="1268" height="64" width="215" format="$##,##0.00" html.valueishtml="0"  name=total_compute visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=header alignment="0" expression="(total_compute * (penalty /100)) + total_compute"border="0" color="0" x="1134" y="1512" height="52" width="302" format="$##,##0.00" html.valueishtml="0"  name=compute_4 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="After Due Date" border="0" color="0" x="640" y="1512" height="64" width="425" html.valueishtml="0"  name=t_6 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="1" text="Due Date:" border="0" color="0" x="375" y="1400" height="72" width="293" html.valueishtml="0"  name=due_date_t visible="1"  font.face="Times New Roman" font.height="-11" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="0" expression="relativedate(  to_date , term_days )"border="0" color="0" x="690" y="1400" height="68" width="530" format="mm/dd/yyyy" html.valueishtml="0"  name=compute_5 visible="1"  font.face="Times New Roman" font.height="-11" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=14 alignment="1" tabsequence=32766 border="0" color="0" x="768" y="1608" height="64" width="1637" format="[general]" html.valueishtml="0"  name=inv_company_comp_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=15 alignment="1" tabsequence=32766 border="0" color="0" x="1280" y="1676" height="116" width="1125" format="[general]" html.valueishtml="0"  name=inv_company_address visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=23 alignment="1" tabsequence=32766 border="0" color="0" x="1824" y="1796" height="72" width="581" format="[general]" html.valueishtml="0"  name=inv_company_phone visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Fax:" border="0" color="0" x="1847" y="1872" height="64" width="128" html.valueishtml="0"  name=t_7 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=24 alignment="1" tabsequence=32766 border="0" color="0" x="1993" y="1872" height="64" width="407" format="[general]" html.valueishtml="0"  name=inv_company_fax visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="1" text="Bill To:" border="0" color="0" x="123" y="500" height="64" width="210" html.valueishtml="0"  name=invc_amt_t visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=12 alignment="0" tabsequence=32766 border="0" color="0" x="357" y="496" height="76" width="1490" format="[general]" html.valueishtml="0"  name=facility_facility_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Times New Roman" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="0" expression="if(isnull( facility_street_2 ), facility_street , facility_street + '  ' + facility_street_2  )"border="0" color="0" x="357" y="576" height="76" width="2053" format="[general]" html.valueishtml="0"  name=compute_6 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="0" expression=" facility_city   + ', ' + facility_state + ' ' +   facility_zip   "border="0" color="0" x="357" y="656" height="64" width="1253" format="[general]" html.valueishtml="0"  name=compute_7 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="0" x="256" y="16" height="56" width="736" format="[general]" html.valueishtml="0"  name=v_full_name_full_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="1" tabsequence=32766 border="0" color="0" x="1019" y="12" height="64" width="274" format="##,##0.00" html.valueishtml="0"  name=amt_billed visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="1339" y="16" height="64" width="297" format="[shortdate] [time]" html.valueishtml="0"  name=due_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="1" expression="if (isnull( amt_paid ),0, amt_paid )"border="0" color="0" x="1838" y="16" height="52" width="183" format="##,##0.00" html.valueishtml="0"  name=pd visible="1"  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="1" expression="amt_billed -  pd "border="0" color="0" x="2162" y="16" height="52" width="297" format="##,##0.00" html.valueishtml="0"  name=bal visible="1"  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="if ( due_date > today(),bal,0)"border="0" color="0" x="2501" y="20" height="52" width="256" format="[general]" html.valueishtml="0"  name=compute_8 visible="1"  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="if ( due_date < today(),bal,0)"border="0" color="0" x="2501" y="20" height="52" width="256" format="[general]" html.valueishtml="0"  name=over_due visible="1"  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="if ( due_date < today(),0,bal)"border="0" color="0" x="2821" y="20" height="56" width="183" format="[general]" html.valueishtml="0"  name=current visible="1"  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

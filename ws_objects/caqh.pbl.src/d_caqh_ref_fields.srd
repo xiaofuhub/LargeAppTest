@@ -1,0 +1,31 @@
+﻿$PBExportHeader$d_caqh_ref_fields.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=table_id dbname="sys_tables.table_id" )
+ column=(type=char(50) updatewhereclause=yes name=table_name dbname="sys_tables.table_name" )
+ column=(type=char(50) updatewhereclause=yes name=caqh_ref_1 dbname="sys_fields.caqh_ref_1" )
+ column=(type=char(50) updatewhereclause=yes name=caqh_ref_2 dbname="sys_fields.caqh_ref_2" )
+ retrieve="SELECT t.table_id as table_id, 
+		t.table_name as table_name, 
+		f1.field_name as caqh_ref_1, 
+		f2.field_name as caqh_ref_2  
+ FROM {oj sys_tables t LEFT OUTER JOIN sys_fields f2 ON t.table_id = f2.table_id and t.caqh_ref_2 = f2.field_id},   
+		sys_fields f1  
+WHERE ( t.caqh_ref_1 = f1.field_id ) and  
+		( t.table_id = f1.table_id ) " )
+text(band=header alignment="0" text="Sys Tables Table Id" border="0" color="0" x="9" y="4" height="76" width="425" html.valueishtml="0"  name=sys_tables_table_id_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Sys Tables Table Name" border="0" color="0" x="443" y="4" height="76" width="553" html.valueishtml="0"  name=sys_tables_table_name_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Sys Fields Caqh Ref 1" border="0" color="0" x="1006" y="4" height="64" width="571" html.valueishtml="0"  name=sys_fields_caqh_ref_1_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Sys Fields Caqh Ref 2" border="0" color="0" x="1586" y="4" height="64" width="544" html.valueishtml="0"  name=sys_fields_caqh_ref_2_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="0" height="76" width="425" format="[general]" html.valueishtml="0"  name=table_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="443" y="0" height="76" width="553" format="[general]" html.valueishtml="0"  name=table_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="1006" y="0" height="64" width="571" format="[general]" html.valueishtml="0"  name=caqh_ref_1 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1586" y="0" height="64" width="544" format="[general]" html.valueishtml="0"  name=caqh_ref_2 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

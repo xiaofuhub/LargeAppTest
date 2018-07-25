@@ -1,0 +1,9 @@
+﻿$PBExportHeader$str_ftp_parms.srs
+global type str_ftp_parms from structure
+	string		hostname
+	string		port
+	integer		protocol
+	string		login
+	string		password
+end type
+

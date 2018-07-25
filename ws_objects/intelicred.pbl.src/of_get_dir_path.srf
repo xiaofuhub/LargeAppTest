@@ -1,0 +1,247 @@
+﻿$PBExportHeader$of_get_dir_path.srf
+global type of_get_dir_path from function_object
+end type
+
+forward prototypes
+global function integer of_get_dir_path (string as_path)
+end prototypes
+
+global function integer of_get_dir_path (string as_path);//\/*********************************
+//function created 071305 to facilitate modifications and testing.  Called from application object open event.
+//maha 010505  remodified 070805 to get active directory path. Intended for use with Citrix system with mutiple databases. 
+//Gets the directory the program is running from, and checks ini file to get a runpath which should be
+//the active directory path less the "\intellicred".  The ini check for the odbc connection is in the login screen.
+//options:1-inifile 2-regkey 3-  
+//Start Code Change ---- 08.15.2007 #V7 maha  replaced code with code migrated from version 6 (old code at bottom)
+//debugbreak()
+//n_cst_filesrvwin32 inv_filesrv //maha 010405
+string ls_dir_path  //the modified path through the function
+string ls_path //for testing changes
+String ls_citrix_path //alfee 03.14.2014
+integer 	li_key_test,li_Pos
+
+//Start Code Change ---- 07.05.2007 #V7 maha simplified and corrected
+//Start Code Change ---- 08.08.2007 #V7 maha simplified and corrected
+//1) set to get directory
+//2) check registry; if exists overwrite
+//3) if runpath use that
+//inv_filesrv = create  n_cst_filesrvwin32
+//ls_dir_path = inv_filesrv.of_GetCurrentDirectory()
+
+//ls_dir_path = as_path
+//if isnull(ls_dir_path) or ls_dir_path = "" then ls_dir_path = "C:\"
+//End Code Change---08.08.2007
+
+if gi_test_mode = 1 then messagebox("Test mode on; of_directory_path.as_path=" + as_path,"If not in diagnostic mode, user should contact IntelliSoft Support.  (check start in line of shortcut)" ) //for testing Start Code Change ---- 02.28.2008 #V8 maha
+
+//Start Code Change ---- 02.28.2008 #V8 maha - moved to top.  This code is used to trap for bad shortcuts
+If AppeonGetClientType() = 'PB' then //windows trap
+	if upper(MidA(as_path,1,25)) = "C:\DOCUMENTS AND SETTINGS" then //if start in for shortcut is blank
+		ls_dir_path = "C:\intellicred"
+	elseif upper(as_path) = "C:\" then //if start in is c:\
+		ls_dir_path = "C:\intellicred"
+	else
+		ls_dir_path = as_path
+	end if
+end if
+//End Code Change---02.28.2008
+if gi_test_mode = 1 then messagebox("after trap",ls_dir_path) //for testing Start Code Change ---- 02.28.2008 #V8 maha
+
+If AppeonGetClientType() <> 'PB' then
+	gs_IniFilePathName = "intellicred.ini"
+	gs_IniWindowState = "WindowState.ini"	 //(Appeon)Alfee 06.26.2013 - V141 ISG-CLX	
+else
+	//if Right(as_path,1) <> '\' then as_path += '\'
+	if RightA(ls_dir_path,1) <> '\' then ls_dir_path += '\'
+	//gs_IniFilePathName = as_path + "intellicred.ini"
+	gs_IniFilePathName = ls_dir_path + "intellicred.ini"
+	gs_IniWindowState = ls_dir_path + "WindowState.ini" //(Appeon)Alfee 06.26.2013 - V141 ISG-CLX
+end if
+
+//---------Begin Added by (Appeon)Alfee 06.26.2013 for V141 ISG-CLX--------
+String ls_domainname
+n_cst_systeminfo lnv_systeminfo
+lnv_systeminfo = Create n_cst_systeminfo
+ls_domainname = lnv_systeminfo.of_get_domainname()
+Destroy lnv_systeminfo
+//---------End Added ------------------------------------------------------------------
+
+//Start Code Change ----12.04.2007 #V8 maha -- need to have the windows version default to the as_path
+ls_path = as_path
+if AppeonGetClientType() <> 'PB' then //web
+	ls_dir_path = ProfileString(gs_IniFilePathName, "Paths", "Directory_Path", "C:\")
+else
+	ls_path = ProfileString(gs_IniFilePathName, "Paths", "Directory_Path","ZZZ")
+	//if ls_dir_path = "ZZZ" or ls_dir_path = "" then ls_dir_path = as_path
+	if ls_path = "ZZZ" or ls_path = "" then 
+		//do nothingls_dir_path = as_path
+	else
+		ls_dir_path = ls_path
+	end if
+	
+end if
+//End Code Change---12.04.2007
+
+//---------Begin Added by (Appeon)Harry 02.14.2014 for Bug # 3863--------
+if AppeonGetClientType() = 'PB' and (ls_path = "ZZZ" or ls_path = "") then
+else
+	if Pos(Upper(ls_dir_path),"%APPDATA%") > 0 then
+		string ls_AppData_path
+		n_cst_string lnv_string
+		ls_AppData_path = Space( 1024 )
+		GetEnvironmentVariableA( "APPDATA", ls_AppData_path, 1024 )
+		ls_dir_path = lnv_string.of_globalreplace( ls_dir_path,"%APPDATA%",ls_AppData_path,true)
+	end if
+end if
+//---------End Added ------------------------------------------------------
+
+if gi_test_mode = 1 then messagebox("after Directory_Path ini check",ls_dir_path) //for testing Start Code Change ---- 02.28.2008 #V8 maha
+
+if (IsNull(ls_dir_path)) or (Trim(ls_dir_path) = '') or (Not DirectoryExists(ls_dir_path)) then ls_dir_path = "C:\"
+
+ls_path = ProfileString(gs_IniFilePathName, "Setup", "runpath", "None")
+
+if gi_test_mode = 1 then messagebox("runpath from ini file",ls_path) //for testing Start Code Change ---- 02.28.2008 #V8 maha
+
+if ls_path = "None" then //if the runpath is not in the ini file. If it is, citrix is assumed.
+	//will overwrite ls_dir_path if the registry setting exists
+	
+	if AppeonGetClientType() = 'PB' then		//Added by Scofield on 2008-04-23
+		li_key_test = RegistryGet("HKEY_LOCAL_MACHINE\SOFTWARE\IntelliSoft Group\intellicred\", "InstallPath", RegString!, ls_path) //this is actually redundant when getting the current directory
+		if(li_key_test = 1) and (Trim(ls_path) <> '') and (DirectoryExists(ls_path)) then
+			ls_dir_path = ls_path
+		end if
+	else
+		//leave ls_dir_path as is
+	end if
+else
+	gi_citrix = 1
+	ls_dir_path = ls_path
+	//---------Begin Added by (Appeon)Alfee 03.14.2014  ---------------------------------------
+	//Set the ini file with the run path 
+	ls_path = Trim (ls_path)
+	if Right (ls_path, 1) = "\"  then ls_path = Left(ls_path, len(ls_path) - 1)
+	if FileExists (ls_path +  "\intellicred.ini") then gs_IniFilePathName = ls_path +  "\intellicred.ini"
+
+	//Set the temporary path if specified
+	ls_citrix_path = ProfileString(gs_IniFilePathName, "Paths", "Directory_Path_Citrix", "")
+	if Len (Trim(ls_citrix_path)) > 0 then ls_dir_path = ls_citrix_path
+	//---------End Added ----------------------------------------------------------------------------	
+	if gi_test_mode = 1 then messagebox("path from ini file ",ls_dir_path) //for testing Start Code Change ---- 07.29.2008 #V8 maha
+	//Start Code Change ---- 03.11.2008 #V8 maha - readded line below because existing customers using citrix would have a problem with the line following 
+	//Start Code Change ---- 07.29.2008 #V8 maha - moved following line further below
+	//gs_IniFilePathName = ls_dir_path +  "intellicred\intellicred.ini" //Start Code Change ---- 11.07.2007 #V7 maha added so that is the directory path is redirected, the ini path will as well.
+	//gs_IniFilePathName = ls_dir_path +  "\intellicred.ini" //Start Code Change ---- 02.28.2008 #V8 maha changed because of 
+	//End Code Change---03.11.2008
+end if
+
+if gi_test_mode = 1 then messagebox("path after reg,citrix setting",ls_dir_path) //for testing Start Code Change ---- 02.28.2008 #V8 maha
+
+//Check for last 'intellicred' in path and remove 
+//---------Begin Modified by (Appeon)Alfee 03.27.2014 for ---------------------------------
+//<$Reason>Fix the issue for some cases like the "C:\IntelliCredTemp\" or "D:\TestIntelliCred\"
+ls_dir_path = Trim (ls_dir_path)
+if RightA(ls_dir_path,1) <> "\" then ls_dir_path += "\" //check for final 
+
+if RightA(lower(ls_dir_path),13) = "\intellicred\" then
+	ls_dir_path = LeftA(ls_dir_path, LenA(ls_dir_path) - 12)			
+end if
+
+/*integer ilen
+ilen = LenA(ls_dir_path) - 13
+li_Pos = PosA(lower(ls_dir_path),"intellicred",ilen)
+
+if li_Pos > 0 then
+	if gi_test_mode = 1 then messagebox("found intellicred at end of path",ls_dir_path) //for testing Start Code Change ---- 07.29.2008 #V8 maha
+	ls_dir_path = MidA(ls_dir_path,1,li_Pos - 1)
+	if gi_test_mode = 1 then messagebox("after intellicred strip",ls_dir_path) //for testing Start Code Change ---- 07.29.2008 #V8 maha
+	//if gi_citrix = 1 then gs_IniFilePathName = ls_dir_path +  "intellicred\intellicred.ini"  //Start Code Change ---- 07.29.2008 #V8 maha - reset ini path - commented by alfee 03.14.2014
+else
+	if gi_test_mode = 1 then messagebox("intellicred not found in path, len:" + string(ilen - 13),ls_dir_path) //for testing Start Code Change ---- 07.29.2008 #V8 maha
+end if
+
+
+if RightA(ls_dir_path,1) <> "\" then		//check for final \
+	ls_dir_path += "\"			
+end if*/
+//---------End Modfiied -------------------------------------------------------------------------
+
+gs_dir_path = ls_dir_path
+
+if gi_test_mode = 1 then messagebox("final path",ls_dir_path) //for testing Start Code Change ---- 02.28.2008 #V8 maha
+
+return 1
+////\/*********************************
+////function created 071305 to facilitate modifications and testing.  Called from applicatio object open event.
+////maha 010505  remodified 070805 to get active directory path. Intended for use with Citrix system with mutiple databases. 
+////Gets the directory the program is running from, and checks ini file to get a runpath which should be
+////the active directory path less the "\intellicred".  The ini check for the odbc connection is in the login screen.
+////options:1-inifile 2-regkey 3-
+//
+//n_cst_filesrvwin32 inv_filesrv //maha 010405
+//string ls_dir_path
+//integer li_key_test
+//integer li_Pos
+//string ls_path
+//
+////Start Code Change ---- 07.05.2007 #V7 maha simplified and corrected
+////1) set to get directory
+////2) check registry; if exists overwrite
+////3) if runpath use that
+//inv_filesrv = create  n_cst_filesrvwin32
+//
+////Start Code Change------07.18.2007 By Jervis temporary for web build
+///*
+//ls_dir_path = inv_filesrv.of_GetCurrentDirectory()
+//*/
+////if appeongetclienttype() <> 'PB' then
+////	ls_dir_path = "C:\"
+////else
+////	ls_dir_path = inv_filesrv.of_GetCurrentDirectory()
+////end if
+//
+////--------------------------- APPEON BEGIN ---------------------------
+////$< Add  > 2007-08-06 By: Scofield
+////$<Reason> Alter the intellicred.ini file path
+//gs_IniFilePathName = inv_filesrv.of_GetCurrentDirectory() + "\intellicred.ini"
+//ls_dir_path = ProfileString(gs_IniFilePathName ,"Paths","Directory_Path","C:\")
+////---------------------------- APPEON END ----------------------------
+////End code change 07.18.2007
+//
+//if isnull(ls_dir_path) or ls_dir_path = "" then ls_dir_path = "C:\"
+//ls_path = ProfileString(gs_IniFilePathName, "Setup", "runpath", "None")
+//destroy inv_filesrv
+//
+//if ls_path = "None" then //if the runpath is not in the ini file. If it is, citrix is assumed.
+//	//will overwrite ls_dir_path if the registry setting exists
+//	li_key_test = RegistryGet( "HKEY_LOCAL_MACHINE\SOFTWARE\IntelliSoft Group\intellicred\", "InstallPath", RegString!, ls_dir_path) //this is actually redundant when getting the current directory
+////	IF IsNull(ls_dir_path)  or li_key_test = -1 THEN  //if key does not exist returns -1 //maha removed 7.5.07
+////		//gs_dir_path = "C:\"
+////		//messagebox("li_key_test",li_key_test)
+////	else
+////		gs_dir_path = ls_dir_path
+////	END IF	
+//else
+//	gi_citrix = 1
+//	ls_dir_path = ls_path
+//end if
+//
+////Check for last 'intellicred' in path and remove 
+//li_Pos = pos(ls_dir_path,"intellicred",len(ls_dir_path) - 12)
+//if li_Pos > 0 then
+//	ls_dir_path = mid(ls_dir_path,1,li_Pos - 1)
+//	//messagebox(string(li_Pos),ls_dir_path)
+//end if
+//
+//if upper(mid(ls_dir_path,1,25)) = "C:\DOCUMENTS AND SETTINGS" then //Start Code Change ---- 07.30.2007 #V7 maha
+//	//messagebox()
+//	ls_dir_path = "C:\"
+//end if
+//
+//if mid(ls_dir_path,len(ls_dir_path)) <> "\" then ls_dir_path = ls_dir_path + "\"  //check for final \
+//gs_dir_path = ls_dir_path
+////End Code Change---07.05.2007
+//
+//return 1
+end function
+

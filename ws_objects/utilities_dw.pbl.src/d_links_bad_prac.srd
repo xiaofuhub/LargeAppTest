@@ -1,0 +1,38 @@
+﻿$PBExportHeader$d_links_bad_prac.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=136 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=pd_address_link_address_id dbname="pd_address_link.address_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=pd_address_link_prac_id dbname="pd_address_link.prac_id" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=pd_address_link_facility_id dbname="pd_address_link.facility_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=pd_address_rec_id dbname="pd_address.rec_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=pd_address_prac_id dbname="pd_address.prac_id" )
+ retrieve="  SELECT pd_address_link.address_id,   
+         pd_address_link.prac_id,   
+         pd_address_link.facility_id,   
+         pd_address.rec_id,   
+         pd_address.prac_id  
+    FROM pd_address_link,   
+         pd_address  
+   WHERE ( pd_address_link.address_id = pd_address.rec_id ) and  
+         ( pd_address_link.prac_id <> pd_address.prac_id )    
+" update="pd_address_link" updatewhere=0 updatekeyinplace=no )
+text(band=header alignment="2" text="Pd Address Link
+Address Id" border="0" color="0" x="5" y="4" height="128" width="439" html.valueishtml="0"  name=pd_address_link_address_id_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Address Link
+Prac Id" border="0" color="0" x="448" y="4" height="128" width="439" html.valueishtml="0"  name=pd_address_link_prac_id_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Address Link
+Facility Id" border="0" color="0" x="891" y="4" height="128" width="439" html.valueishtml="0"  name=pd_address_link_facility_id_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="0" x="5" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=pd_address_link_address_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="0" x="448" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=pd_address_link_prac_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="0" color="0" x="891" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=pd_address_link_facility_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1330" y="0" height="64" width="1161" format="[general]" html.valueishtml="0"  name=pd_address_rec_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="2491" y="0" height="64" width="1161" format="[general]" html.valueishtml="0"  name=pd_address_prac_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

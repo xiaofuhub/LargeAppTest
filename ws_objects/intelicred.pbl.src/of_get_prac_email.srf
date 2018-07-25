@@ -1,0 +1,53 @@
+﻿$PBExportHeader$of_get_prac_email.srf
+global type of_get_prac_email from function_object
+end type
+
+forward prototypes
+global function gs_email_address of_get_prac_email (long al_pracid, string as_type, long al_facility)
+end prototypes
+
+global function gs_email_address of_get_prac_email (long al_pracid, string as_type, long al_facility);//Start Code Change ----07.11.2017 #V154 maha - created
+
+//types: A = All; 	M= mailing; 	P= personal (basic);	U = user
+string ls_email
+string ls_type
+integer r
+integer rc
+datastore lds_emails
+gs_email_address lst_email
+
+choose case as_type
+	case "M"
+		select e_mail_address into :ls_email from pd_address, pd_address_link where  pd_address.rec_id = pd_address_link.address_id and  pd_address.prac_id = :al_pracid and pd_address_link.facility_id = :al_facility and  pd_address_link.mailing = 1;
+		lst_email.s_email[1] = ls_email
+		lst_email.s_type[1] = "Mailing"
+	case "P"
+		select personal_email into :ls_email from pd_basic where   pd_basic.prac_id = :al_pracid;
+		lst_email.s_email[1] = ls_email
+		lst_email.s_type[1] = "Personal"
+	case "U"
+		select email_id into :ls_email from security_users where prac_id = :al_pracid;
+		lst_email.s_email[1] = ls_email
+		lst_email.s_type[1] = "User"
+	case "A"
+		lds_emails = create datastore
+		lds_emails.dataobject = "d_prac_email_addresses"
+		lds_emails.settransobject(sqlca)
+		rc = lds_emails.retrieve(al_pracid)
+		if r > 0 then
+			for r = 1 to rc
+				ls_type = lds_emails.getitemstring(r, "e_type")
+				ls_email = lds_emails.getitemstring(r, "email_address")
+				lst_email.s_type[r] = ls_type
+				lst_email.s_email[r] = ls_email
+			next
+		end if
+		destroy lds_emails
+end choose
+
+
+return lst_email
+
+
+end function
+

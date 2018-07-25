@@ -1,0 +1,43 @@
+﻿$PBExportHeader$d_contract_det_contact_contact_phone.srd
+$PBExportComments$[intellicontract] contact tab contacts
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=68 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=contact_id dbname="ctx_contacts_numbers.contact_id" )
+ column=(type=long update=yes updatewhereclause=yes key=yes identity=yes name=contact_num_id dbname="ctx_contacts_numbers.contact_num_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=via dbname="ctx_contacts_numbers.via" )
+ column=(type=char(25) update=yes updatewhereclause=yes name=phone dbname="ctx_contacts_numbers.phone" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=ext dbname="ctx_contacts_numbers.ext" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=contact_email dbname="ctx_contacts_numbers.contact_email" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=record_id dbname="ctx_contacts_numbers.record_id" )
+ column=(type=long updatewhereclause=yes name=ctx_id dbname="ctx_id" )
+ retrieve="  SELECT ctx_contacts_numbers.contact_id,   
+         ctx_contacts_numbers.contact_num_id,   
+         ctx_contacts_numbers.via,   
+         ctx_contacts_numbers.phone,   
+         ctx_contacts_numbers.ext,   
+         ctx_contacts_numbers.contact_email,   
+         ctx_contacts_numbers.record_id,   
+         0 ctx_id  
+    FROM ctx_contacts_numbers  
+   WHERE ctx_contacts_numbers.contact_id = :al_contact_id
+" update="ctx_contacts_numbers" updatewhere=0 updatekeyinplace=yes arguments=(("al_contact_id", number)) )
+compute(band=detail alignment="0" expression="0"border="0" color="67108864" x="896" y="0" height="4" width="64" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="1" tabsequence=10 border="5" color="33554432" x="9" y="8" height="64" width="334" format="[general]" html.valueishtml="0"  name=via  tag="Contract Contact VIA" pointer="" visible="1" dddw.name=d_dddw_code_lookup dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=400 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.hscrollbar=yes dddw.vscrollbar=yes dddw.autoretrieve=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=4 alignment="0" tabsequence=20 border="5" color="33554432" x="352" y="8" height="64" width="535" format="[general]" html.valueishtml="0"  name=phone visible="1" edit.limit=25 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=5 alignment="0" tabsequence=30 border="5" color="33554432" x="969" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=ext visible="1" editmask.mask="####" editmask.imemode=0 editmask.focusrectangle=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+button(band=detail text="" filename="flag.bmp" enabled=yes action="0" border="0" color="0" x="891" y="8" height="64" width="69" vtextalign="0" htextalign="0"  name=b_phone visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=6 alignment="0" tabsequence=40 border="5" color="33554432" x="1253" y="8" height="64" width="1317" format="[general]" html.valueishtml="0"  name=contact_email visible="1" edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="2" text="Via" border="6" color="33554432" x="9" y="4" height="52" width="334" html.valueishtml="0"  name=via_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Phone" border="6" color="33554432" x="352" y="4" height="52" width="535" html.valueishtml="0"  name=phone_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="" border="6" color="0" x="896" y="4" height="52" width="64" html.valueishtml="0"  name=t_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Ext" border="6" color="33554432" x="969" y="4" height="52" width="274" html.valueishtml="0"  name=ext_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Contact Email" border="6" color="33554432" x="1253" y="4" height="52" width="1317" html.valueishtml="0"  name=contact_email_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

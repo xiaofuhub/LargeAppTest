@@ -1,0 +1,18 @@
+﻿$PBExportHeader$d_test_dataview_fields.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=char(128) updatewhereclause=yes name=cname dbname="syscolumns.cname" )
+ column=(type=char(128) updatewhereclause=yes name=coltype dbname="syscolumns.coltype" )
+ column=(type=long updatewhereclause=yes name=length dbname="syscolumns.length" )
+ column=(type=long updatewhereclause=yes name=syslength dbname="syscolumns.syslength" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"sys.syscolumns~" ) COLUMN(NAME=~"sys.syscolumns.cname~") COLUMN(NAME=~"sys.syscolumns.coltype~") COLUMN(NAME=~"sys.syscolumns.length~") COLUMN(NAME=~"sys.syscolumns.syslength~")WHERE(    EXP1 =~"sys.syscolumns.tname~"   OP =~"=~"    EXP2 =~"'data_view_fields'~" ) ) " )
+text(band=header alignment="0" text="Dataview fields"border="0" color="0" x="5" y="4" height="52" width="457"  name=tname_t  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=0 border="0" color="0" x="23" y="4" height="72" width="681"  name=cname  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=0 border="0" color="0" x="741" y="4" height="72" width="361"  name=coltype  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=0 border="0" color="0" x="1129" y="4" height="72" width="398"  name=length  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=0 border="0" color="0" x="1563" y="4" height="72" width="992"  name=syslength  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

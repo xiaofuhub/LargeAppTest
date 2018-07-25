@@ -1,0 +1,8 @@
+﻿$PBExportHeader$str_requirement_doc.srs
+global type str_requirement_doc from structure
+	long		sl_ctx_id
+	long		sl_element_id[]
+	long		sl_reqmnt_id[]
+	string		ss_element_name[]
+end type
+

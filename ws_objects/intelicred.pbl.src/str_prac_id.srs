@@ -1,0 +1,9 @@
+﻿$PBExportHeader$str_prac_id.srs
+$PBExportComments$Create by Jack 10/10/2006
+global type str_prac_id from structure
+	long		prac_id
+	long		facility_id
+	string		types
+	long		view_id
+end type
+

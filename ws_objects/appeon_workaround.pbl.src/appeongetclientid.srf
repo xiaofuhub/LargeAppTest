@@ -1,0 +1,38 @@
+﻿$PBExportHeader$appeongetclientid.srf
+global type appeongetclientid from function_object
+end type
+
+forward prototypes
+global function string appeongetclientid ()
+end prototypes
+
+global function string appeongetclientid ();//==============================================================================
+// 
+// Copyright ? 2001-2006 Appeon, Inc. and its subsidiaries. All rights reserved.
+// 
+//------------------------------------------------------------------------------
+// Function: appeongetclientid()
+//------------------------------------------------------------------------------
+// Description: 
+// 				Returns the unique session identifier for the Internet Explorer client.
+//	
+// Arguments:(None)
+//	
+// Returns:  string
+//------------------------------------------------------------------------------
+// Author:	APPEON		Date: 2005-11
+//------------------------------------------------------------------------------
+// Revision History: 
+//				1.0   Initial version
+//==============================================================================
+
+String strRet
+AppeonExtFuncs funs
+funs = Create AppeonExtFuncs
+
+strRet = funs.Of_GetClientID()
+
+Destroy funs
+Return strRet
+end function
+

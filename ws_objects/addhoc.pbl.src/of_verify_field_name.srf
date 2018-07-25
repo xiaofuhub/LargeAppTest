@@ -1,0 +1,47 @@
+﻿$PBExportHeader$of_verify_field_name.srf
+global type of_verify_field_name from function_object
+end type
+
+forward prototypes
+global function integer of_verify_field_name (string as_name)
+end prototypes
+
+global function integer of_verify_field_name (string as_name);//Start Code Change ----05.05.2011 #V11 maha - created
+string ls_field
+string ls_mess1
+string ls_mes
+
+
+ls_field = as_name
+
+//Start Code Change ----09.26.2013 #V14 maha
+if LenA(ls_field) = 0 or isnull(ls_field) then
+	ls_mes = "  Please enter the Computed Field name"
+	messagebox("Field name error", ls_mes)
+	return -1
+end if
+//End Code Change ----09.26.2013
+
+//test length 3 to 40
+if LenA(ls_field) < 3 or LenA(ls_field) > 40 then
+	ls_mess1 = "  Computed Field name has an invalid length.  Must be between 3 an 40 characters."
+end if
+
+//test for bad characters
+	//if i = 7 then debugbreak()
+ls_mes = of_strip_char ("",ls_field,"@DBFIELD@")
+
+if ls_mes = "FAILS" then
+	ls_mess1+= "  The Computed Field has an invalid name.  It must contain only letters, numbers or underscores, and cannot start with a number; cannot have spaces."
+end if
+	
+if len(ls_mess1) > 0 then
+	messagebox("Field name error", ls_mess1)
+	return -1
+end if
+
+			
+return 1
+	
+end function
+

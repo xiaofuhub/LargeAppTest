@@ -1,0 +1,48 @@
+﻿$PBExportHeader$of_open_prac_folder.srf
+global type of_open_prac_folder from function_object
+end type
+
+forward prototypes
+global function integer of_open_prac_folder (long al_prac, long al_facility)
+end prototypes
+
+global function integer of_open_prac_folder (long al_prac, long al_facility);//Start Code Change ----07.19.2016 #V152 maha - added  to open provider folder
+
+long ll_prac
+integer res
+w_prac_data_1 lw_prac
+pfc_cst_u_extended_search luo_search
+
+ll_prac = al_prac
+
+IF gs_cust_type = "I" THEN
+	IF NOT gb_sk_ver AND (IsNull(gi_prac_tab) OR gi_prac_tab <> 1) THEN 	
+		IF NOT Isvalid(w_prac_data_intelliapp) THEN
+			OpenSheet( w_prac_data_intelliapp, w_mdi, 4, original!)
+			w_prac_data_intelliapp.move(0,0)
+			w_prac_data_intelliapp.BringToTop = TRUE
+		END IF
+		lw_prac = w_prac_data_intelliapp	
+	ELSE //smart
+		IF NOT Isvalid(w_prac_data_sk) THEN
+			OpenSheet( w_prac_data_SK, w_mdi, 4, original!)
+		END IF
+		lw_prac = w_prac_data_SK
+	END IF
+ELSE //cred
+	IF NOT Isvalid(w_prac_data_1) THEN
+		OpenSheet( w_prac_data_1, w_mdi, 4, original!)
+	END IF
+	
+	lw_prac = w_prac_data_1
+END IF
+
+lw_prac.BringToTop = TRUE
+
+post of_select_prac_in_folder(al_prac, al_facility, lw_prac)
+
+return 1
+
+
+end function
+

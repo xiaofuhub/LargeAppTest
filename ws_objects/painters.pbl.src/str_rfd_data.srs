@@ -1,0 +1,7 @@
+﻿$PBExportHeader$str_rfd_data.srs
+global type str_rfd_data from structure
+	string		s_type
+	u_dw		u_datawindow
+	w_prac_data_1		w_prac
+end type
+

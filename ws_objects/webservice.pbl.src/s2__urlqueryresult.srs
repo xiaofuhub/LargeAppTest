@@ -1,0 +1,11 @@
+﻿$PBExportHeader$s2__urlqueryresult.srs
+$PBExportComments$Proxy imported from Web service using Web Service Proxy Generator.
+global type s2__UrlQueryResult from structure
+   string ws_Error
+   string Link
+   string FileId
+   string DocumentId
+   string LinkType
+   string SignerEmail
+end type
+

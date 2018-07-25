@@ -1,0 +1,64 @@
+﻿$PBExportHeader$d_dashb_gadget_summary_data.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=68 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes identity=yes name=id dbname="dashboard_gadgets_summary.id" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=user_id dbname="dashboard_gadgets_summary.user_id" )
+ column=(type=long update=yes updatewhereclause=yes name=tab_id dbname="dashboard_gadgets_summary.tab_id" )
+ column=(type=long update=yes updatewhereclause=yes name=summary_id dbname="dashboard_gadgets_summary.summary_id" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=tdl_user dbname="dashboard_gadgets_summary.tdl_user" )
+ column=(type=long update=yes updatewhereclause=yes name=tdl_id dbname="dashboard_gadgets_summary.tdl_id" )
+ column=(type=char(100) updatewhereclause=yes name=tdl_name dbname="tdl_basic_info.tdl_name" )
+ column=(type=long update=yes updatewhereclause=yes name=report_id dbname="dashboard_gadgets_summary.report_id" )
+ column=(type=long update=yes updatewhereclause=yes name=is_graph dbname="dashboard_gadgets_summary.is_graph" )
+ column=(type=long update=yes updatewhereclause=yes name=graph_type dbname="dashboard_gadgets_summary.graph_type" )
+ column=(type=char(80) updatewhereclause=yes name=report_name dbname="dashboard_gadgets_report_list.report_name" )
+ retrieve="  SELECT dashboard_gadgets_summary.id,   
+         dashboard_gadgets_summary.user_id,   
+         dashboard_gadgets_summary.tab_id,   
+         dashboard_gadgets_summary.summary_id,
+         dashboard_gadgets_summary.tdl_user,
+         dashboard_gadgets_summary.tdl_id,
+			tdl_basic_info.tdl_name,
+         dashboard_gadgets_summary.report_id,   
+         dashboard_gadgets_summary.is_graph,   
+         dashboard_gadgets_summary.graph_type,   
+         dashboard_gadgets_report_list.report_name  
+    FROM dashboard_gadgets_summary 
+			Left Outer Join dashboard_gadgets_report_list  
+				On ( dashboard_gadgets_summary.report_id = dashboard_gadgets_report_list.id )
+			Left Outer Join tdl_basic_info
+				On ( dashboard_gadgets_summary.tdl_id = tdl_basic_info.tdl_id )
+   WHERE  
+         ( dashboard_gadgets_summary.user_id = :as_user_id )  " update="dashboard_gadgets_summary" updatewhere=0 updatekeyinplace=no arguments=(("as_user_id", string)) )
+text(band=header alignment="2" text="Id" border="0" color="33554432" x="9" y="8" height="52" width="274" html.valueishtml="0"  name=id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="User Id" border="0" color="33554432" x="293" y="8" height="52" width="1166" html.valueishtml="0"  name=user_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Tab Id" border="0" color="33554432" x="1467" y="8" height="52" width="274" html.valueishtml="0"  name=tab_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Summary Id" border="0" color="33554432" x="1751" y="8" height="52" width="274" html.valueishtml="0"  name=summary_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Report Id" border="0" color="33554432" x="2034" y="8" height="52" width="274" html.valueishtml="0"  name=report_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Is Graph" border="0" color="33554432" x="2318" y="8" height="52" width="274" html.valueishtml="0"  name=is_graph_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Graph Type" border="0" color="33554432" x="2601" y="8" height="52" width="274" html.valueishtml="0"  name=graph_type_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="33554432" x="9" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=10 border="0" color="33554432" x="293" y="8" height="64" width="1166" format="[general]" html.valueishtml="0"  name=user_id visible="1" edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="1" tabsequence=20 border="0" color="33554432" x="1467" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=tab_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="1" tabsequence=30 border="0" color="33554432" x="1751" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=summary_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="1" tabsequence=40 border="0" color="33554432" x="2034" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=report_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="1" tabsequence=50 border="0" color="33554432" x="2318" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=is_graph visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="1" tabsequence=60 border="0" color="33554432" x="2601" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=graph_type visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=70 border="0" color="33554432" x="2885" y="8" height="52" width="722" format="[general]" html.valueishtml="0"  name=report_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=110 border="0" color="33554432" x="4032" y="8" height="52" width="357" html.valueishtml="0"  name=tdl_user visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=90 border="0" color="33554432" x="3625" y="8" height="52" width="389" html.valueishtml="0"  name=tdl_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Report Name" border="0" color="33554432" x="2885" y="4" height="52" width="722" html.valueishtml="0"  name=report_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Tdl User" border="0" color="33554432" x="4027" y="4" height="52" width="361" html.valueishtml="0"  name=tdl_user_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Tdl Id" border="0" color="0" x="3621" y="4" height="52" width="393" html.valueishtml="0"  name=tdl_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=7 alignment="0" tabsequence=120 border="0" color="33554432" x="4402" y="12" height="52" width="2290" html.valueishtml="0"  name=tdl_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Tdl Name" border="0" color="33554432" x="4398" y="4" height="52" width="2295" html.valueishtml="0"  name=tdl_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

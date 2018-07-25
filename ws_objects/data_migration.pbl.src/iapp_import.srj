@@ -1,0 +1,21 @@
+﻿$PBExportHeader$iapp_import.srj
+EXE:c:\development\intelliapp-export import.exe,,0,1
+CMP:0,0,0,2,0,0
+PBD:C:\Development\iapp_conv.pbl,,0
+OBJ:c:\development\iapp_conv.pbl,w_open,w
+OBJ:c:\development\iapp_conv.pbl,d_app_hdr_ids,d
+OBJ:c:\development\iapp_conv.pbl,w_iapp_conv_new,w
+OBJ:c:\development\iapp_conv.pbl,d_export_fields_for_imp,d
+OBJ:c:\development\iapp_conv.pbl,d_app_checklist,d
+OBJ:c:\development\iapp_conv.pbl,d_app_field_prop,d
+OBJ:c:\development\iapp_conv.pbl,w_make_export_files,w
+OBJ:c:\development\iapp_conv.pbl,d_app_prop_app,d
+OBJ:c:\development\iapp_conv.pbl,w_import_export,w
+OBJ:c:\development\iapp_conv.pbl,d_export_auto_for_imp,d
+OBJ:c:\development\iapp_conv.pbl,d_export_hdr_for_imp,d
+OBJ:c:\development\iapp_conv.pbl,w_delete_exp,w
+OBJ:c:\development\iapp_conv.pbl,d_app_facil_all,d
+OBJ:c:\development\iapp_conv.pbl,iapp_conv,a
+OBJ:c:\development\iapp_conv.pbl,d_exp_select,d
+OBJ:c:\development\iapp_conv.pbl,w_import_iapp,w
+OBJ:c:\development\iapp_conv.pbl,d_export_eqivcode_for_imp,d

@@ -1,0 +1,13 @@
+﻿$PBExportHeader$str_ctx_info.srs
+global type str_ctx_info from structure
+	long		al_ctx_id
+	boolean		ab_readonly
+	long		al_ai_id
+	string		as_type
+	long		al_view_id
+	long		al_screen_id
+	string		as_fieldname
+	string		as_fieldtag
+	string		as_fieldlabel
+end type
+

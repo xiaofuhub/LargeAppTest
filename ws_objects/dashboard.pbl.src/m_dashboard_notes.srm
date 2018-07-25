@@ -1,0 +1,100 @@
+﻿$PBExportHeader$m_dashboard_notes.srm
+forward
+global type m_dashboard_notes from menu
+end type
+type m_edit from menu within m_dashboard_notes
+end type
+type m_delete from menu within m_dashboard_notes
+end type
+type m_hide from menu within m_dashboard_notes
+end type
+global type m_dashboard_notes from menu
+m_edit m_edit
+m_delete m_delete
+m_hide m_hide
+end type
+end forward
+
+global type m_dashboard_notes from menu
+m_edit m_edit
+m_delete m_delete
+m_hide m_hide
+end type
+global m_dashboard_notes m_dashboard_notes
+
+type variables
+w_dashboard_notes iw_notes
+end variables
+
+on m_dashboard_notes.create
+m_dashboard_notes=this
+call super::create
+this.m_edit=create m_edit
+this.m_delete=create m_delete
+this.m_hide=create m_hide
+this.Item[UpperBound(this.Item)+1]=this.m_edit
+this.Item[UpperBound(this.Item)+1]=this.m_delete
+this.Item[UpperBound(this.Item)+1]=this.m_hide
+end on
+
+on m_dashboard_notes.destroy
+call super::destroy
+destroy(this.m_edit)
+destroy(this.m_delete)
+destroy(this.m_hide)
+end on
+
+type m_edit from menu within m_dashboard_notes
+end type
+
+on m_edit.create
+call super::create
+this.text = "&Edit"
+end on
+
+on m_edit.destroy
+call super::destroy
+end on
+
+event clicked;If Isvalid(iw_notes) Then
+	iw_notes.of_edit_on()
+End If
+
+end event
+
+type m_delete from menu within m_dashboard_notes
+end type
+
+on m_delete.create
+call super::create
+this.text = "&Delete"
+end on
+
+on m_delete.destroy
+call super::destroy
+end on
+
+event clicked;If Isvalid(iw_notes) Then
+	iw_notes.Event ue_delete()
+End If
+
+end event
+
+type m_hide from menu within m_dashboard_notes
+end type
+
+on m_hide.create
+call super::create
+this.text = "&Hide"
+end on
+
+on m_hide.destroy
+call super::destroy
+end on
+
+event clicked;If Isvalid(iw_notes) Then
+	iw_notes.Event ue_hide()
+End If
+
+end event
+

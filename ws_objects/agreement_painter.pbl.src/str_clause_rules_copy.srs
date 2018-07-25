@@ -1,0 +1,12 @@
+﻿$PBExportHeader$str_clause_rules_copy.srs
+$PBExportComments$Create by Jack 11/20/2006
+global type str_clause_rules_copy from structure
+	string		as_viewname
+	long		al_templateid
+	long		al_clauseid
+	datawindow		adw_rules
+	string		as_return
+	string		as_clausename
+	long		al_dataviewid
+end type
+

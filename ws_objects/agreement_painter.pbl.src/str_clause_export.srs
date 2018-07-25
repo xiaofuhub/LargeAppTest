@@ -1,0 +1,11 @@
+﻿$PBExportHeader$str_clause_export.srs
+global type str_clause_export from structure
+	string		col_name[]
+	string		col_label[]
+	string		col_type[]
+	integer		col_width[]
+	integer		al_ave_width
+	string		as_export_file
+	boolean		ab_openfile
+end type
+

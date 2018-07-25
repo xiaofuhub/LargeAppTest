@@ -1,0 +1,54 @@
+﻿$PBExportHeader$of_get_app_setting.srf
+global type of_get_app_setting from function_object
+end type
+
+forward prototypes
+global function integer of_get_app_setting (string as_field, string as_datatype)
+end prototypes
+
+global function integer of_get_app_setting (string as_field, string as_datatype);//function created maha 101504 for the integer values of settings
+//debugbreak()
+string ls_value
+string ls_field
+integer cnt
+integer li_value
+//Start Code Change ---- 02.24.2006 #290 maha
+
+If Not isvalid(gds_settings) Then Return 0 //Added By Ken.Guo 09-22-2008.
+
+if gds_settings.rowcount() <> 1 then
+	cnt = gds_settings.retrieve()
+	if cnt < 1 then 
+		//messagebox("Error getting setting" + as_field,"Appears to be a problem with the database connection. Closing Program")
+		return 0
+		halt
+	end if
+end if
+//should test for existance of field in datawindow
+ls_field = as_field + ".ColType"
+if gds_settings.Describe(ls_field) <> "!" then
+	choose case as_datatype
+		case "I" , "N"
+			li_value = gds_settings.getitemnumber(1,as_field)
+//		case "D"
+//			ls_value = string(gds_settings.getitemdatetime(1,as_field))
+//		case "C"
+//			ls_value = gds_settings.getitemstring(1,as_field)	
+	end choose
+else
+	li_value = 0
+end if
+//	if  as_field = "set_import" then
+//		messagebox("get app setting",li_value)
+//	end if
+//End Code Change---02.24.2006
+
+//---------Begin Added by (Appeon)Harry 03.18.2014 for V142 ISG-CLX--------
+//Added By Ken.Guo 07/01/2013. workaround license bug for DM.
+If li_value = 0 and as_field = 'set_51' Then 
+	li_value = 3  //3: Buy, 0: N/A, 1: Buy/Sell
+End If
+//---------End Added ------------------------------------------------------
+return li_value
+end function
+

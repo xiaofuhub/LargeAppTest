@@ -1,0 +1,8 @@
+﻿$PBExportHeader$str_ama_listfull_resp.srs
+global type str_ama_listfull_resp from structure
+	long		entityId
+	string		status_code
+	string		status
+	string		xml_path
+end type
+

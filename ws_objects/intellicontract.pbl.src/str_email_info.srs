@@ -1,0 +1,13 @@
+﻿$PBExportHeader$str_email_info.srs
+global type str_email_info from structure
+	string		ss_email_from
+	long		sl_ctx_id
+	string		ss_column_name
+	long		sl_doc_id
+	long		sl_action_id
+	long		sl_wf_id
+	string		ss_ctx_id_list
+	string		ss_doc_id_list
+	string		ss_ai_id_list
+end type
+

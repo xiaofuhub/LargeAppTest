@@ -1,0 +1,48 @@
+﻿$PBExportHeader$d_imp_code_lookup.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=4 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=lookup_code dbname="code_lookup.lookup_code" )
+ column=(type=char(35) update=yes updatewhereclause=yes name=lookup_name dbname="code_lookup.lookup_name" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=code dbname="code_lookup.code" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=description dbname="code_lookup.description" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=type dbname="code_lookup.type" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=custom_1 dbname="code_lookup.custom_1" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=custom_2 dbname="code_lookup.custom_2" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=custom_3 dbname="code_lookup.custom_3" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=custom_4 dbname="code_lookup.custom_4" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=custom_5 dbname="code_lookup.custom_5" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=custom_6 dbname="code_lookup.custom_6" )
+ column=(type=long update=yes updatewhereclause=yes name=caqh_code dbname="code_lookup.caqh_code" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ic_n dbname="code_lookup.ic_n" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=ic_c dbname="code_lookup.ic_c" )
+ retrieve="SELECT  code_lookup.lookup_code ,
+           code_lookup.lookup_name ,
+           code_lookup.code ,
+           code_lookup.description ,
+           code_lookup.type ,
+           code_lookup.custom_1 ,
+           code_lookup.custom_2 ,
+           code_lookup.custom_3 ,
+           code_lookup.custom_4 ,
+           code_lookup.custom_5 ,
+           code_lookup.custom_6 ,
+           code_lookup.caqh_code ,
+           code_lookup.ic_n ,
+           code_lookup.ic_c     
+        FROM code_lookup      
+        WHERE ( code_lookup.code not like '*' )   " update="code_lookup" updatewhere=2 updatekeyinplace=yes  sort="lookup_name A description A " )
+text(band=header alignment="2" text="Description" border="6" color="0" x="1166" y="8" height="56" width="2153" html.valueishtml="0"  name=description_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524"  height.autosize=yes)
+text(band=header alignment="2" text="Code" border="6" color="0" x="718" y="8" height="56" width="439" html.valueishtml="0"  name=code_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524"  height.autosize=yes)
+text(band=header alignment="2" text="Lookup Name" border="6" color="0" x="9" y="8" height="56" width="699" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1166" y="4" height="56" width="2153" format="[general]" html.valueishtml="0"  name=description visible="1" edit.limit=75 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="718" y="4" height="56" width="439" format="[general]" html.valueishtml="0"  name=code visible="1" edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="4" height="56" width="699" format="[general]" html.valueishtml="0"  name=lookup_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

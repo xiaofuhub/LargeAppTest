@@ -1,0 +1,18 @@
+﻿$PBExportHeader$d_invt_select.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79680469 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=invt_id dbname="invt_items.invt_id" )
+ column=(type=char(100) updatewhereclause=yes name=description dbname="invt_items.description" )
+ column=(type=char(25) updatewhereclause=yes name=code dbname="invt_items.code" )
+ column=(type=decimal(3) updatewhereclause=yes name=cost dbname="invt_items.cost" )
+ column=(type=decimal(3) updatewhereclause=yes name=price dbname="invt_items.price" )
+ retrieve="PBSELECT( VERSION(400) DISTINCT ()TABLE(NAME=~"invt_items~" ) COLUMN(NAME=~"invt_items.invt_id~") COLUMN(NAME=~"invt_items.description~") COLUMN(NAME=~"invt_items.code~") COLUMN(NAME=~"invt_items.cost~") COLUMN(NAME=~"invt_items.price~")) " )
+column(band=detail id=3 alignment="0" tabsequence=20 border="0" color="0" x="2597" y="4" height="64" width="594" format="[general]"  name=code edit.limit=25 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="1" tabsequence=30 border="0" color="0" x="3195" y="4" height="64" width="274" format="[general]"  name=cost edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=40 border="0" color="0" x="3474" y="4" height="64" width="274" format="[general]"  name=price edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1737" y="8" height="64" width="827" format="[general]"  name=description edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="9" y="8" height="64" width="827" format="[general]"  name=invt_id dddw.name=d_dddw_invt_list dddw.displaycolumn=description dddw.datacolumn=invt_id dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,106 @@
+﻿$PBExportHeader$f_set_flag.srf
+global type f_set_flag from function_object
+end type
+
+forward prototypes
+global function string f_set_flag (string as_table, string as_column, long al_ctx_id, long al_doc_id, long al_level_id1, long al_level_id2)
+end prototypes
+
+global function string f_set_flag (string as_table, string as_column, long al_ctx_id, long al_doc_id, long al_level_id1, long al_level_id2);
+
+string ls_flag,ls_enabled
+
+ if al_ctx_id < 1 or isnull(al_ctx_id) then return 'grayflag.bmp'
+
+//--------------------------- APPEON BEGIN ---------------------------
+//$<modify> 09.19.2006 By: LeiWei
+//$<reason> When an Alarm is set for a date the flag icon should be green
+//$<reason> When an Alarm has been triggered or due then it should be red
+//$<reason> Icon should be gray when an alarm is not activated
+/*	
+SELECT ctx_notification.alm_enabled  
+ INTO :ls_enabled  
+ FROM ctx_notification  
+WHERE ( ctx_notification.alm_table = :as_table ) AND  
+		( ctx_notification.alm_column = :as_column ) and
+		(ctx_notification.ctx_id = :al_ctx_id)    ;
+
+if ls_enabled = '1' then 
+	ls_flag ='greenflag.bmp'	
+else 
+	ls_flag = 'grayflag.bmp'
+end if
+*/
+
+// Reference n_cst_notification.of_prep_send_mail
+Datastore adw
+Long ll_row
+date LD_DATE
+date ldt_relative_date
+date ldtServerDate
+long ll_notificatin_days, ll_total_tries
+string ls_sql
+
+//add by jervis 07.04.2011
+choose case lower(as_table)
+	case 'ctx_basic_info','ctx_custom'
+		//------------------------------------------------------------------------
+		// 2.24.2016 RP added
+		IF gnv_data.of_retrieveIfNecessary("ctx_notification", FALSE) = -1 THEN
+			return ""
+		END IF
+		//------------------------------------------------------------------------
+		adw = gnv_data.ids_ctx_notification
+		ll_row = adw.Find( "upper(alm_table) = '" + upper(as_table) +&
+					"' and upper(alm_column) = '" + upper(as_column) + "' and ctx_id = " + String(al_ctx_id), 1,	adw.Rowcount() )
+	//case 'ctx_custom_multi_hdr','ctx_custom_multi_detail'
+	case else  //jervis 08.02.2011
+		//------------------------------------------------------------------------
+		// 2.24.2016 RP added
+		IF gnv_data.of_retrieveIfNecessary("ctx_all_notification", FALSE) = -1 THEN
+			return ""
+		END IF
+		//------------------------------------------------------------------------
+		adw = gnv_data.ids_ctx_all_notification
+		ll_row = adw.Find( "upper(alm_table) = '" + upper(as_table) +&
+					"' and upper(alm_column) = '" + upper(as_column) + "' and ctx_id = " + String(al_ctx_id) + &
+					" and doc_id = " + string(al_doc_id) + " and level_id1 = " + String(al_level_id1) + &
+					"  and level_id2 = " +  String(al_level_id2) , 1,	adw.Rowcount() )
+end choose
+
+IF ll_row > 0 THEN 
+	ldtServerDate = date(adw.GetItemDateTime(ll_row, "curdate"))
+	
+	choose case lower(as_table)
+		case 'ctx_basic_info'
+			LD_DATE = date(adw.GetItemDateTime(ll_row, as_column))
+		case 'ctx_action_item'
+			LD_DATE = date(adw.GetItemDateTime(ll_row, as_column))
+		case 'ctx_am_action_item'
+			LD_DATE = date(adw.GetItemDateTime(ll_row, as_column))
+		//case 'ctx_custom_multi_hdr','ctx_custom','ctx_custom_multi_detail'	//jervis 07.04.01
+		case else  //add fee scheduce - jervis 08.02.2011
+			ld_date = date(adw.GetItemDateTime(ll_row, 'alm_date'))
+	end choose
+			
+	ll_notificatin_days = adw.getItemNumber(ll_row, 'alm_notification_days') //Alfee 02.26.2008
+	//ll_notificatin_days = adw.getItemNumber(ll_row, 'notification_days')
+	
+	ldt_relative_date = RelativeDate( LD_DATE , ll_notificatin_days * -1 )
+								
+	if ldtServerDate >= ldt_relative_date then 
+		ls_flag ='redflag.bmp'
+	ELSE
+		ls_flag ='greenflag.bmp'
+	end if		
+ELSE
+	ls_flag = 'grayflag.bmp'
+END IF
+
+//---------------------------- APPEON END ----------------------------
+
+
+
+return ls_flag
+end function
+

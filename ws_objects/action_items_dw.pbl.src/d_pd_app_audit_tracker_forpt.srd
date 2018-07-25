@@ -1,0 +1,47 @@
+﻿$PBExportHeader$d_pd_app_audit_tracker_forpt.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=76 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=rec_id dbname="pd_app_audit_attempts.record_id" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=facility_id dbname="pd_app_audit_attempts.facility_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=prac_id dbname="pd_app_audit_attempts.prac_id" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_attempted dbname="pd_app_audit_attempts.date_attempted" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=user_name dbname="pd_app_audit_attempts.user_name" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=notes dbname="pd_app_audit_attempts.notes" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=method dbname="pd_app_audit_attempts.method" values="Letter	Letter/Fax	Fax/Phone Call	Phone Call/Email	Email/" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=seq_no dbname="pd_app_audit_attempts.seq_no" )
+ column=(type=long update=yes updatewhereclause=yes name=active_status dbname="pd_app_audit_attempts.active_status" initial="1" )
+ column=(type=decimal(0) updatewhereclause=yes name=record_id dbname="pd_app_audit_attempts.record_id" )
+ retrieve="SELECT  pd_app_audit_attempts.record_id ,
+           pd_app_audit_attempts.facility_id ,
+           pd_app_audit_attempts.prac_id ,
+           pd_app_audit_attempts.date_attempted ,
+           pd_app_audit_attempts.user_name ,
+           pd_app_audit_attempts.notes ,
+           pd_app_audit_attempts.method ,
+           pd_app_audit_attempts.seq_no ,
+           pd_app_audit_attempts.active_status ,
+				record_id    
+        FROM pd_app_audit_attempts      
+        WHERE ( pd_app_audit_attempts.record_id in (:rec_id) )   " update="pd_app_audit_attempts" updatewhere=1 updatekeyinplace=no arguments=(("rec_id", numberlist))  sort="date_attempted D " )
+text(band=header alignment="2" text="Date Attempted" border="6" color="0" x="14" y="12" height="56" width="567" html.valueishtml="0"  name=date_attempted_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="User Id" border="6" color="0" x="599" y="12" height="56" width="306" html.valueishtml="0"  name=user_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Method" border="6" color="0" x="923" y="12" height="56" width="375" html.valueishtml="0"  name=method_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Notes" border="6" color="0" x="1317" y="12" height="56" width="1166" html.valueishtml="0"  name=t_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="8274" y="0" height="52" width="992" format="[general]" html.valueishtml="0"  name=prac_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="9266" y="0" height="52" width="992" format="[general]" html.valueishtml="0"  name=facility_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="10258" y="0" height="52" width="992" format="[general]" html.valueishtml="0"  name=seq_no visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="11250" y="0" height="52" width="992" format="[general]" html.valueishtml="0"  name=active_status visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=20 border="5" color="0" x="14" y="16" height="56" width="567" format="mm/dd/yyyy" html.valueishtml="0"  name=date_attempted visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=30 border="5" color="0" x="603" y="16" height="56" width="302" format="[general]" html.valueishtml="0"  name=user_name visible="1" dddw.name=d_dddw_users dddw.displaycolumn=user_id dddw.datacolumn=user_id dddw.percentwidth=125 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="1" tabsequence=40 border="5" color="0" x="928" y="16" height="56" width="370" format="[General]" html.valueishtml="0"  name=method visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.nilisnull=yes ddlb.useasborder=yes ddlb.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="0" tabsequence=50 border="5" color="0" x="1321" y="16" height="56" width="1147" format="[general]" html.valueishtml="0"  name=notes visible="1" edit.limit=255 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=10 alignment="0" tabsequence=60 border="0" color="0" x="12242" y="0" height="52" width="2002" html.valueishtml="0"  name=record_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

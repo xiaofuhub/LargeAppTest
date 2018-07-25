@@ -1,0 +1,97 @@
+﻿$PBExportHeader$d_cntx_master_bak.srd
+$PBExportComments$[intellicontract]
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=984 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=contact_id dbname="ctx_contacts.contact_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=contact_type dbname="ctx_contacts.contact_type" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=first_name dbname="ctx_contacts.first_name" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=last_name dbname="ctx_contacts.last_name" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=middle_name dbname="ctx_contacts.middle_name" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=contact_title dbname="ctx_contacts.contact_title" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=contact_department dbname="ctx_contacts.contact_department" )
+ column=(type=char(150) update=yes updatewhereclause=yes name=street_1 dbname="ctx_contacts.street_1" )
+ column=(type=char(150) update=yes updatewhereclause=yes name=street_2 dbname="ctx_contacts.street_2" )
+ column=(type=char(150) update=yes updatewhereclause=yes name=street_3 dbname="ctx_contacts.street_3" initial="  " )
+ column=(type=char(35) update=yes updatewhereclause=yes name=city dbname="ctx_contacts.city" initial="  " )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=state dbname="ctx_contacts.state" )
+ column=(type=char(12) update=yes updatewhereclause=yes name=zip dbname="ctx_contacts.zip" initial=" " )
+ column=(type=char(75) update=yes updatewhereclause=yes name=custom_1 dbname="ctx_contacts.custom_1" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=custom_2 dbname="ctx_contacts.custom_2" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=custom_3 dbname="ctx_contacts.custom_3" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=custom_4 dbname="ctx_contacts.custom_4" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=custom_5 dbname="ctx_contacts.custom_5" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=custom_6 dbname="ctx_contacts.custom_6" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=custom_7 dbname="ctx_contacts.custom_7" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=custom_8 dbname="ctx_contacts.custom_8" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=custom_9 dbname="ctx_contacts.custom_9" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=custom_10 dbname="ctx_contacts.custom_10" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=contact_local dbname="ctx_contacts.contact_local" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=record_id dbname="ctx_contacts.record_id" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=user_d dbname="ctx_contacts.user_d" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=contact_type2 dbname="ctx_contacts.contact_type2" initial="C" values="Our Company	A/Contracted Company	B/Other	O/" )
+ column=(type=char(0) updatewhereclause=yes name=showbutton dbname="showbutton" initial="Y" )
+ retrieve="  SELECT ctx_contacts.contact_id,   
+         ctx_contacts.contact_type,   
+         ctx_contacts.first_name,   
+         ctx_contacts.last_name,   
+         ctx_contacts.middle_name,   
+         ctx_contacts.contact_title,   
+         ctx_contacts.contact_department,   
+         ctx_contacts.street_1,   
+         ctx_contacts.street_2,   
+         ctx_contacts.street_3,   
+         ctx_contacts.city,   
+         ctx_contacts.state,   
+         ctx_contacts.zip,   
+         ctx_contacts.custom_1,   
+         ctx_contacts.custom_2,   
+         ctx_contacts.custom_3,   
+         ctx_contacts.custom_4,   
+         ctx_contacts.custom_5,   
+         ctx_contacts.custom_6,   
+         ctx_contacts.custom_7,   
+         ctx_contacts.custom_8,   
+         ctx_contacts.custom_9,   
+         ctx_contacts.custom_10,   
+         ctx_contacts.contact_local,   
+         ctx_contacts.record_id,   
+         ctx_contacts.user_d,   
+         ctx_contacts.contact_type2,
+			''  showbutton
+    FROM ctx_contacts  
+   WHERE ctx_contacts.contact_id = :AL_CONTACT_ID    
+" update="ctx_contacts" updatewhere=1 updatekeyinplace=yes arguments=(("AL_CONTACT_ID", number)) )
+column(band=detail id=27 alignment="0" tabsequence=140 border="0" color="33554432" x="14" y="16" height="80" width="1920" format="[general]" html.valueishtml="0"  name=contact_type2 visible="1" radiobuttons.columns=3 radiobuttons.scale=no radiobuttons.threed=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Address" border="0" color="33554432" x="27" y="468" height="52" width="448" html.valueishtml="0"  name=street_1_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="City" border="0" color="33554432" x="32" y="804" height="52" width="448" html.valueishtml="0"  name=city_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=100 border="5" color="33554432" x="41" y="868" height="60" width="823" format="[general]" html.valueishtml="0"  name=city visible="1" edit.limit=35 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="0" text="Middle Name" border="0" color="33554432" x="1595" y="132" height="52" width="448" html.valueishtml="0"  name=middle_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=30 border="5" color="33554432" x="1605" y="196" height="60" width="704" format="[general]" html.valueishtml="0"  name=middle_name visible="1" edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="0" text="Contact Type" border="0" color="33554432" x="1595" y="300" height="52" width="663" html.valueishtml="0"  name=contact_type_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=60 border="5" color="33554432" x="1600" y="368" height="60" width="709" format="[general]" html.valueishtml="0"  name=contact_type  tag="Contract Contact Type" pointer="Arrow!" visible="1" dddw.name=d_dddw_code_lookup dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=200 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.hscrollbar=yes dddw.vscrollbar=yes dddw.autoretrieve=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="0" text="Last Name" border="0" color="33554432" x="809" y="132" height="52" width="448" html.valueishtml="0"  name=last_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=20 border="5" color="33554432" x="818" y="196" height="60" width="709" format="[general]" html.valueishtml="0"  name=last_name visible="1" edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.nilisnull=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="0" text="Contact Department" border="0" color="33554432" x="809" y="300" height="52" width="448" html.valueishtml="0"  name=contact_department_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=50 border="5" color="33554432" x="818" y="372" height="60" width="709" format="[general]" html.valueishtml="0"  name=contact_department  tag="Contract Department" pointer="Arrow!" visible="1" dddw.name=d_dddw_code_lookup dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=200 dddw.lines=20 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.hscrollbar=yes dddw.vscrollbar=yes dddw.autoretrieve=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="0" text="First Name" border="0" color="33554432" x="32" y="136" height="52" width="448" html.valueishtml="0"  name=first_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=10 border="5" color="33554432" x="37" y="200" height="60" width="709" format="[general]" html.valueishtml="0"  name=first_name visible="1" edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.nilisnull=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="0" text="Contact Title" border="0" color="33554432" x="27" y="300" height="52" width="448" html.valueishtml="0"  name=contact_title_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=40 border="5" color="33554432" x="37" y="368" height="60" width="709" format="[general]" html.valueishtml="0"  name=contact_title  tag="Contract Position Title" pointer="Arrow!" visible="1" dddw.name=d_dddw_code_lookup dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=200 dddw.lines=20 dddw.limit=0 dddw.allowedit=yes dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.hscrollbar=yes dddw.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="0" text="State" border="0" color="33554432" x="942" y="804" height="52" width="315" html.valueishtml="0"  name=state_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="1" tabsequence=110 border="5" color="33554432" x="951" y="868" height="60" width="274" format="[general]" html.valueishtml="0"  name=state  tag="State" visible="1" dddw.name=d_dddw_code_lookup dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=200 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.hscrollbar=yes dddw.vscrollbar=yes dddw.autoretrieve=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="0" text="Zip" border="0" color="33554432" x="1312" y="804" height="52" width="448" html.valueishtml="0"  name=zip_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=70 border="5" color="33554432" x="41" y="532" height="60" width="2267" format="[general]" html.valueishtml="0"  name=street_1 visible="1" edit.limit=150 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=9 alignment="0" tabsequence=80 border="5" color="33554432" x="41" y="616" height="60" width="2267" format="[general]" html.valueishtml="0"  name=street_2 visible="1" edit.limit=150 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=13 alignment="0" tabsequence=120 border="5" color="33554432" x="1317" y="868" height="60" width="297" format="[general]" html.valueishtml="0"  name=zip visible="1" edit.limit=12 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="0" text="Login ID" border="0" color="33554432" x="1861" y="796" height="52" width="183" html.valueishtml="0"  name=t_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=26 alignment="0" tabsequence=130 border="5" color="33554432" x="1861" y="868" height="60" width="366" format="[general]" html.valueishtml="0"  name=user_d visible="1" dddw.name=dddw_security_users dddw.displaycolumn=user_id dddw.datacolumn=user_id dddw.percentwidth=200 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.hscrollbar=yes dddw.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=10 alignment="0" tabsequence=90 border="5" color="33554432" x="41" y="700" height="60" width="1326" format="[general]" html.valueishtml="0"  name=street_3 visible="1" edit.limit=150 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+button(band=detail text="Use address from Company Name" enabled=yes action="0" border="0" color="0" x="1385" y="692" height="76" width="933" vtextalign="0" htextalign="0"  name=b_ctx_co visible="1~tif (  contact_type2  = 'B' and  showbutton = 'Y' ,1,0) "  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

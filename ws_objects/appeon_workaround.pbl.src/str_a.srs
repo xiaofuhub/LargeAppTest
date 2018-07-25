@@ -1,0 +1,22 @@
+﻿$PBExportHeader$str_a.srs
+$PBExportComments$Proxy imported from EAServer via EAServer Proxy generator.
+global type str_a from structure
+	string		s_type
+	string		s_column
+	string		s_dataobject
+	string		s_pbsyntax
+	string		s_pdata
+	string		s_fdata
+	string		s_ddata
+	string		s_pstate
+	string		s_fstate
+	string		s_dstate
+	string		s_pflag
+	string		s_fflag
+	string		s_dflag
+	string		s_rowset
+	long		l_setcount
+	string		s_matchtype
+	string		s_fullstate
+end type
+

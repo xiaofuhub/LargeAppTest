@@ -1,0 +1,34 @@
+﻿$PBExportHeader$f_get_contact_id.srf
+$PBExportComments$Create by Jack 06/08/2007
+global type f_get_contact_id from function_object
+end type
+
+forward prototypes
+global function long f_get_contact_id (long al_ctx_id, string as_ic_area)
+end prototypes
+
+global function long f_get_contact_id (long al_ctx_id, string as_ic_area);//////////////////////////////////////////////////////////////////////
+// $<function>f_get_contact_id()
+// $<arguments>
+//		value	long  	al_ctx_id 		
+//		value	string	as_ic_area		
+// $<returns> long
+// $<description>
+// $<description>
+//////////////////////////////////////////////////////////////////////
+// $<add> 06.08.2007 by Jack
+//////////////////////////////////////////////////////////////////////
+long ll_contact_id
+ 
+
+SELECT top 1 ctx_contract_contacts.contact_id INTO :ll_contact_id
+ FROM  ctx_contract_contacts
+ WHERE ctx_contract_contacts.ctx_id = :al_ctx_id   AND  
+       ctx_contract_contacts.ic_area = :as_ic_area AND
+		 ctx_contract_contacts.default_email = 'Y';
+
+If isnull(ll_contact_id) Then ll_contact_id = 0
+Return ll_contact_id
+
+end function
+

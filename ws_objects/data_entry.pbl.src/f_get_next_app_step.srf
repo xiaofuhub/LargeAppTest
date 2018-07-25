@@ -1,0 +1,108 @@
+﻿$PBExportHeader$f_get_next_app_step.srf
+global type f_get_next_app_step from function_object
+end type
+
+forward prototypes
+global function integer f_get_next_app_step (ref n_ds ads_sign, long al_row)
+end prototypes
+
+global function integer f_get_next_app_step (ref n_ds ads_sign, long al_row);//////////////////////////////////////////////////////////////////////
+// Function: f_get_next_app_step
+// Arguments:
+// 	reference    n_ds    ads_sign
+// 	value    long    al_row
+//--------------------------------------------------------------------
+// Return:  integer
+//--------------------------------------------------------------------
+// Author:	 Harry 2016-07-18.
+//--------------------------------------------------------------------
+// Description: complete the action after receiving/uploading the signed document, and create the next step.
+// pfc_ia_cst_nv_net_dev_new.of_get_next_app_step
+//--------------------------------------------------------------------
+//////////////////////////////////////////////////////////////////////
+integer li_skip
+integer li_days
+integer li_ans
+integer li_nr
+long ll_rec_id
+long ll_rec
+long ll_find
+long ll_prac
+long ll_facid
+long ll_app_id
+long ll_new_app_id
+long ll_action_status
+long li_row
+long ll_complete
+long ll_action_type
+long ll_next
+long ll_loc_id //maha 06.04.2014
+Long ll_dept
+string ls_this
+string ls_find
+date ld_due_date
+String ls_next
+datetime ldt_comp
+
+ldt_comp = datetime(today(),now())
+
+if al_row < 1 then Return 0
+
+//checkfor next step and create as required
+ll_action_type =ads_sign.GetItemNumber(al_row,"action_type")
+ls_this = gnv_data.of_getitem("app_steps","find step",string(ll_action_type)) //finds this step number
+
+if ls_this = "0" then li_skip = 1
+ls_next = gnv_data.of_getitem("app_steps","next step",ls_this)
+ll_next = long(ls_next) //gets the next step number
+
+if ll_next = 0 or  ls_next = "F" then li_skip = 1
+
+if li_skip = 0 then
+	ll_prac =  ads_sign.getitemnumber(al_row,"prac_id")
+	ll_facid = ads_sign.getitemnumber(al_row,"facility_id")	
+	ll_app_id = ads_sign.getitemnumber(al_row,"app_id") 
+	ll_loc_id = ads_sign.getitemnumber(al_row,"gp_id")  //Start Code Change ----06.04.2014 #V14.2 maha - mednax
+	ll_dept = ads_sign.getitemnumber(al_row,"action_dept") //Added by Appeon long.zhang 03.15.2016 (for Alpha id 5041 - Email Payor not creating the next step  SAAS Build 03102016)
+	
+	//------------------- APPEON BEGIN -------------------
+	//<$>added:long.zhang 03.15.2016
+	//<$>reason:add gp id to find, for Alpha id 5041 - Email Payor not creating the next step  SAAS Build 03102016
+	//select count(rec_id) into :ll_find from net_dev_action_items where prac_id = :ll_prac and facility_id = :ll_facid and app_id = :ll_app_id and action_type = :ll_next and active_status = 1;
+	if isnull(ll_loc_id) then 
+		select count(rec_id) into :ll_find from net_dev_action_items where prac_id = :ll_prac and facility_id = :ll_facid and app_id = :ll_app_id and action_type = :ll_next and active_status = 1 and gp_id is null;
+	else
+		select count(rec_id) into :ll_find from net_dev_action_items where prac_id = :ll_prac and facility_id = :ll_facid and app_id = :ll_app_id and action_type = :ll_next and active_status = 1 and gp_id = :ll_loc_id ;
+	end if
+	//------------------- APPEON END -------------------		
+	
+	li_days = integer(gnv_data.of_getitem("app_steps","next days","lookup_code = " + string(ll_next))) 
+	if li_days = 0 or isnull(li_days) then li_days = 30
+
+	if ll_find = 0 then //item  does not exist
+		ll_action_status = Long(gnv_data.of_getitem( 'code_lookup', 'lookup_code', "upper(lookup_name) = upper('Action Status') and upper(code) = upper('Incomplete')"))
+		li_nr = ads_sign.InsertRow( 0 )
+		ll_rec_id = gnv_app.of_Get_Id("RECORD_ID")	
+		ld_due_date = RelativeDate(date( Today()), li_days )
+		//if ib_setifi then ld_due_date = Date(idt_due_date)  //Added by Appeon Harry 05.31.2016 Application Electronic Signature - Sertifi
+		ads_sign.SetItem( li_nr, "rec_id", ll_rec_id )
+		ads_sign.SetItem( li_nr, "prac_id",ll_prac)
+		ads_sign.SetItem( li_nr, "seq_no", ll_rec_id )//Added by Appeon long.zhang 03.15.2016 (for Alpha id 5041 - Email Payor not creating the next step  SAAS Build 03102016)
+		ads_sign.SetItem( li_nr, "action_type", ll_next)
+		ads_sign.SetItem( li_nr, "action_user", gs_user_id )
+		ads_sign.SetItem( li_nr, "action_status", ll_action_status ) //incomplete
+		ads_sign.SetItem( li_nr, "facility_id",  ll_facid )
+		ads_sign.SetItem( li_nr, "app_type", ads_sign.getitemstring(al_row,"app_type") )
+		ads_sign.SetItem( li_nr, "app_id", ll_app_id ) 
+		ads_sign.SetItem( li_nr, "due_date", ld_due_date )
+		ads_sign.SetItem( li_nr, "active_status", 1 ) 
+		ads_sign.SetItem( li_nr, "gp_id", ll_loc_id ) //Added by Appeon long.zhang 03.15.2016 (for Alpha id 5041 - Email Payor not creating the next step  SAAS Build 03102016)
+		ads_sign.SetItem( li_nr, "action_dept", ll_dept )  //Added by Appeon long.zhang 03.15.2016 (for Alpha id 5041 - Email Payor not creating the next step  SAAS Build 03102016)
+		ads_sign.SetItem( li_nr,"create_date",datetime(today(),now()))
+		ads_sign.SetItem( li_nr,"create_user",gs_user_id)
+	end if //not found
+	of_app_tracking_update(ll_prac,ll_facid,ll_app_id,integer(ls_this),ldt_comp,ll_loc_id)
+end if //not skipped	
+Return 1
+end function
+

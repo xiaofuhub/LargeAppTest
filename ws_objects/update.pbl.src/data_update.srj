@@ -1,0 +1,27 @@
+﻿$PBExportHeader$data_update.srj
+EXE:s:\development\version 3.current\data_update.exe,,0,1
+CMP:0,0,0,2,0,0
+PBD:s:\development\version 2.current\update.pbl,,1
+PBD:S:\Development\Version 2.current\security.pbl,,1
+OBJ:S:\Development\Version 2.current\security.pbl,d_new_mod,d
+OBJ:S:\Development\Version 2.current\security.pbl,d_new_sub,d
+OBJ:s:\development\version 2.current\update.pbl,d_all_hosp_affil,d
+OBJ:s:\development\version 2.current\update.pbl,d_parent_facilities_of_verif,d
+OBJ:S:\Development\Version 2.current\security.pbl,w_security_update,w
+OBJ:s:\development\version 2.current\update.pbl,d_report_wiz_import,d
+OBJ:s:\development\version 2.current\update.pbl,d_code_lookup_import,d
+OBJ:s:\development\version 2.current\update.pbl,d_dv_fields,d
+OBJ:s:\development\version 2.current\update.pbl,d_affil_stat_of_prac,d
+OBJ:s:\development\version 2.current\update.pbl,d_fix_dob,d
+OBJ:S:\Development\Version 2.current\security.pbl,d_roles,d
+OBJ:S:\Development\Version 2.current\security.pbl,d_scrty_actions_all,d
+OBJ:s:\development\version 2.current\update.pbl,w_convert_npdb,w
+OBJ:s:\development\version 2.current\update.pbl,w_priv_update,w
+OBJ:s:\development\version 2.current\update.pbl,d_prim_hosp,d
+OBJ:s:\development\version 2.current\update.pbl,update_files,a
+OBJ:s:\development\version 2.current\update.pbl,d_screen_addr,d
+OBJ:S:\Development\Version 2.current\security.pbl,d_newrole_rights,d
+OBJ:s:\development\version 2.current\update.pbl,d_code_lookup_priv_check,d
+OBJ:s:\development\version 2.current\update.pbl,d_npdb_verif_facil_incl,d
+OBJ:s:\development\version 2.current\update.pbl,d_report_import,d
+OBJ:s:\development\version 2.current\update.pbl,d_hf_link,d

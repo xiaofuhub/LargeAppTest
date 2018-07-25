@@ -1,0 +1,11 @@
+﻿$PBExportHeader$tns__adddocumenttorequest.srs
+$PBExportComments$Proxy imported from Web service using Web Service Proxy Generator.
+global type tns__AddDocumentToRequest from structure
+   string apiCode
+   string fileID
+   blob byteFile
+   string fileName
+   string title
+   string xml
+end type
+

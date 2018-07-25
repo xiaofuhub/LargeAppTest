@@ -1,0 +1,89 @@
+﻿$PBExportHeader$d_contract_det_contact_contact.srd
+$PBExportComments$[intellicontract] contact tab contacts
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=4 color="536870912" )
+detail(height=56 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=ctx_id dbname="ctx_contract_contacts.ctx_id" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=contact_id dbname="ctx_contract_contacts.contact_id" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=association dbname="ctx_contract_contacts.association" )
+ column=(type=char(30) updatewhereclause=yes name=last_name dbname="ctx_contacts.last_name" )
+ column=(type=char(30) updatewhereclause=yes name=first_name dbname="ctx_contacts.first_name" )
+ column=(type=char(30) updatewhereclause=yes name=middle_name dbname="ctx_contacts.middle_name" )
+ column=(type=char(1) update=yes updatewhereclause=yes key=yes name=ic_area dbname="ctx_contract_contacts.ic_area" )
+ column=(type=decimal(0) updatewhereclause=yes name=ctx_contacts_contact_type dbname="ctx_contacts.contact_type" )
+ column=(type=char(63) updatewhereclause=yes name=name dbname="name" )
+ column=(type=char(50) updatewhereclause=yes name=ctx_contacts_contact_title dbname="ctx_contacts.contact_title" )
+ column=(type=decimal(0) updatewhereclause=yes name=ctx_contacts_contact_department dbname="ctx_contacts.contact_department" )
+ column=(type=char(150) updatewhereclause=yes name=ctx_contacts_street_1 dbname="ctx_contacts.street_1" )
+ column=(type=char(150) updatewhereclause=yes name=ctx_contacts_street_2 dbname="ctx_contacts.street_2" )
+ column=(type=char(150) updatewhereclause=yes name=ctx_contacts_street_3 dbname="ctx_contacts.street_3" )
+ column=(type=char(35) updatewhereclause=yes name=ctx_contacts_city dbname="ctx_contacts.city" )
+ column=(type=decimal(0) updatewhereclause=yes name=ctx_contacts_state dbname="ctx_contacts.state" )
+ column=(type=char(12) updatewhereclause=yes name=ctx_contacts_zip dbname="ctx_contacts.zip" )
+ column=(type=char(75) updatewhereclause=yes name=ctx_contacts_custom_1 dbname="ctx_contacts.custom_1" )
+ column=(type=char(75) updatewhereclause=yes name=ctx_contacts_custom_2 dbname="ctx_contacts.custom_2" )
+ column=(type=char(75) updatewhereclause=yes name=ctx_contacts_custom_3 dbname="ctx_contacts.custom_3" )
+ column=(type=char(75) updatewhereclause=yes name=ctx_contacts_custom_4 dbname="ctx_contacts.custom_4" )
+ column=(type=char(75) updatewhereclause=yes name=ctx_contacts_custom_5 dbname="ctx_contacts.custom_5" )
+ column=(type=char(75) updatewhereclause=yes name=ctx_contacts_custom_6 dbname="ctx_contacts.custom_6" )
+ column=(type=char(75) updatewhereclause=yes name=ctx_contacts_custom_7 dbname="ctx_contacts.custom_7" )
+ column=(type=char(75) updatewhereclause=yes name=ctx_contacts_custom_8 dbname="ctx_contacts.custom_8" )
+ column=(type=char(75) updatewhereclause=yes name=ctx_contacts_custom_9 dbname="ctx_contacts.custom_9" )
+ column=(type=char(75) updatewhereclause=yes name=ctx_contacts_custom_10 dbname="ctx_contacts.custom_10" )
+ column=(type=char(1) updatewhereclause=yes name=ctx_contacts_contact_local dbname="ctx_contacts.contact_local" )
+ column=(type=decimal(0) updatewhereclause=yes name=record_id dbname="ctx_contract_contacts.record_id" )
+ column=(type=char(1) updatewhereclause=yes name=contact_type2 dbname="ctx_contacts.contact_type2" initial="O" )
+ column=(type=long updatewhereclause=yes name=facility_id dbname="ctx_contacts.facility_id" )
+ retrieve="  SELECT ctx_contract_contacts.ctx_id,   
+         ctx_contract_contacts.contact_id,   
+         ctx_contract_contacts.association,   
+         ctx_contacts.last_name,   
+         ctx_contacts.first_name,   
+         ctx_contacts.middle_name,   
+         ctx_contract_contacts.ic_area,   
+         ctx_contacts.contact_type,   
+         ctx_contacts.last_name + ' , ' + ctx_contacts.first_name as name,   
+         ctx_contacts.contact_title,   
+         ctx_contacts.contact_department,   
+         ctx_contacts.street_1,   
+         ctx_contacts.street_2,   
+         ctx_contacts.street_3,   
+         ctx_contacts.city,   
+         ctx_contacts.state,   
+         ctx_contacts.zip,   
+         ctx_contacts.custom_1,   
+         ctx_contacts.custom_2,   
+         ctx_contacts.custom_3,   
+         ctx_contacts.custom_4,   
+         ctx_contacts.custom_5,   
+         ctx_contacts.custom_6,   
+         ctx_contacts.custom_7,   
+         ctx_contacts.custom_8,   
+         ctx_contacts.custom_9,   
+         ctx_contacts.custom_10,   
+         ctx_contacts.contact_local,   
+         ctx_contract_contacts.record_id,   
+         ctx_contacts.contact_type2,
+			ctx_contacts.facility_id  
+    FROM ctx_contacts,   
+         ctx_contract_contacts  
+   WHERE ( ctx_contract_contacts.contact_id = ctx_contacts.contact_id ) and  
+         ( ctx_contract_contacts.ctx_id = :al_ctx_id ) AND  
+         ( ctx_contract_contacts.ic_area = 'C' )    
+" update="ctx_contract_contacts" updatewhere=2 updatekeyinplace=yes arguments=(("al_ctx_id", number)) )
+text(band=header alignment="2" text=" Type" border="6" color="33554432" x="9" y="4" height="60" width="375" html.valueishtml="0"  name=ctx_contacts_contact_type_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Name" border="6" color="33554432" x="393" y="4" height="60" width="722" html.valueishtml="0"  name=name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="33554432" x="9" y="0" height="52" width="375" format="[general]" html.valueishtml="0"  name=ctx_contacts_contact_type  tag="Contract Contact Type" visible="1" dddw.name=d_dddw_code_lookup dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="33554432" x="393" y="0" height="52" width="722" format="[general]" html.valueishtml="0"  name=name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=30 alignment="0" tabsequence=32766 border="0" color="33554432" x="146" y="224" height="52" width="9" format="[general]" html.valueishtml="0"  name=contact_type2 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="402" y="252" height="52" width="91" format="[general]" html.valueishtml="0"  name=ctx_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="407" y="332" height="52" width="91" format="[general]" html.valueishtml="0"  name=contact_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=31 alignment="0" tabsequence=32766 border="0" color="33554432" x="306" y="436" height="52" width="987" html.valueishtml="0"  name=facility_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

@@ -1,0 +1,84 @@
+﻿$PBExportHeader$f_set_ai_flag.srf
+global type f_set_ai_flag from function_object
+end type
+
+forward prototypes
+global function integer f_set_ai_flag (string as_table, string as_column, long al_ctx_id, long al_doc_id, long al_level_id1, long al_level_id2)
+end prototypes
+
+global function integer f_set_ai_flag (string as_table, string as_column, long al_ctx_id, long al_doc_id, long al_level_id1, long al_level_id2);//Set flag button in action item tabpage - Added by Alfee on 02.26.2008
+// Return value: 0 - gray; 1 - green ; 2 - red
+
+integer li_flag
+string ls_enabled
+
+ if al_ctx_id < 1 or isnull(al_ctx_id) then return 0 //gray
+
+Datastore adw
+Long ll_row
+date LD_DATE
+date ldt_relative_date
+date ldtServerDate
+long ll_notificatin_days, ll_total_tries
+
+CHOOSE CASE Upper(as_table) 
+	CASE "CTX_ACTION_ITEM"
+		//------------------------------------------------------------------------
+		// 2.24.2016 RP added
+		IF gnv_data.of_retrieveIfNecessary("ctx_ai_notification", FALSE) = -1 THEN
+			return 0
+		END IF
+		//------------------------------------------------------------------------
+		adw = gnv_data.ids_ctx_ai_notification
+		ll_row = adw.Find( "upper(alm_table) = '" + upper(as_table) + "' and upper(alm_column) = '" + upper(as_column) + &
+					"' and ctx_id = " + String(al_ctx_id) + " and ctx_action_item_id = " + String(al_level_id1), 1, adw.Rowcount() )	
+	CASE "CTX_AM_ACTION_ITEM"
+		//------------------------------------------------------------------------
+		// 2.24.2016 RP added
+		IF gnv_data.of_retrieveIfNecessary("ctx_am_ai_notification", FALSE) = -1 THEN
+			return 0
+		END IF
+		//------------------------------------------------------------------------
+		adw = gnv_data.ids_ctx_am_ai_notification
+		ll_row = adw.Find( "upper(alm_table) = '" + upper(as_table) + "' and upper(alm_column) = '" + upper(as_column) + &
+					"' and doc_id = " + String(al_doc_id) + " and seq_id = " + String(al_level_id1), 1, adw.Rowcount() )	
+	//case 'CTX_CUSTOM_MULTI_HDR','CTX_CUSTOM_MULTI_DETAIL'
+	case else  //jervis 08.02.2011
+		//------------------------------------------------------------------------
+		// 2.24.2016 RP added
+		IF gnv_data.of_retrieveIfNecessary("ctx_all_notification", FALSE) = -1 THEN
+			return 0
+		END IF
+		//------------------------------------------------------------------------
+		adw = gnv_data.ids_ctx_all_notification
+		ll_row = adw.Find( "upper(alm_table) = '" + upper(as_table) +&
+					"' and upper(alm_column) = '" + upper(as_column) + "' and ctx_id = " + String(al_ctx_id) + &
+					" and doc_id = " + string(al_doc_id) + " and level_id1 = " + String(al_level_id1) + &
+					"  and level_id2 = " +  String(al_level_id2) , 1,	adw.Rowcount() )
+END CHOOSE
+
+IF ll_row > 0 THEN 
+	ldtServerDate = date(adw.GetItemDateTime(ll_row, "curdate"))
+	choose case upper(as_table)
+		case 'CTX_ACTION_ITEM','CTX_AM_ACTION_ITEM'
+			LD_DATE = date(adw.GetItemDateTime(ll_row, as_column))
+		//case 'CTX_CUSTOM_MULTI_HDR','CTX_CUSTOM_MULTI_DETAIL'
+		case else  //jervis 08.02.2011
+			ld_date = date(adw.GetItemDateTime(ll_row, 'alm_date'))
+	end choose
+	ll_notificatin_days = adw.getItemNumber(ll_row, 'alm_notification_days')
+	
+	ldt_relative_date = RelativeDate( LD_DATE , ll_notificatin_days * -1 )
+								
+	if ldtServerDate >= ldt_relative_date then 
+		li_flag = 2 //red
+	ELSE
+		li_flag = 1 //green
+	end if		
+ELSE
+	li_flag = 0 //gray
+END IF
+
+Return li_flag
+end function
+

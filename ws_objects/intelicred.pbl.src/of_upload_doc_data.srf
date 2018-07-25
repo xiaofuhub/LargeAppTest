@@ -1,0 +1,84 @@
+﻿$PBExportHeader$of_upload_doc_data.srf
+global type of_upload_doc_data from function_object
+end type
+
+forward prototypes
+global function integer of_upload_doc_data (string as_type, string as_file, string as_primary, long al_primary)
+end prototypes
+
+global function integer of_upload_doc_data (string as_type, string as_file, string as_primary, long al_primary);integer li_FileNum, loops, i
+
+long flen, bytes_read, new_pos
+
+blob b, tot_b
+
+// Set a wait cursor
+SetPointer(HourGlass!)
+
+If not fileexists(as_file) then return -1
+
+// Open processs window
+openwithparm( w_appeon_gifofwait, "Uploading document to database..." )
+	
+// Get the file length, and open the file
+flen = FileLength(as_file)
+
+// Open the file
+li_FileNum = FileOpen(as_file, StreamMode!, Read!, LockRead!)
+
+if li_FileNum < 0 then 
+	if Isvalid( w_appeon_gifofwait) then Close( w_appeon_gifofwait)
+	Return -1
+end if
+
+// Determine how many times to call FileRead
+IF flen > 32765 THEN
+	IF Mod(flen, 32765) = 0 THEN
+		loops = flen/32765
+	ELSE
+		loops = (flen/32765) + 1
+	END IF
+ELSE
+	loops = 1
+END IF
+
+// Read the file
+FOR i = 1 to loops
+    bytes_read = FileRead(li_FileNum, b)
+    tot_b = tot_b + b
+NEXT
+
+// Close the file
+FileClose(li_FileNum)
+
+// Upload the file to database
+if as_type = "OPPE" then
+	UPDATEBLOB  pd_oppe_docs
+	 SET doc_blob = :tot_b
+  	WHERE dcmt_id = :al_primary;
+	COMMIT;
+elseif as_type = "USERDOC" then  //Start Code Change ----08.16.2016 #V153 maha
+	UPDATEBLOB  sys_user_docs
+	 SET doc_data = :tot_b
+  	WHERE user_doc_id = :al_primary;
+	COMMIT;
+elseif as_type = "LOC" then  //Start Code Change ----08.16.2016 #V153 maha
+	UPDATEBLOB  group_documents
+	 SET doc_data = :tot_b
+  	WHERE document_id = :al_primary;
+	COMMIT;
+elseif as_type = "VERIF" then  //Start Code Change ----10.21.2016 #V153 maha
+	UPDATEBLOB  verif_info
+	 SET verification_picture = :tot_b
+  	WHERE doc_id = :as_primary;
+	COMMIT;
+end if
+
+// Close process window
+IF Isvalid( w_appeon_gifofwait) THEN Close( w_appeon_gifofwait)
+
+IF SQLCA.SQLCode = -1 THEN RETURN -1 //alfee 07.14.2009
+
+Return 1
+end function
+

@@ -1,0 +1,6 @@
+﻿$PBExportHeader$str_picture_index.srs
+global type str_picture_index from structure
+	string		as_picturename
+	long		al_index
+end type
+

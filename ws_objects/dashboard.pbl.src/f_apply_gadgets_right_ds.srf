@@ -1,0 +1,95 @@
+﻿$PBExportHeader$f_apply_gadgets_right_ds.srf
+global type f_apply_gadgets_right_ds from function_object
+end type
+
+forward prototypes
+global function integer f_apply_gadgets_right_ds (ref datastore ads_gadgets, string as_col_name)
+end prototypes
+
+global function integer f_apply_gadgets_right_ds (ref datastore ads_gadgets, string as_col_name);//////////////////////////////////////////////////////////////////////
+// $<function>f_apply_gadgets_right()
+// $<arguments>
+//		reference	datastore	ads_gadgets		
+//		value    	string    	as_col_name		
+// $<returns> integer
+// $<description>
+// $<description> If no right for module, then delete that row for gadget.
+//////////////////////////////////////////////////////////////////////
+// $<add> 2008-08-12 by Ken.Guo
+//////////////////////////////////////////////////////////////////////
+
+
+/*
+1, To Do List        
+2, Favorite Report     
+3, Favorite Correspondence
+4, Message Board         
+5, Calendar/Meetings
+6, Favorite Work Flow
+7, Recent Practitioner  
+8, Recent Contract
+9, Notes            
+10, Contract Global Search
+*/
+
+Long ll_find
+
+//For To Do List
+If m_pfe_cst_master_menu.m_file.m_todolist.Visible = False Then
+	ll_find = ads_gadgets.Find( as_col_name + ' = 1', 1, ads_gadgets.RowCount() )
+	If ll_find > 0 Then
+		ads_gadgets.RowsDiscard(ll_find,ll_find,Primary!)
+	End If	
+End If
+
+//For Report/Graph
+If m_pfe_cst_master_menu.m_reports.m_reportsgraphs.Visible = False Then
+	ll_find = ads_gadgets.Find( as_col_name + ' = 2', 1, ads_gadgets.RowCount() )
+	If ll_find > 0 Then
+		ads_gadgets.RowsDiscard(ll_find,ll_find,Primary!)
+	End If	
+End If
+
+//For Correspondence
+If m_pfe_cst_master_menu.m_reports.m_letters.Visible = False Then
+	ll_find = ads_gadgets.Find( as_col_name + ' = 3', 1, ads_gadgets.RowCount() )
+	If ll_find > 0 Then
+		ads_gadgets.RowsDiscard(ll_find,ll_find,Primary!)
+	End If	
+End If
+
+//For WorkFlow
+If m_pfe_cst_master_menu.m_system.m_painters.m_systemsetup.m_workflowpainter.Visible = False Then
+	ll_find = ads_gadgets.Find( as_col_name + ' = 6', 1, ads_gadgets.RowCount() )
+	If ll_find > 0 Then
+		ads_gadgets.RowsDiscard(ll_find,ll_find,Primary!)
+	End If	
+End If
+
+//For Practitioner
+If m_pfe_cst_master_menu.m_file.m_practitioner.Visible = False Then
+	ll_find = ads_gadgets.Find( as_col_name + ' = 7', 1, ads_gadgets.RowCount() )
+	If ll_find > 0 Then
+		ads_gadgets.RowsDiscard(ll_find,ll_find,Primary!)
+	End If	
+End If
+
+//For Contract
+If m_pfe_cst_master_menu.m_file.m_contract.Visible = False Then
+	ll_find = ads_gadgets.Find( as_col_name + ' = 8', 1, ads_gadgets.RowCount() )
+	If ll_find > 0 Then
+		ads_gadgets.RowsDiscard(ll_find,ll_find,Primary!)
+	End If
+End If
+
+//For CTX Global Search
+If m_pfe_cst_master_menu.m_file.m_contractglobalsearch.visible = False Then
+	ll_find = ads_gadgets.Find( as_col_name + ' = 10', 1, ads_gadgets.RowCount() )
+	If ll_find > 0 Then
+		ads_gadgets.RowsDiscard(ll_find,ll_find,Primary!)
+	End If	
+End If
+
+Return 1
+end function
+

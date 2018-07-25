@@ -1,0 +1,13 @@
+﻿$PBExportHeader$str_email.srs
+global type str_email from structure
+	integer		id
+	string		name
+	string		subject
+	string		attach_name
+	string		message
+	string		notes
+	blob		attach
+	string		autosign
+	long		export_id
+end type
+

@@ -1,0 +1,61 @@
+﻿$PBExportHeader$of_date_to_string.srf
+global type of_date_to_string from function_object
+end type
+
+forward prototypes
+global function string of_date_to_string (datetime as_datetime, string as_format)
+end prototypes
+
+global function string of_date_to_string (datetime as_datetime, string as_format);string ls_value
+datetime ldt_date
+string ls_month
+string ls_year
+string ls_day
+string ls_hour
+string ls_minute
+
+ldt_date = as_datetime
+
+ls_month = string(month(date(ldt_date)))
+ls_year = string(year(date(ldt_date)))
+if LenA(ls_month) = 1 then ls_month = "0" + ls_month
+ls_day  = string(day(date(ldt_date)))
+if LenA(ls_day) = 1 then ls_day = "0" + ls_day
+ls_hour = string(hour(time(ldt_date)))
+if LenA(ls_hour) = 1 then ls_hour = "0" + ls_hour
+ls_minute = string(minute(time(ldt_date)))
+if LenA(ls_minute) = 1 then ls_minute = "0" + ls_minute
+	//messagebox("ls_field_format",ls_field_format)
+choose case as_format		
+	case "yyyymmddhhmm"
+		ls_value = ls_year + ls_month + ls_day + ls_hour + ls_minute
+	case "yyyy-mm-dd"
+		ls_value = ls_year + "-" + ls_month + "-" + ls_day
+	case "mm-dd-yyyy"
+		ls_value = ls_month + "-" + ls_day  + "-" + ls_year
+	case "mm/dd/yyyy"
+		ls_value = ls_month + "/" + ls_day  + "/" + ls_year
+	case "mm-dd-yy"
+		ls_year = MidA(ls_year,3,2)
+		ls_value = ls_month + "-" + ls_day  + "-" + ls_year
+	case "yyyymmdd" //maha 070605
+		ls_value = ls_year + ls_month + ls_day		
+	case "mm/dd/yy"
+		ls_year = MidA(ls_year,3,2)
+		ls_value = ls_month + "/" + ls_day  + "/" + ls_year
+//Start Code Change ---- 02.22.2007 #V7 maha
+	case "yyyy" 
+		ls_value = ls_year
+	case "mm" 
+		ls_value = ls_month	
+	case "dd" 
+		ls_value = ls_day	
+//End Code Change---02.22.2007
+	case else
+		ls_value = ls_year + "-" +ls_month + "-" +ls_day + " " +ls_hour + ":" +ls_minute
+	end choose
+			
+return ls_value
+
+end function
+

@@ -1,0 +1,8 @@
+﻿$PBExportHeader$tns__invitesignerswithattachment.srs
+$PBExportComments$Proxy imported from Web service using Web Service Proxy Generator.
+global type tns__InviteSignersWithAttachment from structure
+   string pstr_APICode
+   string pstr_FileID
+   string pstr_EmailMessage
+end type
+

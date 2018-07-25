@@ -1,0 +1,1030 @@
+﻿$PBExportHeader$m_document_manager_browse.srm
+forward
+global type m_document_manager_browse from menu
+end type
+type m_openindocumentmanagerselect from menu within m_document_manager_browse
+end type
+type m_openwithdefaultprogram from menu within m_document_manager_browse
+end type
+type m_openinnewwindow from menu within m_document_manager_browse
+end type
+type m_sep_1 from menu within m_document_manager_browse
+end type
+type m_addbuy from menu within m_document_manager_browse
+end type
+type m_addsell from menu within m_document_manager_browse
+end type
+type m_email from menu within m_document_manager_browse
+end type
+type m_importemailitem from menu within m_document_manager_browse
+end type
+type m_checkin from menu within m_document_manager_browse
+end type
+type m_checkout from menu within m_document_manager_browse
+end type
+type m_undocheckout from menu within m_document_manager_browse
+end type
+type m_combine from menu within m_document_manager_browse
+end type
+type m_saveas from menu within m_document_manager_browse
+end type
+type m_delete from menu within m_document_manager_browse
+end type
+type m_sertifi from menu within m_document_manager_browse
+end type
+type m_webapprovestatus from menu within m_document_manager_browse
+end type
+type m_history from menu within m_document_manager_browse
+end type
+type m_- from menu within m_document_manager_browse
+end type
+type m_ocr from menu within m_document_manager_browse
+end type
+type m_ocr_settings from menu within m_ocr
+end type
+type m_do_ocr from menu within m_ocr
+end type
+type m_viewocrresult from menu within m_ocr
+end type
+type m_ocr from menu within m_document_manager_browse
+m_ocr_settings m_ocr_settings
+m_do_ocr m_do_ocr
+m_viewocrresult m_viewocrresult
+end type
+type m_sep_2 from menu within m_document_manager_browse
+end type
+type m_properties from menu within m_document_manager_browse
+end type
+type m_setprimarydocument from menu within m_document_manager_browse
+end type
+global type m_document_manager_browse from menu
+m_openindocumentmanagerselect m_openindocumentmanagerselect
+m_openwithdefaultprogram m_openwithdefaultprogram
+m_openinnewwindow m_openinnewwindow
+m_sep_1 m_sep_1
+m_addbuy m_addbuy
+m_addsell m_addsell
+m_email m_email
+m_importemailitem m_importemailitem
+m_checkin m_checkin
+m_checkout m_checkout
+m_undocheckout m_undocheckout
+m_combine m_combine
+m_saveas m_saveas
+m_delete m_delete
+m_sertifi m_sertifi
+m_webapprovestatus m_webapprovestatus
+m_history m_history
+m_- m_-
+m_ocr m_ocr
+m_sep_2 m_sep_2
+m_properties m_properties
+m_setprimarydocument m_setprimarydocument
+end type
+end forward
+
+global type m_document_manager_browse from menu
+m_openindocumentmanagerselect m_openindocumentmanagerselect
+m_openwithdefaultprogram m_openwithdefaultprogram
+m_openinnewwindow m_openinnewwindow
+m_sep_1 m_sep_1
+m_addbuy m_addbuy
+m_addsell m_addsell
+m_email m_email
+m_importemailitem m_importemailitem
+m_checkin m_checkin
+m_checkout m_checkout
+m_undocheckout m_undocheckout
+m_combine m_combine
+m_saveas m_saveas
+m_delete m_delete
+m_sertifi m_sertifi
+m_webapprovestatus m_webapprovestatus
+m_history m_history
+m_- m_-
+m_ocr m_ocr
+m_sep_2 m_sep_2
+m_properties m_properties
+m_setprimarydocument m_setprimarydocument
+end type
+global m_document_manager_browse m_document_manager_browse
+
+type variables
+Window iw_parent
+u_tabpg_dm_data iu_tabpg_dm_data
+end variables
+
+on m_document_manager_browse.create
+m_document_manager_browse=this
+call super::create
+this.text = "m_document_manager_browse"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_openindocumentmanagerselect=create m_openindocumentmanagerselect
+this.m_openwithdefaultprogram=create m_openwithdefaultprogram
+this.m_openinnewwindow=create m_openinnewwindow
+this.m_sep_1=create m_sep_1
+this.m_addbuy=create m_addbuy
+this.m_addsell=create m_addsell
+this.m_email=create m_email
+this.m_importemailitem=create m_importemailitem
+this.m_checkin=create m_checkin
+this.m_checkout=create m_checkout
+this.m_undocheckout=create m_undocheckout
+this.m_combine=create m_combine
+this.m_saveas=create m_saveas
+this.m_delete=create m_delete
+this.m_sertifi=create m_sertifi
+this.m_webapprovestatus=create m_webapprovestatus
+this.m_history=create m_history
+this.m_-=create m_-
+this.m_ocr=create m_ocr
+this.m_sep_2=create m_sep_2
+this.m_properties=create m_properties
+this.m_setprimarydocument=create m_setprimarydocument
+this.Item[UpperBound(this.Item)+1]=this.m_openindocumentmanagerselect
+this.Item[UpperBound(this.Item)+1]=this.m_openwithdefaultprogram
+this.Item[UpperBound(this.Item)+1]=this.m_openinnewwindow
+this.Item[UpperBound(this.Item)+1]=this.m_sep_1
+this.Item[UpperBound(this.Item)+1]=this.m_addbuy
+this.Item[UpperBound(this.Item)+1]=this.m_addsell
+this.Item[UpperBound(this.Item)+1]=this.m_email
+this.Item[UpperBound(this.Item)+1]=this.m_importemailitem
+this.Item[UpperBound(this.Item)+1]=this.m_checkin
+this.Item[UpperBound(this.Item)+1]=this.m_checkout
+this.Item[UpperBound(this.Item)+1]=this.m_undocheckout
+this.Item[UpperBound(this.Item)+1]=this.m_combine
+this.Item[UpperBound(this.Item)+1]=this.m_saveas
+this.Item[UpperBound(this.Item)+1]=this.m_delete
+this.Item[UpperBound(this.Item)+1]=this.m_sertifi
+this.Item[UpperBound(this.Item)+1]=this.m_webapprovestatus
+this.Item[UpperBound(this.Item)+1]=this.m_history
+this.Item[UpperBound(this.Item)+1]=this.m_-
+this.Item[UpperBound(this.Item)+1]=this.m_ocr
+this.Item[UpperBound(this.Item)+1]=this.m_sep_2
+this.Item[UpperBound(this.Item)+1]=this.m_properties
+this.Item[UpperBound(this.Item)+1]=this.m_setprimarydocument
+end on
+
+on m_document_manager_browse.destroy
+call super::destroy
+destroy(this.m_openindocumentmanagerselect)
+destroy(this.m_openwithdefaultprogram)
+destroy(this.m_openinnewwindow)
+destroy(this.m_sep_1)
+destroy(this.m_addbuy)
+destroy(this.m_addsell)
+destroy(this.m_email)
+destroy(this.m_importemailitem)
+destroy(this.m_checkin)
+destroy(this.m_checkout)
+destroy(this.m_undocheckout)
+destroy(this.m_combine)
+destroy(this.m_saveas)
+destroy(this.m_delete)
+destroy(this.m_sertifi)
+destroy(this.m_webapprovestatus)
+destroy(this.m_history)
+destroy(this.m_-)
+destroy(this.m_ocr)
+destroy(this.m_sep_2)
+destroy(this.m_properties)
+destroy(this.m_setprimarydocument)
+end on
+
+type m_openindocumentmanagerselect from menu within m_document_manager_browse
+end type
+
+on m_openindocumentmanagerselect.create
+call super::create
+this.text = "Open in Document Manager(Select)"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_openindocumentmanagerselect.destroy
+call super::destroy
+end on
+
+event clicked;//Added By Ken.Guo 2011-05-05. for new menu
+If isvalid(iu_tabpg_dm_data) Then
+	iu_tabpg_dm_data.Dynamic Event ue_do('select')
+End If
+
+end event
+
+type m_openwithdefaultprogram from menu within m_document_manager_browse
+end type
+
+on m_openwithdefaultprogram.create
+call super::create
+this.visible = false
+this.text = "Open With Default Program"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_openwithdefaultprogram.destroy
+call super::destroy
+end on
+
+event clicked;If isvalid(iu_tabpg_dm_data) Then
+	iu_tabpg_dm_data.Dynamic Event ue_open_with_default_program( )
+End If
+
+end event
+
+type m_openinnewwindow from menu within m_document_manager_browse
+end type
+
+event clicked;If isvalid(iw_parent) Then
+	If iw_parent.classname() = 'w_contract' and isvalid(gw_contract) Then
+		gw_contract.tab_contract_details.tabpage_images.tab_1.tabpage_data.dynamic event ue_opennewindow( )
+	End If
+	
+	If iw_parent.classname() = 'w_documents_browse' and isvalid(w_documents_browse) Then
+		w_documents_browse.uo_1.dynamic event ue_opennewindow()		
+	End If
+End If
+end event
+
+on m_openinnewwindow.create
+call super::create
+this.text = "Open in New Window"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_openinnewwindow.destroy
+call super::destroy
+end on
+
+type m_sep_1 from menu within m_document_manager_browse
+end type
+
+on m_sep_1.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_sep_1.destroy
+call super::destroy
+end on
+
+type m_addbuy from menu within m_document_manager_browse
+end type
+
+on m_addbuy.create
+call super::create
+this.text = "Add Document"
+this.microhelp = "Add an existing document, from file, scan, paste"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_addbuy.destroy
+call super::destroy
+end on
+
+event clicked;if IsValid(m_pfe_cst_mdi_menu_contract_am) then
+	m_pfe_cst_mdi_menu_contract_am.m_documentmanager.m_add.m_addbuy.TriggerEvent(Clicked!)
+end if
+
+end event
+
+type m_addsell from menu within m_document_manager_browse
+end type
+
+on m_addsell.create
+call super::create
+this.text = "Create Document"
+this.microhelp = "Create New Document using a Template"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_addsell.destroy
+call super::destroy
+end on
+
+event clicked;if IsValid(m_pfe_cst_mdi_menu_contract_am) then
+	m_pfe_cst_mdi_menu_contract_am.m_documentmanager.m_add.m_addsell.TriggerEvent(Clicked!)
+end if
+
+end event
+
+type m_email from menu within m_document_manager_browse
+end type
+
+on m_email.create
+call super::create
+this.text = "Email"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_email.destroy
+call super::destroy
+end on
+
+event clicked;if IsValid(m_pfe_cst_mdi_menu_contract_am) then
+	m_pfe_cst_mdi_menu_contract_am.m_documentmanager.m_email0.TriggerEvent(Clicked!)
+end if
+
+end event
+
+type m_importemailitem from menu within m_document_manager_browse
+end type
+
+event clicked;//If isvalid(gw_contract) Then
+//	gw_contract.tab_contract_details.tabpage_images.tab_1.tabpage_data.Dynamic event ue_import_email( )
+//End If
+If isvalid(iu_tabpg_dm_data) Then
+	iu_tabpg_dm_data. event ue_import_email( )
+End If
+
+
+end event
+
+on m_importemailitem.create
+call super::create
+this.text = "Import Email Item"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_importemailitem.destroy
+call super::destroy
+end on
+
+type m_checkin from menu within m_document_manager_browse
+end type
+
+on m_checkin.create
+call super::create
+this.text = "Check In"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_checkin.destroy
+call super::destroy
+end on
+
+event clicked;if IsValid(m_pfe_cst_mdi_menu_contract_am) then
+	m_pfe_cst_mdi_menu_contract_am.m_documentmanager.m_check.m_checkin.TriggerEvent(Clicked!)
+end if
+
+end event
+
+type m_checkout from menu within m_document_manager_browse
+end type
+
+on m_checkout.create
+call super::create
+this.text = "Check Out"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_checkout.destroy
+call super::destroy
+end on
+
+event clicked;if IsValid(m_pfe_cst_mdi_menu_contract_am) then
+	m_pfe_cst_mdi_menu_contract_am.m_documentmanager.m_check.m_checkout.TriggerEvent(Clicked!)
+end if
+
+end event
+
+type m_undocheckout from menu within m_document_manager_browse
+end type
+
+event clicked;if IsValid(m_pfe_cst_mdi_menu_contract_am) then
+	m_pfe_cst_mdi_menu_contract_am.m_documentmanager.m_check.m_undocheckout.TriggerEvent(Clicked!)
+end if
+end event
+
+on m_undocheckout.create
+call super::create
+this.visible = false
+this.text = "Undo Check Out"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_undocheckout.destroy
+call super::destroy
+end on
+
+type m_combine from menu within m_document_manager_browse
+end type
+
+event clicked;if IsValid(m_pfe_cst_mdi_menu_contract_am) then
+	m_pfe_cst_mdi_menu_contract_am.m_documentmanager.m_check.m_combine.TriggerEvent(Clicked!)
+end if
+end event
+
+on m_combine.create
+call super::create
+this.visible = false
+this.text = "Combine"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_combine.destroy
+call super::destroy
+end on
+
+type m_saveas from menu within m_document_manager_browse
+end type
+
+on m_saveas.create
+call super::create
+this.text = "Save As"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_saveas.destroy
+call super::destroy
+end on
+
+event clicked;if IsValid(m_pfe_cst_mdi_menu_contract_am) then
+	m_pfe_cst_mdi_menu_contract_am.m_documentmanager.m_output0.m_saveas.TriggerEvent(Clicked!)
+end if
+
+end event
+
+type m_delete from menu within m_document_manager_browse
+end type
+
+event clicked;if IsValid(m_pfe_cst_mdi_menu_contract_am) then
+	m_pfe_cst_mdi_menu_contract_am.m_documentmanager.m_delete0.TriggerEvent(Clicked!)
+end if
+
+end event
+
+on m_delete.create
+call super::create
+this.text = "Delete"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_delete.destroy
+call super::destroy
+end on
+
+type m_sertifi from menu within m_document_manager_browse
+end type
+
+event clicked;if IsValid(m_pfe_cst_mdi_menu_contract_am) then
+	m_pfe_cst_mdi_menu_contract_am.m_documentmanager.m_sertify.TriggerEvent(Clicked!)
+end if
+end event
+
+on m_sertifi.create
+call super::create
+this.text = "Electronic Signature Status"
+this.toolbaritemvisible = false
+this.toolbaritemname = "sertify.jpg"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_sertifi.destroy
+call super::destroy
+end on
+
+type m_webapprovestatus from menu within m_document_manager_browse
+end type
+
+event clicked;if IsValid(m_pfe_cst_mdi_menu_contract_am) then
+	m_pfe_cst_mdi_menu_contract_am.m_documentmanager.m_approval.TriggerEvent(Clicked!)
+end if
+end event
+
+on m_webapprovestatus.create
+call super::create
+this.text = "Web Approve Status"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_webapprovestatus.destroy
+call super::destroy
+end on
+
+type m_history from menu within m_document_manager_browse
+end type
+
+event clicked;if IsValid(m_pfe_cst_mdi_menu_contract_am) then
+	m_pfe_cst_mdi_menu_contract_am.m_documentmanager.m_History.TriggerEvent(Clicked!)
+end if
+end event
+
+on m_history.create
+call super::create
+this.text = "Show/Hide History"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_history.destroy
+call super::destroy
+end on
+
+type m_- from menu within m_document_manager_browse
+end type
+
+on m_-.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-.destroy
+call super::destroy
+end on
+
+type m_ocr from menu within m_document_manager_browse
+m_ocr_settings m_ocr_settings
+m_do_ocr m_do_ocr
+m_viewocrresult m_viewocrresult
+end type
+
+on m_ocr.create
+call super::create
+this.text = "OCR"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_ocr_settings=create m_ocr_settings
+this.m_do_ocr=create m_do_ocr
+this.m_viewocrresult=create m_viewocrresult
+this.Item[UpperBound(this.Item)+1]=this.m_ocr_settings
+this.Item[UpperBound(this.Item)+1]=this.m_do_ocr
+this.Item[UpperBound(this.Item)+1]=this.m_viewocrresult
+end on
+
+on m_ocr.destroy
+call super::destroy
+destroy(this.m_ocr_settings)
+destroy(this.m_do_ocr)
+destroy(this.m_viewocrresult)
+end on
+
+type m_ocr_settings from menu within m_ocr
+end type
+
+on m_ocr_settings.create
+call super::create
+this.text = "Settings..."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_ocr_settings.destroy
+call super::destroy
+end on
+
+event clicked;If isvalid(gw_contract) Then
+	gw_contract.tab_contract_details.tabpage_images.tab_1.tabpage_data.event ue_ocr_settings( )
+End If
+end event
+
+type m_do_ocr from menu within m_ocr
+end type
+
+on m_do_ocr.create
+call super::create
+this.text = "Start OCR"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_do_ocr.destroy
+call super::destroy
+end on
+
+event clicked;If isvalid(gw_contract) Then
+	gw_contract.tab_contract_details.tabpage_images.tab_1.tabpage_data.event ue_ocr( )
+End If
+end event
+
+type m_viewocrresult from menu within m_ocr
+end type
+
+on m_viewocrresult.create
+call super::create
+this.text = "View OCR Result"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_viewocrresult.destroy
+call super::destroy
+end on
+
+event clicked;If isvalid(gw_contract) Then
+	gw_contract.tab_contract_details.tabpage_images.tab_1.tabpage_data.event ue_ocr_view( )
+End If
+end event
+
+type m_sep_2 from menu within m_document_manager_browse
+end type
+
+on m_sep_2.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_sep_2.destroy
+call super::destroy
+end on
+
+type m_properties from menu within m_document_manager_browse
+end type
+
+event clicked;if IsValid(m_pfe_cst_mdi_menu_contract_am) then
+	m_pfe_cst_mdi_menu_contract_am.m_documentmanager.m_properties0.TriggerEvent(Clicked!)
+end if
+
+end event
+
+on m_properties.create
+call super::create
+this.text = "Properties"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_properties.destroy
+call super::destroy
+end on
+
+type m_setprimarydocument from menu within m_document_manager_browse
+end type
+
+on m_setprimarydocument.create
+call super::create
+this.text = "Set As Primary Document"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_setprimarydocument.destroy
+call super::destroy
+end on
+
+event clicked;//Added By Mark Lee 10/29/2012
+if IsValid(m_pfe_cst_mdi_menu_contract_am) then
+	m_pfe_cst_mdi_menu_contract_am.m_documentmanager.m_setprimarydocument.TriggerEvent(Clicked!)
+end if
+
+end event
+

@@ -1,0 +1,19 @@
+﻿$PBExportHeader$f_sync_addclause_rules.srf
+global type f_sync_addclause_rules from function_object
+end type
+
+forward prototypes
+global function integer f_sync_addclause_rules (long al_template_id)
+end prototypes
+
+global function integer f_sync_addclause_rules (long al_template_id);//Synchronize the dynamic add clause rules' data - Added by Alfee 11.12.2007
+DELETE FROM ctx_acp_template_clause_rules &
+  WHERE ctx_acp_template_id = :al_template_id AND ctx_acp_clause_id NOT IN &
+	 (Select ctx_acp_clause_id from ctx_acp_template_clause where ctx_acp_template_id = :al_template_id ) ;
+
+//refresh data cache
+gnv_data.of_retrieve('template_clause_rules') 
+
+RETURN 1
+end function
+

@@ -1,0 +1,521 @@
+﻿$PBExportHeader$m_group_practice_tv.srm
+forward
+global type m_group_practice_tv from menu
+end type
+type m_linkexistinglocation from menu within m_group_practice_tv
+end type
+type m_addnewlocation from menu within m_group_practice_tv
+end type
+type m_directoryreportforthatgroup from menu within m_group_practice_tv
+end type
+type m_0 from menu within m_group_practice_tv
+end type
+type m_deletelinktogroup from menu within m_group_practice_tv
+end type
+type m_associatepractitioners from menu within m_group_practice_tv
+end type
+type m_batchaddaddresses from menu within m_group_practice_tv
+end type
+type m_viewassociatedpractitioners from menu within m_group_practice_tv
+end type
+type m_1 from menu within m_group_practice_tv
+end type
+type m_deleteassociationlink from menu within m_group_practice_tv
+end type
+type m_deletelinkedaddressrecord from menu within m_group_practice_tv
+end type
+type m_openinpractitionerfolder from menu within m_group_practice_tv
+end type
+global type m_group_practice_tv from menu
+m_linkexistinglocation m_linkexistinglocation
+m_addnewlocation m_addnewlocation
+m_directoryreportforthatgroup m_directoryreportforthatgroup
+m_0 m_0
+m_deletelinktogroup m_deletelinktogroup
+m_associatepractitioners m_associatepractitioners
+m_batchaddaddresses m_batchaddaddresses
+m_viewassociatedpractitioners m_viewassociatedpractitioners
+m_1 m_1
+m_deleteassociationlink m_deleteassociationlink
+m_deletelinkedaddressrecord m_deletelinkedaddressrecord
+m_openinpractitionerfolder m_openinpractitionerfolder
+end type
+end forward
+
+global type m_group_practice_tv from menu
+m_linkexistinglocation m_linkexistinglocation
+m_addnewlocation m_addnewlocation
+m_directoryreportforthatgroup m_directoryreportforthatgroup
+m_0 m_0
+m_deletelinktogroup m_deletelinktogroup
+m_associatepractitioners m_associatepractitioners
+m_batchaddaddresses m_batchaddaddresses
+m_viewassociatedpractitioners m_viewassociatedpractitioners
+m_1 m_1
+m_deleteassociationlink m_deleteassociationlink
+m_deletelinkedaddressrecord m_deletelinkedaddressrecord
+m_openinpractitionerfolder m_openinpractitionerfolder
+end type
+global m_group_practice_tv m_group_practice_tv
+
+on m_group_practice_tv.create
+m_group_practice_tv=this
+call super::create
+this.text = "m_group_practice_tv"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menutitles = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_linkexistinglocation=create m_linkexistinglocation
+this.m_addnewlocation=create m_addnewlocation
+this.m_directoryreportforthatgroup=create m_directoryreportforthatgroup
+this.m_0=create m_0
+this.m_deletelinktogroup=create m_deletelinktogroup
+this.m_associatepractitioners=create m_associatepractitioners
+this.m_batchaddaddresses=create m_batchaddaddresses
+this.m_viewassociatedpractitioners=create m_viewassociatedpractitioners
+this.m_1=create m_1
+this.m_deleteassociationlink=create m_deleteassociationlink
+this.m_deletelinkedaddressrecord=create m_deletelinkedaddressrecord
+this.m_openinpractitionerfolder=create m_openinpractitionerfolder
+this.Item[UpperBound(this.Item)+1]=this.m_linkexistinglocation
+this.Item[UpperBound(this.Item)+1]=this.m_addnewlocation
+this.Item[UpperBound(this.Item)+1]=this.m_directoryreportforthatgroup
+this.Item[UpperBound(this.Item)+1]=this.m_0
+this.Item[UpperBound(this.Item)+1]=this.m_deletelinktogroup
+this.Item[UpperBound(this.Item)+1]=this.m_associatepractitioners
+this.Item[UpperBound(this.Item)+1]=this.m_batchaddaddresses
+this.Item[UpperBound(this.Item)+1]=this.m_viewassociatedpractitioners
+this.Item[UpperBound(this.Item)+1]=this.m_1
+this.Item[UpperBound(this.Item)+1]=this.m_deleteassociationlink
+this.Item[UpperBound(this.Item)+1]=this.m_deletelinkedaddressrecord
+this.Item[UpperBound(this.Item)+1]=this.m_openinpractitionerfolder
+end on
+
+on m_group_practice_tv.destroy
+call super::destroy
+destroy(this.m_linkexistinglocation)
+destroy(this.m_addnewlocation)
+destroy(this.m_directoryreportforthatgroup)
+destroy(this.m_0)
+destroy(this.m_deletelinktogroup)
+destroy(this.m_associatepractitioners)
+destroy(this.m_batchaddaddresses)
+destroy(this.m_viewassociatedpractitioners)
+destroy(this.m_1)
+destroy(this.m_deleteassociationlink)
+destroy(this.m_deletelinkedaddressrecord)
+destroy(this.m_openinpractitionerfolder)
+end on
+
+type m_linkexistinglocation from menu within m_group_practice_tv
+end type
+
+on m_linkexistinglocation.create
+call super::create
+this.text = "Link Existing location"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menutitles = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_linkexistinglocation.destroy
+call super::destroy
+end on
+
+event clicked;w_group_practice w_window
+w_group_practice.tab_1.tabpage_group.dw_group_tv.event ue_rightclick(this.text )
+
+end event
+
+type m_addnewlocation from menu within m_group_practice_tv
+end type
+
+on m_addnewlocation.create
+call super::create
+this.text = "Add New location"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menutitles = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_addnewlocation.destroy
+call super::destroy
+end on
+
+event clicked;w_group_practice w_window
+w_group_practice.tab_1.tabpage_group.dw_group_tv.event ue_rightclick(this.text )
+
+end event
+
+type m_directoryreportforthatgroup from menu within m_group_practice_tv
+end type
+
+on m_directoryreportforthatgroup.create
+call super::create
+this.text = "Directory report for that Group"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menutitles = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_directoryreportforthatgroup.destroy
+call super::destroy
+end on
+
+event clicked;w_group_practice w_window
+w_group_practice.tab_1.tabpage_group.dw_group_tv.event ue_rightclick(this.text )
+
+end event
+
+type m_0 from menu within m_group_practice_tv
+end type
+
+on m_0.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menutitles = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_0.destroy
+call super::destroy
+end on
+
+type m_deletelinktogroup from menu within m_group_practice_tv
+end type
+
+on m_deletelinktogroup.create
+call super::create
+this.text = "Delete link to Group"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menutitles = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_deletelinktogroup.destroy
+call super::destroy
+end on
+
+event clicked;w_group_practice w_window
+w_group_practice.tab_1.tabpage_group.dw_group_tv.event ue_rightclick(this.text )
+
+end event
+
+type m_associatepractitioners from menu within m_group_practice_tv
+end type
+
+on m_associatepractitioners.create
+call super::create
+this.text = "Associate practitioners"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menutitles = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_associatepractitioners.destroy
+call super::destroy
+end on
+
+event clicked;w_group_practice w_window
+w_group_practice.tab_1.tabpage_group.dw_group_tv.event ue_rightclick(this.text )
+
+end event
+
+type m_batchaddaddresses from menu within m_group_practice_tv
+end type
+
+on m_batchaddaddresses.create
+call super::create
+this.text = "Batch add addresses"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menutitles = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_batchaddaddresses.destroy
+call super::destroy
+end on
+
+event clicked;w_group_practice w_window
+w_group_practice.tab_1.tabpage_group.dw_group_tv.event ue_rightclick(this.text )
+
+end event
+
+type m_viewassociatedpractitioners from menu within m_group_practice_tv
+end type
+
+on m_viewassociatedpractitioners.create
+call super::create
+this.text = "View Associated practitioners"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menutitles = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_viewassociatedpractitioners.destroy
+call super::destroy
+end on
+
+event clicked;w_group_practice w_window
+w_group_practice.tab_1.tabpage_group.dw_group_tv.event ue_rightclick(this.text )
+
+end event
+
+type m_1 from menu within m_group_practice_tv
+end type
+
+on m_1.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menutitles = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_1.destroy
+call super::destroy
+end on
+
+type m_deleteassociationlink from menu within m_group_practice_tv
+end type
+
+on m_deleteassociationlink.create
+call super::create
+this.text = "Delete Association link"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menutitles = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_deleteassociationlink.destroy
+call super::destroy
+end on
+
+event clicked;w_group_practice w_window
+w_group_practice.tab_1.tabpage_group.dw_group_tv.event ue_rightclick(this.text )
+
+end event
+
+type m_deletelinkedaddressrecord from menu within m_group_practice_tv
+end type
+
+on m_deletelinkedaddressrecord.create
+call super::create
+this.text = "Delete linked address record"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menutitles = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_deletelinkedaddressrecord.destroy
+call super::destroy
+end on
+
+event clicked;w_group_practice w_window
+w_group_practice.tab_1.tabpage_group.dw_group_tv.event ue_rightclick(this.text )
+
+end event
+
+type m_openinpractitionerfolder from menu within m_group_practice_tv
+end type
+
+on m_openinpractitionerfolder.create
+call super::create
+this.text = "Open in practitioner folder"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menutitles = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_openinpractitionerfolder.destroy
+call super::destroy
+end on
+
+event clicked;w_group_practice w_window
+w_group_practice.tab_1.tabpage_group.dw_group_tv.event ue_rightclick(this.text )
+
+end event
+

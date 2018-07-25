@@ -1,0 +1,64 @@
+﻿$PBExportHeader$d_screen_fields_distinct.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=120 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes name=data_view_fields_data_view_field_id dbname="data_view_fields.data_view_field_id" )
+ column=(type=long update=yes updatewhereclause=yes name=data_view_fields_data_view_id dbname="data_view_fields.data_view_id" )
+ column=(type=long update=yes updatewhereclause=yes name=data_view_fields_screen_id dbname="data_view_fields.screen_id" )
+ column=(type=long updatewhereclause=yes name=field_id dbname="data_view_fields.field_id" )
+ column=(type=long updatewhereclause=yes name=sys_table_id dbname="data_view_fields.sys_table_id" )
+ column=(type=char(2) updatewhereclause=yes name=field_type dbname="sys_fields.field_type" )
+ column=(type=char(50) updatewhereclause=yes name=db_field_name dbname="sys_fields.field_name" )
+ column=(type=char(50) updatewhereclause=yes name=db_table_name dbname="sys_tables.table_name" )
+ column=(type=long updatewhereclause=yes name=sys_fields_field_id dbname="sys_fields.field_id" )
+ column=(type=long updatewhereclause=yes name=table_id dbname="sys_fields.table_id" )
+ column=(type=long updatewhereclause=yes name=facility_specific dbname="sys_tables.facility_specific" )
+ retrieve="  SELECT ~"data_view_fields~".~"data_view_field_id~",   
+         ~"data_view_fields~".~"data_view_id~",   
+         ~"data_view_fields~".~"screen_id~",   
+         ~"data_view_fields~".~"field_id~",   
+         ~"data_view_fields~".~"sys_table_id~",   
+         ~"sys_fields~".~"field_type~",   
+         ~"sys_fields~".~"field_name~",   
+         ~"sys_tables~".~"table_name~",   
+         ~"sys_fields~".~"field_id~",   
+         ~"sys_fields~".~"table_id~",   
+         ~"sys_tables~".~"facility_specific~"  
+    FROM ~"data_view_fields~",   
+         ~"sys_fields~",   
+         ~"sys_tables~"  
+   WHERE ( ~"data_view_fields~".~"field_id~" = ~"sys_fields~".~"field_id~" ) and  
+         ( ~"sys_fields~".~"table_id~" = ~"sys_tables~".~"table_id~" ) and  
+         ( ( data_view_fields.data_view_id = 1 ) AND  
+         ( data_view_fields.screen_id = :screen_id ) )    
+" arguments=(("screen_id", number)) )
+text(band=header alignment="0" text="Data View Fields Screen Id" border="0" color="0" x="9" y="4" height="52" width="786" html.valueishtml="0"  name=t_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Db Field Name" border="0" color="0" x="805" y="4" height="52" width="731" html.valueishtml="0"  name=t_2 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Db Table Name" border="0" color="0" x="1664" y="4" height="52" width="1143" html.valueishtml="0"  name=t_4 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Data View Fields Data View Field Id" border="0" color="0" x="2816" y="4" height="132" width="530" html.valueishtml="0"  name=t_6 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Sys Fields Field Id" border="0" color="0" x="3360" y="4" height="56" width="978" html.valueishtml="0"  name=t_7 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Sys Fields Table Id" border="0" color="0" x="9" y="4" height="76" width="786" html.valueishtml="0"  name=t_9 visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Field Type" border="0" color="0" x="1545" y="4" height="52" width="110" html.valueishtml="0"  name=t_10 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Sys Tables Facility Specific" border="0" color="0" x="5344" y="4" height="76" width="978" html.valueishtml="0"  name=t_13 visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=3 alignment="0" tabsequence=10 border="0" color="0" x="9" y="20" height="52" width="786" format="[general]" html.valueishtml="0"  name=data_view_fields_screen_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="805" y="20" height="52" width="731" format="[general]" html.valueishtml="0"  name=db_field_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="1664" y="24" height="52" width="1143" format="[general]" html.valueishtml="0"  name=db_table_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="2816" y="24" height="76" width="530" format="[general]" html.valueishtml="0"  name=data_view_fields_data_view_field_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="3360" y="0" height="52" width="978" format="[general]" html.valueishtml="0"  name=sys_fields_field_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="4352" y="0" height="52" width="978" format="[general]" html.valueishtml="0"  name=table_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="1545" y="4" height="52" width="110" format="[general]" html.valueishtml="0"  name=field_type visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="5344" y="0" height="52" width="978" format="[General]" html.valueishtml="0"  name=facility_specific visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="0" x="6336" y="4" height="76" width="1102" html.valueishtml="0"  name=data_view_fields_data_view_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Data View Fields Data View Id" border="0" color="0" x="6331" y="4" height="76" width="1106" html.valueishtml="0"  name=data_view_fields_data_view_id_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=4 alignment="0" tabsequence=30 border="0" color="0" x="7451" y="0" height="76" width="311" html.valueishtml="0"  name=field_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Field Id" border="0" color="0" x="7447" y="4" height="76" width="315" html.valueishtml="0"  name=field_id_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=5 alignment="0" tabsequence=40 border="0" color="0" x="7776" y="8" height="76" width="439" html.valueishtml="0"  name=sys_table_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Sys Table Id" border="0" color="0" x="7771" y="4" height="76" width="443" html.valueishtml="0"  name=sys_table_id_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

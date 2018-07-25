@@ -1,0 +1,136 @@
+﻿$PBExportHeader$d_contract_search_details.srd
+$PBExportComments$[intellicontract]
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 selected.mouse=no )
+header(height=68 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=28 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=app_facility dbname="ctx_basic_info.app_facility" )
+ column=(type=char(150) updatewhereclause=yes name=product_name dbname="ctx_basic_info.product_name" )
+ column=(type=datetime updatewhereclause=yes name=effective_date dbname="ctx_basic_info.effective_date" )
+ column=(type=datetime updatewhereclause=yes name=expriation_date dbname="ctx_basic_info.expriation_date" )
+ column=(type=decimal(0) updatewhereclause=yes name=status dbname="ctx_basic_info.status" )
+ column=(type=decimal(0) updatewhereclause=yes name=group_multi_loc_id1 dbname="ctx_basic_info.group_multi_loc_id" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=ctx_id dbname="ctx_basic_info.ctx_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=ctx_basic_info_category dbname="ctx_basic_info.category" )
+ column=(type=long updatewhereclause=yes name=ctx_basic_info_facility_id dbname="ctx_basic_info.facility_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=ctx_basic_info_contract_type dbname="ctx_basic_info.contract_type" )
+ column=(type=decimal(0) updatewhereclause=yes name=product_type dbname="ctx_basic_info.product_type" )
+ column=(type=decimal(0) updatewhereclause=yes name=ctx_basic_info_reimbursment_menth dbname="ctx_basic_info.reimbursment_menth" )
+ column=(type=char(150) updatewhereclause=yes name=ctx_basic_info_file_location dbname="ctx_basic_info.file_location" )
+ column=(type=datetime updatewhereclause=yes name=ctx_basic_info_review_date dbname="ctx_basic_info.review_date" )
+ column=(type=char(10) updatewhereclause=yes name=ctx_basic_info_review_by dbname="ctx_basic_info.review_by" )
+ column=(type=datetime updatewhereclause=yes name=ctx_basic_info_term_date dbname="ctx_basic_info.term_date" )
+ column=(type=decimal(0) updatewhereclause=yes name=ctx_basic_info_term_reason dbname="ctx_basic_info.term_reason" )
+ column=(type=datetime updatewhereclause=yes name=ctx_basic_info_last_revis_date dbname="ctx_basic_info.last_revis_date" )
+ column=(type=datetime updatewhereclause=yes name=ctx_basic_info_other_date_1 dbname="ctx_basic_info.other_date_1" )
+ column=(type=datetime updatewhereclause=yes name=ctx_basic_info_other_date_2 dbname="ctx_basic_info.other_date_2" )
+ column=(type=char(75) updatewhereclause=yes name=ctx_basic_info_oc_signed_by dbname="ctx_basic_info.oc_signed_by" )
+ column=(type=decimal(0) updatewhereclause=yes name=ctx_basic_info_oc_title dbname="ctx_basic_info.oc_title" )
+ column=(type=decimal(0) updatewhereclause=yes name=ctx_basic_info_oc_department dbname="ctx_basic_info.oc_department" )
+ column=(type=char(75) updatewhereclause=yes name=ctx_basic_info_oc_legal_rep dbname="ctx_basic_info.oc_legal_rep" )
+ column=(type=char(75) updatewhereclause=yes name=ctx_basic_info_cc_signed_by dbname="ctx_basic_info.cc_signed_by" )
+ column=(type=char(75) updatewhereclause=yes name=ctx_basic_info_cc_title dbname="ctx_basic_info.cc_title" )
+ column=(type=char(75) updatewhereclause=yes name=ctx_basic_info_cc_department dbname="ctx_basic_info.cc_department" )
+ column=(type=char(75) updatewhereclause=yes name=ctx_basic_info_cc_legal_rep dbname="ctx_basic_info.cc_legal_rep" )
+ column=(type=char(8000) updatewhereclause=yes name=ctx_basic_info_notes dbname="ctx_basic_info.notes" )
+ column=(type=char(30) updatewhereclause=yes name=ctx_basic_info_keyword dbname="ctx_basic_info.keyword" )
+ column=(type=decimal(0) updatewhereclause=yes name=ctx_basic_info_dvision dbname="ctx_basic_info.dvision" )
+ column=(type=char(255) updatewhereclause=yes name=ctx_basic_info_custom_1 dbname="ctx_basic_info.custom_1" )
+ column=(type=char(255) updatewhereclause=yes name=ctx_basic_info_custom_2 dbname="ctx_basic_info.custom_2" )
+ column=(type=char(255) updatewhereclause=yes name=ctx_basic_info_custom_3 dbname="ctx_basic_info.custom_3" )
+ column=(type=char(255) updatewhereclause=yes name=ctx_basic_info_custom_4 dbname="ctx_basic_info.custom_4" )
+ column=(type=char(255) updatewhereclause=yes name=ctx_basic_info_custom_5 dbname="ctx_basic_info.custom_5" )
+ column=(type=char(255) updatewhereclause=yes name=ctx_basic_info_custom_6 dbname="ctx_basic_info.custom_6" )
+ column=(type=char(255) updatewhereclause=yes name=ctx_basic_info_custom_7 dbname="ctx_basic_info.custom_7" )
+ column=(type=char(255) updatewhereclause=yes name=ctx_basic_info_custom_8 dbname="ctx_basic_info.custom_8" )
+ column=(type=char(255) updatewhereclause=yes name=ctx_basic_info_custom_9 dbname="ctx_basic_info.custom_9" )
+ column=(type=char(255) updatewhereclause=yes name=ctx_basic_info_custom_10 dbname="ctx_basic_info.custom_10" )
+ column=(type=decimal(0) updatewhereclause=yes name=group_id dbname="ctx_basic_info.group_id" )
+ column=(type=char(255) updatewhereclause=yes name=revision_reason dbname="ctx_basic_info.revision_reason" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=record_id dbname="ctx_basic_info.record_id" )
+ column=(type=char(10) updatewhereclause=yes name=owner dbname="owner1" )
+ column=(type=decimal(0) updatewhereclause=yes name=group_multi_loc_id dbname="contracted_entity" )
+ retrieve="  SELECT DISTINCT ctx_basic_info.app_facility,   
+         ctx_basic_info.product_name,   
+         ctx_basic_info.effective_date,   
+         ctx_basic_info.expriation_date,   
+         ctx_basic_info.status,   
+         ctx_basic_info.group_multi_loc_id,   
+         ctx_basic_info.ctx_id,   
+         ctx_basic_info.category,   
+         ctx_basic_info.facility_id,   
+         ctx_basic_info.contract_type,   
+         ctx_basic_info.product_type,   
+         ctx_basic_info.reimbursment_menth,   
+         ctx_basic_info.file_location,   
+         ctx_basic_info.review_date,   
+         ctx_basic_info.review_by,   
+         ctx_basic_info.term_date,   
+         ctx_basic_info.term_reason,   
+         ctx_basic_info.last_revis_date,   
+         ctx_basic_info.other_date_1,   
+         ctx_basic_info.other_date_2,   
+         ctx_basic_info.oc_signed_by,   
+         ctx_basic_info.oc_title,   
+         ctx_basic_info.oc_department,   
+         ctx_basic_info.oc_legal_rep,   
+         ctx_basic_info.cc_signed_by,   
+         ctx_basic_info.cc_title,   
+         ctx_basic_info.cc_department,   
+         ctx_basic_info.cc_legal_rep,   
+         ctx_basic_info.notes,   
+         ctx_basic_info.keyword,   
+         ctx_basic_info.dvision,   
+         ctx_basic_info.custom_1,   
+         ctx_basic_info.custom_2,   
+         ctx_basic_info.custom_3,   
+         ctx_basic_info.custom_4,   
+         ctx_basic_info.custom_5,   
+         ctx_basic_info.custom_6,   
+         ctx_basic_info.custom_7,   
+         ctx_basic_info.custom_8,   
+         ctx_basic_info.custom_9,   
+         ctx_basic_info.custom_10,   
+         ctx_basic_info.group_id,   
+         ctx_basic_info.revision_reason,   
+         ctx_basic_info.record_id ,
+         owner1 = upper((SELECT top 1 ctx_contacts.user_d 
+					      FROM ctx_contacts,ctx_contract_contacts
+					      WHERE (ctx_contract_contacts.contact_id = ctx_contacts.contact_id ) and  
+							      (ctx_contract_contacts.ctx_id = ctx_basic_info.ctx_id ) AND  
+							      ( ctx_contract_contacts.owner = 'Y' ) )),
+        contracted_entity = (  SELECT top 1 group_multi_loc.rec_id  
+															FROM ctx_loc,   
+																group_multi_loc  
+															WHERE ( ctx_loc.parent_comp_id = group_multi_loc.rec_id ) and  
+																	( ctx_loc.ctx_id = ctx_basic_info.ctx_id  ) AND  
+																	ctx_loc.loc_id = 0    )
+				
+			FROM ctx_basic_info  
+ where ctx_basic_info.is_template = 0 
+" update="ctx_basic_info" updatewhere=0 updatekeyinplace=no )
+text(band=header alignment="2" text="Product Name" border="6" color="33554432" x="1600" y="4" height="52" width="645" html.valueishtml="0"  name=product_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Effective Date" border="6" color="33554432" x="3278" y="4" height="52" width="393" html.valueishtml="0"  name=effective_date_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Company Name" border="6" color="33554432" x="946" y="4" height="52" width="645" html.valueishtml="0"  name=ctx_basic_info_app_facility_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Status" border="6" color="33554432" x="558" y="4" height="52" width="379" html.valueishtml="0"  name=status_1_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Contract ID" border="6" color="33554432" x="265" y="4" height="52" width="283" html.valueishtml="0"  name=ctx_id_1_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="2" text="Expriation Date" border="6" color="33554432" x="3680" y="4" height="52" width="398" html.valueishtml="0"  name=expriation_date_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Product Type" border="6" color="0" x="4087" y="4" height="52" width="361" html.valueishtml="0"  name=ctx_basic_info_product_type_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="2" text="Owner" border="6" color="0" x="9" y="4" height="52" width="247" html.valueishtml="0"  name=owner1_1_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="2" text="Contracted Entity" border="6" color="33554432" x="2254" y="4" height="52" width="1015" html.valueishtml="0"  name=group_multi_loc_id_1_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="33554432" x="558" y="4" height="52" width="379" format="[general]" html.valueishtml="0"  name=status visible="1" dddw.name=d_dddw_contract_contract_status dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="33554432" x="265" y="4" height="52" width="283" format="[general]" html.valueishtml="0"  name=ctx_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=45 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="4" height="52" width="247" format="[general]" html.valueishtml="0"  name=owner visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="4087" y="8" height="52" width="361" format="[general]" html.valueishtml="0"  name=product_type visible="1" dddw.name=d_dddw_contract_product_type dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="3680" y="4" height="52" width="398" format="[general]" html.valueishtml="0"  name=expriation_date visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="3278" y="4" height="52" width="393" format="[general]" html.valueishtml="0"  name=effective_date visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=46 alignment="0" tabsequence=32766 border="0" color="33554432" x="2254" y="4" height="52" width="1015" format="[general]" html.valueishtml="0"  name=group_multi_loc_id visible="1" dddw.name=dddw_contracted_groups_no_ret dddw.displaycolumn=loc_gp_name dddw.datacolumn=rec_id dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="1600" y="4" height="52" width="645" format="[general]" html.valueishtml="0"  name=product_name visible="1" dddw.name=dddw_contract_product_name dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="946" y="4" height="52" width="645" format="[general]" html.valueishtml="0"  name=app_facility visible="1" dddw.name=dddw_contact_company dddw.displaycolumn=facility_name dddw.datacolumn=facility_id dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

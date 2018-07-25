@@ -1,0 +1,112 @@
+﻿$PBExportHeader$d_dddw_user_access_category.srd
+release 11.5;
+datawindow(units=0 timer_interval=0 color=1073741824 brushmode=0 transparency=0 gradient.angle=0 gradient.color=8421504 gradient.focus=0 gradient.repetition.count=0 gradient.repetition.length=100 gradient.repetition.mode=0 gradient.scale=100 gradient.spread=100 gradient.transparency=0 picture.blur=0 picture.clip.bottom=0 picture.clip.left=0 picture.clip.right=0 picture.clip.top=0 picture.mode=0 picture.scale.x=100 picture.scale.y=100 picture.transparency=0 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.background=no print.preview.background=no print.preview.outline=yes hidegrayline=no showbackcoloronxp=no picture.file="" )
+header(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+summary(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+footer(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+detail(height=80 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+table(column=(type=decimal(0) updatewhereclause=yes name=lookup_code dbname="code_lookup.lookup_code" )
+ column=(type=char(30) updatewhereclause=yes name=code dbname="code_lookup.code" )
+ column=(type=char(35) updatewhereclause=yes name=lookup_name dbname="code_lookup.lookup_name" )
+ column=(type=char(75) updatewhereclause=yes name=description dbname="code_lookup.description" )
+ retrieve="SELECT code_lookup.lookup_code,
+       code_lookup.code,
+	 code_lookup.lookup_name,
+		 code_lookup.description
+  FROM ctx_acp_contract_management_right,security_users,code_lookup
+ WHERE ( ctx_acp_contract_management_right.role_id = security_users.role_id ) and
+       ( ctx_acp_contract_management_right.category = code_lookup.lookup_code ) and
+       ( ctx_acp_contract_management_right.types = 1 ) and
+       ( ctx_acp_contract_management_right.rights <> 13 ) and
+       ( security_users.user_id = :as_user_id )
+Union
+Select -777, '*Add Category*','Contract Category',''
+Union
+
+select distinct code_lookup.lookup_code,code_lookup.code, code_lookup.lookup_name,code_lookup.description from ctx_basic_info 
+,
+(
+	SELECT DISTINCT TOP 100 Percent  ctx_id = ctx_contract_contacts.ctx_id, user_id = ctx_contacts.user_d, access = (CASE ctx_contract_contacts.owner WHEN 'Y' THEN 'F' ELSE ctx_contract_contacts.access END)
+	FROM ctx_contract_contacts Left Outer Join
+	(
+	Select ctx_contract_contacts1.ctx_id,ctx_contacts1.user_d 
+	From ctx_contract_contacts ctx_contract_contacts1 ,ctx_contacts ctx_contacts1
+	Where ctx_contract_contacts1.contact_id = ctx_contacts1.contact_id And ctx_contacts1.user_d = :as_user_id
+	Group By ctx_contract_contacts1.ctx_id,ctx_contacts1.user_d
+	Having Count(ctx_contract_contacts1.ctx_id) > 1
+	) ccc
+	On ctx_contract_contacts.ctx_id = ccc.ctx_id
+	,ctx_contacts
+	WHERE ctx_contacts.user_d = :as_user_id
+		AND (ccc.ctx_id is null or ctx_contract_contacts.access = 'F' )
+		AND ctx_contract_contacts.contact_id = ctx_contacts.contact_id 
+		AND ( ctx_contract_contacts.access IN ('F','R') 
+		OR ctx_contract_contacts.owner = 'Y' )
+		AND ctx_contract_contacts.ic_area = 'I'
+	
+	UNION 
+	
+	SELECT DISTINCT TOP 100 Percent ctx_id = ctx_group_access.ctx_id,user_id = security_group_users.user_id, access =  ctx_group_access.access
+	FROM 
+	ctx_group_access ,
+	security_group_users,
+	icred_settings
+	WHERE	security_group_users.user_id = :as_user_id
+		AND ctx_group_access.group_id = security_group_users.group_id
+		AND ctx_group_access.access = 
+			(Case When Exists (Select u1.user_id,a1.ctx_id,a1.access 
+			From ctx_group_access a1,security_group_users u1
+			Where a1.group_id = u1.group_id 
+			And a1.ctx_id = ctx_group_access.ctx_id
+			And u1.user_id = security_group_users.user_id	
+			And a1.access = 'F') Then 'F' Else 'R' End) 
+		AND icred_settings.group_access = 1
+		AND ctx_group_access.access in ('F','R')
+		AND NOT EXISTS	(SELECT 1 FROM ctx_contract_contacts, ctx_contacts  
+				WHERE ( ctx_contacts.contact_id = ctx_contract_contacts.contact_id ) 
+				AND ( ctx_contacts.user_d = security_group_users.user_id )
+				AND ( ctx_contract_contacts.ic_area = 'I' )
+				AND ( ctx_contract_contacts.ctx_id = ctx_group_access.ctx_id )
+				)
+
+	UNION
+	
+	SELECT DISTINCT TOP 100 Percent ctx_id = ctx_basic_info.ctx_id, user_id = security_users.user_id, access = (CASE ctx_acp_contract_management_right.rights WHEN '11' THEN 'F' WHEN '12' THEN 'R' ELSE 'N' END)
+	FROM ctx_acp_contract_management_right, security_users, ctx_basic_info
+	WHERE security_users.user_id = :as_user_id
+		AND ctx_acp_contract_management_right.types = 1
+		AND ctx_acp_contract_management_right.role_id = security_users.role_id
+		AND ctx_acp_contract_management_right.category = ctx_basic_info.category
+		And ctx_basic_info.is_template = 0 
+		AND ctx_acp_contract_management_right.rights In ('11','12')
+		AND NOT EXISTS (SELECT 1 FROM ctx_contract_contacts, ctx_contacts  
+				WHERE ( ctx_contacts.contact_id = ctx_contract_contacts.contact_id ) 
+				AND ( ctx_contacts.user_d = security_users.user_id AND ctx_contract_contacts.ic_area = 'I') 
+				AND ( ctx_contract_contacts.ctx_id = ctx_basic_info.ctx_id ) 
+				UNION
+				SELECT 1 FROM ctx_group_access,security_group_users,icred_settings
+				WHERE icred_settings.group_access = 1
+				AND (ctx_group_access.group_id = security_group_users.group_id )
+				AND ( security_group_users.user_id = security_users.user_id )	
+				AND ( ctx_group_access.ctx_id = ctx_basic_info.ctx_id )
+				)
+) t_ctx_access,
+code_lookup
+where ctx_basic_info.ctx_id = t_ctx_access.ctx_id and
+code_lookup.lookup_code = ctx_basic_info.category
+
+ORDER BY code_lookup.code
+" arguments=(("as_user_id", string)) )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="9" y="8" height="64" width="731" format="[general]" html.valueishtml="0"  name=code visible="1" edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="754" y="8" height="64" width="1737" format="[general]" html.valueishtml="0"  name=description visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0  template=(comment="" encoding="gb2312" name="www" xml="<?xml version=~"1.0~" encoding=~"gb2312~" standalone=~"no~"?><untitled><untitled_row __pbband=~"detail~"><code_lookup_lookup_code/><code_lookup_code>code</code_lookup_code></untitled_row></untitled>"))
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

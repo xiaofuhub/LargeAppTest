@@ -1,0 +1,32 @@
+﻿$PBExportHeader$of_select_prac_in_folder.srf
+global type of_select_prac_in_folder from function_object
+end type
+
+forward prototypes
+global function integer of_select_prac_in_folder (long al_prac, long al_facility, w_prac_data_1 aw_prac)
+end prototypes
+
+global function integer of_select_prac_in_folder (long al_prac, long al_facility, w_prac_data_1 aw_prac);//Start Code Change ----07.19.2016 #V152 maha - added  to open provider folder
+
+long ll_prac
+integer res
+pfc_cst_u_extended_search luo_search
+
+ll_prac = al_prac
+
+// Find appropriate practitioner
+luo_search = aw_prac.tab_1.tabpage_search.uo_search
+
+res = luo_search.dw_org_facility_select.SetItem( 1, "facility_id", al_facility)
+
+luo_search.ddlb_search_type.SelectItem ('Prac ID', 0 )	
+luo_search.sle_srch_val.Text = String(ll_prac)
+luo_search.ddlb_status.selectitem(2)
+aw_prac.ib_skip_inactive_mess = true
+
+luo_search.cb_search.TriggerEvent(Clicked!)
+luo_search.cb_select.TriggerEvent(Clicked!)
+
+return 1
+end function
+

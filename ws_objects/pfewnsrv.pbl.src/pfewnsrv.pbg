@@ -1,0 +1,21 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "pfewnsrv.pbl" "";
+@end;
+@begin Objects 
+ "m_frame.srm" "pfewnsrv.pbl";
+ "m_master.srm" "pfewnsrv.pbl";
+ "str_client_rect.srs" "pfewnsrv.pbl";
+ "n_cst_menu.sru" "pfewnsrv.pbl";
+ "n_cst_resize.sru" "pfewnsrv.pbl";
+ "n_cst_resizeattrib.sru" "pfewnsrv.pbl";
+ "n_cst_toolbarattrib.sru" "pfewnsrv.pbl";
+ "n_cst_winsrv.sru" "pfewnsrv.pbl";
+ "n_cst_winsrv_preference.sru" "pfewnsrv.pbl";
+ "n_cst_winsrv_sheetmanager.sru" "pfewnsrv.pbl";
+ "n_cst_winsrv_sheetmanagerattrib.sru" "pfewnsrv.pbl";
+ "n_cst_winsrv_statusbar.sru" "pfewnsrv.pbl";
+ "n_cst_winsrv_statusbarattrib.sru" "pfewnsrv.pbl";
+ "w_statusbar.srw" "pfewnsrv.pbl";
+ "w_toolbars.srw" "pfewnsrv.pbl";
+@end;

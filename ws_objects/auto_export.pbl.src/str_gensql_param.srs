@@ -1,0 +1,14 @@
+﻿$PBExportHeader$str_gensql_param.srs
+$PBExportComments$Used on w_export_painter
+global type str_gensql_param from structure
+	long		ll_rowno
+	string		ls_synprefix
+	string		ls_tabletemp
+	integer		li_link
+	string		ls_prac_sql
+	string		ls_prac_ids
+	boolean		lb_usingdb
+	string		ls_client_id
+	string		ls_rowno
+end type
+

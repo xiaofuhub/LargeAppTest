@@ -1,0 +1,21 @@
+﻿$PBExportHeader$str_pass.srs
+global type str_pass from structure
+	n_ds		s_dw
+	window		w_parent_window
+	long		l_facility_id
+	string		s_string
+	string		s_string_array[]
+	n_cst_npdb		uo1
+	long		s_long[]
+	u_dw		s_u_dw
+	powerobject		s_po[]
+	long		contact_id[]
+	long		action_items[]
+	boolean		display_contact_detail
+	n_ds		s_ds
+	datetime		s_datetime[]
+	string		as_search_type
+	boolean		ab_newrecord
+	boolean		ab_bool
+end type
+

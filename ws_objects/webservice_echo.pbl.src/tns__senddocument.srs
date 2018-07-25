@@ -1,0 +1,14 @@
+﻿$PBExportHeader$tns__senddocument.srs
+$PBExportComments$Proxy imported from Web service using Web Service Proxy Generator.
+global type tns__SendDocument from structure
+   string apiKey
+   string name
+   string recipients
+   string sign_type
+   string sign_flow
+   string ws_message
+   string fileName
+   blob file
+   string ccs
+end type
+

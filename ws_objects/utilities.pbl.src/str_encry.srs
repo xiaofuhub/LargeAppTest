@@ -1,0 +1,6 @@
+﻿$PBExportHeader$str_encry.srs
+global type str_encry from structure
+	string		sqlfilename
+	string		sqlfilepath
+end type
+

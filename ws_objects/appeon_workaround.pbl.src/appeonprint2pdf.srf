@@ -1,0 +1,43 @@
+﻿$PBExportHeader$appeonprint2pdf.srf
+global type appeonprint2pdf from function_object
+end type
+
+forward prototypes
+global function integer appeonprint2pdf (powerobject adw)
+end prototypes
+
+global function integer appeonprint2pdf (powerobject adw);//==============================================================================
+// 
+// Copyright ? 2001-2006 Appeon, Inc. and its subsidiaries. All rights reserved.
+// 
+//------------------------------------------------------------------------------
+// Function: appeonprint2pdf()
+//------------------------------------------------------------------------------
+// Description: 
+// 				Prints the specified DataWindow/DataStore as a PDF file with the 
+//                PDFPrinter on the Appeon Server.
+//	
+// Arguments: 
+//		powerobject	adw - datawindow/datastore that will print
+//	
+// Returns:  integer 1 when sucessful otherwise -1
+//------------------------------------------------------------------------------
+// Author:	APPEON		Date: 2005-11
+//------------------------------------------------------------------------------
+// Revision History: 
+//				1.0   Initial version
+//==============================================================================
+
+Integer nRet
+AppeonFileService fileserv
+fileserv = Create AppeonFileService
+
+nRet = fileserv.Of_Print2Pdf(adw)
+
+Destroy fileserv
+Return nRet
+
+
+
+end function
+

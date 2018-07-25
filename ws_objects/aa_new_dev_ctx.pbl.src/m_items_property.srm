@@ -1,0 +1,265 @@
+﻿$PBExportHeader$m_items_property.srm
+forward
+global type m_items_property from menu
+end type
+type m_properties from menu within m_items_property
+end type
+type m_print from menu within m_items_property
+end type
+type m_0 from menu within m_items_property
+end type
+type m_gotodatefield from menu within m_items_property
+end type
+type m_gotoactionitemtab from menu within m_items_property
+end type
+type m_gotodetailtab from menu within m_items_property
+end type
+global type m_items_property from menu
+m_properties m_properties
+m_print m_print
+m_0 m_0
+m_gotodatefield m_gotodatefield
+m_gotoactionitemtab m_gotoactionitemtab
+m_gotodetailtab m_gotodetailtab
+end type
+end forward
+
+global type m_items_property from menu
+m_properties m_properties
+m_print m_print
+m_0 m_0
+m_gotodatefield m_gotodatefield
+m_gotoactionitemtab m_gotoactionitemtab
+m_gotodetailtab m_gotodetailtab
+end type
+global m_items_property m_items_property
+
+type variables
+u_dw_calendar_item	iu_dwitems
+
+end variables
+
+on m_items_property.create
+m_items_property=this
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_properties=create m_properties
+this.m_print=create m_print
+this.m_0=create m_0
+this.m_gotodatefield=create m_gotodatefield
+this.m_gotoactionitemtab=create m_gotoactionitemtab
+this.m_gotodetailtab=create m_gotodetailtab
+this.Item[UpperBound(this.Item)+1]=this.m_properties
+this.Item[UpperBound(this.Item)+1]=this.m_print
+this.Item[UpperBound(this.Item)+1]=this.m_0
+this.Item[UpperBound(this.Item)+1]=this.m_gotodatefield
+this.Item[UpperBound(this.Item)+1]=this.m_gotoactionitemtab
+this.Item[UpperBound(this.Item)+1]=this.m_gotodetailtab
+end on
+
+on m_items_property.destroy
+call super::destroy
+destroy(this.m_properties)
+destroy(this.m_print)
+destroy(this.m_0)
+destroy(this.m_gotodatefield)
+destroy(this.m_gotoactionitemtab)
+destroy(this.m_gotodetailtab)
+end on
+
+type m_properties from menu within m_items_property
+end type
+
+on m_properties.create
+call super::create
+this.text = "Properties"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_properties.destroy
+call super::destroy
+end on
+
+event clicked;iu_dwItems.Dynamic Event ue_Property()
+
+end event
+
+type m_print from menu within m_items_property
+end type
+
+event clicked;iu_dwItems.Dynamic Event ue_Print()
+end event
+
+on m_print.create
+call super::create
+this.visible = false
+this.text = "Print"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_print.destroy
+call super::destroy
+end on
+
+type m_0 from menu within m_items_property
+end type
+
+on m_0.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_0.destroy
+call super::destroy
+end on
+
+type m_gotodatefield from menu within m_items_property
+end type
+
+on m_gotodatefield.create
+call super::create
+this.text = "Go To Date Field"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_gotodatefield.destroy
+call super::destroy
+end on
+
+event clicked;iu_dwItems.Dynamic Event ue_GoToDateField()
+
+end event
+
+type m_gotoactionitemtab from menu within m_items_property
+end type
+
+on m_gotoactionitemtab.create
+call super::create
+this.text = "Go To Action Item Tab"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_gotoactionitemtab.destroy
+call super::destroy
+end on
+
+event clicked;iu_dwItems.Dynamic Event ue_GoToActionTab()
+
+end event
+
+type m_gotodetailtab from menu within m_items_property
+end type
+
+on m_gotodetailtab.create
+call super::create
+this.text = "Go to Detail Tab"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_gotodetailtab.destroy
+call super::destroy
+end on
+
+event clicked;iu_dwItems.Dynamic Event ue_GoToDetailTab()
+
+end event
+

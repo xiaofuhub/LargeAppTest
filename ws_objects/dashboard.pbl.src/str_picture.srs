@@ -1,0 +1,8 @@
+﻿$PBExportHeader$str_picture.srs
+global type str_picture from structure
+	string		as_type
+	string		as_pic_file
+	long		al_pic_id
+	boolean		ab_support_picture_painter
+end type
+

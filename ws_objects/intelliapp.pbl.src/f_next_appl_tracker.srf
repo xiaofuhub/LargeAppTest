@@ -1,0 +1,37 @@
+﻿$PBExportHeader$f_next_appl_tracker.srf
+global type f_next_appl_tracker from function_object
+end type
+
+forward prototypes
+global function long f_next_appl_tracker (long al_active_step)
+end prototypes
+
+global function long f_next_appl_tracker (long al_active_step);//====================================================================
+//$<Function>: f_next_appl_tracker
+//$<Arguments>:
+// 	%ScriptArgs%
+//$<Return>:  long
+//$<Description>: 
+//$<Author>: (Appeon) Stephen 04.08.2016 (Bug ID #5097 for Case # 00062811: Application Action Items )
+//--------------------------------------------------------------------
+//$<Modify History>:
+//====================================================================
+long ll_next_step
+long ll_step[]
+integer li_i
+
+select top 1 step_1_type, step_2_type, step_3_type, step_4_type, step_5_type, step_6_type, step_7_type, step_8_type, step_9_type, step_10_type, final_step
+   into :ll_step[1], :ll_step[2], :ll_step[3], :ll_step[4],  :ll_step[5], :ll_step[6], :ll_step[7], :ll_step[8], :ll_step[9], :ll_step[10], :ll_step[11]
+  from sys_appl_tracker using sqlca;
+
+ll_next_step = 0
+for li_i = 1 to 10
+	if al_active_step = ll_step[li_i]  then
+		ll_next_step = ll_step[li_i + 1]
+		exit
+	end if
+next
+
+return ll_next_step
+end function
+

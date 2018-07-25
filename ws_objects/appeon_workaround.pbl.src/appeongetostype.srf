@@ -1,0 +1,38 @@
+﻿$PBExportHeader$appeongetostype.srf
+global type appeongetostype from function_object
+end type
+
+forward prototypes
+global function string appeongetostype ()
+end prototypes
+
+global function string appeongetostype ();//==============================================================================
+// 
+// Copyright ? 2001-2006 Appeon, Inc. and its subsidiaries. All rights reserved.
+// 
+//------------------------------------------------------------------------------
+// Function: appeongetostype()
+//------------------------------------------------------------------------------
+// Description: 
+// 				Returns the type of OS that runs your application.
+//	
+// Arguments:(None)
+//	
+// Returns:  string
+//------------------------------------------------------------------------------
+// Author:	APPEON		Date: 2005-11
+//------------------------------------------------------------------------------
+// Revision History: 
+//				1.0   Initial version
+//==============================================================================
+
+String strRet
+AppeonExtFuncs funs
+funs = Create AppeonExtFuncs
+
+strRet = funs.of_GetOsType()
+
+Destroy funs
+Return strRet
+end function
+

@@ -1,0 +1,11 @@
+﻿$PBExportHeader$str_set_properties.srs
+global type str_set_properties from structure
+	pfc_cst_u_contract_data_design		lst_data_design
+	uo_contract_design_menu		lst_menu
+	pfc_cst_u_band_painter		lst_band_painter
+	datawindow		dw_item
+	string		lst_code
+	string		lst_object[]
+	pfc_cst_u_band		lst_band
+end type
+

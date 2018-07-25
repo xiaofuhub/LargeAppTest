@@ -1,0 +1,32 @@
+﻿$PBExportHeader$of_tdl_sort_order_reset.srf
+global type of_tdl_sort_order_reset from function_object
+end type
+
+forward prototypes
+global function integer of_tdl_sort_order_reset ()
+end prototypes
+
+global function integer of_tdl_sort_order_reset ();//Start Code Change ----07.27.2017 #V154 maha - designed for resetting sort values in the TDL 
+//called from TDL painter
+integer r
+integer rc
+n_ds lds_tdl
+
+lds_tdl = create n_ds
+
+lds_tdl.dataobject = "d_tdl_sort_set"
+lds_tdl.settransobject(sqlca)
+rc = lds_tdl.retrieve()
+
+for r = 1 to rc
+	lds_tdl.setitem(r, "sort_order", r * 10)
+next
+
+lds_tdl.update()
+
+destroy lds_tdl
+
+
+return 1
+end function
+

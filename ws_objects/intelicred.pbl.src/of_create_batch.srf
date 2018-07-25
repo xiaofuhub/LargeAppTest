@@ -1,0 +1,103 @@
+﻿$PBExportHeader$of_create_batch.srf
+global type of_create_batch from function_object
+end type
+
+forward prototypes
+global function integer of_create_batch (long al_pracs[], string as_from, string as_sql)
+end prototypes
+
+global function integer of_create_batch (long al_pracs[], string as_from, string as_sql);//Start Code Change ---- 10.03.2006 #620 maha
+//created 07.10.06 maha for creation of intellibatch lists
+integer res
+string ls_bname
+long ll_batch
+long r
+long nr
+long pc
+long li_pracid[]
+datawindowchild dwchild
+datastore dw_batch_detail
+datastore dw_batch_items
+//res = messagebox("IntelliBatch Save","This will allow you to save the retrieved practitioners in an IntelliBatch List.~rContinue?",question!,yesno!,1)
+
+openwithparm(w_get_filter_name,"B")
+
+ls_bname = message.stringparm
+
+if lower(ls_bname) = 'cancel' then return 0
+
+dw_batch_detail = create datastore
+dw_batch_items = create datastore
+
+dw_batch_detail.dataobject = "d_batch_list_detail"
+dw_batch_items.dataobject = "d_batch_items_list"
+
+select batch_id into :ll_batch from sys_batch_list where batch_name = :ls_bname;
+
+if ll_batch > 0 then //batch name exists
+	open(w_duplicate_name)
+	if message.doubleparm = 2 then //resave
+		return -1
+	else  //update existing batch and delete list items
+		dw_batch_detail.settransobject(sqlca)
+		dw_batch_detail.retrieve(ll_batch)
+		dw_batch_detail.setitem(1,"batch_name",ls_bname)
+		dw_batch_detail.setitem(1,"last_mod",today())
+		dw_batch_detail.setitem(1,"mod_by",gs_user_id)
+		dw_batch_detail.setitem(1,"create_sql",as_sql)
+		delete from sys_batch_items where batch_id = :ll_batch; //delete the existing batch items
+		commit using sqlca;
+	end if
+else //create new batch record
+	dw_batch_detail.settransobject(sqlca)
+	dw_batch_detail.insertrow(1)
+	dw_batch_detail.setitem(1,"batch_name",ls_bname)
+	dw_batch_detail.setitem(1,"last_mod",today())
+	dw_batch_detail.setitem(1,"mod_by",gs_user_id)
+	dw_batch_detail.setitem(1,"create_date",today())
+	dw_batch_detail.setitem(1,"create_by",gs_user_id)
+	dw_batch_detail.setitem(1,"create_sql",as_sql)
+
+	select max(batch_id) into :ll_batch from sys_batch_list;
+	if isnull(ll_batch) or ll_batch < 1 then ll_batch = 0
+	ll_batch++
+	dw_batch_detail.setitem(1,"batch_id",ll_batch)
+end if
+
+res = dw_batch_detail.update()
+if res < 1 then
+	messagebox("Save Error","Unable to save batch")
+	return -1
+end if
+
+//create the batch list items
+li_pracid[] = al_pracs[]
+dw_batch_items.settransobject(sqlca)
+dw_batch_items.reset()
+pc = upperbound(li_pracid[])
+//messagebox("pc",pc)
+for r = 1 to pc
+	nr = dw_batch_items.insertrow(r)	
+	dw_batch_items.setitem(nr,"batch_id",ll_batch)
+	dw_batch_items.setitem(nr,"item_id",nr)
+	dw_batch_items.setitem(nr,"prac_id",li_pracid[r])
+//	ist_search.ls_name[r] = lds_prac_list.getitemstring(r,"v_full_name_full_name")
+next
+
+res = dw_batch_items.update()
+if res < 1 then
+	messagebox("Save Error","Unable to save batch Items")
+	return -1
+end if
+commit using sqlca;
+
+DESTROY dw_batch_detail
+DESTROY dw_batch_items
+//--------------------------- APPEON BEGIN ---------------------------
+//$<add> 10.09.2006 By: Jack (Inova)
+//$<reason> Fix a defect.
+return 1
+//---------------------------- APPEON END ----------------------------
+
+end function
+

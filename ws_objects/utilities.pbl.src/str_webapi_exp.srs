@@ -1,0 +1,7 @@
+﻿$PBExportHeader$str_webapi_exp.srs
+global type str_webapi_exp from structure
+	datastore		ds_source
+	string		expression
+	string		is_columns[]
+end type
+

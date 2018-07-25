@@ -1,0 +1,87 @@
+﻿$PBExportHeader$of_dv_field_add_to_views.srf
+global type of_dv_field_add_to_views from function_object
+end type
+
+forward prototypes
+global function integer of_dv_field_add_to_views (long al_from, long al_to)
+end prototypes
+
+global function integer of_dv_field_add_to_views (long al_from, long al_to);//Start Code Change ---- 06.01.2006 #493 maha
+//created maha 060106 to add new fields to all views replaces of_add_dv_fields in w_priv_update
+
+integer fc
+integer newf
+integer vc
+integer cnt
+integer cc
+integer f
+integer v
+integer c
+datastore ds_f //list of fields retrieved by arguments
+datastore ds_v //list of all views that have the screen except default
+datastore ds_c//check/add list
+datastore ds_copy
+integer vid
+integer sid
+long fid
+long dvfid
+
+ds_f = create datastore
+ds_v = create datastore
+ds_c = create datastore
+ds_copy = create datastore
+
+ds_f.dataobject = "d_dvfadd_fields"
+ds_v.dataobject = "d_dvfadd_views"
+ds_c.dataobject = "d_dvfadd_checkfield"
+ds_copy.dataobject = "d_dvfadd_fields"
+
+ds_f.settransobject(sqlca)
+ds_v.settransobject(sqlca)
+ds_c.settransobject(sqlca)
+ds_copy.settransobject(sqlca)
+
+//get list of data view_fields to be checked. Arguments are a range of field_ids
+fc = ds_f.retrieve(al_from,al_to)
+//debugbreak()
+for f = 1 to fc
+	fid = ds_f.getitemnumber(f,"field_id")
+	sid = ds_f.getitemnumber(f,"screen_id")
+	//get views
+	vc = ds_v.retrieve(sid)
+	for v = 1 to vc
+		vid = ds_v.getitemnumber(v,"data_view_id")
+		cc = ds_c.retrieve(vid,sid,fid)
+		if cc = 0 then //field not found
+			ds_f.rowscopy( f, f, primary!, ds_copy, 10000, primary!)
+			ds_copy.setitem(ds_copy.rowcount(),"data_view_id",vid)
+			//ds_copy.setitem(ds_copy.rowcount(),"data_view_id",vid)
+		end if
+	next
+	
+next
+long qwe
+cnt = ds_copy.rowcount( )
+
+if cnt > 0 then
+	select max(data_view_field_id) into :dvfid from data_view_fields;
+	for newf = 1 to cnt
+		dvfid++
+		//qwe = 
+		//messagebox(string(ds_copy.getitemnumber(newf,"data_view_id")),dvfid)
+		ds_copy.setitem(newf,"data_view_field_id",string(dvfid))
+	next
+	ds_copy.update( )
+	commit using sqlca;
+end if
+
+destroy ds_f
+destroy ds_v
+destroy ds_c 
+destroy ds_copy
+
+
+
+return 1
+end function
+

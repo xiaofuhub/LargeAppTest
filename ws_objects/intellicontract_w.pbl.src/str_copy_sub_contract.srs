@@ -1,0 +1,7 @@
+﻿$PBExportHeader$str_copy_sub_contract.srs
+global type str_copy_sub_contract from structure
+	long		al_ctx_id
+	string		as_master_contract_name
+	string		as_type
+end type
+

@@ -1,0 +1,50 @@
+﻿$PBExportHeader$d_dashb_gadget_recent_ctx.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 grid.columnmove=no selected.mouse=no )
+header(height=76 color="553648127" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes identity=yes name=id dbname="dashboard_gadgets_recent.id" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=user_id dbname="dashboard_gadgets_recent.user_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=data_id dbname="dashboard_gadgets_recent.data_id" )
+ column=(type=datetime update=yes updatewhereclause=yes name=access_date dbname="dashboard_gadgets_recent.access_date" )
+ column=(type=char(10) updatewhereclause=yes name=dashboard_gadgets_recent_recent_type dbname="dashboard_gadgets_recent.recent_type" )
+ column=(type=long updatewhereclause=yes name=ctx_basic_info_ctx_id dbname="ctx_basic_info.ctx_id" )
+ column=(type=char(30) updatewhereclause=yes name=code_lookup_category dbname="code_lookup.category" )
+ column=(type=char(150) updatewhereclause=yes name=app_facility_company dbname="app_facility.company" )
+ column=(type=char(30) updatewhereclause=yes name=code_lookup_status dbname="code_lookup.status" )
+ column=(type=char(30) updatewhereclause=yes name=code_lookup_product_type dbname="code_lookup.product_type" )
+ column=(type=char(30) updatewhereclause=yes name=code_lookup_product_name dbname="code_lookup.product_name" )
+ retrieve="SELECT Top 10 dashboard_gadgets_recent.id,   
+         dashboard_gadgets_recent.user_id,   
+         dashboard_gadgets_recent.data_id,   
+         dashboard_gadgets_recent.access_date,   
+         dashboard_gadgets_recent.recent_type,   
+         ctx_basic_info.ctx_id,   
+			code_lookup_a.code category, 
+			app_facility.facility_name company,
+			code_lookup_b.code status,
+			code_lookup_c.code product_type,
+			code_lookup_d.code product_name
+    FROM dashboard_gadgets_recent,   
+         ctx_basic_info Left Join Code_lookup code_lookup_a on  ctx_basic_info.category = code_lookup_a.lookup_code
+			Left Join Code_lookup code_lookup_b on  ctx_basic_info.status = code_lookup_b.lookup_code
+			Left Join Code_lookup code_lookup_c on  ctx_basic_info.product_type = code_lookup_c.lookup_code
+			Left Join Code_lookup code_lookup_d on  ctx_basic_info.product_name = code_lookup_d.lookup_code
+			Left Join app_facility app_facility on  ctx_basic_info.app_facility = app_facility.facility_id
+   WHERE ( dashboard_gadgets_recent.data_id = ctx_basic_info.ctx_id )
+		And( ctx_basic_info.is_template = 0 )
+		And( Dashboard_gadgets_recent.user_id = :as_user_id )    
+		And( Upper(Dashboard_gadgets_recent.recent_type) = 'CTX' )
+	Order By dashboard_gadgets_recent.access_date DESC" arguments=(("as_user_id", string))  sort="access_date D " )
+text(band=header alignment="2" text="Last Access Date" border="0" color="33554432" x="9" y="12" height="52" width="398" html.valueishtml="0"  name=access_date_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Contract" border="0" color="0" x="416" y="12" height="52" width="4850" html.valueishtml="0"  name=t_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="2" tabsequence=32766 border="0" color="33554432" x="9" y="8" height="64" width="398" format="[shortdate] [time]" html.valueishtml="0"  name=access_date visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=2 editmask.focusrectangle=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="String( ctx_basic_info_ctx_id ) + '  ' +                                                                              If ( isnull(app_facility_company),'' ,app_facility_company ) + '  ' +                                      If ( isnull(code_lookup_product_type),'', code_lookup_product_type) +'  '+                      If ( isnull(code_lookup_product_name),'',code_lookup_product_name ) +  '  '+                If ( isnull(code_lookup_status),'',code_lookup_status ) + '  ' +                                           If ( isnull(code_lookup_category), '' ,code_lookup_category )+ '  '"border="0" color="0" x="416" y="8" height="76" width="4850" format="[GENERAL]" html.valueishtml="0"  name=compute_1 pointer="HyperLink!" visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

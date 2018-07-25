@@ -1,0 +1,18 @@
+﻿$PBExportHeader$d_dddw_address_lookup_all.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=lookup_code dbname="address_lookup.lookup_code" )
+ column=(type=char(15) updatewhereclause=yes name=code dbname="address_lookup.code" )
+ column=(type=char(35) update=yes updatewhereclause=yes name=city dbname="address_lookup.city" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=state dbname="address_lookup.state" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=lookup_name dbname="address_lookup.lookup_name" )
+ column=(type=char(100) updatewhereclause=yes name=entity_name dbname="address_lookup.entity_name" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"address_lookup~" ) COLUMN(NAME=~"address_lookup.lookup_code~") COLUMN(NAME=~"address_lookup.code~") COLUMN(NAME=~"address_lookup.city~") COLUMN(NAME=~"address_lookup.state~") COLUMN(NAME=~"address_lookup.lookup_name~") COLUMN(NAME=~"address_lookup.entity_name~")) " update="address_lookup" updatewhere=1 updatekeyinplace=no )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="430" y="8" height="56" width="974" format="[general]"  name=entity_name edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=50 border="0" color="0" x="1426" y="8" height="56" width="695" format="[general]"  name=city edit.limit=35 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=60 border="0" color="0" x="2144" y="8" height="56" width="87" format="[general]"  name=state edit.limit=2 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="18" y="8" height="56" width="389" format="[general]"  name=code edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

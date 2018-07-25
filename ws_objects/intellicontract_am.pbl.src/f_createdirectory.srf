@@ -1,0 +1,45 @@
+﻿$PBExportHeader$f_createdirectory.srf
+global type f_createdirectory from function_object
+end type
+
+forward prototypes
+global function boolean f_createdirectory (string as_directoryname)
+end prototypes
+
+global function boolean f_createdirectory (string as_directoryname);
+integer li_length, li_count, li_pos
+integer li_i, li_ret = 1
+string ls_right, ls_path, ls_subpath[], ls_left
+boolean lb_path = True
+
+li_length = len(as_directoryname)
+ls_left = left(as_directoryname, 3)
+ls_right = right(as_directoryname, li_length - 3)
+Do While lb_path
+	 li_pos = pos(ls_right, '\')
+	 li_i++
+	 If li_pos > 0 Then
+		  ls_subpath[li_i] = left(ls_right, li_pos)
+		  ls_right = right(ls_right, len(ls_right) - li_pos)
+	 Else
+		  ls_subpath[li_i] = ls_right
+		  lb_path = False
+	 End If
+Loop
+
+li_count = upperbound(ls_subpath)
+For li_i = 1 To li_count
+	 If li_i = 1 Then
+		ls_path = ls_left + ls_subpath[li_i]
+	 Else
+		ls_path += ls_subpath[li_i]
+	 End If
+	 If Not DirectoryExists(ls_path) Then
+		li_ret = createdirectory(ls_path)
+		If li_ret = -1 Then Exit
+	 End If
+Next
+
+Return directoryexists(as_directoryname)
+end function
+

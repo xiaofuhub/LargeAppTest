@@ -1,0 +1,135 @@
+﻿$PBExportHeader$of_photo_data_modify.srf
+global type of_photo_data_modify from function_object
+end type
+
+forward prototypes
+global function integer of_photo_data_modify (u_dw dw_p_data, u_dw dw_photo_settings, long al_prac, long al_facil)
+end prototypes
+
+global function integer of_photo_data_modify (u_dw dw_p_data, u_dw dw_photo_settings, long al_prac, long al_facil);//Start Code Change ----05.17.2017 #V154 maha - added
+integer r
+integer rc
+integer li_vis
+integer c
+integer t
+integer li_pos1, li_pos2, li_pos3, li_pos_end    //maha 09.29.2017
+long ll_color
+string ls_field
+string ls_label
+string ls_text
+string ls_sql
+string ls_val
+string s
+string m
+string ls_presentation_str
+string ls_dwsyntax_str
+string ERRORS
+string ls_table  //maha 09.29.2017
+any la_value
+datastore lds_sql
+ 
+ 
+ 
+ rc = dw_photo_settings.rowcount()
+ if rc = 0 then return 1
+
+ for r = 1 to rc
+	li_vis = dw_photo_settings.getitemnumber(r, "is_visible")
+	ls_field = dw_photo_settings.getitemstring(r, "pb_field_name")	
+	ls_label = dw_photo_settings.getitemstring(r, "field_label_name")
+	
+	
+	if li_vis = 0 then
+		s = dw_p_data.modify( ls_field + ".visible=false")
+		s = dw_p_data.modify( ls_label + ".visible=false")
+	else
+		ls_text = dw_photo_settings.getitemstring(r, "field_label")
+		ll_color = dw_photo_settings.getitemnumber(r, "set_color")
+		
+		if ls_label = "@" or ls_text = "@" then
+			//no change
+		else
+			m = ls_label + ".text ='" + ls_text + "'"
+			s = dw_p_data.modify(m)
+		end if
+		
+		m = ls_field + ".color ='" + string(ll_color) + "'"
+		s = dw_p_data.modify( m )
+		
+		choose case ls_field
+			case "cust_1", "cust_2", "cust_3"
+				ls_sql = dw_photo_settings.getitemstring(r, "cust_query")
+				if len(ls_sql ) > 12 then	
+				//Start Code Change ----09.29.2017 #V154 maha - added table qualification for linked tables
+					//debugbreak()
+					li_pos1 = pos(ls_sql, "pd_", 1)
+					li_pos2 = pos(ls_sql, "." , li_pos1)
+					li_pos3 = pos(ls_sql, "," , li_pos1)
+					 
+					if li_pos2 > 0  then
+						if li_pos3 > 0 then
+							if li_pos2 < li_pos3 then
+								li_pos_end = li_pos2
+							else
+								li_pos_end = li_pos3
+							end if
+						else
+							li_pos_end = li_pos2
+						end if
+					else
+						li_pos_end = li_pos3
+					end if
+					
+					//if li_pos_end < li_pos1 then  messagebox( string(li_pos1) + " " +string(li_pos_end), ls_sql)
+					
+					//if pos(ls_sql, " ", li_pos1) < li_pos2 then li_pos2 = pos(ls_sql, " ", li_pos1)
+					ls_table = mid( ls_sql, li_pos1, li_pos_end - li_pos1 )
+
+			//Start Code Change ----10.02.2017 #V154 maha		
+					if pos(ls_sql, " WHERE ", 1) = 0 then
+						ls_sql = ls_sql + " WHERE " + ls_table + ".prac_id = " + string(al_prac)
+					else
+						ls_sql = ls_sql + " AND " + ls_table + ".prac_id = " + string(al_prac)
+					end if
+					
+					if pos(ls_sql, "@facil@",1) > 0 then  //Start Code Change ----10.10.2017 #V154 maha
+						ls_sql = of_strip_char("@facil@", ls_sql,string(al_facil) )
+					end if
+				//messagebox("Test", ls_sql)	
+			//End Code Change ----10.02.2017 
+					lds_sql = Create datastore
+					ls_presentation_str = "style(type=grid)" 
+					ls_dwsyntax_str = SQLCA.SyntaxFromSQL(ls_sql, ls_presentation_str, ERRORS)
+					IF LenA(ERRORS) > 0 THEN //this will fail if the table has not been completed
+							MessageBox("Caution", &
+							"SyntaxFromSQL caused these errors: " + ERRORS)
+							Continue
+					END IF
+					
+					lds_sql.Create( ls_dwsyntax_str, ERRORS)
+					lds_sql.SetTransObject( SQLCA )
+					c = lds_sql.retrieve()
+					
+					if c > 0 then
+						la_value = lds_sql.object.data[1,1]
+						ls_val  = string(la_value)
+						//m = ls_field + ".text ='" + ls_val + "'"
+						t = dw_p_data.setitem(1, ls_field, ls_val)
+						//t = dw_p_data.setitem(1, ls_field, la_value)
+						if t < 1 then messagebox("setitem failed", t)
+					end if
+					
+					destroy lds_sql
+				end if
+			case else
+				//skip
+		end choose
+	end if
+next
+
+dw_p_data.Modify("DataWindow.Zoom=" + string(gi_zoom))  //Start Code Change ----07.13.2017 #V154 maha - added for font increase
+
+		
+ return 1
+end function
+

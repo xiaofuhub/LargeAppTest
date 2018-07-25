@@ -1,0 +1,5 @@
+﻿$PBExportHeader$str_expand_flag.srs
+global type str_expand_flag from structure
+	boolean		row[]
+end type
+

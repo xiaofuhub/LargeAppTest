@@ -1,0 +1,75 @@
+﻿$PBExportHeader$of_view_document.srf
+global type of_view_document from function_object
+end type
+
+forward prototypes
+global function integer of_view_document (string as_file, string as_ext, long al_record, string as_from)
+end prototypes
+
+global function integer of_view_document (string as_file, string as_ext, long al_record, string as_from);//Start Code Change ----10.06.2016 #V153 maha - copied from oig view document
+
+String ls_file_temp, ls_file, ls_Null
+string ls_ext  //maha 07.13.2011
+string ls_document_path
+Blob lblb_data
+str_office_ocx lstr_parms
+n_cst_dm_utils lnv_dm_utils
+n_runandwait ln_runandwait //(Appeon)Stephen 09.27.2017 - V15.4 Testing Bug # 5813 - Issues with Stored Reports
+
+IF IsValid(w_office_display) THEN Close(w_office_display)
+IF IsValid(w_image_display) THEN Close(w_image_display)
+
+//Download document to blob
+lblb_data = of_download_file(as_from,"", al_record)
+IF isnull(lblb_data) THEN
+	messagebox("File Download","There is no document data associated with this record.")
+	RETURN -1
+END IF
+//Start Code Change ----07.13.2011 #V11 maha 
+ls_ext = as_ext
+ls_file = as_file
+if isnull(ls_file) then ls_file = ""
+
+ls_document_path = gs_temp_path    //gs_dir_path   //Start Code Change ----03.03.2017 #V153 maha - changed variable.
+
+//if as_file = "*GETFILE*" then
+//	select file_name, file_type into :ls_file, :ls_ext from pd_oppe_docs where dcmt_id = :al_record;
+//end if
+
+ls_ext = of_strip_char(".",ls_ext,"") //check for period
+//Start Code Change ----07.13.2011
+  
+//Save blob to document
+ls_file_temp = ls_document_path + as_file + "." + ls_ext
+IF lnv_dm_utils.of_saveblob( ls_file_temp, lblb_data) = -1 THEN 
+	messagebox("File Download","Failed to save blob to the document of " + ls_file_temp + '!')
+	RETURN -1
+END IF	
+
+DO 
+	Yield( )
+LOOP UNTIL FileExists(ls_file_temp)
+	
+//Open document
+CHOOSE CASE Upper(ls_ext)
+	CASE 'TIF', 'BMP','JPG' //,'PDF' -commented by alfee 10.28.2014 for BugA102801
+		//IF IsNull(ls_file) THEN as_file = ''  maha moved above
+		OpenWithParm(w_image_display, ls_file_temp + '|' + ls_file)
+	CASE 'DOC', 'XLS', 'DOCX', 'XLSX' 
+		lstr_parms.call_from = 'OPPE'
+		lstr_parms.file_ext = ls_ext
+		lstr_parms.file_name = ls_file_temp
+		lstr_parms.file_name_ori = ls_file
+		lstr_parms.read_only = TRUE
+		OpenWithParm(w_office_display, lstr_parms)
+	CASE ELSE
+		SetNull(ls_Null)
+		//---------Begin Modified by (Appeon)Stephen 09.27.2017 for V15.4 Testing Bug # 5813 - Issues with Stored Reports--------
+		//ShellExecuteA ( Handle( This ), "open", ls_file_temp , ls_Null, ls_Null, 4)
+		ln_runandwait.of_ShellRun(ls_file_temp, "Open", Maximized!)
+		//---------End Modfiied ------------------------------------------------------
+END CHOOSE
+
+RETURN 1
+end function
+

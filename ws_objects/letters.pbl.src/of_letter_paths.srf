@@ -1,0 +1,36 @@
+﻿$PBExportHeader$of_letter_paths.srf
+global type of_letter_paths from function_object
+end type
+
+forward prototypes
+global function string of_letter_paths (string as_type)
+end prototypes
+
+global function string of_letter_paths (string as_type);string ls_path
+
+if as_type = "L" then //letter document
+	ls_path = gs_save_path
+	if gi_citrix = 1 then 
+		ls_path = ls_path + gs_user_id + "\"
+		//CreateDirectoryA(ls_path, 0) //maha removed 062909
+	end if
+elseif as_type = "D" then //merge data source
+	if gi_citrix = 1 then
+		ls_path = gs_save_path + gs_user_id + "\"
+	else
+		ls_path = gs_temp_path + "letters\data\"
+	end if
+else
+	messagebox("Program Error","of_letter_paths")
+end if
+
+//Start Code Change ----06.29.2009 #V92 maha - create directory if not exist
+if not directoryexists(ls_path) then
+	CreateDirectoryA(ls_path, 0)  
+end if
+//End Code Change---06.29.2009
+//messagebox("",ls_path)
+
+return ls_path
+end function
+

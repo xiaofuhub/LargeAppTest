@@ -1,0 +1,15 @@
+﻿$PBExportHeader$str_webapi_resp.srs
+global type str_webapi_resp from structure
+	long		status_code
+	string		status
+	string		hdr_name[]
+	string		hdr_value[]
+	string		charset
+	string		contenttype
+	string		ContentEncoding
+	long		length
+	string		filename
+	string		headers
+	string		body
+end type
+

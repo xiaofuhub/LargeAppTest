@@ -1,0 +1,10 @@
+﻿$PBExportHeader$str_alarm_user.srs
+global type str_alarm_user from structure
+	string		s_flag
+	string		s_to_list
+	string		s_create_list
+	string		s_type
+	integer		i_notcheckcreate
+	string		s_appointment
+end type
+

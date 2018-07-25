@@ -1,0 +1,16 @@
+﻿$PBExportHeader$str_intellireport.srs
+global type str_intellireport from structure
+	long		ll_module
+	long		ll_data_view_id
+	string		ls_v_name
+	string		ls_filename
+	string		ls_screen
+	string		ls_v_alias
+	long		ll_x
+	long		ll_y
+	long		ll_width
+	long		ll_height
+	n_ds		lds[]
+	boolean		b_flag
+end type
+

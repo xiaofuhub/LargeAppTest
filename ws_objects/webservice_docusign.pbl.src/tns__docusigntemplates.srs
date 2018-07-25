@@ -1,0 +1,8 @@
+﻿$PBExportHeader$tns__docusigntemplates.srs
+$PBExportComments$Proxy imported from Web service using Web Service Proxy Generator.
+global type tns__DocuSignTemplates from structure
+   string  templateID[ ]
+   string  templateName[ ]
+   string errorText
+end type
+

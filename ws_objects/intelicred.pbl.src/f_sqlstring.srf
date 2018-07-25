@@ -1,0 +1,39 @@
+﻿$PBExportHeader$f_sqlstring.srf
+global type f_sqlstring from function_object
+end type
+
+forward prototypes
+global function string f_sqlstring (any aa_value, string as_type)
+end prototypes
+
+global function string f_sqlstring (any aa_value, string as_type);//////////////////////////////////////////////////////////////////////
+// $<function> f_sqlstring
+// $<arguments>
+//		any		aa_value
+//		string	as_type
+// $<returns> string
+// $<description> Convert sql data value to string value
+//////////////////////////////////////////////////////////////////////
+// Add by Appeon: Evan 04.11.2011
+//////////////////////////////////////////////////////////////////////
+
+string ls_Value
+
+If IsNull(aa_Value) Then
+	 ls_Value = "null"
+	 Return ls_Value
+End If
+
+Choose Case as_Type
+	Case "N" //number
+		ls_Value = String(aa_Value)
+	Case "S" //string
+		ls_Value = of_ReviseExpValue(aa_Value, "'")
+		ls_Value = "'" + String(ls_Value) + "'"
+	Case "D" //datetime
+		ls_Value = "'" + String(aa_Value, "yyyy-mm-dd hh:mm:ss") + "'"
+End Choose
+
+Return ls_Value
+end function
+

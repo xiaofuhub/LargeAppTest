@@ -1,0 +1,406 @@
+﻿$PBExportHeader$m_priv_options.srm
+forward
+global type m_priv_options from menu
+end type
+type m_addtemp from menu within m_priv_options
+end type
+type m_deltemp from menu within m_priv_options
+end type
+type m_l1 from menu within m_priv_options
+end type
+type m_copy1 from menu within m_priv_options
+end type
+type m_copy2 from menu within m_priv_options
+end type
+type m_l2 from menu within m_priv_options
+end type
+type m_saveprivilegeform from menu within m_priv_options
+end type
+type m_viewprivilegeform from menu within m_priv_options
+end type
+type m_deleteprivilegeform from menu within m_priv_options
+end type
+type m_properties from menu within m_priv_options
+end type
+global type m_priv_options from menu
+m_addtemp m_addtemp
+m_deltemp m_deltemp
+m_l1 m_l1
+m_copy1 m_copy1
+m_copy2 m_copy2
+m_l2 m_l2
+m_saveprivilegeform m_saveprivilegeform
+m_viewprivilegeform m_viewprivilegeform
+m_deleteprivilegeform m_deleteprivilegeform
+m_properties m_properties
+end type
+end forward
+
+global type m_priv_options from menu
+m_addtemp m_addtemp
+m_deltemp m_deltemp
+m_l1 m_l1
+m_copy1 m_copy1
+m_copy2 m_copy2
+m_l2 m_l2
+m_saveprivilegeform m_saveprivilegeform
+m_viewprivilegeform m_viewprivilegeform
+m_deleteprivilegeform m_deleteprivilegeform
+m_properties m_properties
+end type
+global m_priv_options m_priv_options
+
+on m_priv_options.create
+m_priv_options=this
+call super::create
+this.text = "m_priv_options"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_addtemp=create m_addtemp
+this.m_deltemp=create m_deltemp
+this.m_l1=create m_l1
+this.m_copy1=create m_copy1
+this.m_copy2=create m_copy2
+this.m_l2=create m_l2
+this.m_saveprivilegeform=create m_saveprivilegeform
+this.m_viewprivilegeform=create m_viewprivilegeform
+this.m_deleteprivilegeform=create m_deleteprivilegeform
+this.m_properties=create m_properties
+this.Item[UpperBound(this.Item)+1]=this.m_addtemp
+this.Item[UpperBound(this.Item)+1]=this.m_deltemp
+this.Item[UpperBound(this.Item)+1]=this.m_l1
+this.Item[UpperBound(this.Item)+1]=this.m_copy1
+this.Item[UpperBound(this.Item)+1]=this.m_copy2
+this.Item[UpperBound(this.Item)+1]=this.m_l2
+this.Item[UpperBound(this.Item)+1]=this.m_saveprivilegeform
+this.Item[UpperBound(this.Item)+1]=this.m_viewprivilegeform
+this.Item[UpperBound(this.Item)+1]=this.m_deleteprivilegeform
+this.Item[UpperBound(this.Item)+1]=this.m_properties
+end on
+
+on m_priv_options.destroy
+call super::destroy
+destroy(this.m_addtemp)
+destroy(this.m_deltemp)
+destroy(this.m_l1)
+destroy(this.m_copy1)
+destroy(this.m_copy2)
+destroy(this.m_l2)
+destroy(this.m_saveprivilegeform)
+destroy(this.m_viewprivilegeform)
+destroy(this.m_deleteprivilegeform)
+destroy(this.m_properties)
+end on
+
+type m_addtemp from menu within m_priv_options
+end type
+
+on m_addtemp.create
+call super::create
+this.text = "Add &New Template"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_addtemp.destroy
+call super::destroy
+end on
+
+event clicked;w_privilege_painter.TriggerEvent("ue_newtemplate")
+end event
+
+type m_deltemp from menu within m_priv_options
+end type
+
+on m_deltemp.create
+call super::create
+this.text = "&Delete Template"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_deltemp.destroy
+call super::destroy
+end on
+
+event clicked;w_privilege_painter.TriggerEvent("ue_deletetemplate")
+end event
+
+type m_l1 from menu within m_priv_options
+end type
+
+on m_l1.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_l1.destroy
+call super::destroy
+end on
+
+type m_copy1 from menu within m_priv_options
+end type
+
+on m_copy1.create
+call super::create
+this.text = "Copy All Privileges for One &Template to Another"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_copy1.destroy
+call super::destroy
+end on
+
+event clicked;w_privilege_painter.TriggerEvent("ue_CopyAllClinicalArea")
+end event
+
+type m_copy2 from menu within m_priv_options
+end type
+
+on m_copy2.create
+call super::create
+this.text = "Copy &Clinical Area Pivileges to Another Template"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_copy2.destroy
+call super::destroy
+end on
+
+event clicked;w_privilege_painter.TriggerEvent("ue_CopySingleClinicalArea")
+end event
+
+type m_l2 from menu within m_priv_options
+end type
+
+on m_l2.create
+call super::create
+this.visible = false
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_l2.destroy
+call super::destroy
+end on
+
+type m_saveprivilegeform from menu within m_priv_options
+end type
+
+on m_saveprivilegeform.create
+call super::create
+this.visible = false
+this.text = "&Upload Form..."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_saveprivilegeform.destroy
+call super::destroy
+end on
+
+event clicked;w_privilege_painter.TriggerEvent("ue_SavePrivForm")
+end event
+
+type m_viewprivilegeform from menu within m_priv_options
+end type
+
+on m_viewprivilegeform.create
+call super::create
+this.visible = false
+this.text = "&View Form..."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_viewprivilegeform.destroy
+call super::destroy
+end on
+
+event clicked;w_privilege_painter.TriggerEvent("ue_ViewPrivForm")
+end event
+
+type m_deleteprivilegeform from menu within m_priv_options
+end type
+
+event clicked;w_privilege_painter.TriggerEvent("ue_DeletePrivForm") //Added by Appeon long.zhang 03.13.2017 (BugL022701)
+end event
+
+on m_deleteprivilegeform.create
+call super::create
+this.visible = false
+this.text = "&Delete Form..."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_deleteprivilegeform.destroy
+call super::destroy
+end on
+
+type m_properties from menu within m_priv_options
+end type
+
+event clicked;w_privilege_painter.TriggerEvent("ue_ViewProperties")
+end event
+
+on m_properties.create
+call super::create
+this.visible = false
+this.text = "&Properties"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_properties.destroy
+call super::destroy
+end on
+

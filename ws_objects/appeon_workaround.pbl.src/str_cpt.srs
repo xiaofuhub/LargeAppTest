@@ -1,0 +1,8 @@
+﻿$PBExportHeader$str_cpt.srs
+global type str_cpt from structure
+	integer		i_count
+	integer		i_coltype[]
+	integer		i_collen[]
+	string		s_colname[]
+end type
+

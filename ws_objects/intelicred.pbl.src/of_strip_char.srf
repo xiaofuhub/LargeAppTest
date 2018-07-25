@@ -1,0 +1,166 @@
+﻿$PBExportHeader$of_strip_char.srf
+global type of_strip_char from function_object
+end type
+
+forward prototypes
+global function string of_strip_char (string as_strip, string as_string, string as_replace)
+end prototypes
+
+global function string of_strip_char (string as_strip, string as_string, string as_replace);//Start Code Change ---- 02.22.2007 #V7 maha - application function replaces export function that was lost with change of nv object
+//this includes several functions, including:
+//strip character - removes the specified characters of_strip_char(strip char, the string, replace character)   for a strip, as_replace shoule be an empty string
+//strip to number -  of_strip_char("",the string,"@NUM@" )
+//test db field name - used in import
+//test user name - strip all non alpha characters of_strip_char("",the string, "@USERNAME@")
+// find character - of_strip_char("@", ls_ret, "@FIND@")
+// strip extension - of_strip_char("@", ls_ret, "@EXT@")
+string ls_ret = '' 
+string ls_string
+integer i
+integer ic
+integer li_pos
+integer p1
+integer li_len
+integer li_rep_len
+integer li_string_len
+string car
+
+li_len = LenA(as_strip)
+ li_string_len =  LenA(as_string)
+ls_string = as_string
+if isnull(as_replace) then as_replace = ""
+
+if as_replace = "@NUM@" then //Start Code Change ---- 02.26.2007 #V7 maha strip to numeric values ("",the string,"@NUM@" )
+	for i = 1 to LenA(as_string)
+		car = MidA(as_string,i,1) 
+		
+		If car = '.' Then Continue //Added by Appeon long.zhang 07.23.2015 (Walk around for web version, Issue: Q on Phone Number formatting utility)
+		
+		if isnumber(car) then
+			ls_ret = ls_ret + car
+		end if
+	next
+	
+elseif as_replace = "@TOLAST@" then // code to find string to the last instance of the character passed (for directory paths) //Start Code Change ----02.25.2013 #V12 maha -  of_strip_char("\", ls_path, "@TOLAST@")
+	debugbreak()
+	p1 = 1
+	li_len = -1
+	do until p1 = 0
+		p1 = posA(as_string, as_strip , p1 + 1 )
+		if p1 > 0 then li_len = p1
+	loop
+	
+	ls_ret = midA(as_string,1,li_len)
+	
+	
+elseif as_replace = "@DBFIELD@" then //Start Code Change ---- 12.17.2007 #V7 maha --test for valid database field names
+	for i = 1 to li_string_len
+		car = MidA(ls_string,i,1) 
+		p1 = AscA(car) //test ascii value of character
+//		if i = 1 and isnumber(car) then 
+//			
+//			return "FAILS" //test for leading number
+//		end if
+		
+		
+		choose case p1
+			case 32 //space replace with underscore
+				ls_string = MidA(ls_string,1,i - 1) + "_" + MidA(ls_string,i +1)
+			case 48,49,50,51,52,53,54,55,56, 57 //numbers
+				if i = 1 then 
+					if as_strip = "@Y@" then
+						ls_string = "X" + ls_string
+						li_string_len = li_string_len + 1
+					else
+						return "FAILS"
+					end if
+				end if
+			case 65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90  //upper case letters
+				//ok
+			case  97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122	// lower case letters
+				//ok
+			case 95 //underscore
+				//ok
+//			case 94
+//				messagebox("","^")
+			case else //anything else fails
+				if as_strip = "@Y@" then
+					if i = 1 then
+						ls_string = "X" + ls_string //add X to front of field name
+						li_string_len = li_string_len + 1 //increase length by 1
+					elseif i > 1 then
+						ls_string = MidA(ls_string,1,i - 1) + "_" + MidA(ls_string,i + 1)
+					else
+						return "FAILS"
+					end if
+				else
+					return "FAILS"
+				end if
+		end choose
+	next
+	ls_ret = ls_string
+//Start Code Change ----01.04.2012 #V12 maha -- test for added user name (for WV users)
+elseif as_replace = "@USERNAME@" then 
+	for i = 1 to li_string_len
+		car = MidA(as_string,i,1) 
+		p1 = AscA(car) //test ascii value of character
+		
+		choose case p1
+			case 32 //space replace with empty string
+				ls_string = ""
+			case 48,49,50,51,52,53,54,55,56, 57 //numbers
+				ls_string = ""
+			case 65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90  //upper case letters
+				ls_string = car
+			case  97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122	// lower case letters
+				ls_string = car
+			case else //anything else fails
+				ls_string = ""
+		end choose
+		ls_ret = ls_ret + ls_string
+	next
+//End Code Change ----01.04.2012
+
+//find character
+elseif as_replace = "@FIND@"  then  //of_strip_char("@", ls_ret, "@FIND@")
+	li_pos = pos(as_string, as_strip, 2  )
+	ls_ret = string(li_pos)
+	
+//Start Code Change ----02.10.2014 #V14 maha - added to strip space from last name
+elseif as_replace = "@LASTNAME@"  then
+	ls_ret = lefttrim(as_string )
+
+//Start Code Change ----09.08.2016 #V153 maha
+elseif as_replace = "@REVERSE@"  then
+	for i = 1 to LenA(as_string)
+		car = MidA(as_string,i,1)
+		ls_ret = car + ls_ret
+	next
+	
+//Start Code Change ----11.07.2016 #V153 maha - strip extension
+elseif as_replace = "@EXT@"  then
+	li_pos = pos(as_string, ".", 2  )
+	ls_ret = mid(as_string, 1, li_pos - 1)
+	
+elseif as_replace = "@FIRSTCAP@" then
+	ls_ret = upper(mid(as_string, 1,1)) + mid(as_string, 2)
+	
+	
+else //strip character
+	if PosA(ls_string,as_strip) > 0 then
+		p1 = PosA(ls_string,as_strip)
+		li_rep_len = len(as_replace)  //Start Code Change ----08.22.2013 #V14 maha
+		do while p1 > 0
+			//ls_string = mid(ls_string,1,p1 - 1) + mid(ls_string,p1 + li_len)
+			ls_string = MidA(ls_string,1,p1 - 1) + as_replace + MidA(ls_string,p1 + li_len)
+			p1 = PosA(ls_string,as_strip, p1 + li_rep_len)  //Start Code Change ----08.22.2013 #V14 maha
+		loop
+		ls_ret = ls_string	
+	else
+		ls_ret = as_string
+	end if
+end if
+
+return ls_ret
+end function
+

@@ -1,0 +1,20 @@
+﻿$PBExportHeader$of_log_auto_export_import.srf
+global type of_log_auto_export_import from function_object
+end type
+
+forward prototypes
+global function integer of_log_auto_export_import (string as_file_name, string as_error)
+end prototypes
+
+global function integer of_log_auto_export_import (string as_file_name, string as_error);
+integer i
+
+i = FileOpen(as_file_name,     linemode!, Write!, LockWrite!, Append!)
+
+FileWrite ( i, as_error )
+
+FileClose ( i )
+
+return 1
+end function
+

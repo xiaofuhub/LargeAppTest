@@ -1,0 +1,19 @@
+﻿$PBExportHeader$d_new_sub.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=128 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=sub_module_id dbname="security_sub_module.sub_module_id" )
+ column=(type=long update=yes updatewhereclause=yes name=module_id dbname="security_sub_module.module_id" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=sub_module_name dbname="security_sub_module.sub_module_name" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"security_sub_module~" ) COLUMN(NAME=~"security_sub_module.sub_module_id~") COLUMN(NAME=~"security_sub_module.module_id~") COLUMN(NAME=~"security_sub_module.sub_module_name~")WHERE(    EXP1 =~"security_sub_module.module_id~"   OP =~"=~"    EXP2 =~":mod~" ) ) ARG(NAME = ~"mod~" TYPE = number) " update="security_sub_module" updatewhere=1 updatekeyinplace=no arguments=(("mod", number)) )
+text(band=header alignment="2" text="Sub 
+Mod Id"border="0" color="0" x="41" y="0" height="128" width="201"  name=sub_module_id_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Mod Id"border="0" color="0" x="270" y="64" height="64" width="201"  name=module_id_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Sub Module Name"border="0" color="0" x="494" y="64" height="64" width="850"  name=sub_module_name_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=10 border="0" color="0" x="50" y="0" height="76" width="210" format="[general]"  name=sub_module_id edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="1" tabsequence=20 border="0" color="0" x="274" y="0" height="76" width="187" format="[general]"  name=module_id edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="0" color="0" x="480" y="0" height="76" width="850" format="[general]"  name=sub_module_name edit.limit=30 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

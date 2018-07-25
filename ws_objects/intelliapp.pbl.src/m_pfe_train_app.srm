@@ -1,0 +1,5497 @@
+﻿$PBExportHeader$m_pfe_train_app.srm
+forward
+global type m_pfe_train_app from m_pfe_cst_master_menu
+end type
+type m_7 from menu within m_file
+end type
+type m_scanapplication from menu within m_file
+end type
+type m_10 from menu within m_file
+end type
+type m_previewpage from menu within m_file
+end type
+type m_populatewebsite from menu within m_file
+end type
+type m_previewall from menu within m_file
+end type
+type m_12 from menu within m_file
+end type
+type m_setdefaultpreviewpractitioner from menu within m_file
+end type
+type m_scanfortif from menu within m_file
+end type
+type m_copyapplication from menu within m_file
+end type
+type m_searchforapplication from menu within m_file
+end type
+type m_selectscanner from menu within m_file
+end type
+type m_changeorganization from menu within m_file
+end type
+type m_file from m_pfe_cst_master_menu`m_file within m_pfe_train_app
+m_7 m_7
+m_scanapplication m_scanapplication
+m_10 m_10
+m_previewpage m_previewpage
+m_populatewebsite m_populatewebsite
+m_previewall m_previewall
+m_12 m_12
+m_setdefaultpreviewpractitioner m_setdefaultpreviewpractitioner
+m_scanfortif m_scanfortif
+m_copyapplication m_copyapplication
+m_searchforapplication m_searchforapplication
+m_selectscanner m_selectscanner
+m_changeorganization m_changeorganization
+end type
+type m_removeobject from menu within m_edit
+end type
+type m_8 from menu within m_edit
+end type
+type m_copyfields from menu within m_edit
+end type
+type m_copyapp from menu within m_edit
+end type
+type m_update from menu within m_edit
+end type
+type m_edit from m_pfe_cst_master_menu`m_edit within m_pfe_train_app
+m_removeobject m_removeobject
+m_8 m_8
+m_copyfields m_copyfields
+m_copyapp m_copyapp
+m_update m_update
+end type
+type m_templates from menu within m_view
+end type
+type m_recordnumbers from menu within m_view
+end type
+type m_view from m_pfe_cst_master_menu`m_view within m_pfe_train_app
+m_templates m_templates
+m_recordnumbers m_recordnumbers
+end type
+type m_6 from menu within m_system
+end type
+type m_changepassword from menu within m_system
+end type
+type m_5 from menu within m_system
+end type
+type m_runactionitemsquery from menu within m_system
+end type
+type m_system from m_pfe_cst_master_menu`m_system within m_pfe_train_app
+m_6 m_6
+m_changepassword m_changepassword
+m_5 m_5
+m_runactionitemsquery m_runactionitemsquery
+end type
+type m_13 from menu within m_help
+end type
+type m_conversion from menu within m_help
+end type
+type m_help from m_pfe_cst_master_menu`m_help within m_pfe_train_app
+m_13 m_13
+m_conversion m_conversion
+end type
+type m_tools from menucascade within m_pfe_train_app
+end type
+type m_tools1 from menu within m_tools
+end type
+type m_selectfield from menu within m_tools
+end type
+type m_ropeselect from menu within m_tools
+end type
+type m_drawbox from menu within m_tools
+end type
+type m_text from menu within m_tools
+end type
+type m_highlighter from menu within m_tools
+end type
+type m_11 from menu within m_tools
+end type
+type m_autoalign from menu within m_tools
+end type
+type m_tops from menu within m_autoalign
+end type
+type m_sides from menu within m_autoalign
+end type
+type m_autoalign from menu within m_tools
+m_tops m_tops
+m_sides m_sides
+end type
+type m_aligntops from menu within m_tools
+end type
+type m_alignsides from menu within m_tools
+end type
+type m_align from menu within m_tools
+end type
+type m_connectfields from menu within m_tools
+end type
+type m_querybatch from menu within m_tools
+end type
+type m_connect from menu within m_tools
+end type
+type m_additionalpages from menu within m_tools
+end type
+type m_specialfields from menu within m_tools
+end type
+type m_testapplication from menu within m_tools
+end type
+type m_14 from menu within m_tools
+end type
+type m_refreshannotations from menu within m_tools
+end type
+type m_clearannotations from menu within m_tools
+end type
+type m_tools from menucascade within m_pfe_train_app
+m_tools1 m_tools1
+m_selectfield m_selectfield
+m_ropeselect m_ropeselect
+m_drawbox m_drawbox
+m_text m_text
+m_highlighter m_highlighter
+m_11 m_11
+m_autoalign m_autoalign
+m_aligntops m_aligntops
+m_alignsides m_alignsides
+m_align m_align
+m_connectfields m_connectfields
+m_querybatch m_querybatch
+m_connect m_connect
+m_additionalpages m_additionalpages
+m_specialfields m_specialfields
+m_testapplication m_testapplication
+m_14 m_14
+m_refreshannotations m_refreshannotations
+m_clearannotations m_clearannotations
+end type
+type m_page from menucascade within m_pfe_train_app
+end type
+type m_gotopage from menu within m_page
+end type
+type m_page1 from menu within m_page
+end type
+type m_straightenpage from menu within m_page
+end type
+type m_insertpages from menu within m_page
+end type
+type m_appendblankpage from menu within m_page
+end type
+type m_deletepage from menu within m_page
+end type
+type m_pageproperties from menu within m_page
+end type
+type m_9 from menu within m_page
+end type
+type m_previewallpages from menu within m_page
+end type
+type m_previewcurrentpage from menu within m_page
+end type
+type m_page from menucascade within m_pfe_train_app
+m_gotopage m_gotopage
+m_page1 m_page1
+m_straightenpage m_straightenpage
+m_insertpages m_insertpages
+m_appendblankpage m_appendblankpage
+m_deletepage m_deletepage
+m_pageproperties m_pageproperties
+m_9 m_9
+m_previewallpages m_previewallpages
+m_previewcurrentpage m_previewcurrentpage
+end type
+global type m_pfe_train_app from m_pfe_cst_master_menu
+m_tools m_tools
+m_page m_page
+end type
+end forward
+
+global type m_pfe_train_app from m_pfe_cst_master_menu
+m_tools m_tools
+m_page m_page
+end type
+global m_pfe_train_app m_pfe_train_app
+
+on m_pfe_train_app.create
+m_pfe_train_app=this
+call super::create
+this.m_tools=create m_tools
+this.m_page=create m_page
+this.Item[UpperBound(this.Item)+1]=this.m_tools
+this.Item[UpperBound(this.Item)+1]=this.m_page
+end on
+
+on m_pfe_train_app.destroy
+call super::destroy
+destroy(this.m_tools)
+destroy(this.m_page)
+end on
+
+type m_file from m_pfe_cst_master_menu`m_file within m_pfe_train_app
+m_7 m_7
+m_scanapplication m_scanapplication
+m_10 m_10
+m_previewpage m_previewpage
+m_populatewebsite m_populatewebsite
+m_previewall m_previewall
+m_12 m_12
+m_setdefaultpreviewpractitioner m_setdefaultpreviewpractitioner
+m_scanfortif m_scanfortif
+m_copyapplication m_copyapplication
+m_searchforapplication m_searchforapplication
+m_selectscanner m_selectscanner
+m_changeorganization m_changeorganization
+end type
+
+on m_file.create
+call super::create
+this.toolbaritembarindex = 15
+this.m_7=create m_7
+this.m_scanapplication=create m_scanapplication
+this.m_10=create m_10
+this.m_previewpage=create m_previewpage
+this.m_populatewebsite=create m_populatewebsite
+this.m_previewall=create m_previewall
+this.m_12=create m_12
+this.m_setdefaultpreviewpractitioner=create m_setdefaultpreviewpractitioner
+this.m_scanfortif=create m_scanfortif
+this.m_copyapplication=create m_copyapplication
+this.m_searchforapplication=create m_searchforapplication
+this.m_selectscanner=create m_selectscanner
+this.m_changeorganization=create m_changeorganization
+this.Item[UpperBound(this.Item)+1]=this.m_7
+this.Item[UpperBound(this.Item)+1]=this.m_scanapplication
+this.Item[UpperBound(this.Item)+1]=this.m_10
+this.Item[UpperBound(this.Item)+1]=this.m_previewpage
+this.Item[UpperBound(this.Item)+1]=this.m_populatewebsite
+this.Item[UpperBound(this.Item)+1]=this.m_previewall
+this.Item[UpperBound(this.Item)+1]=this.m_12
+this.Item[UpperBound(this.Item)+1]=this.m_setdefaultpreviewpractitioner
+this.Item[UpperBound(this.Item)+1]=this.m_scanfortif
+this.Item[UpperBound(this.Item)+1]=this.m_copyapplication
+this.Item[UpperBound(this.Item)+1]=this.m_searchforapplication
+this.Item[UpperBound(this.Item)+1]=this.m_selectscanner
+this.Item[UpperBound(this.Item)+1]=this.m_changeorganization
+end on
+
+on m_file.destroy
+call super::destroy
+destroy(this.m_7)
+destroy(this.m_scanapplication)
+destroy(this.m_10)
+destroy(this.m_previewpage)
+destroy(this.m_populatewebsite)
+destroy(this.m_previewall)
+destroy(this.m_12)
+destroy(this.m_setdefaultpreviewpractitioner)
+destroy(this.m_scanfortif)
+destroy(this.m_copyapplication)
+destroy(this.m_searchforapplication)
+destroy(this.m_selectscanner)
+destroy(this.m_changeorganization)
+end on
+
+type m_actionitems from m_pfe_cst_master_menu`m_actionitems within m_file
+end type
+
+on m_actionitems.create
+call super::create
+end on
+
+on m_actionitems.destroy
+call super::destroy
+end on
+
+type m_calendar from m_pfe_cst_master_menu`m_calendar within m_file
+end type
+
+on m_calendar.create
+call super::create
+end on
+
+on m_calendar.destroy
+call super::destroy
+end on
+
+type m_caqhfileimport from m_pfe_cst_master_menu`m_caqhfileimport within m_file
+end type
+
+on m_caqhfileimport.create
+call super::create
+end on
+
+on m_caqhfileimport.destroy
+call super::destroy
+end on
+
+type m_casepeerreview from m_pfe_cst_master_menu`m_casepeerreview within m_file
+end type
+
+on m_casepeerreview.create
+call super::create
+end on
+
+on m_casepeerreview.destroy
+call super::destroy
+end on
+
+type m_contactlog from m_pfe_cst_master_menu`m_contactlog within m_file
+end type
+
+on m_contactlog.create
+call super::create
+end on
+
+on m_contactlog.destroy
+call super::destroy
+end on
+
+type m_contactopencalls from m_pfe_cst_master_menu`m_contactopencalls within m_file
+end type
+
+on m_contactopencalls.create
+call super::create
+end on
+
+on m_contactopencalls.destroy
+call super::destroy
+end on
+
+type m_contract from m_pfe_cst_master_menu`m_contract within m_file
+end type
+
+on m_contract.create
+call super::create
+end on
+
+on m_contract.destroy
+call super::destroy
+end on
+
+type m_contacts from m_pfe_cst_master_menu`m_contacts within m_file
+end type
+
+on m_contacts.create
+call super::create
+end on
+
+on m_contacts.destroy
+call super::destroy
+end on
+
+type m_dashboard0 from m_pfe_cst_master_menu`m_dashboard0 within m_file
+end type
+
+on m_dashboard0.create
+call super::create
+end on
+
+on m_dashboard0.destroy
+call super::destroy
+end on
+
+type m_documents from m_pfe_cst_master_menu`m_documents within m_file
+end type
+
+on m_documents.create
+call super::create
+end on
+
+on m_documents.destroy
+call super::destroy
+end on
+
+type m_facility from m_pfe_cst_master_menu`m_facility within m_file
+end type
+
+on m_facility.create
+call super::create
+this.toolbaritemtext = "Facility"
+this.toolbaritemorder = 4
+end on
+
+on m_facility.destroy
+call super::destroy
+end on
+
+type m_contractglobalsearch from m_pfe_cst_master_menu`m_contractglobalsearch within m_file
+end type
+
+on m_contractglobalsearch.create
+call super::create
+end on
+
+on m_contractglobalsearch.destroy
+call super::destroy
+end on
+
+type m_grouppractices from m_pfe_cst_master_menu`m_grouppractices within m_file
+end type
+
+on m_grouppractices.create
+call super::create
+this.toolbaritemorder = 3
+end on
+
+on m_grouppractices.destroy
+call super::destroy
+end on
+
+type m_home from m_pfe_cst_master_menu`m_home within m_file
+end type
+
+on m_home.create
+call super::create
+end on
+
+on m_home.destroy
+call super::destroy
+end on
+
+type m_launchpad from m_pfe_cst_master_menu`m_launchpad within m_file
+end type
+
+on m_launchpad.create
+call super::create
+end on
+
+on m_launchpad.destroy
+call super::destroy
+end on
+
+type m_meetings from m_pfe_cst_master_menu`m_meetings within m_file
+end type
+
+on m_meetings.create
+call super::create
+this.toolbaritemvisible = true
+this.toolbaritemtext = "Meetings"
+this.toolbaritemorder = 6
+end on
+
+on m_meetings.destroy
+call super::destroy
+end on
+
+type m_ocr_appl from m_pfe_cst_master_menu`m_ocr_appl within m_file
+end type
+
+on m_ocr_appl.create
+call super::create
+end on
+
+on m_ocr_appl.destroy
+call super::destroy
+end on
+
+type m_privileging from m_pfe_cst_master_menu`m_privileging within m_file
+end type
+
+on m_privileging.create
+call super::create
+this.toolbaritemtext = "Privileging"
+this.toolbaritemorder = 8
+end on
+
+on m_privileging.destroy
+call super::destroy
+end on
+
+type m_practitioner from m_pfe_cst_master_menu`m_practitioner within m_file
+end type
+
+on m_practitioner.create
+call super::create
+this.toolbaritemorder = 2
+end on
+
+on m_practitioner.destroy
+call super::destroy
+end on
+
+type m_additionalprovider from m_pfe_cst_master_menu`m_additionalprovider within m_file
+end type
+
+on m_additionalprovider.create
+call super::create
+end on
+
+on m_additionalprovider.destroy
+call super::destroy
+end on
+
+type m_qualityprofilemeasurements from m_pfe_cst_master_menu`m_qualityprofilemeasurements within m_file
+end type
+
+on m_qualityprofilemeasurements.create
+call super::create
+end on
+
+on m_qualityprofilemeasurements.destroy
+call super::destroy
+end on
+
+type m_recruitmentevaluations from m_pfe_cst_master_menu`m_recruitmentevaluations within m_file
+end type
+
+on m_recruitmentevaluations.create
+call super::create
+end on
+
+on m_recruitmentevaluations.destroy
+call super::destroy
+end on
+
+type m_sitesurvey from m_pfe_cst_master_menu`m_sitesurvey within m_file
+end type
+
+on m_sitesurvey.create
+call super::create
+this.toolbaritemname = ""
+end on
+
+on m_sitesurvey.destroy
+call super::destroy
+end on
+
+type m_todolist from m_pfe_cst_master_menu`m_todolist within m_file
+end type
+
+on m_todolist.create
+call super::create
+end on
+
+on m_todolist.destroy
+call super::destroy
+end on
+
+type m_4 from m_pfe_cst_master_menu`m_4 within m_file
+end type
+
+on m_4.create
+call super::create
+end on
+
+on m_4.destroy
+call super::destroy
+end on
+
+type m_new_mail_message from m_pfe_cst_master_menu`m_new_mail_message within m_file
+end type
+
+on m_new_mail_message.create
+call super::create
+end on
+
+on m_new_mail_message.destroy
+call super::destroy
+end on
+
+type m_dash11 from m_pfe_cst_master_menu`m_dash11 within m_file
+end type
+
+on m_dash11.create
+call super::create
+end on
+
+on m_dash11.destroy
+call super::destroy
+end on
+
+type m_save from m_pfe_cst_master_menu`m_save within m_file
+end type
+
+event m_save::clicked;//------------------- APPEON BEGIN -------------------
+//$<modify> Evan 10.27.2010
+//$<reason> V10.5-App Mapping
+//w_train_app.of_save_mapping()
+of_SendMessage("ue_save_mapping")
+//------------------- APPEON END ---------------------
+end event
+
+on m_save.create
+call super::create
+this.toolbaritembarindex = 0
+this.toolbaritemorder = 100
+end on
+
+on m_save.destroy
+call super::destroy
+end on
+
+type m_dash12 from m_pfe_cst_master_menu`m_dash12 within m_file
+end type
+
+on m_dash12.create
+call super::create
+end on
+
+on m_dash12.destroy
+call super::destroy
+end on
+
+type m_print from m_pfe_cst_master_menu`m_print within m_file
+end type
+
+on m_print.create
+call super::create
+this.toolbaritemvisible = false
+this.toolbaritemorder = 38
+end on
+
+on m_print.destroy
+call super::destroy
+end on
+
+type m_printpreview from m_pfe_cst_master_menu`m_printpreview within m_file
+end type
+
+on m_printpreview.create
+call super::create
+end on
+
+on m_printpreview.destroy
+call super::destroy
+end on
+
+type m_pagesetup from m_pfe_cst_master_menu`m_pagesetup within m_file
+end type
+
+on m_pagesetup.create
+call super::create
+end on
+
+on m_pagesetup.destroy
+call super::destroy
+end on
+
+type m_dash13 from m_pfe_cst_master_menu`m_dash13 within m_file
+end type
+
+on m_dash13.create
+call super::create
+end on
+
+on m_dash13.destroy
+call super::destroy
+end on
+
+type m_properties from m_pfe_cst_master_menu`m_properties within m_file
+end type
+
+on m_properties.create
+call super::create
+end on
+
+on m_properties.destroy
+call super::destroy
+end on
+
+type m_dash14 from m_pfe_cst_master_menu`m_dash14 within m_file
+end type
+
+on m_dash14.create
+call super::create
+end on
+
+on m_dash14.destroy
+call super::destroy
+end on
+
+type m_close from m_pfe_cst_master_menu`m_close within m_file
+end type
+
+on m_close.create
+call super::create
+end on
+
+on m_close.destroy
+call super::destroy
+end on
+
+type m_loginas from m_pfe_cst_master_menu`m_loginas within m_file
+end type
+
+on m_loginas.create
+call super::create
+end on
+
+on m_loginas.destroy
+call super::destroy
+end on
+
+type m_exit from m_pfe_cst_master_menu`m_exit within m_file
+end type
+
+on m_exit.create
+call super::create
+end on
+
+on m_exit.destroy
+call super::destroy
+end on
+
+type m_pfcmrudash1 from m_pfe_cst_master_menu`m_pfcmrudash1 within m_file
+end type
+
+on m_pfcmrudash1.create
+call super::create
+end on
+
+on m_pfcmrudash1.destroy
+call super::destroy
+end on
+
+type m_pfcmru2 from m_pfe_cst_master_menu`m_pfcmru2 within m_file
+end type
+
+on m_pfcmru2.create
+call super::create
+end on
+
+on m_pfcmru2.destroy
+call super::destroy
+end on
+
+type m_pfcmru3 from m_pfe_cst_master_menu`m_pfcmru3 within m_file
+end type
+
+on m_pfcmru3.create
+call super::create
+end on
+
+on m_pfcmru3.destroy
+call super::destroy
+end on
+
+type m_pfcmru4 from m_pfe_cst_master_menu`m_pfcmru4 within m_file
+end type
+
+on m_pfcmru4.create
+call super::create
+end on
+
+on m_pfcmru4.destroy
+call super::destroy
+end on
+
+type m_pfcmru5 from m_pfe_cst_master_menu`m_pfcmru5 within m_file
+end type
+
+on m_pfcmru5.create
+call super::create
+end on
+
+on m_pfcmru5.destroy
+call super::destroy
+end on
+
+type m_importdata from m_pfe_cst_master_menu`m_importdata within m_file
+end type
+
+on m_importdata.create
+call super::create
+end on
+
+on m_importdata.destroy
+call super::destroy
+end on
+
+type m_edit from m_pfe_cst_master_menu`m_edit within m_pfe_train_app
+m_removeobject m_removeobject
+m_8 m_8
+m_copyfields m_copyfields
+m_copyapp m_copyapp
+m_update m_update
+end type
+
+on m_edit.create
+call super::create
+this.m_removeobject=create m_removeobject
+this.m_8=create m_8
+this.m_copyfields=create m_copyfields
+this.m_copyapp=create m_copyapp
+this.m_update=create m_update
+this.Item[UpperBound(this.Item)+1]=this.m_removeobject
+this.Item[UpperBound(this.Item)+1]=this.m_8
+this.Item[UpperBound(this.Item)+1]=this.m_copyfields
+this.Item[UpperBound(this.Item)+1]=this.m_copyapp
+this.Item[UpperBound(this.Item)+1]=this.m_update
+end on
+
+on m_edit.destroy
+call super::destroy
+destroy(this.m_removeobject)
+destroy(this.m_8)
+destroy(this.m_copyfields)
+destroy(this.m_copyapp)
+destroy(this.m_update)
+end on
+
+type m_insert from m_pfe_cst_master_menu`m_insert within m_edit
+end type
+
+on m_insert.create
+call super::create
+this.visible = false
+this.toolbaritemvisible = false
+this.toolbaritembarindex = 0
+this.toolbaritemorder = 50
+end on
+
+on m_insert.destroy
+call super::destroy
+end on
+
+type m_delete1 from m_pfe_cst_master_menu`m_delete1 within m_edit
+end type
+
+on m_delete1.create
+call super::create
+this.visible = false
+this.toolbaritemvisible = false
+this.toolbaritemname = ""
+this.toolbaritembarindex = 0
+this.toolbaritemorder = 60
+end on
+
+on m_delete1.destroy
+call super::destroy
+end on
+
+type m_110 from m_pfe_cst_master_menu`m_110 within m_edit
+end type
+
+on m_110.create
+call super::create
+this.visible = false
+end on
+
+on m_110.destroy
+call super::destroy
+end on
+
+type m_clearchanges from m_pfe_cst_master_menu`m_clearchanges within m_edit
+end type
+
+on m_clearchanges.create
+call super::create
+this.toolbaritemvisible = false
+end on
+
+on m_clearchanges.destroy
+call super::destroy
+end on
+
+type m_undo from m_pfe_cst_master_menu`m_undo within m_edit
+end type
+
+on m_undo.create
+call super::create
+this.visible = false
+this.toolbaritemvisible = false
+end on
+
+on m_undo.destroy
+call super::destroy
+end on
+
+type m_dash21 from m_pfe_cst_master_menu`m_dash21 within m_edit
+end type
+
+on m_dash21.create
+call super::create
+this.visible = false
+end on
+
+on m_dash21.destroy
+call super::destroy
+end on
+
+type m_cut from m_pfe_cst_master_menu`m_cut within m_edit
+end type
+
+on m_cut.create
+call super::create
+this.visible = false
+this.toolbaritembarindex = 3
+this.toolbaritemspace = 0
+end on
+
+event m_cut::clicked;call super::clicked;m_pfe_train_app.m_edit.m_paste.Enabled = True
+//------------------- APPEON BEGIN -------------------
+//$<modify> Evan 10.27.2010
+//$<reason> V10.5-App Mapping
+//w_train_app.of_cut( )
+of_SendMessage("ue_cut")
+//------------------- APPEON END ---------------------
+end event
+
+on m_cut.destroy
+call super::destroy
+end on
+
+type m_copy from m_pfe_cst_master_menu`m_copy within m_edit
+end type
+
+on m_copy.create
+call super::create
+this.text = "&Copy~tAlt+C"
+this.shortcut = 579
+this.toolbaritembarindex = 3
+end on
+
+event m_copy::clicked;
+if w_train_app.tab_1.selectedtab = 3 then //maha changed 090105
+	m_pfe_train_app.m_edit.m_paste.Enabled = True
+	This.Enabled = False
+	w_train_app.of_copy( )
+else
+	of_SendMessage ("pfc_copy")	
+end if
+end event
+
+on m_copy.destroy
+call super::destroy
+end on
+
+type m_paste from m_pfe_cst_master_menu`m_paste within m_edit
+end type
+
+on m_paste.create
+call super::create
+this.text = "&Paste~tAlt+V"
+this.shortcut = 598
+this.toolbaritembarindex = 3
+end on
+
+event m_paste::clicked;call super::clicked;//m_pfe_train_app.m_edit.m_paste.Enabled = True
+//This.Enabled = False
+//w_train_app.of_copy( )
+
+//------------------- APPEON BEGIN -------------------
+//$<modify> Evan 10.27.2010
+//$<reason> V10.5-App Mapping
+/*
+debugbreak()
+if w_train_app.tab_1.selectedtab = 3 then //maha changed 090105
+	w_train_app.of_paste( )
+	w_train_app.st_msg.Visible = False
+	w_train_app.st_msg.Text = "Click the position on the image where you want field placed."
+	m_pfe_train_app.m_edit.m_copy.Enabled = True
+end if
+*/
+of_SendMessage("ue_paste")
+//------------------- APPEON END ---------------------
+
+end event
+
+on m_paste.destroy
+call super::destroy
+end on
+
+type m_pastespecial from m_pfe_cst_master_menu`m_pastespecial within m_edit
+end type
+
+on m_pastespecial.create
+call super::create
+this.visible = false
+this.toolbaritemvisible = false
+end on
+
+on m_pastespecial.destroy
+call super::destroy
+end on
+
+type m_clear from m_pfe_cst_master_menu`m_clear within m_edit
+end type
+
+on m_clear.create
+call super::create
+this.visible = false
+end on
+
+on m_clear.destroy
+call super::destroy
+end on
+
+type m_dash22 from m_pfe_cst_master_menu`m_dash22 within m_edit
+end type
+
+on m_dash22.create
+call super::create
+this.visible = false
+end on
+
+on m_dash22.destroy
+call super::destroy
+end on
+
+type m_selectall from m_pfe_cst_master_menu`m_selectall within m_edit
+end type
+
+on m_selectall.create
+call super::create
+this.visible = false
+end on
+
+on m_selectall.destroy
+call super::destroy
+end on
+
+type m_dash23 from m_pfe_cst_master_menu`m_dash23 within m_edit
+end type
+
+on m_dash23.create
+call super::create
+this.visible = false
+end on
+
+on m_dash23.destroy
+call super::destroy
+end on
+
+type m_find from m_pfe_cst_master_menu`m_find within m_edit
+end type
+
+on m_find.create
+call super::create
+this.visible = false
+end on
+
+on m_find.destroy
+call super::destroy
+end on
+
+type m_replace from m_pfe_cst_master_menu`m_replace within m_edit
+end type
+
+on m_replace.create
+call super::create
+this.visible = false
+end on
+
+on m_replace.destroy
+call super::destroy
+end on
+
+type m_3 from m_pfe_cst_master_menu`m_3 within m_edit
+end type
+
+on m_3.create
+call super::create
+this.visible = false
+end on
+
+on m_3.destroy
+call super::destroy
+end on
+
+type m_restorerow from m_pfe_cst_master_menu`m_restorerow within m_edit
+end type
+
+on m_restorerow.create
+call super::create
+this.visible = false
+end on
+
+on m_restorerow.destroy
+call super::destroy
+end on
+
+type m_view from m_pfe_cst_master_menu`m_view within m_pfe_train_app
+m_templates m_templates
+m_recordnumbers m_recordnumbers
+end type
+
+on m_view.create
+call super::create
+this.m_templates=create m_templates
+this.m_recordnumbers=create m_recordnumbers
+this.Item[UpperBound(this.Item)+1]=this.m_templates
+this.Item[UpperBound(this.Item)+1]=this.m_recordnumbers
+end on
+
+on m_view.destroy
+call super::destroy
+destroy(this.m_templates)
+destroy(this.m_recordnumbers)
+end on
+
+type m_ruler from m_pfe_cst_master_menu`m_ruler within m_view
+end type
+
+on m_ruler.create
+call super::create
+this.visible = false
+end on
+
+on m_ruler.destroy
+call super::destroy
+end on
+
+type m_dash31 from m_pfe_cst_master_menu`m_dash31 within m_view
+end type
+
+on m_dash31.create
+call super::create
+this.visible = false
+end on
+
+on m_dash31.destroy
+call super::destroy
+end on
+
+type m_largeicon from m_pfe_cst_master_menu`m_largeicon within m_view
+end type
+
+on m_largeicon.create
+call super::create
+end on
+
+on m_largeicon.destroy
+call super::destroy
+end on
+
+type m_smallicons from m_pfe_cst_master_menu`m_smallicons within m_view
+end type
+
+on m_smallicons.create
+call super::create
+end on
+
+on m_smallicons.destroy
+call super::destroy
+end on
+
+type m_list from m_pfe_cst_master_menu`m_list within m_view
+end type
+
+on m_list.create
+call super::create
+end on
+
+on m_list.destroy
+call super::destroy
+end on
+
+type m_details from m_pfe_cst_master_menu`m_details within m_view
+end type
+
+on m_details.create
+call super::create
+end on
+
+on m_details.destroy
+call super::destroy
+end on
+
+type m_dash32 from m_pfe_cst_master_menu`m_dash32 within m_view
+end type
+
+on m_dash32.create
+call super::create
+end on
+
+on m_dash32.destroy
+call super::destroy
+end on
+
+type m_arrangeicons from m_pfe_cst_master_menu`m_arrangeicons within m_view
+end type
+
+on m_arrangeicons.create
+call super::create
+end on
+
+on m_arrangeicons.destroy
+call super::destroy
+end on
+
+type m_by1 from m_pfe_cst_master_menu`m_by1 within m_arrangeicons
+end type
+
+on m_by1.create
+call super::create
+end on
+
+on m_by1.destroy
+call super::destroy
+end on
+
+type m_dash33 from m_pfe_cst_master_menu`m_dash33 within m_arrangeicons
+end type
+
+on m_dash33.create
+call super::create
+end on
+
+on m_dash33.destroy
+call super::destroy
+end on
+
+type m_autoarrange from m_pfe_cst_master_menu`m_autoarrange within m_arrangeicons
+end type
+
+on m_autoarrange.create
+call super::create
+end on
+
+on m_autoarrange.destroy
+call super::destroy
+end on
+
+type m_dash34 from m_pfe_cst_master_menu`m_dash34 within m_view
+end type
+
+on m_dash34.create
+call super::create
+end on
+
+on m_dash34.destroy
+call super::destroy
+end on
+
+type m_first from m_pfe_cst_master_menu`m_first within m_view
+end type
+
+on m_first.create
+call super::create
+this.visible = false
+end on
+
+on m_first.destroy
+call super::destroy
+end on
+
+type m_nextpage from m_pfe_cst_master_menu`m_nextpage within m_view
+end type
+
+on m_nextpage.create
+call super::create
+this.toolbaritemtext = "Next Page"
+this.toolbaritembarindex = 0
+this.toolbaritemorder = 175
+end on
+
+event m_nextpage::clicked;call super::clicked;//------------------- APPEON BEGIN -------------------
+//$<modify> Evan 10.27.2010
+//$<reason> V10.5-App Mapping
+//w_train_app.of_next_page()
+of_SendMessage("ue_next_page")
+//------------------- APPEON END ---------------------
+end event
+
+on m_nextpage.destroy
+call super::destroy
+end on
+
+type m_priorpage from m_pfe_cst_master_menu`m_priorpage within m_view
+end type
+
+on m_priorpage.create
+call super::create
+this.enabled = false
+this.toolbaritemtext = "Prior Page"
+this.toolbaritembarindex = 0
+this.toolbaritemorder = 170
+end on
+
+event m_priorpage::clicked;call super::clicked;//------------------- APPEON BEGIN -------------------
+//$<modify> Evan 10.27.2010
+//$<reason> V10.5-App Mapping
+//w_train_app.of_prior_page( )
+of_SendMessage("ue_prior_page")
+//------------------- APPEON END ---------------------
+end event
+
+on m_priorpage.destroy
+call super::destroy
+end on
+
+type m_lastpage from m_pfe_cst_master_menu`m_lastpage within m_view
+end type
+
+on m_lastpage.create
+call super::create
+this.visible = false
+end on
+
+on m_lastpage.destroy
+call super::destroy
+end on
+
+type m_dash35 from m_pfe_cst_master_menu`m_dash35 within m_view
+end type
+
+on m_dash35.create
+call super::create
+this.visible = false
+end on
+
+on m_dash35.destroy
+call super::destroy
+end on
+
+type m_sort from m_pfe_cst_master_menu`m_sort within m_view
+end type
+
+on m_sort.create
+call super::create
+this.visible = false
+this.toolbaritemvisible = false
+end on
+
+on m_sort.destroy
+call super::destroy
+end on
+
+type m_filter from m_pfe_cst_master_menu`m_filter within m_view
+end type
+
+on m_filter.create
+call super::create
+this.visible = false
+this.toolbaritemvisible = false
+end on
+
+on m_filter.destroy
+call super::destroy
+end on
+
+type m_dash36 from m_pfe_cst_master_menu`m_dash36 within m_view
+end type
+
+on m_dash36.create
+call super::create
+this.visible = false
+end on
+
+on m_dash36.destroy
+call super::destroy
+end on
+
+type m_zoom from m_pfe_cst_master_menu`m_zoom within m_view
+end type
+
+on m_zoom.create
+call super::create
+this.visible = false
+this.toolbaritemvisible = false
+end on
+
+on m_zoom.destroy
+call super::destroy
+end on
+
+type m_contract0 from m_pfe_cst_master_menu`m_contract0 within m_pfe_train_app
+end type
+
+on m_contract0.create
+call super::create
+end on
+
+on m_contract0.destroy
+call super::destroy
+end on
+
+type m_new_blank_contract_record from m_pfe_cst_master_menu`m_new_blank_contract_record within m_contract0
+end type
+
+on m_new_blank_contract_record.create
+call super::create
+end on
+
+on m_new_blank_contract_record.destroy
+call super::destroy
+end on
+
+type m_new_blank_sub_contract_record from m_pfe_cst_master_menu`m_new_blank_sub_contract_record within m_contract0
+end type
+
+on m_new_blank_sub_contract_record.create
+call super::create
+end on
+
+on m_new_blank_sub_contract_record.destroy
+call super::destroy
+end on
+
+type m_new_contract from m_pfe_cst_master_menu`m_new_contract within m_contract0
+end type
+
+on m_new_contract.create
+call super::create
+end on
+
+on m_new_contract.destroy
+call super::destroy
+end on
+
+type m_copy_contract_record from m_pfe_cst_master_menu`m_copy_contract_record within m_contract0
+end type
+
+on m_copy_contract_record.create
+call super::create
+end on
+
+on m_copy_contract_record.destroy
+call super::destroy
+end on
+
+type m_copy_create_sub_contract_record from m_pfe_cst_master_menu`m_copy_create_sub_contract_record within m_contract0
+end type
+
+on m_copy_create_sub_contract_record.create
+call super::create
+end on
+
+on m_copy_create_sub_contract_record.destroy
+call super::destroy
+end on
+
+type m_copy_contract from m_pfe_cst_master_menu`m_copy_contract within m_contract0
+end type
+
+on m_copy_contract.create
+call super::create
+end on
+
+on m_copy_contract.destroy
+call super::destroy
+end on
+
+type m_contract_templates from m_pfe_cst_master_menu`m_contract_templates within m_contract0
+end type
+
+on m_contract_templates.create
+call super::create
+end on
+
+on m_contract_templates.destroy
+call super::destroy
+end on
+
+type m_template_item from m_pfe_cst_master_menu`m_template_item within m_contract0
+end type
+
+on m_template_item.create
+call super::create
+end on
+
+on m_template_item.destroy
+call super::destroy
+end on
+
+type m_reports from m_pfe_cst_master_menu`m_reports within m_pfe_train_app
+end type
+
+on m_reports.create
+call super::create
+this.shifttoright = true
+end on
+
+on m_reports.destroy
+call super::destroy
+end on
+
+type m_output from m_pfe_cst_master_menu`m_output within m_reports
+end type
+
+on m_output.create
+call super::create
+end on
+
+on m_output.destroy
+call super::destroy
+end on
+
+type m_120 from m_pfe_cst_master_menu`m_120 within m_reports
+end type
+
+on m_120.create
+call super::create
+end on
+
+on m_120.destroy
+call super::destroy
+end on
+
+type m_applications from m_pfe_cst_master_menu`m_applications within m_reports
+end type
+
+on m_applications.create
+call super::create
+end on
+
+on m_applications.destroy
+call super::destroy
+end on
+
+type m_runexport from m_pfe_cst_master_menu`m_runexport within m_reports
+end type
+
+on m_runexport.create
+call super::create
+end on
+
+on m_runexport.destroy
+call super::destroy
+end on
+
+type m_intellireport from m_pfe_cst_master_menu`m_intellireport within m_reports
+end type
+
+on m_intellireport.create
+call super::create
+end on
+
+on m_intellireport.destroy
+call super::destroy
+end on
+
+type m_letters from m_pfe_cst_master_menu`m_letters within m_reports
+end type
+
+on m_letters.create
+call super::create
+this.toolbaritemtext = "Corro."
+this.toolbaritemorder = 2
+end on
+
+on m_letters.destroy
+call super::destroy
+end on
+
+type m_npdbreports from m_pfe_cst_master_menu`m_npdbreports within m_reports
+end type
+
+on m_npdbreports.create
+call super::create
+end on
+
+on m_npdbreports.destroy
+call super::destroy
+end on
+
+type m_oneclickreports from m_pfe_cst_master_menu`m_oneclickreports within m_reports
+end type
+
+on m_oneclickreports.create
+call super::create
+end on
+
+on m_oneclickreports.destroy
+call super::destroy
+end on
+
+type m_privilegelisting from m_pfe_cst_master_menu`m_privilegelisting within m_reports
+end type
+
+on m_privilegelisting.create
+call super::create
+end on
+
+on m_privilegelisting.destroy
+call super::destroy
+end on
+
+type m_reportsgraphs from m_pfe_cst_master_menu`m_reportsgraphs within m_reports
+end type
+
+on m_reportsgraphs.create
+call super::create
+this.shifttoright = true
+end on
+
+on m_reportsgraphs.destroy
+call super::destroy
+end on
+
+type m_system from m_pfe_cst_master_menu`m_system within m_pfe_train_app
+m_6 m_6
+m_changepassword m_changepassword
+m_5 m_5
+m_runactionitemsquery m_runactionitemsquery
+end type
+
+on m_system.create
+call super::create
+this.shifttoright = true
+this.m_6=create m_6
+this.m_changepassword=create m_changepassword
+this.m_5=create m_5
+this.m_runactionitemsquery=create m_runactionitemsquery
+this.Item[UpperBound(this.Item)+1]=this.m_6
+this.Item[UpperBound(this.Item)+1]=this.m_changepassword
+this.Item[UpperBound(this.Item)+1]=this.m_5
+this.Item[UpperBound(this.Item)+1]=this.m_runactionitemsquery
+end on
+
+on m_system.destroy
+call super::destroy
+destroy(this.m_6)
+destroy(this.m_changepassword)
+destroy(this.m_5)
+destroy(this.m_runactionitemsquery)
+end on
+
+type m_applicationmapping from m_pfe_cst_master_menu`m_applicationmapping within m_system
+end type
+
+on m_applicationmapping.create
+call super::create
+this.visible = false
+this.toolbaritemvisible = false
+end on
+
+on m_applicationmapping.destroy
+call super::destroy
+end on
+
+type m_2 from m_pfe_cst_master_menu`m_2 within m_system
+end type
+
+on m_2.create
+call super::create
+end on
+
+on m_2.destroy
+call super::destroy
+end on
+
+type m_audit from m_pfe_cst_master_menu`m_audit within m_system
+end type
+
+on m_audit.create
+call super::create
+end on
+
+on m_audit.destroy
+call super::destroy
+end on
+
+type m_audittrail from m_pfe_cst_master_menu`m_audittrail within m_system
+end type
+
+on m_audittrail.create
+call super::create
+end on
+
+on m_audittrail.destroy
+call super::destroy
+end on
+
+type m_batchaddapplications from m_pfe_cst_master_menu`m_batchaddapplications within m_system
+end type
+
+on m_batchaddapplications.create
+call super::create
+end on
+
+on m_batchaddapplications.destroy
+call super::destroy
+end on
+
+type m_batchupdate from m_pfe_cst_master_menu`m_batchupdate within m_system
+end type
+
+on m_batchupdate.create
+call super::create
+end on
+
+on m_batchupdate.destroy
+call super::destroy
+end on
+
+type m_addbatch from m_pfe_cst_master_menu`m_addbatch within m_batchupdate
+end type
+
+on m_addbatch.create
+call super::create
+end on
+
+on m_addbatch.destroy
+call super::destroy
+end on
+
+type m_batchpackage from m_pfe_cst_master_menu`m_batchpackage within m_batchupdate
+end type
+
+on m_batchpackage.create
+call super::create
+end on
+
+on m_batchpackage.destroy
+call super::destroy
+end on
+
+type m_privileges from m_pfe_cst_master_menu`m_privileges within m_batchupdate
+end type
+
+on m_privileges.create
+call super::create
+end on
+
+on m_privileges.destroy
+call super::destroy
+end on
+
+type m_staffcategory from m_pfe_cst_master_menu`m_staffcategory within m_batchupdate
+end type
+
+on m_staffcategory.create
+call super::create
+end on
+
+on m_staffcategory.destroy
+call super::destroy
+end on
+
+type m_updatebatch from m_pfe_cst_master_menu`m_updatebatch within m_batchupdate
+end type
+
+on m_updatebatch.create
+call super::create
+end on
+
+on m_updatebatch.destroy
+call super::destroy
+end on
+
+type m_updatepayorappl from m_pfe_cst_master_menu`m_updatepayorappl within m_batchupdate
+end type
+
+on m_updatepayorappl.create
+call super::create
+end on
+
+on m_updatepayorappl.destroy
+call super::destroy
+end on
+
+type m_bidq from m_pfe_cst_master_menu`m_bidq within m_system
+end type
+
+on m_bidq.create
+call super::create
+end on
+
+on m_bidq.destroy
+call super::destroy
+end on
+
+type m_browseweb from m_pfe_cst_master_menu`m_browseweb within m_system
+end type
+
+on m_browseweb.create
+call super::create
+end on
+
+on m_browseweb.destroy
+call super::destroy
+end on
+
+type m_communicationlogs from m_pfe_cst_master_menu`m_communicationlogs within m_system
+end type
+
+on m_communicationlogs.create
+call super::create
+end on
+
+on m_communicationlogs.destroy
+call super::destroy
+end on
+
+type m_eamillog from m_pfe_cst_master_menu`m_eamillog within m_communicationlogs
+end type
+
+on m_eamillog.create
+call super::create
+end on
+
+on m_eamillog.destroy
+call super::destroy
+end on
+
+type m_fax_log from m_pfe_cst_master_menu`m_fax_log within m_communicationlogs
+end type
+
+on m_fax_log.create
+call super::create
+end on
+
+on m_fax_log.destroy
+call super::destroy
+end on
+
+type m_packagelog from m_pfe_cst_master_menu`m_packagelog within m_communicationlogs
+end type
+
+on m_packagelog.create
+call super::create
+end on
+
+on m_packagelog.destroy
+call super::destroy
+end on
+
+type m_deletepractitioner from m_pfe_cst_master_menu`m_deletepractitioner within m_system
+end type
+
+on m_deletepractitioner.create
+call super::create
+end on
+
+on m_deletepractitioner.destroy
+call super::destroy
+end on
+
+type m_documentsbrowse from m_pfe_cst_master_menu`m_documentsbrowse within m_system
+end type
+
+on m_documentsbrowse.create
+call super::create
+end on
+
+on m_documentsbrowse.destroy
+call super::destroy
+end on
+
+type m_imp_audit from m_pfe_cst_master_menu`m_imp_audit within m_system
+end type
+
+on m_imp_audit.create
+call super::create
+end on
+
+on m_imp_audit.destroy
+call super::destroy
+end on
+
+type m_intellibatch from m_pfe_cst_master_menu`m_intellibatch within m_system
+end type
+
+on m_intellibatch.create
+call super::create
+end on
+
+on m_intellibatch.destroy
+call super::destroy
+end on
+
+type m_addredflagdata from m_pfe_cst_master_menu`m_addredflagdata within m_system
+end type
+
+on m_addredflagdata.create
+call super::create
+end on
+
+on m_addredflagdata.destroy
+call super::destroy
+end on
+
+type m_viewredflagdata from m_pfe_cst_master_menu`m_viewredflagdata within m_system
+end type
+
+on m_viewredflagdata.create
+call super::create
+end on
+
+on m_viewredflagdata.destroy
+call super::destroy
+end on
+
+type m_setup from m_pfe_cst_master_menu`m_setup within m_system
+end type
+
+on m_setup.create
+call super::create
+end on
+
+on m_setup.destroy
+call super::destroy
+end on
+
+type m_useridbatchupdate from m_pfe_cst_master_menu`m_useridbatchupdate within m_system
+end type
+
+on m_useridbatchupdate.create
+call super::create
+end on
+
+on m_useridbatchupdate.destroy
+call super::destroy
+end on
+
+type m_utilities from m_pfe_cst_master_menu`m_utilities within m_system
+end type
+
+on m_utilities.create
+call super::create
+end on
+
+on m_utilities.destroy
+call super::destroy
+end on
+
+type m_wc_data_audit from m_pfe_cst_master_menu`m_wc_data_audit within m_system
+end type
+
+on m_wc_data_audit.create
+call super::create
+end on
+
+on m_wc_data_audit.destroy
+call super::destroy
+end on
+
+type m_webviewfunctions from m_pfe_cst_master_menu`m_webviewfunctions within m_system
+end type
+
+on m_webviewfunctions.create
+call super::create
+end on
+
+on m_webviewfunctions.destroy
+call super::destroy
+end on
+
+type m_webviewauditing from m_pfe_cst_master_menu`m_webviewauditing within m_webviewfunctions
+end type
+
+on m_webviewauditing.create
+call super::create
+end on
+
+on m_webviewauditing.destroy
+call super::destroy
+end on
+
+type m_webviewesignlog from m_pfe_cst_master_menu`m_webviewesignlog within m_webviewfunctions
+end type
+
+on m_webviewesignlog.create
+call super::create
+end on
+
+on m_webviewesignlog.destroy
+call super::destroy
+end on
+
+type m_webviewtracking from m_pfe_cst_master_menu`m_webviewtracking within m_webviewfunctions
+end type
+
+on m_webviewtracking.create
+call super::create
+end on
+
+on m_webviewtracking.destroy
+call super::destroy
+end on
+
+type m_verificationbatchfunctions from m_pfe_cst_master_menu`m_verificationbatchfunctions within m_system
+end type
+
+on m_verificationbatchfunctions.create
+call super::create
+end on
+
+on m_verificationbatchfunctions.destroy
+call super::destroy
+end on
+
+type m_batchrecredential from m_pfe_cst_master_menu`m_batchrecredential within m_verificationbatchfunctions
+end type
+
+on m_batchrecredential.create
+call super::create
+end on
+
+on m_batchrecredential.destroy
+call super::destroy
+end on
+
+type m_importoigdata from m_pfe_cst_master_menu`m_importoigdata within m_verificationbatchfunctions
+end type
+
+on m_importoigdata.create
+call super::create
+end on
+
+on m_importoigdata.destroy
+call super::destroy
+end on
+
+type m_oiglog from m_pfe_cst_master_menu`m_oiglog within m_verificationbatchfunctions
+end type
+
+on m_oiglog.create
+call super::create
+end on
+
+on m_oiglog.destroy
+call super::destroy
+end on
+
+type m_batchoig from m_pfe_cst_master_menu`m_batchoig within m_verificationbatchfunctions
+end type
+
+on m_batchoig.create
+call super::create
+end on
+
+on m_batchoig.destroy
+call super::destroy
+end on
+
+type m_batchverifications from m_pfe_cst_master_menu`m_batchverifications within m_verificationbatchfunctions
+end type
+
+on m_batchverifications.create
+call super::create
+end on
+
+on m_batchverifications.destroy
+call super::destroy
+end on
+
+type m_verificationincomplete from m_pfe_cst_master_menu`m_verificationincomplete within m_verificationbatchfunctions
+end type
+
+on m_verificationincomplete.create
+call super::create
+end on
+
+on m_verificationincomplete.destroy
+call super::destroy
+end on
+
+type m_verificationbatchlog from m_pfe_cst_master_menu`m_verificationbatchlog within m_verificationbatchfunctions
+end type
+
+on m_verificationbatchlog.create
+call super::create
+end on
+
+on m_verificationbatchlog.destroy
+call super::destroy
+end on
+
+type m_1 from m_pfe_cst_master_menu`m_1 within m_system
+end type
+
+on m_1.create
+call super::create
+end on
+
+on m_1.destroy
+call super::destroy
+end on
+
+type m_painters from m_pfe_cst_master_menu`m_painters within m_system
+end type
+
+on m_painters.create
+call super::create
+end on
+
+on m_painters.destroy
+call super::destroy
+end on
+
+type m_automation from m_pfe_cst_master_menu`m_automation within m_painters
+end type
+
+on m_automation.create
+call super::create
+end on
+
+on m_automation.destroy
+call super::destroy
+end on
+
+type m_dataflowpainter from m_pfe_cst_master_menu`m_dataflowpainter within m_automation
+end type
+
+on m_dataflowpainter.create
+call super::create
+end on
+
+on m_dataflowpainter.destroy
+call super::destroy
+end on
+
+type m_notificationalertpainter from m_pfe_cst_master_menu`m_notificationalertpainter within m_automation
+end type
+
+on m_notificationalertpainter.create
+call super::create
+end on
+
+on m_notificationalertpainter.destroy
+call super::destroy
+end on
+
+type m_schedulerpainter from m_pfe_cst_master_menu`m_schedulerpainter within m_automation
+end type
+
+on m_schedulerpainter.create
+call super::create
+end on
+
+on m_schedulerpainter.destroy
+call super::destroy
+end on
+
+type m_contractrequirementprofile from m_pfe_cst_master_menu`m_contractrequirementprofile within m_painters
+end type
+
+on m_contractrequirementprofile.create
+call super::create
+end on
+
+on m_contractrequirementprofile.destroy
+call super::destroy
+end on
+
+type m_contractrequirementprofile0 from m_pfe_cst_master_menu`m_contractrequirementprofile0 within m_contractrequirementprofile
+end type
+
+on m_contractrequirementprofile0.create
+call super::create
+end on
+
+on m_contractrequirementprofile0.destroy
+call super::destroy
+end on
+
+type m_cptcode from m_pfe_cst_master_menu`m_cptcode within m_contractrequirementprofile
+end type
+
+on m_cptcode.create
+call super::create
+end on
+
+on m_cptcode.destroy
+call super::destroy
+end on
+
+type m_agreement from m_pfe_cst_master_menu`m_agreement within m_painters
+end type
+
+on m_agreement.create
+call super::create
+end on
+
+on m_agreement.destroy
+call super::destroy
+end on
+
+type m_clauselibrarypainter from m_pfe_cst_master_menu`m_clauselibrarypainter within m_agreement
+end type
+
+on m_clauselibrarypainter.create
+call super::create
+end on
+
+on m_clauselibrarypainter.destroy
+call super::destroy
+end on
+
+type m_documentlibrarypainter from m_pfe_cst_master_menu`m_documentlibrarypainter within m_agreement
+end type
+
+on m_documentlibrarypainter.create
+call super::create
+end on
+
+on m_documentlibrarypainter.destroy
+call super::destroy
+end on
+
+type m_documentlibrarypainter_l2 from m_pfe_cst_master_menu`m_documentlibrarypainter_l2 within m_agreement
+end type
+
+on m_documentlibrarypainter_l2.create
+call super::create
+end on
+
+on m_documentlibrarypainter_l2.destroy
+call super::destroy
+end on
+
+type m_templatelibrarypainter from m_pfe_cst_master_menu`m_templatelibrarypainter within m_agreement
+end type
+
+on m_templatelibrarypainter.create
+call super::create
+end on
+
+on m_templatelibrarypainter.destroy
+call super::destroy
+end on
+
+type m_communication from m_pfe_cst_master_menu`m_communication within m_painters
+end type
+
+on m_communication.create
+call super::create
+end on
+
+on m_communication.destroy
+call super::destroy
+end on
+
+type m_emailpainter from m_pfe_cst_master_menu`m_emailpainter within m_communication
+end type
+
+on m_emailpainter.create
+call super::create
+end on
+
+on m_emailpainter.destroy
+call super::destroy
+end on
+
+type m_faxemailtemplatepainter from m_pfe_cst_master_menu`m_faxemailtemplatepainter within m_communication
+end type
+
+on m_faxemailtemplatepainter.create
+call super::create
+end on
+
+on m_faxemailtemplatepainter.destroy
+call super::destroy
+end on
+
+type m_letterpainter from m_pfe_cst_master_menu`m_letterpainter within m_communication
+end type
+
+on m_letterpainter.create
+call super::create
+end on
+
+on m_letterpainter.destroy
+call super::destroy
+end on
+
+type m_letterstorageareapainter from m_pfe_cst_master_menu`m_letterstorageareapainter within m_communication
+end type
+
+on m_letterstorageareapainter.create
+call super::create
+end on
+
+on m_letterstorageareapainter.destroy
+call super::destroy
+end on
+
+type m_datatransfer from m_pfe_cst_master_menu`m_datatransfer within m_painters
+end type
+
+on m_datatransfer.create
+call super::create
+end on
+
+on m_datatransfer.destroy
+call super::destroy
+end on
+
+type m_outputpainter from m_pfe_cst_master_menu`m_outputpainter within m_datatransfer
+end type
+
+on m_outputpainter.create
+call super::create
+end on
+
+on m_outputpainter.destroy
+call super::destroy
+end on
+
+type m_importpainter from m_pfe_cst_master_menu`m_importpainter within m_datatransfer
+end type
+
+on m_importpainter.create
+call super::create
+end on
+
+on m_importpainter.destroy
+call super::destroy
+end on
+
+type m_lookups from m_pfe_cst_master_menu`m_lookups within m_painters
+end type
+
+on m_lookups.create
+call super::create
+end on
+
+on m_lookups.destroy
+call super::destroy
+end on
+
+type m_lookuppainter from m_pfe_cst_master_menu`m_lookuppainter within m_lookups
+end type
+
+on m_lookuppainter.create
+call super::create
+end on
+
+on m_lookuppainter.destroy
+call super::destroy
+end on
+
+type m_peerrefpainter from m_pfe_cst_master_menu`m_peerrefpainter within m_lookups
+end type
+
+on m_peerrefpainter.create
+call super::create
+end on
+
+on m_peerrefpainter.destroy
+call super::destroy
+end on
+
+type m_questionpainter from m_pfe_cst_master_menu`m_questionpainter within m_lookups
+end type
+
+on m_questionpainter.create
+call super::create
+end on
+
+on m_questionpainter.destroy
+call super::destroy
+end on
+
+type m_standingflagsettings from m_pfe_cst_master_menu`m_standingflagsettings within m_lookups
+end type
+
+on m_standingflagsettings.create
+call super::create
+end on
+
+on m_standingflagsettings.destroy
+call super::destroy
+end on
+
+type m_privilegesandqa from m_pfe_cst_master_menu`m_privilegesandqa within m_painters
+end type
+
+on m_privilegesandqa.create
+call super::create
+end on
+
+on m_privilegesandqa.destroy
+call super::destroy
+end on
+
+type m_procedurelookup from m_pfe_cst_master_menu`m_procedurelookup within m_privilegesandqa
+end type
+
+on m_procedurelookup.create
+call super::create
+end on
+
+on m_procedurelookup.destroy
+call super::destroy
+end on
+
+type m_privilegepainter from m_pfe_cst_master_menu`m_privilegepainter within m_privilegesandqa
+end type
+
+on m_privilegepainter.create
+call super::create
+end on
+
+on m_privilegepainter.destroy
+call super::destroy
+end on
+
+type m_processtemplates from m_pfe_cst_master_menu`m_processtemplates within m_privilegesandqa
+end type
+
+on m_processtemplates.create
+call super::create
+end on
+
+on m_processtemplates.destroy
+call super::destroy
+end on
+
+type m_reappointmentmeasurements from m_pfe_cst_master_menu`m_reappointmentmeasurements within m_privilegesandqa
+end type
+
+on m_reappointmentmeasurements.create
+call super::create
+end on
+
+on m_reappointmentmeasurements.destroy
+call super::destroy
+end on
+
+type m_qametriclookup from m_pfe_cst_master_menu`m_qametriclookup within m_privilegesandqa
+end type
+
+on m_qametriclookup.create
+call super::create
+end on
+
+on m_qametriclookup.destroy
+call super::destroy
+end on
+
+type m_fppeplantemplates from m_pfe_cst_master_menu`m_fppeplantemplates within m_privilegesandqa
+end type
+
+on m_fppeplantemplates.create
+call super::create
+end on
+
+on m_fppeplantemplates.destroy
+call super::destroy
+end on
+
+type m_profiles from m_pfe_cst_master_menu`m_profiles within m_painters
+end type
+
+on m_profiles.create
+call super::create
+end on
+
+on m_profiles.destroy
+call super::destroy
+end on
+
+type m_profilepainter from m_pfe_cst_master_menu`m_profilepainter within m_profiles
+end type
+
+on m_profilepainter.create
+call super::create
+end on
+
+on m_profilepainter.destroy
+call super::destroy
+end on
+
+type m_profilepainter1 from m_pfe_cst_master_menu`m_profilepainter1 within m_profiles
+end type
+
+on m_profilepainter1.create
+call super::create
+end on
+
+on m_profilepainter1.destroy
+call super::destroy
+end on
+
+type m_reportpainter from m_pfe_cst_master_menu`m_reportpainter within m_profiles
+end type
+
+on m_reportpainter.create
+call super::create
+end on
+
+on m_reportpainter.destroy
+call super::destroy
+end on
+
+type m_security from m_pfe_cst_master_menu`m_security within m_painters
+end type
+
+on m_security.create
+call super::create
+end on
+
+on m_security.destroy
+call super::destroy
+end on
+
+type m_rolepainter from m_pfe_cst_master_menu`m_rolepainter within m_security
+end type
+
+on m_rolepainter.create
+call super::create
+end on
+
+on m_rolepainter.destroy
+call super::destroy
+end on
+
+type m_securitysettings from m_pfe_cst_master_menu`m_securitysettings within m_security
+end type
+
+on m_securitysettings.create
+call super::create
+end on
+
+on m_securitysettings.destroy
+call super::destroy
+end on
+
+type m_userpainter from m_pfe_cst_master_menu`m_userpainter within m_security
+end type
+
+on m_userpainter.create
+call super::create
+end on
+
+on m_userpainter.destroy
+call super::destroy
+end on
+
+type m_screensetup from m_pfe_cst_master_menu`m_screensetup within m_painters
+end type
+
+on m_screensetup.create
+call super::create
+end on
+
+on m_screensetup.destroy
+call super::destroy
+end on
+
+type m_appointmentlabels from m_pfe_cst_master_menu`m_appointmentlabels within m_screensetup
+end type
+
+on m_appointmentlabels.create
+call super::create
+end on
+
+on m_appointmentlabels.destroy
+call super::destroy
+end on
+
+type m_groupdatalabels from m_pfe_cst_master_menu`m_groupdatalabels within m_screensetup
+end type
+
+on m_groupdatalabels.create
+call super::create
+end on
+
+on m_groupdatalabels.destroy
+call super::destroy
+end on
+
+type m_intelliapppainter from m_pfe_cst_master_menu`m_intelliapppainter within m_screensetup
+end type
+
+on m_intelliapppainter.create
+call super::create
+end on
+
+on m_intelliapppainter.destroy
+call super::destroy
+end on
+
+type m_contractdatascreenpainter from m_pfe_cst_master_menu`m_contractdatascreenpainter within m_screensetup
+end type
+
+on m_contractdatascreenpainter.create
+call super::create
+end on
+
+on m_contractdatascreenpainter.destroy
+call super::destroy
+end on
+
+type m_screenpainter from m_pfe_cst_master_menu`m_screenpainter within m_screensetup
+end type
+
+on m_screenpainter.create
+call super::create
+end on
+
+on m_screenpainter.destroy
+call super::destroy
+end on
+
+type m_contractviewpainter from m_pfe_cst_master_menu`m_contractviewpainter within m_screensetup
+end type
+
+on m_contractviewpainter.create
+call super::create
+end on
+
+on m_contractviewpainter.destroy
+call super::destroy
+end on
+
+type m_viewpainter from m_pfe_cst_master_menu`m_viewpainter within m_screensetup
+end type
+
+on m_viewpainter.create
+call super::create
+end on
+
+on m_viewpainter.destroy
+call super::destroy
+end on
+
+type m_systemsetup from m_pfe_cst_master_menu`m_systemsetup within m_painters
+end type
+
+on m_systemsetup.create
+call super::create
+end on
+
+on m_systemsetup.destroy
+call super::destroy
+end on
+
+type m_applicationtrackingsettings from m_pfe_cst_master_menu`m_applicationtrackingsettings within m_systemsetup
+end type
+
+on m_applicationtrackingsettings.create
+call super::create
+end on
+
+on m_applicationtrackingsettings.destroy
+call super::destroy
+end on
+
+type m_applicationauditpainter from m_pfe_cst_master_menu`m_applicationauditpainter within m_systemsetup
+end type
+
+on m_applicationauditpainter.create
+call super::create
+end on
+
+on m_applicationauditpainter.destroy
+call super::destroy
+end on
+
+type m_commimtstpainter from m_pfe_cst_master_menu`m_commimtstpainter within m_systemsetup
+end type
+
+on m_commimtstpainter.create
+call super::create
+end on
+
+on m_commimtstpainter.destroy
+call super::destroy
+end on
+
+type m_expiringlettersetting from m_pfe_cst_master_menu`m_expiringlettersetting within m_systemsetup
+end type
+
+on m_expiringlettersetting.create
+call super::create
+end on
+
+on m_expiringlettersetting.destroy
+call super::destroy
+end on
+
+type m_facilitypainter from m_pfe_cst_master_menu`m_facilitypainter within m_systemsetup
+end type
+
+on m_facilitypainter.create
+call super::create
+end on
+
+on m_facilitypainter.destroy
+call super::destroy
+end on
+
+type m_imagetypepainter from m_pfe_cst_master_menu`m_imagetypepainter within m_systemsetup
+end type
+
+on m_imagetypepainter.create
+call super::create
+end on
+
+on m_imagetypepainter.destroy
+call super::destroy
+end on
+
+type m_intellibatchpainter from m_pfe_cst_master_menu`m_intellibatchpainter within m_systemsetup
+end type
+
+on m_intellibatchpainter.create
+call super::create
+end on
+
+on m_intellibatchpainter.destroy
+call super::destroy
+end on
+
+type m_multiapppainter from m_pfe_cst_master_menu`m_multiapppainter within m_systemsetup
+end type
+
+on m_multiapppainter.create
+call super::create
+end on
+
+on m_multiapppainter.destroy
+call super::destroy
+end on
+
+type m_nonpractitioners from m_pfe_cst_master_menu`m_nonpractitioners within m_systemsetup
+end type
+
+on m_nonpractitioners.create
+call super::create
+end on
+
+on m_nonpractitioners.destroy
+call super::destroy
+end on
+
+type m_surveypainter from m_pfe_cst_master_menu`m_surveypainter within m_systemsetup
+end type
+
+on m_surveypainter.create
+call super::create
+end on
+
+on m_surveypainter.destroy
+call super::destroy
+end on
+
+type m_todolistpainter from m_pfe_cst_master_menu`m_todolistpainter within m_systemsetup
+end type
+
+on m_todolistpainter.create
+call super::create
+end on
+
+on m_todolistpainter.destroy
+call super::destroy
+end on
+
+type m_workflowpainter from m_pfe_cst_master_menu`m_workflowpainter within m_systemsetup
+end type
+
+on m_workflowpainter.create
+call super::create
+end on
+
+on m_workflowpainter.destroy
+call super::destroy
+end on
+
+type m_webcrawlersetup from m_pfe_cst_master_menu`m_webcrawlersetup within m_systemsetup
+end type
+
+on m_webcrawlersetup.create
+call super::create
+end on
+
+on m_webcrawlersetup.destroy
+call super::destroy
+end on
+
+type m_webview from m_pfe_cst_master_menu`m_webview within m_painters
+end type
+
+on m_webview.create
+call super::create
+end on
+
+on m_webview.destroy
+call super::destroy
+end on
+
+type m_esignatureagreements from m_pfe_cst_master_menu`m_esignatureagreements within m_webview
+end type
+
+on m_esignatureagreements.create
+call super::create
+end on
+
+on m_esignatureagreements.destroy
+call super::destroy
+end on
+
+type m_lettertemplatemaintenance from m_pfe_cst_master_menu`m_lettertemplatemaintenance within m_webview
+end type
+
+on m_lettertemplatemaintenance.create
+call super::create
+end on
+
+on m_lettertemplatemaintenance.destroy
+call super::destroy
+end on
+
+type m_logoimage from m_pfe_cst_master_menu`m_logoimage within m_webview
+end type
+
+on m_logoimage.create
+call super::create
+end on
+
+on m_logoimage.destroy
+call super::destroy
+end on
+
+type m_privilegeviewoptions from m_pfe_cst_master_menu`m_privilegeviewoptions within m_webview
+end type
+
+on m_privilegeviewoptions.create
+call super::create
+end on
+
+on m_privilegeviewoptions.destroy
+call super::destroy
+end on
+
+type m_webviewaccessrolemanagement from m_pfe_cst_master_menu`m_webviewaccessrolemanagement within m_webview
+end type
+
+on m_webviewaccessrolemanagement.create
+call super::create
+end on
+
+on m_webviewaccessrolemanagement.destroy
+call super::destroy
+end on
+
+type m_webviewagreementspainter from m_pfe_cst_master_menu`m_webviewagreementspainter within m_webview
+end type
+
+on m_webviewagreementspainter.create
+call super::create
+end on
+
+on m_webviewagreementspainter.destroy
+call super::destroy
+end on
+
+type m_webviewsettingsmaintenance from m_pfe_cst_master_menu`m_webviewsettingsmaintenance within m_webview
+end type
+
+on m_webviewsettingsmaintenance.create
+call super::create
+end on
+
+on m_webviewsettingsmaintenance.destroy
+call super::destroy
+end on
+
+type m_webviewuserpainter from m_pfe_cst_master_menu`m_webviewuserpainter within m_webview
+end type
+
+on m_webviewuserpainter.create
+call super::create
+end on
+
+on m_webviewuserpainter.destroy
+call super::destroy
+end on
+
+type m_webviewtemplatepainter from m_pfe_cst_master_menu`m_webviewtemplatepainter within m_webview
+end type
+
+on m_webviewtemplatepainter.create
+call super::create
+end on
+
+on m_webviewtemplatepainter.destroy
+call super::destroy
+end on
+
+type m_practitionerhelp from m_pfe_cst_master_menu`m_practitionerhelp within m_webview
+end type
+
+on m_practitionerhelp.create
+call super::create
+end on
+
+on m_practitionerhelp.destroy
+call super::destroy
+end on
+
+type m_window from m_pfe_cst_master_menu`m_window within m_pfe_train_app
+end type
+
+on m_window.create
+call super::create
+end on
+
+on m_window.destroy
+call super::destroy
+end on
+
+type m_cascade from m_pfe_cst_master_menu`m_cascade within m_window
+end type
+
+on m_cascade.create
+call super::create
+end on
+
+on m_cascade.destroy
+call super::destroy
+end on
+
+type m_tilehorizontal from m_pfe_cst_master_menu`m_tilehorizontal within m_window
+end type
+
+on m_tilehorizontal.create
+call super::create
+end on
+
+on m_tilehorizontal.destroy
+call super::destroy
+end on
+
+type m_tilevertical from m_pfe_cst_master_menu`m_tilevertical within m_window
+end type
+
+on m_tilevertical.create
+call super::create
+end on
+
+on m_tilevertical.destroy
+call super::destroy
+end on
+
+type m_layer from m_pfe_cst_master_menu`m_layer within m_window
+end type
+
+on m_layer.create
+call super::create
+end on
+
+on m_layer.destroy
+call super::destroy
+end on
+
+type m_dash51 from m_pfe_cst_master_menu`m_dash51 within m_window
+end type
+
+on m_dash51.create
+call super::create
+end on
+
+on m_dash51.destroy
+call super::destroy
+end on
+
+type m_minimizeall from m_pfe_cst_master_menu`m_minimizeall within m_window
+end type
+
+on m_minimizeall.create
+call super::create
+end on
+
+on m_minimizeall.destroy
+call super::destroy
+end on
+
+type m_undoarrange from m_pfe_cst_master_menu`m_undoarrange within m_window
+end type
+
+on m_undoarrange.create
+call super::create
+end on
+
+on m_undoarrange.destroy
+call super::destroy
+end on
+
+type m_5555 from m_pfe_cst_master_menu`m_5555 within m_window
+end type
+
+on m_5555.create
+call super::create
+end on
+
+on m_5555.destroy
+call super::destroy
+end on
+
+type m_autoresize from m_pfe_cst_master_menu`m_autoresize within m_window
+end type
+
+on m_autoresize.create
+call super::create
+end on
+
+on m_autoresize.destroy
+call super::destroy
+end on
+
+type m_preload from m_pfe_cst_master_menu`m_preload within m_window
+end type
+
+on m_preload.create
+call super::create
+end on
+
+on m_preload.destroy
+call super::destroy
+end on
+
+type m_savecontractfolderstate from m_pfe_cst_master_menu`m_savecontractfolderstate within m_window
+end type
+
+on m_savecontractfolderstate.create
+call super::create
+end on
+
+on m_savecontractfolderstate.destroy
+call super::destroy
+end on
+
+type m_showezmenu from m_pfe_cst_master_menu`m_showezmenu within m_window
+end type
+
+on m_showezmenu.create
+call super::create
+end on
+
+on m_showezmenu.destroy
+call super::destroy
+end on
+
+type m_toolbarattop from m_pfe_cst_master_menu`m_toolbarattop within m_window
+end type
+
+on m_toolbarattop.create
+call super::create
+end on
+
+on m_toolbarattop.destroy
+call super::destroy
+end on
+
+type m_toolbarshowtext from m_pfe_cst_master_menu`m_toolbarshowtext within m_window
+end type
+
+on m_toolbarshowtext.create
+call super::create
+end on
+
+on m_toolbarshowtext.destroy
+call super::destroy
+end on
+
+type m_toolbarhide from m_pfe_cst_master_menu`m_toolbarhide within m_window
+end type
+
+on m_toolbarhide.create
+call super::create
+end on
+
+on m_toolbarhide.destroy
+call super::destroy
+end on
+
+type m_dashboard from m_pfe_cst_master_menu`m_dashboard within m_window
+end type
+
+on m_dashboard.create
+call super::create
+end on
+
+on m_dashboard.destroy
+call super::destroy
+end on
+
+type m_help from m_pfe_cst_master_menu`m_help within m_pfe_train_app
+m_13 m_13
+m_conversion m_conversion
+end type
+
+on m_help.create
+call super::create
+this.m_13=create m_13
+this.m_conversion=create m_conversion
+this.Item[UpperBound(this.Item)+1]=this.m_13
+this.Item[UpperBound(this.Item)+1]=this.m_conversion
+end on
+
+on m_help.destroy
+call super::destroy
+destroy(this.m_13)
+destroy(this.m_conversion)
+end on
+
+event m_help::clicked;call super::clicked;//Open( w_custom_report )
+end event
+
+type m_about from m_pfe_cst_master_menu`m_about within m_help
+end type
+
+event m_about::clicked;call super::clicked;//Open( w_iapply_status_window )
+//messagebox("", "fdfdsa")
+//open( w_iverify_summary )
+end event
+
+on m_about.create
+call super::create
+end on
+
+on m_about.destroy
+call super::destroy
+end on
+
+type m_evncheck from m_pfe_cst_master_menu`m_evncheck within m_help
+end type
+
+on m_evncheck.create
+call super::create
+end on
+
+on m_evncheck.destroy
+call super::destroy
+end on
+
+type m_gettingstarted from m_pfe_cst_master_menu`m_gettingstarted within m_help
+end type
+
+on m_gettingstarted.create
+call super::create
+end on
+
+on m_gettingstarted.destroy
+call super::destroy
+end on
+
+type m_onlinehelp from m_pfe_cst_master_menu`m_onlinehelp within m_help
+end type
+
+on m_onlinehelp.create
+call super::create
+end on
+
+on m_onlinehelp.destroy
+call super::destroy
+end on
+
+type m_helptopics from m_pfe_cst_master_menu`m_helptopics within m_help
+end type
+
+on m_helptopics.create
+call super::create
+end on
+
+on m_helptopics.destroy
+call super::destroy
+end on
+
+type m_isg_website from m_pfe_cst_master_menu`m_isg_website within m_help
+end type
+
+on m_isg_website.create
+call super::create
+end on
+
+on m_isg_website.destroy
+call super::destroy
+end on
+
+type m_dash61 from m_pfe_cst_master_menu`m_dash61 within m_help
+end type
+
+on m_dash61.create
+call super::create
+end on
+
+on m_dash61.destroy
+call super::destroy
+end on
+
+type m_newdevtesting from m_pfe_cst_master_menu`m_newdevtesting within m_help
+end type
+
+on m_newdevtesting.create
+call super::create
+end on
+
+on m_newdevtesting.destroy
+call super::destroy
+end on
+
+type m_updates from m_pfe_cst_master_menu`m_updates within m_help
+end type
+
+on m_updates.create
+call super::create
+end on
+
+on m_updates.destroy
+call super::destroy
+end on
+
+type m_viewlets from m_pfe_cst_master_menu`m_viewlets within m_help
+end type
+
+on m_viewlets.create
+call super::create
+end on
+
+on m_viewlets.destroy
+call super::destroy
+end on
+
+type m_currentobject from m_pfe_cst_master_menu`m_currentobject within m_help
+end type
+
+on m_currentobject.create
+call super::create
+end on
+
+on m_currentobject.destroy
+call super::destroy
+end on
+
+type m_curobj2 from m_pfe_cst_master_menu`m_curobj2 within m_help
+end type
+
+on m_curobj2.create
+call super::create
+end on
+
+on m_curobj2.destroy
+call super::destroy
+end on
+
+type m_iapply from m_pfe_cst_master_menu`m_iapply within m_help
+end type
+
+on m_iapply.create
+call super::create
+end on
+
+on m_iapply.destroy
+call super::destroy
+end on
+
+type m_7 from menu within m_file
+end type
+
+on m_7.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_7.destroy
+call super::destroy
+end on
+
+type m_scanapplication from menu within m_file
+end type
+
+event clicked;of_sendmessage( "pfc_scan" )
+end event
+
+on m_scanapplication.create
+call super::create
+this.text = "Scan Application"
+this.toolbaritemvisible = false
+this.toolbaritemname = "custom087!"
+this.toolbaritemtext = "Scan"
+this.toolbaritembarindex = 0
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_scanapplication.destroy
+call super::destroy
+end on
+
+type m_10 from menu within m_file
+end type
+
+on m_10.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_10.destroy
+call super::destroy
+end on
+
+type m_previewpage from menu within m_file
+end type
+
+on m_previewpage.create
+call super::create
+this.text = "Preview Page"
+this.toolbaritemvisible = false
+this.toolbaritemtext = "Preview"
+this.toolbaritembarindex = 0
+this.toolbaritemorder = 1200
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+event clicked;
+//--------------------------- APPEON BEGIN ---------------------------
+//$<ID> PT-01
+//$<modify> 04.07.2006 By: Rodger Wu
+//$<reason> Performance Tuning
+//$<modification> The Clicked event of m_previewcurrentpage provides the same functionality as this Clicked event.
+//$<modification> Since Clicked event of m_previewcurrentpage has less calls to the server, call the Clicked event
+//$<modification> of m_previewcurrentpage here.
+//$<modification> with .
+/*
+//debugbreak()
+w_train_app.of_save_mapping() //maha app081105
+m_tools.m_selectfield.TriggerEvent( Clicked! )
+of_sendmessage( "pfc_preview_page" )
+*/
+m_page.m_previewcurrentpage.TriggerEvent( Clicked! )
+//---------------------------- APPEON END ----------------------------
+end event
+
+on m_previewpage.destroy
+call super::destroy
+end on
+
+type m_populatewebsite from menu within m_file
+end type
+
+on m_populatewebsite.create
+call super::create
+this.visible = false
+this.text = "Populate Website"
+this.toolbaritemvisible = false
+this.toolbaritemname = "inkpicture!"
+this.toolbaritemtext = "PopWeb"
+this.toolbaritembarindex = 0
+this.toolbaritemorder = 1210
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_populatewebsite.destroy
+call super::destroy
+end on
+
+event clicked;of_SendMessage("pfc_pop_website") //Added by evan 01.09.2012 - V12.1 Website Population
+end event
+
+type m_previewall from menu within m_file
+end type
+
+event clicked;m_tools.m_selectfield.TriggerEvent( Clicked! )
+of_sendmessage( "pfc_preview_all" )
+end event
+
+on m_previewall.create
+call super::create
+this.text = "Preview All"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_previewall.destroy
+call super::destroy
+end on
+
+type m_12 from menu within m_file
+end type
+
+on m_12.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_12.destroy
+call super::destroy
+end on
+
+type m_setdefaultpreviewpractitioner from menu within m_file
+end type
+
+event clicked;of_sendmessage( "pfc_set_default_preview_prac" )
+end event
+
+on m_setdefaultpreviewpractitioner.create
+call super::create
+this.text = "Set Default Preview Practitioner"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_setdefaultpreviewpractitioner.destroy
+call super::destroy
+end on
+
+type m_scanfortif from menu within m_file
+end type
+
+event clicked;of_sendmessage( "pfc_cst_scan_for_tifs" )
+end event
+
+on m_scanfortif.create
+call super::create
+this.text = "Look for TIF files"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_scanfortif.destroy
+call super::destroy
+end on
+
+type m_copyapplication from menu within m_file
+end type
+
+event clicked;
+//------------------- APPEON BEGIN -------------------
+//$<modify> Evan 10.27.2010
+//$<reason> V10.5-App Mapping
+//w_train_app.Event pfc_cst_copy_app( )
+of_SendMessage("pfc_cst_copy_app")
+//------------------- APPEON END ---------------------
+end event
+
+on m_copyapplication.create
+call super::create
+this.text = "Copy Application"
+this.toolbaritemvisible = false
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_copyapplication.destroy
+call super::destroy
+end on
+
+type m_searchforapplication from menu within m_file
+end type
+
+event clicked;//------------------- APPEON BEGIN -------------------
+//$<modify> Evan 10.22.2010
+//$<reason> V10.5-App Mapping
+/*
+long ll_appid
+long ll_facilid
+integer rc
+integer f
+integer a
+
+open(w_search_for_app)
+
+ll_appid = message.doubleparm
+//messagebox("ll_appid",ll_appid)
+select facility_id into: ll_facilid from app_hdr where app_id = :ll_appid;
+//messagebox("ll_facilid",ll_facilid)
+rc = w_train_app.tab_1.tabpage_select.tab_facility.tabpage_facility.dw_facility_browse.rowcount()
+f = w_train_app.tab_1.tabpage_select.tab_facility.tabpage_facility.dw_facility_browse.find("facility_id = " + string(ll_facilid),1,rc)
+//messagebox("f",f)
+if f > 0 then
+	w_train_app.tab_1.tabpage_select.tab_facility.tabpage_facility.dw_facility_browse.scrolltorow(f)
+	w_train_app.tab_1.tabpage_select.tab_facility.tabpage_facility.dw_facility_browse.selectrow(0,false)
+	w_train_app.tab_1.tabpage_select.tab_facility.tabpage_facility.dw_facility_browse.selectrow(f,true)
+	w_train_app.tab_1.tabpage_select.tab_facility.tabpage_facility.dw_facility_browse.setrow(f)
+	w_train_app.tab_1.tabpage_select.tab_facility.SelectTab( 2 )
+	rc = w_train_app.tab_1.tabpage_select.tab_facility.tabpage_apps.dw_app_browse.rowcount()
+	a = w_train_app.tab_1.tabpage_select.tab_facility.tabpage_apps.dw_app_browse.find("app_id = " + string(ll_appid),1,rc)
+	if a > 0 then
+		w_train_app.tab_1.tabpage_select.tab_facility.tabpage_apps.dw_app_browse.scrolltorow(a)
+		w_train_app.tab_1.tabpage_select.tab_facility.tabpage_apps.dw_app_browse.selectrow(0,false)
+		w_train_app.tab_1.tabpage_select.tab_facility.tabpage_apps.dw_app_browse.selectrow(a,true)
+		w_train_app.tab_1.tabpage_select.tab_facility.tabpage_apps.dw_app_browse.setrow(a)
+	end if
+end if
+*/
+of_SendMessage("pfc_searchapp")
+//------------------- APPEON END ---------------------
+
+end event
+
+on m_searchforapplication.create
+call super::create
+this.text = "Search for Application"
+this.toolbaritemvisible = false
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_searchforapplication.destroy
+call super::destroy
+end on
+
+type m_selectscanner from menu within m_file
+end type
+
+event clicked;of_SendMessage ("pfc_cst_select_scanner")//Start Code Change ----02.21.2008 #V8 maha -  added
+end event
+
+on m_selectscanner.create
+call super::create
+this.text = "Select Scanner"
+this.toolbaritemvisible = false
+this.toolbaritembarindex = 0
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_selectscanner.destroy
+call super::destroy
+end on
+
+type m_changeorganization from menu within m_file
+end type
+
+on m_changeorganization.create
+call super::create
+this.text = "Change Organization"
+this.toolbaritemvisible = false
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_changeorganization.destroy
+call super::destroy
+end on
+
+event clicked;of_sendmessage( "pfc_change_org" )
+end event
+
+type m_removeobject from menu within m_edit
+end type
+
+on m_removeobject.create
+call super::create
+this.text = "Remove Object~tDel"
+this.shortcut = 46
+this.toolbaritemvisible = false
+this.toolbaritemtext = "Remove Obj."
+this.toolbaritembarindex = 0
+this.toolbaritemorder = 200
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+event clicked;//------------------- APPEON BEGIN -------------------
+//$<modify> Evan 10.27.2010
+//$<reason> V10.5-App Mapping
+//w_train_app.of_remove_object( )
+of_SendMessage("ue_remove_object")
+//------------------- APPEON END ---------------------
+end event
+
+on m_removeobject.destroy
+call super::destroy
+end on
+
+type m_8 from menu within m_edit
+end type
+
+on m_8.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_8.destroy
+call super::destroy
+end on
+
+type m_copyfields from menu within m_edit
+end type
+
+event clicked;//------------------- APPEON BEGIN -------------------
+//$<modify> Evan 10.27.2010
+//$<reason> V10.5-App Mapping
+/*
+Long li_dummy[]
+String ls_dummy[]
+
+if w_train_app.of_check_for_image() = -1 then Return // Add by Evan 05.07.2009 --- Corrected BugS122711
+
+w_train_app.tab_1.tabpage_design.ole_edit.Object.SelectAnnotationGroup( "" )
+w_train_app.ii_align = 0
+w_train_app.ii_ancor_count = 0
+w_train_app.is_selected_fields = ls_dummy
+w_train_app.ii_x = li_dummy
+w_train_app.ii_y = li_dummy
+w_train_app.ii_copy_fields = 1	
+w_train_app.tab_1.tabpage_design.ole_edit.object.AnnotationType( 11 )	
+
+m_pfe_train_app.m_edit.m_cut.ToolbaritemVisible = False
+m_pfe_train_app.m_edit.m_paste.Enabled = True
+m_pfe_train_app.m_edit.m_copy.ToolbaritemVisible = False
+
+w_mdi.SetToolbarPos(3, 100, 400, 400, 1)
+
+w_mdi.SetToolbar(3, TRUE, Floating!, "")
+//--------------------------- APPEON BEGIN ---------------------------
+//$<ID> UM-01
+//$<add> 04.10.2006 By: Cao YongWang
+//$<reason> The SetToolbarPos function is currently unsupported. 
+//$<modification> Replace the SetToolBarPos function with the Appeon defined function of_settoolbarpos to provide
+//$<modification> the same functionality.
+If appeongetclienttype() <> 'PB' Then
+	long ll_handle
+	ll_handle = handle(w_mdi)
+	gnv_appeondll.of_settoolbar(ll_handle , 3, true)
+End if
+//---------------------------- APPEON END ----------------------------
+
+w_train_app.st_msg.Text = " Click on each field that you want to copy then click the PASTE icon."
+w_train_app.st_msg.Visible = True
+
+//w_train_app.tab_1.tabpage_design.ole_edit.object.AnnotationType( 0 )
+*/
+of_SendMessage("ue_copyfields")
+//------------------- APPEON END ---------------------
+end event
+
+on m_copyfields.create
+call super::create
+this.text = "Copy Fields"
+this.toolbaritemvisible = false
+this.toolbaritemtext = "Copy Fields"
+this.toolbaritembarindex = 0
+this.toolbaritemorder = 900
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_copyfields.destroy
+call super::destroy
+end on
+
+type m_copyapp from menu within m_edit
+end type
+
+event clicked;////maha 090104 still needs:
+////to be able to copy to an existing app id- will have to test for existing data and delete.
+////test for duplicate name
+////also need trap for missing tif file.
+//
+//string ls_path
+//string ls_name
+//long id
+//datastore ds_hdr
+//datastore ds_fields
+//long i
+//long ic
+//long oc
+//long nr
+//long ll_appid
+//integer res
+//
+//ls_path = w_train_app.is_app_path
+//
+//select max(app_id) into :id from app_hdr;
+//id++
+//ls_path = ls_path + string(id) + ".tif" 
+//ll_appid = w_train_app.ii_app_id
+//res = messagebox("Copy App","This function currently only copies to a new (not an existing) Application Id.~rContinue?",question!,yesno!,1)
+//
+//w_train_app.tab_1.tabpage_design.ole_edit.Object.SaveAs( ls_path )
+//
+//ds_hdr = create datastore 
+//ds_hdr.dataobject = "d_app_detail"
+//ds_hdr.settransobject(sqlca)
+//ic = ds_hdr.retrieve(ll_appid)
+//
+//if ic > 0 then
+//	open(w_get_app_name)
+//	ls_name = message.stringparm
+//	if ls_name = "Cancel" then return
+//	ds_hdr.rowscopy(1,1,primary!,ds_hdr,100,primary!)
+//	ds_hdr.setitem(2,"app_id",id)
+//	ds_hdr.setitem(2,"application_name",ls_name)
+//	ds_hdr.setitem(2,"date_first_scanned",datetime(today(),now()))
+//else 
+//	messagebox("Error","Error retrieving app_data")
+//	return
+//end if
+//
+//ds_fields = create datastore 
+//ds_fields.dataobject = "d_app_field_properties_for_copying"
+//ds_fields.settransobject(sqlca)
+//oc = ds_fields.retrieve(ll_appid)
+//ds_hdr.rowscopy(1,oc,primary!,ds_fields,100,primary!)
+//oc++
+//for i = oc to ds_fields.rowcount()
+//	ds_fields.setitem(i,"app_id",id)
+//next
+//	
+//ds_hdr.update()
+//ds_fields.update()
+//commit using sqlca;
+//
+end event
+
+on m_copyapp.create
+call super::create
+this.visible = false
+this.text = "Copy Application"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_copyapp.destroy
+call super::destroy
+end on
+
+type m_update from menu within m_edit
+end type
+
+event clicked;of_sendmessage("pfc_query_batch")
+end event
+
+on m_update.create
+call super::create
+this.visible = false
+this.text = "Update"
+this.toolbaritemname = "save_as.png"
+this.toolbaritemtext = "Update"
+this.toolbaritembarindex = 3
+this.toolbaritemorder = 1
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_update.destroy
+call super::destroy
+end on
+
+type m_templates from menu within m_view
+end type
+
+on m_templates.create
+call super::create
+this.text = "Templates"
+this.toolbaritemvisible = false
+this.toolbaritemname = "listview!"
+this.toolbaritemtext = "Template"
+this.toolbaritembarindex = 0
+this.toolbaritemorder = 300
+this.menuimage = "ListView!"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+event clicked;//------------------- APPEON BEGIN -------------------
+//$<modify> Evan 10.27.2010
+//$<reason> V10.5-App Mapping
+//w_train_app.of_open_template( )
+of_SendMessage("ue_open_template")
+//------------------- APPEON END ---------------------
+end event
+
+on m_templates.destroy
+call super::destroy
+end on
+
+type m_recordnumbers from menu within m_view
+end type
+
+event clicked;
+IF This.Checked = False THEN
+	w_train_app.of_show_record()
+	This.Checked = True
+	w_train_app.tab_1.tabpage_design.ole_edit.object.AnnotationType( 0 )
+ELSE
+	w_train_app.of_select_field( )
+	This.Checked = False
+END IF
+w_train_app.ii_copy_fields = 0
+end event
+
+on m_recordnumbers.create
+call super::create
+this.text = "Record Numbers"
+this.toolbaritemvisible = false
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_recordnumbers.destroy
+call super::destroy
+end on
+
+type m_6 from menu within m_system
+end type
+
+on m_6.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_6.destroy
+call super::destroy
+end on
+
+type m_changepassword from menu within m_system
+end type
+
+event clicked;Open( w_change_password )
+end event
+
+on m_changepassword.create
+call super::create
+this.text = "Change Password"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_changepassword.destroy
+call super::destroy
+end on
+
+type m_5 from menu within m_system
+end type
+
+on m_5.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_5.destroy
+call super::destroy
+end on
+
+type m_runactionitemsquery from menu within m_system
+end type
+
+event clicked;pfc_n_cst_ai_printletters lnv_exp_cred
+lnv_exp_cred = CREATE pfc_n_cst_ai_printletters
+lnv_exp_cred.of_expiring_credentials()
+lnv_exp_cred.of_resend_letters()
+lnv_exp_cred.of_expiring_appointments()
+DESTROY lnv_exp_cred
+	
+
+
+
+
+
+end event
+
+on m_runactionitemsquery.create
+call super::create
+this.text = "Run Action Items Query"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_runactionitemsquery.destroy
+call super::destroy
+end on
+
+type m_13 from menu within m_help
+end type
+
+on m_13.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_13.destroy
+call super::destroy
+end on
+
+type m_conversion from menu within m_help
+end type
+
+event clicked;//Open( w_conversion_lookup_tabs )
+end event
+
+on m_conversion.create
+call super::create
+this.text = "Conversion"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_conversion.destroy
+call super::destroy
+end on
+
+type m_tools from menucascade within m_pfe_train_app
+m_tools1 m_tools1
+m_selectfield m_selectfield
+m_ropeselect m_ropeselect
+m_drawbox m_drawbox
+m_text m_text
+m_highlighter m_highlighter
+m_11 m_11
+m_autoalign m_autoalign
+m_aligntops m_aligntops
+m_alignsides m_alignsides
+m_align m_align
+m_connectfields m_connectfields
+m_querybatch m_querybatch
+m_connect m_connect
+m_additionalpages m_additionalpages
+m_specialfields m_specialfields
+m_testapplication m_testapplication
+m_14 m_14
+m_refreshannotations m_refreshannotations
+m_clearannotations m_clearannotations
+end type
+
+on m_tools.create
+call super::create
+this.text = "&Tools"
+this.toolbaritemvisible = false
+this.toolbaritemtext = "Tools"
+this.toolbaritembarindex = 0
+this.toolbaritemorder = 800
+this.mergeoption = merge!
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+this.m_tools1=create m_tools1
+this.m_selectfield=create m_selectfield
+this.m_ropeselect=create m_ropeselect
+this.m_drawbox=create m_drawbox
+this.m_text=create m_text
+this.m_highlighter=create m_highlighter
+this.m_11=create m_11
+this.m_autoalign=create m_autoalign
+this.m_aligntops=create m_aligntops
+this.m_alignsides=create m_alignsides
+this.m_align=create m_align
+this.m_connectfields=create m_connectfields
+this.m_querybatch=create m_querybatch
+this.m_connect=create m_connect
+this.m_additionalpages=create m_additionalpages
+this.m_specialfields=create m_specialfields
+this.m_testapplication=create m_testapplication
+this.m_14=create m_14
+this.m_refreshannotations=create m_refreshannotations
+this.m_clearannotations=create m_clearannotations
+this.Item[UpperBound(this.Item)+1]=this.m_tools1
+this.Item[UpperBound(this.Item)+1]=this.m_selectfield
+this.Item[UpperBound(this.Item)+1]=this.m_ropeselect
+this.Item[UpperBound(this.Item)+1]=this.m_drawbox
+this.Item[UpperBound(this.Item)+1]=this.m_text
+this.Item[UpperBound(this.Item)+1]=this.m_highlighter
+this.Item[UpperBound(this.Item)+1]=this.m_11
+this.Item[UpperBound(this.Item)+1]=this.m_autoalign
+this.Item[UpperBound(this.Item)+1]=this.m_aligntops
+this.Item[UpperBound(this.Item)+1]=this.m_alignsides
+this.Item[UpperBound(this.Item)+1]=this.m_align
+this.Item[UpperBound(this.Item)+1]=this.m_connectfields
+this.Item[UpperBound(this.Item)+1]=this.m_querybatch
+this.Item[UpperBound(this.Item)+1]=this.m_connect
+this.Item[UpperBound(this.Item)+1]=this.m_additionalpages
+this.Item[UpperBound(this.Item)+1]=this.m_specialfields
+this.Item[UpperBound(this.Item)+1]=this.m_testapplication
+this.Item[UpperBound(this.Item)+1]=this.m_14
+this.Item[UpperBound(this.Item)+1]=this.m_refreshannotations
+this.Item[UpperBound(this.Item)+1]=this.m_clearannotations
+end on
+
+on m_tools.destroy
+call super::destroy
+destroy(this.m_tools1)
+destroy(this.m_selectfield)
+destroy(this.m_ropeselect)
+destroy(this.m_drawbox)
+destroy(this.m_text)
+destroy(this.m_highlighter)
+destroy(this.m_11)
+destroy(this.m_autoalign)
+destroy(this.m_aligntops)
+destroy(this.m_alignsides)
+destroy(this.m_align)
+destroy(this.m_connectfields)
+destroy(this.m_querybatch)
+destroy(this.m_connect)
+destroy(this.m_additionalpages)
+destroy(this.m_specialfields)
+destroy(this.m_testapplication)
+destroy(this.m_14)
+destroy(this.m_refreshannotations)
+destroy(this.m_clearannotations)
+end on
+
+type m_tools1 from menu within m_tools
+end type
+
+on m_tools1.create
+call super::create
+this.text = "Tools"
+this.toolbaritemvisible = false
+this.toolbaritemname = "custom041!"
+this.toolbaritemtext = "Tools"
+this.toolbaritembarindex = 0
+this.menuimage = "custom041!"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_tools1.destroy
+call super::destroy
+end on
+
+type m_selectfield from menu within m_tools
+end type
+
+on m_selectfield.create
+call super::create
+this.text = "Select Field~tF2"
+this.checked = true
+this.shortcut = 113
+this.toolbaritemvisible = false
+this.toolbaritemname = "arrow.bmp"
+this.toolbaritemtext = "Select"
+this.toolbaritembarindex = 0
+this.menuimage = "arrow_s.bmp"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+event clicked;m_pfe_train_app.m_edit.m_removeobject.Enabled = True
+m_pfe_train_app.m_edit.m_copyfields.Enabled = True
+m_pfe_train_app.m_view.m_templates.Enabled = True
+m_selectfield.Checked = True
+m_ropeselect.Checked = False
+m_drawbox.Checked = False
+m_Text.Checked = False
+
+w_mdi.SetToolbar(3, False, Floating!, "")
+w_mdi.SetToolbar(4, False, Floating!, "")
+w_mdi.SetToolbar(5, False, Floating!, "")
+//--------------------------- APPEON BEGIN ---------------------------
+//$<ID> UM-02
+//$<add> 04.06.2006 By: Liang QingShi
+//$<reason> The SetToolbarPos function is currently unsupported. 
+//$<modification> Replace the SetToolBarPos function with the Appeon defined function of_settoolbarpos to provide
+//$<modification> the same functionality.
+ 
+If appeongetclienttype() <> 'PB' Then
+   long ll_handle
+	ll_handle = handle(w_mdi)
+	gnv_appeondll.of_SetToolbar( ll_handle , 3, False )  
+	gnv_appeondll.of_SetToolbar( ll_handle , 4, False )  
+	gnv_appeondll.of_SetToolbar( ll_handle , 5, False )  
+	gnv_appeondll.of_settoolbarpos(ll_handle)
+End If
+//---------------------------- APPEON END ----------------------------
+
+//m_pfe_train_app.m_edit.m_copy.Visible = False
+//m_pfe_train_app.m_edit.m_copy.ToolbaritemVisible = False
+//m_pfe_train_app.m_edit.m_cut.Visible = False
+//m_pfe_train_app.m_edit.m_cut.ToolbaritemVisible = False
+//m_pfe_train_app.m_edit.m_paste.Visible = False
+//m_pfe_train_app.m_edit.m_paste.ToolbaritemVisible = False
+
+//--------------------------- APPEON BEGIN ---------------------------
+//$<add> 04.19.2006 By: LiuHongXin
+//$<reason> Fix a defect.
+/*
+w_train_app.of_select_Field()
+*/
+IF IsValid(w_train_app) THEN
+	w_train_app.of_select_Field()	
+END IF
+//---------------------------- APPEON END ----------------------------
+end event
+
+on m_selectfield.destroy
+call super::destroy
+end on
+
+type m_ropeselect from menu within m_tools
+end type
+
+on m_ropeselect.create
+call super::create
+this.text = "Rope Select~tF3"
+this.shortcut = 114
+this.toolbaritemvisible = false
+this.toolbaritemname = "ropeselect.bmp"
+this.toolbaritemtext = "Rope"
+this.toolbaritembarindex = 0
+this.menuimage = "ropeselect_s.bmp"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+event clicked;//m_pfe_train_app.m_edit.m_copy.Visible = True
+//m_pfe_train_app.m_edit.m_copy.ToolbaritemVisible = True
+m_pfe_train_app.m_edit.m_cut.Visible = True
+m_pfe_train_app.m_edit.m_cut.ToolbaritemVisible = True
+m_pfe_train_app.m_edit.m_paste.Visible = True
+m_pfe_train_app.m_edit.m_paste.ToolbaritemVisible = True
+
+m_pfe_train_app.m_edit.m_copyfields.Enabled = False
+m_pfe_train_app.m_view.m_templates.Enabled = False
+m_pfe_train_app.m_edit.m_removeobject.Enabled = False
+
+m_selectfield.Checked = False
+m_ropeselect.Checked = True
+m_drawbox.Checked = False
+m_Text.Checked = False
+
+//------------------- APPEON BEGIN -------------------
+//$<modify> Evan 10.27.2010
+//$<reason> V10.5-App Mapping
+//w_train_app.of_rope_select()
+of_SendMessage("ue_rope_select")
+//------------------- APPEON END ---------------------
+end event
+
+on m_ropeselect.destroy
+call super::destroy
+end on
+
+type m_drawbox from menu within m_tools
+end type
+
+on m_drawbox.create
+call super::create
+this.text = "Draw Box"
+this.toolbaritemvisible = false
+this.toolbaritemname = "drawrect_s.bmp"
+this.toolbaritemtext = "Draw Box"
+this.toolbaritembarindex = 0
+this.menuimage = "drawrect_s.bmp"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+event clicked;//m_pfe_train_app.m_edit.m_copy.Visible = False
+//m_pfe_train_app.m_edit.m_copy.ToolbaritemVisible = False
+//m_pfe_train_app.m_edit.m_cut.Visible = False
+//m_pfe_train_app.m_edit.m_cut.ToolbaritemVisible = False
+//m_pfe_train_app.m_edit.m_paste.Visible = False
+//m_pfe_train_app.m_edit.m_paste.ToolbaritemVisible = False
+
+
+
+m_pfe_train_app.m_edit.m_copyfields.Enabled = False
+m_pfe_train_app.m_view.m_templates.Enabled = False
+m_pfe_train_app.m_edit.m_removeobject.Enabled = False
+
+w_mdi.SetToolbar(3, False, Floating!)
+//--------------------------- APPEON BEGIN ---------------------------
+//$<ID> UM-03
+//$<add> 04.06.2006 By: Liang QingShi
+//$<reason> The SetToolbarPos function is currently unsupported. 
+//$<modification> Replace the SetToolBarPos function with the Appeon defined function of_settoolbarpos to provide
+//$<modification> the same functionality.
+ 
+If appeongetclienttype() <> 'PB' Then
+   long ll_handle
+	ll_handle = handle(w_mdi)
+	gnv_appeondll.of_SetToolbar( ll_handle , 3, False )  
+	gnv_appeondll.of_settoolbarpos(ll_handle)
+End If
+//---------------------------- APPEON END ----------------------------
+
+m_selectfield.Checked = False
+m_ropeselect.Checked = False
+m_drawbox.Checked = True
+m_Text.Checked = False
+
+//------------------- APPEON BEGIN -------------------
+//$<modify> Evan 10.27.2010
+//$<reason> V10.5-App Mapping
+//w_train_app.of_draw_box()
+of_SendMessage("ue_draw_box")
+//------------------- APPEON END ---------------------
+
+//w_train_app.of_add_hollow_box()
+end event
+
+on m_drawbox.destroy
+call super::destroy
+end on
+
+type m_text from menu within m_tools
+end type
+
+on m_text.create
+call super::create
+this.text = "Create Text"
+this.toolbaritemvisible = false
+this.toolbaritemname = "text.bmp"
+this.toolbaritemtext = "Text"
+this.toolbaritembarindex = 0
+this.menuimage = "text_s.bmp"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+event clicked;w_mdi.SetToolbar(3, False, Floating!)
+//--------------------------- APPEON BEGIN ---------------------------
+//$<ID> UM-04
+//$<add> 04.06.2006 By: Liang QingShi
+//$<reason> The SetToolbarPos function is currently unsupported. 
+//$<modification> Replace the SetToolBarPos function with the Appeon defined function of_settoolbarpos to provide
+//$<modification> the same functionality.
+ 
+If appeongetclienttype() <> 'PB' Then
+   long ll_handle
+	ll_handle = handle(w_mdi)
+	gnv_appeondll.of_SetToolbar( ll_handle , 3, False )  
+	gnv_appeondll.of_settoolbarpos(ll_handle)
+End If
+//---------------------------- APPEON END ----------------------------
+
+//m_pfe_train_app.m_edit.m_copy.Visible = False
+//m_pfe_train_app.m_edit.m_copy.ToolbaritemVisible = False
+//m_pfe_train_app.m_edit.m_cut.Visible = False
+//m_pfe_train_app.m_edit.m_cut.ToolbaritemVisible = False
+//m_pfe_train_app.m_edit.m_paste.Visible = False
+//m_pfe_train_app.m_edit.m_paste.ToolbaritemVisible = False
+
+m_selectfield.Checked = False
+m_ropeselect.Checked = False
+m_drawbox.Checked = False
+m_Text.Checked = True
+
+//------------------- APPEON BEGIN -------------------
+//$<modify> Evan 10.27.2010
+//$<reason> V10.5-App Mapping
+//w_train_app.of_Create_Text()
+of_SendMessage("ue_create_text")
+//------------------- APPEON END ---------------------
+end event
+
+on m_text.destroy
+call super::destroy
+end on
+
+type m_highlighter from menu within m_tools
+end type
+
+event clicked;of_SendMessage( "pfc_cst_highlighter")
+end event
+
+on m_highlighter.create
+call super::create
+this.text = "Highlighter"
+this.toolbaritemvisible = false
+this.toolbaritemname = "setvariable!"
+this.toolbaritemtext = "Highlight"
+this.toolbaritembarindex = 0
+this.menuimage = "setvariable!"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_highlighter.destroy
+call super::destroy
+end on
+
+type m_11 from menu within m_tools
+end type
+
+on m_11.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_11.destroy
+call super::destroy
+end on
+
+type m_autoalign from menu within m_tools
+m_tops m_tops
+m_sides m_sides
+end type
+
+on m_autoalign.create
+call super::create
+this.visible = false
+this.text = "Auto Align"
+this.toolbaritemvisible = false
+this.toolbaritemname = "arrangeicons!"
+this.toolbaritemtext = "Auto Align"
+this.toolbaritembarindex = 0
+this.menuimage = "arrangeicons!"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+this.m_tops=create m_tops
+this.m_sides=create m_sides
+this.Item[UpperBound(this.Item)+1]=this.m_tops
+this.Item[UpperBound(this.Item)+1]=this.m_sides
+end on
+
+on m_autoalign.destroy
+call super::destroy
+destroy(this.m_tops)
+destroy(this.m_sides)
+end on
+
+type m_tops from menu within m_autoalign
+end type
+
+event clicked;//------------------- APPEON BEGIN -------------------
+//$<modify> Evan 10.27.2010
+//$<reason> V10.5-App Mapping
+//w_train_app.of_auto_align_tops()
+of_SendMessage("ue_auto_align_tops")
+//------------------- APPEON END ---------------------
+end event
+
+on m_tops.create
+call super::create
+this.visible = false
+this.text = "Tops"
+this.toolbaritemvisible = false
+this.toolbaritemname = "aligntop!"
+this.toolbaritemtext = "Auto Align"
+this.toolbaritembarindex = 0
+this.menuimage = "aligntop!"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_tops.destroy
+call super::destroy
+end on
+
+type m_sides from menu within m_autoalign
+end type
+
+on m_sides.create
+call super::create
+this.visible = false
+this.text = "Sides"
+this.toolbaritemvisible = false
+this.toolbaritemname = "alignleft!"
+this.toolbaritemtext = "Auto Align"
+this.toolbaritembarindex = 0
+this.menuimage = "alignleft!"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+event clicked;//------------------- APPEON BEGIN -------------------
+//$<modify> Evan 10.27.2010
+//$<reason> V10.5-App Mapping
+//w_train_app.of_auto_align_sides()
+of_SendMessage("ue_auto_align_sides")
+//------------------- APPEON END ---------------------
+end event
+
+on m_sides.destroy
+call super::destroy
+end on
+
+type m_aligntops from menu within m_tools
+end type
+
+event clicked;of_SendMessage( "pfc_align_tops" )
+end event
+
+on m_aligntops.create
+call super::create
+this.visible = false
+this.text = "Align Tops"
+this.toolbaritemvisible = false
+this.toolbaritemname = "aligntop!"
+this.toolbaritemtext = "Align Tops"
+this.toolbaritembarindex = 0
+this.menuimage = "aligntop!"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_aligntops.destroy
+call super::destroy
+end on
+
+type m_alignsides from menu within m_tools
+end type
+
+event clicked;of_SendMessage( "pfc_align_sides" )
+end event
+
+on m_alignsides.create
+call super::create
+this.visible = false
+this.text = "Align Sides"
+this.toolbaritemvisible = false
+this.toolbaritemname = "alignleft!"
+this.toolbaritemtext = "Align Sides"
+this.toolbaritembarindex = 0
+this.menuimage = "alignleft!"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_alignsides.destroy
+call super::destroy
+end on
+
+type m_align from menu within m_tools
+end type
+
+on m_align.create
+call super::create
+this.text = "Manual Align~tF4"
+this.shortcut = 115
+this.toolbaritemvisible = false
+this.toolbaritemname = "alignvcenter!"
+this.toolbaritemtext = "Align"
+this.toolbaritembarindex = 0
+this.menuimage = "alignvcenter!"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+event clicked;m_pfe_train_app.m_edit.m_copyfields.Enabled = False
+m_pfe_train_app.m_view.m_templates.Enabled = False
+m_pfe_train_app.m_edit.m_removeobject.Enabled = False
+
+w_mdi.SetToolbar( 4, True, Floating!)		
+w_mdi.SetToolbarPos( 4, 75, 400, 100, 1)
+//--------------------------- APPEON BEGIN ---------------------------
+//$<ID> UM-05
+//$<add> 04.06.2006 By: Liang QingShi
+//$<reason> The SetToolbarPos function is currently unsupported. 
+//$<modification> Replace the SetToolBarPos function with the Appeon defined function of_settoolbarpos to provide
+//$<modification> the same functionality.
+ 
+If appeongetclienttype() <> 'PB' Then
+   long ll_handle
+	ll_handle = handle(w_mdi)
+	gnv_appeondll.of_SetToolbar( ll_handle , 4, True )  
+	gnv_appeondll.of_settoolbarpos(ll_handle)
+End If
+//---------------------------- APPEON END ----------------------------
+of_SendMessage( "pfc_align" )
+end event
+
+on m_align.destroy
+call super::destroy
+end on
+
+type m_connectfields from menu within m_tools
+end type
+
+on m_connectfields.create
+call super::create
+this.text = "Connect Fields"
+this.toolbaritemvisible = false
+this.toolbaritemname = "computesum!"
+this.toolbaritemtext = "Connect"
+this.toolbaritembarindex = 0
+this.menuimage = "ComputeSum!"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+event clicked;m_pfe_train_app.m_edit.m_copyfields.Enabled = False
+m_pfe_train_app.m_view.m_templates.Enabled = False
+m_pfe_train_app.m_edit.m_removeobject.Enabled = False
+
+w_mdi.SetToolbar( 5, True, Floating!)		
+w_mdi.SetToolbarPos( 5, 75, 400, 100, 1)
+//--------------------------- APPEON BEGIN ---------------------------
+//$<ID> UM-06
+//$<add> 04.06.2006 By: Liang QingShi
+//$<reason> The SetToolbarPos function is currently unsupported. 
+//$<modification> Replace the SetToolBarPos function with the Appeon defined function of_settoolbarpos to provide
+//$<modification> the same functionality.
+ 
+If appeongetclienttype() <> 'PB' Then
+   long ll_handle
+	ll_handle = handle(w_mdi)
+	gnv_appeondll.of_SetToolbar( ll_handle , 5, True )  
+	gnv_appeondll.of_settoolbarpos(ll_handle)
+End If
+//---------------------------- APPEON END ----------------------------
+of_SendMessage( "pfc_setup_connect_field" )
+end event
+
+on m_connectfields.destroy
+call super::destroy
+end on
+
+type m_querybatch from menu within m_tools
+end type
+
+event clicked;of_sendmessage("pfc_query_batch")
+
+
+//	m_pfe_train_app.m_tools.m_selectfield.ToolbaritemVisible = False
+//	m_pfe_train_app.m_tools.m_ropeselect.ToolbaritemVisible = False
+//	m_pfe_train_app.m_tools.m_drawbox.ToolbaritemVisible = False
+//	m_pfe_train_app.m_tools.m_text.ToolbaritemVisible = False
+//	m_pfe_train_app.m_tools.m_highlighter.ToolbaritemVisible = False
+//	m_pfe_train_app.m_tools.m_align.ToolbaritemVisible = False
+//	m_pfe_train_app.m_tools.m_connectfields.ToolbaritemVisible = False
+	//m_pfe_train_app.m_tools.m_selectfield.ToolbaritemVisible = False
+	
+end event
+
+on m_querybatch.create
+call super::create
+this.text = "Query Batch"
+this.toolbaritemvisible = false
+this.toolbaritemname = "custom060!"
+this.toolbaritemtext = "Querys"
+this.toolbaritembarindex = 0
+this.menuimage = "custom060!"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_querybatch.destroy
+call super::destroy
+end on
+
+type m_connect from menu within m_tools
+end type
+
+on m_connect.create
+call super::create
+this.visible = false
+this.text = "Connect"
+this.toolbaritemvisible = false
+this.toolbaritemname = "computesum!"
+this.toolbaritembarindex = 0
+this.menuimage = "ComputeSum!"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+event clicked;of_SendMessage( "pfc_connect_field" )
+end event
+
+on m_connect.destroy
+call super::destroy
+end on
+
+type m_additionalpages from menu within m_tools
+end type
+
+event clicked;//Start Code Change ---- 01.12.2006 #192 maha
+open(w_get_additional_info_pages)
+//End Code Change---01.12.2005 
+end event
+
+on m_additionalpages.create
+call super::create
+this.text = "Additional Pages"
+this.toolbaritemvisible = false
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_additionalpages.destroy
+call super::destroy
+end on
+
+type m_specialfields from menu within m_tools
+end type
+
+event clicked;Open( w_special_fields )
+end event
+
+on m_specialfields.create
+call super::create
+this.text = "Special Fields"
+this.toolbaritemvisible = false
+this.toolbaritemname = "editmask5!"
+this.toolbaritemtext = "Special"
+this.toolbaritembarindex = 0
+this.menuimage = "editmask5!"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_specialfields.destroy
+call super::destroy
+end on
+
+type m_testapplication from menu within m_tools
+end type
+
+event clicked;of_sendmessage( "pfc_test_app" )
+end event
+
+on m_testapplication.create
+call super::create
+this.text = "Test Application"
+this.toolbaritemvisible = false
+this.toolbaritemname = "debug!"
+this.toolbaritemtext = "Test App"
+this.toolbaritembarindex = 0
+this.menuimage = "debug!"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_testapplication.destroy
+call super::destroy
+end on
+
+type m_14 from menu within m_tools
+end type
+
+on m_14.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_14.destroy
+call super::destroy
+end on
+
+type m_refreshannotations from menu within m_tools
+end type
+
+event clicked;of_sendmessage( "pfc_refresh_annotations" )
+end event
+
+on m_refreshannotations.create
+call super::create
+this.text = "Refresh Annotations"
+this.toolbaritemvisible = false
+this.toolbaritemname = "custom044!"
+this.toolbaritemtext = "Refresh"
+this.toolbaritembarindex = 0
+this.toolbaritemorder = 10
+this.menuimage = "custom044!"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_refreshannotations.destroy
+call super::destroy
+end on
+
+type m_clearannotations from menu within m_tools
+end type
+
+event clicked;//------------------- APPEON BEGIN -------------------
+//$<modify> Evan 10.27.2010
+//$<reason> V10.5-App Mapping
+//w_train_app.of_clear_annos( )
+of_SendMessage("ue_clear_annos")
+//------------------- APPEON END ---------------------
+end event
+
+on m_clearannotations.create
+call super::create
+this.text = "Clear Annotations"
+this.toolbaritemvisible = false
+this.menuimage = "Query!"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_clearannotations.destroy
+call super::destroy
+end on
+
+type m_page from menucascade within m_pfe_train_app
+m_gotopage m_gotopage
+m_page1 m_page1
+m_straightenpage m_straightenpage
+m_insertpages m_insertpages
+m_appendblankpage m_appendblankpage
+m_deletepage m_deletepage
+m_pageproperties m_pageproperties
+m_9 m_9
+m_previewallpages m_previewallpages
+m_previewcurrentpage m_previewcurrentpage
+end type
+
+on m_page.create
+call super::create
+this.text = "&Page"
+this.toolbaritemvisible = false
+this.toolbaritemname = "scriptyes!"
+this.toolbaritemtext = "Page"
+this.toolbaritembarindex = 0
+this.toolbaritemorder = 300
+this.menuimage = "scriptyes!"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+this.m_gotopage=create m_gotopage
+this.m_page1=create m_page1
+this.m_straightenpage=create m_straightenpage
+this.m_insertpages=create m_insertpages
+this.m_appendblankpage=create m_appendblankpage
+this.m_deletepage=create m_deletepage
+this.m_pageproperties=create m_pageproperties
+this.m_9=create m_9
+this.m_previewallpages=create m_previewallpages
+this.m_previewcurrentpage=create m_previewcurrentpage
+this.Item[UpperBound(this.Item)+1]=this.m_gotopage
+this.Item[UpperBound(this.Item)+1]=this.m_page1
+this.Item[UpperBound(this.Item)+1]=this.m_straightenpage
+this.Item[UpperBound(this.Item)+1]=this.m_insertpages
+this.Item[UpperBound(this.Item)+1]=this.m_appendblankpage
+this.Item[UpperBound(this.Item)+1]=this.m_deletepage
+this.Item[UpperBound(this.Item)+1]=this.m_pageproperties
+this.Item[UpperBound(this.Item)+1]=this.m_9
+this.Item[UpperBound(this.Item)+1]=this.m_previewallpages
+this.Item[UpperBound(this.Item)+1]=this.m_previewcurrentpage
+end on
+
+on m_page.destroy
+call super::destroy
+destroy(this.m_gotopage)
+destroy(this.m_page1)
+destroy(this.m_straightenpage)
+destroy(this.m_insertpages)
+destroy(this.m_appendblankpage)
+destroy(this.m_deletepage)
+destroy(this.m_pageproperties)
+destroy(this.m_9)
+destroy(this.m_previewallpages)
+destroy(this.m_previewcurrentpage)
+end on
+
+type m_gotopage from menu within m_page
+end type
+
+event clicked;of_SendMessage( "pfc_cst_goto_page" )
+end event
+
+on m_gotopage.create
+call super::create
+this.text = "Goto Page~tF6"
+this.shortcut = 117
+this.toolbaritemvisible = false
+this.toolbaritembarindex = 0
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_gotopage.destroy
+call super::destroy
+end on
+
+type m_page1 from menu within m_page
+end type
+
+on m_page1.create
+call super::create
+this.text = "Page"
+this.toolbaritemvisible = false
+this.toolbaritemname = "scriptyes!"
+this.toolbaritemtext = "Page"
+this.toolbaritembarindex = 0
+this.menuimage = "scriptyes!"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_page1.destroy
+call super::destroy
+end on
+
+type m_straightenpage from menu within m_page
+end type
+
+on m_straightenpage.create
+call super::create
+this.text = "Straighten Page~tF7"
+this.shortcut = 118
+this.toolbaritemvisible = false
+this.toolbaritemname = "alignright!"
+this.toolbaritemtext = "Straighten"
+this.toolbaritembarindex = 0
+this.menuimage = "alignright!"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+event clicked;of_sendmessage("pfc_straighten_page")
+end event
+
+on m_straightenpage.destroy
+call super::destroy
+end on
+
+type m_insertpages from menu within m_page
+end type
+
+event clicked;of_sendmessage("pfc_insert_page")
+end event
+
+on m_insertpages.create
+call super::create
+this.text = "Append Pages"
+this.microhelp = "Append Pages"
+this.toolbaritemvisible = false
+this.toolbaritemname = "insert5!"
+this.toolbaritemtext = "Append Page"
+this.toolbaritembarindex = 0
+this.menuimage = "insert5!"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_insertpages.destroy
+call super::destroy
+end on
+
+type m_appendblankpage from menu within m_page
+end type
+
+on m_appendblankpage.create
+call super::create
+this.text = "Copy Page"
+this.microhelp = "Copy Page"
+this.toolbaritemvisible = false
+this.toolbaritemname = "copy!"
+this.toolbaritemtext = "Copy Page"
+this.toolbaritembarindex = 0
+this.menuimage = "copy!"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+event clicked;//messagebox('Add Blank Page','IMPORTANT NOTE: After adding the new blank page to the application. Make sure the new page properties are exactly the same as the existing pages. If not some functionality may not work.')
+
+of_sendmessage("pfc_blank_page")
+
+end event
+
+on m_appendblankpage.destroy
+call super::destroy
+end on
+
+type m_deletepage from menu within m_page
+end type
+
+event clicked;of_sendmessage("pfc_delete_page")
+end event
+
+on m_deletepage.create
+call super::create
+this.text = "Delete Pages"
+this.microhelp = "Delete Pages"
+this.toolbaritemvisible = false
+this.toolbaritemname = "deleterow!"
+this.toolbaritemtext = "Delete Page"
+this.toolbaritembarindex = 0
+this.menuimage = "deleterow!"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_deletepage.destroy
+call super::destroy
+end on
+
+type m_pageproperties from menu within m_page
+end type
+
+on m_pageproperties.create
+call super::create
+this.text = "Page Properties~tF8"
+this.shortcut = 119
+this.toolbaritemvisible = false
+this.toolbaritemname = "preferences!"
+this.toolbaritemtext = "Properties"
+this.toolbaritembarindex = 0
+this.menuimage = "Preferences!"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+event clicked;of_sendmessage("pfc_page_properties")
+end event
+
+on m_pageproperties.destroy
+call super::destroy
+end on
+
+type m_9 from menu within m_page
+end type
+
+on m_9.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_9.destroy
+call super::destroy
+end on
+
+type m_previewallpages from menu within m_page
+end type
+
+on m_previewallpages.create
+call super::create
+this.visible = false
+this.text = "Preview All Pages"
+this.toolbaritemvisible = false
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_previewallpages.destroy
+call super::destroy
+end on
+
+type m_previewcurrentpage from menu within m_page
+end type
+
+on m_previewcurrentpage.create
+call super::create
+this.text = "Preview Current Page~tF9"
+this.shortcut = 120
+this.toolbaritemvisible = false
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+event clicked;of_sendmessage( "pfc_preview_page" )
+end event
+
+on m_previewcurrentpage.destroy
+call super::destroy
+end on
+

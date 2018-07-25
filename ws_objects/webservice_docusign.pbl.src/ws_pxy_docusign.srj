@@ -1,0 +1,11 @@
+﻿$PBExportHeader$ws_pxy_docusign.srj
+GeneratorID:{1B1DCEE2-E514-11D1-B30A-006008925BD4}GENBC00000000
+
+WSDLLOCATION:Gateway_docusign.wsdl	
+COMPONENT:0
+PACKAGE:20	ContractlogixDocusign	tns__CorrectAndResendEnvelope	tns__CreateAndSendEnvelope	tns__CreateEnvelopeFromTemplates	tns__DeleteEnvelopes	tns__DocuSignature	tns__DocuSignDocumentInformation	tns__DocuSignedDocument	tns__DocuSignFile	tns__DocuSignTemplates	tns__GetAuthenticationToken	tns__ping	tns__RequestCorrectToken	tns__RequestEnvelope	tns__RequestSenderToken	tns__RequestStatus	tns__RequestTemplates	tns__SendEnvelope	tns__Status	tns__VoidEnvelope
+COMMENT:
+DEPLOYMENT:webservice_docusign.pbl	0	0
+PROJECT:
+PREFIX:
+ASSEMBLY:0	0	

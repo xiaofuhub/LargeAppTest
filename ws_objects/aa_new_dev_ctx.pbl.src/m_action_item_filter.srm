@@ -1,0 +1,95 @@
+﻿$PBExportHeader$m_action_item_filter.srm
+forward
+global type m_action_item_filter from menu
+end type
+type m_viewfilter from menu within m_action_item_filter
+end type
+type m_assignfilter from menu within m_action_item_filter
+end type
+type m_renamefilter from menu within m_action_item_filter
+end type
+global type m_action_item_filter from menu
+m_viewfilter m_viewfilter
+m_assignfilter m_assignfilter
+m_renamefilter m_renamefilter
+end type
+end forward
+
+global type m_action_item_filter from menu
+m_viewfilter m_viewfilter
+m_assignfilter m_assignfilter
+m_renamefilter m_renamefilter
+end type
+global m_action_item_filter m_action_item_filter
+
+type variables
+Window	iw_Parent
+
+end variables
+
+on m_action_item_filter.create
+m_action_item_filter=this
+call super::create
+this.m_viewfilter=create m_viewfilter
+this.m_assignfilter=create m_assignfilter
+this.m_renamefilter=create m_renamefilter
+this.Item[UpperBound(this.Item)+1]=this.m_viewfilter
+this.Item[UpperBound(this.Item)+1]=this.m_assignfilter
+this.Item[UpperBound(this.Item)+1]=this.m_renamefilter
+end on
+
+on m_action_item_filter.destroy
+call super::destroy
+destroy(this.m_viewfilter)
+destroy(this.m_assignfilter)
+destroy(this.m_renamefilter)
+end on
+
+type m_viewfilter from menu within m_action_item_filter
+end type
+
+on m_viewfilter.create
+call super::create
+this.text = "View Filter"
+end on
+
+on m_viewfilter.destroy
+call super::destroy
+end on
+
+event clicked;if IsValid(iw_Parent) then iw_Parent.Dynamic Trigger Event ue_ViewFilter(long(This.Tag))
+
+end event
+
+type m_assignfilter from menu within m_action_item_filter
+end type
+
+on m_assignfilter.create
+call super::create
+this.text = "Assign Filter"
+end on
+
+on m_assignfilter.destroy
+call super::destroy
+end on
+
+event clicked;if IsValid(iw_Parent) then iw_Parent.Dynamic Trigger Event ue_AssignFilter(long(This.Tag))
+
+end event
+
+type m_renamefilter from menu within m_action_item_filter
+end type
+
+on m_renamefilter.create
+call super::create
+this.text = "Rename Filter..."
+end on
+
+on m_renamefilter.destroy
+call super::destroy
+end on
+
+event clicked;if IsValid(iw_Parent) then iw_Parent.Dynamic Trigger Event ue_RenameFilter(long(This.Tag))
+
+end event
+

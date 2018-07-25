@@ -1,0 +1,46 @@
+﻿$PBExportHeader$f_word_destroy.srf
+global type f_word_destroy from function_object
+end type
+
+forward prototypes
+global function integer f_word_destroy (oleobject aole_word, string as_filename)
+end prototypes
+
+global function integer f_word_destroy (oleobject aole_word, string as_filename);//Close the specified Word document(s), which is usally called by Try... Catch
+//Note: This is not suitable for documents opened in Office OCX control.
+//Added by Alfee 01.17.2008
+
+Long i 
+
+IF Not IsValid(aole_word) THEN RETURN -1
+
+TRY
+
+IF Len(Trim(as_filename)) = 0 THEN  
+	//Close all the documents - never includes that opened by office ocx control
+	aole_word.Application.Documents.Close(0)	
+	aole_word.Quit(0)
+	aole_word.DisconnectObject()
+	Destroy aole_word
+ELSE 
+	//Close the specified document
+	FOR i = 1 to aole_word.Application.Documents.Count 
+		IF aole_word.Application.Documents.Item[i].Name = as_filename + ' - Microsoft Word' THEN
+			aole_word.Application.Documents.Item[i].Close(0)
+			IF aole_word.Application.Documents.Count = 0 THEN 
+				aole_word.Quit(0)
+				aole_word.DisconnectObject()
+				Destroy aole_word
+				EXIT
+			END If
+		END IF		
+	NEXT
+END IF
+
+CATCH(Throwable th)
+	RETURN -1
+END TRY
+
+RETURN 1
+end function
+

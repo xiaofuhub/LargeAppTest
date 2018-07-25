@@ -1,0 +1,48 @@
+﻿$PBExportHeader$d_prf_home_address.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=220 color="536870912" )
+table(column=(type=char(150) updatewhereclause=yes name=pd_address_street_2 dbname="pd_address.street_2" )
+ column=(type=char(25) updatewhereclause=yes name=pd_address_city dbname="pd_address.city" )
+ column=(type=char(30) updatewhereclause=yes name=code_lookup_code dbname="code_lookup.code" )
+ column=(type=char(11) updatewhereclause=yes name=pd_address_zip dbname="pd_address.zip" )
+ column=(type=char(25) updatewhereclause=yes name=pd_address_phone dbname="pd_address.phone" )
+ column=(type=char(25) updatewhereclause=yes name=pd_address_fax dbname="pd_address.fax" )
+ column=(type=char(50) updatewhereclause=yes name=suite_apart dbname="pd_address.suite_apart" )
+ column=(type=char(75) updatewhereclause=yes name=pd_address_e_mail_address dbname="pd_address.e_mail_address" )
+ column=(type=char(25) updatewhereclause=yes name=pd_address_pager_number dbname="pd_address.pager_number" )
+ retrieve="  SELECT DISTINCT pd_address.street_2,   
+         pd_address.city,   
+         code_lookup.code,   
+         pd_address.zip,   
+         pd_address.phone,   
+         pd_address.fax, 
+	  pd_address.suite_apart,
+	 pd_address.e_mail_address,
+         pd_address.pager_number  
+    FROM pd_address,   
+         pd_address_link,   
+         code_lookup  
+   WHERE ( pd_address.rec_id = pd_address_link.address_id ) and  
+         ( pd_address.state = code_lookup.lookup_code ) and  
+         ( ( pd_address.prac_id = :prac_id ) AND  
+         ( pd_address_link.home_address = 1 ) )    
+" arguments=(("prac_id", number)) )
+text(band=detail alignment="0" text="Home Address:" border="0" color="0" x="18" y="12" height="64" width="453" html.valueishtml="0"  name=t_1 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Phone:" border="0" color="0" x="1815" y="12" height="64" width="206" html.valueishtml="0"  name=t_2 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Fax:" border="0" color="0" x="2345" y="12" height="64" width="128" html.valueishtml="0"  name=t_3 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Pager:" border="0" color="0" x="2848" y="12" height="64" width="192" html.valueishtml="0"  name=t_4 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="1851" y="80" height="56" width="398" format="[general]" html.valueishtml="0"  name=pd_address_phone visible="1" edit.limit=25 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="2345" y="80" height="56" width="398" format="[general]" html.valueishtml="0"  name=pd_address_fax visible="1" edit.limit=25 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="2843" y="80" height="56" width="366" format="[general]" html.valueishtml="0"  name=pd_address_pager_number visible="1" edit.limit=25 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="2030" y="152" height="64" width="1189" format="[general]" html.valueishtml="0"  name=pd_address_e_mail_address visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Email:" border="0" color="0" x="1856" y="156" height="64" width="165" html.valueishtml="0"  name=t_5 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression=" pd_address_city +~", ~" + code_lookup_code + ~" ~" +  pd_address_zip "border="0" color="0" x="18" y="152" height="64" width="1783" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="if (isnull( suite_apart ) , pd_address_street_2, pd_address_street_2 + '  '  + suite_apart)"border="0" color="0" x="18" y="80" height="64" width="1783" format="[GENERAL]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

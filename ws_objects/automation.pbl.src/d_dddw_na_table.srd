@@ -1,0 +1,24 @@
+﻿$PBExportHeader$d_dddw_na_table.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=alert_type dbname="alert_type" )
+ column=(type=char(50) updatewhereclause=yes name=table_name dbname="table_name" )
+ column=(type=char(50) updatewhereclause=yes name=table_name_allias dbname="table_name_allias" )
+ retrieve="  SELECT alert_type = 10,
+			table_name = sys_tables.table_name,
+         table_name_allias = data_view_screen.screen_alias
+   FROM data_view_screen, sys_tables
+   WHERE ( data_view_screen.table_id = sys_tables.table_id ) AND
+         ( data_view_screen.data_view_id = 1 ) AND
+         (( data_view_screen.detail_2 = 0 OR data_view_screen.detail_2 IS NULL)) AND
+		   ( data_view_screen.screen_order <> 0) AND
+         ( multi_record <> 'H' ) and data_view_screen.screen_id > 0"  sort="table_name_allias A " )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="9" y="4" height="64" width="1033" format="[general]" html.valueishtml="0"  name=table_name_allias visible="1" edit.limit=50 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

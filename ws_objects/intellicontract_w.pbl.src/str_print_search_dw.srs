@@ -1,0 +1,10 @@
+﻿$PBExportHeader$str_print_search_dw.srs
+global type str_print_search_dw from structure
+	string		col_name[]
+	string		col_label[]
+	long		col_x[]
+	long		col_length[]
+	u_dw		adw_search
+	string		col_type[]
+end type
+

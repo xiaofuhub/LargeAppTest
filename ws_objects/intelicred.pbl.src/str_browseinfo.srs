@@ -1,0 +1,13 @@
+﻿$PBExportHeader$str_browseinfo.srs
+$PBExportComments$used for brouse for folder api
+global type str_browseinfo from structure
+       unsignedlong		hwnd
+	unsignedlong		root
+	string		display
+	string		title
+	unsignedlong		flags
+	unsignedlong		callback
+	unsignedlong		lparam
+	unsignedlong		iimage
+end type
+

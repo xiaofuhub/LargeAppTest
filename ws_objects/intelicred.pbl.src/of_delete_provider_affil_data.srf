@@ -1,0 +1,64 @@
+﻿$PBExportHeader$of_delete_provider_affil_data.srf
+global type of_delete_provider_affil_data from function_object
+end type
+
+forward prototypes
+global function integer of_delete_provider_affil_data (long al_id)
+end prototypes
+
+global function integer of_delete_provider_affil_data (long al_id);//Start Code Change ---- 12.11.2006 #V7 maha created new. Called from w_delete _provide_utl
+
+Long ll_id
+Integer li_ans
+gs_search lstr_search
+n_ds lds_tables
+integer t
+integer tc
+string ls_tname[]
+string ls_sql
+
+ll_id = al_id
+
+
+if ll_id = 0 then //not passed
+	lstr_search.stran_transaction = SQLCA
+	lstr_search.ls_open_for = "DELETE"
+	
+	OpenWithParm( w_extended_search_new , lstr_search )
+	ll_id = Message.DoubleParm
+	IF ll_id = -1 THEN Return -1
+	
+END IF
+
+ls_tname[1] = "pd_address_link"
+ls_tname[2] = "pd_spec_facility_link"
+ls_tname[3] = "pd_hosp_facility_link"
+ls_tname[4] = "pd_attest_questions"
+ls_tname[5] = "pd_questions"
+ls_tname[6] = "pd_group_covering"
+ls_tname[7] = "pd_comm_review"
+ls_tname[8] = "pd_staff_leave"
+ls_tname[9] = "pd_affil_staff_cat"
+ls_tname[10] = "pd_affil_dept"
+ls_tname[11] = "net_dev_ids"
+ls_tname[12] = "net_dev_actions"
+ls_tname[13] = "committee_lookup"
+ls_tname[14] = "pd_affil_stat"
+	
+for t = 1 to upperbound(ls_tname[])
+	
+	choose case ls_tname[t] //save basic and affil stat for last
+		case "pd_affil_stat"
+			ls_sql = "DELETE FROM " + ls_tname[t] + " where parent_facility_id = " + string(ll_id) + ";"
+		case else
+			ls_sql = "DELETE FROM " + ls_tname[t] + " where facility_id = " + string(ll_id) + ";"
+	end choose
+	execute immediate :ls_sql using sqlca;
+	commit using sqlca;
+next
+	
+
+
+
+end function
+

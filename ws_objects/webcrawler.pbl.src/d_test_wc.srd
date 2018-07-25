@@ -1,0 +1,21 @@
+﻿$PBExportHeader$d_test_wc.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=136 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=96 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=wc_hdr_wc_id dbname="wc_hdr.wc_id" )
+ column=(type=char(100) updatewhereclause=yes name=wc_hdr_wc_description dbname="wc_hdr.wc_description" )
+ retrieve="PBSELECT( VERSION(400) DISTINCT ()TABLE(NAME=~"wc_hdr~" )  TABLE(NAME=~"wc_multi_entity_link~" )  TABLE(NAME=~"address_lookup~" ) COLUMN(NAME=~"wc_hdr.wc_id~") COLUMN(NAME=~"wc_hdr.wc_description~")    JOIN (LEFT=~"wc_hdr.wc_id~"    OP =~"=~"RIGHT=~"wc_multi_entity_link.wc_id~" )    JOIN (LEFT=~"wc_multi_entity_link.wc_lookup_code~"    OP =~"=~"RIGHT=~"address_lookup.lookup_code~" )) ARG(NAME = ~"as_screen~" TYPE = string)  ARG(NAME = ~"as_val~" TYPE = string) " arguments=(("as_screen", string),("as_val", string)) )
+text(band=header alignment="2" text="Wc Hdr
+Wc Id" border="6" color="33554432" x="18" y="16" height="104" width="274" html.valueishtml="0"  name=wc_hdr_wc_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Wc Hdr
+Wc Description" border="6" color="33554432" x="311" y="16" height="104" width="2309" html.valueishtml="0"  name=wc_hdr_wc_description_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="5" color="33554432" x="18" y="16" height="64" width="274" format="[general]" html.valueishtml="0"  name=wc_hdr_wc_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="33554432" x="311" y="16" height="64" width="2309" format="[general]" html.valueishtml="0"  name=wc_hdr_wc_description visible="1" edit.limit=100 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

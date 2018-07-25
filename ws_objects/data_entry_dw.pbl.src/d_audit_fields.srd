@@ -1,0 +1,43 @@
+﻿$PBExportHeader$d_audit_fields.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=100 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=char(50) updatewhereclause=yes name=field_name dbname="sys_fields.field_name" )
+ column=(type=char(1) updatewhereclause=yes name=lookup_field dbname="sys_fields.lookup_field" )
+ column=(type=char(2) updatewhereclause=yes name=field_type dbname="sys_fields.field_type" )
+ column=(type=char(1) updatewhereclause=yes name=lookup_type dbname="sys_fields.lookup_type" )
+ column=(type=char(50) updatewhereclause=yes name=lookup_field_name dbname="sys_fields.lookup_field_name" )
+ column=(type=long updatewhereclause=yes name=table_id dbname="sys_fields.table_id" )
+ column=(type=long updatewhereclause=yes name=field_id dbname="sys_fields.field_id" )
+ retrieve="  SELECT sys_fields.field_name,   
+         sys_fields.lookup_field,   
+         sys_fields.field_type,   
+         sys_fields.lookup_type,   
+         sys_fields.lookup_field_name,   
+         sys_fields.table_id,   
+         sys_fields.field_id  
+    FROM sys_fields,   
+         sys_tables  
+   WHERE ( sys_fields.table_id = sys_tables.table_id ) and  
+         ( ( sys_tables.table_name like '%' + :as_table_name ) AND  
+         ( sys_fields.audit_fld = 'Y' ) )    
+" arguments=(("as_table_name", string)) )
+text(band=header alignment="2" text="Sys Fields
+Field Name" border="0" color="0" x="5" y="4" height="104" width="1166" html.valueishtml="0"  name=sys_fields_field_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sys Fields
+Lookup Code" border="0" color="0" x="1175" y="4" height="104" width="937" html.valueishtml="0"  name=sys_fields_lookup_code_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="5" y="4" height="64" width="1166" format="[general]" html.valueishtml="0"  name=field_name visible="1" edit.limit=50 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1298" y="8" height="52" width="119" format="[general]" html.valueishtml="0"  name=lookup_field visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="1705" y="0" height="52" width="46" format="[general]" html.valueishtml="0"  name=field_type visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="2144" y="20" height="52" width="23" format="[general]" html.valueishtml="0"  name=lookup_type visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="2245" y="8" height="52" width="1152" format="[general]" html.valueishtml="0"  name=lookup_field_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="3397" y="0" height="52" width="992" format="[general]" html.valueishtml="0"  name=table_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="4389" y="0" height="52" width="992" format="[general]" html.valueishtml="0"  name=field_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

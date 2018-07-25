@@ -1,0 +1,439 @@
+﻿$PBExportHeader$m_tvs_clause.srm
+$PBExportComments$Create by Jack 11/09/2006
+forward
+global type m_tvs_clause from pfc_m_tvs
+end type
+type m_expandall from menu within m_viewitem
+end type
+type m_collapseall from menu within m_viewitem
+end type
+type m_sep_09 from menu within m_viewitem
+end type
+type m_addfolder from menu within m_viewitem
+end type
+type m_addclause from menu within m_viewitem
+end type
+type m_copyclause from menu within m_viewitem
+end type
+type m_properties1 from menu within m_viewitem
+end type
+type m_delete1 from menu within m_viewitem
+end type
+type m_rules from menu within m_viewitem
+end type
+type m_sep_10 from menu within m_viewitem
+end type
+type m_export from menu within m_viewitem
+end type
+type m_exportclausetosamefile from menu within m_viewitem
+end type
+type m_viewitem from pfc_m_tvs`m_viewitem within m_tvs_clause
+m_expandall m_expandall
+m_collapseall m_collapseall
+m_sep_09 m_sep_09
+m_addfolder m_addfolder
+m_addclause m_addclause
+m_copyclause m_copyclause
+m_properties1 m_properties1
+m_delete1 m_delete1
+m_rules m_rules
+m_sep_10 m_sep_10
+m_export m_export
+m_exportclausetosamefile m_exportclausetosamefile
+end type
+end forward
+
+global type m_tvs_clause from pfc_m_tvs
+end type
+global m_tvs_clause m_tvs_clause
+
+on m_tvs_clause.create
+m_tvs_clause=this
+call super::create
+end on
+
+on m_tvs_clause.destroy
+call super::destroy
+end on
+
+type m_viewitem from pfc_m_tvs`m_viewitem within m_tvs_clause
+m_expandall m_expandall
+m_collapseall m_collapseall
+m_sep_09 m_sep_09
+m_addfolder m_addfolder
+m_addclause m_addclause
+m_copyclause m_copyclause
+m_properties1 m_properties1
+m_delete1 m_delete1
+m_rules m_rules
+m_sep_10 m_sep_10
+m_export m_export
+m_exportclausetosamefile m_exportclausetosamefile
+end type
+
+on m_viewitem.create
+call super::create
+this.m_expandall=create m_expandall
+this.m_collapseall=create m_collapseall
+this.m_sep_09=create m_sep_09
+this.m_addfolder=create m_addfolder
+this.m_addclause=create m_addclause
+this.m_copyclause=create m_copyclause
+this.m_properties1=create m_properties1
+this.m_delete1=create m_delete1
+this.m_rules=create m_rules
+this.m_sep_10=create m_sep_10
+this.m_export=create m_export
+this.m_exportclausetosamefile=create m_exportclausetosamefile
+this.Item[UpperBound(this.Item)+1]=this.m_expandall
+this.Item[UpperBound(this.Item)+1]=this.m_collapseall
+this.Item[UpperBound(this.Item)+1]=this.m_sep_09
+this.Item[UpperBound(this.Item)+1]=this.m_addfolder
+this.Item[UpperBound(this.Item)+1]=this.m_addclause
+this.Item[UpperBound(this.Item)+1]=this.m_copyclause
+this.Item[UpperBound(this.Item)+1]=this.m_properties1
+this.Item[UpperBound(this.Item)+1]=this.m_delete1
+this.Item[UpperBound(this.Item)+1]=this.m_rules
+this.Item[UpperBound(this.Item)+1]=this.m_sep_10
+this.Item[UpperBound(this.Item)+1]=this.m_export
+this.Item[UpperBound(this.Item)+1]=this.m_exportclausetosamefile
+end on
+
+on m_viewitem.destroy
+call super::destroy
+destroy(this.m_expandall)
+destroy(this.m_collapseall)
+destroy(this.m_sep_09)
+destroy(this.m_addfolder)
+destroy(this.m_addclause)
+destroy(this.m_copyclause)
+destroy(this.m_properties1)
+destroy(this.m_delete1)
+destroy(this.m_rules)
+destroy(this.m_sep_10)
+destroy(this.m_export)
+destroy(this.m_exportclausetosamefile)
+end on
+
+type m_open from pfc_m_tvs`m_open within m_viewitem
+end type
+
+on m_open.create
+call super::create
+end on
+
+on m_open.destroy
+call super::destroy
+end on
+
+type m_find from pfc_m_tvs`m_find within m_viewitem
+end type
+
+on m_find.create
+call super::create
+end on
+
+on m_find.destroy
+call super::destroy
+end on
+
+type m_dash14 from pfc_m_tvs`m_dash14 within m_viewitem
+end type
+
+on m_dash14.create
+call super::create
+end on
+
+on m_dash14.destroy
+call super::destroy
+end on
+
+type m_cut from pfc_m_tvs`m_cut within m_viewitem
+end type
+
+on m_cut.create
+call super::create
+end on
+
+on m_cut.destroy
+call super::destroy
+end on
+
+type m_copy from pfc_m_tvs`m_copy within m_viewitem
+end type
+
+on m_copy.create
+call super::create
+end on
+
+on m_copy.destroy
+call super::destroy
+end on
+
+type m_paste from pfc_m_tvs`m_paste within m_viewitem
+end type
+
+on m_paste.create
+call super::create
+end on
+
+on m_paste.destroy
+call super::destroy
+end on
+
+type m_clear from pfc_m_tvs`m_clear within m_viewitem
+end type
+
+on m_clear.create
+call super::create
+end on
+
+on m_clear.destroy
+call super::destroy
+end on
+
+type m_dash15 from pfc_m_tvs`m_dash15 within m_viewitem
+end type
+
+on m_dash15.create
+call super::create
+end on
+
+on m_dash15.destroy
+call super::destroy
+end on
+
+type m_new from pfc_m_tvs`m_new within m_viewitem
+end type
+
+on m_new.create
+call super::create
+end on
+
+on m_new.destroy
+call super::destroy
+end on
+
+type m_delete from pfc_m_tvs`m_delete within m_viewitem
+end type
+
+on m_delete.create
+call super::create
+end on
+
+on m_delete.destroy
+call super::destroy
+end on
+
+type m_rename from pfc_m_tvs`m_rename within m_viewitem
+end type
+
+on m_rename.create
+call super::create
+end on
+
+on m_rename.destroy
+call super::destroy
+end on
+
+type m_dash16 from pfc_m_tvs`m_dash16 within m_viewitem
+end type
+
+on m_dash16.create
+call super::create
+end on
+
+on m_dash16.destroy
+call super::destroy
+end on
+
+type m_properties from pfc_m_tvs`m_properties within m_viewitem
+end type
+
+on m_properties.create
+call super::create
+end on
+
+on m_properties.destroy
+call super::destroy
+end on
+
+type m_expandall from menu within m_viewitem
+end type
+
+event clicked;itv_parent.dynamic event pfc_cst_expandall()
+end event
+
+on m_expandall.create
+call super::create
+this.text = "Expand All"
+end on
+
+on m_expandall.destroy
+call super::destroy
+end on
+
+type m_collapseall from menu within m_viewitem
+end type
+
+event clicked;itv_parent.dynamic event pfc_cst_collapseall()
+end event
+
+on m_collapseall.create
+call super::create
+this.text = "Collapse All"
+end on
+
+on m_collapseall.destroy
+call super::destroy
+end on
+
+type m_sep_09 from menu within m_viewitem
+end type
+
+on m_sep_09.create
+call super::create
+this.text = "-"
+end on
+
+on m_sep_09.destroy
+call super::destroy
+end on
+
+type m_addfolder from menu within m_viewitem
+end type
+
+on m_addfolder.create
+call super::create
+this.text = "Add &Folder"
+end on
+
+on m_addfolder.destroy
+call super::destroy
+end on
+
+event clicked;itv_parent.dynamic event pfc_addfolder()
+
+end event
+
+type m_addclause from menu within m_viewitem
+end type
+
+on m_addclause.create
+call super::create
+this.text = "Add &Clause"
+end on
+
+on m_addclause.destroy
+call super::destroy
+end on
+
+event clicked;itv_parent.dynamic event pfc_addclause()
+
+end event
+
+type m_copyclause from menu within m_viewitem
+end type
+
+event clicked;itv_parent.dynamic event pfc_Copyclause()
+end event
+
+on m_copyclause.create
+call super::create
+this.text = "C&opy Clause"
+end on
+
+on m_copyclause.destroy
+call super::destroy
+end on
+
+type m_properties1 from menu within m_viewitem
+end type
+
+event clicked;itv_parent.dynamic event pfc_properties()
+
+end event
+
+on m_properties1.create
+call super::create
+this.text = "&Properties"
+end on
+
+on m_properties1.destroy
+call super::destroy
+end on
+
+type m_delete1 from menu within m_viewitem
+end type
+
+event clicked;itv_parent.dynamic event pfc_deleteitem()
+
+end event
+
+on m_delete1.create
+call super::create
+this.text = "&Delete"
+end on
+
+on m_delete1.destroy
+call super::destroy
+end on
+
+type m_rules from menu within m_viewitem
+end type
+
+on m_rules.create
+call super::create
+this.text = "&Rules"
+end on
+
+on m_rules.destroy
+call super::destroy
+end on
+
+event clicked;itv_parent.dynamic event pfc_rules()
+
+end event
+
+type m_sep_10 from menu within m_viewitem
+end type
+
+on m_sep_10.create
+call super::create
+this.text = "-"
+end on
+
+on m_sep_10.destroy
+call super::destroy
+end on
+
+type m_export from menu within m_viewitem
+end type
+
+event clicked;itv_parent.dynamic event pfc_export()
+end event
+
+on m_export.create
+call super::create
+this.text = "E&xport Clause as Separate File"
+end on
+
+on m_export.destroy
+call super::destroy
+end on
+
+type m_exportclausetosamefile from menu within m_viewitem
+end type
+
+on m_exportclausetosamefile.create
+call super::create
+this.text = "Export Clause as Combined File "
+end on
+
+on m_exportclausetosamefile.destroy
+call super::destroy
+end on
+
+event clicked;itv_parent.dynamic event pfc_export_single()
+end event
+

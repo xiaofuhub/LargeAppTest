@@ -1,0 +1,8 @@
+﻿$PBExportHeader$str_dwsyntax.srs
+global type str_dwsyntax from structure
+	string		as_syntax[]
+	string		as_fieldlist[]
+	string		as_gridsyntax[]
+	string		as_gridfieldlist[]
+end type
+

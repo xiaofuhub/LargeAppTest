@@ -1,0 +1,211 @@
+﻿$PBExportHeader$of_delete_provider_data.srf
+global type of_delete_provider_data from function_object
+end type
+
+forward prototypes
+global function integer of_delete_provider_data (long al_id)
+end prototypes
+
+global function integer of_delete_provider_data (long al_id);//Start Code Change ---- 12.11.2006 #V7 maha created new. Called from w_delete _provide_utl
+
+Long ll_prac_id
+Integer li_ans
+gs_search lstr_search
+n_ds lds_tables
+integer t
+integer tc
+string ls_tname
+string ls_sql
+string ls_user //maha 11.22.2013
+string ls_name
+string ls_user_version
+datetime ldt_now
+
+ll_prac_id = al_id
+
+select full_name into :ls_name from v_full_name where prac_id = :ll_prac_id;
+
+if ll_prac_id = 0 then //not passed
+	lstr_search.stran_transaction = SQLCA
+	lstr_search.ls_open_for = "DELETE"
+	
+	OpenWithParm( w_extended_search_new , lstr_search )
+	ll_prac_id = Message.DoubleParm
+	IF ll_prac_id = -1 THEN Return -1
+END IF
+	
+// code rewritten maha 061804 (4.187)to catch all pd tables including customs.
+lds_tables = create n_ds
+//lds_tables.dataobject = "d_pd_tables_for_prac_delete"
+lds_tables.dataobject = "d_pd_tables_for_prac_delete_sql"
+lds_tables.settransobject(sqlca)
+tc = lds_tables.retrieve()
+
+for t = 1 to tc
+	ls_tname = lds_tables.getitemstring(t,"table_name")
+	choose case ls_tname //save basic and affil stat for last
+		case "pd_basic", "pd_affil_stat"
+			continue
+		case else
+			ls_sql = "DELETE FROM " + ls_tname + " where prac_id = " + string(ll_prac_id) + ";"
+			execute immediate :ls_sql using sqlca;
+			commit using sqlca;
+	end choose
+next
+	
+delete from verif_info
+where prac_id = :ll_prac_id;
+IF SQLCA.SQLCODE = -1 THEN
+	MessageBox("Delete", SQLCA.SQLERRTEXT )
+	RETURN -1
+END IF
+
+delete from net_dev_ids
+where prac_id = :ll_prac_id;
+IF SQLCA.SQLCODE = -1 THEN
+	MessageBox("Delete", SQLCA.SQLERRTEXT )
+	RETURN -1
+END IF
+
+delete from net_dev_action_items
+where prac_id = :ll_prac_id;
+IF SQLCA.SQLCODE = -1 THEN
+	MessageBox("Delete", SQLCA.SQLERRTEXT )
+	RETURN -1
+END IF
+
+delete from net_dev_notes
+where prac_id = :ll_prac_id;
+IF SQLCA.SQLCODE = -1 THEN
+	MessageBox("Delete", SQLCA.SQLERRTEXT )
+	RETURN -1
+END IF
+
+//Start Code Change ----02.12.2014 #V14 maha
+//Start Code Change ----07.22.2014 #V14.2 maha - removed as redundant
+//delete from pd_appl_tracking 
+//where prac_id = :ll_prac_id;
+//IF SQLCA.SQLCODE = -1 THEN
+//	MessageBox("Delete", SQLCA.SQLERRTEXT )
+//	RETURN -1
+//END IF
+
+//Start Code Change ----11.22.2013 #V14 maha
+delete from wv_prac_tracking
+where prac_id = :ll_prac_id;
+IF SQLCA.SQLCODE = -1 THEN
+	MessageBox("Delete", SQLCA.SQLERRTEXT )
+	RETURN -1
+END IF
+
+delete from wv_question_documents
+where prac_id = :ll_prac_id;
+IF SQLCA.SQLCODE = -1 THEN
+	MessageBox("Delete", SQLCA.SQLERRTEXT )
+	RETURN -1
+END IF
+
+ //Start Code Change ----11.12.2015 #V15 maha
+ delete from verif_batch_log
+where prac_id = :ll_prac_id;
+IF SQLCA.SQLCODE = -1 THEN
+	MessageBox("Delete", SQLCA.SQLERRTEXT )
+	RETURN -1
+END IF
+ //End Code Change ----11.12.2015 
+
+select user_id into :ls_user from security_users where prac_id = :ll_prac_id;
+
+delete from security_user_facilities
+where user_id = :ls_user; 
+IF SQLCA.SQLCODE = -1 THEN
+	MessageBox("Delete", SQLCA.SQLERRTEXT )
+	RETURN -1
+END IF
+
+delete from security_user_views
+where user_id = :ls_user; 
+IF SQLCA.SQLCODE = -1 THEN
+	MessageBox("Delete", SQLCA.SQLERRTEXT )
+	RETURN -1
+END IF
+
+//Start Code Change ----01.09.2014 #V14 maha
+delete from security_user_department
+where user_id = :ls_user; 
+IF SQLCA.SQLCODE = -1 THEN
+	MessageBox("Delete", SQLCA.SQLERRTEXT )
+	RETURN -1
+END IF
+//End Code Change ----01.09.2014
+
+
+delete from security_users
+where user_id = :ls_user; 
+IF SQLCA.SQLCODE = -1 THEN
+	MessageBox("Delete", SQLCA.SQLERRTEXT )
+	RETURN -1
+END IF
+//End Code Change ----11.22.2013
+
+//Start Code Change-by Appeon long.zhang 08.26.2014 (v14.2 BugH082103 of IntelliCredApp V14.2 Issues of New Features)
+delete from ctx_prac_link 
+where prac_id = :ll_prac_id;
+IF SQLCA.SQLCODE = -1 THEN
+	MessageBox("Delete", SQLCA.SQLERRTEXT )
+	RETURN -1
+END IF
+//End Code Change-by Appeon long.zhang 08.26.2014
+
+delete from pd_affil_stat
+where prac_id = :ll_prac_id;
+IF SQLCA.SQLCODE = -1 THEN
+	MessageBox("Delete", SQLCA.SQLERRTEXT )
+	RETURN -1
+END IF
+
+//---------Begin Added by (Appeon)Harry 03.22.2016 for BugH032104 --------
+delete from ctx_fee_sched_pracs
+where practitioner_id = :ll_prac_id;
+IF SQLCA.SQLCODE = -1 THEN
+	MessageBox("Delete", SQLCA.SQLERRTEXT )
+	RETURN -1
+END IF
+//---------End Added ------------------------------------------------------
+
+delete from pd_basic
+where prac_id = :ll_prac_id;
+IF SQLCA.SQLCODE = -1 THEN
+	MessageBox("Delete", SQLCA.SQLERRTEXT )
+	RETURN -1
+END IF
+
+COMMIT USING SQLCA;
+
+ //Start Code Change ----06.23.2009 #V92 maha = removed 081909
+//delete from caqh_log
+//where prac_id = :ll_prac_id;
+//IF SQLCA.SQLCODE = -1 THEN
+//	MessageBox("Delete", SQLCA.SQLERRTEXT )
+//	RETURN -1
+//END IF
+//
+//Start Code Change ----01.09.2014 #V14 maha - added delete log
+ls_user_version = gnv_app.of_getversion( )
+ldt_now = datetime(today(), now())
+
+insert into sys_audit_entity_delete ( ent_id, full_name, user_id, delete_date, isg_version, entity_type)
+values ( :ll_prac_id, :ls_name, :gs_user_id , :ldt_now, :ls_user_version, 'Provider');
+//End Code Change ----01.09.2014
+
+COMMIT USING SQLCA;
+
+//Start Code Change ----11.30.2016 #V153 maha
+update entity_lookup set prac_id = null, addr_id = null where prac_id = :ll_prac_id;
+commit using sqlca;
+
+//MessageBox("DELETE", "The record has been deleted.", Information! )
+
+RETURN 0
+end function
+

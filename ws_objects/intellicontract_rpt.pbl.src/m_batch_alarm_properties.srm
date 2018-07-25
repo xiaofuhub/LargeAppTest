@@ -1,0 +1,157 @@
+﻿$PBExportHeader$m_batch_alarm_properties.srm
+forward
+global type m_batch_alarm_properties from menu
+end type
+type m_gotodatefield from menu within m_batch_alarm_properties
+end type
+type m_report from menu within m_batch_alarm_properties
+end type
+type m_refresh from menu within m_batch_alarm_properties
+end type
+global type m_batch_alarm_properties from menu
+m_gotodatefield m_gotodatefield
+m_report m_report
+m_refresh m_refresh
+end type
+end forward
+
+global type m_batch_alarm_properties from menu
+m_gotodatefield m_gotodatefield
+m_report m_report
+m_refresh m_refresh
+end type
+global m_batch_alarm_properties m_batch_alarm_properties
+
+type variables
+treeview itv_datealarms
+
+end variables
+
+on m_batch_alarm_properties.create
+m_batch_alarm_properties=this
+call super::create
+this.text = "m_batch_alarm_properties"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_gotodatefield=create m_gotodatefield
+this.m_report=create m_report
+this.m_refresh=create m_refresh
+this.Item[UpperBound(this.Item)+1]=this.m_gotodatefield
+this.Item[UpperBound(this.Item)+1]=this.m_report
+this.Item[UpperBound(this.Item)+1]=this.m_refresh
+end on
+
+on m_batch_alarm_properties.destroy
+call super::destroy
+destroy(this.m_gotodatefield)
+destroy(this.m_report)
+destroy(this.m_refresh)
+end on
+
+type m_gotodatefield from menu within m_batch_alarm_properties
+end type
+
+event clicked;itv_datealarms.Dynamic Event ue_GoToDateField()
+
+end event
+
+on m_gotodatefield.create
+call super::create
+this.text = "Go To Contract"
+this.enabled = false
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_gotodatefield.destroy
+call super::destroy
+end on
+
+type m_report from menu within m_batch_alarm_properties
+end type
+
+event clicked;itv_datealarms.Dynamic Event ue_report()
+
+end event
+
+on m_report.create
+call super::create
+this.text = "Report"
+this.enabled = false
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_report.destroy
+call super::destroy
+end on
+
+type m_refresh from menu within m_batch_alarm_properties
+end type
+
+on m_refresh.create
+call super::create
+this.text = "Refresh All"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_refresh.destroy
+call super::destroy
+end on
+
+event clicked;itv_datealarms.Dynamic Event ue_refresh()
+end event
+

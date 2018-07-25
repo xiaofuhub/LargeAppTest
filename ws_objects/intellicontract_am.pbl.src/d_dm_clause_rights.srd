@@ -1,0 +1,42 @@
+﻿$PBExportHeader$d_dm_clause_rights.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=ctx_acp_clause_id dbname="ctx_acp_clause.ctx_acp_clause_id" )
+ column=(type=char(255) updatewhereclause=yes name=clause_name dbname="ctx_acp_clause.clause_name" )
+ column=(type=decimal(0) updatewhereclause=yes name=category dbname="ctx_acp_contract_management_right.category" )
+ column=(type=char(2) updatewhereclause=yes name=rights dbname="ctx_acp_contract_management_right.rights" )
+ retrieve="  SELECT ctx_acp_clause.ctx_acp_clause_id, 
+			ctx_acp_clause.clause_name,   
+			ctx_acp_contract_management_right.category,   
+         ctx_acp_contract_management_right.rights   
+    FROM ctx_acp_clause,
+			ctx_acp_contract_management_right,   
+         security_users   
+   WHERE ( ctx_acp_clause.ctx_acp_clause_id in ( :al_clauseid ) )    
+     AND ( ctx_acp_clause.category = ctx_acp_contract_management_right.category )
+     AND ( ctx_acp_contract_management_right.types = :ai_type ) 
+	  AND ( ctx_acp_contract_management_right.role_id = security_users.role_id ) 
+     AND ( security_users.user_id = :as_userid )
+
+
+
+" arguments=(("as_userid", string),("ai_type", number),("al_clauseid", numberlist)) )
+text(band=header alignment="2" text="Ctx Acp Contract Management Right
+Category" border="0" color="33554432" x="9" y="8" height="104" width="393" html.valueishtml="0"  name=ctx_acp_contract_management_right_category_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Acp Contract Management Right
+Rights" border="0" color="33554432" x="411" y="8" height="104" width="530" html.valueishtml="0"  name=ctx_acp_contract_management_right_rights_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Ctx Acp Clause Ctx Acp Clause Id" border="0" color="0" x="1298" y="4" height="76" width="718" html.valueishtml="0"  name=ctx_acp_clause_ctx_acp_clause_id_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="0" color="33554432" x="9" y="8" height="64" width="393" format="[general]" html.valueishtml="0"  name=category visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="411" y="8" height="64" width="530" format="[general]" html.valueishtml="0"  name=rights visible="1" edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="case(rights when ~"21~" then ~"Full Access~" when ~"22~" then ~"No Editing~" when ~"23~" then ~"Editing With Approval~" when ~"24~" then ~"No Adding~" when ~"25~" then ~"Adding With Approval~" else ~"~")"border="0" color="0" x="951" y="0" height="76" width="338" format="[GENERAL]" html.valueishtml="0"  name=description visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="1298" y="4" height="64" width="718" format="[general]" html.valueishtml="0"  name=ctx_acp_clause_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=0 border="0" color="33554432" x="2030" y="16" height="52" width="571" html.valueishtml="0"  name=clause_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Ctx Acp Clause Clause Name" border="0" color="0" x="2025" y="4" height="76" width="576" html.valueishtml="0"  name=ctx_acp_clause_clause_name_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

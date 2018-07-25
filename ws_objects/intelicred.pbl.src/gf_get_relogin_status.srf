@@ -1,0 +1,23 @@
+﻿$PBExportHeader$gf_get_relogin_status.srf
+global type gf_get_relogin_status from function_object
+end type
+
+forward prototypes
+global function boolean gf_get_relogin_status ()
+end prototypes
+
+global function boolean gf_get_relogin_status ();Application		app
+Boolean			lb_Relogin
+
+
+app = GetApplication( )
+
+If IsValid( app ) Then lb_Relogin = app.dynamic of_Get_Relogin_status( )
+
+Return lb_Relogin
+
+
+
+
+end function
+

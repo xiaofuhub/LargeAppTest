@@ -1,0 +1,7 @@
+﻿$PBExportHeader$str_clock_color.srs
+global type str_clock_color from structure
+	long		l_color_value[]
+	integer		i_color_id
+	u_cst_gadget_clock		uo_gadget_clock
+end type
+

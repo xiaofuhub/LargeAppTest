@@ -1,0 +1,13 @@
+﻿$PBExportHeader$u_cst_message_struct.srs
+global type u_cst_message_struct from structure
+	string		msgid
+	string		msgtitle
+	string		msgtext
+	string		msgicon
+	string		msgbutton
+	integer		msgdefaultbutton
+	string		msgrepresentation
+	string		msgcause
+	string		msgfind
+end type
+

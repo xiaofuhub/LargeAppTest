@@ -1,0 +1,51 @@
+﻿$PBExportHeader$d_contacts_update.srd
+$PBExportComments$Create by Jack 03/28/2007
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=contact_id dbname="ctx_contacts.contact_id" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=contact_type2 dbname="ctx_contacts.contact_type2" )
+ column=(type=char(150) update=yes updatewhereclause=yes name=street_1 dbname="ctx_contacts.street_1" )
+ column=(type=char(150) update=yes updatewhereclause=yes name=street_2 dbname="ctx_contacts.street_2" )
+ column=(type=char(150) update=yes updatewhereclause=yes name=street_3 dbname="ctx_contacts.street_3" )
+ column=(type=char(35) update=yes updatewhereclause=yes name=city dbname="ctx_contacts.city" )
+ column=(type=char(30) updatewhereclause=yes name=code dbname="code_lookup.code" )
+ column=(type=char(12) update=yes updatewhereclause=yes name=zip dbname="ctx_contacts.zip" )
+ column=(type=long update=yes updatewhereclause=yes name=facility_id dbname="ctx_contacts.facility_id" )
+ retrieve=" SELECT CTX_CONTACTS.contact_id,
+ 		  CTX_CONTACTS.contact_type2,
+        CTX_CONTACTS.street_1,
+        CTX_CONTACTS.street_2,
+        CTX_CONTACTS.street_3,
+        CTX_CONTACTS.city,
+        code_lookup.code,
+        CTX_CONTACTS.zip,
+		  CTX_CONTACTS.facility_id
+   FROM CTX_CONTACTS left outer join code_lookup on CTX_CONTACTS.state = code_lookup.lookup_code
+WHERE CTX_CONTACTS.facility_id is null" update="CTX_CONTACTS" updatewhere=1 updatekeyinplace=no )
+text(band=header alignment="0" text="Ctx Contacts Contact Id" border="6" color="0" x="9" y="4" height="60" width="713" html.valueishtml="0"  name=ctx_contacts_contact_id_t visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=header alignment="0" text="Ctx Contacts Contact Type2" border="6" color="0" x="731" y="4" height="60" width="709" html.valueishtml="0"  name=ctx_contacts_contact_type2_t visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=header alignment="0" text="Ctx Contacts Street 1" border="6" color="0" x="1449" y="4" height="60" width="681" html.valueishtml="0"  name=ctx_contacts_street_1_t visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=header alignment="0" text="Ctx Contacts Street 2" border="6" color="0" x="2139" y="4" height="60" width="782" html.valueishtml="0"  name=ctx_contacts_street_2_t visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=header alignment="0" text="Ctx Contacts Street 3" border="6" color="0" x="2930" y="4" height="60" width="745" html.valueishtml="0"  name=ctx_contacts_street_3_t visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=header alignment="0" text="Ctx Contacts City" border="6" color="0" x="3685" y="4" height="60" width="485" html.valueishtml="0"  name=ctx_contacts_city_t visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=header alignment="0" text="Code Lookup Code" border="6" color="0" x="4178" y="4" height="60" width="535" html.valueishtml="0"  name=code_lookup_code_t visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=header alignment="0" text="Ctx Contacts Zip" border="6" color="0" x="4722" y="4" height="60" width="549" html.valueishtml="0"  name=ctx_contacts_zip_t visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+text(band=header alignment="0" text="Ctx Contacts Facility Id" border="6" color="0" x="5280" y="4" height="60" width="649" html.valueishtml="0"  name=ctx_contacts_facility_id_t visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="0" height="76" width="713" format="[general]" html.valueishtml="0"  name=contact_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217748" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="731" y="0" height="76" width="709" format="[general]" html.valueishtml="0"  name=contact_type2 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217748" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="1449" y="0" height="76" width="681" format="[general]" html.valueishtml="0"  name=street_1 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217748" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="2139" y="0" height="76" width="782" format="[general]" html.valueishtml="0"  name=street_2 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217748" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="2930" y="0" height="76" width="745" format="[general]" html.valueishtml="0"  name=street_3 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217748" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="3685" y="0" height="76" width="485" format="[general]" html.valueishtml="0"  name=city visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217748" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="4178" y="0" height="76" width="535" format="[general]" html.valueishtml="0"  name=code visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217748" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="4722" y="0" height="76" width="549" format="[general]" html.valueishtml="0"  name=zip visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217748" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="5280" y="0" height="76" width="649" format="[general]" html.valueishtml="0"  name=facility_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217748" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

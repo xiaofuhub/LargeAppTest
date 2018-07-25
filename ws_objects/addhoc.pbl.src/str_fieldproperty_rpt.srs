@@ -1,0 +1,19 @@
+﻿$PBExportHeader$str_fieldproperty_rpt.srs
+$PBExportComments$(Appeon)Toney 06.10.2013 - V141 ISG-CLX
+global type str_fieldproperty_rpt from structure
+	u_cst_dw_design		data_design
+	string		field_visible
+	string		label_color
+	string		label_bkcolor
+	string		label_alignment
+	string		label_border
+	string		field_required
+	string		field_mask
+	string		field_alignment
+	string		field_display_only
+	string		field_color
+	string		field_bkcolor
+	string		field_border
+	string		field_word_wrap
+end type
+

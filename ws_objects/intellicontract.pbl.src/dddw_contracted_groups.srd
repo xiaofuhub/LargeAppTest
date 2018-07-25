@@ -1,0 +1,25 @@
+﻿$PBExportHeader$dddw_contracted_groups.srd
+$PBExportComments$[intellicontract]
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=char(100) updatewhereclause=yes name=loc_gp_name dbname="group_multi_loc.gp_name" )
+ column=(type=long updatewhereclause=yes name=ctx_id dbname="ctx_loc.ctx_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=rec_id dbname="group_multi_loc.rec_id" )
+ retrieve="  SELECT DISTINCT group_multi_loc.gp_name,   
+         ctx_loc.ctx_id,   
+         group_multi_loc.rec_id  
+    FROM ctx_loc,   
+         group_multi_loc  
+   WHERE ( ctx_loc.parent_comp_id = group_multi_loc.rec_id ) and  
+         ( ( ctx_loc.ctx_id = :al_ctx_id ) ) AND  
+         ctx_loc.loc_id = 0    
+" arguments=(("al_ctx_id", number))  sort="rec_id A " )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="9" y="8" height="56" width="2309" format="[general]" html.valueishtml="0"  name=loc_gp_name visible="1" edit.limit=100 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

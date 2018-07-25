@@ -1,0 +1,12 @@
+﻿$PBExportHeader$d_dddw_export.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes identity=yes name=export_id dbname="export_hdr.export_id" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=export_name dbname="export_hdr.export_name" )
+ retrieve="  SELECT  export_hdr.export_id ,           export_hdr.export_name     
+        FROM export_hdr    " update="export_hdr" updatewhere=1 updatekeyinplace=no )
+column(band=detail id=2 alignment="0" tabsequence=10 border="0" color="0" x="27" y="8" height="52" width="635" format="[general]"  name=export_name edit.limit=15 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

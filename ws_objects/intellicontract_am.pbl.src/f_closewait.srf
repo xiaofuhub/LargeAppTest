@@ -1,0 +1,22 @@
+﻿$PBExportHeader$f_closewait.srf
+global type f_closewait from function_object
+end type
+
+forward prototypes
+global function integer f_closewait ()
+end prototypes
+
+global function integer f_closewait ();//////////////////////////////////////////////////////////////////////
+// $<function>f_closewait()
+// $<arguments>(None)
+// $<returns> integer
+// $<description>Close the waiting window:w_appeon_gifofwait
+// $<description>
+//////////////////////////////////////////////////////////////////////
+// $<add> 01.26.2007 by Frank.Gui
+//////////////////////////////////////////////////////////////////////
+IF isvalid(w_appeon_gifofwait) THEN close(w_appeon_gifofwait)
+
+return 1
+end function
+

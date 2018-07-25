@@ -1,0 +1,8 @@
+﻿$PBExportHeader$guid.srs
+global type guid from structure
+	long		data1
+	integer		data2
+	integer		data3
+	character		data4[4]
+end type
+

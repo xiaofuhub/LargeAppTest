@@ -1,0 +1,33 @@
+﻿$PBExportHeader$f_savedatawindow.srf
+global type f_savedatawindow from function_object
+end type
+
+forward prototypes
+global function integer f_savedatawindow (datawindow adw_data, string as_filename, string as_printername)
+end prototypes
+
+global function integer f_savedatawindow (datawindow adw_data, string as_filename, string as_printername);int li_rtn
+appeon_pdfservice pdfservice
+string ls_printer
+
+ls_printer = PrintGetPrinter() //02.01.2008 By Jervis
+pdfservice = create appeon_pdfservice
+
+//if isnull(as_printername) or trim(as_printername) = "" then 
+//	//as_printername = trim(ProfileString(theprogram.g_ini, "PROGRAM", "PDFPRINTER",'Customer PDFPrinter'))
+//end if
+//
+//pdfservice.of_setprintername(as_printername)
+pdfservice.of_setrelateddw(adw_data)
+
+li_rtn = pdfservice.of_saveas(as_filename,false)
+if li_rtn <> 1 then
+	MessageBox("",pdfservice.of_getlasterror())
+end if
+
+destroy pdfservice
+
+PrintSetPrinter(ls_printer) //02.01.2008 By Jervis	
+return 1
+end function
+

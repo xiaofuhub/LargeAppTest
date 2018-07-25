@@ -1,0 +1,9 @@
+﻿$PBExportHeader$str_ole_ctxid.srs
+$PBExportComments$Create by Jack 11/20/2006
+global type str_ole_ctxid from structure
+	olecustomcontrol		sole_word
+	long		sl_ctx_id
+	long		sl_opentype
+	datawindow		sdw_object
+end type
+

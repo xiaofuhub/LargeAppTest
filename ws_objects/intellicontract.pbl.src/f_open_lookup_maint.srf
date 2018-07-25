@@ -1,0 +1,74 @@
+﻿$PBExportHeader$f_open_lookup_maint.srf
+$PBExportComments$[intellicontract]
+global type f_open_lookup_maint from function_object
+end type
+
+forward prototypes
+global function integer f_open_lookup_maint (string as_lookup, u_dw adw)
+end prototypes
+
+global function integer f_open_lookup_maint (string as_lookup, u_dw adw);/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner  
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+string ls_lookup_table
+DataWindowChild child_dw
+
+choose case as_lookup
+	case 'contact_department'
+		ls_lookup_table = 'Department'
+	case 'contact_title' 
+		ls_lookup_table = 'Title'
+	case 'contact_type'
+		ls_lookup_table = 'Contact Type'
+	//case	'product_name'
+		//ls_lookup_table = 'Contract Product Type'
+	case 'contract_type'
+		 ls_lookup_table = 'Contract Type' 
+	case 'product_type'
+		ls_lookup_table = 'Contract Product Type'
+		case 'status'
+		ls_lookup_table = 'Contract Status'
+	case 'category'
+		ls_lookup_table = 'Contract Category'
+		
+	case 'via'
+		ls_lookup_table = 'Contract Contact VIA'
+		
+end choose
+
+if len(ls_lookup_table) > 0 then
+	openwithparm(w_lookup_maint,ls_lookup_table)
+	adw.GetChild(as_lookup, child_dw)
+
+	//--------------------------- APPEON BEGIN ---------------------------
+	//$<ID> PT-01
+	//$<comment> 05.11.2006 By: LeiWei
+	//$<reason> Performance tuning.
+	//$<modification> Comment out the following script since the script in w_lookup_maint
+	//$<modification> has provided the same functionality.
+	/*	
+	gnv_app.ib_ref_cache = true
+   gnv_app.of_setcontraccache()
+	*/
+	//---------------------------- APPEON END ----------------------------
+
+	adw.event dynamic ue_populatedddws()
+ end if
+
+return 0
+end function
+

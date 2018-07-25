@@ -1,0 +1,21 @@
+﻿$PBExportHeader$str_email_account.srs
+global type str_email_account from structure
+	string		as_user_id
+	string		as_sendprotocol
+	string		as_sendserver
+	long		al_sendport
+	integer		ai_sendauthmode
+	integer		ai_sendauthmode_exchange
+	integer		ai_sendssl
+	string		as_account
+	string		as_password
+	string		as_emailaddress
+	string		as_receiveprotocol
+	string		as_receiveserver
+	long		al_receiveport
+	long		ai_receivessl
+	string		as_receiverule
+	datetime		adt_receivedate
+	integer		ai_receiveauthmode
+end type
+

@@ -1,0 +1,9 @@
+﻿$PBExportHeader$str_app_update.srs
+global type str_app_update from structure
+	long		action_type
+	long		action_status
+	string		notes
+	integer		send_hist
+	string		action_user
+end type
+

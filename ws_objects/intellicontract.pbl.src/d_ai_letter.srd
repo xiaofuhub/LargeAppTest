@@ -1,0 +1,74 @@
+﻿$PBExportHeader$d_ai_letter.srd
+$PBExportComments$[intellicontract] The letters that are to be printed based on user selection
+release 11.5;
+datawindow(units=0 timer_interval=0 color=33551856 brushmode=0 transparency=0 gradient.angle=0 gradient.color=8421504 gradient.focus=0 gradient.repetition.count=0 gradient.repetition.length=100 gradient.repetition.mode=0 gradient.scale=100 gradient.spread=100 gradient.transparency=0 picture.blur=0 picture.clip.bottom=0 picture.clip.left=0 picture.clip.right=0 picture.clip.top=0 picture.mode=0 picture.scale.x=100 picture.scale.y=100 picture.transparency=0 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.background=no print.preview.background=no print.preview.outline=yes hidegrayline=no showbackcoloronxp=no picture.file="" )
+header(height=64 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+summary(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+footer(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+detail(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+table(column=(type=decimal(0) updatewhereclause=yes name=action_type dbname="CTX_ACTION_ITEMS.action_type" )
+ column=(type=datetime updatewhereclause=yes name=action_date dbname="CTX_ACTION_ITEMS.action_date" )
+ column=(type=char(255) updatewhereclause=yes name=document_name dbname="document_name" )
+ column=(type=char(75) updatewhereclause=yes name=action_description dbname="code_lookup.action_description" )
+ column=(type=char(75) updatewhereclause=yes name=letter_name dbname="sys_letters.letter_name" )
+ column=(type=long updatewhereclause=yes name=use_export dbname="sys_letters.use_export" )
+ column=(type=long updatewhereclause=yes name=export_id dbname="sys_letters.export_id" )
+ column=(type=long updatewhereclause=yes key=yes name=ctx_id dbname="CTX_ACTION_ITEMS.ctx_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=lookup_code dbname="code_lookup.lookup_code" )
+ column=(type=long updatewhereclause=yes key=yes identity=yes name=ctx_action_item_id dbname="CTX_ACTION_ITEMS.ctx_action_item_id" )
+ column=(type=datetime update=yes updatewhereclause=yes name=first_attempt dbname="CTX_ACTION_ITEMS.first_attempt" )
+ column=(type=datetime update=yes updatewhereclause=yes name=last_attempt dbname="CTX_ACTION_ITEMS.last_attempt" )
+ column=(type=long update=yes updatewhereclause=yes name=no_attempts dbname="CTX_ACTION_ITEMS.no_attempts" )
+ column=(type=long update=yes updatewhereclause=yes name=print_flag dbname="CTX_ACTION_ITEMS.print_flag" )
+ column=(type=long updatewhereclause=yes name=wf_id dbname="CTX_ACTION_ITEMS.wf_id" )
+ column=(type=long updatewhereclause=yes name=letter_id dbname="CTX_ACTION_ITEMS.letter_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=wf_action_type_id dbname="CTX_ACTION_ITEMS.wf_action_type_id" )
+ column=(type=long updatewhereclause=yes name=wf_step dbname="CTX_ACTION_ITEMS.wf_step" )
+ column=(type=decimal(0) updatewhereclause=yes name=action_status dbname="CTX_ACTION_ITEMS.action_status" )
+ retrieve="  SELECT ctx_action_items.action_type,   
+         ctx_action_items.action_date,   
+			case when ctx_action_items.wf_id is null then isnull(code_lookup.custom_6,'') else isnull(sys_letters.document_name,'') end as document_name,
+			/*case when ctx_action_items.wf_id is null then isnull(code_lookup.description,'') else isnull(wf_action_types.action_desc,'') end as action_description,*/         
+			code_lookup.description as action_description,
+			sys_letters.letter_name,
+			sys_letters.use_export,
+			sys_letters.export_id,   
+         ctx_action_items.ctx_id,   
+         code_lookup.lookup_code,   
+         ctx_action_items.ctx_action_item_id,   
+         ctx_action_items.first_attempt,   
+         ctx_action_items.last_attempt,   
+         ctx_action_items.no_attempts,   
+         ctx_action_items.print_flag,   
+         ctx_action_items.wf_id,   
+         ctx_action_items.letter_id,   
+         ctx_action_items.wf_action_type_id,   
+         ctx_action_items.wf_step,   
+         ctx_action_items.action_status  
+    FROM code_lookup,   
+             ctx_action_items left outer join sys_letters on ctx_action_items.letter_id = sys_letters.letter_id
+			                        left outer join wf_action_types on (ctx_action_items.wf_id = wf_action_types.wf_id and ctx_action_items.wf_action_type_id = wf_action_types.step_id)
+   WHERE ( ctx_action_items.action_type = code_lookup.lookup_code ) and  
+			( ctx_action_items.ctx_action_item_id in ( :al_action_item_id ) ) AND
+         ((ctx_action_items.wf_id is null and code_lookup.custom_6 is not null) or (ctx_action_items.wf_id > 0 and ctx_action_items.letter_id > 0 and ctx_action_items.print_flag > 0))
+	order by document_name
+
+" update="ctx_action_items" updatewhere=0 updatekeyinplace=no arguments=(("al_action_item_id", numberlist)) )
+group(level=1 header.height=0 trailer.height=96 by=("document_name" , "use_export" , "export_id" ) header.color="536870912" header.transparency="0" header.gradient.color="8421504" header.gradient.transparency="0" header.gradient.angle="0" header.brushmode="0" header.gradient.repetition.mode="0" header.gradient.repetition.count="0" header.gradient.repetition.length="100" header.gradient.focus="0" header.gradient.scale="100" header.gradient.spread="100" trailer.color="536870912" trailer.transparency="0" trailer.gradient.color="8421504" trailer.gradient.transparency="0" trailer.gradient.angle="0" trailer.brushmode="0" trailer.gradient.repetition.mode="0" trailer.gradient.repetition.count="0" trailer.gradient.repetition.length="100" trailer.gradient.focus="0" trailer.gradient.scale="100" trailer.gradient.spread="100"  sort="count(document_name for group 1) A sum(use_export for group 1) A sum(export_id for group 1) A " )
+text(band=header alignment="2" text="Letter Description" border="0" color="0" x="366" y="4" height="52" width="1417" html.valueishtml="0"  name=code_lookup_description_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="375" y="512" height="76" width="512" format="[general]" html.valueishtml="0"  name=action_type visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+button(band=trailer.1 text="Print" enabled=yes action="0" border="0" color="0" x="5" y="12" height="76" width="206" vtextalign="0" htextalign="0"  name=b_print_letter visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=trailer.1 id=4 alignment="0" tabsequence=32766 border="0" color="0" x="229" y="12" height="76" width="1595" format="[general]" html.valueishtml="0"  name=action_description visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+compute(band=trailer.1 alignment="0" expression="count(  document_name  for group 1 )"border="0" color="0" x="1874" y="24" height="52" width="320" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+button(band=summary text="none" enabled=yes action="0" border="0" color="0" x="5" y="0" height="120" width="320" vtextalign="0" htextalign="0"  name=b_1 visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

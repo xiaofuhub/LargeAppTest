@@ -1,0 +1,7 @@
+﻿$PBExportHeader$str_used_tempate.srs
+global type str_used_tempate from structure
+	long		sl_element_id[]
+	string		ss_element_name[]
+	datastore		sds_template_list
+end type
+

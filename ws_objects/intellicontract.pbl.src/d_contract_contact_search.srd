@@ -1,0 +1,176 @@
+﻿$PBExportHeader$d_contract_contact_search.srd
+$PBExportComments$[intellicontract]
+release 11.5;
+datawindow(units=0 timer_interval=0 color=16777215 brushmode=0 transparency=0 gradient.angle=0 gradient.color=8421504 gradient.focus=0 gradient.repetition.count=0 gradient.repetition.length=100 gradient.repetition.mode=0 gradient.scale=100 gradient.spread=100 gradient.transparency=0 picture.blur=0 picture.clip.bottom=0 picture.clip.left=0 picture.clip.right=0 picture.clip.top=0 picture.mode=0 picture.scale.x=100 picture.scale.y=100 picture.transparency=0 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.background=no print.preview.background=no print.preview.outline=yes hidegrayline=no showbackcoloronxp=no picture.file="" grid.lines=0 selected.mouse=no )
+header(height=68 color="67108864" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+summary(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+footer(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+detail(height=68 color="67108864" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+table(column=(type=long updatewhereclause=yes name=contact_id dbname="contact_id" )
+ column=(type=char(30) updatewhereclause=yes name=first_name dbname="first_name" )
+ column=(type=char(30) updatewhereclause=yes name=last_name dbname="last_name" )
+ column=(type=char(30) updatewhereclause=yes name=middle_name dbname="middle_name" )
+ column=(type=char(1) updatewhereclause=yes name=contact_local dbname="contact_local" )
+ column=(type=decimal(0) updatewhereclause=yes name=contact_type dbname="contact_type" values="" )
+ column=(type=char(50) updatewhereclause=no name=contact_title dbname="contact_title" )
+ column=(type=decimal(0) updatewhereclause=yes name=contact_department dbname="contact_department" )
+ column=(type=decimal(0) updatewhereclause=yes name=record_id dbname="record_id" )
+ column=(type=char(150) updatewhereclause=yes name=facility_name dbname="facility_name" )
+ column=(type=long updatewhereclause=yes name=facility_id dbname="facility_id" )
+ column=(type=long updatewhereclause=yes name=selected dbname="selected" values="	1/	0" )
+ column=(type=char(10) updatewhereclause=yes name=user_d dbname="user_d" )
+ column=(type=char(25) updatewhereclause=yes name=contact_phone dbname="contact_phone" )
+ column=(type=char(50) updatewhereclause=yes name=contact_email dbname="contact_email" )
+ column=(type=char(1) updatewhereclause=yes name=contact_type2 dbname="contact_type2" )
+ column=(type=char(1) updatewhereclause=yes name=access dbname="Access" )
+ retrieve=" SELECT contact_id,   
+         first_name,   
+         last_name,   
+         middle_name,   
+         contact_local,   
+         contact_type,   
+		contact_title,
+		contact_department,
+         record_id,
+			facility_name,
+			facility_id,
+         0 selected,   
+         user_d ,
+     contact_phone  ,
+	   contact_email ,
+     contact_type2,
+			 Access
+from ( 
+SELECT distinct ctx_contacts.contact_id,   
+         ctx_contacts.first_name,   
+         ctx_contacts.last_name,   
+         ctx_contacts.middle_name,   
+         ctx_contacts.contact_local,   
+         ctx_contacts.contact_type,  
+		ctx_contacts.contact_title,
+		ctx_contacts.contact_department, 
+         ctx_contacts.record_id,
+			app_facility.facility_name,
+			ctx_contacts.facility_id,
+         0 selected,   
+         ctx_contacts.user_d ,
+     contact_phone = (select top 1 A.phone 
+									from ctx_contacts_numbers A 
+								   where A.contact_id =  ctx_contacts.contact_id and
+											a.via = (select top 1 lookup_code from code_lookup where 
+                                        lookup_name = 'Contract Contact Via' and code = 'Phone' )) ,
+	   contact_email = (select top 1 b.contact_email 
+									from ctx_contacts_numbers b 
+								   where b.contact_id =  ctx_contacts.contact_id and
+											b.via = (select top 1 lookup_code 
+														from code_lookup 
+                                          where lookup_name = 'Contract Contact Via' and
+                                                code = 'email' )),
+     app_facility.contact_type2,
+			'F' as Access
+FROM icred_settings,ctx_contacts, app_facility 
+where (icred_settings.group_access = 0  or icred_settings.company_group_access = 0)  and ctx_contacts.facility_id = app_facility.facility_id
+union
+SELECT distinct ctx_contacts.contact_id,   
+         ctx_contacts.first_name,   
+         ctx_contacts.last_name,   
+         ctx_contacts.middle_name,   
+         ctx_contacts.contact_local,   
+         ctx_contacts.contact_type,   
+		ctx_contacts.contact_title,
+		ctx_contacts.contact_department, 
+         ctx_contacts.record_id,
+			app_facility.facility_name,
+			ctx_contacts.facility_id,
+         0 selected,   
+         ctx_contacts.user_d ,
+     contact_phone = (select top 1 A.phone 
+									from ctx_contacts_numbers A 
+								   where A.contact_id =  ctx_contacts.contact_id and
+											a.via = (select top 1 lookup_code from code_lookup where 
+                                        lookup_name = 'Contract Contact Via' and code = 'Phone' )) ,
+	   contact_email = (select top 1 b.contact_email 
+									from ctx_contacts_numbers b 
+								   where b.contact_id =  ctx_contacts.contact_id and
+											b.via = (select top 1 lookup_code 
+														from code_lookup 
+                                          where lookup_name = 'Contract Contact Via' and
+                                                code = 'email' )),
+     app_facility.contact_type2,
+			case when app_facility_group_access.Access is null then 'F' else app_facility_group_access.Access  end as Access
+FROM icred_settings,ctx_contacts join app_facility on(ctx_contacts.facility_id = app_facility.facility_id)
+		 left join security_group_users on (Upper(security_group_users.user_id) = Upper(:as_userid))
+left join app_facility_group_access on (app_facility_group_access.group_id = security_group_users.group_id and app_facility.facility_id = app_facility_group_access.facility_id )
+WHERE  icred_settings.group_access = 1 and icred_settings.company_group_access = 1 and (app_facility_group_access.Access = 'F' or app_facility_group_access.Access is null )  
+
+
+union 
+  SELECT distinct ctx_contacts.contact_id,   
+         ctx_contacts.first_name,   
+         ctx_contacts.last_name,   
+         ctx_contacts.middle_name,   
+         ctx_contacts.contact_local,   
+         ctx_contacts.contact_type,  
+		ctx_contacts.contact_title,
+		ctx_contacts.contact_department,  
+         ctx_contacts.record_id,
+			app_facility.facility_name,
+			ctx_contacts.facility_id,
+         0 selected,   
+         ctx_contacts.user_d ,
+     contact_phone = (select top 1 A.phone 
+									from ctx_contacts_numbers A 
+								   where A.contact_id =  ctx_contacts.contact_id and
+											a.via = (select top 1 lookup_code from code_lookup where 
+                                        lookup_name = 'Contract Contact Via' and code = 'Phone' )) ,
+	   contact_email = (select top 1 b.contact_email 
+									from ctx_contacts_numbers b 
+								   where b.contact_id =  ctx_contacts.contact_id and
+											b.via = (select top 1 lookup_code 
+														from code_lookup 
+                                          where lookup_name = 'Contract Contact Via' and
+                                                code = 'email' )),
+     app_facility.contact_type2,
+			app_facility_group_access.Access
+FROM icred_settings,ctx_contacts join app_facility on(ctx_contacts.facility_id = app_facility.facility_id)
+left join security_group_users on (Upper(security_group_users.user_id) = Upper(:as_userid))
+left join app_facility_group_access on (app_facility_group_access.group_id = security_group_users.group_id and app_facility.facility_id = app_facility_group_access.facility_id )
+WHERE  icred_settings.group_access = 1 and icred_settings.company_group_access = 1 and app_facility_group_access.Access = 'R'    and ctx_contacts.contact_id not in (
+  SELECT distinct ctx_contacts.contact_id
+FROM icred_settings,ctx_contacts join app_facility on(ctx_contacts.facility_id = app_facility.facility_id)
+		 left join security_group_users on (Upper(security_group_users.user_id) = Upper(:as_userid))
+left join app_facility_group_access on (app_facility_group_access.group_id = security_group_users.group_id and app_facility.facility_id = app_facility_group_access.facility_id )
+WHERE  icred_settings.group_access = 1 and (app_facility_group_access.Access = 'F' or app_facility_group_access.Access is null )  
+)) t_contacts
+where 1 = 1" arguments=(("as_userid", string))  sort="full_name A " )
+text(band=header alignment="2" text="Selected" border="6" color="33554432" x="9" y="8" height="52" width="297" html.valueishtml="0"  name=selected_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="2" text="Contact Type" border="6" color="33554432" x="315" y="8" height="52" width="343" html.valueishtml="0"  name=contact_type_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="0" text="Company Name" border="6" color="0" x="667" y="8" height="52" width="613" html.valueishtml="0"  name=facility_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="2" text="Name" border="6" color="33554432" x="1289" y="8" height="52" width="791" html.valueishtml="0"  name=full_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="2" text="Contact Local" border="6" color="33554432" x="2089" y="8" height="52" width="320" html.valueishtml="0"  name=contact_local_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="0" text="Contact Phone" border="6" color="0" x="2418" y="8" height="52" width="379" html.valueishtml="0"  name=contact_phone_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="0" text="Contact Email" border="6" color="0" x="2807" y="8" height="52" width="635" html.valueishtml="0"  name=contact_email_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="0" text="User ID" border="6" color="0" x="3451" y="8" height="52" width="421" html.valueishtml="0"  name=user_d_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=12 alignment="2" tabsequence=10 border="0" color="33554432" x="9" y="4" height="60" width="297" format="[general]" html.valueishtml="0"  name=selected visible="1" checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="33554432" x="315" y="4" height="60" width="343" format="[general]" html.valueishtml="0"  name=contact_type  tag="Contract Contact Type" visible="1" dddw.name=d_dddw_code_lookup dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+compute(band=detail alignment="0" expression=" last_name + ', '  + first_name + ' '+  if( IsNull(middle_name) , '', middle_name )"border="0" color="0" x="1289" y="4" height="60" width="791" format="[GENERAL]" html.valueishtml="0"  name=full_name visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="33554432" x="2089" y="4" height="60" width="320" format="[general]" html.valueishtml="0"  name=contact_local visible="1" edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="33554432" x="2418" y="4" height="60" width="379" format="[general]" html.valueishtml="0"  name=contact_phone visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="33554432" x="667" y="4" height="60" width="613" format="[general]" html.valueishtml="0"  name=facility_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="0" color="33554432" x="2807" y="4" height="60" width="635" format="[general]" html.valueishtml="0"  name=contact_email visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=13 alignment="0" tabsequence=20 border="0" color="33554432" x="3451" y="4" height="60" width="421" format="[general]" html.valueishtml="0"  name=user_d visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="0" text="Contact Title" border="0" color="0" x="3881" y="4" height="52" width="55" html.valueishtml="0"  name=contact_title_t visible="0"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" background.transparency="0" background.gradient.color="0" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="0" background.gradient.focus="0" background.gradient.scale="0" background.gradient.spread="0" tooltip.backcolor="0" tooltip.delay.initial="0" tooltip.delay.visible="0" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="0" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="0" text="Contact Department" border="0" color="0" x="3945" y="4" height="52" width="59" html.valueishtml="0"  name=contact_department_t visible="0"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" background.transparency="0" background.gradient.color="0" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="0" background.gradient.focus="0" background.gradient.scale="0" background.gradient.spread="0" tooltip.backcolor="0" tooltip.delay.initial="0" tooltip.delay.visible="0" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="0" tooltip.transparency="0" transparency="0" )
+column(band=detail id=7 alignment="0" tabsequence=30 border="0" color="33554432" x="3881" y="0" height="52" width="55" format="[general]" html.valueishtml="0"  name=contact_title visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=8 alignment="0" tabsequence=40 border="0" color="33554432" x="3945" y="0" height="52" width="59" format="[general]" html.valueishtml="0"  name=contact_department visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

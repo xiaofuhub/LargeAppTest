@@ -1,0 +1,151 @@
+﻿$PBExportHeader$gf_trusted_sites.srf
+$PBExportComments$(Appeon)Toney 06.05.2013 - V141 ISG-CLX
+global type gf_trusted_sites from function_object
+end type
+
+forward prototypes
+global function boolean gf_trusted_sites (string as_url)
+end prototypes
+
+global function boolean gf_trusted_sites (string as_url);//====================================================================
+// Function: gf_trusted_sites
+//--------------------------------------------------------------------
+// Description:
+//--------------------------------------------------------------------
+// Arguments:
+//                as_url
+//--------------------------------------------------------------------
+// Returns:  boolean
+//--------------------------------------------------------------------
+// Author:	Mark Lee		Date: 09/04/12
+//--------------------------------------------------------------------
+//	Copyright (c) 2008-2012 Contract Logix,Inc. All rights reserved.
+//--------------------------------------------------------------------
+// Modify History:
+//
+//====================================================================
+string 				ls_array[], ls_value, ls_prefix, ls_truste_site, ls_temp,ls_valuearray[], ls_domains, ls_ranges
+Int						li_rtn, li_count
+Long					ll_upperbound, i , j , ll_upperbound2		//Added By Mark Lee 02/19/2013
+ulong 					ul_num
+Boolean				lbn_rtn = false , lbn_option = false
+n_cst_string			ln_cst_string
+
+ If isnull(as_url) or trim(as_url) = '' Then
+	Return False
+End If 
+  
+// It is adjuge 'http' or 'https' use for trusted sites
+If Pos(as_url,'://') > 0 Then
+	ls_prefix = lower(left(as_url,Pos(as_url,'://') - 1))
+
+	//obtain the Url
+	If Pos(as_url,'/', Pos(as_url,'://') + 3) >  0 Then
+	 	ls_truste_site = mid(as_url,Pos(as_url,'://') + 3, Pos(as_url,'/', Pos(as_url,'://') + 3) - Pos(as_url,'://') - 3 )
+	Else
+		ls_truste_site = mid(as_url,Pos(as_url,'://') + 3, len(as_url) - Pos(as_url,'://') - 3 + 1 )
+	End If
+	
+	//cut port number //Added By Mark Lee 03/13/2013
+	If Pos(ls_truste_site,":") > 0 then 
+		ls_truste_site = Left(ls_truste_site, Pos(ls_truste_site,":") - 1)
+	End If 
+	
+	// It is adjuge the Url that is use IP address or the internet for trusted sites
+	ls_temp =	ln_cst_string.of_GlobalReplace(ls_truste_site,'.', '')
+	If IsNumber(ls_temp) Then
+	 	lbn_option = True
+	Else
+		lbn_option = False	
+	End If
+Else
+	Return False
+End If 
+
+li_count = 0 
+ls_domains = 'Domains'
+ls_ranges = 'Ranges'
+DO
+
+	If lbn_option = false Then
+		li_rtn = RegistryKeys(  "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\"+ls_domains,  ls_array)
+		If li_rtn = 1 Then 
+			ll_upperbound = UpperBound(ls_array) 
+			If ll_upperbound > 0 and not isnull(ll_upperbound) Then
+				For i = 1 to ll_upperbound	
+					li_rtn = RegistryGet( "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\"+ls_domains+"\"+ls_array[i], ls_prefix, ReguLong! , ul_num)
+					If li_rtn > 0 Then
+						ls_value = ls_array[i]					
+						// use lower string
+						If lower(ls_truste_site) = lower(ls_value) Then 
+							lbn_rtn = True
+							exit
+						Else
+							//	deal with 'http://*.contract.com ' this case
+							If Pos(ls_truste_site,'.') > 0 Then
+								If lower(mid(ls_truste_site,Pos(ls_truste_site,'.') + 1, len(ls_truste_site) - Pos(ls_truste_site,'.') )) = lower(ls_value) Then 
+									lbn_rtn = True
+									exit
+								End If
+							End If
+						End If					
+					Else
+						// deal with 	'http://web.contractlogix.com/' this case
+						li_rtn = RegistryKeys(  "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\"+ls_domains+"\"+ls_array[i],  ls_valuearray)
+						ll_upperbound2 = UpperBound(ls_valuearray) 
+						If ll_upperbound2 > 0 and not isnull(ll_upperbound2) Then
+							For j = 1 to ll_upperbound2	
+								li_rtn = RegistryGet( "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\"+ls_domains+"\"+ls_array[i]+"\"+ls_valuearray[j], ls_prefix, ReguLong! , ul_num)
+								If li_rtn > 0 Then
+									ls_value =ls_valuearray[j]+'.'+ls_array[i]			
+									// use lower string
+									If lower(ls_truste_site) = lower(ls_value) Then 
+										lbn_rtn = True
+										exit
+									End If		
+								End If
+							Next
+						End If		
+					End If			
+				Next
+			End If 
+		Else
+			lbn_rtn = False
+		End If
+	Else
+		li_rtn = RegistryKeys(  "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\"+ls_ranges,  ls_array)
+		If li_rtn  = 1 Then 
+			ll_upperbound = UpperBound(ls_array) 
+			If ll_upperbound > 0 and not isnull(ll_upperbound) Then
+				For i = 1 to ll_upperbound	
+					li_rtn = RegistryGet( "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\"+ls_ranges+"\"+ls_array[i], ":Range", RegString! , ls_value)
+					If li_rtn > 0 Then
+						li_rtn = RegistryGet( "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\"+ls_ranges+"\"+ls_array[i], ls_prefix, ReguLong! , ul_num)
+						If li_rtn > 0 Then
+							// use lower string
+							If lower(ls_truste_site) = lower(ls_value) Then 
+								lbn_rtn = True
+								exit
+							End If
+						End If
+					End If			
+				Next
+			End If 
+		Else
+			lbn_rtn = False
+		End If
+	End If
+	
+	// execute the code second times in order to adjust for windows server operation system machine //Added By Mark Lee 03/22/2013
+	IF lbn_rtn = False Then 
+		li_count ++
+		ls_domains = 'EscDomains'
+		ls_ranges = 'EscRanges'
+	Else 
+		li_count = 2
+	End If 
+LOOP UNTIL li_count >= 2
+
+Return lbn_rtn
+end function
+

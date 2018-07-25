@@ -1,0 +1,13 @@
+﻿$PBExportHeader$d_dddw_work_flow.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=rec_id dbname="wf_header.rec_id" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=wf_name dbname="wf_header.wf_name" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=wf_description dbname="wf_header.wf_description" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"wf_header~" ) COLUMN(NAME=~"wf_header.rec_id~") COLUMN(NAME=~"wf_header.wf_name~") COLUMN(NAME=~"wf_header.wf_description~")) " update="wf_header" updatewhere=1 updatekeyinplace=no )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="0" x="14" y="4" height="60" width="1623" format="[general]"  name=wf_name edit.limit=50 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="0" color="0" x="1655" y="4" height="60" width="3511" format="[general]"  name=wf_description edit.limit=255 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,72 @@
+﻿$PBExportHeader$f_get_occupation.srf
+$PBExportComments$used in datawindow computed field
+global type f_get_occupation from function_object
+end type
+
+forward prototypes
+global function string f_get_occupation (string as_list_code, string as_isofl_fld1, string as_isofl_fld2, string as_isofl_fld3, string as_isofl_fld4, string as_isofl_fld5, string as_isofl_fld6, string as_isofl_fld7, string as_isofl_fld8, string as_isofl_fld9, string as_isofl_fld10, string as_text)
+end prototypes
+
+global function string f_get_occupation (string as_list_code, string as_isofl_fld1, string as_isofl_fld2, string as_isofl_fld3, string as_isofl_fld4, string as_isofl_fld5, string as_isofl_fld6, string as_isofl_fld7, string as_isofl_fld8, string as_isofl_fld9, string as_isofl_fld10, string as_text);////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//  [PUBLIC]   : f_get_occupation
+//==================================================================================================================
+//  Purpose   	: get a listing of the occulpation codes from the lookup table and turn then in to a string
+//==================================================================================================================
+//  Arguments 	: [none] 
+//==================================================================================================================
+//  Returns   	: [string]     
+//==================================================================================================================
+//  Notes     	: 	   
+//==================================================================================================================
+//  Created By	: Michael Skinner  
+//==================================================================================================================
+//  Modification Log
+//   Changed By             Change Date                                               Reason
+// ------------------------------------------------------------------------------------------------------------------
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+string ls_array[]
+string ls_return
+long ll_i 
+//f_get_occupation('list_c',isofl_isofl_fld1, isofl_isofl_fld2,isofl_isofl_fld3,isofl_isofl_fld4,isofl_isofl_fld5,isofl_isofl_fld6,isofl_isofl_fld6,isofl_isofl_fld8,isofl_isofl_fld9,isofl_isofl_fld10)
+if LenA(TRIM(as_ISOFL_FLD1)) > 0 then ls_array[upperbound(ls_array) + 1 ] = as_ISOFL_FLD1
+if LenA(TRIM(as_ISOFL_FLD2)) > 0 then ls_array[upperbound(ls_array) + 1 ] = as_ISOFL_FLD2
+if LenA(TRIM(as_ISOFL_FLD3)) > 0 then ls_array[upperbound(ls_array) + 1 ] = as_ISOFL_FLD3
+if LenA(TRIM(as_ISOFL_FLD4)) > 0 then ls_array[upperbound(ls_array) + 1 ] = as_ISOFL_FLD4
+if LenA(TRIM(as_ISOFL_FLD5)) > 0 then ls_array[upperbound(ls_array) + 1 ] = as_ISOFL_FLD5
+if LenA(TRIM(as_ISOFL_FLD6)) > 0 then ls_array[upperbound(ls_array) + 1 ] = as_ISOFL_FLD6
+if LenA(TRIM(as_ISOFL_FLD7)) > 0 then ls_array[upperbound(ls_array) + 1 ] = as_ISOFL_FLD7
+if LenA(TRIM(as_ISOFL_FLD7)) > 0 then ls_array[upperbound(ls_array) + 1 ] = as_ISOFL_FLD8
+if LenA(TRIM(as_ISOFL_FLD9)) > 0 then ls_array[upperbound(ls_array) + 1 ] = as_ISOFL_FLD9
+if LenA(TRIM(as_ISOFL_FLD10)) > 0 then ls_array[upperbound(ls_array) + 1 ] = as_ISOFL_FLD10
+
+// DO NOT RETRIEVE IF THERE IS NO REASON TO
+	
+IF UPPERBOUND(ls_array) < 1 THEN RETURN 'NO DATA'
+
+
+
+
+datastore lds_datastore
+lds_datastore = CREATE datastore
+lds_datastore.dataobject = 'd_npdb_lookup_by_list_code'
+lds_datastore.settransobject(sqlca)
+lds_datastore.retrieve(as_list_code,ls_array)
+
+choose case as_list_code
+	case 'list_h'
+			for ll_i = 1 to lds_datastore.rowcount()
+				if isnull(lds_datastore.object.code_description[ll_i]) then lds_datastore.object.code_description[ll_i]  = space(1)
+				ls_return = ls_return + ' ' + lds_datastore.object.code_description[ll_i]  
+		   next
+	case else
+		for ll_i = 1 to lds_datastore.rowcount()
+			if isnull(lds_datastore.object.code_description[ll_i]) then lds_datastore.object.code_description[ll_i]  = space(1)
+			if isnull(lds_datastore.object.npdb_list_code[ll_i])  then lds_datastore.object.npdb_list_code[ll_i]  = space(1)
+			ls_return = ls_return + ' ' + lds_datastore.object.code_description[ll_i]  + ' (' +  lds_datastore.object.npdb_list_code[ll_i]          +   ') '
+		next
+end choose
+
+return ls_return
+end function
+

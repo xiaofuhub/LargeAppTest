@@ -1,0 +1,38 @@
+﻿$PBExportHeader$d_agreement_template_map.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=134217748 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 grid.columnmove=no selected.mouse=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=ctx_acp_clause_id dbname="ctx_acp_template_clause.ctx_acp_clause_id" )
+ column=(type=char(255) updatewhereclause=yes name=clause_name dbname="ctx_acp_clause.clause_name" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=ctx_acp_template_id dbname="ctx_acp_template_clause.ctx_acp_template_id" )
+ column=(type=long update=yes updatewhereclause=yes name=ctx_acp_template_clause_orders dbname="ctx_acp_template_clause.orders" )
+ column=(type=number updatewhereclause=yes name=page_break dbname="ctx_acp_clause.page_break" )
+ retrieve="  SELECT ctx_acp_template_clause.ctx_acp_clause_id,   
+         ctx_acp_clause.clause_name,
+	      ctx_acp_template_clause.ctx_acp_template_id,
+		   ctx_acp_template_clause.orders,
+         ctx_acp_clause.page_break
+    FROM ctx_acp_clause,   
+         ctx_acp_template_clause  
+   WHERE ( ctx_acp_template_clause.ctx_acp_clause_id = ctx_acp_clause.ctx_acp_clause_id ) 
+ORDER BY ctx_acp_template_clause.ctx_acp_template_id, ctx_acp_template_clause.orders ASC   
+" update="ctx_acp_template_clause" updatewhere=0 updatekeyinplace=no  sort="ctx_acp_template_id A ctx_acp_template_clause_orders A " )
+text(band=header alignment="0" text="Ctx Acp Template Clause Ctx Acp Template Id" border="0" color="0" x="1024" y="4" height="76" width="658" html.valueishtml="0"  name=ctx_acp_template_clause_ctx_acp_temp_t visible="0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Clause Name" border="6" color="33554432" x="197" y="8" height="52" width="818" html.valueishtml="0"  name=clause_name_t visible="0"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="No." border="0" color="33554432" x="9" y="16" height="52" width="178" html.valueishtml="0"  name=t_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Ctx Acp Template Clause Ctx Acp Clause Id" border="0" color="0" x="1691" y="4" height="76" width="530" html.valueishtml="0"  name=ctx_acp_template_clause_ctx_acp_clau_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Ctx Acp Template Clause Orders" border="0" color="0" x="2231" y="4" height="76" width="978" html.valueishtml="0"  name=ctx_acp_template_clause_orders_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Ctx Acp Clause Page Break" border="0" color="0" x="3218" y="4" height="76" width="320" html.valueishtml="0"  name=ctx_acp_clause_page_break_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="1024" y="12" height="52" width="658" format="[general]" html.valueishtml="0"  name=ctx_acp_template_id visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="197" y="8" height="64" width="818" format="[general]" html.valueishtml="0"  name=clause_name visible="1" edit.limit=255 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="string(getrow()) + ~".0~""border="0" color="33554432" x="9" y="8" height="64" width="178" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="1691" y="12" height="52" width="530" format="[general]" html.valueishtml="0"  name=ctx_acp_clause_id visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="2231" y="0" height="52" width="978" format="[general]" html.valueishtml="0"  name=ctx_acp_template_clause_orders visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="33554432" x="3218" y="0" height="52" width="320" format="[general]" html.valueishtml="0"  name=page_break visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

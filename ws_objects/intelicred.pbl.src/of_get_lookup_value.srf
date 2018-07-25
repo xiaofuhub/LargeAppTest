@@ -1,0 +1,82 @@
+﻿$PBExportHeader$of_get_lookup_value.srf
+global type of_get_lookup_value from function_object
+end type
+
+forward prototypes
+global function string of_get_lookup_value (string as_lu_type, string as_lu_field, long al_lu_code)
+end prototypes
+
+global function string of_get_lookup_value (string as_lu_type, string as_lu_field, long al_lu_code);//Start Code Change ----11.15.2016 #V153 maha - copied from app_population as a system function
+Long ll_findrow
+String ls_lu_table, ls_value, ls_condition
+String ls_notfound = '***NOT FOUND***'
+
+IF IsNull(as_lu_field) OR LenA(Trim(as_lu_field)) < 1  THEN RETURN ls_notfound
+
+CHOOSE CASE Upper(as_lu_type)
+	CASE 'C'
+		ls_lu_table = 'code_lookup'
+		//------------------------------------------------------------------------
+		// 2.24.2016 RP added
+		gnv_data.of_retrieveIfNecessary("code_lookup", FALSE)
+		//------------------------------------------------------------------------
+		ls_condition = "lookup_code = " + string(al_lu_code)		
+		ll_findrow = gnv_data.ids_code_lookup.Find(ls_condition , 1, gnv_data.ids_code_lookup.rowcount())
+		IF ll_findrow <= 0 THEN RETURN ls_notfound
+
+		ls_value = gnv_data.of_getitem(ls_lu_table, as_lu_field, ls_condition)		
+	CASE 'A'
+		//------------------------------------------------------------------------
+		// 2.24.2016 RP added
+		gnv_data.of_retrieveIfNecessary("address_lookup", FALSE)
+		//------------------------------------------------------------------------
+		ls_lu_table = 'address_lookup'		
+		ls_condition = "lookup_code = " + string(al_lu_code)
+		IF gnv_data.ids_address_lookup.RowCount() < 1 THEN 
+			//gnv_data.of_retrieve(ls_lu_table)
+			IF gnv_data.of_retrieve(ls_lu_table) = -1 THEN messagebox("Retrieve Error","Address lookup retrieve failed.") //trap error - alfee 04.15.2010
+		END IF
+		ll_findrow = gnv_data.ids_address_lookup.Find(ls_condition , 1, gnv_data.ids_address_lookup.rowcount())
+		IF ll_findrow <= 0 THEN RETURN ls_notfound
+		
+		Choose Case Lower(as_lu_field)
+			case "code", "lookup_name", "entity_name", "city", "state", "zip", "country", "phone", "fax"
+				ls_value = gnv_data.ids_address_lookup.getitemstring(ll_findrow,  as_lu_field)
+			case "custom_3", "custom_4", "custom_5", "custom_6","contact_name", "contact_salutation", "email_address", "web_address" 
+				ls_value = gnv_data.ids_address_lookup.getitemstring(ll_findrow,  as_lu_field)
+			case "street1", "street2", " web_title", "audit_flag", "ic_c", "large_description_1", "large_description_2"
+				ls_value = gnv_data.ids_address_lookup.getitemstring(ll_findrow,  as_lu_field)
+			case "lookup_code", "custom_1", "custom_2", "fee", "caqh_code", "ic_n", "money_1", "money_2" 
+				ls_value = String(gnv_data.ids_address_lookup.getitemnumber( ll_findrow, as_lu_field))
+			case "integer_1", "integer_2", "integer_3", "integer_4", "integer_5", "integer_6", "integer_7", "integer_8"
+				ls_value = String(gnv_data.ids_address_lookup.getitemnumber( ll_findrow, as_lu_field))
+			case "datetime_1", "datetime_2"
+				ls_value = String(gnv_data.ids_address_lookup.getitemdatetime(ll_findrow,  as_lu_field))
+		End Choose			
+	CASE 'Q'
+		//------------------------------------------------------------------------
+		// 2.24.2016 RP added
+		gnv_data.of_retrieveIfNecessary("question_lookup", FALSE)
+		//------------------------------------------------------------------------
+		ls_lu_table = 'question_lookup'		
+		ls_condition = "question_id = " + string(al_lu_code)	
+		ll_findrow = gnv_data.ids_question_lookup.Find(ls_condition , 1, gnv_data.ids_question_lookup.rowcount())
+		IF ll_findrow <= 0 THEN RETURN ls_notfound
+		
+		//------------------------------------------------------------------------
+		// 2.24.2016 RP added
+		gnv_data.of_retrieveIfNecessary("code_lookup", FALSE)
+		//------------------------------------------------------------------------
+		Choose Case Lower(as_lu_field)
+			Case "short_quest","full_quest"
+				ls_value = gnv_data.ids_code_lookup.getitemstring(ll_findrow,  as_lu_field)
+			case "quest_type"
+				ls_value = String(gnv_data.ids_code_lookup.getitemnumber( ll_findrow, as_lu_field))
+		End Choose
+	CASE ELSE
+		RETURN ls_notfound				
+END CHOOSE
+
+RETURN ls_value
+end function
+

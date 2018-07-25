@@ -1,0 +1,132 @@
+﻿$PBExportHeader$of_email_validation.srf
+global type of_email_validation from function_object
+end type
+
+forward prototypes
+global function string of_email_validation (string as_data)
+end prototypes
+
+global function string of_email_validation (string as_data);//Start Code Change ----08.15.2012 #V12 maha - created to trap for email address format errors
+//Modified for supporting multiple addresses - long.zhang 06.11.2014
+integer l1
+integer l2
+long i, ll_pos
+string ls_ret
+string ls_found
+string ls_temp, ls_temp_ori
+string ls_temp_address [], ls_address []
+n_cst_string lnv_string
+
+//Trim the data
+as_data = Trim (as_data) 
+
+//Replace '.com,' to '.com;' 
+ll_Pos = Pos(as_data,".com,")
+do while ll_Pos > 0
+	as_data = Replace(as_data,ll_Pos,5,".com;")
+	ll_Pos = Pos(as_data,".com,",ll_Pos + 5)
+loop
+
+// Parse string to array
+lnv_string.of_ParseToArray(as_data, ";", ls_temp_address[])
+for i = 1 to UpperBound(ls_temp_address[])
+	ls_Temp = Trim(ls_temp_address[i])
+	if Len(ls_Temp) > 0 then
+		ls_address[UpperBound(ls_address) + 1] = ls_Temp
+	end if
+next
+
+//Loop for each address
+for i = 1 to UpperBound(ls_address[]) 	
+	ls_temp = ls_address [i]	
+	
+	//check for @ sign
+	ls_found = of_strip_char("@", ls_temp, "@FIND@")
+	if ls_found = "0" then
+		messagebox("Data Validation","The email address '" + ls_temp + "' contains no @ symbol and is invalid.")
+		return "-1"
+	end if
+	
+	//check for .. repeated dots
+	ls_found = of_strip_char("..", ls_temp, "@FIND@")
+	if integer(ls_found) > 0 then
+		messagebox("Data Validation","The email address '" + ls_temp + "' contains repeated dots and is invalid.") 
+		return "-1"
+	end if
+	
+	//remove the single quote sent from data entry
+	if mid(ls_temp, 1,1) = "'" then ls_temp = mid(ls_temp, 2) 
+	if mid(ls_temp, len(ls_temp),1) = "'" then ls_temp = mid(ls_temp, 1, len(ls_temp) - 1)
+
+	//check and remove double quotes
+	l1 = len(ls_temp)
+	ls_temp_ori = ls_temp
+	ls_temp = of_strip_char('"', ls_temp, "")
+	l2  = len(ls_temp)
+	if l2 < l1 then messagebox("Data Validation","The email address '" + ls_temp_ori + "' was entered with double qutoes.  This has been corrected.")	
+
+	//check and remove spaces
+	l1 = len(ls_temp)
+	ls_temp_ori = ls_temp
+	ls_temp = of_strip_char(" ", ls_temp, "")
+	l2  = len(ls_temp)
+	if l2 < l1 then messagebox("Data Validation","The email address '" + ls_temp_ori + "' was entered with spaces.  This has been corrected.") 
+	
+	//Assign with the adjusted address
+	if len(ls_temp) > 0 then
+		ls_ret += ls_temp + ";"
+	end if	
+next 
+
+if right(ls_ret, 1) = ";" then 
+	ls_ret = left(ls_ret, len(ls_ret) - 1)
+end if
+
+return ls_ret
+
+
+//string ls_ret
+//string ls_found
+//integer l1
+//integer l2
+//debugbreak()
+////remove the single quote sent from data entry
+//if mid(as_data, 1,1) = "'" then
+//	ls_ret = mid(as_data, 2)
+//else
+//	ls_ret = as_data
+//end if
+//
+//if mid(ls_ret, len(ls_ret),1) = "'" then 	ls_ret = mid(ls_ret, 1, len(ls_ret) - 1)
+//	
+////check for spaces or quotes	
+//l1 = len(ls_ret)
+//ls_ret = of_strip_char(" ", ls_ret, "")
+//ls_ret = of_strip_char(' " ', ls_ret, " ")
+//l2  = len(ls_ret)
+//if l2 < l1 then messagebox("Data Validation","The email address was entered with spaces.  This has been corrected.")
+//
+////check for @ sign
+//ls_found = of_strip_char("@", ls_ret, "@FIND@")
+//if ls_found = "0" then
+//	messagebox("Data Validation","The email address contains no @ symbol and is invalid.")
+//	return "-1"
+//end if
+//
+////check for .. repeated dots
+//ls_found = of_strip_char("..", ls_ret, "@FIND@")
+//if integer(ls_found) > 0 then
+//	messagebox("Data Validation","The email address contains repeated dots and is invalid.")
+//	return "-1"
+//end if
+//
+////check for spaces
+//l1 = len(ls_ret)
+//ls_ret = of_strip_char(" ", ls_ret, "")
+////ls_ret = of_strip_char('"', ls_ret, "")
+//l2  = len(ls_ret)
+//if l2 < l1 then messagebox("Data Validation","The email address was entered with spaces.  This has been corrected.")
+//
+//return ls_ret
+end function
+

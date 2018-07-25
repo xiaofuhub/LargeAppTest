@@ -1,0 +1,33 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "call_log.pbl" "";
+@end;
+@begin Objects 
+ "d_call_facility_search.srd" "call_log.pbl";
+ "d_call_group_search.srd" "call_log.pbl";
+ "d_call_loc_search.srd" "call_log.pbl";
+ "d_call_log_categories.srd" "call_log.pbl";
+ "d_call_log_detail.srd" "call_log.pbl";
+ "d_call_log_detail_search.srd" "call_log.pbl";
+ "d_call_log_issue_lookup_browse.srd" "call_log.pbl";
+ "d_call_log_issue_lookup_detail.srd" "call_log.pbl";
+ "d_call_log_issue_type.srd" "call_log.pbl";
+ "d_call_log_prac_data.srd" "call_log.pbl";
+ "d_call_log_search_all_open.srd" "call_log.pbl";
+ "d_call_log_search_browse.srd" "call_log.pbl";
+ "d_call_log_search_my_open.srd" "call_log.pbl";
+ "d_call_log_settings.srd" "call_log.pbl";
+ "d_call_payor_search.srd" "call_log.pbl";
+ "d_call_prac_search.srd" "call_log.pbl";
+ "d_dddw_call_log_issue_type.srd" "call_log.pbl";
+ "d_pd_call_log_results.srd" "call_log.pbl";
+ "d_rpt_call_log_base.srd" "call_log.pbl";
+ "d_rpt_call_log_base_alt.srd" "call_log.pbl";
+ "u_call_log_my_stuff.sru" "call_log.pbl";
+ "w_call_log.srw" "call_log.pbl";
+ "w_call_log_issue_lookup.srw" "call_log.pbl";
+ "w_call_log_open_calls.srw" "call_log.pbl";
+ "w_call_log_search.srw" "call_log.pbl";
+ "w_call_log_settings.srw" "call_log.pbl";
+ "w_quick_search.srw" "call_log.pbl";
+@end;

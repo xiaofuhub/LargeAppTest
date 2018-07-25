@@ -1,0 +1,25 @@
+﻿$PBExportHeader$of_find_instance.srf
+global type of_find_instance from function_object
+end type
+
+forward prototypes
+global function string of_find_instance (integer ai_count, string as_string, string as_val, string as_type)
+end prototypes
+
+global function string of_find_instance (integer ai_count, string as_string, string as_val, string as_type); //Start Code Change ----07.21.2015 #V15 maha - created to compare doc_ids from verif log to verification
+ //Can be modified for other purposes with the as_type_value
+ //of_find_instance(4, "123-25-3-0-654", "-", "INSTFIND")
+ integer rc
+ integer r
+ integer p1 = 0
+ 
+ if as_type = "INSTFIND" THEN
+	 for r = 1 to ai_count
+		p1 = pos(as_string,as_val, p1+1)
+		if p1 = 0 then return "FAIL"
+	next
+	return "FIND"
+END IF
+ 
+end function
+

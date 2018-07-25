@@ -1,0 +1,78 @@
+﻿$PBExportHeader$contractlogixdocusignsoap.srx
+$PBExportComments$Proxy imported from Web service using Web Service Proxy Generator.
+global type ContractlogixDocusignSoap from NonVisualObject
+end type
+
+type variables
+Protected:
+   string xmlns = ""
+   string tm = "http://microsoft.com/wsdl/mime/textMatching/"
+   string soapenc = "http://schemas.xmlsoap.org/soap/encoding/"
+   string wsdl = "http://schemas.xmlsoap.org/wsdl/"
+   string http = "http://schemas.xmlsoap.org/wsdl/http/"
+   string mime = "http://schemas.xmlsoap.org/wsdl/mime/"
+   string soap = "http://schemas.xmlsoap.org/wsdl/soap/"
+   string soap12 = "http://schemas.xmlsoap.org/wsdl/soap12/"
+   string tns = "http://tempuri.org/"
+   string s = "http://www.w3.org/2001/XMLSchema"
+   string pb__TargetNamespace = "http://tempuri.org/"
+   string BindingStyle = ""
+
+   string endpoint = "http://qa.contractlogix.com/contractlogixdocusign/ContractlogixDocusign.asmx"
+   string __tns__DocuSignDocumentInformation = "DocuSignDocumentInformation(s:string documentName,s:string errorMessage,s:string status,tns:DocuSignature[ElementName=tns:DocuSignature] signature)@tns#YES_QUALIFIED"
+   tns__DocuSignDocumentInformation i__tns__DocuSignDocumentInformation
+   string __tns__DocuSignFile = "DocuSignFile(s:string[ElementName=tns:string] filename,s:string[ElementName=tns:string] fileExtension,s:base64Binary[ElementName=tns:base64Binary] ltbtFile,s:int fileCount,s:base64Binary ltbtFile0,s:base64Binary ltbtFile1,s:base64Binary ltbtFile2,s:base64Binary ltbtFile3,s:base64Binary ltbtFile4,s:base64Binary ltbtFile5)@tns#YES_QUALIFIED"
+   tns__DocuSignFile i__tns__DocuSignFile
+   string __tns__DocuSignTemplates = "DocuSignTemplates(s:string[ElementName=tns:string] templateID,s:string[ElementName=tns:string] templateName,s:string errorText)@tns#YES_QUALIFIED"
+   tns__DocuSignTemplates i__tns__DocuSignTemplates
+   string __tns__DocuSignature = "DocuSignature(s:string signerEmail,s:string nameSigned,s:string signStatus,s:string signerIP,s:string signedDate,s:string roles,s:string docType,s:int routingOrder,s:dateTime signed)@tns#YES_QUALIFIED"
+   tns__DocuSignature i__tns__DocuSignature
+   string __tns__DocuSignedDocument = "DocuSignedDocument(s:string errorText,s:base64Binary document,s:string Id,s:string name,s:string fileExtension)@tns#YES_QUALIFIED"
+   tns__DocuSignedDocument i__tns__DocuSignedDocument
+   string __tns__Status = "Status(s:string envelopeID,s:string status,s:string subject,s:string errorText)@tns#YES_QUALIFIED"
+   tns__Status i__tns__Status
+   string __tns__CorrectAndResendEnvelope = "CorrectAndResendEnvelope(s:string userName,s:string password,s:string integratorKey,s:string envelopId,s:string email)@tns#YES_QUALIFIED"
+   tns__CorrectAndResendEnvelope i__tns__CorrectAndResendEnvelope
+   string __tns__CreateAndSendEnvelope = "CreateAndSendEnvelope(s:string userName,s:string password,s:string integratorKey,s:string userid,s:string accountId,s:string subject,s:string content,s:string recipient,s:string cc,tns:DocuSignFile docfile)@tns#YES_QUALIFIED"
+   tns__CreateAndSendEnvelope i__tns__CreateAndSendEnvelope
+   string __tns__CreateEnvelopeFromTemplates = "CreateEnvelopeFromTemplates(s:string userName,s:string password,s:string integratorKey,s:string accountId,s:string templateid,s:string subject,s:string content,s:string recipient,s:string cc,s:boolean ActivateEnvelope,tns:DocuSignFile docfile)@tns#YES_QUALIFIED"
+   tns__CreateEnvelopeFromTemplates i__tns__CreateEnvelopeFromTemplates
+   string __tns__DeleteEnvelopes = "DeleteEnvelopes(s:string userName,s:string password,s:string integratorKey,s:string envelopId,s:string accountId)@tns#YES_QUALIFIED"
+   tns__DeleteEnvelopes i__tns__DeleteEnvelopes
+   string __tns__GetAuthenticationToken = "GetAuthenticationToken(s:string userName,s:string password,s:string integratorKey,s:string envelopId)@tns#YES_QUALIFIED"
+   tns__GetAuthenticationToken i__tns__GetAuthenticationToken
+   string __tns__RequestCorrectToken = "RequestCorrectToken(s:string userName,s:string password,s:string integratorKey,s:string envelopId,s:boolean SuppressNavigation)@tns#YES_QUALIFIED"
+   tns__RequestCorrectToken i__tns__RequestCorrectToken
+   string __tns__RequestEnvelope = "RequestEnvelope(s:string userName,s:string password,s:string integratorKey,s:string envelopId,s:boolean IncludeDocumentBytes,s:int docId)@tns#YES_QUALIFIED"
+   tns__RequestEnvelope i__tns__RequestEnvelope
+   string __tns__RequestSenderToken = "RequestSenderToken(s:string userName,s:string password,s:string integratorKey,s:string envelopId,s:string accountId)@tns#YES_QUALIFIED"
+   tns__RequestSenderToken i__tns__RequestSenderToken
+   string __tns__RequestStatus = "RequestStatus(s:string userName,s:string password,s:string integratorKey,s:string envelopId,s:int docId)@tns#YES_QUALIFIED"
+   tns__RequestStatus i__tns__RequestStatus
+   string __tns__RequestTemplates = "RequestTemplates(s:string userName,s:string password,s:string integratorKey,s:string accountid,s:boolean IncludeAdvancedTemplates)@tns#YES_QUALIFIED"
+   tns__RequestTemplates i__tns__RequestTemplates
+   string __tns__SendEnvelope = "SendEnvelope(s:string userName,s:string password,s:string integratorKey,s:string accountId,s:string envelopeId)@tns#YES_QUALIFIED"
+   tns__SendEnvelope i__tns__SendEnvelope
+   string __tns__VoidEnvelope = "VoidEnvelope(s:string userName,s:string password,s:string integratorKey,s:string envelopId,s:string reason)@tns#YES_QUALIFIED"
+   tns__VoidEnvelope i__tns__VoidEnvelope
+   string __tns__ping = "ping(s:string userName,s:string password,s:string integratorKey)@tns#YES_QUALIFIED"
+   tns__ping i__tns__ping
+end variables
+
+forward prototypes
+public:
+function string CorrectAndResendEnvelope (string userName, string password, string integratorKey, string envelopId, string email) alias for "CorrectAndResendEnvelope([in] s:string userName, [in] s:string password, [in] s:string integratorKey, [in] s:string envelopId, [in] s:string email) return s:string CorrectAndResendEnvelopeResult@http://tempuri.org/@http://tempuri.org/CorrectAndResendEnvelope*CorrectAndResendEnvelope*http://tempuri.org/"
+function string CreateAndSendEnvelope (string userName, string password, string integratorKey, string userid, string accountId, string subject, string content, string recipient, string cc, tns__DocuSignFile docfile) alias for "CreateAndSendEnvelope([in] s:string userName, [in] s:string password, [in] s:string integratorKey, [in] s:string userid, [in] s:string accountId, [in] s:string subject, [in] s:string content, [in] s:string recipient, [in] s:string cc, [in] tns:DocuSignFile docfile) return s:string CreateAndSendEnvelopeResult@http://tempuri.org/@http://tempuri.org/CreateAndSendEnvelope*CreateAndSendEnvelope*http://tempuri.org/"
+function tns__Status CreateEnvelopeFromTemplates (string userName, string password, string integratorKey, string accountId, string templateid, string subject, string content, string recipient, string cc, boolean ActivateEnvelope, tns__DocuSignFile docfile) alias for "CreateEnvelopeFromTemplates([in] s:string userName, [in] s:string password, [in] s:string integratorKey, [in] s:string accountId, [in] s:string templateid, [in] s:string subject, [in] s:string content, [in] s:string recipient, [in] s:string cc, [in] s:boolean ActivateEnvelope, [in] tns:DocuSignFile docfile) return tns:Status CreateEnvelopeFromTemplatesResult@http://tempuri.org/@http://tempuri.org/CreateEnvelopeFromTemplates*CreateEnvelopeFromTemplates*http://tempuri.org/"
+function string DeleteEnvelopes (string userName, string password, string integratorKey, string envelopId, string accountId) alias for "DeleteEnvelopes([in] s:string userName, [in] s:string password, [in] s:string integratorKey, [in] s:string envelopId, [in] s:string accountId) return s:string DeleteEnvelopesResult@http://tempuri.org/@http://tempuri.org/DeleteEnvelopes*DeleteEnvelopes*http://tempuri.org/"
+function string GetAuthenticationToken (string userName, string password, string integratorKey, string envelopId) alias for "GetAuthenticationToken([in] s:string userName, [in] s:string password, [in] s:string integratorKey, [in] s:string envelopId) return s:string GetAuthenticationTokenResult@http://tempuri.org/@http://tempuri.org/GetAuthenticationToken*GetAuthenticationToken*http://tempuri.org/"
+function string RequestCorrectToken (string userName, string password, string integratorKey, string envelopId, boolean SuppressNavigation) alias for "RequestCorrectToken([in] s:string userName, [in] s:string password, [in] s:string integratorKey, [in] s:string envelopId, [in] s:boolean SuppressNavigation) return s:string RequestCorrectTokenResult@http://tempuri.org/@http://tempuri.org/RequestCorrectToken*RequestCorrectToken*http://tempuri.org/"
+function tns__DocuSignedDocument RequestEnvelope (string userName, string password, string integratorKey, string envelopId, boolean IncludeDocumentBytes, long docId) alias for "RequestEnvelope([in] s:string userName, [in] s:string password, [in] s:string integratorKey, [in] s:string envelopId, [in] s:boolean IncludeDocumentBytes, [in] s:int docId) return tns:DocuSignedDocument RequestEnvelopeResult@http://tempuri.org/@http://tempuri.org/RequestEnvelope*RequestEnvelope*http://tempuri.org/"
+function string RequestSenderToken (string userName, string password, string integratorKey, string envelopId, string accountId) alias for "RequestSenderToken([in] s:string userName, [in] s:string password, [in] s:string integratorKey, [in] s:string envelopId, [in] s:string accountId) return s:string RequestSenderTokenResult@http://tempuri.org/@http://tempuri.org/RequestSenderToken*RequestSenderToken*http://tempuri.org/"
+function tns__DocuSignDocumentInformation RequestStatus (string userName, string password, string integratorKey, string envelopId, long docId) alias for "RequestStatus([in] s:string userName, [in] s:string password, [in] s:string integratorKey, [in] s:string envelopId, [in] s:int docId) return tns:DocuSignDocumentInformation RequestStatusResult@http://tempuri.org/@http://tempuri.org/RequestStatus*RequestStatus*http://tempuri.org/"
+function tns__DocuSignTemplates RequestTemplates (string userName, string password, string integratorKey, string accountid, boolean IncludeAdvancedTemplates) alias for "RequestTemplates([in] s:string userName, [in] s:string password, [in] s:string integratorKey, [in] s:string accountid, [in] s:boolean IncludeAdvancedTemplates) return tns:DocuSignTemplates RequestTemplatesResult@http://tempuri.org/@http://tempuri.org/RequestTemplates*RequestTemplates*http://tempuri.org/"
+function tns__Status SendEnvelope (string userName, string password, string integratorKey, string accountId, string envelopeId) alias for "SendEnvelope([in] s:string userName, [in] s:string password, [in] s:string integratorKey, [in] s:string accountId, [in] s:string envelopeId) return tns:Status SendEnvelopeResult@http://tempuri.org/@http://tempuri.org/SendEnvelope*SendEnvelope*http://tempuri.org/"
+function string VoidEnvelope (string userName, string password, string integratorKey, string envelopId, string reason) alias for "VoidEnvelope([in] s:string userName, [in] s:string password, [in] s:string integratorKey, [in] s:string envelopId, [in] s:string reason) return s:string VoidEnvelopeResult@http://tempuri.org/@http://tempuri.org/VoidEnvelope*VoidEnvelope*http://tempuri.org/"
+function boolean ping (string userName, string password, string integratorKey) alias for "ping([in] s:string userName, [in] s:string password, [in] s:string integratorKey) return s:boolean pingResult@http://tempuri.org/@http://tempuri.org/ping*ping*http://tempuri.org/"
+end prototypes
+

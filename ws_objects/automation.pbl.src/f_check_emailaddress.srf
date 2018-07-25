@@ -1,0 +1,28 @@
+﻿$PBExportHeader$f_check_emailaddress.srf
+global type f_check_emailaddress from function_object
+end type
+
+forward prototypes
+global function integer f_check_emailaddress (string as_emailaddress)
+end prototypes
+
+global function integer f_check_emailaddress (string as_emailaddress);//////////////////////////////////////////////////////////////////////
+// $<function> f_check_emailaddress
+// $<arguments>
+//               string as_emailaddress
+// $<returns> (integer)
+// $<description> N/A
+//////////////////////////////////////////////////////////////////////
+// Add by Appeon: Stephen 12.07.2012
+//////////////////////////////////////////////////////////////////////
+
+integer li_pos, li_dot
+
+li_pos = pos(as_emailaddress, '@')
+li_dot = pos(as_emailaddress, '.')
+if li_pos < 1 or li_dot < 1  then return -1
+//if li_dot <= (li_pos + 1) then return -1 - commented by alfee 06.12.2014
+
+return 1
+end function
+

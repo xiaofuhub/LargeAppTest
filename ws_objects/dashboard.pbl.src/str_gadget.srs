@@ -1,0 +1,13 @@
+﻿$PBExportHeader$str_gadget.srs
+global type str_gadget from structure
+	integer		area_number
+	long		gadget_id
+	string		gadget_title
+	integer		gadget_rows_number
+	integer		gadget_maximize
+	long		gadget_backcolor
+	long		al_temp1
+	string		as_temp1
+	decimal{1}		adec_height_ier
+end type
+

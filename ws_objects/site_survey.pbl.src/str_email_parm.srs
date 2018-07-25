@@ -1,0 +1,7 @@
+﻿$PBExportHeader$str_email_parm.srs
+$PBExportComments$(Appeon)Eugene 06.25.2013 - V141 ISG-CLX
+global type str_email_parm from structure
+	integer		ai_from_type
+	integer		ai_folder_type
+end type
+

@@ -1,0 +1,29 @@
+﻿$PBExportHeader$of_log_text.srf
+global type of_log_text from function_object
+end type
+
+forward prototypes
+global function integer of_log_text (long al_prac, string as_carrier, string as_mobile, string as_text, integer ai_sent, string as_from)
+end prototypes
+
+global function integer of_log_text (long al_prac, string as_carrier, string as_mobile, string as_text, integer ai_sent, string as_from); //Start Code Change ----06.01.2017 #V154 maha - added; called from batch text and photo profile text
+long ll_id
+datetime ldt_now
+string ls_address
+
+select max(stl_id) into :ll_id from sys_text_log;
+
+if isnull(ll_id) then ll_id = 0
+ll_id++
+
+ldt_now = datetime(today(),now())
+
+ls_address = as_mobile + " - " + as_carrier
+
+insert into sys_text_log (stl_id, prac_id, sent_time, sent_by, text_message, text_address, text_sent, sent_from) 
+values ( :ll_id, :al_prac, :ldt_now, :gs_user_id, :as_text, :ls_address, :ai_sent, :as_from);
+
+
+return 1
+end function
+

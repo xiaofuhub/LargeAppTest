@@ -1,0 +1,6 @@
+﻿$PBExportHeader$str_caqh_audit_data.srs
+global type str_caqh_audit_data from structure
+	long		log_id
+	datastore		ds_data
+end type
+

@@ -1,0 +1,13 @@
+﻿$PBExportHeader$gs_fax.srs
+global type gs_fax from structure
+	n_ds		sdw_letter
+	string		ss_message
+	string		ss_letter_name
+	string		ss_letter_document_name
+	string		ss_index
+	string		ss_mail_label_doc
+	string		ss_letter_type
+	string		ss_merge_file_path
+	string		ss_process_type
+end type
+

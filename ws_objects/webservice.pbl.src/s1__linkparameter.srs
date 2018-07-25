@@ -1,0 +1,9 @@
+﻿$PBExportHeader$s1__linkparameter.srs
+$PBExportComments$Proxy imported from Web service using Web Service Proxy Generator.
+global type s1__LinkParameter from structure
+   string FileId
+   string DocumentId
+   string LinkType
+   string SignerEmail
+end type
+

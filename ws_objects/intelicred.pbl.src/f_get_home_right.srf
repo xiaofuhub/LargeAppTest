@@ -1,0 +1,39 @@
+﻿$PBExportHeader$f_get_home_right.srf
+global type f_get_home_right from function_object
+end type
+
+forward prototypes
+global subroutine f_get_home_right ()
+end prototypes
+
+global subroutine f_get_home_right ();//////////////////////////////////////////////////////////////////////
+// $<function>f_license_check()
+// $<arguments>
+//	N/M    		
+// $<returns> N/M
+// $<description> Get the rights of home
+// $<description> for V14.2 Bug # 4867
+//////////////////////////////////////////////////////////////////////
+// $<add> 12.07.2015 by Harry
+//////////////////////////////////////////////////////////////////////
+
+integer li_role, li_value_id
+
+SELECT role_id INTO :li_role FROM security_users WHERE user_id = :gs_user_id;
+
+SELECT isnull(security_roles_rights.value_id , 1) 
+INTO :li_value_id
+FROM security_rights_action,   
+		security_roles_rights  
+WHERE ( security_roles_rights.action_id = security_rights_action.action_id ) and  
+		( ( security_rights_action.sub_module_id = 1415) AND  
+		( security_roles_rights.role_id = :li_role ) );   
+		
+If li_value_id =  1 Then
+	gb_home_visible = true
+Else
+	gb_home_visible = false
+End If
+
+end subroutine
+

@@ -1,0 +1,50 @@
+﻿$PBExportHeader$d_export_tablepk_sql.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=120 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=char(128) updatewhereclause=yes name=table_name dbname="table_name" )
+ column=(type=char(128) updatewhereclause=yes name=column_name dbname="column_name" )
+ retrieve="select
+	TABLE_NAME = convert(sysname,o.name),
+	COLUMN_NAME = convert(sysname,c.name)
+	from
+		sysindexes i, syscolumns c, sysobjects o, 
+		(select distinct object_id(sys_tables.table_name) table_id,sys_tables.table_name 
+			from export_fields 
+			INNER JOIN sys_tables ON export_fields.intcred_table = sys_tables.table_id 
+			where export_id = :al_export_id) e
+	where
+	  o.id = e.table_id  
+	  and o.id = c.id  
+	  and o.id = i.id  
+	  and (i.status & 0x800) = 0x800  
+		and (c.name = index_col (e.table_name, i.indid,  1) or
+		     c.name = index_col (e.table_name, i.indid,  2) or
+		     c.name = index_col (e.table_name, i.indid,  3) or
+		     c.name = index_col (e.table_name, i.indid,  4) or
+		     c.name = index_col (e.table_name, i.indid,  5) or
+		     c.name = index_col (e.table_name, i.indid,  6) or
+		     c.name = index_col (e.table_name, i.indid,  7) or
+		     c.name = index_col (e.table_name, i.indid,  8) or
+		     c.name = index_col (e.table_name, i.indid,  9) or
+		     c.name = index_col (e.table_name, i.indid, 10) or
+		     c.name = index_col (e.table_name, i.indid, 11) or
+		     c.name = index_col (e.table_name, i.indid, 12) or
+		     c.name = index_col (e.table_name, i.indid, 13) or
+		     c.name = index_col (e.table_name, i.indid, 14) or
+		     c.name = index_col (e.table_name, i.indid, 15) or
+		     c.name = index_col (e.table_name, i.indid, 16)
+		    )
+" arguments=(("al_export_id", number)) )
+text(band=header alignment="2" text="Table Name" border="0" color="33554432" x="9" y="8" height="52" width="2949" html.valueishtml="0"  name=table_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Column Name" border="0" color="33554432" x="2967" y="8" height="52" width="2949" html.valueishtml="0"  name=column_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="9" y="8" height="64" width="2949" format="[general]" html.valueishtml="0"  name=table_name visible="1" edit.limit=128 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="2967" y="8" height="64" width="2949" format="[general]" html.valueishtml="0"  name=column_name visible="1" edit.limit=128 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

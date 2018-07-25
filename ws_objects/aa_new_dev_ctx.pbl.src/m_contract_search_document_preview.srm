@@ -1,0 +1,157 @@
+﻿$PBExportHeader$m_contract_search_document_preview.srm
+forward
+global type m_contract_search_document_preview from menu
+end type
+type m_email from menu within m_contract_search_document_preview
+end type
+type m_saveas from menu within m_contract_search_document_preview
+end type
+type m_open_in_default_program from menu within m_contract_search_document_preview
+end type
+global type m_contract_search_document_preview from menu
+m_email m_email
+m_saveas m_saveas
+m_open_in_default_program m_open_in_default_program
+end type
+end forward
+
+global type m_contract_search_document_preview from menu
+m_email m_email
+m_saveas m_saveas
+m_open_in_default_program m_open_in_default_program
+end type
+global m_contract_search_document_preview m_contract_search_document_preview
+
+on m_contract_search_document_preview.create
+m_contract_search_document_preview=this
+call super::create
+this.text = "m_contract_search_document_preview"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_email=create m_email
+this.m_saveas=create m_saveas
+this.m_open_in_default_program=create m_open_in_default_program
+this.Item[UpperBound(this.Item)+1]=this.m_email
+this.Item[UpperBound(this.Item)+1]=this.m_saveas
+this.Item[UpperBound(this.Item)+1]=this.m_open_in_default_program
+end on
+
+on m_contract_search_document_preview.destroy
+call super::destroy
+destroy(this.m_email)
+destroy(this.m_saveas)
+destroy(this.m_open_in_default_program)
+end on
+
+type m_email from menu within m_contract_search_document_preview
+end type
+
+on m_email.create
+call super::create
+this.text = "Email"
+this.microhelp = "Email"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_email.destroy
+call super::destroy
+end on
+
+event clicked;If isvalid(w_tabpg_contract_doc_mgr) Then 
+	w_tabpg_contract_doc_mgr.pb_email.Triggerevent(Clicked!)
+End If 
+end event
+
+type m_saveas from menu within m_contract_search_document_preview
+end type
+
+on m_saveas.create
+call super::create
+this.text = "Save As"
+this.microhelp = "Save As"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_saveas.destroy
+call super::destroy
+end on
+
+event clicked;If isvalid(w_tabpg_contract_doc_mgr) Then 
+	w_tabpg_contract_doc_mgr.pb_save_as.Triggerevent(Clicked!)
+End If 
+end event
+
+type m_open_in_default_program from menu within m_contract_search_document_preview
+end type
+
+on m_open_in_default_program.create
+call super::create
+this.text = "Open in Default Program"
+this.microhelp = "Open in Default Program"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_open_in_default_program.destroy
+call super::destroy
+end on
+
+event clicked;If isvalid(w_tabpg_contract_doc_mgr) Then 
+	w_tabpg_contract_doc_mgr.pb_open_in_default.Triggerevent(Clicked!)
+End If 
+end event
+

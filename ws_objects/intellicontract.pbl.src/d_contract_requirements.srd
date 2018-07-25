@@ -1,0 +1,72 @@
+﻿$PBExportHeader$d_contract_requirements.srd
+$PBExportComments$[intellicontract] Requirements Painter for a known profile that has been saned
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=yes )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=ctx_req_tmplt_element_ctx_req_profile_id dbname="CTX_REQ_TMPLT_ELEMENT.ctx_req_profile_id" )
+ column=(type=long updatewhereclause=yes name=ctx_req_tmplt_element_ctx_rqmnt_category_id dbname="CTX_REQ_TMPLT_ELEMENT.ctx_rqmnt_category_id" )
+ column=(type=char(150) updatewhereclause=yes name=element_name dbname="CTX_REQ_TMPLT_ELEMENT.element_name" )
+ column=(type=long updatewhereclause=yes name=element_sort dbname="CTX_REQ_TMPLT_ELEMENT.element_sort" )
+ column=(type=long updatewhereclause=yes name=value_type dbname="CTX_REQ_TMPLT_ELEMENT.value_type" )
+ column=(type=char(40) updatewhereclause=yes name=dddw_name dbname="CTX_REQ_TMPLT_ELEMENT.dddw_name" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=elements_id dbname="CTX_ELEMENTS.ctx_elements_id" )
+ column=(type=long update=yes updatewhereclause=yes name=ctx_req_profile_hdr_id dbname="CTX_ELEMENTS.ctx_req_profile_hdr_id" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=char_value dbname="CTX_ELEMENTS.char_value" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=integer_value dbname="CTX_ELEMENTS.integer_value" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_value dbname="CTX_ELEMENTS.date_value" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=field_value dbname="CTX_ELEMENTS.field_value" )
+ column=(type=char(2000) update=yes updatewhereclause=no name=clause dbname="CTX_ELEMENTS.clause" )
+ column=(type=long updatewhereclause=yes name=ctx_elements_ctc_hilgt_w dbname="CTX_ELEMENTS.ctc_hilgt_w" )
+ column=(type=long updatewhereclause=yes name=ctx_elements_ctx_hilgt_h dbname="CTX_ELEMENTS.ctx_hilgt_h" )
+ column=(type=long updatewhereclause=yes name=ctx_elements_ctx_hilgt_y dbname="CTX_ELEMENTS.ctx_hilgt_y" )
+ column=(type=long updatewhereclause=yes name=ctx_elements_ctx_hilgt_x dbname="CTX_ELEMENTS.ctx_hilgt_x" )
+ column=(type=long updatewhereclause=yes name=ctx_elements_ctx_page dbname="CTX_ELEMENTS.ctx_page" )
+ column=(type=char(100) updatewhereclause=yes name=category_name dbname="category_name" )
+ column=(type=long update=yes updatewhereclause=yes name=ctx_req_tmplt_element_id dbname="CTX_ELEMENTS.ctx_req_tmplt_element_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=ctx_elements_record_id dbname="CTX_ELEMENTS.record_id" )
+ retrieve="  SELECT ctx_req_tmplt_element.ctx_req_profile_id,   
+         ctx_req_tmplt_element.ctx_rqmnt_category_id,   
+         ctx_req_tmplt_element.element_name,   
+         ctx_req_tmplt_element.element_sort,   
+         ctx_req_tmplt_element.value_type,   
+         ctx_req_tmplt_element.dddw_name,   
+         ctx_elements.ctx_elements_id,   
+         ctx_elements.ctx_req_profile_hdr_id,   
+         ctx_elements.char_value,   
+         ctx_elements.integer_value,   
+         ctx_elements.date_value,   
+         ctx_elements.field_value,   
+         ctx_elements.clause,
+			ctx_elements.ctc_hilgt_w,   
+         ctx_elements.ctx_hilgt_h,   
+         ctx_elements.ctx_hilgt_y,   
+         ctx_elements.ctx_hilgt_x,   
+         ctx_elements.ctx_page ,   
+         category_name = upper((select A.category_name from ctx_rqmnt_category A where A.ctx_rqmnt_category_id = ctx_req_tmplt_element.ctx_rqmnt_category_id ) ) ,   
+         ctx_elements.ctx_req_tmplt_element_id,
+			 ctx_elements.record_id   
+    FROM ctx_req_profile,   
+         ctx_rqmnt_category,   
+         ctx_req_tmplt_element,   
+         ctx_elements  
+   WHERE ( ctx_rqmnt_category.ctx_req_profile_id = ctx_req_profile.ctx_req_profile_id ) and  
+         ( ctx_req_tmplt_element.ctx_req_profile_id = ctx_req_profile.ctx_req_profile_id ) and  
+         ( ctx_elements.ctx_req_tmplt_element_id = ctx_req_tmplt_element.ctx_req_tmplt_element_id ) and  
+         ( ctx_elements.ctx_req_profile_hdr_id = :al_profile_id )    
+" update="ctx_elements" updatewhere=2 updatekeyinplace=yes arguments=(("al_profile_id", number))  sort="category_name A " )
+group(level=1 header.height=60 trailer.height=0 by=("category_name" ) header.color="536870912" trailer.color="536870912" )
+column(band=header.1 id=19 alignment="0" tabsequence=32766 border="0" color="8388608" x="0" y="0" height="56" width="1801" format="[general]" html.valueishtml="0"  name=category_name_1 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="10789024" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="0" x="178" y="724" height="76" width="1376" format="[general]" html.valueishtml="0"  name=ctx_req_tmplt_element_ctx_req_profile_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="0" x="197" y="860" height="76" width="1376" format="[general]" html.valueishtml="0"  name=ctx_req_tmplt_element_ctx_rqmnt_category_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="357" y="8" height="52" width="1454" format="[general]" html.valueishtml="0"  name=element_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="1" text="Requirement:" border="0" color="33554432" x="0" y="8" height="52" width="329" html.valueishtml="0"  name=element_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="0" x="6290" y="24" height="76" width="128" format="[general]" html.valueishtml="0"  name=ctx_elements_ctx_hilgt_y visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=21 alignment="0" tabsequence=32766 border="0" color="8388608" x="6418" y="0" height="52" width="1161" format="[general]" html.valueishtml="0"  name=ctx_elements_record_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="10789024" )
+rectangle(band=summary x="23" y="4" height="120" width="137"  name=r_1 visible="1"  hidesnaked=1 brush.hatch="6" brush.color="16777215" pen.style="0" pen.width="5" pen.color="16777215"  background.mode="0" background.color="16777215~tif(mod(getrow(),2) = 1, rgb(255,255,255),rgb(127,127,127))" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

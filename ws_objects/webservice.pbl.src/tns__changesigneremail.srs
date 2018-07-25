@@ -1,0 +1,9 @@
+﻿$PBExportHeader$tns__changesigneremail.srs
+$PBExportComments$Proxy imported from Web service using Web Service Proxy Generator.
+global type tns__ChangeSignerEmail from structure
+   string pstr_APICode
+   string pstr_FileID
+   string pstr_OriginalEmail
+   string pstr_NewEmail
+end type
+

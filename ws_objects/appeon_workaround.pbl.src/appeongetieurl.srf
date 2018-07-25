@@ -1,0 +1,38 @@
+﻿$PBExportHeader$appeongetieurl.srf
+global type appeongetieurl from function_object
+end type
+
+forward prototypes
+global function string appeongetieurl ()
+end prototypes
+
+global function string appeongetieurl ();//==============================================================================
+// 
+// Copyright ? 2001-2008 Appeon, Inc. and its subsidiaries. All rights reserved.
+// 
+//------------------------------------------------------------------------------
+// Function: appeongetiehandle()
+//------------------------------------------------------------------------------
+// Description: 
+// 				Returns the running IE URL of the Internet Explorer client.
+//					Only significative in B/S mode.
+// Arguments:(None)
+//	
+// Returns:  string
+//------------------------------------------------------------------------------
+// Author:	APPEON		Date: 2008-2
+//------------------------------------------------------------------------------
+// Revision History: 
+//				1.0   Initial version
+//==============================================================================
+
+String strRet
+AppeonExtFuncs funs
+funs = Create AppeonExtFuncs
+
+strRet = funs.of_GetIEUrl()
+
+Destroy funs
+Return strRet
+end function
+

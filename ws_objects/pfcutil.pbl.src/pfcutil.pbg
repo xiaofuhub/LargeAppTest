@@ -1,0 +1,48 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "pfcutil.pbl" "";
+@end;
+@begin Objects 
+ "d_debuglog.srd" "pfcutil.pbl";
+ "d_dwproperty_dates.srd" "pfcutil.pbl";
+ "d_dwproperty_linkageargs.srd" "pfcutil.pbl";
+ "d_dwproperty_multitable.srd" "pfcutil.pbl";
+ "d_dwproperty_services.srd" "pfcutil.pbl";
+ "d_dwproperty_srvcal.srd" "pfcutil.pbl";
+ "d_dwproperty_srvresize.srd" "pfcutil.pbl";
+ "d_sqlspyprint.srd" "pfcutil.pbl";
+ "pfc_n_cst_debug.sru" "pfcutil.pbl";
+ "pfc_n_cst_dwpropertyattrib.sru" "pfcutil.pbl";
+ "pfc_n_cst_dwsrv_property.sru" "pfcutil.pbl";
+ "pfc_n_cst_propertyattrib.sru" "pfcutil.pbl";
+ "pfc_n_cst_sqlspy.sru" "pfcutil.pbl";
+ "pfc_u_tab_dwproperty.sru" "pfcutil.pbl";
+ "pfc_u_tab_dwproperty_srv.sru" "pfcutil.pbl";
+ "pfc_u_tabpg_dwproperty_base.sru" "pfcutil.pbl";
+ "pfc_u_tabpg_dwproperty_buffers.sru" "pfcutil.pbl";
+ "pfc_u_tabpg_dwproperty_services.sru" "pfcutil.pbl";
+ "pfc_u_tabpg_dwproperty_srvcalculator.sru" "pfcutil.pbl";
+ "pfc_u_tabpg_dwproperty_srvcalendar.sru" "pfcutil.pbl";
+ "pfc_u_tabpg_dwproperty_srvcalendar2.sru" "pfcutil.pbl";
+ "pfc_u_tabpg_dwproperty_srvdropdownsearch.sru" "pfcutil.pbl";
+ "pfc_u_tabpg_dwproperty_srvfilter.sru" "pfcutil.pbl";
+ "pfc_u_tabpg_dwproperty_srvfind.sru" "pfcutil.pbl";
+ "pfc_u_tabpg_dwproperty_srvlinkage.sru" "pfcutil.pbl";
+ "pfc_u_tabpg_dwproperty_srvlinkage2.sru" "pfcutil.pbl";
+ "pfc_u_tabpg_dwproperty_srvmultitable.sru" "pfcutil.pbl";
+ "pfc_u_tabpg_dwproperty_srvprintpreview.sru" "pfcutil.pbl";
+ "pfc_u_tabpg_dwproperty_srvquerymode.sru" "pfcutil.pbl";
+ "pfc_u_tabpg_dwproperty_srvreport.sru" "pfcutil.pbl";
+ "pfc_u_tabpg_dwproperty_srvreqcolumn.sru" "pfcutil.pbl";
+ "pfc_u_tabpg_dwproperty_srvresize.sru" "pfcutil.pbl";
+ "pfc_u_tabpg_dwproperty_srvrowmanager.sru" "pfcutil.pbl";
+ "pfc_u_tabpg_dwproperty_srvrowselection.sru" "pfcutil.pbl";
+ "pfc_u_tabpg_dwproperty_srvsort.sru" "pfcutil.pbl";
+ "pfc_u_tabpg_dwproperty_srvsyntax.sru" "pfcutil.pbl";
+ "pfc_u_tabpg_dwproperty_status.sru" "pfcutil.pbl";
+ "pfc_w_debuglog.srw" "pfcutil.pbl";
+ "pfc_w_dwproperty.srw" "pfcutil.pbl";
+ "pfc_w_dwpropertyservices.srw" "pfcutil.pbl";
+ "pfc_w_sqlspy.srw" "pfcutil.pbl";
+ "pfc_w_sqlspyinspect.srw" "pfcutil.pbl";
+@end;

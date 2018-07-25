@@ -1,0 +1,175 @@
+﻿$PBExportHeader$f_create_option.srf
+global type f_create_option from function_object
+end type
+
+forward prototypes
+global function integer f_create_option (integer ai_data_view_id, datawindow arg_dw[], string as_dw_name[], string as_dataobject[], ref datawindow arg_create_dw[], ref string as_create_dw_name[], ref string as_create_dataobject[])
+end prototypes
+
+global function integer f_create_option (integer ai_data_view_id, datawindow arg_dw[], string as_dw_name[], string as_dataobject[], ref datawindow arg_create_dw[], ref string as_create_dw_name[], ref string as_create_dataobject[]);//////////////////////////////////////////////////////////////////////
+// $<function>f_create_option()
+// $<arguments>
+//		value	integer	ai_data_view_id		
+//		value	integer	ai_screen_id[] 		
+//		value	integer	as_updatedate[]		
+// $<returns> integer
+// $<description> Contract module modification 
+// $<description> Verify whether DataWindow syntax has already been stored on local machine. If yes, the application
+// $<description> directly gets the dw syntas from local SRD files; if not, the application gets the dw syntax from
+// $<description> the database
+//////////////////////////////////////////////////////////////////////
+// $<add> 07.31.2006 by Liang QingShi
+//////////////////////////////////////////////////////////////////////
+
+string 	ls_syntaxfile,ls_dwsyntax,ls_dw_name,ls_dataobject,ls_find
+string 	ls_lastupdate,ls_updatedate
+long	 	ll_getupdate,ll_num,ll_flen,ll_FileNum,ll_loops,ll_new_pos,ll_read
+integer 	li_screen_id,i,ii,j,li_find,li_rowcount
+blob 		lb_bytes_read,lb_syntax
+String	ls_dir_path
+long		ll_GetDirectory
+
+ll_num = UpperBound(arg_dw)
+
+If Not IsValid(gds_contract_screen) Then
+	gds_contract_screen = create datastore
+	gds_contract_screen.dataobject = 'd_contract_dw_sql_all'
+End if
+
+gds_contract_screen.SetTransObject(SQLCA)
+gds_contract_screen.Retrieve(ai_data_view_id)
+
+li_rowcount = gds_contract_screen.RowCount()
+
+j = 1
+
+For i = 1 to ll_num
+	ls_dw_name = as_dw_name[i]
+	ls_dataobject = as_dataobject[i]
+	ls_find = "dw_name = " + "'" + ls_dw_name + "'" + " and  ( dataobject = " + "'" + ls_dataobject + "' or grid_dataobject='" + ls_dataobject + "' )" //modified by gavins 20120319 grid
+	li_find = gds_contract_screen.find(ls_find,1,li_rowcount)
+	If li_find > 0 Then
+		li_screen_id = gds_contract_screen.getitemnumber(li_find,'screen_id')
+		ls_updatedate = string(gds_contract_screen.getitemdatetime(li_find,'modify_date'))
+	Else
+		messagebox('An error occurs when getting DataWindow files','No View in database:' + string(ai_data_view_id) + ' ,DataWindow:' + ls_dw_name + ' ,Data Object:' + ls_dataobject)
+		li_screen_id = 0
+		ls_updatedate = ''
+	End if
+	
+	arg_dw[i].Dynamic of_SetViewScreen(ai_data_view_id,li_screen_id)		//Added by Scofield on 2007-10-25
+	
+	if gb_use_opmode then
+		ls_syntaxfile = gs_dir_path + gs_DefDirName + "\DWOBSyntax\" + string(ai_data_view_id) + '-' + string(li_screen_id) + '.srd'  //jervis 10.11.2011
+	else
+		ls_syntaxfile = gs_dir_path + gs_DefDirName + "\DWSyntax\" + string(ai_data_view_id) + '-' + string(li_screen_id) + '.srd'
+	end if
+
+	If not fileexists(ls_syntaxfile) Then
+		arg_create_dw[j] = arg_dw[i]
+		as_create_dw_name[j] = as_dw_name[i]
+		as_create_dataobject[j] = as_dataobject[i]
+		j = j + 1
+		continue
+	End If
+//Modified By Mark Lee 04/18/12
+//	ll_getupdate = gnv_appeondll.of_registryget("HKEY_LOCAL_MACHINE\SOFTWARE\IntelliSoft Group\Screens List", "Screen-"+string(ai_data_view_id) + '-' + string(li_screen_id), regstring!, ls_lastupdate)
+	ll_getupdate = gnv_appeondll.of_registryget("HKEY_LOCAL_MACHINE\SOFTWARE\"+gs_DefDirName+"\Screens List", "Screen-"+string(ai_data_view_id) + '-' + string(li_screen_id), regstring!, ls_lastupdate)
+	If ll_getupdate <> 1 Then
+		arg_create_dw[j] = arg_dw[i]
+		as_create_dw_name[j] = as_dw_name[i]
+		as_create_dataobject[j] = as_dataobject[i]
+		j = j + 1
+		continue
+	End If
+	
+	//add ob syntax - jervis 10.11.2011
+	if gb_use_opmode then
+		ls_updatedate = gs_dir_path + gs_DefDirName + "\DWOBSyntax  " + ls_updatedate
+	else
+		ls_updatedate = gs_dir_path + gs_DefDirName + "\DWSyntax  " + ls_updatedate
+	end if
+	If ls_updatedate <> ls_lastupdate Then 
+		arg_create_dw[j] = arg_dw[i]
+		as_create_dw_name[j] = as_dw_name[i]
+		as_create_dataobject[j] = as_dataobject[i]
+		j = j + 1
+		continue
+	End If
+	
+	//Get the syntax for detail datawindow
+	ll_flen = FileLength(ls_syntaxfile)
+	ll_FileNum = FileOpen(ls_syntaxfile , StreamMode!, Read!, LockWrite!)
+	
+	If ll_FileNum = -1 Then 
+		messagebox('Error','An error occurs when opening the file')
+		arg_create_dw[j] = arg_dw[i]
+		as_create_dw_name[j] = as_dw_name[i]
+		as_create_dataobject[j] = as_dataobject[i]
+		j = j + 1
+		continue
+	End If
+	
+	IF ll_flen > 32765 THEN
+		IF Mod(ll_flen, 32765) = 0 THEN
+			 ll_flen = ll_flen/32765
+		ELSE
+			 ll_loops = (ll_flen/32765) + 1
+		END IF
+	ELSE
+		ll_loops = 1
+	END IF
+	
+	// Read the file
+	
+	ll_new_pos = 1
+	//---------Begin Modified by (Appeon)Harry 06.10.2013 for V141 ISG-CLX--------
+	//restored by alfee 11.15.2013
+	lb_bytes_read = blob('')
+	lb_syntax = blob('')
+//	lb_bytes_read = blob('',EncodingAnsi!) //Encoding – Nova 11.16.2010
+//	lb_syntax = blob('',EncodingAnsi!) //Encoding – Nova 11.16.2010
+	//---------End Modfiied ------------------------------------------------------
+
+	
+	FOR ii = 1 to ll_loops
+		 ll_read = FileRead(ll_FileNum, lb_bytes_read)
+		 lb_syntax = lb_syntax + lb_bytes_read
+	NEXT
+	
+	FileClose(ll_FileNum)
+	//---------Begin Modified by (Appeon)Harry 07.03.2013 for V141 ISG-CLX--------
+	ls_dwsyntax = string(lb_syntax) //restored by alfee 11.15.2013
+	//ls_dwsyntax = string(lb_syntax, EncodingAnsi!)
+	//---------End Modfiied ------------------------------------------------------
+	
+   If isnull(ls_dwsyntax) = false and ls_dwsyntax <> '' Then
+		
+		//Modified By Ken.Guo 01/14/2013. set this dataobject property once.
+		//arg_dw[i].dataobject = ls_dataobject
+		If arg_dw[i].dataobject = '' Then
+			arg_dw[i].dataobject = ls_dataobject
+		End If		
+		
+		arg_dw[i].Create(ls_dwsyntax)
+		arg_dw[i].TriggerEvent("ue_restore_pic")	//Jervis 12.09.2010
+		arg_dw[i].settransobject(sqlca)
+		arg_dw[i].visible = true
+
+		// Added by leiwei 09.06.2006
+		// Set variables of calendar userobject to NULL when the datawindow to re-created.
+		arg_dw[i].Triggerevent( "ue_reset_calendar_flag" )
+
+	Else
+		messagebox('Error','DataWindow syntax is null')
+		arg_create_dw[j] = arg_dw[i]
+		as_create_dw_name[j] = as_dw_name[i]
+		as_create_dataobject[j] = as_dataobject[i]
+		j = j + 1
+		continue
+	End if	
+Next
+
+return 0
+end function
+

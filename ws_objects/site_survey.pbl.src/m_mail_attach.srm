@@ -1,0 +1,264 @@
+﻿$PBExportHeader$m_mail_attach.srm
+$PBExportComments$(Appeon)Eugene 06.28.2013 - V141 ISG-CLX
+forward
+global type m_mail_attach from menu
+end type
+type m_open from menu within m_mail_attach
+end type
+type m_copy from menu within m_mail_attach
+end type
+type m_saveas from menu within m_mail_attach
+end type
+type m_checkin from menu within m_mail_attach
+end type
+type m_addtodocumentmanager_ctx from menu within m_mail_attach
+end type
+type m_addtodocumentmanager_select_ctx from menu within m_mail_attach
+end type
+global type m_mail_attach from menu
+m_open m_open
+m_copy m_copy
+m_saveas m_saveas
+m_checkin m_checkin
+m_addtodocumentmanager_ctx m_addtodocumentmanager_ctx
+m_addtodocumentmanager_select_ctx m_addtodocumentmanager_select_ctx
+end type
+end forward
+
+global type m_mail_attach from menu
+m_open m_open
+m_copy m_copy
+m_saveas m_saveas
+m_checkin m_checkin
+m_addtodocumentmanager_ctx m_addtodocumentmanager_ctx
+m_addtodocumentmanager_select_ctx m_addtodocumentmanager_select_ctx
+end type
+global m_mail_attach m_mail_attach
+
+type variables
+u_lv_attachment ilv_attachment
+end variables
+
+on m_mail_attach.create
+m_mail_attach=this
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_open=create m_open
+this.m_copy=create m_copy
+this.m_saveas=create m_saveas
+this.m_checkin=create m_checkin
+this.m_addtodocumentmanager_ctx=create m_addtodocumentmanager_ctx
+this.m_addtodocumentmanager_select_ctx=create m_addtodocumentmanager_select_ctx
+this.Item[UpperBound(this.Item)+1]=this.m_open
+this.Item[UpperBound(this.Item)+1]=this.m_copy
+this.Item[UpperBound(this.Item)+1]=this.m_saveas
+this.Item[UpperBound(this.Item)+1]=this.m_checkin
+this.Item[UpperBound(this.Item)+1]=this.m_addtodocumentmanager_ctx
+this.Item[UpperBound(this.Item)+1]=this.m_addtodocumentmanager_select_ctx
+end on
+
+on m_mail_attach.destroy
+call super::destroy
+destroy(this.m_open)
+destroy(this.m_copy)
+destroy(this.m_saveas)
+destroy(this.m_checkin)
+destroy(this.m_addtodocumentmanager_ctx)
+destroy(this.m_addtodocumentmanager_select_ctx)
+end on
+
+type m_open from menu within m_mail_attach
+end type
+
+on m_open.create
+call super::create
+this.text = "Open"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_open.destroy
+call super::destroy
+end on
+
+event clicked;ilv_attachment.Dynamic Event ue_do('open')
+end event
+
+type m_copy from menu within m_mail_attach
+end type
+
+event clicked;ilv_attachment.Dynamic Event ue_do('copy')
+end event
+
+on m_copy.create
+call super::create
+this.visible = false
+this.text = "Copy"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_copy.destroy
+call super::destroy
+end on
+
+type m_saveas from menu within m_mail_attach
+end type
+
+on m_saveas.create
+call super::create
+this.text = "Save As..."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_saveas.destroy
+call super::destroy
+end on
+
+event clicked;ilv_attachment.Dynamic Event ue_do('saveas')
+end event
+
+type m_checkin from menu within m_mail_attach
+end type
+
+event clicked;ilv_attachment.Dynamic Event ue_do('checkin')
+end event
+
+on m_checkin.create
+call super::create
+this.text = "Check In"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_checkin.destroy
+call super::destroy
+end on
+
+type m_addtodocumentmanager_ctx from menu within m_mail_attach
+end type
+
+on m_addtodocumentmanager_ctx.create
+call super::create
+this.text = "Add to Document Manager -- CTX "
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_addtodocumentmanager_ctx.destroy
+call super::destroy
+end on
+
+event clicked;ilv_attachment.Dynamic Event ue_do('add to document-ctx')			//Added By Mark Lee 06/10/2013
+end event
+
+type m_addtodocumentmanager_select_ctx from menu within m_mail_attach
+end type
+
+on m_addtodocumentmanager_select_ctx.create
+call super::create
+this.text = "Add to Document Manager-- Select Contract...  "
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_addtodocumentmanager_select_ctx.destroy
+call super::destroy
+end on
+
+event clicked;ilv_attachment.Dynamic Event ue_do('add to document-select ctx')			//Added By Mark Lee 06/10/2013
+end event
+

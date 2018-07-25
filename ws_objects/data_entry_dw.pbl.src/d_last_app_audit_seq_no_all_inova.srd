@@ -1,0 +1,75 @@
+﻿$PBExportHeader$d_last_app_audit_seq_no_all_inova.srd
+$PBExportComments$Create by Jack 16/10/2006
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=68 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=record_id dbname="pd_app_audit.record_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=prac_id dbname="pd_app_audit.prac_id" )
+ column=(type=long update=yes updatewhereclause=yes name=facility_id dbname="pd_app_audit.facility_id" )
+ column=(type=long update=yes updatewhereclause=yes name=seq_no dbname="pd_app_audit.seq_no" )
+ column=(type=long update=yes updatewhereclause=yes name=app_audit_id dbname="pd_app_audit.app_audit_id" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=completed dbname="pd_app_audit.completed" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=fax_message dbname="pd_app_audit.fax_message" )
+ column=(type=long update=yes updatewhereclause=yes name=active_status dbname="pd_app_audit.active_status" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_completed dbname="pd_app_audit.date_completed" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=data_status dbname="pd_app_audit.data_status" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=notes dbname="pd_app_audit.notes" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=identifying_number dbname="pd_app_audit.identifying_number" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=appt_stat_id dbname="pd_app_audit.appt_stat_id" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=conv_prac_id dbname="pd_app_audit.conv_prac_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=de_rec_id dbname="pd_app_audit.de_rec_id" )
+ retrieve="  SELECT pd_app_audit.record_id,   
+         pd_app_audit.prac_id,   
+         pd_app_audit.facility_id,   
+         pd_app_audit.seq_no,   
+         pd_app_audit.app_audit_id,   
+         pd_app_audit.completed,   
+         pd_app_audit.fax_message,   
+         pd_app_audit.active_status,   
+         pd_app_audit.date_completed,   
+         pd_app_audit.data_status,   
+         pd_app_audit.notes,   
+         pd_app_audit.identifying_number,   
+         pd_app_audit.appt_stat_id,   
+         pd_app_audit.conv_prac_id,   
+         pd_app_audit.de_rec_id  
+    FROM pd_app_audit   
+" update="pd_app_audit" updatewhere=1 updatekeyinplace=no )
+column(band=detail id=1 alignment="0" tabsequence=0 border="0" color="0" x="9" y="0" height="76" width="1367" html.valueishtml="0"  name=record_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Record Id" border="0" color="0" x="5" y="4" height="76" width="1371" html.valueishtml="0"  name=record_id_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=2 alignment="0" tabsequence=0 border="0" color="0" x="1390" y="0" height="76" width="1367" html.valueishtml="0"  name=prac_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Prac Id" border="0" color="0" x="1385" y="4" height="76" width="1371" html.valueishtml="0"  name=prac_id_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=3 alignment="0" tabsequence=0 border="0" color="0" x="2770" y="0" height="76" width="1367" html.valueishtml="0"  name=facility_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Facility Id" border="0" color="0" x="2766" y="4" height="76" width="1371" html.valueishtml="0"  name=facility_id_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=4 alignment="0" tabsequence=0 border="0" color="0" x="4151" y="0" height="76" width="1367" html.valueishtml="0"  name=seq_no visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Seq No" border="0" color="0" x="4146" y="4" height="76" width="1371" html.valueishtml="0"  name=seq_no_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=5 alignment="0" tabsequence=0 border="0" color="0" x="5531" y="0" height="76" width="1367" html.valueishtml="0"  name=app_audit_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="App Audit Id" border="0" color="0" x="5527" y="4" height="76" width="1371" html.valueishtml="0"  name=app_audit_id_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=6 alignment="0" tabsequence=0 border="0" color="0" x="6912" y="0" height="76" width="23" html.valueishtml="0"  name=completed visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Completed" border="0" color="0" x="6907" y="4" height="76" width="27" html.valueishtml="0"  name=completed_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=7 alignment="0" tabsequence=0 border="0" color="0" x="6949" y="0" height="76" width="3502" html.valueishtml="0"  name=fax_message visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Fax Message" border="0" color="0" x="6944" y="4" height="76" width="3506" html.valueishtml="0"  name=fax_message_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=8 alignment="0" tabsequence=0 border="0" color="0" x="10464" y="0" height="76" width="1367" html.valueishtml="0"  name=active_status visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Active Status" border="0" color="0" x="10459" y="4" height="76" width="1371" html.valueishtml="0"  name=active_status_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=9 alignment="0" tabsequence=0 border="0" color="0" x="11845" y="0" height="76" width="919" html.valueishtml="0"  name=date_completed visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Date Completed" border="0" color="0" x="11840" y="4" height="76" width="923" html.valueishtml="0"  name=date_completed_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=10 alignment="0" tabsequence=0 border="0" color="0" x="12777" y="0" height="76" width="1367" html.valueishtml="0"  name=data_status visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Data Status" border="0" color="0" x="12773" y="4" height="76" width="1371" html.valueishtml="0"  name=data_status_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=11 alignment="0" tabsequence=0 border="0" color="0" x="14158" y="0" height="76" width="1591" html.valueishtml="0"  name=notes visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Notes" border="0" color="0" x="14153" y="4" height="76" width="1595" html.valueishtml="0"  name=notes_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=12 alignment="0" tabsequence=0 border="0" color="0" x="15762" y="0" height="76" width="1591" html.valueishtml="0"  name=identifying_number visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Identifying Number" border="0" color="0" x="15758" y="4" height="76" width="1595" html.valueishtml="0"  name=identifying_number_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=13 alignment="0" tabsequence=0 border="0" color="0" x="17367" y="0" height="76" width="1367" html.valueishtml="0"  name=appt_stat_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Appt Stat Id" border="0" color="0" x="17362" y="4" height="76" width="1371" html.valueishtml="0"  name=appt_stat_id_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=14 alignment="0" tabsequence=0 border="0" color="0" x="18747" y="0" height="76" width="631" html.valueishtml="0"  name=conv_prac_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Conv Prac Id" border="0" color="0" x="18743" y="4" height="76" width="635" html.valueishtml="0"  name=conv_prac_id_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=15 alignment="0" tabsequence=0 border="0" color="0" x="19392" y="0" height="76" width="1367" html.valueishtml="0"  name=de_rec_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="De Rec Id" border="0" color="0" x="19387" y="4" height="76" width="1371" html.valueishtml="0"  name=de_rec_id_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

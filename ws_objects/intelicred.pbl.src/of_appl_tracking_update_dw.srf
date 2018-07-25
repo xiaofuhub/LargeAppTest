@@ -1,0 +1,394 @@
+﻿$PBExportHeader$of_appl_tracking_update_dw.srf
+global type of_appl_tracking_update_dw from function_object
+end type
+
+forward prototypes
+global function integer of_appl_tracking_update_dw (u_dw dw_tracking, u_dw dw_net_dev, long al_row)
+end prototypes
+
+global function integer of_appl_tracking_update_dw (u_dw dw_tracking, u_dw dw_net_dev, long al_row); //Start Code Change ----08.12.2015 #V15 maha - central function for calculation; copied from recalc button in prac folder; 
+ //called from: pract tracking window; Application tab of provider folder
+ 
+//Start Code Change ----07.12.2016 #V152 maha -  MODIFCATION
+//Added  and active_status = 1 to each find 
+//End Code Change ----07.12.2016
+long ll_step
+integer li_final
+integer i
+integer li_find
+string ls_find
+date ld_d1
+date ld_d2
+date ld_d3
+date ld_d4
+date ld_d5
+date ld_d6
+date ld_d7
+date ld_d8
+date ld_d9
+date ld_d10
+date ld_first //maha 08.11.2015
+date ld_final //maha 08.11.2015
+datetime ld_this //maha 08.11.2015
+datetime ldt_null
+integer li_steps
+long li_temp
+long r
+integer li_null
+pfc_cst_nv_data_entry_functions  lnv_data_entry //(Appeon)Stephen 06.03.2016 - V15.2-Application Tracking full Auditing
+
+if dw_tracking.rowcount() = 0 then return -1
+
+r = al_row  //usually 1 
+
+li_final = integer(gnv_data.of_getitem("app_steps","last step",""))
+
+setnull(ldt_null)
+setnull(li_null)
+setnull(ld_first)
+setnull(ld_final)
+
+//for each step - set the dates in the tracking record
+for i = 1 to li_final
+	//debugbreak()
+	choose case i
+		case 1
+			//ll_step = dw_track.getitemnumber(1,"step_1_type")
+			ll_step = long(gnv_data.of_getitem("app_steps","next step","0"))
+			ls_find = "action_type = " + string(ll_step) + " and action_status = 90741 and active_status = 1"
+			li_find = dw_net_dev.find( ls_find, 1, dw_net_dev.rowcount())
+			if li_find > 0 then
+				ld_this = dw_net_dev.getitemdatetime(li_find,"action_date") //08.11.2015 #V15 maha
+				dw_tracking.setitem(r,"step_1",ld_this)
+				if not isnull(ld_this) then ld_first = date(ld_this)  //08.11.2015 #V15 maha
+			else //Start Code Change ----03.30.2011 #V11 maha - for each step, if the action does not exist clear the date
+				dw_tracking.setitem(r,"step_1",ldt_null)
+			end if
+		case 2
+		//	ll_step = dw_tracking.getitemnumber(1,"step_2_type")
+			ll_step = long(gnv_data.of_getitem("app_steps","next step","1"))
+			ls_find = "action_type = " + string(ll_step) + " and action_status = 90741 and active_status = 1"
+			li_find = dw_net_dev.find( ls_find, 1, dw_net_dev.rowcount())
+			if li_find > 0 then 
+				ld_this = dw_net_dev.getitemdatetime(li_find,"action_date")  //08.11.2015 #V15 maha
+				dw_tracking.setitem(r,"step_2",dw_net_dev.getitemdatetime(li_find,"action_date"))
+				 //Start Code Change ----08.12.2015 #V15 maha
+				if isnull(ld_first) then 
+					if not isnull(ld_this) then  ld_first = date(ld_this) 
+				end if
+				if i = li_final then ld_final = date(ld_this) 
+				 //End Code Change ----08.12.2015
+			else 
+				dw_tracking.setitem(r,"step_2",ldt_null)
+			end if
+		case 3
+			//ll_step = dw_tracking.getitemnumber(1,"step_3_type")
+			ll_step = long(gnv_data.of_getitem("app_steps","next step","2"))
+			ls_find = "action_type = " + string(ll_step) + " and action_status = 90741 and active_status = 1"
+			li_find = dw_net_dev.find( ls_find, 1, dw_net_dev.rowcount())
+			if li_find > 0 then 
+				ld_this = dw_net_dev.getitemdatetime(li_find,"action_date")  //08.11.2015 #V15 maha
+				dw_tracking.setitem(r,"step_3",dw_net_dev.getitemdatetime(li_find,"action_date"))
+				 //Start Code Change ----08.12.2015 #V15 maha
+				if isnull(ld_first) then 
+					if not isnull(ld_this) then  ld_first = date(ld_this) 
+				end if
+				if i = li_final then ld_final = date(ld_this) 
+				 //End Code Change ----08.12.2015
+			else 
+				dw_tracking.setitem(r,"step_3",ldt_null)
+			end if
+		case 4
+			//ll_step = dw_tracking.getitemnumber(1,"step_4_type")
+			ll_step = long(gnv_data.of_getitem("app_steps","next step","3"))
+			ls_find = "action_type = " + string(ll_step) + " and action_status = 90741 and active_status = 1"
+			li_find = dw_net_dev.find( ls_find, 1, dw_net_dev.rowcount())
+			if li_find > 0 then
+				ld_this = dw_net_dev.getitemdatetime(li_find,"action_date")  //08.11.2015 #V15 maha
+				dw_tracking.setitem(r,"step_4",dw_net_dev.getitemdatetime(li_find,"action_date"))
+				 //Start Code Change ----08.12.2015 #V15 maha
+				if isnull(ld_first) then 
+					if not isnull(ld_this) then  ld_first = date(ld_this) 
+				end if
+				if i = li_final then ld_final = date(ld_this) 
+				 //End Code Change ----08.12.2015
+			else 
+				dw_tracking.setitem(r,"step_4",ldt_null)
+			end if
+		case 5
+			//ll_step = dw_tracking.getitemnumber(1,"step_5_type")
+			ll_step = long(gnv_data.of_getitem("app_steps","next step","4"))
+			ls_find = "action_type = " + string(ll_step) + " and action_status = 90741 and active_status = 1"
+			li_find = dw_net_dev.find( ls_find, 1, dw_net_dev.rowcount())
+			if li_find > 0 then
+				ld_this = dw_net_dev.getitemdatetime(li_find,"action_date")  //08.11.2015 #V15 maha
+				dw_tracking.setitem(r,"step_5",dw_net_dev.getitemdatetime(li_find,"action_date"))
+				//Start Code Change ----08.12.2015 #V15 maha
+				if isnull(ld_first) then 
+					if not isnull(ld_this) then  ld_first = date(ld_this) 
+				end if
+				if i = li_final then ld_final = date(ld_this) 
+				 //End Code Change ----08.12.2015
+			else 
+				dw_tracking.setitem(r,"step_5",ldt_null)
+			end if
+		case 6
+		//	ll_step = dw_tracking.getitemnumber(1,"step_6_type")
+			ll_step = long(gnv_data.of_getitem("app_steps","next step","5"))
+			ls_find = "action_type = " + string(ll_step) + " and action_status = 90741 and active_status = 1"
+			li_find = dw_net_dev.find( ls_find, 1, dw_net_dev.rowcount())
+			if li_find > 0 then
+				ld_this = dw_net_dev.getitemdatetime(li_find,"action_date")  //08.11.2015 #V15 maha
+				dw_tracking.setitem(r,"step_6",dw_net_dev.getitemdatetime(li_find,"action_date"))
+				//Start Code Change ----08.12.2015 #V15 maha
+				if isnull(ld_first) then 
+					if not isnull(ld_this) then  ld_first = date(ld_this) 
+				end if
+				if i = li_final then ld_final = date(ld_this) 
+				 //End Code Change ----08.12.2015
+			else 
+				dw_tracking.setitem(r,"step_6",ldt_null)
+			end if
+		case 7
+			//ll_step = dw_tracking.getitemnumber(1,"step_7_type")
+			ll_step = long(gnv_data.of_getitem("app_steps","next step","6"))
+			ls_find = "action_type = " + string(ll_step) + " and action_status = 90741 and active_status = 1"
+			li_find = dw_net_dev.find( ls_find, 1, dw_net_dev.rowcount())
+			if li_find > 0 then
+				ld_this = dw_net_dev.getitemdatetime(li_find,"action_date")  //08.11.2015 #V15 maha
+				dw_tracking.setitem(r,"step_7",dw_net_dev.getitemdatetime(li_find,"action_date"))
+				//Start Code Change ----08.12.2015 #V15 maha
+				if isnull(ld_first) then 
+					if not isnull(ld_this) then  ld_first = date(ld_this) 
+				end if
+				if i = li_final then ld_final = date(ld_this) 
+				 //End Code Change ----08.12.2015
+			else 
+				dw_tracking.setitem(r,"step_7",ldt_null)
+			end if
+		case 8
+		//	ll_step = dw_tracking.getitemnumber(1,"step_8_type")
+			ll_step = long(gnv_data.of_getitem("app_steps","next step","7"))
+			ls_find = "action_type = " + string(ll_step) + " and action_status = 90741 and active_status = 1"
+			li_find = dw_net_dev.find( ls_find, 1, dw_net_dev.rowcount())
+			if li_find > 0 then
+				ld_this = dw_net_dev.getitemdatetime(li_find,"action_date")  //08.11.2015 #V15 maha
+				dw_tracking.setitem(r,"step_8",dw_net_dev.getitemdatetime(li_find,"action_date"))
+				//Start Code Change ----08.12.2015 #V15 maha
+				if isnull(ld_first) then 
+					if not isnull(ld_this) then  ld_first = date(ld_this) 
+				end if
+				if i = li_final then ld_final = date(ld_this) 
+				 //End Code Change ----08.12.2015
+			else 
+				dw_tracking.setitem(r,"step_8",ldt_null)
+			end if
+		case 9
+			//ll_step = dw_tracking.getitemnumber(1,"step_9_type")
+			ll_step = long(gnv_data.of_getitem("app_steps","next step","8"))
+			ls_find = "action_type = " + string(ll_step) + " and action_status = 90741 and active_status = 1"
+			li_find = dw_net_dev.find( ls_find, 1, dw_net_dev.rowcount())
+			if li_find > 0 then
+				ld_this = dw_net_dev.getitemdatetime(li_find,"action_date")  //08.11.2015 #V15 maha
+				dw_tracking.setitem(r,"step_9",dw_net_dev.getitemdatetime(li_find,"action_date"))
+				if isnull(ld_first) and not isnull(ld_this) then  ld_first = date(ld_this)  //08.11.2015 #V15 maha
+			else 
+				dw_tracking.setitem(r,"step_9",ldt_null)
+			end if
+		case 10
+			//ll_step = dw_tracking.getitemnumber(1,"step_10_type")
+			ll_step = long(gnv_data.of_getitem("app_steps","next step","9"))
+			ls_find = "action_type = " + string(ll_step) + " and action_status = 90741 and active_status = 1"
+			li_find = dw_net_dev.find( ls_find, 1, dw_net_dev.rowcount())
+			if li_find > 0 then
+				ld_this = dw_net_dev.getitemdatetime(li_find,"action_date")  //08.11.2015 #V15 maha
+				dw_tracking.setitem(r,"step_10",dw_net_dev.getitemdatetime(li_find,"action_date"))
+				//Start Code Change ----08.12.2015 #V15 maha
+				if isnull(ld_first) then 
+					if not isnull(ld_this) then  ld_first = date(ld_this) 
+				end if
+				if i = li_final then ld_final = date(ld_this) 
+				 //End Code Change ----08.12.2015
+			else 
+				dw_tracking.setitem(r,"step_10",ldt_null)
+			end if
+	end choose
+	//End Code Change ----03.01.2012
+next
+
+
+
+////Start Code Change ----07.21.2010 #V10 maha - calculating the days between the dates
+
+
+for i = 1 to li_final
+	choose case i
+		case 1
+			ld_d1 = date(dw_tracking.getitemdatetime(1,"step_1"))
+		case 2
+			ld_d2 = date(dw_tracking.getitemdatetime(1,"step_2"))
+			if not isnull(ld_d1) and not isnull(ld_d2) then
+				li_temp = daysafter(ld_d1,ld_d2)
+				dw_tracking.setitem(r,"days_1_2", li_temp)
+			else
+				dw_tracking.setitem(r,"days_1_2", li_null)
+			end if
+		case 3
+			ld_d3 = date(dw_tracking.getitemdatetime(1,"step_3"))
+			if not isnull(ld_d2) and not isnull(ld_d3) then
+				li_temp = daysafter(ld_d2,ld_d3)
+				dw_tracking.setitem(r,"days_2_3", li_temp)
+			else
+				dw_tracking.setitem(r,"days_2_3", li_null)
+			end if
+		case 4
+			ld_d4 = date(dw_tracking.getitemdatetime(1,"step_4"))
+			if not isnull(ld_d3) and not isnull(ld_d4) then
+				li_temp = daysafter(ld_d3,ld_d4)
+				dw_tracking.setitem(r,"days_3_4", li_temp)
+			else
+				dw_tracking.setitem(r,"days_3_4", li_null)
+			end if
+		case 5
+			ld_d5 = date(dw_tracking.getitemdatetime(1,"step_5"))
+			if not isnull(ld_d4) and not isnull(ld_d5) then
+				li_temp = daysafter(ld_d4,ld_d5)
+				dw_tracking.setitem(r,"days_4_5", li_temp)
+			else
+				dw_tracking.setitem(r,"days_4_5", li_null)
+			end if
+		case 6
+			ld_d6 = date(dw_tracking.getitemdatetime(1,"step_6"))
+			if not isnull(ld_d5) and not isnull(ld_d6) then
+				li_temp = daysafter(ld_d5,ld_d6)
+				dw_tracking.setitem(r,"days_5_6", li_temp)
+			else
+				dw_tracking.setitem(r,"days_5_6", li_null)	
+			end if
+		case 7
+			ld_d7 = date(dw_tracking.getitemdatetime(1,"step_7"))
+			if not isnull(ld_d6) and not isnull(ld_d7) then
+				li_temp = daysafter(ld_d6,ld_d7)
+				dw_tracking.setitem(r,"days_6_7", li_temp)
+			else
+				dw_tracking.setitem(r,"days_6_7", li_null)
+			end if
+		case 8
+			ld_d8 = date(dw_tracking.getitemdatetime(1,"step_8"))
+			if not isnull(ld_d7) and not isnull(ld_d8) then
+				li_temp = daysafter(ld_d7,ld_d8)
+				dw_tracking.setitem(r,"days_7_8", li_temp)
+			else
+				dw_tracking.setitem(r,"days_7_8", li_null)
+			end if
+		case 9
+			ld_d9 = date(dw_tracking.getitemdatetime(1,"step_9"))
+			if not isnull(ld_d8) and not isnull(ld_d9) then
+				li_temp = daysafter(ld_d8,ld_d9)
+				dw_tracking.setitem(r,"days_8_9", li_temp)
+			else
+				dw_tracking.setitem(r,"days_8_9", li_null)
+			end if
+		case 10
+			ld_d10 = date(dw_tracking.getitemdatetime(1,"step_10"))
+			if not isnull(ld_d9) and not isnull(ld_d10) then
+				li_temp = daysafter(ld_d9,ld_d10)
+				dw_tracking.setitem(r,"days_9_10", li_temp)
+			else
+				dw_tracking.setitem(r,"days_9_10", li_null)
+			end if
+				
+	end choose
+next
+
+
+//calc total
+//choose case li_steps
+choose case li_final   //Start Code Change ----11.10.2015 #V15 maha - changed variable as the other was never set.
+	case 2
+		if not isnull(ld_d1) and not isnull(ld_d2) then
+			li_temp = daysafter(ld_d1,ld_d2)
+			dw_tracking.setitem(r,"days_total", li_temp)
+		end if
+	case 3
+		if not isnull(ld_d1) and not isnull(ld_d3) then
+			li_temp = daysafter(ld_d1,ld_d3)
+			dw_tracking.setitem(r,"days_total", li_temp)
+		end if
+	case 4
+		if not isnull(ld_d1) and not isnull(ld_d4) then
+			li_temp = daysafter(ld_d1,ld_d4)
+			dw_tracking.setitem(r,"days_total", li_temp)
+		end if
+	case 5
+		if not isnull(ld_d1) and not isnull(ld_d5) then
+			li_temp = daysafter(ld_d1,ld_d5)
+			dw_tracking.setitem(r,"days_total", li_temp)
+		end if
+	case 6
+		if not isnull(ld_d1) and not isnull(ld_d6) then
+			li_temp = daysafter(ld_d1,ld_d6)
+			dw_tracking.setitem(r,"days_total", li_temp)
+		end if
+	case 7
+		if not isnull(ld_d1) and not isnull(ld_d7) then
+			li_temp = daysafter(ld_d1,ld_d7)
+			dw_tracking.setitem(r,"days_total", li_temp)
+		end if
+	case 8
+		if not isnull(ld_d1) and not isnull(ld_d8) then
+			li_temp = daysafter(ld_d1,ld_d8)
+			dw_tracking.setitem(r,"days_total", li_temp)
+		end if
+	case 9
+		if not isnull(ld_d1) and not isnull(ld_d9) then
+			li_temp = daysafter(ld_d1,ld_d9)
+			dw_tracking.setitem(r,"days_total", li_temp)
+		end if
+	case 10
+		if not isnull(ld_d1) and not isnull(ld_d10) then
+			li_temp = daysafter(ld_d1,ld_d10)
+			dw_tracking.setitem(r,"days_total", li_temp)
+		end if
+end choose
+
+ //Start Code Change ----08.11.2015 #V15 maha - added for running total
+if not isnull(ld_final) then  //if last date filled in based on last date
+	li_temp = daysafter(ld_first,ld_final)
+	if li_temp <> 0 then
+		dw_tracking.setitem(r,"days_total", li_temp)
+	else
+		dw_tracking.setitem(r,"days_total", li_null)
+	end if
+	IF isnull(dw_tracking.getitemnumber( r,"par_status")) then  //set par in the tracking if not already set
+		dw_tracking.setitem( r,"par_status", 1)
+	end if
+else //otherwise base on running days since the first date
+	 if not isnull(ld_first) then
+		li_temp = daysafter(ld_first,date(today()))
+		if li_temp <> 0 then
+			dw_tracking.setitem(r,"days_total", li_temp)
+		else
+			dw_tracking.setitem(r,"days_total", li_null)
+		end if
+	end if
+end if
+//End Code Change ----08.11.2015
+
+//---------Begin Added by (Appeon)Stephen 06.03.2016 for V15.2-Application Tracking full Auditing--------
+lnv_data_entry = create pfc_cst_nv_data_entry_functions
+dw_tracking.accepttext()
+lnv_data_entry.of_field_audit(dw_tracking)
+destroy lnv_data_entry
+//---------End Added ------------------------------------------------------
+
+//messagebox("","of_appl_tracking_update")
+dw_tracking.update()
+
+dw_tracking.of_PostUpdate() //Call pfc_postupdate() of dw_tracking, Added by Appeon long.zhang 08.08.2017 (Application Tracking not generating dates automatically Case#72116 Bug_id# 5749)
+
+return 1
+
+
+end function
+

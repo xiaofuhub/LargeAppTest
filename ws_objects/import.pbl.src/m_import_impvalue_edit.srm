@@ -1,0 +1,230 @@
+﻿$PBExportHeader$m_import_impvalue_edit.srm
+forward
+global type m_import_impvalue_edit from menu
+end type
+type m_add from menu within m_import_impvalue_edit
+end type
+type m_delete from menu within m_import_impvalue_edit
+end type
+type m_edit from menu within m_import_impvalue_edit
+end type
+type m_01 from menu within m_import_impvalue_edit
+end type
+type m_reset from menu within m_import_impvalue_edit
+end type
+type m_saveas from menu within m_import_impvalue_edit
+end type
+type m_02 from menu within m_import_impvalue_edit
+end type
+type m_getvaluefromfile from menu within m_import_impvalue_edit
+end type
+type m_getvaluefrommapped from menu within m_import_impvalue_edit
+end type
+global type m_import_impvalue_edit from menu
+m_add m_add
+m_delete m_delete
+m_edit m_edit
+m_01 m_01
+m_reset m_reset
+m_saveas m_saveas
+m_02 m_02
+m_getvaluefromfile m_getvaluefromfile
+m_getvaluefrommapped m_getvaluefrommapped
+end type
+end forward
+
+global type m_import_impvalue_edit from menu
+m_add m_add
+m_delete m_delete
+m_edit m_edit
+m_01 m_01
+m_reset m_reset
+m_saveas m_saveas
+m_02 m_02
+m_getvaluefromfile m_getvaluefromfile
+m_getvaluefrommapped m_getvaluefrommapped
+end type
+global m_import_impvalue_edit m_import_impvalue_edit
+
+type variables
+window iw_window
+end variables
+
+forward prototypes
+public function integer of_sendmessage (string as_message)
+end prototypes
+
+public function integer of_sendmessage (string as_message);if IsValid(iw_window) then
+	Return iw_window.TriggerEvent(as_Message)
+else
+	Return -1
+end if
+end function
+
+on m_import_impvalue_edit.create
+m_import_impvalue_edit=this
+call super::create
+this.text = "m_import_impvalue_edit"
+this.m_add=create m_add
+this.m_delete=create m_delete
+this.m_edit=create m_edit
+this.m_01=create m_01
+this.m_reset=create m_reset
+this.m_saveas=create m_saveas
+this.m_02=create m_02
+this.m_getvaluefromfile=create m_getvaluefromfile
+this.m_getvaluefrommapped=create m_getvaluefrommapped
+this.Item[UpperBound(this.Item)+1]=this.m_add
+this.Item[UpperBound(this.Item)+1]=this.m_delete
+this.Item[UpperBound(this.Item)+1]=this.m_edit
+this.Item[UpperBound(this.Item)+1]=this.m_01
+this.Item[UpperBound(this.Item)+1]=this.m_reset
+this.Item[UpperBound(this.Item)+1]=this.m_saveas
+this.Item[UpperBound(this.Item)+1]=this.m_02
+this.Item[UpperBound(this.Item)+1]=this.m_getvaluefromfile
+this.Item[UpperBound(this.Item)+1]=this.m_getvaluefrommapped
+end on
+
+on m_import_impvalue_edit.destroy
+call super::destroy
+destroy(this.m_add)
+destroy(this.m_delete)
+destroy(this.m_edit)
+destroy(this.m_01)
+destroy(this.m_reset)
+destroy(this.m_saveas)
+destroy(this.m_02)
+destroy(this.m_getvaluefromfile)
+destroy(this.m_getvaluefrommapped)
+end on
+
+type m_add from menu within m_import_impvalue_edit
+event of_sendmessage ( string as_message )
+end type
+
+on m_add.create
+call super::create
+this.text = "&Add..."
+end on
+
+on m_add.destroy
+call super::destroy
+end on
+
+event clicked;of_SendMessage("ue_iv_add")
+end event
+
+type m_delete from menu within m_import_impvalue_edit
+end type
+
+on m_delete.create
+call super::create
+this.text = "&Delete"
+end on
+
+on m_delete.destroy
+call super::destroy
+end on
+
+event clicked;of_SendMessage("ue_iv_delete")
+end event
+
+type m_edit from menu within m_import_impvalue_edit
+end type
+
+on m_edit.create
+call super::create
+this.text = "&Edit..."
+end on
+
+on m_edit.destroy
+call super::destroy
+end on
+
+event clicked;of_SendMessage("ue_iv_edit")
+end event
+
+type m_01 from menu within m_import_impvalue_edit
+end type
+
+on m_01.create
+call super::create
+this.text = "-"
+end on
+
+on m_01.destroy
+call super::destroy
+end on
+
+type m_reset from menu within m_import_impvalue_edit
+end type
+
+on m_reset.create
+call super::create
+this.text = "&Reset"
+end on
+
+on m_reset.destroy
+call super::destroy
+end on
+
+event clicked;of_SendMessage("ue_iv_reset")
+end event
+
+type m_saveas from menu within m_import_impvalue_edit
+end type
+
+on m_saveas.create
+call super::create
+this.text = "&Save As..."
+end on
+
+on m_saveas.destroy
+call super::destroy
+end on
+
+event clicked;of_SendMessage("ue_iv_saveas")
+end event
+
+type m_02 from menu within m_import_impvalue_edit
+end type
+
+on m_02.create
+call super::create
+this.text = "-"
+end on
+
+on m_02.destroy
+call super::destroy
+end on
+
+type m_getvaluefromfile from menu within m_import_impvalue_edit
+end type
+
+on m_getvaluefromfile.create
+call super::create
+this.text = "&Get Value From File..."
+end on
+
+on m_getvaluefromfile.destroy
+call super::destroy
+end on
+
+event clicked;of_SendMessage("ue_iv_getfromfile")
+end event
+
+type m_getvaluefrommapped from menu within m_import_impvalue_edit
+end type
+
+on m_getvaluefrommapped.create
+call super::create
+this.text = "Get Value From &Mapped"
+end on
+
+on m_getvaluefrommapped.destroy
+call super::destroy
+end on
+
+event clicked;of_SendMessage("ue_iv_getfrommap")
+end event
+

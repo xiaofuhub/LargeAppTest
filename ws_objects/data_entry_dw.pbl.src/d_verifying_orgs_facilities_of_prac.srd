@@ -1,0 +1,15 @@
+﻿$PBExportHeader$d_verifying_orgs_facilities_of_prac.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=104 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=verifying_facility dbname="pd_affil_stat.verifying_facility" )
+ column=(type=char(1) updatewhereclause=yes name=verify_data dbname="facility_ver_rules.verify_data" )
+ retrieve="PBSELECT( VERSION(400) DISTINCT ()TABLE(NAME=~"pd_affil_stat~" )  TABLE(NAME=~"facility_ver_rules~" ) COLUMN(NAME=~"pd_affil_stat.verifying_facility~") COLUMN(NAME=~"facility_ver_rules.verify_data~")    JOIN (LEFT=~"pd_affil_stat.verifying_facility~"    OP =~"=~"RIGHT=~"facility_ver_rules.facility_id~" )WHERE(    EXP1 =~"( pd_affil_stat.prac_id~"   OP =~"=~"    EXP2 =~":al_prac_id )~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"( pd_affil_stat.active_status~"   OP =~"in~"    EXP2 =~"1,4 )~" ) ) ARG(NAME = ~"al_prac_id~" TYPE = number) " arguments=(("al_prac_id", number)) )
+text(band=header alignment="2" text="organization_id"border="0" color="0" x="50" y="28" height="52" width="325"  name=organization_id_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="parent_facility_id"border="0" color="0" x="393" y="28" height="52" width="361"  name=parent_facility_id_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="50" y="4" height="64" width="1376" format="[General]"  name=verifying_facility edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1467" y="8" height="60" width="320" format="[general]"  name=verify_data edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

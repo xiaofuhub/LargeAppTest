@@ -1,0 +1,264 @@
+﻿$PBExportHeader$m_contract_tv.srm
+forward
+global type m_contract_tv from menu
+end type
+type m_expandall from menu within m_contract_tv
+end type
+type m_collapseall from menu within m_contract_tv
+end type
+type m_collapsegroup from menu within m_contract_tv
+end type
+type m_settings from menu within m_contract_tv
+end type
+type m_line1 from menu within m_contract_tv
+end type
+type m_new from menu within m_contract_tv
+end type
+type m_copy from menu within m_contract_tv
+end type
+type m_email from menu within m_contract_tv
+end type
+type m_displayallrelatedrecords from menu within m_contract_tv
+end type
+global type m_contract_tv from menu
+m_expandall m_expandall
+m_collapseall m_collapseall
+m_collapsegroup m_collapsegroup
+m_settings m_settings
+m_line1 m_line1
+m_new m_new
+m_copy m_copy
+m_email m_email
+m_displayallrelatedrecords m_displayallrelatedrecords
+end type
+end forward
+
+global type m_contract_tv from menu
+m_expandall m_expandall
+m_collapseall m_collapseall
+m_collapsegroup m_collapsegroup
+m_settings m_settings
+m_line1 m_line1
+m_new m_new
+m_copy m_copy
+m_email m_email
+m_displayallrelatedrecords m_displayallrelatedrecords
+end type
+global m_contract_tv m_contract_tv
+
+type variables
+UserObject iuo_parent
+
+long		il_ctx_id
+Boolean	ib_MulCTX
+end variables
+
+on m_contract_tv.create
+m_contract_tv=this
+call super::create
+this.m_expandall=create m_expandall
+this.m_collapseall=create m_collapseall
+this.m_collapsegroup=create m_collapsegroup
+this.m_settings=create m_settings
+this.m_line1=create m_line1
+this.m_new=create m_new
+this.m_copy=create m_copy
+this.m_email=create m_email
+this.m_displayallrelatedrecords=create m_displayallrelatedrecords
+this.Item[UpperBound(this.Item)+1]=this.m_expandall
+this.Item[UpperBound(this.Item)+1]=this.m_collapseall
+this.Item[UpperBound(this.Item)+1]=this.m_collapsegroup
+this.Item[UpperBound(this.Item)+1]=this.m_settings
+this.Item[UpperBound(this.Item)+1]=this.m_line1
+this.Item[UpperBound(this.Item)+1]=this.m_new
+this.Item[UpperBound(this.Item)+1]=this.m_copy
+this.Item[UpperBound(this.Item)+1]=this.m_email
+this.Item[UpperBound(this.Item)+1]=this.m_displayallrelatedrecords
+end on
+
+on m_contract_tv.destroy
+call super::destroy
+destroy(this.m_expandall)
+destroy(this.m_collapseall)
+destroy(this.m_collapsegroup)
+destroy(this.m_settings)
+destroy(this.m_line1)
+destroy(this.m_new)
+destroy(this.m_copy)
+destroy(this.m_email)
+destroy(this.m_displayallrelatedrecords)
+end on
+
+type m_expandall from menu within m_contract_tv
+end type
+
+event clicked;iuo_parent.Dynamic Event ue_tv_expandall()
+end event
+
+on m_expandall.create
+call super::create
+this.text = "Expand ALL"
+end on
+
+on m_expandall.destroy
+call super::destroy
+end on
+
+type m_collapseall from menu within m_contract_tv
+end type
+
+event clicked;iuo_parent.Dynamic Event ue_tv_collapseall()
+end event
+
+on m_collapseall.create
+call super::create
+this.text = "Collapse ALL"
+end on
+
+on m_collapseall.destroy
+call super::destroy
+end on
+
+type m_collapsegroup from menu within m_contract_tv
+end type
+
+event clicked;iuo_parent.Dynamic Event ue_tv_expandgroup()
+end event
+
+on m_collapsegroup.create
+call super::create
+this.text = "Collapse Group"
+end on
+
+on m_collapsegroup.destroy
+call super::destroy
+end on
+
+type m_settings from menu within m_contract_tv
+end type
+
+event clicked;iuo_parent.Dynamic Event ue_tv_settings()
+end event
+
+on m_settings.create
+call super::create
+this.text = "Settings..."
+end on
+
+on m_settings.destroy
+call super::destroy
+end on
+
+type m_line1 from menu within m_contract_tv
+end type
+
+on m_line1.create
+call super::create
+this.text = "-"
+end on
+
+on m_line1.destroy
+call super::destroy
+end on
+
+type m_new from menu within m_contract_tv
+end type
+
+event clicked;if IsValid(m_pfe_cst_mdi_menu_contract) then	
+	m_pfe_cst_mdi_menu_contract.m_edit.m_newcontract.m_newctx.TriggerEvent(Clicked!)
+end if
+
+end event
+
+on m_new.create
+call super::create
+this.text = "&New CTX"
+end on
+
+on m_new.destroy
+call super::destroy
+end on
+
+type m_copy from menu within m_contract_tv
+end type
+
+event clicked;if IsValid(m_pfe_cst_mdi_menu_contract) then
+	m_pfe_cst_mdi_menu_contract.m_edit.m_newcontract.m_copyctx.TriggerEvent(Clicked!)
+end if
+
+end event
+
+on m_copy.create
+call super::create
+this.text = "&Copy CTX"
+end on
+
+on m_copy.destroy
+call super::destroy
+end on
+
+type m_email from menu within m_contract_tv
+end type
+
+event clicked;long		ll_Cycle,ll_RowCnts
+String	ls_AllEmails,ls_SingleEmail
+
+str_ctx_email 	lstr_ctx_email
+DataStore		lds_Email
+
+if ib_MulCTX then
+	if IsValid(m_pfe_cst_mdi_menu_contract) then
+		m_pfe_cst_mdi_menu_contract.m_edit.m_emaildd.m_emaildd_email.TriggerEvent(Clicked!)
+	end if
+else
+	if il_ctx_id <= 0 then Return
+	
+	lds_Email = Create DataStore
+	lds_Email.DataObject = "d_defaultcontactemail"
+	lds_Email.SetTransObject(SQLCA)
+	lds_Email.Retrieve(il_ctx_id)
+	
+	ll_RowCnts = lds_Email.RowCount()
+	for ll_Cycle = 1 to ll_RowCnts
+		ls_SingleEmail = Trim(lds_Email.GetItemString(ll_Cycle,"ctx_contacts_numbers_contact_email"))
+		if Not IsNull(ls_SingleEmail) and ls_SingleEmail <> "" then
+			if ll_Cycle > 1 then ls_AllEmails += ";"
+			ls_AllEmails += ls_SingleEmail
+		end if
+	next
+	
+	Destroy lds_Email
+	
+	lstr_ctx_email.ctx_id = il_ctx_id
+	lstr_ctx_email.doc_from = 'CTX'
+	lstr_ctx_email.EmailTo = ls_AllEmails
+	
+	OpenWithParm(w_dm_email_document_send,lstr_ctx_email)
+end if
+
+end event
+
+on m_email.create
+call super::create
+this.text = "&Email To Default"
+end on
+
+on m_email.destroy
+call super::destroy
+end on
+
+type m_displayallrelatedrecords from menu within m_contract_tv
+end type
+
+event clicked;iuo_parent.Dynamic Event ue_tv_related_ctx(il_ctx_id)
+end event
+
+on m_displayallrelatedrecords.create
+call super::create
+this.text = "&Display All Related Records"
+end on
+
+on m_displayallrelatedrecords.destroy
+call super::destroy
+end on
+

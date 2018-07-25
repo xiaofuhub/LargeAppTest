@@ -1,0 +1,8 @@
+﻿$PBExportHeader$str_node.srs
+global type str_node from structure
+	boolean		children
+	string		label
+	decimal { 0 }		time
+	integer		count
+end type
+

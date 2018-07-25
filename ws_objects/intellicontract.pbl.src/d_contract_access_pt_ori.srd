@@ -1,0 +1,50 @@
+﻿$PBExportHeader$d_contract_access_pt_ori.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=120 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=char(1) updatewhereclause=yes name=access dbname="access" )
+ column=(type=long updatewhereclause=yes name=ctx_id dbname="ctx_id" )
+ column=(type=char(10) updatewhereclause=yes name=user_d dbname="user_d" )
+ retrieve="SELECT distinct access = ctx_contract_contacts.access
+,ctx_id = ctx_contract_contacts.ctx_id
+,user_d = ctx_contacts.user_d
+FROM   ctx_contacts,   
+       ctx_contract_contacts
+WHERE  (ctx_contract_contacts.contact_id = ctx_contacts.contact_id )
+AND  ctx_contract_contacts.access In ('F', 'R') and ctx_contract_contacts.ic_area = 'I'
+
+UNION
+
+  SELECT DISTINCT access = (CASE ctx_acp_contract_management_right.rights WHEN '11' THEN 'F' WHEN '12' THEN 'R' END)
+,ctx_id = ctx_basic_info.ctx_id
+,user_d = security_users.user_id
+    FROM ctx_acp_contract_management_right,security_users,ctx_basic_info
+   WHERE ( ctx_acp_contract_management_right.types = 1 ) 
+AND ctx_acp_contract_management_right.role_id = security_users.role_id
+AND ctx_acp_contract_management_right.category = ctx_basic_info.category
+AND ctx_acp_contract_management_right.rights In ('11','12')
+AND NOT EXISTS(SELECT 1
+FROM   ctx_contacts, ctx_contract_contacts
+WHERE  (ctx_contract_contacts.contact_id = ctx_contacts.contact_id )
+AND ctx_contract_contacts.access In ('F', 'R') and ctx_contract_contacts.ic_area = 'I'
+AND ctx_contract_contacts.ctx_id = ctx_basic_info.ctx_id
+AND ctx_contacts.user_d =  security_users.user_id
+)
+" )
+text(band=header alignment="2" text="Ctx Contract Contacts
+Access" border="0" color="33554432" x="9" y="8" height="104" width="471" html.valueishtml="0"  name=ctx_contract_contacts_access_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Contract Contacts
+Ctx Id" border="0" color="33554432" x="489" y="8" height="104" width="471" html.valueishtml="0"  name=ctx_contract_contacts_ctx_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Contacts
+User D" border="0" color="33554432" x="969" y="8" height="104" width="274" html.valueishtml="0"  name=ctx_contacts_user_d_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="9" y="8" height="64" width="471" format="[general]" html.valueishtml="0"  name=access visible="1" edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="33554432" x="489" y="8" height="64" width="471" format="[general]" html.valueishtml="0"  name=ctx_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="969" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=user_d visible="1" edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

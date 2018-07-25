@@ -1,0 +1,14 @@
+﻿$PBExportHeader$d_dddw_screen_fields.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=4 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=char(50) update=yes updatewhereclause=yes name=field_label dbname="data_view_fields.field_label" )
+ column=(type=long updatewhereclause=yes name=field_id dbname="sys_fields.field_id" )
+ column=(type=char(50) updatewhereclause=yes name=sys_fields_field_name dbname="sys_fields.field_name" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"data_view_fields~" )  TABLE(NAME=~"sys_fields~" ) COLUMN(NAME=~"data_view_fields.field_label~") COLUMN(NAME=~"sys_fields.field_id~") COLUMN(NAME=~"sys_fields.field_name~")    JOIN (LEFT=~"data_view_fields.field_id~"    OP =~"=~"RIGHT=~"sys_fields.field_id~" )WHERE(    EXP1 =~"data_view_fields.data_view_id~"   OP =~"=~"    EXP2 =~":data_view_id~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"data_view_fields.screen_id~"   OP =~"=~"    EXP2 =~":screen_id~" ) ) ARG(NAME = ~"data_view_id~" TYPE = number)  ARG(NAME = ~"screen_id~" TYPE = number) " arguments=(("data_view_id", number),("screen_id", number))  sort="field_label A " )
+data(null null null ) 
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="4" height="60" width="1138" format="[general]"  name=sys_fields_field_name edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

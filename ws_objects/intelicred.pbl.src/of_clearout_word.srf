@@ -1,0 +1,82 @@
+﻿$PBExportHeader$of_clearout_word.srf
+global type of_clearout_word from function_object
+end type
+
+forward prototypes
+global function integer of_clearout_word ()
+end prototypes
+
+global function integer of_clearout_word ();/////////////////////////////////////////////////////////////////////////////
+// $<function>of_clearout_word
+// $<arguments> 
+// $<returns> integer
+// $<description>Clear out Microsoft Word documents opened by Intellisoft system
+// $<description>while only 1 intellcred applcation running in the client
+/////////////////////////////////////////////////////////////////////////////
+// $<add> 01.16.2008 Alfee
+/////////////////////////////////////////////////////////////////////////////
+CONSTANT Integer WM_CLOSE = 16
+CONSTANT String CLSNAME_WORD = 'OpusApp'
+CONSTANT String CLSNAME_IEFRAME = 'IEFrame'
+CONSTANT String CLSNAME_Intelli = 'FNWND390'
+
+Long ll_handle, ll_rtn, ll_null, ll_counter
+String ls_title, ls_null
+Boolean lb_visible
+
+//Skip it if cred or app only or under a MS Word 2007 system - 09/19/2008
+//IF Lower(gs_word_version) = 'word2007' THEN RETURN 0
+if gb_contract_version or gb_contract_module then 
+	IF Lower(gs_word_version) = 'word2007' THEN RETURN 0
+else
+	return 0
+end if
+
+//Initilize variables
+Setnull(ll_null)
+SetNull(ls_null)
+ll_counter = 0
+ls_title = Space(255)
+
+//Get the handle of first IntelliCred application window
+ll_handle = FindWindowExA(ll_null, ll_null, CLSNAME_Intelli, ls_null)
+DO WHILE ll_handle > 0 
+	//Get Window's title
+	ll_rtn = GetWindowTextA(ll_handle, ls_title, 255)
+	//Count it with comparing the title
+	IF ll_rtn > 0 and ls_title = gs_mdi_title THEN ll_counter ++
+	//Skip closing if more than 1 IntelliCred application window found
+	IF ll_counter > 1 THEN RETURN 0
+	//Get the next
+	ll_handle = FindWindowExA(ll_null, ll_handle, CLSNAME_Intelli, ls_null)
+LOOP
+
+//Get the handle of first IntelliCred Web application window
+ll_handle = FindWindowExA(ll_null, ll_null, CLSNAME_IEFRAME, ls_null)
+DO WHILE ll_handle > 0 
+	//Get Window's title
+	ll_rtn = GetWindowTextA(ll_handle, ls_title, 255)
+	//Count it with comparing the title
+	IF ll_rtn > 0 and ls_title = gs_mdi_title + ' - Microsoft Internet Explorer' THEN ll_counter ++
+	//Skip closing if more than 1 IntelliCred application window found
+	IF ll_counter > 1 THEN RETURN 0
+	//Get the next
+	ll_handle = FindWindowExA(ll_null, ll_handle, CLSNAME_IEFRAME, ls_null)
+LOOP
+
+//Get the handle of first Word instance window
+ll_handle = FindWindowExA(ll_null, ll_null, CLSNAME_WORD, ls_null)
+DO WHILE ll_handle > 0 
+	//Get Window's title
+	ll_rtn = GetWindowTextA(ll_handle, ls_title, 255)
+	//Close the invisible Word instance window
+	IF ll_rtn > 0 and PosA(ls_title, '- Microsoft Word') > 0 THEN 
+		IF NOT IsWindowVisible(ll_handle) THEN	Post Send( ll_handle, WM_CLOSE, 1, 0)
+	END IF
+	//Get the next
+	ll_handle = FindWindowExA(ll_null, ll_handle, CLSNAME_WORD, ls_null)
+LOOP
+
+RETURN 1
+end function
+

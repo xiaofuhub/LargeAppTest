@@ -1,0 +1,625 @@
+﻿$PBExportHeader$m_npdb_options.srm
+forward
+global type m_npdb_options from m_dw
+end type
+type m_options from menu within m_npdb_options
+end type
+type m_printcurrent from menu within m_options
+end type
+type m_printall from menu within m_options
+end type
+type m_mailcurrent from menu within m_options
+end type
+type m_mailall from menu within m_options
+end type
+type m_saveaspdf_option from menu within m_options
+end type
+type m_saveasexcel from menu within m_options
+end type
+type m_options from menu within m_npdb_options
+m_printcurrent m_printcurrent
+m_printall m_printall
+m_mailcurrent m_mailcurrent
+m_mailall m_mailall
+m_saveaspdf_option m_saveaspdf_option
+m_saveasexcel m_saveasexcel
+end type
+type m_measurements from menu within m_npdb_options
+end type
+type m_addmissing from menu within m_measurements
+end type
+type m_measurements from menu within m_npdb_options
+m_addmissing m_addmissing
+end type
+global type m_npdb_options from m_dw
+m_options m_options
+m_measurements m_measurements
+end type
+end forward
+
+global type m_npdb_options from m_dw
+m_options m_options
+m_measurements m_measurements
+end type
+global m_npdb_options m_npdb_options
+
+on m_npdb_options.create
+m_npdb_options=this
+call super::create
+this.m_options=create m_options
+this.m_measurements=create m_measurements
+this.Item[UpperBound(this.Item)+1]=this.m_options
+this.Item[UpperBound(this.Item)+1]=this.m_measurements
+end on
+
+on m_npdb_options.destroy
+call super::destroy
+destroy(this.m_options)
+destroy(this.m_measurements)
+end on
+
+event clicked;call super::clicked;
+
+
+
+idw_parent.event dynamic pfc_print()
+
+end event
+
+type m_table from m_dw`m_table within m_npdb_options
+end type
+
+on m_table.create
+call super::create
+end on
+
+on m_table.destroy
+call super::destroy
+end on
+
+type m_cut from m_dw`m_cut within m_table
+end type
+
+on m_cut.create
+call super::create
+end on
+
+on m_cut.destroy
+call super::destroy
+end on
+
+type m_copy from m_dw`m_copy within m_table
+end type
+
+on m_copy.create
+call super::create
+end on
+
+on m_copy.destroy
+call super::destroy
+end on
+
+type m_paste from m_dw`m_paste within m_table
+end type
+
+on m_paste.create
+call super::create
+end on
+
+on m_paste.destroy
+call super::destroy
+end on
+
+type m_selectall from m_dw`m_selectall within m_table
+end type
+
+on m_selectall.create
+call super::create
+end on
+
+on m_selectall.destroy
+call super::destroy
+end on
+
+type m_dash11 from m_dw`m_dash11 within m_table
+end type
+
+on m_dash11.create
+call super::create
+end on
+
+on m_dash11.destroy
+call super::destroy
+end on
+
+type m_insert from m_dw`m_insert within m_table
+end type
+
+on m_insert.create
+call super::create
+end on
+
+on m_insert.destroy
+call super::destroy
+end on
+
+type m_addrow from m_dw`m_addrow within m_table
+end type
+
+on m_addrow.create
+call super::create
+end on
+
+on m_addrow.destroy
+call super::destroy
+end on
+
+type m_delete from m_dw`m_delete within m_table
+end type
+
+on m_delete.create
+call super::create
+end on
+
+on m_delete.destroy
+call super::destroy
+end on
+
+type m_restorerow from m_dw`m_restorerow within m_table
+end type
+
+on m_restorerow.create
+call super::create
+end on
+
+on m_restorerow.destroy
+call super::destroy
+end on
+
+type m_dash12 from m_dw`m_dash12 within m_table
+end type
+
+on m_dash12.create
+call super::create
+end on
+
+on m_dash12.destroy
+call super::destroy
+end on
+
+type m_columns from m_dw`m_columns within m_table
+end type
+
+on m_columns.create
+call super::create
+end on
+
+on m_columns.destroy
+call super::destroy
+end on
+
+type m_functions from m_dw`m_functions within m_table
+end type
+
+on m_functions.create
+call super::create
+end on
+
+on m_functions.destroy
+call super::destroy
+end on
+
+type m_operators from m_dw`m_operators within m_table
+end type
+
+on m_operators.create
+call super::create
+end on
+
+on m_operators.destroy
+call super::destroy
+end on
+
+type m_values from m_dw`m_values within m_table
+end type
+
+on m_values.create
+call super::create
+end on
+
+on m_values.destroy
+call super::destroy
+end on
+
+type m_dash13 from m_dw`m_dash13 within m_table
+end type
+
+on m_dash13.create
+call super::create
+end on
+
+on m_dash13.destroy
+call super::destroy
+end on
+
+type m_debug from m_dw`m_debug within m_table
+end type
+
+on m_debug.create
+call super::create
+end on
+
+on m_debug.destroy
+call super::destroy
+end on
+
+type m_properties from m_dw`m_properties within m_table
+end type
+
+on m_properties.create
+call super::create
+end on
+
+on m_properties.destroy
+call super::destroy
+end on
+
+type m_contractdetail from m_dw`m_contractdetail within m_table
+end type
+
+on m_contractdetail.create
+call super::create
+end on
+
+on m_contractdetail.destroy
+call super::destroy
+end on
+
+type m_email from m_dw`m_email within m_table
+end type
+
+on m_email.create
+call super::create
+end on
+
+on m_email.destroy
+call super::destroy
+end on
+
+type m_mailaspdf from m_dw`m_mailaspdf within m_table
+end type
+
+on m_mailaspdf.create
+call super::create
+end on
+
+on m_mailaspdf.destroy
+call super::destroy
+end on
+
+type m_saveaspdf from m_dw`m_saveaspdf within m_table
+end type
+
+on m_saveaspdf.create
+call super::create
+end on
+
+on m_saveaspdf.destroy
+call super::destroy
+end on
+
+type m_autobatchaddgroupaccess from m_dw`m_autobatchaddgroupaccess within m_table
+end type
+
+on m_autobatchaddgroupaccess.create
+call super::create
+end on
+
+on m_autobatchaddgroupaccess.destroy
+call super::destroy
+end on
+
+type m_options from menu within m_npdb_options
+m_printcurrent m_printcurrent
+m_printall m_printall
+m_mailcurrent m_mailcurrent
+m_mailall m_mailall
+m_saveaspdf_option m_saveaspdf_option
+m_saveasexcel m_saveasexcel
+end type
+
+on m_options.create
+call super::create
+this.text = "Options"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_printcurrent=create m_printcurrent
+this.m_printall=create m_printall
+this.m_mailcurrent=create m_mailcurrent
+this.m_mailall=create m_mailall
+this.m_saveaspdf_option=create m_saveaspdf_option
+this.m_saveasexcel=create m_saveasexcel
+this.Item[UpperBound(this.Item)+1]=this.m_printcurrent
+this.Item[UpperBound(this.Item)+1]=this.m_printall
+this.Item[UpperBound(this.Item)+1]=this.m_mailcurrent
+this.Item[UpperBound(this.Item)+1]=this.m_mailall
+this.Item[UpperBound(this.Item)+1]=this.m_saveaspdf_option
+this.Item[UpperBound(this.Item)+1]=this.m_saveasexcel
+end on
+
+on m_options.destroy
+call super::destroy
+destroy(this.m_printcurrent)
+destroy(this.m_printall)
+destroy(this.m_mailcurrent)
+destroy(this.m_mailall)
+destroy(this.m_saveaspdf_option)
+destroy(this.m_saveasexcel)
+end on
+
+type m_printcurrent from menu within m_options
+end type
+
+on m_printcurrent.create
+call super::create
+this.text = "Print Current"
+this.toolbaritemname = "print!"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_printcurrent.destroy
+call super::destroy
+end on
+
+event clicked;
+
+idw_parent.event dynamic pfc_print()
+end event
+
+type m_printall from menu within m_options
+end type
+
+on m_printall.create
+call super::create
+this.text = "Print All"
+this.toolbaritemname = "sort!"
+this.toolbaritemdownname = "Sort!"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_printall.destroy
+call super::destroy
+end on
+
+event clicked;
+
+
+idw_parent.event dynamic pfc_print_all()
+end event
+
+type m_mailcurrent from menu within m_options
+end type
+
+event clicked;idw_parent.event dynamic ue_email_current_dw() //evan 12.24.2010
+
+end event
+
+on m_mailcurrent.create
+call super::create
+this.text = "EMail Current"
+this.toolbaritemname = "rcvletters.bmp"
+this.toolbaritemdownname = "rcvletters.bmp"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_mailcurrent.destroy
+call super::destroy
+end on
+
+type m_mailall from menu within m_options
+end type
+
+on m_mailall.create
+call super::create
+this.text = "EMail All"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_mailall.destroy
+call super::destroy
+end on
+
+event clicked;idw_parent.event dynamic ue_mail('','')
+end event
+
+type m_saveaspdf_option from menu within m_options
+end type
+
+event clicked;idw_parent.event dynamic ue_save_as_pdf()
+end event
+
+on m_saveaspdf_option.create
+call super::create
+this.text = "Save as PDF"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_saveaspdf_option.destroy
+call super::destroy
+end on
+
+type m_saveasexcel from menu within m_options
+end type
+
+event clicked;idw_parent.event dynamic ue_saveas_excel(true)  //(Appeon)Harry 06.06.2013 - V141 ISG-CLX
+end event
+
+on m_saveasexcel.create
+call super::create
+this.text = "Save as Excel"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_saveasexcel.destroy
+call super::destroy
+end on
+
+type m_measurements from menu within m_npdb_options
+m_addmissing m_addmissing
+end type
+
+on m_measurements.create
+call super::create
+this.text = "measurements"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_addmissing=create m_addmissing
+this.Item[UpperBound(this.Item)+1]=this.m_addmissing
+end on
+
+on m_measurements.destroy
+call super::destroy
+destroy(this.m_addmissing)
+end on
+
+type m_addmissing from menu within m_measurements
+end type
+
+on m_addmissing.create
+call super::create
+this.text = "Add Missing"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_addmissing.destroy
+call super::destroy
+end on
+
+event clicked;
+idw_parent.event dynamic ue_add_missing()
+end event
+

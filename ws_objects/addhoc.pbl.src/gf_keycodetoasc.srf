@@ -1,0 +1,354 @@
+﻿$PBExportHeader$gf_keycodetoasc.srf
+global type gf_KeycodeToAsc from function_object
+end type
+
+forward prototypes
+global function long gf_keycodetoasc (keycode key, unsignedlong keyflags)
+end prototypes
+
+global function long gf_keycodetoasc (keycode key, unsignedlong keyflags);//====================================================================
+// Function: gf_KeycodeToAsc()
+//--------------------------------------------------------------------
+// Description:
+//--------------------------------------------------------------------
+// Arguments:
+// 	value    keycode         Key
+// 	value    UnsignedLong    KeyFlags	
+//												1 Shift key 
+//												2 Ctrl key 
+//												3 Shift + Ctrl keys
+//--------------------------------------------------------------------
+// Returns:  long
+//--------------------------------------------------------------------
+// Author:	Scofield		Date: 2009-09-03
+//--------------------------------------------------------------------
+//	Copyright (c) 1999-2009 ContractLogix, All rights reserved.
+//--------------------------------------------------------------------
+// Modify History:
+//
+//====================================================================
+
+long		ll_KeyAsc,ll_CapsDown
+String	ls_KeySign
+Boolean	lb_NeedUp
+
+CONSTANT LONG VK_CAPITAL = 20
+
+if Key = KeyControl! or Key = KeyShift! or Key = KeyAlt! or KeyFlags = 2 or KeyFlags = 3 then Return -1
+
+ll_CapsDown = GetKeyState(VK_CAPITAL)
+if ll_CapsDown = 1 and KeyFlags = 0 or ll_CapsDown = 0 and KeyFlags = 1 then lb_NeedUp = true
+
+ll_KeyAsc = -1
+
+Choose Case Key
+	Case key0!
+		ls_KeySign = '0'
+		if KeyFlags = 1 then ls_KeySign = ')'
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case key1!
+		ls_KeySign = '1'
+		if KeyFlags = 1 then ls_KeySign = '!'
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case key2!
+		ls_KeySign = '2'
+		if KeyFlags = 1 then ls_KeySign = '@'
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case key3!
+		ls_KeySign = '3'
+		if KeyFlags = 1 then ls_KeySign = '#'
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case key4!
+		ls_KeySign = '4'
+		if KeyFlags = 1 then ls_KeySign = '$'
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case key5!
+		ls_KeySign = '5'
+		if KeyFlags = 1 then ls_KeySign = '%'
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case key6!
+		ls_KeySign = '6'
+		if KeyFlags = 1 then ls_KeySign = '^'
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case key7!
+		ls_KeySign = '7'
+		if KeyFlags = 1 then ls_KeySign = '&'
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case key8!
+		ls_KeySign = '8'
+		if KeyFlags = 1 then ls_KeySign = '*'
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case key9!
+		ls_KeySign = '9'
+		if KeyFlags = 1 then ls_KeySign = '('
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keya!
+		ls_KeySign = 'a'
+		if lb_NeedUp then ls_KeySign = Upper(ls_KeySign)
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keyb!
+		ls_KeySign = 'b'
+		if lb_NeedUp then ls_KeySign = Upper(ls_KeySign)
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keyc!
+		ls_KeySign = 'c'
+		if lb_NeedUp then ls_KeySign = Upper(ls_KeySign)
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keyd!
+		ls_KeySign = 'd'
+		if lb_NeedUp then ls_KeySign = Upper(ls_KeySign)
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keye!
+		ls_KeySign = 'e'
+		if lb_NeedUp then ls_KeySign = Upper(ls_KeySign)
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keyf!
+		ls_KeySign = 'f'
+		if lb_NeedUp then ls_KeySign = Upper(ls_KeySign)
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keyg!
+		ls_KeySign = 'g'
+		if lb_NeedUp then ls_KeySign = Upper(ls_KeySign)
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keyh!
+		ls_KeySign = 'h'
+		if lb_NeedUp then ls_KeySign = Upper(ls_KeySign)
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keyi!
+		ls_KeySign = 'i'
+		if lb_NeedUp then ls_KeySign = Upper(ls_KeySign)
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keyj!
+		ls_KeySign = 'j'
+		if lb_NeedUp then ls_KeySign = Upper(ls_KeySign)
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keyk!
+		ls_KeySign = 'k'
+		if lb_NeedUp then ls_KeySign = Upper(ls_KeySign)
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keyl!
+		ls_KeySign = 'l'
+		if lb_NeedUp then ls_KeySign = Upper(ls_KeySign)
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keym!
+		ls_KeySign = 'm'
+		if lb_NeedUp then ls_KeySign = Upper(ls_KeySign)
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keyn!
+		ls_KeySign = 'n'
+		if lb_NeedUp then ls_KeySign = Upper(ls_KeySign)
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keyo!
+		ls_KeySign = 'o'
+		if lb_NeedUp then ls_KeySign = Upper(ls_KeySign)
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keyp!
+		ls_KeySign = 'p'
+		if lb_NeedUp then ls_KeySign = Upper(ls_KeySign)
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keyq!
+		ls_KeySign = 'q'
+		if lb_NeedUp then ls_KeySign = Upper(ls_KeySign)
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keyr!
+		ls_KeySign = 'r'
+		if lb_NeedUp then ls_KeySign = Upper(ls_KeySign)
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keys!
+		ls_KeySign = 's'
+		if lb_NeedUp then ls_KeySign = Upper(ls_KeySign)
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keyt!
+		ls_KeySign = 't'
+		if lb_NeedUp then ls_KeySign = Upper(ls_KeySign)
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keyu!
+		ls_KeySign = 'u'
+		if lb_NeedUp then ls_KeySign = Upper(ls_KeySign)
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keyv!
+		ls_KeySign = 'v'
+		if lb_NeedUp then ls_KeySign = Upper(ls_KeySign)
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keyw!
+		ls_KeySign = 'w'
+		if lb_NeedUp then ls_KeySign = Upper(ls_KeySign)
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keyx!
+		ls_KeySign = 'x'
+		if lb_NeedUp then ls_KeySign = Upper(ls_KeySign)
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keyy!
+		ls_KeySign = 'y'
+		if lb_NeedUp then ls_KeySign = Upper(ls_KeySign)
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keyz!
+		ls_KeySign = 'z!'
+		if lb_NeedUp then ls_KeySign = Upper(ls_KeySign)
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keynumpad0!
+		ll_KeyAsc = AscA('0')
+	Case keynumpad1!
+		ll_KeyAsc = AscA('1')
+	Case keynumpad2!
+		ll_KeyAsc = AscA('2')
+	Case keynumpad3!
+		ll_KeyAsc = AscA('3')
+	Case keynumpad4!
+		ll_KeyAsc = AscA('4')
+	Case keynumpad5!
+		ll_KeyAsc = AscA('5')
+	Case keynumpad6!
+		ll_KeyAsc = AscA('6')
+	Case keynumpad7!
+		ll_KeyAsc = AscA('7')
+	Case keynumpad8!
+		ll_KeyAsc = AscA('8')
+	Case keynumpad9!
+		ll_KeyAsc = AscA('9')
+	Case keydecimal!
+		ll_KeyAsc = AscA('.')
+	Case keyadd!
+		ll_KeyAsc = AscA('+')
+	Case keysubtract!
+		ll_KeyAsc = AscA('-')
+	Case keymultiply!
+		ll_KeyAsc = AscA('*')
+	Case keydivide!
+		ll_KeyAsc = AscA('/')
+	Case keyleftbracket!
+		ls_KeySign = '['
+		if KeyFlags = 1 then ls_KeySign = '{'
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keyrightbracket!
+		ls_KeySign = ']'
+		if KeyFlags = 1 then ls_KeySign = '}'
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keyspacebar!
+		ll_KeyAsc = AscA(' ')
+	Case keyquote!
+		ls_KeySign = "'"
+		if KeyFlags = 1 then ls_KeySign = '"'
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keysemicolon!
+		ls_KeySign = ';'
+		if KeyFlags = 1 then ls_KeySign = ':'
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keydash!
+		ls_KeySign = '-'
+		if KeyFlags = 1 then ls_KeySign = '_'
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keycomma!
+		ls_KeySign = ','
+		if KeyFlags = 1 then ls_KeySign = '<'
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keyperiod!
+		ls_KeySign = '.'
+		if KeyFlags = 1 then ls_KeySign = '>'
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keyequal!
+		ls_KeySign = '='
+		if KeyFlags = 1 then ls_KeySign = '+'
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keyslash!
+		ls_KeySign = '/'
+		if KeyFlags = 1 then ls_KeySign = '?'
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keybackquote!
+		ls_KeySign = '`'
+		if KeyFlags = 1 then ls_KeySign = '~~'
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keybackslash!
+		ls_KeySign = '\'
+		if KeyFlags = 1 then ls_KeySign = '|'
+		ll_KeyAsc = AscA(ls_KeySign)
+	Case keytab!
+
+	Case keyf1!
+
+	Case keyf2!
+
+	Case keyf3!
+
+	Case keyf4!
+
+	Case keyf5!
+
+	Case keyf6!
+
+	Case keyf7!
+
+	Case keyf8!
+
+	Case keyf9!
+
+	Case keyf10!
+
+	Case keyf11!
+
+	Case keyf12!
+
+	Case keyleftarrow!
+
+	Case keyuparrow!
+
+	Case keyrightarrow!
+
+	Case keydownarrow!
+
+	Case keyinsert!
+
+	Case keydelete!
+
+	Case keyhome!
+
+	Case keyend!
+
+	Case keypagedown!
+
+	Case keypageup!
+
+	Case keyback!
+
+	Case keyescape!
+
+	Case keyenter!
+
+	Case keycontrol!
+
+	Case keyshift!
+
+	Case keyalt!
+
+	Case keycapslock!
+
+	Case keyscrolllock!
+
+	Case keynumlock!
+
+	Case keyleftbutton!
+
+	Case keymiddlebutton!
+
+	Case keyrightbutton!
+
+	Case keyleftwindows!
+
+	Case keyrightwindows!
+
+	Case keypause!
+
+	Case keyprintscreen!
+
+	Case keyapps!
+
+	Case keynull!
+
+	Case Else
+		
+End Choose
+
+Return ll_KeyAsc
+
+end function
+

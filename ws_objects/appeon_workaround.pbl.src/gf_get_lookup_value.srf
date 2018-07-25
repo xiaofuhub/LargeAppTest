@@ -1,0 +1,52 @@
+﻿$PBExportHeader$gf_get_lookup_value.srf
+$PBExportComments$(Appeon)Toney 06.05.2013 - V141 ISG-CLX
+global type gf_get_lookup_value from function_object
+end type
+
+forward prototypes
+global function string gf_get_lookup_value (long al_lookup_code, string as_column)
+end prototypes
+
+global function string gf_get_lookup_value (long al_lookup_code, string as_column);//====================================================================
+// Function: gf_get_lookup_value
+//--------------------------------------------------------------------
+// Description: Get lookup value. you can using this function in the DW expression
+//--------------------------------------------------------------------
+// Arguments:
+//                al_lookup_code
+//                as_column
+//--------------------------------------------------------------------
+// Returns:  string
+//--------------------------------------------------------------------
+// Author:         Ken.Guo           Date: 03/26/2013
+//--------------------------------------------------------------------
+//Copyright (c) 2008-2013 Contract Logix, Inc. All rights reserved.
+//--------------------------------------------------------------------
+// Modify History:
+//
+//====================================================================
+
+
+Long ll_find
+
+//------------------------------------------------------------------------
+// 2.24.2016 RP added
+gnv_data.of_retrieveIfNecessary("code_lookup", FALSE)
+//------------------------------------------------------------------------
+ll_find = gnv_data.ids_code_lookup.Find('lookup_code = ' + String(al_lookup_code) , 1, gnv_data.ids_code_lookup.RowCount() )
+If ll_find > 0 Then
+	Choose Case Left(gnv_data.ids_code_lookup.describe( as_column + '.coltype') , 3)
+			CASE 'int','num','lon','ulo'
+				Return String(gnv_data.ids_code_lookup.GetItemNumber(ll_find, as_column ))
+			Case 'dou','rea', 'dec', 'mon'
+				Return String(gnv_data.ids_code_lookup.GetItemDecimal(ll_find, as_column ))
+			CASE 'dat'	
+				Return String(gnv_data.ids_code_lookup.GetItemDatetime(ll_find, as_column ))
+			CASE 'var','cha'				
+				Return gnv_data.ids_code_lookup.GetItemString(ll_find, as_column )
+	End Choose
+End If
+
+Return ''
+end function
+

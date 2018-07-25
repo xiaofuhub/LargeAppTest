@@ -1,0 +1,28 @@
+﻿$PBExportHeader$d_dddw_lookup_tables_all.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=char(35) updatewhereclause=yes name=lookup_name dbname="address_lookup.lookup_name" )
+ column=(type=char(1) updatewhereclause=yes name=ttype dbname="ttype" )
+ retrieve="  SELECT DISTINCT ~"address_lookup~".~"lookup_name~",   
+      ttype = 'A'
+    FROM ~"address_lookup~" 
+    
+Union
+
+  SELECT DISTINCT ~"code_lookup~".~"lookup_name~" ,
+	ttype = 'C'
+    FROM    ~"code_lookup~"  
+
+
+  
+"  sort="ttype A lookup_name A " )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="18" y="8" height="64" width="1088" format="[general]" html.valueishtml="0"  name=lookup_name visible="1" edit.limit=35 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="1129" y="4" height="64" width="46" format="[general]" html.valueishtml="0"  name=ttype visible="1" edit.limit=1 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

@@ -1,0 +1,37 @@
+﻿$PBExportHeader$str_action_item.srs
+global type str_action_item from structure
+	long		wf_id
+	long		wf_step_id
+	long		wf_step_status_id
+	decimal { 0 }		wf_action_status_id
+	string		dept_chair
+	string		notes
+	date		due_date
+	decimal { 0 }		rec_id
+	decimal { 0 }		prac_id
+	long		facility_id
+	long		seq_no
+	long		ctx_action_item_id
+	long		ctx_id
+	long		screen_id
+	string		module
+	boolean		status_changed_flag
+	decimal { 0 }		wf_action_type_id
+	string		trigger_by
+	long		doc_id
+	date		reminder_date
+	date		escalation_date
+	string		as_table
+	string		as_column
+	long		al_category
+	string		as_company
+	long		alm_times_reminded
+	string		wf_name
+	string		as_owner
+	string		as_assigned_to
+	decimal { 0 }		gp_id
+	decimal { 0 }		app_id
+	decimal { 0 }		track_id
+	string		app_name
+end type
+

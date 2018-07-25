@@ -1,0 +1,212 @@
+﻿$PBExportHeader$f_create_contract_dw.srf
+global type f_create_contract_dw from function_object
+end type
+
+forward prototypes
+global subroutine f_create_contract_dw (integer arg_view_id, string arg_tab_name, datawindow arg_dw[], string arg_dw_name[], string arg_dataobject[])
+end prototypes
+
+global subroutine f_create_contract_dw (integer arg_view_id, string arg_tab_name, datawindow arg_dw[], string arg_dw_name[], string arg_dataobject[]);//////////////////////////////////////////////////////////////////////
+// $<function>f_create_contract_dw()
+// $<arguments>
+//		value	integer   	arg_view_id     		
+//		value	string    	arg_tab_name    		
+//		value	datawindow	arg_dw[]        		
+//		value	string    	arg_dw_name[]   		
+//		value	string    	arg_dataobject[]		
+// $<returns> (none)
+// $<description>Contract module modIfication 
+// $<description>
+//////////////////////////////////////////////////////////////////////
+// $<add> 07.26.2006 by Liang QingShi
+//////////////////////////////////////////////////////////////////////
+integer i,li_num,li_rowcount,li_find,li_screen_id
+string ls_dw_name,ls_dataobject,ls_Syntax,ls_find,ls_date
+datawindow ldw_create[]
+string ls_create_dw_name[],ls_create_dataobject[]
+string		ls_filename 
+blob     	lblb_Data, lb_syntax
+integer		li_FileNum ,  li_Writes, li_Cnt
+long			ll_BlobLen , ll_CurrentPos 
+String			ls_ScreenStyle
+
+If isnull(arg_view_id) Or arg_view_id = 0 Then 
+	messagebox('View error','No View exists. System will use the default View 1001, Please report this to support.')
+	arg_view_id = 1001
+End If
+
+//Get Opsyntax flag - jervis 10.13.2011
+if gnv_data.of_getitem("icred_settings","use_opsyntax",false) = '1' then  //jervis 10.13.2011
+	gb_use_opmode =true  
+else
+	gb_use_opmode =false
+end if
+
+//If appeongetclienttype() <> 'PB' Then
+	f_create_option(arg_view_id,arg_dw,arg_dw_name,arg_dataobject,ldw_create,ls_create_dw_name,ls_create_dataobject)
+	If upperbound(ldw_create) <= 0 Then
+		return		
+	End If
+//End If
+
+If appeongetclienttype() <> 'PB' Then
+	datastore lds_contract_dw_sql
+	lds_contract_dw_sql = create datastore
+	lds_contract_dw_sql.dataobject = 'd_contract_dw_sql'
+	lds_contract_dw_sql.settransobject(sqlca)
+	lds_contract_dw_sql.retrieve(arg_view_id,arg_tab_name)
+	li_rowcount = lds_contract_dw_sql.rowcount()
+Else
+	li_rowcount = gds_contract_screen.rowcount()
+End If
+
+li_num = UpperBound(ldw_create)
+For i = 1 To li_num	
+	ls_dw_name = ls_create_dw_name[i]
+	ls_dataobject = ls_create_dataobject[i]
+	ls_find = "dw_name = " + "'" + ls_dw_name + "'" + " and ( dataobject = " + "'" + ls_dataobject + "' or grid_dataobject ='" + ls_dataobject + "' )" //modified by gavins 20120319 grid
+	
+	If appeongetclienttype() <> 'PB' Then
+		li_find = lds_contract_dw_sql.find(ls_find,1,li_rowcount)
+		If li_find > 0 Then
+			/*************************************************/
+			ls_ScreenStyle = lds_contract_dw_sql.getitemstring(li_find,'screen_style')
+			li_screen_id = lds_contract_dw_sql.getitemnumber(li_find,'screen_id')
+			ls_date = string(lds_contract_dw_sql.getitemdatetime(li_find,'modIfy_date'))
+			
+			If ls_ScreenStyle = 'G' Then//added by gavins 20120309 grid
+				/*************************************************/		
+				if gb_use_opmode then
+					ls_Syntax = lds_contract_dw_sql.getitemstring(li_find,'grid_opsql')
+					if isnull(ls_Syntax) or  Pos(ls_Syntax,'release') = 0 then ls_Syntax = lds_contract_dw_sql.getitemstring(li_find,'grid_sql')
+				else
+					ls_Syntax = lds_contract_dw_sql.getitemstring(li_find,'grid_sql')
+				end if
+				ls_dataobject = lds_contract_dw_sql.getitemstring(li_find,'grid_dataobject')
+			Else
+				//Get Op Syntax - jervis 10.11.2011
+				if gb_use_opmode then
+					ls_Syntax = lds_contract_dw_sql.getitemstring(li_find,'dw_opsql')
+					if isnull(ls_Syntax) or  Pos(ls_Syntax,'release') = 0 then ls_Syntax = lds_contract_dw_sql.getitemstring(li_find,'dw_sql')
+				else
+					ls_Syntax = lds_contract_dw_sql.getitemstring(li_find,'dw_sql')
+				end if
+				ls_dataobject = lds_contract_dw_sql.getitemstring(li_find,'dataobject')		
+			End If
+		Else
+			messagebox('Error','No View in database:' + string(arg_view_id) + ' ,DataWindow:' + ls_dw_name + ' ,Data Object:' + ls_dataobject)
+			ls_Syntax = ''
+			li_screen_id = 0
+			ls_date = ''
+		End If
+	Else
+		li_find = gds_contract_screen.find(ls_find,1,li_rowcount)
+		If li_find > 0 Then
+			li_screen_id = gds_contract_screen.getitemnumber(li_find,'screen_id')
+			ls_date = string(gds_contract_screen.getitemdatetime(li_find,'modIfy_date'))	
+			/*************************************************///added by gavins 20120309 grid
+			ls_ScreenStyle = gds_contract_screen.getitemstring(li_find,'screen_style')
+			If ls_ScreenStyle = 'G' Then
+				ls_dataobject = gds_contract_screen.getitemstring(li_find,'grid_dataobject')
+			Else
+				ls_dataobject = gds_contract_screen.getitemstring(li_find,'dataobject')
+			End If
+		Else
+			Messagebox("Create error","No screen found to be created, Please report this to support.")
+			li_screen_id = 0
+			ls_date = ''
+		End If
+		/*************************************************///added by gavins 20120309 grid
+		If  ls_ScreenStyle = 'G' Then
+			ls_Syntax = f_get_screen_gridsql(arg_view_id,li_screen_id,gb_use_opmode)   
+		Else
+			ls_Syntax = f_get_screen_sql(arg_view_id,li_screen_id,gb_use_opmode)   //add gb_use_opmode argu - jervis 10.11.2011
+		End If
+	End If
+   If isnull(ls_Syntax) = false and ls_Syntax <> '' Then
+		//ldw_create[i].dataobject = ls_dataobject  jervis 10.25.2011
+		
+		//Added By Ken.Guo 01/14/2013. Need set this dataobject property.
+		If ldw_create[i].dataobject = '' Then
+			ldw_create[i].dataobject = ls_dataobject
+		End If
+		
+   		ldw_create[i].Create(ls_Syntax)
+		ldw_create[i].TriggerEvent("ue_restore_pic")	//Jervis 12.09.2010
+  	 	ldw_create[i].settransobject(sqlca)
+		ldw_create[i].visible = true
+		
+		// Added by leiwei 09.06.2006
+		// Set variables of calendar userobject to NULL when the datawindow to re-created.
+		ldw_create[i].Triggerevent( "ue_reset_calendar_flag" )
+	Else
+		messagebox("Dynamically creating DataWindow fails","("+ls_dataobject + ") DataWindow syntax is not saved in database, system will use the default DataWindow.")
+		ldw_create[i].dataobject = ls_dataobject
+   		ldw_create[i].settransobject(sqlca)
+		ldw_create[i].visible = true
+		return
+	End If
+	
+	if gb_use_opmode then
+		//If the directory is not exists Then create it 
+		gnv_appeondll.of_parsepath(gs_dir_path + gs_DefDirName + "\DWOBSyntax\")
+		ls_filename = gs_dir_path + gs_DefDirName + "\DWOBSyntax\" + string(arg_view_id) + '-' + string(li_screen_id) + '.srd'
+	else
+		gnv_appeondll.of_parsepath(gs_dir_path + gs_DefDirName + "\DWSyntax\")
+		ls_filename = gs_dir_path + gs_DefDirName + "\DWSyntax\" + string(arg_view_id) + '-' + string(li_screen_id) + '.srd'
+	end if
+	
+	//---------Begin Modified by (Appeon)Harry 06.10.2013 for V141 ISG-CLX--------
+	lb_syntax = blob(ls_Syntax) //restored by alfee 11.15.2013 for BugH102801 
+	//lb_syntax = blob(ls_Syntax,EncodingAnsi!) //Encoding – Nova 11.16.2010
+	//---------End Modfiied ------------------------------------------------------
+	
+	ll_BlobLen = Len(lb_syntax)
+	filedelete(ls_filename)  //jervis 10.25.2011
+	AppeonWriteFile(ls_filename, lb_syntax,ll_BlobLen)
+	/*
+	// Determine the number of writes required 
+	// to write the entire blob
+	If ll_BlobLen > 32765 Then
+		 If Mod(ll_BlobLen, 32765) = 0 Then
+			 li_Writes = ll_BlobLen / 32765
+		 Else
+			 li_Writes = (ll_BlobLen / 32765) + 1
+		 End If
+	 Else
+		 li_Writes = 1
+	End If
+	
+	ll_CurrentPos = 1
+	
+	li_FileNum = FileOpen(ls_filename , StreamMode!, Write!, LockWrite!,Replace!)
+	If li_FileNum = -1 Then return 
+	
+	For li_Cnt = 1 To li_Writes
+		 lblb_Data = BlobMid(lb_syntax, ll_CurrentPos, 32765)
+		 ll_CurrentPos += 32765
+		 If FileWrite(li_FileNum, lblb_Data) = -1 Then
+			 Return 
+		 End If
+	Next
+	
+	FileClose(li_FileNum)
+	*/
+	//Save the store folder and the latest update date of the current screen in Registry
+	if gb_use_opmode then
+		//Modified By Mark Lee 04/18/12
+//		gnv_appeondll.of_RegistrySet("HKEY_LOCAL_MACHINE\SOFTWARE\IntelliSoft Group\Screens List", 'Screen-'+string(arg_view_id) + '-' + string(li_screen_id), regstring!, gs_dir_path + gs_DefDirName + "\DWOBSyntax  " + ls_date)	
+		gnv_appeondll.of_RegistrySet("HKEY_LOCAL_MACHINE\SOFTWARE\"+gs_DefDirName+"\Screens List", 'Screen-'+string(arg_view_id) + '-' + string(li_screen_id), regstring!, gs_dir_path + gs_DefDirName + "\DWOBSyntax  " + ls_date)	
+	else
+		//Modified By Mark Lee 04/18/12
+//		gnv_appeondll.of_RegistrySet("HKEY_LOCAL_MACHINE\SOFTWARE\IntelliSoft Group\Screens List", 'Screen-'+string(arg_view_id) + '-' + string(li_screen_id), regstring!, gs_dir_path + gs_DefDirName + "\DWSyntax  " + ls_date)	
+		gnv_appeondll.of_RegistrySet("HKEY_LOCAL_MACHINE\SOFTWARE\"+gs_DefDirName+"\Screens List", 'Screen-'+string(arg_view_id) + '-' + string(li_screen_id), regstring!, gs_dir_path + gs_DefDirName + "\DWSyntax  " + ls_date)	
+	end if
+Next
+
+If appeongetclienttype() <> 'PB' Then
+	destroy lds_contract_dw_sql
+End If
+
+end subroutine
+

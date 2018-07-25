@@ -1,0 +1,30 @@
+﻿$PBExportHeader$d_attest_quest_sync.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=136 color="536870912" )
+summary(height=4 color="536870912" )
+footer(height=84 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes key=yes name=rec_id dbname="pd_attest_questions.rec_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=prac_id dbname="pd_attest_questions.prac_id" )
+ column=(type=long updatewhereclause=yes name=parent_facility_id dbname="pd_affil_stat.parent_facility_id" )
+ column=(type=long update=yes updatewhereclause=yes name=facility_id dbname="pd_attest_questions.facility_id" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"pd_affil_stat~" ALIAS=~"pa~" )  TABLE(NAME=~"pd_attest_questions~" ALIAS=~"pq~" ) COLUMN(NAME=~"pq.rec_id~") COLUMN(NAME=~"pq.prac_id~") COLUMN(NAME=~"pa.parent_facility_id~") COLUMN(NAME=~"pq.facility_id~")    JOIN (LEFT=~"pa.rec_id~"    OP =~"=~"RIGHT=~"pq.appt_stat_id~" )WHERE(    EXP1 =~"facility_id~"   OP =~"<>~"    EXP2 =~"parent_facility_id~" ) ) " update="pd_attest_questions" updatewhere=0 updatekeyinplace=no )
+text(band=header alignment="2" text="Pd Attest Questions
+Rec Id" border="6" color="33554432" x="18" y="16" height="104" width="425" html.valueishtml="0"  name=pd_attest_questions_rec_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Attest Questions
+Prac Id" border="6" color="33554432" x="462" y="16" height="104" width="425" html.valueishtml="0"  name=pd_attest_questions_prac_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Attest Questions
+Facility Id" border="6" color="33554432" x="905" y="16" height="104" width="425" html.valueishtml="0"  name=pd_attest_questions_question_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Affil Stat
+Parent Facility Id" border="6" color="33554432" x="1349" y="16" height="104" width="375" html.valueishtml="0"  name=t_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="2" tabsequence=32766 border="0" color="33554432" x="18" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=rec_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="2" tabsequence=32766 border="0" color="33554432" x="462" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=prac_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="2" tabsequence=32766 border="0" color="33554432" x="1330" y="8" height="52" width="398" format="[general]" html.valueishtml="0"  name=parent_facility_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=footer alignment="1" expression=" count(rec_id for all) "border="0" color="33554432" x="18" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="2" tabsequence=0 border="0" color="33554432" x="942" y="16" height="52" width="343" html.valueishtml="0"  name=facility_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

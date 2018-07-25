@@ -1,0 +1,30 @@
+﻿$PBExportHeader$d_version_number.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=version_id dbname="ctx_version.version_id" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=version_number dbname="ctx_version.version_number" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=ctx_id dbname="ctx_version.ctx_id" )
+ column=(type=datetime update=yes updatewhereclause=yes name=version_date dbname="ctx_version.version_date" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=user_id dbname="ctx_version.user_id" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=old_value dbname="ctx_version.old_value" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=new_value dbname="ctx_version.new_value" )
+ retrieve="  SELECT ctx_version.version_id,   
+         ctx_version.version_number,   
+         ctx_version.ctx_id,   
+         ctx_version.version_date,   
+         ctx_version.user_id,   
+         ctx_version.old_value,   
+         ctx_version.new_value  
+    FROM ctx_version  
+   WHERE ctx_version.ctx_id = :arg_ctx_id    
+" update="ctx_version" updatewhere=1 updatekeyinplace=no arguments=(("arg_ctx_id", number)) )
+text(band=header alignment="2" text="Version Number" border="0" color="33554432" x="9" y="8" height="52" width="366" html.valueishtml="0"  name=version_number_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=10 border="0" color="33554432" x="9" y="8" height="64" width="366" format="[general]" html.valueishtml="0"  name=version_number visible="1" edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

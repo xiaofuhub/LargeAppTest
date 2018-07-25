@@ -1,0 +1,49 @@
+﻿$PBExportHeader$d_resend_letters_app.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=64 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=net_dev_action_items_prac_id dbname="net_dev_action_items.prac_id" )
+ column=(type=decimal(0) updatewhereclause=yes key=yes name=net_dev_action_items_rec_id dbname="net_dev_action_items.rec_id" )
+ column=(type=long updatewhereclause=yes name=net_dev_action_items_seq_no dbname="net_dev_action_items.seq_no" )
+ column=(type=long updatewhereclause=yes name=net_dev_action_items_facility_id dbname="net_dev_action_items.facility_id" )
+ column=(type=long update=yes updatewhereclause=yes name=print_flag dbname="net_dev_action_items.print_flag" )
+ column=(type=long updatewhereclause=yes name=wf_action_status_day_interval dbname="wf_action_status.day_interval" )
+ column=(type=long updatewhereclause=yes name=net_dev_action_items_number_sent dbname="net_dev_action_items.number_sent" )
+ column=(type=datetime updatewhereclause=yes name=compute_0008 dbname="compute_0008" )
+ retrieve="  SELECT net_dev_action_items.prac_id,   
+         net_dev_action_items.rec_id,   
+         net_dev_action_items.seq_no,   
+         net_dev_action_items.facility_id,   
+         net_dev_action_items.print_flag,   
+         wf_action_status.day_interval,
+			net_dev_action_items.number_sent,
+			net_dev_action_items.last_sent + wf_action_status.day_interval
+    FROM wf_action_status,   
+         net_dev_action_items  
+   WHERE ( net_dev_action_items.wf_id = wf_action_status.wf_id ) and  
+			( net_dev_action_items.wf_action_type_id = wf_action_status.step_id ) and  
+         ( net_dev_action_items.action_status = wf_action_status.action_status_id ) and  
+         ( net_dev_action_items.print_flag <= 0 ) AND
+         ( wf_action_status.process_flag = 1 ) AND
+         ( wf_action_status.letter_id is not null )  AND
+         (isnull(net_dev_action_items.number_sent,0) < wf_action_status.resend_times) AND  
+         (( net_dev_action_items.last_sent + wf_action_status.day_interval < getdate() )  or
+			   net_dev_action_items.last_sent is null)
+    
+" update="net_dev_action_items" updatewhere=0 updatekeyinplace=no )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="0" y="0" height="76" width="1376" format="[general]" html.valueishtml="0"  name=net_dev_action_items_prac_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1376" y="0" height="76" width="1376" format="[general]" html.valueishtml="0"  name=net_dev_action_items_rec_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="2752" y="0" height="76" width="1376" format="[general]" html.valueishtml="0"  name=net_dev_action_items_seq_no visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="4128" y="0" height="76" width="1376" format="[general]" html.valueishtml="0"  name=net_dev_action_items_facility_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="5504" y="0" height="76" width="1376" format="[general]" html.valueishtml="0"  name=print_flag visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="6880" y="0" height="76" width="1376" format="[general]" html.valueishtml="0"  name=wf_action_status_day_interval visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="8256" y="0" height="76" width="1376" format="[general]" html.valueishtml="0"  name=net_dev_action_items_number_sent visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="9632" y="0" height="76" width="928" format="[shortdate] [time]" html.valueishtml="0"  name=compute_0008 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

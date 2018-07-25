@@ -1,0 +1,29 @@
+﻿$PBExportHeader$of_verif_rule_add.srf
+global type of_verif_rule_add from function_object
+end type
+
+forward prototypes
+global function integer of_verif_rule_add (integer ai_screen, string as_from, integer ai_fac)
+end prototypes
+
+global function integer of_verif_rule_add (integer ai_screen, string as_from, integer ai_fac);//Start Code Change ---- 06.09.2006 #530 maha
+//function created 060906 maha for adding verification rules 
+datastore lds_add
+integer cnt
+
+lds_add = create datastore
+lds_add.dataobject = "d_facil_rule_add"
+lds_add.settransobject(sqlca)
+
+cnt = lds_add.retrieve(ai_screen,ai_fac)
+if cnt = 0 then
+	lds_add.insertrow(1)
+	lds_add.setitem(1,"facility_id", ai_fac)
+	lds_add.setitem(1,"screen_id", ai_screen)
+	lds_add.setitem(1,"verify_data", "N")	
+	lds_add.update()
+end if
+
+return 1
+end function
+

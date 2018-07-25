@@ -1,0 +1,114 @@
+﻿$PBExportHeader$of_psv_update.srf
+global type of_psv_update from function_object
+end type
+
+forward prototypes
+global function integer of_psv_update (long al_prac, long al_rec, long al_parent, long al_ver)
+end prototypes
+
+global function integer of_psv_update (long al_prac, long al_rec, long al_parent, long al_ver);long li_facs[]
+long ll_max
+integer r
+datetime ld_from
+datetime ld_to
+integer li_days
+integer i
+double ld_fee
+double ld_total
+n_ds lds_affil
+n_ds lds_verif
+n_ds lds_grid
+
+li_facs[1] = al_parent
+li_facs[2] = al_ver
+
+lds_affil = create n_ds
+lds_verif = create n_ds
+lds_grid = create n_ds
+
+lds_affil.dataobject = "d_cvo_affil_status_record"
+lds_verif.dataobject = "d_cvo_verifications"
+lds_grid.dataobject = "d_cvo_pi_de"
+
+lds_affil.settransobject(sqlca)
+lds_verif.settransobject(sqlca)
+lds_grid.settransobject(sqlca)
+
+lds_affil.retrieve(al_rec,gs_user_id )
+lds_verif.retrieve(1, al_prac,li_facs)
+r = lds_grid.retrieve( al_rec)
+debugbreak()
+//create psv record if necessary
+if r = 0 then
+	lds_grid.insertrow(1)
+	lds_grid.setitem(1,"prac_id",al_prac )
+	lds_grid.setitem(1,"facility_id",al_parent )
+	lds_grid.setitem(1,"rec_id",al_rec )
+end if
+
+
+
+//set start and end dates
+ld_from  = lds_affil.getitemdatetime(1,"date_app_rcvd")
+ld_to  = lds_affil.getitemdatetime(1,"date_closed")
+
+if not isnull(ld_from ) then
+	lds_grid.setitem(1,"file_recieved",ld_from)
+else //Start Code Change ----02.14.2012 #V12 maha -if null check the file recieved value
+	if not isnull(lds_grid.getitemdatetime(1,"file_recieved")) then
+		ld_from = lds_grid.getitemdatetime(1,"file_recieved")
+	end if
+end if
+
+if not isnull(ld_to ) then
+	lds_grid.setitem(1,"complete_date",ld_to)
+else //Start Code Change ----02.14.2012 #V12 maha -if null check the file compl data
+	if not isnull(lds_grid.getitemdatetime(1,"complete_date")) then
+		ld_to = lds_grid.getitemdatetime(1,"complete_date")
+	end if
+end if
+
+//set completion days
+if not isnull(ld_from) and not isnull(ld_to) then
+	i = of_calc_business_days(ld_from,ld_to)  //system function
+	lds_grid.setitem(1,"compl_days",i)
+end if
+
+li_days  = 45
+
+if li_days > 0 then
+//set anticipated date
+	ld_to = of_calc_antic_date(li_days,ld_from)
+end if
+
+lds_grid.setitem(1,"anticipated_close",ld_to)
+
+for i = 1 to lds_verif.rowcount()
+	ld_fee = lds_verif.getitemnumber(i,"verif_info_fee") 
+	if not isnull(ld_fee) then
+		ld_total = ld_total + ld_fee
+	end if
+next
+	
+lds_grid.setitem(1,"fee_total",ld_total)
+
+if lds_grid.getitemstatus( 	1, 0, primary!)  = Newmodified! then
+	select max(grid_id) into :ll_max from cvo_pi_grid;
+	if isnull(ll_max) then ll_max = 0
+	ll_max++
+	lds_grid.setitem(1,"grid_id",ll_max)
+end if
+
+r = lds_grid.update()
+
+if r < 1 then messagebox( "PSV error","failed to create psv record"  )
+commit using sqlca;
+
+
+destroy lds_affil
+destroy lds_verif
+destroy lds_grid
+
+return 1
+end function
+

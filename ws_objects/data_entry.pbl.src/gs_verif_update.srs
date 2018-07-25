@@ -1,0 +1,10 @@
+﻿$PBExportHeader$gs_verif_update.srs
+global type gs_verif_update from structure
+	string		sql_syntax
+	long		al_rec_id[]
+	long		al_screen_id
+	long		al_prac_id
+	long		al_resp_code
+	integer		ai_select
+end type
+

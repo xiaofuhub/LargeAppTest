@@ -1,0 +1,136 @@
+﻿$PBExportHeader$d_app_field_properties_old.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=784 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=app_field_id dbname="app_field_id" )
+ column=(type=long update=yes updatewhereclause=yes name=app_id dbname="app_id" )
+ column=(type=long update=yes updatewhereclause=yes name=table_id dbname="table_id" )
+ column=(type=long update=yes updatewhereclause=yes name=field_id dbname="field_id" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=lookup_link_type dbname="lookup_link_type" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=lookup_link_field dbname="lookup_link_field" )
+ column=(type=long update=yes updatewhereclause=yes name=record_number dbname="record_number" initial="1" )
+ column=(type=long update=yes updatewhereclause=yes name=x_pos dbname="x_pos" )
+ column=(type=long update=yes updatewhereclause=yes name=y_pos dbname="y_pos" )
+ column=(type=long update=yes updatewhereclause=yes name=width dbname="width" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=query_field dbname="query_field" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=query_value dbname="query_value" )
+ column=(type=long update=yes updatewhereclause=yes name=page dbname="page" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=object_type dbname="box_type" initial="T" values="Text	T/Check Mark	C/Select Box	Y1/" )
+ column=(type=long update=yes updatewhereclause=yes name=box_height dbname="box_height" )
+ column=(type=long update=yes updatewhereclause=yes name=box_width dbname="box_width" )
+ column=(type=long update=yes updatewhereclause=yes name=box_yes_x dbname="box_yes_x" )
+ column=(type=long update=yes updatewhereclause=yes name=box_yes_y dbname="box_yes_y" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=box_yes_value dbname="box_yes_value" )
+ column=(type=long update=yes updatewhereclause=yes name=box_no_x dbname="box_no_x" )
+ column=(type=long update=yes updatewhereclause=yes name=box_no_y dbname="box_no_y" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=box_no_value dbname="box_no_value" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=font_type dbname="font_type" initial="2" )
+ column=(type=long update=yes updatewhereclause=yes name=font_size dbname="font_size" initial="2" values="Small	1/Medium	2/Large	3/" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=font_color dbname="font_color" initial="Black" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=font_background dbname="font_background" initial="White" )
+ column=(type=long update=yes updatewhereclause=yes name=font_underline dbname="font_underline" initial="0" )
+ column=(type=long update=yes updatewhereclause=yes name=font_bold dbname="font_bold" initial="0" values="Bold	1/Bold	0" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=query_operator dbname="query_operator" values="=	=/>	>/<	</<>	<>/" )
+ column=(type=char(2) updatewhereclause=yes name=sys_fields_field_type dbname="field_type" )
+ column=(type=char(50) updatewhereclause=yes name=field_name dbname="field_name_allias" )
+ column=(type=char(50) updatewhereclause=yes name=real_table_name dbname="table_name" )
+ column=(type=char(50) updatewhereclause=yes name=table_name dbname="table_name_allias" )
+ column=(type=char(50) updatewhereclause=yes name=sys_fields_field_name dbname="field_name" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=field_description dbname="field_description" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=personal_data dbname="personal_data" )
+ column=(type=char(40) updatewhereclause=yes name=lookup_code dbname="lookup_code" )
+ column=(type=long update=yes updatewhereclause=yes name=height dbname="height" )
+ column=(type=long update=yes updatewhereclause=yes name=annotation_width dbname="annotation_width" )
+ column=(type=long update=yes updatewhereclause=yes name=past_years_query dbname="past_years_query" initial="0" )
+ column=(type=long updatewhereclause=yes name=app_fill_field_len dbname="app_fill_field_len" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=format dbname="format" values="None	None/Money	Money/SS#	SS#/Phone	Phone/DATE(mm//dd//yyyy)	DATE(mm//dd//yyyy)/DATE(mm//dd//yy)	DATE(mm//dd//yy)/DATE(mm-dd-yyyy)	DATE(mm-dd-yyyy)/DATE(mm-dd-yy)	DATE(mm-dd-yy)/DATE(mm//yyyy)	DATE(mm//yyyy)/" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=connect_field_id dbname="connect_field_id" )
+ column=(type=long update=yes updatewhereclause=yes name=connect_field_sort dbname="connect_field_sort" )
+ column=(type=long update=yes updatewhereclause=yes name=billing_address_flag dbname="billing_address_flag" initial="0" values="	1/	0" )
+ retrieve="  SELECT  app_field_prop.app_field_id , 
+          app_field_prop.app_id ,
+           app_field_prop.table_id ,
+           app_field_prop.field_id ,
+           app_field_prop.lookup_link_type ,
+           app_field_prop.lookup_link_field ,
+           app_field_prop.record_number ,
+           app_field_prop.x_pos ,
+           app_field_prop.y_pos ,
+           app_field_prop.width ,
+           app_field_prop.query_field ,
+           app_field_prop.query_value ,
+           app_field_prop.page ,
+           app_field_prop.box_type ,
+           app_field_prop.box_height ,
+           app_field_prop.box_width ,
+           app_field_prop.box_yes_x , 
+          app_field_prop.box_yes_y ,
+           app_field_prop.box_yes_value , 
+          app_field_prop.box_no_x ,
+           app_field_prop.box_no_y ,
+           app_field_prop.box_no_value ,
+           app_field_prop.font_type , 
+          app_field_prop.font_size ,
+           app_field_prop.font_color ,
+           app_field_prop.font_background ,
+           app_field_prop.font_underline ,
+           app_field_prop.font_bold , 
+          app_field_prop.query_operator ,  
+         sys_fields.field_type ,      
+     sys_fields.field_name_allias , 
+         sys_tables.table_name,
+ sys_tables.table_name_allias ,
+           sys_fields.field_name ,
+           app_field_prop.field_description ,
+           app_field_prop.personal_data ,
+           sys_fields.lookup_code ,
+           app_field_prop.height , 
+          app_field_prop.annotation_width ,
+           app_field_prop.past_years_query , 
+          sys_fields.app_fill_field_len , 
+          app_field_prop.format , 
+          app_field_prop.connect_field_id, 
+app_field_prop.connect_field_sort, 
+app_field_prop.billing_address_flag
+        FROM {oj {oj app_field_prop  LEFT OUTER JOIN sys_tables  ON app_field_prop.table_id = sys_tables.table_id} LEFT OUTER JOIN sys_fields  ON app_field_prop.field_id = sys_fields.field_id}     
+        WHERE ( app_field_prop.app_field_id = :app_field_id )   " update="app_field_prop" updatewhere=1 updatekeyinplace=no arguments=(("app_field_id", number)) )
+groupbox(band=detail text="Display Type"border="5" color="128" x="1047" y="4" height="480" width="635"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+groupbox(band=detail text=""border="5" color="128" x="1042" y="664" height="100" width="640"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+groupbox(band=detail text="Display Format"border="5" color="128" x="1047" y="500" height="136" width="635"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+groupbox(band=detail text="Font"border="5" color="128" x="18" y="356" height="404" width="265"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+groupbox(band=detail text="Record Query"border="5" color="128" x="306" y="4" height="756" width="709"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+groupbox(band=detail text="Position"border="5" color="128" x="18" y="4" height="348" width="265"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=24 alignment="0" tabsequence=20 border="0" color="0" x="23" y="420" height="260" width="256" format=""  name=font_size radiobuttons.columns=1 radiobuttons.scale=no radiobuttons.threed=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="2" color="0" x="46" y="128" height="56" width="160" format="[general]"  name=page edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=10 alignment="0" tabsequence=10 border="5" color="0" x="46" y="276" height="56" width="160" format="[general]"  name=width edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=29 alignment="0" tabsequence=60 border="5" color="0" x="334" y="440" height="52" width="293" format="[general]"  name=query_operator ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.useasborder=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=12 alignment="0" tabsequence=70 border="5" color="0" x="334" y="588" height="56" width="658" format="[general]"  name=query_value dddw.name=d_dddw_code_lookup dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=300 dddw.lines=0 dddw.limit=0 dddw.allowedit=yes dddw.useasborder=yes dddw.case=any dddw.nilisnull=yes dddw.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+line(band=detail x1="1051" y1="204" x2="1664" y2="204" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12632256" )
+text(band=detail alignment="0" text="Width"border="0" color="0" x="46" y="208" height="52" width="174"  name=width_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=detail alignment="0" text=" Page #"border="0" color="0" x="46" y="60" height="52" width="183"  name=page_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=28 alignment="0" tabsequence=30 border="0" color="0" x="37" y="688" height="52" width="238" format="[general]"  name=font_bold checkbox.text="Bold" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=7 alignment="1" tabsequence=40 border="5" color="0" x="334" y="128" height="56" width="142" format="[general]"  name=record_number edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=11 alignment="0" tabsequence=50 border="5" color="0" x="334" y="288" height="56" width="658" format="[general]"  name=query_field dddw.name=d_dddw_system_fields dddw.displaycolumn=field_name_allias dddw.datacolumn=field_name dddw.percentwidth=125 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+line(band=detail x1="311" y1="204" x2="1015" y2="204" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12632256" )
+line(band=detail x1="306" y1="668" x2="1010" y2="668" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12632256" )
+column(band=detail id=14 alignment="0" tabsequence=90 border="5" color="0" x="1074" y="128" height="56" width="581" format="[general]"  name=object_type ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.useasborder=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=45 alignment="0" tabsequence=80 border="0" color="0" x="782" y="692" height="56" width="78" format="[general]"  name=billing_address_flag checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=42 alignment="0" tabsequence=120 border="5" color="0" x="1074" y="564" height="56" width="581" format="[general]"  name=format ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.useasborder=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=40 alignment="0" tabsequence=130 border="5" color="0" x="1390" y="692" height="60" width="123" format="[General]"  name=past_years_query editmask.spin=yes editmask.mask="##" editmask.spinrange="0~~30" editmask.spinincr=1 editmask.focusrectangle=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Record #"border="0" color="0" x="334" y="60" height="52" width="265"  name=record_number_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="841" y="48" height="60" width="165" format="[general]"  name=app_field_id edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=detail alignment="0" text="Object Type"border="0" color="0" x="1070" y="60" height="52" width="279"  name=box_type_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=detail alignment="0" text="Query Field"border="0" color="0" x="334" y="220" height="52" width="343"  name=query_field_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+button(band=detail text="Clear Query"filename=""action="0" border="0" color="0" x="695" y="428" height="76" width="302" vtextalign="0" htextalign="0"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=detail alignment="0" text="Comparison Operator"border="0" color="0" x="329" y="372" height="52" width="631"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=detail alignment="0" text="Query Value:"border="0" color="0" x="334" y="520" height="52" width="379"  name=query_value_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=detail alignment="0" text="Get Billing Address:"border="0" color="0" x="334" y="692" height="52" width="416"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=detail alignment="0" text="Data from last"border="0" color="0" x="1070" y="696" height="52" width="302"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=detail alignment="0" text="Years"border="0" color="0" x="1536" y="696" height="52" width="133"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=detail alignment="0" text="No Value"border="0" color="0" x="1074" y="348" height="52" width="265"  name=box_no_value_t visible="1~tif( object_type = 'C', 0, 1 )"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=detail alignment="0" text="Yes Value"border="0" color="0" x="1074" y="216" height="44" width="302"  name=box_yes_value_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=19 alignment="0" tabsequence=100 border="5" color="0" x="1074" y="276" height="56" width="581" format="[general]"  name=box_yes_value dddw.name=d_dddw_code_lookup dddw.displaycolumn=code dddw.datacolumn=code dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=yes dddw.useasborder=yes dddw.case=any dddw.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~tif( object_type = 'T',  12632256, 16777215 )" )
+column(band=detail id=22 alignment="0" tabsequence=110 border="5" color="0" x="1074" y="408" height="56" width="581" format="[general]"  name=box_no_value visible="1~tif( object_type = 'C', 0, 1 )" dddw.name=d_dddw_code_lookup dddw.displaycolumn=code dddw.datacolumn=code dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=yes dddw.useasborder=yes dddw.case=any dddw.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~tif( object_type = 'T',  12632256, 16777215 )" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,39 @@
+﻿$PBExportHeader$of_close_iewin.srf
+global type of_close_iewin from function_object
+end type
+
+forward prototypes
+global function integer of_close_iewin (string as_title)
+end prototypes
+
+global function integer of_close_iewin (string as_title);//Close IE windows based on the title (For Web based scheduler - alfee 01.26.2011)
+
+CONSTANT Integer WM_CLOSE = 16
+CONSTANT String CLSNAME_IEFRAME = 'IEFrame'
+
+Long ll_handle, ll_rtn, ll_null
+String ls_title, ls_null
+
+//Initilize variables
+Setnull(ll_null)
+SetNull(ls_null)
+ls_title = Space(255)
+
+//Get the handle of first IntelliCred Web application window
+ll_handle = FindWindowExA(ll_null, ll_null, CLSNAME_IEFRAME, ls_null)
+DO WHILE ll_handle > 0 
+	//Get window's title
+	ll_rtn = GetWindowTextA(ll_handle, ls_title, 255)
+	//Comparing the title
+	//IF ll_rtn > 0 and PosA(ls_title, as_title) > 0 and (PosA(ls_title, ' - Microsoft Internet Explorer') > 0  Or PosA(ls_title, ' - Windows Internet Explorer') > 0) THEN
+	IF ll_rtn > 0 and PosA(ls_title, as_title) > 0 THEN	//for IE new versions - alfee 04.29.2015	
+		//Close the window
+		Post Send( ll_handle, WM_CLOSE, 1, 0)
+	END IF
+	ll_handle = FindWindowExA(ll_null, ll_handle, CLSNAME_IEFRAME, ls_null)
+LOOP
+
+RETURN 1
+
+end function
+

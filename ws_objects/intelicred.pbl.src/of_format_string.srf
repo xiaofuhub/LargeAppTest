@@ -1,0 +1,96 @@
+﻿$PBExportHeader$of_format_string.srf
+global type of_format_string from function_object
+end type
+
+forward prototypes
+global function string of_format_string (string as_string, string as_type, string as_format)
+end prototypes
+
+global function string of_format_string (string as_string, string as_type, string as_format);//Start Code Change ----12.13.2008 #V8 maha
+//created as a generic function for formatting data values
+string ls_value
+string ls_data_value
+string ls_month
+string ls_year
+string ls_day
+date ld_date
+datetime ld_datetime
+integer w
+integer a
+
+ls_data_value = as_string
+
+choose case upper(as_type)
+	case "PHONE"
+		choose case upper(as_format)
+			case "STANDARD" ,  "(xxx)xxx-xxxx"
+				ls_data_value = of_strip_char("@NUM@",ls_data_value,"") //strip to numbers
+				ls_value = "(" + MidA(ls_data_value,1,3 ) + ")" + MidA(ls_data_value,4,3 ) + "-" + MidA(ls_data_value,7,4 )
+		end choose
+	case "SSN"
+		ls_data_value = of_strip_char("@NUM@",ls_data_value,"") //strip to numbers
+		ls_value = MidA(ls_data_value,1,3 ) + "-" + MidA(ls_data_value,4,2 ) + "-" + MidA(ls_data_value,6,4 )
+	case "DATE"
+		//Start Code Change ----01.17.2008 #V8 maha - date functions added
+		//of_format_string("DATE", "yyyy-mm-dd")
+		//check for correct length
+		if LenA(as_string) > 8 then
+			ld_date = date(MidA(as_string,1,10))
+		
+			//break down string
+			ls_month = string(month(ld_date))
+			if LenA(ls_month) = 1 then ls_month = "0" + ls_month
+			ls_year = string(year(ld_date))
+			ls_day  = string(day(ld_date))
+			if LenA(ls_day) = 1 then ls_day = "0" + ls_day
+	//	ls_hour = string(hour(time(ldt_date)))
+	//	if len(ls_hour) = 1 then ls_hour = "0" + ls_hour
+	//	ls_minute = string(minute(time(ldt_date)))
+	//	if len(ls_minute) = 1 then ls_minute = "0" + ls_minute
+	//	ls_second = string(second(time(ldt_date))) //maha 121505
+	//	if len(ls_second) = 1 then ls_second = "0" + ls_second
+	//		//messagebox("ls_field_format",ls_field_format)
+			//format parts
+			choose case as_format		
+	//			case "yyyymmddhhmm"
+	//				ls_value = ls_year + ls_month + ls_day + ls_hour + ls_minute
+				case "yyyy-mm-dd"
+					ls_value = ls_year + "-" + ls_month + "-" + ls_day
+				case "mm-dd-yyyy"
+					ls_value = ls_month + "-" + ls_day  + "-" + ls_year
+				case "mm/dd/yyyy"
+					ls_value = ls_month + "/" + ls_day  + "/" + ls_year
+				case "mm-dd-yy"
+					ls_year = MidA(ls_year,3,2)
+					ls_value = ls_month + "-" + ls_day  + "-" + ls_year
+				case "yyyymmdd" //maha 070605
+					ls_value = ls_year + ls_month + ls_day		
+				case "mmddyy"
+					ls_year = MidA(ls_year,3,2)
+					ls_value =  ls_month + ls_day + ls_year
+				case "mm/dd/yy"
+					ls_year = MidA(ls_year,3,2)
+					ls_value = ls_month + "/" + ls_day  + "/" + ls_year
+				case "yyyy"
+					ls_value = ls_year
+	//			case "yyyymmddhhmmss" //maha 121505
+	//				ls_value = ls_year + ls_month + ls_day + ls_hour + ls_minute + ls_second
+				case else
+					ls_value = ls_year + "-" +ls_month + "-" +ls_day //+ " " +ls_hour + ":" +ls_minute
+					
+			end choose
+			//End Code Change---01.17.2008
+		end if
+					
+				
+end choose
+
+
+
+
+
+return ls_value
+
+
+end function
+

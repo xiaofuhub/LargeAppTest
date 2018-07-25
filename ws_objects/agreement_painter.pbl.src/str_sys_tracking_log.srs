@@ -1,0 +1,10 @@
+﻿$PBExportHeader$str_sys_tracking_log.srs
+global type str_sys_tracking_log from structure
+	string		as_session_id
+	string		as_modules
+	string		as_value1
+	string		as_value2
+	string		as_value3
+	string		as_user
+end type
+

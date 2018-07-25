@@ -1,0 +1,39 @@
+﻿$PBExportHeader$appeongethttpinfo.srf
+global type appeongethttpinfo from function_object
+end type
+
+forward prototypes
+global function string appeongethttpinfo (string attribute)
+end prototypes
+
+global function string appeongethttpinfo (string attribute);//==============================================================================
+// 
+// Copyright ? 2001-2006 Appeon, Inc. and its subsidiaries. All rights reserved.
+// 
+//------------------------------------------------------------------------------
+// Function: appeongethttpinfo()
+//------------------------------------------------------------------------------
+// Description: 
+//               Returns the HTTP header information from a particular request.
+//	
+// Arguments: 
+//		string	attribute		
+//	
+// Returns:  string
+//------------------------------------------------------------------------------
+// Author:	APPEON		Date: 2005-11
+//------------------------------------------------------------------------------
+// Revision History: 
+//				1.0   Initial version
+//==============================================================================
+
+String strRet
+AppeonExtFuncs funs
+funs = Create AppeonExtFuncs
+
+strRet = funs.Of_GetHttpInfo(attribute)
+
+Destroy funs
+Return strRet
+end function
+

@@ -1,0 +1,12 @@
+﻿$PBExportHeader$str_easerver_info.srs
+global type str_easerver_info from structure
+	long		al_protocol
+	string		as_server
+	long		al_port
+	long		al_authtype
+	boolean		ab_sslconnection
+	long		al_ssltype
+	string		as_user
+	string		as_password
+end type
+

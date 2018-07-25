@@ -1,0 +1,62 @@
+﻿$PBExportHeader$gf_checksetposition.srf
+global type gf_checksetposition from function_object
+end type
+
+forward prototypes
+global function boolean gf_checksetposition ()
+end prototypes
+
+global function boolean gf_checksetposition ();//  isn't  judge 'Set Position ' used ?
+Boolean					lb_Used
+Integer					li_Return, li_Pos, li_Pos2, li_LastPos
+String						ls_Ori_Syntax, ls_Modi_Syntax
+String						ls_Pre_Name, ls_Next_Name
+String						ls_Pre_Name2, ls_Next_Name2
+n_cst_datastore		lds_ds
+
+lds_ds = Create n_cst_dataStore
+
+lds_ds.dataobject = 'ds_contract_check_setposition'
+ls_Next_Name2 =""
+ls_Next_Name="" 
+ls_Pre_Name=""
+ls_Pre_Name2=""
+
+IF appeongetclienttype() = 'PB' Then Return True
+
+
+ls_Ori_Syntax  = lower(lds_ds.Describe( "datawindow.syntax" ) )
+
+ls_Ori_Syntax =  Mid( ls_Ori_Syntax, Pos( ls_Ori_Syntax,  'retrieve=' ) ) 
+li_Pos = Pos( ls_Ori_Syntax, "name=data_view_name" )
+If  Mid( ls_Ori_Syntax , li_Pos + Len(  "name=data_view_name"  ), 1  ) <> " " then li_Pos = Pos( ls_Ori_Syntax, "name=data_view_name" , li_Pos + 10 )
+li_LastPos =  LastPos( Left( ls_Ori_Syntax , li_Pos ) , "name=" )
+If li_LastPos > 0 Then ls_Pre_Name = left(  Mid( ls_Ori_Syntax, li_LastPos ),  Pos( Mid( ls_Ori_Syntax, li_LastPos ), ' ' )  )
+li_LastPos =  Pos(  ls_Ori_Syntax , "name=" , li_Pos + 10  )
+If li_LastPos > 0 Then ls_Next_Name = left(  Mid( ls_Ori_Syntax, li_LastPos ),  Pos( Mid( ls_Ori_Syntax, li_LastPos ), ' ' )  )
+//-----------------------------
+lds_ds.SetPosition( "data_view_name", '', True )
+
+ls_Modi_Syntax  = lower(lds_ds.Describe( "datawindow.syntax" ) )
+ls_Modi_Syntax =  Mid( ls_Modi_Syntax, Pos( ls_Modi_Syntax,  'retrieve=' ) ) 
+
+li_Pos = Pos( ls_Modi_Syntax, "name=data_view_name" )
+If  Mid( ls_Modi_Syntax , li_Pos + Len(  "name=data_view_name"  ), 1  ) <>  " " then li_Pos = Pos( ls_Modi_Syntax, "name=data_view_name" , li_Pos + 10 )
+li_LastPos =  LastPos( Left( ls_Modi_Syntax , li_Pos ) , "name=" )
+If li_LastPos > 0 Then ls_Pre_Name2 = left(  Mid( ls_Modi_Syntax, li_LastPos ),  Pos( Mid( ls_Modi_Syntax, li_LastPos ), ' ' ) - 1 )
+li_LastPos =  Pos(  ls_Modi_Syntax , "name=" , li_Pos + 10  )
+If li_LastPos > 0 Then ls_Next_Name2 = left(  Mid( ls_Modi_Syntax, li_LastPos ),  Pos( Mid( ls_Modi_Syntax, li_LastPos ), ' ' ) - 1 )
+//_____________________________________
+
+If Not( trim(ls_Pre_Name) = trim(ls_Pre_Name2) And trim(ls_Next_Name) = trim(ls_Next_Name2) ) Then
+	lb_Used = True
+Else
+	lb_Used = False	
+End If
+
+
+Return lb_Used
+
+
+end function
+

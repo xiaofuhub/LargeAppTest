@@ -1,0 +1,62 @@
+﻿$PBExportHeader$d_clauses_painter_browse.srd
+$PBExportComments$Create by Jack 03/06/2007
+release 11.5;
+datawindow ( units=0 timer_interval=0 processing=1 color=1073741824 brushmode=0 transparency=0 gradient.color=8421504 gradient.transparency=0 gradient.angle=0 gradient.repetition.mode=0 gradient.repetition.count=0 gradient.repetition.length=100 gradient.focus=0 gradient.scale=100 gradient.spread=100 picture.mode=0 picture.scale.x=100 picture.scale.y=100 picture.clip.left=0 picture.clip.right=0 picture.clip.top=0 picture.clip.bottom=0 picture.blur=0 picture.transparency=0 print.printername=""  print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=96 print.margin.bottom=96 print.paper.size=0 print.paper.source=0 print.canusedefaultprinter=yes grid.lines=0 grid.columnmove=no selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=68 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=decimal(0) key=yes update=yes updatewhereclause=yes name=ctx_acp_clause_id dbname="ctx_acp_clause.ctx_acp_clause_id"  )
+column=(type=long update=yes updatewhereclause=yes name=ctx_acp_folder_id dbname="ctx_acp_clause.ctx_acp_folder_id"  )
+column=(type=char(255) update=yes updatewhereclause=yes name=clause_name dbname="ctx_acp_clause.clause_name"  )
+column=(type=char(20) update=yes updatewhereclause=yes name=approved_by dbname="ctx_acp_clause.approved_by"  )
+column=(type=datetime update=yes updatewhereclause=yes name=date_approved dbname="ctx_acp_clause.date_approved" 
+ values=""  )
+column=(type=decimal(0) update=yes updatewhereclause=yes name=approval_status dbname="ctx_acp_clause.approval_status" 
+ values=""  )
+column=(type=datetime updatewhereclause=yes name=modify_date dbname="ctx_acp_clause.modify_date"  )
+column=(type=decimal(0) updatewhereclause=yes name=category dbname="ctx_acp_clause.category"  )
+column=(type=long updatewhereclause=yes name=export_id dbname="ctx_acp_clause.export_id"  )
+column=(type=long updatewhereclause=yes name=temp_usage dbname="temp_usage"  )
+column=(type=long updatewhereclause=yes name=dm_usage dbname="dm_usage"  )
+ retrieve="  SELECT ctx_acp_clause.ctx_acp_clause_id,   
+         ctx_acp_clause.ctx_acp_folder_id,   
+         ctx_acp_clause.clause_name,   
+         ctx_acp_clause.approved_by,   
+         ctx_acp_clause.date_approved,   
+         ctx_acp_clause.approval_status,   
+         ctx_acp_clause.modify_date,   
+         ctx_acp_clause.category,   
+         ctx_acp_clause.export_id,
+			temp_usage = 0,
+			dm_usage = 0
+    FROM ctx_acp_clause   
+"
+  update="ctx_acp_clause" updatewhere=0 updatekeyinplace=no
+ )
+text(name=t_1 visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="2" background.color="134217750" color="0" alignment="2" border="6" x="9" y="8" height="52" width="155" text="No." html.valueishtml="0" )
+text(name=clause_name_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="2" background.color="134217750" color="33554432" alignment="2" border="6" x="174" y="8" height="52" width="608" text="Clause Name" html.valueishtml="0" )
+text(name=approved_by_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="2" background.color="134217750" color="33554432" alignment="2" border="6" x="791" y="8" height="52" width="302" text="Reviewed By" html.valueishtml="0" )
+text(name=date_approved_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="2" background.color="134217750" color="33554432" alignment="2" border="6" x="1102" y="8" height="52" width="347" text="Date Reviewed" html.valueishtml="0" )
+text(name=approval_status_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="2" background.color="134217750" color="33554432" alignment="2" border="6" x="1458" y="8" height="52" width="329" text="Review Status" html.valueishtml="0" )
+text(name=temp_usage_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="2" background.color="134217750" color="0" alignment="2" border="6" x="1797" y="8" height="52" width="375" text="Template Usage" html.valueishtml="0" )
+text(name=dm_usage_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="2" background.color="134217750" color="0" alignment="2" border="6" x="2181" y="8" height="52" width="631" text="Document Manager Usage" html.valueishtml="0" )
+text(name=export_id_t visible="0" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="2" background.color="134217750" color="0" alignment="2" border="6" x="2821" y="8" height="52" width="398" text="Export Id" html.valueishtml="0" )
+compute(name=compute_1 visible="1" band=detail font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="1" background.color="536870912" color="33554432" x="9" y="4" height="60" width="155" format="[GENERAL]" expression="getrow()" alignment="2" border="0" html.valueishtml="0" crosstab.repeat=no )
+column(name=clause_name visible="1" band=detail id=3 x="174" y="4" height="60" width="608" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=255 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 )
+column(name=approved_by visible="1" band=detail id=4 x="791" y="4" height="60" width="302" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=20 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 )
+column(name=date_approved visible="1" band=detail id=5 x="1102" y="4" height="60" width="347" color="33554432" border="0" alignment="0" format="mm/dd/yyyy" html.valueishtml="0" ddlb.allowedit=no ddlb.autohscroll=no ddlb.imemode=0 ddlb.limit=0 ddlb.showlist=no ddlb.sorted=no ddlb.useasborder=no ddlb.vscrollbar=no ddlb.nilisnull=no ddlb.required=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 )
+column(name=approval_status visible="1" tag="Clause Approval Status" band=detail id=6 x="1458" y="4" height="60" width="329" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" dddw.allowedit=no dddw.autohscroll=no dddw.autoretrieve=yes dddw.useasborder=no dddw.datacolumn=lookup_code dddw.displaycolumn=code dddw.hscrollbar=no dddw.hsplitscroll=no dddw.imemode=0 dddw.limit=0 dddw.name=d_dddw_code_lookup dddw.nilisnull=no dddw.percentwidth=0 dddw.required=no dddw.showlist=no dddw.vscrollbar=yes criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 )
+column(name=export_id visible="0" band=detail id=9 x="2821" y="4" height="56" width="398" color="0" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=no edit.autoselect=no edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="553648127" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 )
+column(name=temp_usage visible="1" band=detail id=10 x="1797" y="8" height="52" width="375" color="33554432" border="0" alignment="1" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=no edit.autoselect=no edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 )
+column(name=dm_usage visible="1" band=detail id=11 x="2181" y="8" height="52" width="631" color="33554432" border="0" alignment="1" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=no edit.autoselect=no edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" encodeSelfLinkArgs="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(headGroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.customPostScript="0" xslfop.print="0" )
+export.xhtml()

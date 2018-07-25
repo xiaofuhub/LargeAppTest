@@ -1,0 +1,20 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "pfcwnsrv.pbl" "";
+@end;
+@begin Objects 
+ "d_toolbars.srd" "pfcwnsrv.pbl";
+ "pfc_m_master.srm" "pfcwnsrv.pbl";
+ "pfc_n_cst_menu.sru" "pfcwnsrv.pbl";
+ "pfc_n_cst_resize.sru" "pfcwnsrv.pbl";
+ "pfc_n_cst_resizeattrib.sru" "pfcwnsrv.pbl";
+ "pfc_n_cst_toolbarattrib.sru" "pfcwnsrv.pbl";
+ "pfc_n_cst_winsrv.sru" "pfcwnsrv.pbl";
+ "pfc_n_cst_winsrv_preference.sru" "pfcwnsrv.pbl";
+ "pfc_n_cst_winsrv_sheetmanager.sru" "pfcwnsrv.pbl";
+ "pfc_n_cst_winsrv_sheetmanagerattrib.sru" "pfcwnsrv.pbl";
+ "pfc_n_cst_winsrv_statusbar.sru" "pfcwnsrv.pbl";
+ "pfc_n_cst_winsrv_statusbarattrib.sru" "pfcwnsrv.pbl";
+ "pfc_w_statusbar.srw" "pfcwnsrv.pbl";
+ "pfc_w_toolbars.srw" "pfcwnsrv.pbl";
+@end;

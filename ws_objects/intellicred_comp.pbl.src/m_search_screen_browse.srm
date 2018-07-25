@@ -1,0 +1,1288 @@
+﻿$PBExportHeader$m_search_screen_browse.srm
+forward
+global type m_search_screen_browse from menu
+end type
+type m_select from menu within m_search_screen_browse
+end type
+type m_sep_0 from menu within m_search_screen_browse
+end type
+type m_new from menu within m_search_screen_browse
+end type
+type m_new_blank_contract_record from menu within m_new
+end type
+type m_new_blank_sub_contract_record from menu within m_new
+end type
+type m_new from menu within m_search_screen_browse
+m_new_blank_contract_record m_new_blank_contract_record
+m_new_blank_sub_contract_record m_new_blank_sub_contract_record
+end type
+type m_copy from menu within m_search_screen_browse
+end type
+type m_copy_contract_record from menu within m_copy
+end type
+type m_copy_create_sub_contract_record from menu within m_copy
+end type
+type m_copy from menu within m_search_screen_browse
+m_copy_contract_record m_copy_contract_record
+m_copy_create_sub_contract_record m_copy_create_sub_contract_record
+end type
+type m_usetemplate from menu within m_search_screen_browse
+end type
+type m_contract_templates from menu within m_usetemplate
+end type
+type m_template_item from menu within m_usetemplate
+end type
+type m_usetemplate from menu within m_search_screen_browse
+m_contract_templates m_contract_templates
+m_template_item m_template_item
+end type
+type m_sep_1 from menu within m_search_screen_browse
+end type
+type m_adddoc from menu within m_search_screen_browse
+end type
+type m_createdoc from menu within m_search_screen_browse
+end type
+type m_sep_2 from menu within m_search_screen_browse
+end type
+type m_delete1 from menu within m_search_screen_browse
+end type
+type m_email from menu within m_search_screen_browse
+end type
+type m_importemailitem from menu within m_search_screen_browse
+end type
+type m_alarmanalyzer from menu within m_search_screen_browse
+end type
+type m_contractdatascreenpainter from menu within m_search_screen_browse
+end type
+type m_2 from menu within m_search_screen_browse
+end type
+type m_select_all from menu within m_search_screen_browse
+end type
+type m_1 from menu within m_search_screen_browse
+end type
+type m_refresh from menu within m_search_screen_browse
+end type
+type m_autorefresh from menu within m_search_screen_browse
+end type
+type m_powerfilter from menu within m_search_screen_browse
+end type
+type m_0 from menu within m_search_screen_browse
+end type
+type m_display from menu within m_search_screen_browse
+end type
+type m_output0 from menu within m_search_screen_browse
+end type
+type m_report from menu within m_output0
+end type
+type m_output0 from menu within m_search_screen_browse
+m_report m_report
+end type
+global type m_search_screen_browse from menu
+m_select m_select
+m_sep_0 m_sep_0
+m_new m_new
+m_copy m_copy
+m_usetemplate m_usetemplate
+m_sep_1 m_sep_1
+m_adddoc m_adddoc
+m_createdoc m_createdoc
+m_sep_2 m_sep_2
+m_delete1 m_delete1
+m_email m_email
+m_importemailitem m_importemailitem
+m_alarmanalyzer m_alarmanalyzer
+m_contractdatascreenpainter m_contractdatascreenpainter
+m_2 m_2
+m_select_all m_select_all
+m_1 m_1
+m_refresh m_refresh
+m_autorefresh m_autorefresh
+m_powerfilter m_powerfilter
+m_0 m_0
+m_display m_display
+m_output0 m_output0
+end type
+end forward
+
+global type m_search_screen_browse from menu
+m_select m_select
+m_sep_0 m_sep_0
+m_new m_new
+m_copy m_copy
+m_usetemplate m_usetemplate
+m_sep_1 m_sep_1
+m_adddoc m_adddoc
+m_createdoc m_createdoc
+m_sep_2 m_sep_2
+m_delete1 m_delete1
+m_email m_email
+m_importemailitem m_importemailitem
+m_alarmanalyzer m_alarmanalyzer
+m_contractdatascreenpainter m_contractdatascreenpainter
+m_2 m_2
+m_select_all m_select_all
+m_1 m_1
+m_refresh m_refresh
+m_autorefresh m_autorefresh
+m_powerfilter m_powerfilter
+m_0 m_0
+m_display m_display
+m_output0 m_output0
+end type
+global m_search_screen_browse m_search_screen_browse
+
+type variables
+long		il_ctx_id
+Boolean	ib_MulCTX
+
+end variables
+
+forward prototypes
+public function integer of_sendmessage (string as_message)
+end prototypes
+
+public function integer of_sendmessage (string as_message);//////////////////////////////////////////////////////////////////////////////
+//
+//	Function:  of_SendMessage
+//
+//	Access:  public
+//
+//	Arguments:		
+//	as_message  message (event notification) to be sent
+//
+//	Returns:  integer
+//	 1 = Message successfully sent
+//	-1 = message could not be sent (use debug object for more info)
+//
+//	Description:
+//	Sends a specified message (event notification) to a receiving window 
+//	through the pfc_messagerouter event.
+//
+//	Sequence:
+//	If application is MDI:
+//	1) Active MDI sheet pfc_messagerouter event.
+//	2) MDI Frame Window pfc_messagerouter event.
+//
+//	Application is SWI:
+//	1) ParentWindow pfc_messagerouter event.
+//
+//////////////////////////////////////////////////////////////////////////////
+//
+//	Revision History
+//
+//	Version
+//	5.0	Initial version
+//	6.0	Function now calls of_sendMessage on n_cst_menu to consolidate code
+//
+//////////////////////////////////////////////////////////////////////////////
+//
+//	Copyright © 1996-1997 Sybase, Inc. and its subsidiaries.  All rights reserved.
+//	Any distribution of the PowerBuilder Foundation Classes (PFC)
+//	source code by other than Sybase, Inc. and its subsidiaries is prohibited.
+//
+//////////////////////////////////////////////////////////////////////////////
+
+n_cst_menu		lnv_menu
+
+return lnv_menu.of_sendMessage (this, as_message)
+end function
+
+on m_search_screen_browse.create
+m_search_screen_browse=this
+call super::create
+this.text = "m_search_screen_browse"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_select=create m_select
+this.m_sep_0=create m_sep_0
+this.m_new=create m_new
+this.m_copy=create m_copy
+this.m_usetemplate=create m_usetemplate
+this.m_sep_1=create m_sep_1
+this.m_adddoc=create m_adddoc
+this.m_createdoc=create m_createdoc
+this.m_sep_2=create m_sep_2
+this.m_delete1=create m_delete1
+this.m_email=create m_email
+this.m_importemailitem=create m_importemailitem
+this.m_alarmanalyzer=create m_alarmanalyzer
+this.m_contractdatascreenpainter=create m_contractdatascreenpainter
+this.m_2=create m_2
+this.m_select_all=create m_select_all
+this.m_1=create m_1
+this.m_refresh=create m_refresh
+this.m_autorefresh=create m_autorefresh
+this.m_powerfilter=create m_powerfilter
+this.m_0=create m_0
+this.m_display=create m_display
+this.m_output0=create m_output0
+this.Item[UpperBound(this.Item)+1]=this.m_select
+this.Item[UpperBound(this.Item)+1]=this.m_sep_0
+this.Item[UpperBound(this.Item)+1]=this.m_new
+this.Item[UpperBound(this.Item)+1]=this.m_copy
+this.Item[UpperBound(this.Item)+1]=this.m_usetemplate
+this.Item[UpperBound(this.Item)+1]=this.m_sep_1
+this.Item[UpperBound(this.Item)+1]=this.m_adddoc
+this.Item[UpperBound(this.Item)+1]=this.m_createdoc
+this.Item[UpperBound(this.Item)+1]=this.m_sep_2
+this.Item[UpperBound(this.Item)+1]=this.m_delete1
+this.Item[UpperBound(this.Item)+1]=this.m_email
+this.Item[UpperBound(this.Item)+1]=this.m_importemailitem
+this.Item[UpperBound(this.Item)+1]=this.m_alarmanalyzer
+this.Item[UpperBound(this.Item)+1]=this.m_contractdatascreenpainter
+this.Item[UpperBound(this.Item)+1]=this.m_2
+this.Item[UpperBound(this.Item)+1]=this.m_select_all
+this.Item[UpperBound(this.Item)+1]=this.m_1
+this.Item[UpperBound(this.Item)+1]=this.m_refresh
+this.Item[UpperBound(this.Item)+1]=this.m_autorefresh
+this.Item[UpperBound(this.Item)+1]=this.m_powerfilter
+this.Item[UpperBound(this.Item)+1]=this.m_0
+this.Item[UpperBound(this.Item)+1]=this.m_display
+this.Item[UpperBound(this.Item)+1]=this.m_output0
+end on
+
+on m_search_screen_browse.destroy
+call super::destroy
+destroy(this.m_select)
+destroy(this.m_sep_0)
+destroy(this.m_new)
+destroy(this.m_copy)
+destroy(this.m_usetemplate)
+destroy(this.m_sep_1)
+destroy(this.m_adddoc)
+destroy(this.m_createdoc)
+destroy(this.m_sep_2)
+destroy(this.m_delete1)
+destroy(this.m_email)
+destroy(this.m_importemailitem)
+destroy(this.m_alarmanalyzer)
+destroy(this.m_contractdatascreenpainter)
+destroy(this.m_2)
+destroy(this.m_select_all)
+destroy(this.m_1)
+destroy(this.m_refresh)
+destroy(this.m_autorefresh)
+destroy(this.m_powerfilter)
+destroy(this.m_0)
+destroy(this.m_display)
+destroy(this.m_output0)
+end on
+
+type m_select from menu within m_search_screen_browse
+end type
+
+on m_select.create
+call super::create
+this.visible = false
+this.text = "&Select"
+this.shortcut = 768
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_select.destroy
+call super::destroy
+end on
+
+event clicked;//Added By Mark Lee 05/17/12 email subject is 'Search Browse right click' .
+of_SendMessage("ue_Select" )
+end event
+
+type m_sep_0 from menu within m_search_screen_browse
+end type
+
+on m_sep_0.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_sep_0.destroy
+call super::destroy
+end on
+
+type m_new from menu within m_search_screen_browse
+m_new_blank_contract_record m_new_blank_contract_record
+m_new_blank_sub_contract_record m_new_blank_sub_contract_record
+end type
+
+on m_new.create
+call super::create
+this.text = "&New Contract"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_new_blank_contract_record=create m_new_blank_contract_record
+this.m_new_blank_sub_contract_record=create m_new_blank_sub_contract_record
+this.Item[UpperBound(this.Item)+1]=this.m_new_blank_contract_record
+this.Item[UpperBound(this.Item)+1]=this.m_new_blank_sub_contract_record
+end on
+
+on m_new.destroy
+call super::destroy
+destroy(this.m_new_blank_contract_record)
+destroy(this.m_new_blank_sub_contract_record)
+end on
+
+event clicked;if IsValid(m_pfe_cst_mdi_menu_contract) then	
+	m_pfe_cst_mdi_menu_contract.m_edit.m_newcontract.m_newctx.TriggerEvent(Clicked!)
+end if
+
+end event
+
+type m_new_blank_contract_record from menu within m_new
+end type
+
+on m_new_blank_contract_record.create
+call super::create
+this.visible = false
+this.text = "New Blank Contract Record"
+this.toolbaritemorder = 2
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_new_blank_contract_record.destroy
+call super::destroy
+end on
+
+event clicked;//if IsValid(m_pfe_cst_mdi_menu_contract) then	
+//	m_pfe_cst_mdi_menu_contract.m_edit.m_newcontract.m_newctx.TriggerEvent(Clicked!)
+//end if
+of_SendMessage ("pfc_new")			
+end event
+
+type m_new_blank_sub_contract_record from menu within m_new
+end type
+
+on m_new_blank_sub_contract_record.create
+call super::create
+this.visible = false
+this.text = "New Blank Sub Contract Record"
+this.toolbaritembarindex = 2
+this.toolbaritemorder = 2
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_new_blank_sub_contract_record.destroy
+call super::destroy
+end on
+
+event clicked;of_SendMessage ("ue_new_sub_contract")				//Added By Mark Lee 11/16/2012
+end event
+
+type m_copy from menu within m_search_screen_browse
+m_copy_contract_record m_copy_contract_record
+m_copy_create_sub_contract_record m_copy_create_sub_contract_record
+end type
+
+on m_copy.create
+call super::create
+this.text = "&Copy Contract"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_copy_contract_record=create m_copy_contract_record
+this.m_copy_create_sub_contract_record=create m_copy_create_sub_contract_record
+this.Item[UpperBound(this.Item)+1]=this.m_copy_contract_record
+this.Item[UpperBound(this.Item)+1]=this.m_copy_create_sub_contract_record
+end on
+
+on m_copy.destroy
+call super::destroy
+destroy(this.m_copy_contract_record)
+destroy(this.m_copy_create_sub_contract_record)
+end on
+
+event clicked;if IsValid(m_pfe_cst_mdi_menu_contract) then
+	m_pfe_cst_mdi_menu_contract.m_edit.m_newcontract.m_copyctx.TriggerEvent(Clicked!)
+end if
+
+end event
+
+type m_copy_contract_record from menu within m_copy
+end type
+
+on m_copy_contract_record.create
+call super::create
+this.visible = false
+this.text = "Copy Contract Record"
+this.toolbaritemorder = 2
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_copy_contract_record.destroy
+call super::destroy
+end on
+
+event clicked;if IsValid(m_pfe_cst_mdi_menu_contract) then
+	m_pfe_cst_mdi_menu_contract.m_edit.m_newcontract.m_copyctx.TriggerEvent(Clicked!)
+end if
+
+end event
+
+type m_copy_create_sub_contract_record from menu within m_copy
+end type
+
+on m_copy_create_sub_contract_record.create
+call super::create
+this.visible = false
+this.text = "Copy && Create Sub Contract Record"
+this.toolbaritembarindex = 2
+this.toolbaritemorder = 2
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_copy_create_sub_contract_record.destroy
+call super::destroy
+end on
+
+event clicked;of_SendMessage ("ue_copy_sub_contract")		//Added By Mark Lee 11/16/2012
+
+
+end event
+
+type m_usetemplate from menu within m_search_screen_browse
+m_contract_templates m_contract_templates
+m_template_item m_template_item
+end type
+
+event clicked;of_SendMessage ("ue_use_template")	
+end event
+
+on m_usetemplate.create
+call super::create
+this.text = "Use &Template"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_contract_templates=create m_contract_templates
+this.m_template_item=create m_template_item
+this.Item[UpperBound(this.Item)+1]=this.m_contract_templates
+this.Item[UpperBound(this.Item)+1]=this.m_template_item
+end on
+
+on m_usetemplate.destroy
+call super::destroy
+destroy(this.m_contract_templates)
+destroy(this.m_template_item)
+end on
+
+type m_contract_templates from menu within m_usetemplate
+end type
+
+on m_contract_templates.create
+call super::create
+this.visible = false
+this.text = "Contract Templates Management..."
+this.toolbaritemorder = 2
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_contract_templates.destroy
+call super::destroy
+end on
+
+event clicked;of_SendMessage ("ue_contract_templates_management")			//Added By Mark Lee 11/19/2012
+end event
+
+type m_template_item from menu within m_usetemplate
+end type
+
+on m_template_item.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_template_item.destroy
+call super::destroy
+end on
+
+type m_sep_1 from menu within m_search_screen_browse
+end type
+
+on m_sep_1.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_sep_1.destroy
+call super::destroy
+end on
+
+type m_adddoc from menu within m_search_screen_browse
+end type
+
+on m_adddoc.create
+call super::create
+this.visible = false
+this.text = "&Add Doc"
+this.shortcut = 768
+this.microhelp = "Add an existing document, from file, scan, paste"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_adddoc.destroy
+call super::destroy
+end on
+
+event clicked;//Added By Mark Lee 05/17/12 email subject is 'Search Browse right click' .
+If Not This.Enabled Then Return
+If Not This.Visible Then Return
+of_SendMessage("ue_batch_add" )
+end event
+
+type m_createdoc from menu within m_search_screen_browse
+end type
+
+on m_createdoc.create
+call super::create
+this.visible = false
+this.text = "C&reate Doc"
+this.shortcut = 768
+this.microhelp = "Create New Document using a Template"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_createdoc.destroy
+call super::destroy
+end on
+
+event clicked;//Added By Mark Lee 05/17/12 email subject is 'Search Browse right click' .
+If Not This.Enabled Then Return
+If Not This.Visible Then Return
+of_SendMessage("ue_batch_create" )
+end event
+
+type m_sep_2 from menu within m_search_screen_browse
+end type
+
+on m_sep_2.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_sep_2.destroy
+call super::destroy
+end on
+
+type m_delete1 from menu within m_search_screen_browse
+end type
+
+event clicked;//Added By Mark Lee 05/17/12 email subject is 'Search Browse right click' .
+SetPointer (hourglass!)
+of_SendMessage ("pfc_deleterow")
+end event
+
+on m_delete1.create
+call super::create
+this.visible = false
+this.text = "&Delete"
+this.shortcut = 768
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_delete1.destroy
+call super::destroy
+end on
+
+type m_email from menu within m_search_screen_browse
+end type
+
+on m_email.create
+call super::create
+this.text = "&Email To Default"
+this.shortcut = 768
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_email.destroy
+call super::destroy
+end on
+
+event clicked;long		ll_Cycle,ll_RowCnts
+String	ls_AllEmails,ls_SingleEmail
+
+str_ctx_email 	lstr_ctx_email
+DataStore		lds_Email
+
+if ib_MulCTX then
+	if IsValid(m_pfe_cst_mdi_menu_contract) then
+		m_pfe_cst_mdi_menu_contract.m_edit.m_emaildd.m_emaildd_email.TriggerEvent(Clicked!)
+	end if
+else
+	if il_ctx_id <= 0 then Return
+	
+	lds_Email = Create DataStore
+	lds_Email.DataObject = "d_defaultcontactemail"
+	lds_Email.SetTransObject(SQLCA)
+	lds_Email.Retrieve(il_ctx_id)
+	
+	ll_RowCnts = lds_Email.RowCount()
+	for ll_Cycle = 1 to ll_RowCnts
+		ls_SingleEmail = Trim(lds_Email.GetItemString(ll_Cycle,"ctx_contacts_numbers_contact_email"))
+		if Not IsNull(ls_SingleEmail) and ls_SingleEmail <> "" then
+			if ll_Cycle > 1 then ls_AllEmails += ";"
+			ls_AllEmails += ls_SingleEmail
+		end if
+	next
+	
+	Destroy lds_Email
+	
+	lstr_ctx_email.ctx_id = il_ctx_id
+	lstr_ctx_email.doc_from = 'CTX'
+	lstr_ctx_email.EmailTo = ls_AllEmails
+	
+	OpenWithParm(w_dm_email_document_send,lstr_ctx_email)
+end if
+
+end event
+
+type m_importemailitem from menu within m_search_screen_browse
+end type
+
+event clicked;n_cst_easymail_pop3 inv_em_pop3
+
+str_import_msg lstr_import_msg
+If il_ctx_id > 0 Then
+	lstr_import_msg.al_ctx_id = il_ctx_id
+End If
+
+inv_em_pop3.of_import_msg(lstr_import_msg )
+end event
+
+on m_importemailitem.create
+call super::create
+this.text = "&Import Email Item"
+this.shortcut = 768
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_importemailitem.destroy
+call super::destroy
+end on
+
+type m_alarmanalyzer from menu within m_search_screen_browse
+end type
+
+event clicked;of_SendMessage ("pfc_cst_contract_alarm_analyzer")
+
+end event
+
+on m_alarmanalyzer.create
+call super::create
+this.text = "Alarm Analyzer"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_alarmanalyzer.destroy
+call super::destroy
+end on
+
+type m_contractdatascreenpainter from menu within m_search_screen_browse
+end type
+
+on m_contractdatascreenpainter.create
+call super::create
+this.visible = false
+this.text = "Design"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_contractdatascreenpainter.destroy
+call super::destroy
+end on
+
+event clicked;//Added By Mark Lee 05/17/12 email subject is 'Search Browse right click' .
+of_SendMessage ("pfc_cst_contract_screen_painter")
+end event
+
+type m_2 from menu within m_search_screen_browse
+end type
+
+on m_2.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_2.destroy
+call super::destroy
+end on
+
+type m_select_all from menu within m_search_screen_browse
+end type
+
+on m_select_all.create
+call super::create
+this.text = "Select All"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_select_all.destroy
+call super::destroy
+end on
+
+event clicked;of_SendMessage("ue_select_all" )			//Added By Mark Lee 12/05/2012
+end event
+
+type m_1 from menu within m_search_screen_browse
+end type
+
+on m_1.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_1.destroy
+call super::destroy
+end on
+
+type m_refresh from menu within m_search_screen_browse
+end type
+
+event clicked;//Added By Mark Lee 05/17/12 email subject is 'Search Browse right click' .
+of_SendMessage("ue_Refresh" )
+end event
+
+on m_refresh.create
+call super::create
+this.visible = false
+this.text = "Refresh"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_refresh.destroy
+call super::destroy
+end on
+
+type m_autorefresh from menu within m_search_screen_browse
+end type
+
+event clicked;//Added By Mark Lee 05/17/12 email subject is 'Search Browse right click' .
+of_SendMessage("ue_auto_refresh" )
+end event
+
+on m_autorefresh.create
+call super::create
+this.visible = false
+this.text = "Auto Refresh"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_autorefresh.destroy
+call super::destroy
+end on
+
+type m_powerfilter from menu within m_search_screen_browse
+end type
+
+event clicked;of_SendMessage("ue_powerfilter" )
+end event
+
+on m_powerfilter.create
+call super::create
+this.text = "&Power Filter"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_powerfilter.destroy
+call super::destroy
+end on
+
+type m_0 from menu within m_search_screen_browse
+end type
+
+on m_0.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_0.destroy
+call super::destroy
+end on
+
+type m_display from menu within m_search_screen_browse
+end type
+
+on m_display.create
+call super::create
+this.visible = false
+this.text = "Display"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_display.destroy
+call super::destroy
+end on
+
+event clicked;//Added By Mark Lee 11/01/2012
+open(w_contract_display_setting)
+end event
+
+type m_output0 from menu within m_search_screen_browse
+m_report m_report
+end type
+
+on m_output0.create
+call super::create
+this.visible = false
+this.text = "Output"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_report=create m_report
+this.Item[UpperBound(this.Item)+1]=this.m_report
+end on
+
+on m_output0.destroy
+call super::destroy
+destroy(this.m_report)
+end on
+
+type m_report from menu within m_output0
+end type
+
+on m_report.create
+call super::create
+this.visible = false
+this.text = "Report"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_report.destroy
+call super::destroy
+end on
+
+event clicked;//Added By Mark Lee 05/17/12 email subject is 'Search Browse right click' .
+of_SendMessage("ue_report" )
+end event
+

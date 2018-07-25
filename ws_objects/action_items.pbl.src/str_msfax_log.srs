@@ -1,0 +1,11 @@
+﻿$PBExportHeader$str_msfax_log.srs
+global type str_msfax_log from structure
+	string		job_id[]
+	string		subject[]
+	string		rec_name[]
+	datetime		sub_time[]
+	string		rec_num[]
+	string		status[]
+	string		doc_name[]
+end type
+

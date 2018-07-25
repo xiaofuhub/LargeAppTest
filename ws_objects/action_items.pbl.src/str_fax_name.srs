@@ -1,0 +1,6 @@
+﻿$PBExportHeader$str_fax_name.srs
+global type str_fax_name from structure
+	string		fax_fullname
+	string		fax_servername
+end type
+

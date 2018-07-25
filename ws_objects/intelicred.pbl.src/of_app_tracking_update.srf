@@ -1,0 +1,237 @@
+﻿$PBExportHeader$of_app_tracking_update.srf
+global type of_app_tracking_update from function_object
+end type
+
+forward prototypes
+global function integer of_app_tracking_update (long al_prac, long al_facility, long al_app_id, integer ai_step, datetime adt_comp, long al_loc_id)
+end prototypes
+
+global function integer of_app_tracking_update (long al_prac, long al_facility, long al_app_id, integer ai_step, datetime adt_comp, long al_loc_id);//Start Code Change ----08.05.2010 #V10 maha - added to set tracker value
+//logic:
+// set the value of the appropriate step if it has not been completed (Could be a duplicate)
+//if setting the step value then check the prior and following steps and setting the completion days where appropriate
+//Start Code Change ----04.14.2014 #V14.2 maha - added loc_id param
+
+datastore lds_track
+integer r
+integer li_last
+integer li_set85
+long ll_days
+long tid //maha12.09.2010
+long ll_loc  //maha 05.29.2014
+datetime ldt_now
+datetime ldt_from
+datetime ldt_to
+datetime ldt_first
+datetime ldt_current
+string ls_stepnow
+string ls_stepprior
+string ls_stepafter
+string ls_days_prior
+string ls_days_after
+string ls_err
+boolean ib_new = false //maha 11.10.2015
+pfc_cst_nv_data_entry_functions  lnv_data_entry //(Appeon)Stephen 06.03.2016 - V15.2-Application Tracking full Auditing
+
+//trap for missing values
+if isnull(al_prac ) or al_prac = 0 then return 0
+if isnull(al_facility ) or al_facility = 0 then return 0
+if isnull(al_app_id ) or al_app_id = 0 then return 0
+//if isnull(al_action_type ) or al_action_type = 0 then return 0
+if isnull( ai_step) or ai_step = 0 then return 0
+ll_loc = al_loc_id  //Start Code Change ----06.02.2014 #V14.2 maha
+if isnull(ll_loc )  then ll_loc =  0  //Start Code Change ----05.08.2014 #V14.2 maha
+
+lds_track = create datastore
+lds_track.dataobject = "d_pd_appl_tracking_w_loc"
+lds_track.settransobject(sqlca)
+r = lds_track.retrieve(al_prac,al_app_id,al_facility,ll_loc)
+debugbreak()
+if r < 0 then return 0 //error trap
+
+if r = 0 then
+	lds_track.insertrow(1)  //Start Code Change ----06.25.2014 #V14.2 maha - readded
+	ib_new = true   //Start Code Change ----11.10.2015 #V15 maha - added
+end if
+	
+
+ldt_now = adt_comp
+li_last = integer(gnv_data.of_getitem("app_steps","last step",""))
+
+choose case ai_step
+	case 1
+		ldt_first = lds_track.getitemdatetime(1,"step_1")
+		//if isnull(ldt_first) then
+			lds_track.setitem(1,"step_1",ldt_now)
+			ldt_from = lds_track.getitemdatetime(1,"step_1")
+			ldt_to = lds_track.getitemdatetime(1,"step_2") 
+			if not isnull(ldt_from) and not isnull(ldt_to) then
+				ll_days = daysafter(date(ldt_from), date(ldt_to))
+				lds_track.setitem(1,"days_1_2", ll_days)  //Start Code Change ----03.02.2011 #V11 maha - corrected field name
+			end if
+			if ib_new then   //Start Code Change ----11.10.2015 #V15 maha - only set if new
+				lds_track.setitem(1,"assigned_user", gs_user_id)
+				//Start Code Change ----12.09.2010 #V10 maha - set required values
+				lds_track.setitem(1,"facility_id", al_facility)
+				lds_track.setitem(1,"prac_id", al_prac)
+				lds_track.setitem(1,"app_id", al_app_id)
+				lds_track.setitem(1,"active_status", 1)
+				lds_track.setitem(1,"gp_id", ll_loc)
+			end if
+			//End Code Change ----12.09.2010
+		//end if
+//otherwise set the field names for each step
+	case 2
+//		if isnull(ldt_first) then   //Start Code Change ----08.12.2015 #V15 maha
+//			ldt_first = lds_track.getitemdatetime(1,"step_2")
+//		end if
+		ls_stepnow = "step_2"
+		ls_stepprior = "step_1"
+		ls_stepafter = "step_3"
+		ls_days_prior = "days_1_2"
+		ls_days_after = "days_2_3"	
+	case 3
+//		if isnull(ldt_first) then  //Start Code Change ----08.12.2015 #V15 maha
+//			ldt_first = lds_track.getitemdatetime(1,"step_3")
+//		end if
+		ls_stepnow = "step_3"
+		ls_stepprior = "step_2"
+		ls_stepafter = "step_4"
+		ls_days_prior = "days_2_3"
+		ls_days_after = "days_3_4"	
+	case 4
+//		if isnull(ldt_first) then  //Start Code Change ----08.12.2015 #V15 maha
+//			ldt_first = lds_track.getitemdatetime(1,"step_4")
+//		end if
+		ls_stepnow = "step_4"
+		ls_stepprior = "step_3"
+		ls_stepafter = "step_5"
+		ls_days_prior = "days_3_4"
+		ls_days_after = "days_4_5"
+	case 5
+//		if isnull(ldt_first) then  //Start Code Change ----08.12.2015 #V15 maha
+//			ldt_first = lds_track.getitemdatetime(1,"step_5")
+//		end if
+		ls_stepnow = "step_5"
+		ls_stepprior = "step_4"
+		ls_stepafter = "step_6"
+		ls_days_prior = "days_4_5"
+		ls_days_after = "days_5_6"
+	case 6
+//		if isnull(ldt_first) then  //Start Code Change ----08.12.2015 #V15 maha
+//			ldt_first = lds_track.getitemdatetime(1,"step_6")
+//		end if
+		ls_stepnow = "step_6"
+		ls_stepprior = "step_5"
+		ls_stepafter = "step_7"
+		ls_days_prior = "days_5_6"
+		ls_days_after = "days_6_7"
+	case 7
+//		if isnull(ldt_first) then  //Start Code Change ----08.12.2015 #V15 maha
+//			ldt_first = lds_track.getitemdatetime(1,"step_7")
+//		end if
+		ls_stepnow = "step_7"
+		ls_stepprior = "step_6"
+		ls_stepafter = "step_8"
+		ls_days_prior = "days_6_7"
+		ls_days_after = "days_7_8"
+	case 8
+//		if isnull(ldt_first) then  //Start Code Change ----08.12.2015 #V15 maha
+//			ldt_first = lds_track.getitemdatetime(1,"step_8")
+//		end if
+		ls_stepnow = "step_8"
+		ls_stepprior = "step_7"
+		ls_stepafter = "step_9"
+		ls_days_prior = "days_7_8"
+		ls_days_after = "days_8_9"
+	case 9
+//		if isnull(ldt_first) then  //Start Code Change ----08.12.2015 #V15 maha
+//			ldt_first = lds_track.getitemdatetime(1,"step_9")
+//		end if
+		ls_stepnow = "step_9"
+		ls_stepprior = "step_8"
+		ls_stepafter = "step_10"
+		ls_days_prior = "days_8_9"
+		ls_days_after = "days_9_10"
+	case 10
+		ls_stepnow = "step_10"
+		ls_stepprior = "step_9"
+		ls_stepafter = "none"
+		ls_days_prior = "days_9_10"
+		ls_days_after = "none"
+end choose
+
+if ai_step > 1 then
+	ldt_current =  lds_track.getitemdatetime(1,ls_stepnow)
+	//if isnull( ldt_current) then
+		lds_track.setitem(1,ls_stepnow,ldt_now)
+		//get first step
+		ldt_first = lds_track.getitemdatetime(1,"step_1")
+		//complete previous days - prior step to current
+		ldt_from = lds_track.getitemdatetime(1,ls_stepprior)
+		ldt_to = lds_track.getitemdatetime(1,ls_stepnow) 
+		if not isnull(ldt_from) and not isnull(ldt_to) then
+			ll_days = daysafter(date(ldt_from), date(ldt_to))
+			lds_track.setitem(1, ls_days_prior ,ll_days)
+		end if
+		//complete following days - current step to following or total_days if appropriate
+		if li_last = ai_step then //complete total days
+			//debugbreak()
+			if not isnull(ldt_first) then
+				ll_days = daysafter(date(ldt_first), date(ldt_now))
+				lds_track.setitem(1,"days_total" ,ll_days)
+			end if
+			 //Start Code Change ----06.20.2012 #V12 maha - complete the par status if last step
+			 tid = lds_track.getitemnumber(1,"par_status" )
+			if isnull(lds_track.getitemnumber(1,"par_status" )) or lds_track.getitemnumber(1,"par_status" ) = 0 then
+				lds_track.setitem(1,"par_status" , 1) //Start Code Change ----05.28.2014 #V14.2 maha - moved outside prior if
+			else
+//				messagebox("",tid)
+			end if
+		else
+			if ls_stepafter <> "none" then //skip if step 10
+				ldt_from = lds_track.getitemdatetime(1,ls_stepnow)
+				ldt_to = lds_track.getitemdatetime(1,ls_stepafter) 
+				if not isnull(ldt_from) and not isnull(ldt_to) then 
+					ll_days = daysafter(date(ldt_from), date(ldt_to))
+					lds_track.setitem(1, ls_days_prior ,ll_days)	
+				end if
+			end if
+		end if //last
+//	end if //null
+end if //step
+
+// //Start Code Change ----08.12.2015 #V15 maha -set running total if not complete
+//if isnull(lds_track.getitemnumber(1,"days_total" )) and not isnull(ldt_first) then
+//	ll_days = daysafter(date(ldt_first), date(ldt_now))
+//	lds_track.setitem(1,"days_total" ,ll_days)
+//end if
+// //Start Code Change ----08.12.2015
+
+//Start Code Change ----12.09.2010 #V10 maha - set primary key
+if isnull( lds_track.getitemnumber(1,"track_id")) then
+	//Modified by (appeon) Harry 10.16.2017
+	//select max(track_id) into :tid from pd_appl_tracking;
+	//tid++
+	tid =  gnv_app.of_get_id("track_id")
+	lds_track.setitem(1,"track_id",tid)
+end if
+//End Code Change ----12.09.2010
+
+//---------Begin Added by (Appeon)Stephen 06.15.2016 for V15.2-Application Tracking full Auditing--------
+li_set85 = of_get_app_setting("set_85","I")
+if li_set85 = 2 then
+	lnv_data_entry = create pfc_cst_nv_data_entry_functions
+	lds_track.accepttext()
+	lnv_data_entry.of_applfield_audit(lds_track, ls_err, false, 0)
+	destroy lnv_data_entry
+end if
+//---------End Added ------------------------------------------------------
+
+lds_track.update()
+
+destroy lds_track
+
+return 1
+end function
+

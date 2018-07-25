@@ -1,0 +1,39 @@
+﻿$PBExportHeader$appeongetservertype.srf
+global type appeongetservertype from function_object
+end type
+
+forward prototypes
+global function integer appeongetservertype ()
+end prototypes
+
+global function integer appeongetservertype ();//==============================================================================
+// 
+// Copyright ? 2001-2008 Appeon, Inc. and its subsidiaries. All rights reserved.
+// 
+//------------------------------------------------------------------------------
+// Function: appeongetservertype()
+//------------------------------------------------------------------------------
+// Description: 
+// 				Returns the type of Appeon Server that runs your application.
+//	
+// Arguments:(None)
+//	
+// Returns:  integer
+//					1 -- J2EE Server
+//					2 -- .Net Server
+//------------------------------------------------------------------------------
+// Author:	APPEON		Date: 2008-2
+//------------------------------------------------------------------------------
+// Revision History: 
+//				1.0   Initial version
+//==============================================================================
+int strRet
+AppeonExtFuncs funs
+funs = Create AppeonExtFuncs
+
+strRet = funs.of_GetServerType()
+
+Destroy funs
+Return strRet
+end function
+

@@ -1,0 +1,53 @@
+﻿$PBExportHeader$f_modify_group_detail_property.srf
+global type f_modify_group_detail_property from function_object
+end type
+
+forward prototypes
+global function integer f_modify_group_detail_property (u_dw adw_detail)
+end prototypes
+
+global function integer f_modify_group_detail_property (u_dw adw_detail);//==========================================
+// $<Function> Group Location mini-painter: f_modify_group_detail_property ()
+// $<arguments> adw_detail :the datawindow which should be modified
+// $<returns> integer 1 - success; -1 - failure 
+// $<description> Modify the group Practice detail labels and visibility of these field 
+// $<add> (Appeon) Long.zhang 06.29.2012
+//==========================================
+n_ds lds_data
+u_dw ldw_detail
+integer r
+string ls_field
+string ls_label
+integer li_vis
+boolean lb_created_data = false
+ldw_detail =adw_detail
+
+if isvalid(w_group_practice) then
+	lds_data = w_group_practice.ids_datastore
+else
+	lds_data =  create n_ds
+	lds_data.dataobject = "d_gp_sys_fields"
+	lds_data.settransobject(sqlca)
+	lds_data.retrieve()
+	lb_created_data = true
+end if	
+lds_data.setfilter( "table_id = 86")
+lds_data.filter()
+
+for r = 1 to lds_data.rowcount()
+	ls_field = lds_data.getitemstring(r,"field_name")
+	ls_label = lds_data.getitemstring(r,"field_name_allias")
+	//li_vis = lds_data.getitemnumber(r,"use_validation")
+	li_vis = lds_data.getitemnumber(r,"hide_field") //Bug 5242 - alfee 07.19.2016	
+	ldw_detail.Modify( ls_field + "_t.text = '" + ls_label + "'")	
+	if li_vis = 1 then
+		ldw_detail.Modify( ls_field + "_t.visible = '0'")	
+		ldw_detail.Modify( ls_field + ".visible = '0'")	
+	end if
+next
+
+if lb_created_data then destroy lds_data
+
+return 1
+end function
+

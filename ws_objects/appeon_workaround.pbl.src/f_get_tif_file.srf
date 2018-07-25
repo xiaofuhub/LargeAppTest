@@ -1,0 +1,59 @@
+﻿$PBExportHeader$f_get_tif_file.srf
+global type f_get_tif_file from function_object
+end type
+
+forward prototypes
+global subroutine f_get_tif_file ()
+end prototypes
+
+global subroutine f_get_tif_file ();string ls_path
+string ls_name,ls_filename
+blob lb_filedata,lb_filedata1
+long ll_FileNo,ll_BlobLen,ll_Writes,ll_CurrentPos
+integer i
+
+ls_path = gs_dir_path + gs_DefDirName
+
+if not DirectoryExists (ls_path) then
+	CreateDirectory(ls_path)
+end if
+
+declare emp_cur cursor for 
+  select file_name from tif;
+open emp_cur;
+fetch emp_cur into :ls_name;
+do while sqlca.sqlcode = 0
+   ls_filename = ls_path + '\' + ls_name
+	if fileexists(ls_filename) then filedelete(ls_filename)
+	selectblob File_Content into :lb_filedata from tif where file_name = :ls_name;
+
+	ll_FileNo = FileOpen(ls_filename, StreamMode!, Write!, LockReadWrite! , Replace!)
+	If ll_FileNo < 0 Then continue
+	
+	ll_BlobLen = LenA(lb_filedata)
+	If ll_BlobLen > 32765 Then
+		 If Mod(ll_BlobLen, 32765) = 0 Then
+			 ll_Writes = ll_BlobLen / 32765
+		 Else
+			 ll_Writes = (ll_BlobLen / 32765) + 1
+		 End if
+	Else
+		 ll_Writes = 1
+	End if
+	ll_CurrentPos = 1
+	For i = 1 To ll_Writes
+		 lb_filedata1 = BlobMid(lb_filedata,ll_CurrentPos, 32765)
+		 ll_CurrentPos += 32765
+		 If FileWrite(ll_FileNo, lb_filedata1) = -1 Then
+			FileClose(ll_FileNo)
+			continue
+		 End if
+	Next	
+	FileClose(ll_FileNo)
+	fetch emp_cur into :ls_name;
+loop
+close emp_cur;
+
+
+end subroutine
+

@@ -1,0 +1,24 @@
+﻿$PBExportHeader$of_parse_bandinfo.srf
+global type of_parse_bandinfo from function_object
+end type
+
+forward prototypes
+global function str_dw_band of_parse_bandinfo (string dw_band)
+end prototypes
+
+global function str_dw_band of_parse_bandinfo (string dw_band);//Parse band info of tree view datawindow
+//SK Practitioner Folder - alfee 08.31.2010
+
+str_dw_band lstr_dw_band
+long ll_pos 
+
+ll_pos = pos(dw_band , "~t")
+
+if ll_pos > 0 then 
+	lstr_dw_band.band = mid(dw_band , 1 , ll_pos - 1)
+	lstr_dw_band.row = long (mid (dw_band, ll_pos + 1 , len(dw_band)))
+end if
+
+return lstr_dw_band
+end function
+

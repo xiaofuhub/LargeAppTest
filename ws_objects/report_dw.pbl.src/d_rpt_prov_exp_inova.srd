@@ -1,0 +1,92 @@
+﻿$PBExportHeader$d_rpt_prov_exp_inova.srd
+$PBExportComments$inova 4-04
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 1 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=408 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=char(183) updatewhereclause=yes name=v_full_name_full_name dbname="v_full_name.full_name" )
+ column=(type=char(30) updatewhereclause=yes name=dept dbname="code_lookup.dept" )
+ column=(type=char(30) updatewhereclause=yes name=div dbname="code_lookup.div" )
+ column=(type=char(30) updatewhereclause=yes name=cat dbname="code_lookup.cat" )
+ column=(type=datetime updatewhereclause=yes name=apptmnt_start_date dbname="pd_affil_stat.apptmnt_start_date" )
+ column=(type=datetime updatewhereclause=yes name=apptmnt_end_date dbname="pd_affil_stat.apptmnt_end_date" )
+ column=(type=datetime updatewhereclause=yes name=prior_appt_start dbname="pd_affil_stat.prior_appt_start" )
+ column=(type=datetime updatewhereclause=yes name=prior_appt_end dbname="pd_affil_stat.prior_appt_end" )
+ column=(type=datetime updatewhereclause=yes name=inital_appmnt_date dbname="pd_affil_stat.inital_appmnt_date" )
+ column=(type=datetime updatewhereclause=yes name=date_app_sent dbname="pd_affil_stat.date_app_sent" )
+ column=(type=datetime updatewhereclause=yes name=date_app_rcvd dbname="pd_affil_stat.date_app_rcvd" )
+ column=(type=datetime updatewhereclause=yes name=init_prov_period_from dbname="pd_affil_stat.init_prov_period_from" )
+ column=(type=datetime updatewhereclause=yes name=init_prov_period_to dbname="pd_affil_stat.init_prov_period_to" )
+ column=(type=datetime updatewhereclause=yes name=date_comm_review_completed dbname="pd_affil_stat.date_comm_review_completed" )
+ column=(type=char(100) updatewhereclause=yes name=facility_name dbname="facility.facility_name" )
+ column=(type=char(30) updatewhereclause=yes name=pd_affil_stat_custom_2 dbname="pd_affil_stat.custom_2" )
+ retrieve="  SELECT distinct v_full_name.full_name,   
+         code_lookup_a.code dept,   
+         code_lookup_b.code div,   
+         code_lookup_c.code cat,   
+         pd_affil_stat.apptmnt_start_date,   
+         pd_affil_stat.apptmnt_end_date,   
+         pd_affil_stat.prior_appt_start,   
+         pd_affil_stat.prior_appt_end,   
+         pd_affil_stat.inital_appmnt_date,   
+         pd_affil_stat.date_app_sent,   
+         pd_affil_stat.date_app_rcvd,   
+			pd_affil_stat.init_prov_period_from, 
+			pd_affil_stat.init_prov_period_to, 
+         pd_affil_stat.date_comm_review_completed,   
+         facility.facility_name,   
+         pd_affil_stat.custom_2  
+    FROM pd_affil_stat  
+         LEFT OUTER JOIN pd_affil_dept  ON pd_affil_stat.rec_id = pd_affil_dept.rec_id
+         LEFT OUTER JOIN pd_affil_staff_cat  ON pd_affil_stat.rec_id = pd_affil_staff_cat.rec_id 
+         LEFT OUTER JOIN code_lookup code_lookup_c  ON pd_affil_staff_cat.staff_category = code_lookup_c.lookup_code 
+         LEFT OUTER JOIN code_lookup code_lookup_b  ON pd_affil_dept.rank = code_lookup_b.lookup_code 
+         LEFT OUTER JOIN code_lookup code_lookup_a  ON pd_affil_dept.department = code_lookup_a.lookup_code,   
+         facility,   
+         v_full_name  
+   WHERE ( v_full_name.prac_id = pd_affil_stat.prac_id ) and  
+         ( pd_affil_stat.parent_facility_id = facility.facility_id ) and  
+         ( ( pd_affil_dept.primary_dept = 1 ) )    
+"  sort="exp_mon A v_full_name_full_name A " )
+group(level=1 header.height=0 trailer.height=56 by=("exp_mon" ) header.color="536870912" trailer.color="536870912" )
+column(band=header id=15 alignment="2" tabsequence=32766 border="0" color="0" x="1134" y="140" height="76" width="1824" format="[general]" html.valueishtml="0"  name=facility_name visible="1" edit.limit=100 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Provisional Expiration Report" border="0" color="0" x="1294" y="24" height="96" width="1472" html.valueishtml="0"  name=pd_affil_stat_prior_appt_end_t visible="1"  font.face="Segoe UI" font.height="-14" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="0" expression="today()"border="0" color="0" x="160" y="152" height="60" width="329" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="0" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="0" x="3424" y="136" height="60" width="773" format="[general]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="PROV DATES" border="0" color="0" x="2144" y="292" height="52" width="389" html.valueishtml="0"  name=t_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="EXP DATE" border="0" color="0" x="41" y="348" height="52" width="302" html.valueishtml="0"  name=pd_affil_stat_apptmnt_end_date_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=header x1="18" y1="252" x2="4206" y2="252"  name=l_1 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text=" Name" border="0" color="0" x="366" y="348" height="52" width="192" html.valueishtml="0"  name=v_full_name_full_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="DEPT" border="0" color="0" x="1152" y="348" height="52" width="165" html.valueishtml="0"  name=code_lookup_code_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="DIV" border="0" color="0" x="1413" y="348" height="52" width="101" html.valueishtml="0"  name=t_2 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="STAFF CAT" border="0" color="0" x="1664" y="348" height="52" width="320" html.valueishtml="0"  name=t_3 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="START" border="0" color="0" x="1989" y="348" height="52" width="197" html.valueishtml="0"  name=pd_affil_stat_prior_appt_start_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="END" border="0" color="0" x="2341" y="352" height="52" width="133" html.valueishtml="0"  name=pd_affil_stat_inital_appmnt_date_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="APP SENT" border="0" color="0" x="2729" y="348" height="52" width="302" html.valueishtml="0"  name=pd_affil_stat_date_app_sent_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="APP RCVD" border="0" color="0" x="3035" y="348" height="52" width="306" html.valueishtml="0"  name=pd_affil_stat_date_app_rcvd_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="COMPLETE" border="0" color="0" x="3346" y="348" height="52" width="338" html.valueishtml="0"  name=t_4 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="FEE" border="0" color="0" x="3767" y="348" height="52" width="119" html.valueishtml="0"  name=t_5 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="2" text="Apptmnt Start Date" border="0" color="0" x="782" y="464" height="52" width="549" html.valueishtml="0"  name=pd_affil_stat_apptmnt_start_date_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="1426" y="160" height="64" width="384" format="[shortdate] [time]" html.valueishtml="0"  name=prior_appt_start visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="82" y="488" height="64" width="503" format="[shortdate] [time]" html.valueishtml="0"  name=prior_appt_end visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="1824" y="156" height="64" width="389" format="[shortdate] [time]" html.valueishtml="0"  name=apptmnt_start_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="32" y="4" height="64" width="302" format="mm-dd-yyyy" html.valueishtml="0"  name=apptmnt_end_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="366" y="4" height="64" width="763" format="[general]" html.valueishtml="0"  name=v_full_name_full_name visible="1" edit.limit=153 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="2720" y="4" height="64" width="306" format="mm-dd-yyyy" html.valueishtml="0"  name=date_app_sent visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="3031" y="4" height="64" width="315" format="mm-dd-yyyy" html.valueishtml="0"  name=date_app_rcvd visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="0" x="3351" y="4" height="64" width="338" format="mm-dd-yyyy" html.valueishtml="0"  name=date_comm_review_completed visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="0" x="3707" y="4" height="64" width="270" format="[general]" html.valueishtml="0"  name=pd_affil_stat_custom_2 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression=" month(date(string( apptmnt_end_date )))"border="0" color="16777215" x="4023" y="4" height="64" width="151" format="[general]" html.valueishtml="0"  name=exp_mon visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1143" y="4" height="64" width="242" format="[general]" html.valueishtml="0"  name=dept visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="1403" y="4" height="64" width="238" format="[general]" html.valueishtml="0"  name=div visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1659" y="4" height="64" width="306" format="[general]" html.valueishtml="0"  name=cat visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="0" x="1979" y="4" height="64" width="325" format="[shortdate] [time]" html.valueishtml="0"  name=init_prov_period_from visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="0" x="2318" y="4" height="64" width="384" format="[shortdate] [time]" html.valueishtml="0"  name=init_prov_period_to visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=trailer.1 alignment="0" text="*******************" border="0" color="0" x="18" y="8" height="40" width="521" html.valueishtml="0"  name=t_6 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

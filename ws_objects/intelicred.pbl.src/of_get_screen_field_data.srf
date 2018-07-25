@@ -1,0 +1,32 @@
+﻿$PBExportHeader$of_get_screen_field_data.srf
+global type of_get_screen_field_data from function_object
+end type
+
+forward prototypes
+global function string of_get_screen_field_data (integer ai_screen, string as_field, string as_get_field)
+end prototypes
+
+global function string of_get_screen_field_data (integer ai_screen, string as_field, string as_get_field);//Start Code Change ----06.09.2009 #V92 maha - created to get screen field data
+long ll_found
+string ls_cond
+string ls_ret
+
+ls_cond = "screen_id = " + string(ai_screen) + " and db_field_name = '" + as_field + "'"
+//-----Begin Added by alfee 02.18.2011----------
+app_filler.ids_screen_fields_cache.setfilter("")
+app_filler.ids_screen_fields_cache.filter()
+//-----End Added -------------------------------
+ll_found = app_filler.ids_screen_fields_cache.find(ls_cond,1, app_filler.ids_screen_fields_cache.rowcount() )
+//messagebox("",as_get_field)
+if ll_found > 1 then
+	ls_ret = app_filler.ids_screen_fields_cache.getitemstring(ll_found, as_get_field )
+else
+	ls_ret = ""
+end if
+
+return ls_ret
+
+
+
+end function
+

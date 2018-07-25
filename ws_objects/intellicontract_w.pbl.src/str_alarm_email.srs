@@ -1,0 +1,11 @@
+﻿$PBExportHeader$str_alarm_email.srs
+global type str_alarm_email from structure
+	long		ctx_id
+	long		al_template_id
+	string		as_subject
+	string		as_to
+	string		as_attach
+	oleobject		aole_message
+	string		as_sign
+end type
+

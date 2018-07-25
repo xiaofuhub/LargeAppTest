@@ -1,0 +1,38 @@
+﻿$PBExportHeader$appeongetiehandle.srf
+global type appeongetiehandle from function_object
+end type
+
+forward prototypes
+global function long appeongetiehandle ()
+end prototypes
+
+global function long appeongetiehandle ();//==============================================================================
+// 
+// Copyright ? 2001-2008 Appeon, Inc. and its subsidiaries. All rights reserved.
+// 
+//------------------------------------------------------------------------------
+// Function: appeongetiehandle()
+//------------------------------------------------------------------------------
+// Description: 
+// 				Returns the running IE handle of the Internet Explorer client.
+//					Only significative in B/S mode.
+// Arguments:(None)
+//	
+// Returns:  long
+//------------------------------------------------------------------------------
+// Author:	APPEON		Date: 2008-2
+//------------------------------------------------------------------------------
+// Revision History: 
+//				1.0   Initial version
+//==============================================================================
+long strRet
+AppeonExtFuncs funs
+funs = Create AppeonExtFuncs
+
+strRet = funs.of_GetIEHandle()
+
+Destroy funs
+Return strRet
+
+end function
+

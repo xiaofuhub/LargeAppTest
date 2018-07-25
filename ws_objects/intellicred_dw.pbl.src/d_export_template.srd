@@ -1,0 +1,41 @@
+﻿$PBExportHeader$d_export_template.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=124 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=export_code dbname="export_flds.export_code" )
+ column=(type=char(30) update=yes updatewhereclause=yes key=yes name=export_fld_nm dbname="export_flds.export_fld_nm" )
+ column=(type=long update=yes updatewhereclause=yes name=export_fld_len dbname="export_flds.export_fld_len" )
+ column=(type=long update=yes updatewhereclause=yes name=dddw_field dbname="export_flds.app_fld_id_number" )
+ column=(type=long update=yes updatewhereclause=yes name=app_record_number dbname="export_flds.app_record_number" initial="1" )
+ column=(type=long updatewhereclause=yes name=cr dbname="cr" )
+ column=(type=long update=yes updatewhereclause=yes name=order dbname="export_flds.order" )
+ column=(type=long update=yes updatewhereclause=yes name=section_id dbname="export_flds.section_id" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"export_flds~" ) COLUMN(NAME=~"export_flds.export_code~") COLUMN(NAME=~"export_flds.export_fld_nm~") COLUMN(NAME=~"export_flds.export_fld_len~") COLUMN(NAME=~"export_flds.app_fld_id_number~") COLUMN(NAME=~"export_flds.app_record_number~") COMPUTE(NAME=~"cr = 1~") COLUMN(NAME=~"export_flds.order~") COLUMN(NAME=~"export_flds.section_id~")WHERE(    EXP1 =~"~~~"export_flds~~~".~~~"export_code~~~"~"   OP =~"=~"    EXP2 =~":export_id~" ) ) ARG(NAME = ~"export_id~" TYPE = number) " update="export_flds" updatewhere=1 updatekeyinplace=no arguments=(("export_id", number))  sort="order A " )
+text(band=header alignment="2" text="Export
+
+Field Name"border="6" color="0" x="242" y="12" height="104" width="635"  name=export_fld_nm_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Export 
+
+Field Length"border="6" color="0" x="891" y="12" height="104" width="288"  name=export_fld_len_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Section
+Name"border="6" color="0" x="1193" y="12" height="104" width="622"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Application
+
+Field Name"border="6" color="0" x="1833" y="12" height="104" width="631"  name=app_fld_id_number_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Record
+
+Number"border="6" color="0" x="2482" y="12" height="104" width="233"  name=app_record_number_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Field 
+
+Order"border="6" color="0" x="14" y="12" height="104" width="215"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="0" x="247" y="8" height="64" width="626" format="[general]"  name=export_fld_nm edit.limit=30 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="1" tabsequence=30 border="5" color="0" x="887" y="8" height="64" width="293" format="[General]"  name=export_fld_len edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="0" x="1833" y="8" height="64" width="631" format="[general]"  name=app_fld_id_number visible="1~tif(cr=1,0,1)" dddw.name=d_dddw_fields_all dddw.displaycolumn=field_label dddw.datacolumn=id_number dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="1" tabsequence=50 border="5" color="0" x="1833" y="8" height="64" width="631" format="[currency]"  name=dddw_field visible="1~tif(cr=1,1,0)" dddw.name=d_dddw_fields dddw.displaycolumn=field_label dddw.datacolumn=id_number dddw.percentwidth=200 dddw.lines=30 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="1" tabsequence=60 border="5" color="0" x="2482" y="8" height="64" width="238" format="[currency]"  name=app_record_number editmask.spin=yes editmask.mask="###" editmask.spinrange="1~~20" editmask.spinincr=1 editmask.focusrectangle=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="0" tabsequence=10 border="5" color="0" x="18" y="4" height="68" width="210" format="[General]"  name=order editmask.spin=yes editmask.mask="####" editmask.spinrange="10~~10000" editmask.spinincr=10 editmask.focusrectangle=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=8 alignment="0" tabsequence=40 border="5" color="0" x="1198" y="8" height="64" width="617" format="[General]"  name=section_id dddw.name=d_dddw_section dddw.displaycolumn=section_name dddw.datacolumn=section_id dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

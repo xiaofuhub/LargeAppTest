@@ -1,0 +1,15 @@
+﻿$PBExportHeader$d_security_user_facility_access.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=user_facility_id dbname="security_user_facilities.user_facility_id" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=user_id dbname="security_user_facilities.user_id" )
+ column=(type=long update=yes updatewhereclause=yes name=facility_id dbname="security_user_facilities.facility_id" )
+ column=(type=long update=yes updatewhereclause=yes name=access_rights dbname="security_user_facilities.access_rights" values="	1/	0" )
+ column=(type=char(100) updatewhereclause=yes name=facility_facility_name dbname="facility.facility_name" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"security_user_facilities~" )  TABLE(NAME=~"facility~" ) COLUMN(NAME=~"security_user_facilities.user_facility_id~") COLUMN(NAME=~"security_user_facilities.user_id~") COLUMN(NAME=~"security_user_facilities.facility_id~") COLUMN(NAME=~"security_user_facilities.access_rights~") COLUMN(NAME=~"facility.facility_name~")    JOIN (LEFT=~"security_user_facilities.facility_id~"    OP =~"=~"RIGHT=~"facility.facility_id~" )WHERE(    EXP1 =~"( ( security_user_facilities.user_id~"   OP =~"=~"    EXP2 =~":user_id ) )~" ) ) ARG(NAME = ~"user_id~" TYPE = string) " update="security_user_facilities" updatewhere=0 updatekeyinplace=no arguments=(("user_id", string))  sort="facility_facility_name A " )
+column(band=detail id=4 alignment="1" tabsequence=10 border="0" color="0" x="809" y="8" height="52" width="64" format="[General]"  name=access_rights checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="18" y="4" height="60" width="773" format="[general]"  name=facility_facility_name edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

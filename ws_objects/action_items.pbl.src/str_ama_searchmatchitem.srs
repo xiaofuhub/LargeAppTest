@@ -1,0 +1,22 @@
+﻿$PBExportHeader$str_ama_searchmatchitem.srs
+global type str_ama_searchmatchitem from structure
+	long		entityId
+	string		labelName
+	string		prefix
+	string		firstName
+	string		middleName
+	string		lastName
+	string		suffix
+	string		city
+	string		state
+	string		zip
+	datetime		lastOrderedDate
+	string		ecfmgNumber
+	string		npiNumber
+	string		slnNumber
+	string		slnStateCd
+	string		meNumber
+	string		nccpaNumber
+	string		dnrInd
+end type
+

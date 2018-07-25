@@ -1,0 +1,92 @@
+﻿$PBExportHeader$d_cntx_action_items_browse_bak.srd
+$PBExportComments$[intellicontract] Contact Phone Numbers
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 selected.mouse=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes identity=yes name=ctx_action_item_id dbname="CTX_ACTION_ITEMS.ctx_action_item_id" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=ctx_id dbname="CTX_ACTION_ITEMS.ctx_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=action_type dbname="CTX_ACTION_ITEMS.action_type" )
+ column=(type=datetime update=yes updatewhereclause=yes name=action_date dbname="CTX_ACTION_ITEMS.action_date" )
+ column=(type=datetime update=yes updatewhereclause=yes name=due_date dbname="CTX_ACTION_ITEMS.due_date" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=action_user dbname="CTX_ACTION_ITEMS.action_user" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=action_status dbname="CTX_ACTION_ITEMS.action_status" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=notes dbname="CTX_ACTION_ITEMS.notes" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=alarmed dbname="CTX_ACTION_ITEMS.alarmed" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=record_id dbname="CTX_ACTION_ITEMS.record_id" )
+ column=(type=datetime update=yes updatewhereclause=yes name=first_attempt dbname="CTX_ACTION_ITEMS.first_attempt" )
+ column=(type=datetime update=yes updatewhereclause=yes name=last_attempt dbname="CTX_ACTION_ITEMS.last_attempt" )
+ column=(type=long update=yes updatewhereclause=yes name=no_attempts dbname="CTX_ACTION_ITEMS.no_attempts" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=assigned_to dbname="CTX_ACTION_ITEMS.assigned_to" )
+ column=(type=long update=yes updatewhereclause=yes name=print_flag dbname="CTX_ACTION_ITEMS.print_flag" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=letter_flag dbname="CTX_ACTION_ITEMS.letter_flag" )
+ column=(type=long update=yes updatewhereclause=yes name=selected dbname="selected" values="	1/	0" )
+ column=(type=long update=yes updatewhereclause=yes name=letter_to dbname="CTX_ACTION_ITEMS.letter_to" )
+ column=(type=long update=yes updatewhereclause=yes name=letter_from dbname="CTX_ACTION_ITEMS.letter_from" )
+ column=(type=char(61) update=yes updatewhereclause=yes name=letter_to_name dbname="letter_to_name" )
+ column=(type=char(61) update=yes updatewhereclause=yes name=letter_from_name dbname="letter_from_name" )
+ retrieve="  SELECT ctx_action_items.ctx_action_item_id,   
+         ctx_action_items.ctx_id,   
+         ctx_action_items.action_type,   
+         ctx_action_items.action_date,   
+         ctx_action_items.due_date,   
+         ctx_action_items.action_user,   
+         ctx_action_items.action_status,   
+         ctx_action_items.notes,   
+         ctx_action_items.alarmed,   
+         ctx_action_items.record_id,   
+         ctx_action_items.first_attempt,   
+         ctx_action_items.last_attempt,   
+         ctx_action_items.no_attempts,   
+         ctx_action_items.assigned_to,   
+         ctx_action_items.print_flag,   
+         ctx_action_items.letter_flag,   
+         0 selected,   
+         ctx_action_items.letter_to,   
+         ctx_action_items.letter_from,
+         letter_to_name   = ISNULL((select last_name +','+first_name from ctx_contacts where contact_id = ctx_action_items.letter_to),  (SELECT top 1 ctx_contacts.last_name +','+ ctx_contacts.first_name   
+																																															 FROM ctx_contacts,   
+																																																	ctx_contract_contacts  
+																																															WHERE ctx_contract_contacts.contact_id = ctx_contacts.contact_id and  
+																																																	  ctx_contract_contacts.ctx_id = :al_ctx_id   AND  
+																																																	 ctx_contract_contacts.ic_area = 'E'  AND 
+																																				                                      ctx_contract_contacts.default_email  = 'Y'  )   )  , 
+        letter_from_name = ISNULL(( select last_name +','+first_name from ctx_contacts where contact_id = ctx_action_items.letter_from),  (SELECT top 1 ctx_contacts.last_name +','+ ctx_contacts.first_name   
+																																															 FROM ctx_contacts,   
+																																																	ctx_contract_contacts  
+																																															WHERE ctx_contract_contacts.contact_id = ctx_contacts.contact_id and  
+																																																	  ctx_contract_contacts.ctx_id = :al_ctx_id   AND  
+																																																	 ctx_contract_contacts.ic_area = 'I'  AND 
+																																				                                      ctx_contract_contacts.default_email  = 'Y'  ) )
+    FROM ctx_action_items  
+   WHERE ctx_action_items.ctx_id = :al_ctx_id    
+" update="ctx_action_items" updatewhere=1 updatekeyinplace=no arguments=(("al_ctx_id", number))  sort="ctx_id A ctx_action_item_id A " )
+text(band=header alignment="2" text="Selected" border="6" color="33554432" x="9" y="8" height="56" width="233" html.valueishtml="0"  name=selected_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Action Type" border="6" color="33554432" x="251" y="8" height="56" width="430" html.valueishtml="0"  name=action_type_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Action Date" border="6" color="33554432" x="690" y="8" height="56" width="503" html.valueishtml="0"  name=action_date_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Due Date" border="6" color="33554432" x="1202" y="8" height="56" width="503" html.valueishtml="0"  name=due_date_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="User" border="6" color="33554432" x="1714" y="8" height="56" width="320" html.valueishtml="0"  name=action_user_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Status" border="6" color="33554432" x="2043" y="8" height="56" width="366" html.valueishtml="0"  name=action_status_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="First Attempt" border="6" color="33554432" x="2418" y="8" height="56" width="503" html.valueishtml="0"  name=first_attempt_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Last Attempt" border="6" color="33554432" x="2930" y="8" height="56" width="503" html.valueishtml="0"  name=last_attempt_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="# Attempts" border="6" color="33554432" x="3442" y="8" height="56" width="274" html.valueishtml="0"  name=no_attempts_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Letter To" border="6" color="33554432" x="4270" y="8" height="56" width="521" html.valueishtml="0"  name=letter_to_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Letter From" border="6" color="33554432" x="3726" y="8" height="56" width="535" html.valueishtml="0"  name=letter_from_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="2" tabsequence=32766 border="0" color="33554432" x="9" y="8" height="64" width="233" format="[general]" html.valueishtml="0"  name=selected visible="1" checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="251" y="8" height="64" width="430" format="[general]" html.valueishtml="0"  name=action_type  tag="Contract Action Type" visible="1" dddw.name=d_dddw_code_lookup_action_type dddw.displaycolumn=custom_1 dddw.datacolumn=lookup_code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="33554432" x="1714" y="8" height="64" width="320" format="[general]" html.valueishtml="0"  name=action_user visible="1" dddw.name=d_dddw_users dddw.displaycolumn=user_id dddw.datacolumn=user_id dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="33554432" x="2043" y="8" height="64" width="366" format="[general]" html.valueishtml="0"  name=action_status  tag="Contract Action Status" visible="1" dddw.name=d_dddw_code_lookup dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="33554432" x="3442" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=no_attempts visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="0" color="33554432" x="4270" y="8" height="64" width="521" format="[general]" html.valueishtml="0"  name=letter_to_name visible="1" edit.limit=61 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=21 alignment="0" tabsequence=32766 border="0" color="33554432" x="3726" y="8" height="64" width="535" format="[general]" html.valueishtml="0"  name=letter_from_name visible="1" edit.limit=61 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="690" y="8" height="64" width="503" format="mm/dd/yyyy" html.valueishtml="0"  name=action_date visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="33554432" x="1202" y="8" height="64" width="503" format="mm/dd/yyyy" html.valueishtml="0"  name=due_date visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="33554432" x="2418" y="8" height="64" width="503" format="mm/dd/yyyy" html.valueishtml="0"  name=first_attempt visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="33554432" x="2930" y="8" height="64" width="503" format="mm/dd/yyyy" html.valueishtml="0"  name=last_attempt visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

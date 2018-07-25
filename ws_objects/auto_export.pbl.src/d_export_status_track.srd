@@ -1,0 +1,55 @@
+﻿$PBExportHeader$d_export_status_track.srd
+$PBExportComments$(Appeon)Toney 06.19.2013 - V141 ISG-CLX
+release 11.5;
+datawindow ( units=0 timer_interval=60000 processing=1 color=67108864 brushmode=0 transparency=0 gradient.color=8421504 gradient.transparency=0 gradient.angle=0 gradient.repetition.mode=0 gradient.repetition.count=0 gradient.repetition.length=100 gradient.focus=0 gradient.scale=100 gradient.spread=100 picture.mode=0 picture.scale.x=100 picture.scale.y=100 picture.clip.left=0 picture.clip.right=0 picture.clip.top=0 picture.clip.bottom=0 picture.blur=0 picture.transparency=0 print.printername=""  print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=96 print.margin.bottom=96 print.paper.size=0 print.paper.source=0 print.canusedefaultprinter=yes grid.lines=0 selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=76 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=long key=yes update=yes updatewhereclause=yes name=ctx_id dbname="sys_statusaudit.ctx_id"  )
+column=(type=long key=yes update=yes updatewhereclause=yes name=seq_no dbname="sys_statusaudit.seq_no"  )
+column=(type=decimal(0) update=yes updatewhereclause=yes name=status dbname="sys_statusaudit.status" 
+ values=""  )
+column=(type=decimal(0) updatewhereclause=yes name=processing_setting dbname="sys_statusaudit.processing_setting"  )
+column=(type=datetime update=yes updatewhereclause=yes name=start_time dbname="sys_statusaudit.start_time"  )
+column=(type=long update=yes updatewhereclause=yes name=delay_days dbname="sys_statusaudit.delay_days"  )
+column=(type=char(10) update=yes updatewhereclause=yes name=user_id dbname="sys_statusaudit.user_id"  )
+column=(type=char(50) updatewhereclause=yes name=field_name dbname="sys_statusaudit.field_name"  )
+ retrieve="  SELECT sys_statusaudit.ctx_id,   
+         sys_statusaudit.seq_no,   
+         sys_statusaudit.status,
+         sys_statusaudit.status Processing_setting,
+         sys_statusaudit.start_time,   
+         sys_statusaudit.delay_days,   
+         sys_statusaudit.user_id,
+			sys_statusaudit.field_name  
+    FROM sys_statusaudit  
+   WHERE sys_statusaudit.ctx_id = :ai_ctxid    
+"
+  update="sys_statusaudit" updatewhere=0 updatekeyinplace=no
+  arguments=(("ai_ctxid", number))
+)
+text(name=status_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="6" x="9" y="4" height="68" width="672" text="Status" html.valueishtml="0" )
+text(name=status_1_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="1" background.color="553648127" color="0" alignment="0" border="6" x="690" y="4" height="68" width="439" text="Processing Setting" html.valueishtml="0" )
+text(name=start_time_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="6" x="1138" y="4" height="68" width="384" text="Start Time" html.valueishtml="0" )
+text(name=t_1 visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="1" background.color="553648127" color="0" alignment="2" border="6" x="1531" y="4" height="68" width="283" text="Equal Days" html.valueishtml="0" )
+text(name=user_id_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="6" x="1824" y="4" height="68" width="320" text="User Id" html.valueishtml="0" )
+text(name=processing_setting_t visible="1" band=header font.charset="0" font.face="Arial" font.family="2" font.height="-12" font.pitch="2" font.weight="400" background.mode="2" background.color="12639424" color="0" alignment="0" border="0" x="2153" y="4" height="76" width="978" text="Processing Setting" html.valueishtml="0" )
+text(name=field_name_t visible="1" band=header font.charset="0" font.face="Arial" font.family="2" font.height="-12" font.pitch="2" font.weight="400" background.mode="2" background.color="12639424" color="0" alignment="0" border="0" x="3141" y="4" height="76" width="1143" text="Field Name" html.valueishtml="0" )
+column(name=status visible="1" tag="Contract Status" band=detail id=3 x="9" y="4" height="68" width="672" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" dddw.allowedit=no dddw.autohscroll=no dddw.autoretrieve=yes dddw.useasborder=no dddw.datacolumn=lookup_code dddw.displaycolumn=code dddw.hscrollbar=no dddw.hsplitscroll=no dddw.imemode=2 dddw.limit=0 dddw.name=d_dddw_contract_status dddw.nilisnull=no dddw.percentwidth=312 dddw.required=no dddw.showlist=no dddw.vscrollbar=yes criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="16777215" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=10 )
+column(name=status_1 visible="1" band=detail id=3 x="690" y="4" height="68" width="439" color="0" border="0" alignment="2" format="[general]" html.valueishtml="0" dddw.allowedit=no dddw.autohscroll=no dddw.autoretrieve=yes dddw.useasborder=no dddw.datacolumn=lookup_code dddw.displaycolumn=compute_1 dddw.hscrollbar=no dddw.hsplitscroll=no dddw.imemode=0 dddw.limit=0 dddw.name=d_dddw_contract_status dddw.nilisnull=no dddw.percentwidth=0 dddw.required=no dddw.showlist=no dddw.vscrollbar=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="553648127" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 )
+column(name=user_id visible="1" band=detail id=7 x="1824" y="4" height="68" width="320" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=10 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="553648127" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 )
+column(name=start_time visible="1" band=detail id=5 x="1138" y="4" height="68" width="384" color="33554432" border="0" alignment="0" format="mm/dd/yyyy" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=2 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="16777215" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=20 )
+compute(name=delay_days visible="1	if(getrow()=rowcount(),0,1)" band=detail font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="1" background.color="553648127" color="0" x="1531" y="4" height="68" width="283" format="[General]" expression="if(getrow()=rowcount(),daysafter(start_time,today()),daysafter(start_time,start_time[1]))" alignment="2" border="0" html.valueishtml="0" crosstab.repeat=no )
+column(name=processing_setting visible="1" band=detail id=4 x="2153" y="12" height="52" width="978" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=no edit.autoselect=no edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="16777215" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=30 )
+column(name=field_name visible="1" band=detail id=8 x="3141" y="0" height="52" width="1143" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=no edit.autoselect=no edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="16777215" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=40 )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" encodeSelfLinkArgs="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(headGroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.customPostScript="0" xslfop.print="0" )
+export.xhtml()

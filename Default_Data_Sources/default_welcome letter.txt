@@ -1,0 +1,2 @@
+provider_name	last_name	degree	specialty	npi	effective_date	recredentialing_date	street	street_2	city	zip	street_1	street_3	city_1	zip_1	street_4	street_5	city_2	zip_2	medicaid	kidz_partners	medicare	state_name	contact_name	office_manager
+Marta	Dabezies	MD	Gastroenterology	1760439996	2010-10-29 00:0	2013-10-29 00:0	1200 Old York R		Abington	19001									Contracted	Not Contracted	Old Paper	PA		Mary Sunday

@@ -1,0 +1,9 @@
+﻿$PBExportHeader$tns__invitesigner.srs
+$PBExportComments$Proxy imported from Web service using Web Service Proxy Generator.
+global type tns__InviteSigner from structure
+   string apiCode
+   string fileID
+   string emailMessage
+   string signer
+end type
+

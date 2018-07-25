@@ -1,0 +1,214 @@
+﻿$PBExportHeader$f_get_screen_syntax.srf
+global type f_get_screen_syntax from function_object
+end type
+
+forward prototypes
+global function string f_get_screen_syntax (long al_data_view_id, long al_screen_id, boolean ab_obsyntax)
+end prototypes
+
+global function string f_get_screen_syntax (long al_data_view_id, long al_screen_id, boolean ab_obsyntax);//====================================================================
+// Function: f_getscreensyntax
+//--------------------------------------------------------------------
+// Description:
+//--------------------------------------------------------------------
+// Arguments:
+// 	value    long      al_data_view_id
+// 	value    long      al_screen_id[]
+// 	value    string    as_screenname[]
+// 	value    string    as_syntax[]
+//--------------------------------------------------------------------
+// Returns:  (None)
+//--------------------------------------------------------------------
+// Author:	gavin		Date: 2012-02-28
+//--------------------------------------------------------------------
+//	Copyright (c) 2008-2011 appeon, All rights reserved.
+//--------------------------------------------------------------------
+// Modify History:
+//
+//====================================================================
+String			ls_SQL,ls_Temp, ls_ScreenName, ls_ScreenStyle
+long			ll_DataLen,ll_Cycle,ll_Count,ll_Start
+Boolean		lb_Osql , lb_file
+long			READ_ONE_LENGTH = 8000,ll_getupdate
+Integer		li_i, li_find
+String			ls_updatedate,ls_syntaxfile, ls_lastupdate, ls_dwsyntax
+Long			ll_flen, ll_FileNum, ll_loops
+Blob			lb_bytes_read, lb_syntax
+
+
+//the comment means it don't get from local  if the style was changed and user didn't reopen the window    gds_contract_screen.retrieve( al_data_view_id )
+//====================================================================	
+if Not IsValid(gds_contract_screen) then
+	gds_contract_screen = create datastore
+	gds_contract_screen.dataobject = 'd_contract_dw_sql_all'
+	gds_contract_screen.SetTransObject(SQLCA)
+	gds_contract_screen.Retrieve(al_data_view_id)
+Else
+	gds_contract_screen.Retrieve(al_data_view_id)
+end if
+
+
+lb_file = true //default is true file is exists
+lb_Osql = ab_obsyntax
+li_find = gds_contract_screen.find("screen_id = " + string( al_screen_id ) ,1,gds_contract_screen.RowCount( ))
+If li_find > 0 Then
+	ls_updatedate = string(gds_contract_screen.getitemdatetime(li_find,'modify_date'))
+	ls_ScreenName = gds_contract_screen.getitemstring(li_find,'titlebar_text')
+	If Len( ls_ScreenName ) = 0 Or IsNull( ls_ScreenName )  Then
+		 ls_ScreenName = gds_Contract_Screen.GetItemString( li_find,'screen_name' )
+	End If
+Else
+	ls_updatedate = ''
+End if
+
+if ab_obsyntax then
+	ls_syntaxfile = gs_dir_path + gs_DefDirName + "\DWOBSyntax\" + string(al_data_view_id) + '-' + string(al_screen_id) + '.srd'  //jervis 10.11.2011
+else
+	ls_syntaxfile = gs_dir_path + gs_DefDirName + "\DWSyntax\" + string(al_data_view_id) + '-' + string(al_screen_id) + '.srd'
+end if
+
+If  Not fileexists(ls_syntaxfile) Then lb_file = false
+If lb_File Then
+	//update 	
+//	ll_getupdate = gnv_appeondll.of_registryget("HKEY_LOCAL_MACHINE\SOFTWARE\IntelliSoft Group\Screens List", "Screen-"+string(al_data_view_id) + '-' + string(al_screen_id), regstring!, ls_lastupdate)
+	ll_getupdate = gnv_appeondll.of_Registryget("HKEY_LOCAL_MACHINE\SOFTWARE\"+gs_DefDirName+"\Screens List", "Screen-"+string(al_data_view_id) + '-' + string(al_screen_id), regstring!, ls_lastupdate)
+	If ll_getupdate <> 1 Then lb_file = false
+End If
+
+If lb_File Then
+	if ab_obsyntax then
+		ls_updatedate = gs_dir_path + gs_DefDirName + "\DWOBSyntax  " + ls_updatedate
+	else
+		ls_updatedate = gs_dir_path + gs_DefDirName + "\DWSyntax  " + ls_updatedate
+	end if
+	If ls_updatedate <> ls_lastupdate Then  lb_file = false
+End If
+
+If lb_File Then
+	//Get the syntax for detail datawindow
+	ll_flen = FileLength(ls_syntaxfile)
+	ll_FileNum = FileOpen(ls_syntaxfile , StreamMode!, Read!, Shared!)
+	If ll_FileNum = -1 Then lb_file = false
+End If
+
+if lb_file Then
+	IF ll_flen > 32765 THEN
+		IF Mod(ll_flen, 32765) = 0 THEN
+			 ll_flen = ll_flen/32765
+		ELSE
+			 ll_loops = (ll_flen/32765) + 1
+		END IF
+	ELSE
+		ll_loops = 1
+	END IF
+	lb_bytes_read = blob('')
+	lb_syntax = blob('')
+	
+	FOR ll_Cycle = 1 to ll_loops
+		 FileRead(ll_FileNum, lb_bytes_read)
+		 lb_syntax = lb_syntax + lb_bytes_read
+	NEXT
+	
+	FileClose(ll_FileNum)
+	ls_dwsyntax = string(lb_syntax)
+	If  isnull(ls_dwsyntax) Or Trim( ls_dwsyntax) = '' Then
+		lb_File = false
+	End If		
+End If
+
+If lb_File Then
+	ls_SQL = ls_dwsyntax
+Else// file  is old , get syntax from sql
+
+
+
+	If lb_Osql Then
+		SELECT ( case when screen_style = 'G' then Datalength(grid_opsql) else Datalength(dw_opsql) end ), screen_name , screen_style
+		INTO :ll_DataLen, :ls_ScreenName, :ls_ScreenStyle
+		FROM ctx_screen
+		WHERE data_view_id = :al_data_view_id
+		AND screen_id = :al_screen_id;
+		
+		if ll_DataLen = 0 OR Isnull(ll_DataLen) then
+			SELECT (case when screen_style = 'G' then  Datalength(grid_sql)  else Datalength(dw_sql) end ), screen_name , screen_style
+			INTO :ll_DataLen, :ls_ScreenName, :ls_ScreenStyle
+			FROM ctx_screen
+			WHERE data_view_id = :al_data_view_id
+			AND screen_id =:al_screen_id;
+			lb_Osql = False
+		end if
+	else
+		SELECT (case when screen_style = 'G' then  Datalength(grid_sql) else Datalength(dw_sql) end ), screen_name, screen_style
+		INTO :ll_DataLen, :ls_ScreenName, :ls_ScreenStyle
+		FROM ctx_screen
+		WHERE data_view_id = :al_data_view_id
+		AND screen_id = :al_screen_id;
+	end if
+	
+		
+	if AppeonGetClientType() = 'PB' and gs_dbtype = 'SQL' and ll_DataLen > READ_ONE_LENGTH then
+		ll_Count = Ceiling(ll_DataLen/READ_ONE_LENGTH)
+		
+		for ll_Cycle = 1 To ll_Count
+			ll_Start = (ll_Cycle - 1) * READ_ONE_LENGTH + 1
+			If ls_ScreenStyle = 'G' Then
+				If lb_Osql Then
+					SELECT SubString(grid_opsql,:ll_Start,:READ_ONE_LENGTH)
+					  INTO :ls_Temp
+					  FROM ctx_screen
+					 WHERE data_view_id = :al_data_view_id AND screen_id = :al_screen_id;
+				Else
+					SELECT SubString(grid_sql,:ll_Start,:READ_ONE_LENGTH)
+					  INTO :ls_Temp
+					  FROM ctx_screen
+					 WHERE data_view_id = :al_data_view_id AND screen_id = :al_screen_id;
+				End If
+			Else
+				If lb_Osql Then
+					SELECT SubString(dw_opsql,:ll_Start,:READ_ONE_LENGTH)
+					  INTO :ls_Temp
+					  FROM ctx_screen
+					 WHERE data_view_id = :al_data_view_id AND screen_id = :al_screen_id;
+				Else
+					SELECT SubString(dw_sql,:ll_Start,:READ_ONE_LENGTH)
+					  INTO :ls_Temp
+					  FROM ctx_screen
+					 WHERE data_view_id = :al_data_view_id AND screen_id = :al_screen_id;
+				End If				
+			End If
+			ls_SQL += ls_Temp
+		next
+	else
+		If  ls_ScreenStyle = 'G' Then
+			If lb_Osql Then
+				SELECT grid_opsql
+				  INTO :ls_SQL
+				  FROM ctx_screen
+				 WHERE data_view_id = :al_data_view_id AND screen_id = :al_screen_id;
+			Else
+				SELECT grid_sql
+				  INTO :ls_SQL
+				  FROM ctx_screen
+				 WHERE data_view_id = :al_data_view_id AND screen_id = :al_screen_id;
+			End If
+		Else
+			If lb_Osql Then
+				SELECT dw_opsql
+				  INTO :ls_SQL
+				  FROM ctx_screen
+				 WHERE data_view_id = :al_data_view_id AND screen_id = :al_screen_id;
+			Else
+				SELECT dw_sql
+				  INTO :ls_SQL
+				  FROM ctx_screen
+				 WHERE data_view_id = :al_data_view_id AND screen_id = :al_screen_id;
+			End If
+		End If
+	end if
+end if//
+
+Return  ls_Sql
+
+
+end function
+

@@ -1,0 +1,160 @@
+﻿$PBExportHeader$d_copy_verification_org.srd
+release 6;
+datawindow(units=0 timer_interval=60000 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=196 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes name=rec_id dbname="verif_info.rec_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=prac_id dbname="verif_info.prac_id" )
+ column=(type=datetime update=yes updatewhereclause=yes name=first_sent dbname="verif_info.first_sent" )
+ column=(type=datetime update=yes updatewhereclause=yes name=last_sent dbname="verif_info.last_sent" )
+ column=(type=long update=yes updatewhereclause=yes name=number_sent dbname="verif_info.number_sent" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_recieved dbname="verif_info.date_recieved" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=user_name dbname="verif_info.user_name" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=source dbname="verif_info.source" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=response_code dbname="verif_info.response_code" )
+ column=(type=long update=yes updatewhereclause=yes name=active_status dbname="verif_info.active_status" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=verification_method dbname="verif_info.verification_method" )
+ column=(type=datetime update=yes updatewhereclause=yes name=expiration_date dbname="verif_info.expiration_date" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=verification_id dbname="verif_info.verification_id" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=reference_value dbname="verif_info.reference_value" )
+ column=(type=long update=yes updatewhereclause=yes name=screen_id dbname="verif_info.screen_id" )
+ column=(type=char(50) updatewhereclause=yes name=data_view_screen_screen_name dbname="data_view_screen.screen_name" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=address_lookup_code dbname="verif_info.address_lookup_code" )
+ column=(type=long update=yes updatewhereclause=yes name=facility_id dbname="verif_info.facility_id" )
+ column=(type=long update=yes updatewhereclause=yes name=seq_no dbname="verif_info.seq_no" )
+ column=(type=char(100) updatewhereclause=yes name=facility_facility_name dbname="facility.facility_name" )
+ column=(type=decimal(0) updatewhereclause=yes name=new_verification_method dbname="new_verification_method" )
+ column=(type=long updatewhereclause=yes name=selected dbname="selected" values="	1/	0" )
+ column=(type=long update=yes updatewhereclause=yes name=verifying_facility dbname="verif_info.verifying_facility" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=priority_user dbname="verif_info.priority_user" )
+ column=(type=long update=yes updatewhereclause=yes name=priority dbname="verif_info.priority" )
+ column=(type=long update=yes updatewhereclause=yes name=exp_credential_flag dbname="verif_info.exp_credential_flag" )
+ column=(type=char(20) update=yes updatewhereclause=yes key=yes name=doc_id dbname="verif_info.doc_id" )
+ column=(type=long update=yes updatewhereclause=yes name=print_flag dbname="verif_info.print_flag" )
+ column=(type=long update=yes updatewhereclause=yes name=direct_parent_facility_link dbname="verif_info.direct_parent_facility_link" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=verif_info_notes dbname="verif_info.notes" )
+ column=(type=char(1) updatewhereclause=yes name=verify_data dbname="facility_ver_rules.verify_data" )
+ retrieve="  SELECT DISTINCT verif_info.rec_id,   
+         verif_info.prac_id,   
+         verif_info.first_sent,   
+         verif_info.last_sent,   
+         verif_info.number_sent,   
+         verif_info.date_recieved,   
+         verif_info.user_name,   
+         verif_info.source,   
+         verif_info.response_code,   
+         verif_info.active_status,   
+         verif_info.verification_method,   
+         verif_info.expiration_date,   
+         verif_info.verification_id,   
+         verif_info.reference_value,   
+         verif_info.screen_id,   
+         data_view_screen.screen_name,   
+         verif_info.address_lookup_code,   
+         verif_info.facility_id,   
+         verif_info.seq_no,   
+         facility.facility_name,   
+         new_verification_method=verif_info.verification_method,   
+         selected = 1,   
+         verif_info.verifying_facility,   
+         verif_info.priority_user,   
+         verif_info.priority,   
+         verif_info.exp_credential_flag,   
+         verif_info.doc_id,   
+         verif_info.print_flag,   
+         verif_info.direct_parent_facility_link,   
+         verif_info.notes,   
+         facility_ver_rules.verify_data  
+    FROM verif_info,   
+         data_view_screen,   
+         facility,   
+         facility_ver_rules  
+   WHERE ( verif_info.screen_id = data_view_screen.screen_id ) and  
+         ( verif_info.facility_id = facility.facility_id ) and  
+         ( verif_info.screen_id = facility_ver_rules.screen_id ) and  
+         ( verif_info.facility_id = facility_ver_rules.facility_id ) and  
+         ( verif_info.active_status = 1 ) AND  
+         ( verif_info.prac_id = :prac_id ) AND  
+         data_view_screen.data_view_id = 1 AND  
+         facility_ver_rules.verify_data in ( 'B','I' ) AND  
+         verif_info.exp_credential_flag <> 1 AND  
+         verif_info.facility_id = :facil_id    
+
+union
+
+  SELECT DISTINCT verif_info.rec_id,   
+         verif_info.prac_id,   
+         verif_info.first_sent,   
+         verif_info.last_sent,   
+         verif_info.number_sent,   
+         verif_info.date_recieved,   
+         verif_info.user_name,   
+         verif_info.source,   
+         verif_info.response_code,   
+         verif_info.active_status,   
+         verif_info.verification_method,   
+         verif_info.expiration_date,   
+         verif_info.verification_id,   
+         verif_info.reference_value,   
+         verif_info.screen_id,   
+         data_view_screen.screen_name,   
+         verif_info.address_lookup_code,   
+         verif_info.facility_id,   
+         verif_info.seq_no,   
+         facility.facility_name,   
+         new_verification_method=verif_info.verification_method,   
+         selected = 1,   
+         verif_info.verifying_facility,   
+         verif_info.priority_user,   
+         verif_info.priority,   
+         verif_info.exp_credential_flag,   
+         verif_info.doc_id,   
+         verif_info.print_flag,   
+         verif_info.direct_parent_facility_link,   
+         verif_info.notes,   
+         facility_ver_rules.verify_data  
+    FROM verif_info,   
+         data_view_screen,   
+         facility,   
+         facility_ver_rules  
+   WHERE ( verif_info.screen_id = data_view_screen.screen_id ) and  
+         ( verif_info.facility_id = facility.facility_id ) and  
+         ( verif_info.screen_id = facility_ver_rules.screen_id ) and  
+         ( verif_info.facility_id = facility_ver_rules.facility_id ) and  
+         ( verif_info.active_status = 1 ) AND  
+         ( verif_info.prac_id = :prac_id ) AND  
+         data_view_screen.data_view_id = 1 AND  
+         facility_ver_rules.verify_data in ( 'B','I' ) AND  
+         verif_info.exp_credential_flag <> 1
+   
+" update="verif_info" updatewhere=0 updatekeyinplace=no filter=" exp_credential_flag = 0 or  exp_credential_flag = 2" arguments=(("prac_id", number),("facil_id", number))  sort="selected A data_view_screen_screen_name A verification_id A rec_id A facility_id A " )
+group(level=1 header.height=84 trailer.height=0 by=("data_view_screen_screen_name" , "verification_id" ) header.color="536870912" trailer.color="536870912" )
+group(level=2 header.height=0 trailer.height=0 by=("facility_id" ) header.color="536870912" trailer.color="536870912" )
+text(band=header alignment="0" text="Select the credentials that you would like reverified"border="0" color="128" x="23" y="12" height="52" width="1513"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="2" text="Verifying
+
+ Facility"border="2" color="0" x="18" y="88" height="104" width="837"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Credential
+
+Reference"border="2" color="0" x="859" y="88" height="104" width="1211"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="
+
+DSLV"border="2" color="0" x="2075" y="88" height="104" width="187"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Last
+
+Verificaiton Method"border="2" color="0" x="2267" y="88" height="104" width="434"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Current
+
+ Verificaiton Method"border="2" color="0" x="2706" y="88" height="104" width="489"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header.1 id=16 alignment="0" tabsequence=32766 border="0" color="0" x="23" y="8" height="64" width="818" format="[general]"  name=data_view_screen_screen_name edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header.1 alignment="0" expression="if(isNull( verification_id ),  data_view_screen_screen_name  ,  data_view_screen_screen_name  + '_CC')"border="0" color="0" x="27" y="8" height="64" width="827" format="[general]"  name=letter  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+line(band=header.2 x1="855" y1="48" x2="855" y2="404" pen.style="0" pen.width="5" pen.color="0"  background.mode="1" background.color="536870912" )
+column(band=detail id=22 alignment="0" tabsequence=20 border="0" color="0" x="27" y="0" height="64" width="64" format=""  name=selected checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="0" color="0~tif( facility_id =  facil_id ,20,155)" x="105" y="4" height="64" width="727" format="[general]"  name=facility_facility_name edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="0~tif( facility_id =  facil_id ,20,155)" x="873" y="4" height="64" width="1179" format="[general]"  name=reference_value edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="2" expression=" DaysAfter(  date_recieved , Today() ) "border="0" color="0~tif( facility_id =  facil_id ,20,155)" x="2080" y="4" height="64" width="151" format="[general]"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0~tif( facility_id =  facil_id ,20,155)" x="2286" y="4" height="64" width="402" format="[general]"  name=verification_method dddw.name=d_dddw_verification_method dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=300 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=21 alignment="0" tabsequence=10 border="5" color="0" x="2725" y="8" height="60" width="448" format="[general]"  name=new_verification_method dddw.name=d_dddw_verification_method dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=300 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

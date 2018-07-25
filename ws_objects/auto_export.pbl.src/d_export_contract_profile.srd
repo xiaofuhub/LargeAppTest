@@ -1,0 +1,54 @@
+﻿$PBExportHeader$d_export_contract_profile.srd
+$PBExportComments$(Appeon)Toney 06.19.2013 - V141 ISG-CLX
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=12 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=12 color="536870912" )
+detail(height=1104 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes name=ctx_req_profile_hdr_id dbname="ctx_elements.ctx_req_profile_hdr_id" )
+ column=(type=long updatewhereclause=yes name=ctx_req_profile_id dbname="ctx_req_profile_hdr.ctx_req_profile_id" )
+ column=(type=long updatewhereclause=yes name=ctx_rqmnt_category_id dbname="ctx_rqmnt_category.ctx_rqmnt_category_id" )
+ column=(type=long updatewhereclause=yes name=ctx_req_tmplt_element_id dbname="ctx_req_tmplt_element.ctx_req_tmplt_element_id" )
+ column=(type=char(2000) update=yes updatewhereclause=yes name=clause dbname="ctx_elements.clause" )
+ column=(type=char(50) updatewhereclause=yes name=data_value dbname="data_value" )
+ column=(type=char(100) updatewhereclause=yes name=category_name dbname="ctx_rqmnt_category.category_name" )
+ column=(type=char(150) updatewhereclause=yes name=requirement dbname="ctx_req_tmplt_element.requirement" )
+ retrieve="select t2.ctx_req_profile_hdr_id,
+		t1.ctx_req_profile_id,
+		t4.ctx_rqmnt_category_id,
+		t3.ctx_req_tmplt_element_id,
+		t2.clause,
+		(Case t3.value_type when 1 then convert(varchar,t2.date_value ,101) 
+				when 2 then t2.field_value 
+				when 3 then t2.char_value 
+				when 4 then cast(t2.integer_value as varchar) 
+				when 6 then cast(t2.money_value as varchar) 
+				when 5 then t2.field_value end) Data_Value,
+		t4.category_name ,
+		t3.element_name Requirement 
+from ctx_req_profile_hdr t1  left join ctx_elements t2 on (t1.ctx_req_profile_hdr_id = t2.ctx_req_profile_hdr_id)
+left join ctx_req_tmplt_element t3 on (t2.ctx_req_tmplt_element_id = t3.ctx_req_tmplt_element_id)
+left join ctx_rqmnt_category t4 on (t3.ctx_rqmnt_category_id = t4.ctx_rqmnt_category_id)
+" arguments=(("al_req_profile_hdr_id", number),("al_ctx_id", number)) )
+column(band=detail id=5 alignment="0" tabsequence=10 border="5" color="0" x="430" y="120" height="228" width="3118" format="[general]" html.valueishtml="0"  name=clause visible="1" edit.limit=2000 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0 edit.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=8 alignment="0" tabsequence=30 border="5" color="0" x="686" y="376" height="68" width="773" format="[general]" html.valueishtml="0"  name=requirement visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=7 alignment="0" tabsequence=40 border="5" color="0" x="539" y="484" height="76" width="718" format="[general]" html.valueishtml="0"  name=category_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=6 alignment="0" tabsequence=20 border="5" color="0" x="517" y="624" height="76" width="1600" format="[general]" html.valueishtml="0"  name=data_value visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="0" x="544" y="720" height="76" width="329" format="[general]" html.valueishtml="0"  name=ctx_req_profile_hdr_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=2 alignment="0" tabsequence=50 border="5" color="0" x="535" y="816" height="76" width="1376" format="[general]" html.valueishtml="0"  name=ctx_req_profile_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=3 alignment="0" tabsequence=60 border="5" color="0" x="535" y="904" height="76" width="1376" format="[general]" html.valueishtml="0"  name=ctx_rqmnt_category_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=4 alignment="0" tabsequence=70 border="5" color="0" x="549" y="996" height="76" width="1376" format="[general]" html.valueishtml="0"  name=ctx_req_tmplt_element_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="0" text="Requirement" border="0" color="0" x="87" y="368" height="76" width="407" html.valueishtml="0"  name=requirement_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=detail alignment="0" text="Category Name" border="0" color="0" x="87" y="476" height="76" width="503" html.valueishtml="0"  name=category_name_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=detail alignment="0" text="Clause" border="0" color="0" x="27" y="28" height="76" width="503" html.valueishtml="0"  name=clause_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=detail alignment="0" text="Data Value" border="0" color="0" x="37" y="608" height="76" width="503" html.valueishtml="0"  name=data_value_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=detail alignment="0" text="Profile ID" border="0" color="0" x="82" y="796" height="76" width="407" html.valueishtml="0"  name=ctx_req_profile_id_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=detail alignment="0" text="Category ID" border="0" color="0" x="5" y="900" height="76" width="503" html.valueishtml="0"  name=ctx_rqmnt_category_id_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=detail alignment="0" text="Requirement ID" border="0" color="0" x="41" y="1012" height="76" width="503" html.valueishtml="0"  name=ctx_req_tmplt_element_id_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

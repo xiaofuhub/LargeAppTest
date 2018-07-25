@@ -1,0 +1,462 @@
+﻿$PBExportHeader$m_mail_item.srm
+$PBExportComments$(Appeon)Eugene 06.28.2013 - V141 ISG-CLX
+forward
+global type m_mail_item from menu
+end type
+type m_reply from menu within m_mail_item
+end type
+type m_replytoall from menu within m_mail_item
+end type
+type m_forward from menu within m_mail_item
+end type
+type m_line0 from menu within m_mail_item
+end type
+type m_markasread from menu within m_mail_item
+end type
+type m_markasunread from menu within m_mail_item
+end type
+type m_markaslock from menu within m_mail_item
+end type
+type m_markasunlock from menu within m_mail_item
+end type
+type m_line1 from menu within m_mail_item
+end type
+type m_delete from menu within m_mail_item
+end type
+type m_movetofolder from menu within m_mail_item
+end type
+type m_inbox from menu within m_movetofolder
+end type
+type m_sentitem from menu within m_movetofolder
+end type
+type m_drafts from menu within m_movetofolder
+end type
+type m_favoriteitems from menu within m_movetofolder
+end type
+type m_historyitems from menu within m_movetofolder
+end type
+type m_deleteditems from menu within m_movetofolder
+end type
+type m_movetofolder from menu within m_mail_item
+m_inbox m_inbox
+m_sentitem m_sentitem
+m_drafts m_drafts
+m_favoriteitems m_favoriteitems
+m_historyitems m_historyitems
+m_deleteditems m_deleteditems
+end type
+type m_print from menu within m_mail_item
+end type
+type m_resetsearchresult from menu within m_mail_item
+end type
+type m_properties from menu within m_mail_item
+end type
+global type m_mail_item from menu
+m_reply m_reply
+m_replytoall m_replytoall
+m_forward m_forward
+m_line0 m_line0
+m_markasread m_markasread
+m_markasunread m_markasunread
+m_markaslock m_markaslock
+m_markasunlock m_markasunlock
+m_line1 m_line1
+m_delete m_delete
+m_movetofolder m_movetofolder
+m_print m_print
+m_resetsearchresult m_resetsearchresult
+m_properties m_properties
+end type
+end forward
+
+global type m_mail_item from menu
+m_reply m_reply
+m_replytoall m_replytoall
+m_forward m_forward
+m_line0 m_line0
+m_markasread m_markasread
+m_markasunread m_markasunread
+m_markaslock m_markaslock
+m_markasunlock m_markasunlock
+m_line1 m_line1
+m_delete m_delete
+m_movetofolder m_movetofolder
+m_print m_print
+m_resetsearchresult m_resetsearchresult
+m_properties m_properties
+end type
+global m_mail_item m_mail_item
+
+type variables
+window iw_email_folder
+
+end variables
+
+on m_mail_item.create
+m_mail_item=this
+call super::create
+this.text = "m_mail_item"
+this.m_reply=create m_reply
+this.m_replytoall=create m_replytoall
+this.m_forward=create m_forward
+this.m_line0=create m_line0
+this.m_markasread=create m_markasread
+this.m_markasunread=create m_markasunread
+this.m_markaslock=create m_markaslock
+this.m_markasunlock=create m_markasunlock
+this.m_line1=create m_line1
+this.m_delete=create m_delete
+this.m_movetofolder=create m_movetofolder
+this.m_print=create m_print
+this.m_resetsearchresult=create m_resetsearchresult
+this.m_properties=create m_properties
+this.Item[UpperBound(this.Item)+1]=this.m_reply
+this.Item[UpperBound(this.Item)+1]=this.m_replytoall
+this.Item[UpperBound(this.Item)+1]=this.m_forward
+this.Item[UpperBound(this.Item)+1]=this.m_line0
+this.Item[UpperBound(this.Item)+1]=this.m_markasread
+this.Item[UpperBound(this.Item)+1]=this.m_markasunread
+this.Item[UpperBound(this.Item)+1]=this.m_markaslock
+this.Item[UpperBound(this.Item)+1]=this.m_markasunlock
+this.Item[UpperBound(this.Item)+1]=this.m_line1
+this.Item[UpperBound(this.Item)+1]=this.m_delete
+this.Item[UpperBound(this.Item)+1]=this.m_movetofolder
+this.Item[UpperBound(this.Item)+1]=this.m_print
+this.Item[UpperBound(this.Item)+1]=this.m_resetsearchresult
+this.Item[UpperBound(this.Item)+1]=this.m_properties
+end on
+
+on m_mail_item.destroy
+call super::destroy
+destroy(this.m_reply)
+destroy(this.m_replytoall)
+destroy(this.m_forward)
+destroy(this.m_line0)
+destroy(this.m_markasread)
+destroy(this.m_markasunread)
+destroy(this.m_markaslock)
+destroy(this.m_markasunlock)
+destroy(this.m_line1)
+destroy(this.m_delete)
+destroy(this.m_movetofolder)
+destroy(this.m_print)
+destroy(this.m_resetsearchresult)
+destroy(this.m_properties)
+end on
+
+type m_reply from menu within m_mail_item
+end type
+
+on m_reply.create
+call super::create
+this.text = "Reply"
+end on
+
+on m_reply.destroy
+call super::destroy
+end on
+
+event clicked;iw_email_folder.Dynamic Event pfc_cst_reply()
+end event
+
+type m_replytoall from menu within m_mail_item
+end type
+
+event clicked;iw_email_folder.Dynamic Event pfc_cst_reply_all()
+end event
+
+on m_replytoall.create
+call super::create
+this.text = "Reply to All"
+end on
+
+on m_replytoall.destroy
+call super::destroy
+end on
+
+type m_forward from menu within m_mail_item
+end type
+
+on m_forward.create
+call super::create
+this.text = "Forward"
+end on
+
+on m_forward.destroy
+call super::destroy
+end on
+
+event clicked;iw_email_folder.Dynamic Event pfc_cst_forward()
+end event
+
+type m_line0 from menu within m_mail_item
+end type
+
+on m_line0.create
+call super::create
+this.text = "-"
+end on
+
+on m_line0.destroy
+call super::destroy
+end on
+
+type m_markasread from menu within m_mail_item
+end type
+
+on m_markasread.create
+call super::create
+this.text = "Mark as Read"
+end on
+
+on m_markasread.destroy
+call super::destroy
+end on
+
+event clicked;iw_email_folder.Dynamic Event pfc_cst_read(1)
+end event
+
+type m_markasunread from menu within m_mail_item
+end type
+
+on m_markasunread.create
+call super::create
+this.text = "Mark as Unread"
+end on
+
+on m_markasunread.destroy
+call super::destroy
+end on
+
+event clicked;iw_email_folder.Dynamic Event pfc_cst_read(0)
+end event
+
+type m_markaslock from menu within m_mail_item
+end type
+
+event clicked;iw_email_folder.Dynamic Event pfc_cst_lock(1)
+end event
+
+on m_markaslock.create
+call super::create
+this.text = "Mark as Lock"
+end on
+
+on m_markaslock.destroy
+call super::destroy
+end on
+
+type m_markasunlock from menu within m_mail_item
+end type
+
+event clicked;iw_email_folder.Dynamic Event pfc_cst_lock(0)
+end event
+
+on m_markasunlock.create
+call super::create
+this.text = "Mark as Unlock"
+end on
+
+on m_markasunlock.destroy
+call super::destroy
+end on
+
+type m_line1 from menu within m_mail_item
+end type
+
+on m_line1.create
+call super::create
+this.text = "-"
+end on
+
+on m_line1.destroy
+call super::destroy
+end on
+
+type m_delete from menu within m_mail_item
+end type
+
+on m_delete.create
+call super::create
+this.text = "Delete"
+end on
+
+on m_delete.destroy
+call super::destroy
+end on
+
+event clicked;iw_email_folder.Dynamic Event pfc_cst_delete()
+end event
+
+type m_movetofolder from menu within m_mail_item
+m_inbox m_inbox
+m_sentitem m_sentitem
+m_drafts m_drafts
+m_favoriteitems m_favoriteitems
+m_historyitems m_historyitems
+m_deleteditems m_deleteditems
+end type
+
+on m_movetofolder.create
+call super::create
+this.text = "Move to Folder"
+this.m_inbox=create m_inbox
+this.m_sentitem=create m_sentitem
+this.m_drafts=create m_drafts
+this.m_favoriteitems=create m_favoriteitems
+this.m_historyitems=create m_historyitems
+this.m_deleteditems=create m_deleteditems
+this.Item[UpperBound(this.Item)+1]=this.m_inbox
+this.Item[UpperBound(this.Item)+1]=this.m_sentitem
+this.Item[UpperBound(this.Item)+1]=this.m_drafts
+this.Item[UpperBound(this.Item)+1]=this.m_favoriteitems
+this.Item[UpperBound(this.Item)+1]=this.m_historyitems
+this.Item[UpperBound(this.Item)+1]=this.m_deleteditems
+end on
+
+on m_movetofolder.destroy
+call super::destroy
+destroy(this.m_inbox)
+destroy(this.m_sentitem)
+destroy(this.m_drafts)
+destroy(this.m_favoriteitems)
+destroy(this.m_historyitems)
+destroy(this.m_deleteditems)
+end on
+
+type m_inbox from menu within m_movetofolder
+end type
+
+on m_inbox.create
+call super::create
+this.text = "Inbox"
+end on
+
+on m_inbox.destroy
+call super::destroy
+end on
+
+event clicked;iw_email_folder.Dynamic Event pfc_cst_movetofolder(2)
+end event
+
+type m_sentitem from menu within m_movetofolder
+end type
+
+on m_sentitem.create
+call super::create
+this.text = "Sent Items"
+end on
+
+on m_sentitem.destroy
+call super::destroy
+end on
+
+event clicked;iw_email_folder.Dynamic Event pfc_cst_movetofolder(3)
+end event
+
+type m_drafts from menu within m_movetofolder
+end type
+
+on m_drafts.create
+call super::create
+this.visible = false
+this.text = "Drafts"
+end on
+
+on m_drafts.destroy
+call super::destroy
+end on
+
+event clicked;iw_email_folder.Dynamic Event pfc_cst_movetofolder(4)
+end event
+
+type m_favoriteitems from menu within m_movetofolder
+end type
+
+on m_favoriteitems.create
+call super::create
+this.text = "Favorite Items"
+end on
+
+on m_favoriteitems.destroy
+call super::destroy
+end on
+
+event clicked;iw_email_folder.Dynamic Event pfc_cst_movetofolder(5)
+end event
+
+type m_historyitems from menu within m_movetofolder
+end type
+
+on m_historyitems.create
+call super::create
+this.text = "History Items"
+end on
+
+on m_historyitems.destroy
+call super::destroy
+end on
+
+event clicked;iw_email_folder.Dynamic Event pfc_cst_movetofolder(6)
+end event
+
+type m_deleteditems from menu within m_movetofolder
+end type
+
+on m_deleteditems.create
+call super::create
+this.text = "Deleted Items"
+end on
+
+on m_deleteditems.destroy
+call super::destroy
+end on
+
+event clicked;iw_email_folder.Dynamic Event pfc_cst_movetofolder(7)
+end event
+
+type m_print from menu within m_mail_item
+end type
+
+on m_print.create
+call super::create
+this.visible = false
+this.text = "Print"
+end on
+
+on m_print.destroy
+call super::destroy
+end on
+
+type m_resetsearchresult from menu within m_mail_item
+end type
+
+event clicked;iw_email_folder.Dynamic Event pfc_cst_reset_search()
+end event
+
+on m_resetsearchresult.create
+call super::create
+this.visible = false
+this.text = "Clear Search Result"
+end on
+
+on m_resetsearchresult.destroy
+call super::destroy
+end on
+
+type m_properties from menu within m_mail_item
+end type
+
+on m_properties.create
+call super::create
+this.visible = false
+this.text = "Properties"
+end on
+
+on m_properties.destroy
+call super::destroy
+end on
+
+event clicked;iw_email_folder.Dynamic Event pfc_cst_properties()
+end event
+

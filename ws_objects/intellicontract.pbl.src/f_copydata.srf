@@ -1,0 +1,98 @@
+﻿$PBExportHeader$f_copydata.srf
+$PBExportComments$[intellicontract]
+global type f_CopyData from function_object
+end type
+
+forward prototypes
+global subroutine f_copydata (powerobject apo_source, powerobject apo_target, boolean ab_modified)
+end prototypes
+
+global subroutine f_copydata (powerobject apo_source, powerobject apo_target, boolean ab_modified);//////////////////////////////////////////////////////////////////////////////
+//
+// Function:		f_CopyData
+// 
+// Arguments:		apo_source = powerobject with source data
+// 					apo_target = powerobject target for data
+//						ab_modified = modified data only
+//
+// Returns:			None
+//
+// Description:	Update the modified columns within adw_target with data from
+//						adw_source
+//
+// Logs:
+//
+// DATE      WHO            WHAT
+// --------  ------------   ---------------
+//////////////////////////////////////////////////////////////////////////////
+
+Any				la_data, la_old
+
+DataStore		lds_target, lds_source
+
+dwItemStatus	ldws_status
+
+Long				ll_row, ll_columns, ll_column, ll_targetrow
+
+String			ls_columnname, ls_columntype, ls_syntax
+
+u_dw				ldw_target, ldw_source
+
+If Not IsValid(apo_source) Or Not IsValid(apo_target) Then Return
+
+lds_source = Create DataStore
+lds_target = Create DataStore
+
+Choose Case apo_target.TypeOf()
+	Case DataWindow!
+		ldw_target = apo_target
+		ll_targetrow = ldw_target.GetRow()
+		lds_target.DataObject = ldw_target.DataObject
+		ldw_target.ShareData(lds_target)
+	Case DataStore!
+		lds_target = apo_target
+		ll_targetrow = lds_target.GetRow()
+End Choose
+
+Choose Case apo_source.TypeOf()
+	Case DataWindow!
+		ldw_source = apo_source
+		ll_row = ldw_source.GetRow()
+		lds_source.DataObject = ldw_source.DataObject
+		ldw_source.ShareData(lds_source)
+	Case DataStore!
+		lds_source = apo_source
+		ll_row = lds_source.GetRow()
+End Choose
+
+ll_columns = Long(lds_source.Object.DataWindow.Column.Count)
+For ll_column = 1 To ll_columns
+	ls_columnname = lds_source.Describe("#" + String(ll_column) + ".Name")
+	ldws_status = lds_source.GetItemStatus(ll_row, ls_columnname, Primary!)
+	If ldws_status = DataModified! Or ldws_status = NewModified! Or Not ab_Modified Then
+		ls_columntype = lds_target.Describe(ls_columnname + ".coltype")
+		If ls_columntype <> "!" Then
+			Choose Case Mid(ls_columntype, 1, 4)
+				Case 'char'
+					la_data = lds_source.GetItemString(ll_row, ls_columnname)
+					la_old = lds_target.GetItemString(ll_targetrow, ls_columnname)
+				Case 'numb'
+					la_data = lds_source.GetItemNumber(ll_row, ls_columnname)
+					la_old = lds_target.GetItemNumber(ll_targetrow, ls_columnname)
+				Case 'date'
+					la_data = lds_source.GetItemDateTime(ll_row, ls_columnname)
+					la_old = lds_target.GetItemDateTime(ll_targetrow, ls_columnname)
+				Case 'deci'
+					la_data = lds_source.GetItemDecimal(ll_row, ls_columnname)
+					la_old = lds_target.GetItemDecimal(ll_targetrow, ls_columnname)
+			End Choose
+			// Set Data
+			If IsNull(la_old) Or IsNull(la_data) Or la_old <> la_data Then 
+				lds_target.SetItem(ll_targetrow, ls_columnname, la_data)
+			End If
+		End If
+	End If
+Next
+
+end subroutine
+

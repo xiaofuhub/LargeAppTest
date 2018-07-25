@@ -1,0 +1,47 @@
+﻿$PBExportHeader$of_reviseexpvalue.srf
+global type of_reviseexpvalue from function_object
+end type
+
+forward prototypes
+global function string of_reviseexpvalue (string as_value, string as_char)
+end prototypes
+
+global function string of_reviseexpvalue (string as_value, string as_char);//////////////////////////////////////////////////////////////////////
+// $<function>of_reviseexpvalue
+// $<arguments>
+//			string	as_value
+//			string	as_char
+// $<returns> string
+// $<description> Revise expression value
+//////////////////////////////////////////////////////////////////////
+// $<add> 03.06.2009 by Evan
+//////////////////////////////////////////////////////////////////////
+
+integer li_Len
+integer li_NewStart
+integer li_OldStart = 1
+string  ls_NewValue
+
+do while true
+	li_NewStart = PosA(as_Value, "'", li_OldStart)
+	if li_NewStart > 0 then
+		if as_Char = "'" then
+			ls_NewValue += MidA(as_Value, li_OldStart, li_NewStart - li_OldStart) + "''"
+		elseif as_Char = "~~" then
+			ls_NewValue += MidA(as_Value, li_OldStart, li_NewStart - li_OldStart) + "~~'"
+		else
+			Return ""
+		end if
+		li_OldStart = li_NewStart + 1
+	else
+		li_Len = LenA(as_Value) - li_OldStart + 1
+		if li_Len > 0 then
+			ls_NewValue += RightA(as_Value, li_Len)
+		end if
+		Exit
+	end if
+loop
+
+Return ls_NewValue
+end function
+

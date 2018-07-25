@@ -1,0 +1,80 @@
+﻿$PBExportHeader$f_signature_download.srf
+$PBExportComments$Download Electronic Signature
+global type f_signature_download from function_object
+end type
+
+forward prototypes
+global function string f_signature_download (long pracid)
+end prototypes
+
+global function string f_signature_download (long pracid);//===============================
+//$<Function> E-Sign :f_signature_download()
+// $<arguments>
+// 	value    long      pracid
+// $<returns> string
+// $<description> return the filename of electronic signature
+// $<add> (Appeon) long.zhang 07.14.2011
+//Copied from intelicred.pbl@of_photo_download() and Modified by long.zhang 06.14.2011
+//===============================
+String	ls_SignatureName,ls_Postfix, ls_PicPath
+long		ll_FileNo,ll_Cycle,ll_DataLen,ll_Count,ll_Start,ll_FileLen
+Blob		lblb_Buffer
+String	ls_Rtn
+
+long 		READ_ONE_COUNT = 8000
+
+ls_PicPath = TRIM(gnv_data.of_getitem("ids","picture_path",false))
+
+SELECT image_type INTO :ls_Postfix from pd_signature WHERE pd_signature.prac_id = :pracid ;
+if IsNull(ls_Postfix) or Trim(ls_Postfix) = "" then Return "None"
+
+gnv_appeondll.of_parsepath(ls_PicPath) //alfee 09.04.2014 - Bug #4176
+
+ls_Rtn = f_ExaWriteRight(ls_PicPath)
+if Len(ls_Rtn) > 0 then
+	MessageBox(gnv_app.iapp_object.DisplayName,ls_Rtn,Exclamation!)
+	Return "None"
+end if
+
+ls_SignatureName = ls_PicPath + "p_" + String(pracid) + "." + ls_Postfix
+if FileExists(ls_SignatureName) then ll_FileLen = FileLength(ls_SignatureName)
+
+SELECT Datalength(pd_signature.image_data)
+  INTO :ll_DataLen
+  FROM pd_signature
+ WHERE pd_signature.prac_id = :pracid ;
+
+if IsNull(ll_DataLen) or ll_DataLen <= 0 then Return "None"
+if ll_DataLen = ll_FileLen then Return ls_SignatureName
+
+ll_FileNo = FileOpen(ls_SignatureName,StreamMode!,Write!,LockReadWrite!,Replace!)
+if ll_FileNo <= 0 then Return "None"
+
+ll_Count = Ceiling(ll_DataLen/READ_ONE_COUNT)
+
+if AppeonGetClientType() = 'PB' and gs_dbtype = 'SQL' and ll_DataLen > READ_ONE_COUNT then
+	for ll_Cycle = 1 To ll_Count
+		ll_Start = (ll_Cycle - 1) * READ_ONE_COUNT + 1
+		SELECTBLOB SubString(image_data,:ll_Start,:READ_ONE_COUNT)
+		      INTO :lblb_Buffer
+		      FROM pd_signature
+		     WHERE pd_signature.prac_id = :pracid ;
+		
+		FileWrite(ll_FileNo,lblb_Buffer)
+	next
+else
+	SELECTBLOB image_data
+	      INTO :lblb_Buffer
+	      FROM pd_signature
+ 		  WHERE pd_signature.prac_id = :pracid ;
+			
+	for ll_Cycle = 1 To ll_Count
+		FileWrite(ll_FileNo,BlobMid(lblb_Buffer,(ll_Cycle - 1) * READ_ONE_COUNT + 1,READ_ONE_COUNT))
+	next
+end if
+
+FileClose(ll_FileNo)
+
+Return ls_SignatureName
+end function
+

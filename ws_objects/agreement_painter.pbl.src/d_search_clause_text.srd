@@ -1,0 +1,23 @@
+﻿$PBExportHeader$d_search_clause_text.srd
+$PBExportComments$Create by Jack 12/21/2006
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=68 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes name=ctx_acp_clause_id dbname="ctx_acp_clause.ctx_acp_clause_id" )
+ retrieve="select distinct ctx_acp_clause_id from ctx_acp_clause ,ctx_acp_clause_image
+where ctx_acp_clause.ctx_acp_clause_id = ctx_acp_clause_image.clause_id
+and   ctx_acp_clause.revision = ctx_acp_clause_image.revision
+and ( contains(ctx_acp_clause.clause_name,:as_text) or
+contains(ctx_acp_clause.description,:as_text) or
+contains(ctx_acp_clause.information_message,:as_text) or
+contains( ctx_acp_clause_image.image_file	 ,:as_text)	)" arguments=(("as_text", string)) )
+text(band=header alignment="2" text="Ctx Acp Clause Id" border="0" color="33554432" x="9" y="8" height="52" width="503" html.valueishtml="0"  name=ctx_acp_clause_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=10 border="0" color="33554432" x="9" y="8" height="64" width="503" format="[general]" html.valueishtml="0"  name=ctx_acp_clause_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

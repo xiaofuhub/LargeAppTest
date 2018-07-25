@@ -1,0 +1,43 @@
+﻿$PBExportHeader$d_rpt_ready_for_comm_old.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=468 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=88 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=char(100) updatewhereclause=yes name=facility_name dbname="facility.facility_name" )
+ column=(type=char(153) updatewhereclause=yes name=full_name dbname="v_full_name.full_name" )
+ column=(type=datetime updatewhereclause=yes name=pd_affil_stat_apptmnt_start_date dbname="pd_affil_stat.apptmnt_start_date" )
+ column=(type=datetime updatewhereclause=yes name=pd_affil_stat_apptmnt_end_date dbname="pd_affil_stat.apptmnt_end_date" )
+ column=(type=datetime updatewhereclause=yes name=verification_completed dbname="pd_affil_stat.date_verif_completed" )
+ column=(type=datetime updatewhereclause=yes name=date_app_signed dbname="pd_affil_stat.date_app_signed" )
+ column=(type=datetime updatewhereclause=yes name=pd_affil_stat_date_rls_form_exp dbname="pd_affil_stat.date_rls_form_exp" )
+ retrieve="PBSELECT( VERSION(400) DISTINCT ()TABLE(NAME=~"pd_affil_stat~" )  TABLE(NAME=~"v_full_name~" )  TABLE(NAME=~"facility~" ) COLUMN(NAME=~"facility.facility_name~") COLUMN(NAME=~"v_full_name.full_name~") COLUMN(NAME=~"pd_affil_stat.apptmnt_start_date~") COLUMN(NAME=~"pd_affil_stat.apptmnt_end_date~") COLUMN(NAME=~"pd_affil_stat.date_verif_completed~") COLUMN(NAME=~"pd_affil_stat.date_app_signed~") COLUMN(NAME=~"pd_affil_stat.date_rls_form_exp~")    JOIN (LEFT=~"pd_affil_stat.parent_facility_id~"    OP =~"=~"RIGHT=~"facility.facility_id~" )    JOIN (LEFT=~"pd_affil_stat.prac_id~"    OP =~"=~"RIGHT=~"v_full_name.prac_id~" )WHERE(    EXP1 =~"( pd_affil_stat.active_status~"   OP =~"=~"    EXP2 =~"1 )~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"(pd_affil_stat.date_verif_completed~"   OP =~"is not~"    EXP2 =~"Null)~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"pd_affil_stat.apptmnt_start_date~"   OP =~"is~"    EXP2 =~"NULL~" ) ) "  sort="facility_name A date_app_signed A " )
+line(band=header x1="64" y1="44" x2="3337" y2="44" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+line(band=header x1="64" y1="80" x2="3337" y2="80" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+compute(band=header alignment="0" expression="today()"border="0" color="0" x="73" y="92" height="76" width="407" format="mm/dd/yyyy"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+line(band=header x1="64" y1="268" x2="3337" y2="268" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+line(band=header x1="64" y1="308" x2="3337" y2="308" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+text(band=header alignment="2" text="Applications Ready for Committee"border="0" color="0" x="1303" y="100" height="80" width="1074"  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="2" text=""border="0" color="0" x="1440" y="192" height="64" width="791"  name=exp_dates  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="2" expression="DaysAfter(Today(),  pd_affil_stat_apptmnt_end_date )"border="0" color="0" x="3675" y="524" height="64" width="215" format="[general]"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="0" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="0" x="2834" y="96" height="72" width="498" format="[general]"  name=page  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Facility Name"border="0" color="0" x="82" y="400" height="64" width="407"  name=facility_name_t  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Full Name"border="0" color="0" x="1001" y="400" height="64" width="302"  name=full_name_t  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Date
+
+Verification Complete"border="0" color="0" x="1797" y="336" height="128" width="562"  name=start_date_t  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Date
+
+Application Signed"border="0" color="0" x="2363" y="336" height="128" width="549"  name=date_app_signed_t  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Days Since
+
+App. Signiture"border="0" color="0" x="2926" y="336" height="128" width="411"  name=days_since_signiture_t  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="82" y="4" height="64" width="901" format="[general]"  name=facility_name edit.limit=100 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1006" y="4" height="64" width="791" format="[general]"  name=full_name edit.limit=83 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="1906" y="4" height="64" width="320" format="mm/dd/yyyy"  name=verification_completed edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="2469" y="4" height="64" width="357" format="mm/dd/yyyy"  name=date_app_signed edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression=" DaysAfter( date_app_signed ,  today()) "border="0" color="0" x="3086" y="4" height="64" width="183" format="[general]"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=footer alignment="0" text="Facility:"border="0" color="0" x="73" y="8" height="64" width="197"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=footer alignment="0" text=""border="0" color="0" x="302" y="8" height="64" width="2843"  name=selected_facility_t  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,8 @@
+﻿$PBExportHeader$aeg_generator.srj
+EXE:Group Location Generator.exe,,0,1
+CMP:0,0,0,2,0,0
+PBD:c:\development\utilities.pbl,,0
+OBJ:c:\development\utilities.pbl,w_addr_export_group,w
+OBJ:c:\development\utilities.pbl,utilities,a
+OBJ:c:\development\utilities.pbl,d_aeg_address_list,d
+OBJ:c:\development\utilities.pbl,d_aeg_grp_import_list,d

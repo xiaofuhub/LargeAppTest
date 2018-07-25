@@ -1,0 +1,35 @@
+﻿$PBExportHeader$d_wf_dddw_screen_intellicontract.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=68 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=screen_id dbname="ctx_tabpage_screen.screen_id" )
+ column=(type=char(506) update=yes updatewhereclause=yes name=screen_name dbname="screen_name" )
+ column=(type=char(32766) updatewhereclause=no name=dw_sql dbname="ctx_screen.dw_sql" )
+ retrieve="SELECT A.screen_id as screen_id,
+		 CASE WHEN IsNull(H.text,G.default_text) Is Null THEN '' ELSE IsNull(H.text,G.default_text) + '->' END + 
+		 CASE WHEN IsNull(F.text,E.default_text) Is Null THEN '' ELSE IsNull(F.text,E.default_text) + '->' END + 
+		 Case WHEN IsNull(D.text,C.default_text) Is Null THEN '' ELSE IsNull(D.text,C.default_text) + '->' END + 
+		 Case WHEN IsNull(B.titlebar_text,A.default_text) is null THEN '' ELSE IsNull(B.titlebar_text,A.default_text) END as screen_name,
+		 B.dw_sql as dw_sql
+  FROM ctx_tabpage_screen A LEFT OUTER JOIN ctx_screen B ON (A.screen_id = B.screen_id AND B.data_view_id = :al_view_id)
+									 LEFT OUTER JOIN ctx_tabpage_screen C ON A.parent_id = C.ts_id
+									 LEFT OUTER JOIN ctx_tabpage_properties D ON (C.tabpage_name = D.tabpage_name AND D.data_view_id = :al_view_id)
+									 LEFT OUTER JOIN ctx_tabpage_screen E ON C.parent_id = E.ts_id
+									 LEFT OUTER JOIN ctx_tabpage_properties F ON (E.tabpage_name = F.tabpage_name AND F.data_view_id = :al_view_id)
+									 LEFT OUTER JOIN ctx_tabpage_screen G ON E.parent_id = G.ts_id
+									 LEFT OUTER JOIN ctx_tabpage_properties H ON (G.tabpage_name = H.tabpage_name AND H.data_view_id = :al_view_id)
+ WHERE A.screen_id is not null and B.data_view_id is not null and 
+		(C.tabpage_name = 'tabpage_details' or E.tabpage_name = 'tabpage_details' or G.tabpage_name = 'tabpage_details' or 
+		C.tabpage_name = 'tabpage_action_items' or E.tabpage_name = 'tabpage_action_items' or G.tabpage_name = 'tabpage_action_items' or
+		C.tabpage_name = 'tabpage_fee_sched2' or E.tabpage_name = 'tabpage_fee_sched2' or G.tabpage_name = 'tabpage_fee_sched2')
+" arguments=(("al_view_id", number)) )
+text(band=header alignment="2" text="Screen Name" border="0" color="33554432" x="9" y="8" height="52" width="1029" html.valueishtml="0"  name=screen_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=10 border="0" color="33554432" x="9" y="8" height="64" width="1029" format="[general]" html.valueishtml="0"  name=screen_name visible="1" edit.limit=255 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

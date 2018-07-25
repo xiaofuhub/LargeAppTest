@@ -1,0 +1,229 @@
+﻿$PBExportHeader$m_copy_data_in_different_database.srm
+forward
+global type m_copy_data_in_different_database from menu
+end type
+type m_copy_security_role from menu within m_copy_data_in_different_database
+end type
+type m_copyview from menu within m_copy_data_in_different_database
+end type
+type m_copyusers from menu within m_copy_data_in_different_database
+end type
+type m_copyreportwriter from menu within m_copy_data_in_different_database
+end type
+type m_copylookupdata from menu within m_copy_data_in_different_database
+end type
+global type m_copy_data_in_different_database from menu
+m_copy_security_role m_copy_security_role
+m_copyview m_copyview
+m_copyusers m_copyusers
+m_copyreportwriter m_copyreportwriter
+m_copylookupdata m_copylookupdata
+end type
+end forward
+
+global type m_copy_data_in_different_database from menu
+m_copy_security_role m_copy_security_role
+m_copyview m_copyview
+m_copyusers m_copyusers
+m_copyreportwriter m_copyreportwriter
+m_copylookupdata m_copylookupdata
+end type
+global m_copy_data_in_different_database m_copy_data_in_different_database
+
+on m_copy_data_in_different_database.create
+m_copy_data_in_different_database=this
+call super::create
+this.text = "m_copy_data_in_different_database"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_copy_security_role=create m_copy_security_role
+this.m_copyview=create m_copyview
+this.m_copyusers=create m_copyusers
+this.m_copyreportwriter=create m_copyreportwriter
+this.m_copylookupdata=create m_copylookupdata
+this.Item[UpperBound(this.Item)+1]=this.m_copy_security_role
+this.Item[UpperBound(this.Item)+1]=this.m_copyview
+this.Item[UpperBound(this.Item)+1]=this.m_copyusers
+this.Item[UpperBound(this.Item)+1]=this.m_copyreportwriter
+this.Item[UpperBound(this.Item)+1]=this.m_copylookupdata
+end on
+
+on m_copy_data_in_different_database.destroy
+call super::destroy
+destroy(this.m_copy_security_role)
+destroy(this.m_copyview)
+destroy(this.m_copyusers)
+destroy(this.m_copyreportwriter)
+destroy(this.m_copylookupdata)
+end on
+
+type m_copy_security_role from menu within m_copy_data_in_different_database
+end type
+
+on m_copy_security_role.create
+call super::create
+this.text = "Copy Security &Role"
+this.shortcut = 768
+this.toolbaritemvisible = false
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_copy_security_role.destroy
+call super::destroy
+end on
+
+event clicked;OpenWithParm(w_Copy_role,"")
+end event
+
+type m_copyview from menu within m_copy_data_in_different_database
+end type
+
+on m_copyview.create
+call super::create
+this.text = "Copy &View and Screen"
+this.shortcut = 768
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_copyview.destroy
+call super::destroy
+end on
+
+event clicked;OpenWithParm(w_CopyView,"")
+
+end event
+
+type m_copyusers from menu within m_copy_data_in_different_database
+end type
+
+on m_copyusers.create
+call super::create
+this.text = "Copy &Users"
+this.shortcut = 768
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_copyusers.destroy
+call super::destroy
+end on
+
+event clicked;OpenWithParm(w_Copyusers,"")
+end event
+
+type m_copyreportwriter from menu within m_copy_data_in_different_database
+end type
+
+on m_copyreportwriter.create
+call super::create
+this.text = "Copy Report &Writer"
+this.shortcut = 768
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_copyreportwriter.destroy
+call super::destroy
+end on
+
+event clicked;OpenWithParm(w_Copy_reportwriter,"")
+end event
+
+type m_copylookupdata from menu within m_copy_data_in_different_database
+end type
+
+on m_copylookupdata.create
+call super::create
+this.text = "Copy &Lookup Data"
+this.shortcut = 768
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_copylookupdata.destroy
+call super::destroy
+end on
+
+event clicked;OpenWithParm(w_copy_lookup_data,'')
+end event
+

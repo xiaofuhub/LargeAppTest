@@ -1,0 +1,35 @@
+﻿$PBExportHeader$of_trigger_workflow_app_actions.srf
+global type of_trigger_workflow_app_actions from function_object
+end type
+
+forward prototypes
+global function integer of_trigger_workflow_app_actions (str_action_item istr_action[])
+end prototypes
+
+global function integer of_trigger_workflow_app_actions (str_action_item istr_action[]);//Start Code Change ----12.07.2016 #V153 maha - added - from pfc_cst
+long ll_i,ll_count
+n_cst_workflow_triggers    lnv_trigger
+str_action_item lstr_action[]
+
+//lstr_action = astr_action
+
+If not gb_workflow Then return 1
+lnv_trigger = create n_cst_workflow_triggers
+
+ll_count = UpperBound(lstr_action)
+
+For ll_i = 1 to ll_count
+	if lstr_action[ll_i].status_changed_flag then
+		lnv_trigger.of_status_changed( lstr_action[ll_i])
+	end if
+Next
+
+//Create Work Flow By Action Item Changed
+lnv_trigger.of_workflow_triggers(lstr_action)   
+
+
+destroy lnv_trigger
+
+return 1
+end function
+

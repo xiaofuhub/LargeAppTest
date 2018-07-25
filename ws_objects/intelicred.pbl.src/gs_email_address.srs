@@ -1,0 +1,6 @@
+﻿$PBExportHeader$gs_email_address.srs
+global type gs_email_address from structure
+	string		s_email[]
+	string		s_type[]
+end type
+

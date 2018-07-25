@@ -1,0 +1,54 @@
+﻿$PBExportHeader$ds_cpt_not_existing.srd
+$PBExportComments$[INTELLICONTRACT]
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=120 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=ctx_cpt_codes_cpt_code_id dbname="CTX_CPT_CODES.cpt_code_id" )
+ column=(type=char(10) updatewhereclause=yes name=ctx_cpt_codes_cpt_code dbname="CTX_CPT_CODES.cpt_code" )
+ column=(type=char(4099) updatewhereclause=yes name=ctx_cpt_codes_cpt_code_description dbname="CTX_CPT_CODES.cpt_code_description" )
+ column=(type=decimal(0) updatewhereclause=yes name=ctx_cpt_codes_base_price dbname="CTX_CPT_CODES.base_price" )
+ column=(type=long updatewhereclause=yes name=ctx_cpt_code_item_item_id dbname="CTX_CPT_CODE_ITEM.item_id" )
+ column=(type=long updatewhereclause=yes name=ctx_cpt_code_item_cpt_code_id dbname="CTX_CPT_CODE_ITEM.cpt_code_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=ctx_cpt_code_item_location_price dbname="CTX_CPT_CODE_ITEM.location_price" )
+ column=(type=long updatewhereclause=yes name=selected dbname="selected" )
+ retrieve="SELECT  ctx_cpt_codes.cpt_code_id ,
+           ctx_cpt_codes.cpt_code ,
+           ctx_cpt_codes.cpt_code_description ,
+           ctx_cpt_codes.base_price ,
+           ctx_cpt_code_item.item_id ,
+           ctx_cpt_code_item.cpt_code_id ,
+           ctx_cpt_code_item.location_price ,
+           0 selected 
+        FROM ctx_cpt_codes LEFT OUTER JOIN ctx_cpt_code_item ON ctx_cpt_codes.cpt_code_id = ctx_cpt_code_item.cpt_code_id     
+        WHERE (ctx_cpt_code_item.item_id = :AL_ITEM_ID) or          (ctx_cpt_code_item.item_id IS NULL)   " arguments=(("AL_ITEM_ID", number)) )
+text(band=header alignment="2" text="Ctx Cpt Codes
+Cpt Code Id" border="0" color="33554432" x="9" y="8" height="104" width="306" html.valueishtml="0"  name=ctx_cpt_codes_cpt_code_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Cpt Codes
+Cpt Code" border="0" color="33554432" x="325" y="8" height="104" width="306" html.valueishtml="0"  name=ctx_cpt_codes_cpt_code_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Cpt Codes
+Cpt Code Description" border="0" color="33554432" x="640" y="8" height="104" width="4389" html.valueishtml="0"  name=ctx_cpt_codes_cpt_code_description_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Cpt Codes
+Base Price" border="0" color="33554432" x="5038" y="8" height="104" width="306" html.valueishtml="0"  name=ctx_cpt_codes_base_price_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Cpt Code Item
+Item Id" border="0" color="33554432" x="5353" y="8" height="104" width="389" html.valueishtml="0"  name=ctx_cpt_code_item_item_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Cpt Code Item
+Cpt Code Id" border="0" color="33554432" x="5751" y="8" height="104" width="389" html.valueishtml="0"  name=ctx_cpt_code_item_cpt_code_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Cpt Code Item
+Location Price" border="0" color="33554432" x="6149" y="8" height="104" width="389" html.valueishtml="0"  name=ctx_cpt_code_item_location_price_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Selected" border="0" color="33554432" x="6546" y="8" height="52" width="274" html.valueishtml="0"  name=selected_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="33554432" x="9" y="8" height="64" width="306" format="[general]" html.valueishtml="0"  name=ctx_cpt_codes_cpt_code_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="325" y="8" height="64" width="306" format="[general]" html.valueishtml="0"  name=ctx_cpt_codes_cpt_code visible="1" edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="640" y="8" height="64" width="4389" format="[general]" html.valueishtml="0"  name=ctx_cpt_codes_cpt_code_description visible="1" edit.limit=2000 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="1" tabsequence=32766 border="0" color="33554432" x="5038" y="8" height="64" width="306" format="[general]" html.valueishtml="0"  name=ctx_cpt_codes_base_price visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="33554432" x="5353" y="8" height="64" width="389" format="[general]" html.valueishtml="0"  name=ctx_cpt_code_item_item_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="1" tabsequence=32766 border="0" color="33554432" x="5751" y="8" height="64" width="389" format="[general]" html.valueishtml="0"  name=ctx_cpt_code_item_cpt_code_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="1" tabsequence=32766 border="0" color="33554432" x="6149" y="8" height="64" width="389" format="[general]" html.valueishtml="0"  name=ctx_cpt_code_item_location_price visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="1" tabsequence=32766 border="0" color="33554432" x="6546" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=selected visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

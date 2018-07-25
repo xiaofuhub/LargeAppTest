@@ -1,0 +1,84 @@
+﻿$PBExportHeader$f_combine_file.srf
+global type f_combine_file from function_object
+end type
+
+forward prototypes
+global function integer f_combine_file (string as_infile[], ref string as_outfile, string as_type)
+end prototypes
+
+global function integer f_combine_file (string as_infile[], ref string as_outfile, string as_type);//////////////////////////////////////////////////////////////////////
+// $<function> of_combine_file
+// $<arguments>
+// $<returns> integer
+// $<description>combine the files into a single PDF file (V12.1 Fax modification)
+//////////////////////////////////////////////////////////////////////
+// $<add> 11.28.2011 by Stephen
+//////////////////////////////////////////////////////////////////////
+integer li_set
+
+Integer li_cnt, li_entries
+String ls_import
+String ls_currdir
+long ll_i
+n_cst_filesrvwin32 lnv_filesrv
+
+if gi_citrix = 1 then return -1 //(Appeon)Stephen 02.21.2014 - citrix user
+li_set = gds_settings.GetItemNumber(1,'set_67')
+if  isnull(li_set) or li_set <> 1 then return -1
+
+//------------------- APPEON BEGIN -------------------
+//$<add> Stephen 11.20.2012
+//$<reason> Bug 3316 -Issues with Faxing combine
+n_cst_dirattrib lnv_dirlist[]
+lnv_filesrv = create n_cst_filesrvwin32
+
+if  DirectoryExists(gs_temp_path + "faxcombine") then  //add by stephen 01.11.2013 -Fax attachment combine issue
+	ls_currdir = gs_temp_path + "faxcombine\*.*"
+	
+	//------------------- APPEON BEGIN -------------------
+	//$<delete> Stephen 01.11.2013
+	//$<reason> Fax attachment combine issue
+	/*
+	IF NOT lnv_filesrv.of_DirectoryExists (ls_currdir) THEN
+			 lnv_filesrv.of_CreateDirectory (ls_currdir)
+	END IF
+	*/
+	//------------------- APPEON END -------------------
+	
+	li_entries = lnv_filesrv.of_DirList(ls_currdir, 0, lnv_dirlist)
+	if li_entries = -1 then 
+		destroy lnv_filesrv
+		return -1
+	end if
+	
+	for ll_i = 1 to upperbound(lnv_dirlist)
+		if FileDelete ( gs_temp_path + "faxcombine\" + lnv_dirlist[ll_i].is_filename )<> true then 
+			destroy lnv_filesrv
+			return -1
+		end if
+	next
+else
+	//------------------- APPEON BEGIN -------------------
+	//$<add> Stephen 01.11.2013
+	//$<reason> Fax attachment combine issue
+	ls_currdir = gs_temp_path + "faxcombine"
+	IF NOT lnv_filesrv.of_DirectoryExists (ls_currdir) THEN
+		lnv_filesrv.of_CreateDirectory (ls_currdir)
+	END IF
+	//------------------- APPEON END -------------------
+end if
+destroy lnv_filesrv
+//------------------- APPEON END -------------------
+
+li_set = gds_settings.GetItemNumber(1,'set_67')
+if  isnull(li_set) or li_set <> 1 then return -1
+if not isvalid(w_letter_combine) then open(w_letter_combine)
+w_letter_combine.is_type = as_type
+if w_letter_combine.dynamic of_combine_file(as_infile, as_outfile) < 1 then
+	close(w_letter_combine)
+	return -1
+end if
+close(w_letter_combine)
+return 1
+end function
+

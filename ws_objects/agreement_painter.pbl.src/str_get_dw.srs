@@ -1,0 +1,7 @@
+﻿$PBExportHeader$str_get_dw.srs
+global type str_get_dw from structure
+	string		ls_dw_name
+	string		ls_value_col
+	string		ls_current_value
+end type
+

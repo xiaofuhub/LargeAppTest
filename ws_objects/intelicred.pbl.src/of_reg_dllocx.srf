@@ -1,0 +1,296 @@
+﻿$PBExportHeader$of_reg_dllocx.srf
+global type of_reg_dllocx from function_object
+end type
+
+forward prototypes
+global function integer of_reg_dllocx ()
+end prototypes
+
+global function integer of_reg_dllocx ();/* Ken.Guo 2008-11-06. Modification Log: 
+1. Register OCX when every login. 
+2. Unite return error info.
+*/
+
+n_cst_reg_control lnv_reg //(V12.3 Cab)alfee 04.14.2013
+
+//IF appeongetclienttype() = 'WEB' THEN RETURN 0  //Uncommented by alfee 02.28.2013 (V12.3 Cab)
+IF appeongetclienttype() = 'WEB' THEN RETURN lnv_reg.of_upgrade_ocxs()	//(V12.3 Cab)alfee 04.14.2013
+
+//Registry dll & ocx files - Added by alfee 08.17.2007
+Integer i //Alfee 05.19.2008
+long     ll_ie_version
+string   ls_ie1, ls_ie2, ls_ie3, ls_ie4, ls_ie
+String ls_Key, ls_File, ls_Value, ls_run
+String ls_KeyImg[], ls_FileImg[], ls_valueImg[] //Alfee 06.26.2008
+String ls_error, ls_error_all, ls_module_name
+String ls_error_img //alfee 03.20.2013
+String ls_es_ocx_names[], ls_error_7  //(Appeon)Alfee 06.26.2013 - V141 ISG-CLX
+
+n_cst_systeminfo lnv_sysinfo //(Appeon)Alfee 06.26.2013 - V141 ISG-CLX
+n_cst_AppeonDll	lnv_Appeon
+
+//Check dll & ocx controls (V12.1 Web Component) - Alfee 04.23.2012
+If appeongetclienttype() = "WEB" and Not gb_AutoDwnReg Then
+	If gnv_reg_ocx.of_check_ocx( 1,'', False) <> '' or gnv_reg_ocx.of_check_ocx( 2,'', False) <> '' or gnv_reg_ocx.of_check_ocx( 4,'', False) <> '' Then 
+		Halt Close
+	End If
+	Return 1
+End If
+
+//Download OCX control files (V12.1 Web Component) - Alfee 04.21.2012
+If appeongetclienttype() = 'WEB' and gb_AutoDwnReg Then
+	If Not gnv_reg_ocx.of_isDownload_ocx() Then
+		If Not gnv_reg_ocx.of_download_ocx() Then Return -1
+	End If
+End If
+
+//Register OCX Controls
+If gnv_reg_ocx.of_check_ocx( 1,'', False) <> '' Then
+	ls_error =  gnv_reg_ocx.of_check_ocx_extra(1) //Extra checking - (Appeon)Alfee 07.22.2013 - V141 ISG-CLX
+	If ls_error <> '' Then //Add if statement - (Appeon)Alfee 07.22.2013
+		ls_error = gnv_reg_ocx.of_Register("OfficeControl.ocx", false)		
+	End If
+	
+	If ls_error <> '' Then
+		ls_module_name += gnv_reg_ocx.is_module_name[1] + ' & ' //1: Office Module
+		ls_error_all += ls_error + ', '
+	Else
+		gnv_reg_ocx.of_reset_check_result(1) //Alfee 03.20.2013
+	End If
+End If
+
+// check register for word2013 and above
+of_reg_office() //(Appeon) Added by Harry 08.31.2016
+
+If gnv_reg_ocx.of_check_ocx( 2,'', False) <> '' Then
+	ls_error = gnv_reg_ocx.of_Register("emsmtp.dll", false)
+	If ls_error <> '' Then
+		ls_module_name += gnv_reg_ocx.is_module_name[2] + ' & ' //2: Email Module
+		ls_error_all += ls_error + ', '
+	Else
+		gnv_reg_ocx.of_reset_check_result(2) //Alfee 03.20.2013
+	End If
+End If
+
+//---------Begin Added by (Appeon)Alfee 06.26.2013 for V141 ISG-CLX--------
+If gnv_reg_ocx.of_check_ocx( 5,'', False) <> '' Then
+	ls_error = gnv_reg_ocx.of_Register("empop3.dll", false)
+	If ls_error <> '' Then
+		ls_module_name += gnv_reg_ocx.is_module_name[5] + ' & ' //5: Email Pop3 Module
+		ls_error_all += ls_error + ', '		
+	Else
+		gnv_reg_ocx.of_reset_check_result(4)
+	End If
+End If
+
+If gnv_reg_ocx.of_check_ocx( 6,'', False) <> '' Then
+	ls_error = gnv_reg_ocx.of_Register("emmsg.dll", false)
+	If ls_error <> '' Then
+		ls_module_name += gnv_reg_ocx.is_module_name[6] + ' & ' //6: Email Pop3 Message Module
+		ls_error_all += ls_error + ', '		
+	Else
+		gnv_reg_ocx.of_reset_check_result(6)		
+	End If
+End If
+
+If gnv_reg_ocx.of_check_ocx( 8,'', False) <> '' Then
+	ls_error = gnv_reg_ocx.of_Register("emssl.dll", false)
+	If ls_error <> '' Then
+		ls_module_name += gnv_reg_ocx.is_module_name[8] + ' & ' //8: Email SSL
+		ls_error_all += ls_error + ', '
+	Else
+		gnv_reg_ocx.of_reset_check_result(8)		
+	End If
+End If
+//---------Begin Added by (Appeon)Harry 03.18.2014 for V142 ISG-CLX--------
+//added by gavins 20121122
+If gnv_reg_ocx.of_check_ocx( 9,'', False) <> '' Then
+	ls_error = gnv_reg_ocx.of_Register("emimap4.dll", false)
+	If ls_error <> '' Then
+		ls_module_name += gnv_reg_ocx.is_module_name[9] + ' & ' //9: Email imap4
+		ls_error_all += ls_error + ', '		
+	End If
+End If
+//---------End Added ------------------------------------------------------
+If gnv_reg_ocx.of_check_ocx( 7,'', False) <> '' Then
+	ls_es_ocx_names[1] = "MSSOAP30.dll"
+	ls_es_ocx_names[2] = "msxml4.dll"
+	ls_es_ocx_names[3] = "WHSC30.dll"
+	ls_es_ocx_names[4] = "WINHTTP5.dll" 
+	ls_es_ocx_names[5] = "WISC30.dll" 	
+	FOR i = 1 to UpperBound(ls_es_ocx_names[])
+		ls_error = gnv_reg_ocx.of_Register(ls_es_ocx_names[i], false)
+		If ls_error <> '' Then
+			If Pos(ls_module_name,gnv_reg_ocx.is_module_name[7],1) = 0 Then 
+				ls_module_name += gnv_reg_ocx.is_module_name[7] + ' & '  //7. Sertifi reg
+			End If
+			ls_error_7 += ls_error + ', ' 
+			ls_error_all += ls_error + ', '
+		End If		
+	NEXT
+	IF ls_error_7 = '' THEN gnv_reg_ocx.of_reset_check_result(7)	
+End If
+//---------End Added ------------------------------------------------------------------
+
+//---------Begin Added by alfee 05.13.2016 -----------------------------
+If gnv_reg_ocx.of_check_ocx( 10,'', False) <> '' Then
+	ls_error = gnv_reg_ocx.of_Register("EAGetMailObj.dll", false)
+	If ls_error <> '' Then
+		ls_module_name += gnv_reg_ocx.is_module_name[10] + ' & ' //10: EAGetMailObj
+		ls_error_all += ls_error + ', '
+	Else
+		gnv_reg_ocx.of_reset_check_result(10)		
+	End If
+End If
+
+If gnv_reg_ocx.of_check_ocx( 11,'', False) <> '' Then
+	ls_error = gnv_reg_ocx.of_Register("EASendMailObj.dll", false)
+	If ls_error <> '' Then
+		ls_module_name += gnv_reg_ocx.is_module_name[11] + ' & ' //11: EASendMailObj
+		ls_error_all += ls_error + ', '
+	Else
+		gnv_reg_ocx.of_reset_check_result(11)		
+	End If
+End If
+//---------End Added ------------------------------------------------------
+
+//------------------- APPEON BEGIN -------------------
+//<$>added:long.zhang 07.23.2015
+//<$>reason:v15.1 CAQH Roster Automation
+If gnv_reg_ocx.of_check_ocx( 12,'', False) <> '' Then
+	ls_error = gnv_reg_ocx.of_Register("wodFtpDLX.dll", false)
+	If ls_error <> '' Then
+		ls_module_name += gnv_reg_ocx.is_module_name[12] + ' & ' //12: FTP
+		ls_error_all += ls_error + ', '
+	Else
+		gnv_reg_ocx.of_reset_check_result(12)		
+	End If
+End If
+
+If gnv_reg_ocx.of_check_ocx( 13,'', False) <> '' Then
+	ls_error = gnv_reg_ocx.of_Register("wodHttp.ocx", false)
+	If ls_error <> '' Then
+		ls_module_name += gnv_reg_ocx.is_module_name[13] + ' & ' //13: HTTP
+		ls_error_all += ls_error + ', '
+	Else
+		gnv_reg_ocx.of_reset_check_result(13)		
+	End If
+End If
+//------------------- APPEON END -------------------
+
+//Register New Image OCXs
+string ls_Controls[]
+ls_Controls[1] = "ImageViewer2.OCX"
+ls_Controls[2] = "ImageThumbnailCP.ocx"
+ls_Controls[3] = "Scanner.ocx"
+ls_FileImg[1] = Gs_Current_Directory + '\ImageViewer2.OCX'
+ls_FileImg[2] = Gs_Current_Directory + '\ImageThumbnailCP.ocx'
+ls_FileImg[3] = Gs_Current_Directory + '\Scanner.ocx'
+
+//---------Begin Modified by Alfee 03.19.2013 (V12.3 Cab)------------------------
+//ls_KeyImg[1] = "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{C9460280-3EED-11D0-A647-00A0C91EF7B9}\1.0\0\win32"
+//ls_KeyImg[2] = "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{51F37CDE-2D78-495D-8B30-D57ABDA60369}\1.0\0\win32"
+//ls_KeyImg[3] = "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{20666F83-3F1D-4211-9DBF-2FF783A18E18}\InprocServer32"
+ls_KeyImg[1] = "HKEY_CLASSES_ROOT\TypeLib\{C9460280-3EED-11D0-A647-00A0C91EF7B9}\1.0\0\win32"
+ls_KeyImg[2] = "HKEY_CLASSES_ROOT\TypeLib\{51F37CDE-2D78-495D-8B30-D57ABDA60369}\1.0\0\win32"
+ls_KeyImg[3] = "HKEY_CLASSES_ROOT\CLSID\{20666F83-3F1D-4211-9DBF-2FF783A18E18}\InprocServer32"
+//---------End Modified ---------------------------------------------------------------
+
+ls_valueImg[1] = "C:\Program Files\Image Viewer CP Gold ActiveX Control\ImageViewer2.OCX"
+ls_valueImg[2] = "C:\Program Files\Image Thumbnail CP ActiveX Control\ImageThumbnailCP.ocx"
+ls_valueImg[3] = "C:\PROGRA~~1\SCANNE~~1\Scanner.ocx"
+
+If gnv_reg_ocx.of_check_ocx( 4,'', False) <> '' Then
+	FOR i = 1 to UpperBound(ls_FileImg)
+		lnv_Appeon.of_registryget(ls_KeyImg[i],"", RegString!, ls_Value)
+		IF lower(ls_Value) = lower(ls_valueImg[i]) AND FileExists(ls_valueImg[i]) THEN Continue //for developer only - Alfee 06.26.2008
+		ls_error = gnv_reg_ocx.of_Register(ls_Controls[i], false)
+		If ls_error <> '' Then
+			If PosA(ls_module_name,gnv_reg_ocx.is_module_name[4],1) = 0 Then 
+				ls_module_name += gnv_reg_ocx.is_module_name[4] + ' & '  //4: New Imaging module
+			End If
+			ls_error_all += ls_error + ', '
+			ls_error_img += ls_error + ', '  //alfee 03.20.2013	
+		End If		
+	NEXT
+
+	IF ls_error_img = '' THEN gnv_reg_ocx.of_reset_check_result(4) //Alfee 03.20.2013 	
+End If
+
+//------------------- APPEON BEGIN -------------------
+//$<add> Stephen 11.22.2012
+//$<reason> Problems mapping web form for Women's Care Florida.
+long ll_ret
+ulong ll_tst
+If appeongetclienttype() <> 'WEB'Then
+	ll_ret = RegistryGet("HKEY_LOCAL_MACHINE\Software\Microsoft\Internet Explorer\MAIN\FeatureControl\FEATURE_USE_WINDOWEDSELECTCONTROL","PB115.EXE",regulong!,ll_tst)
+	if ll_ret <> 1 or ll_tst <>1  then
+		ll_tst = 1
+		RegistrySet("HKEY_LOCAL_MACHINE\Software\Microsoft\Internet Explorer\MAIN\FeatureControl\FEATURE_USE_WINDOWEDSELECTCONTROL","PB115.EXE",regulong!,ll_tst)
+	end if	
+	
+	//for intellicred.exe - Alfee 02.16.2013	
+	ll_ret = RegistryGet("HKEY_LOCAL_MACHINE\Software\Microsoft\Internet Explorer\MAIN\FeatureControl\FEATURE_USE_WINDOWEDSELECTCONTROL","INTELLICRED.EXE",regulong!,ll_tst)
+	if ll_ret <> 1 or ll_tst <> 1 then
+		ll_tst = 1
+		RegistrySet("HKEY_LOCAL_MACHINE\Software\Microsoft\Internet Explorer\MAIN\FeatureControl\FEATURE_USE_WINDOWEDSELECTCONTROL","INTELLICRED.EXE",regulong!,ll_tst)
+	end if
+	
+	//------------------- APPEON BEGIN -------------------
+	//<$>added:long.zhang 09.07.2017
+	//<$>reason:Set FEATURE_BROWSER_EMULATION for MS WEB Browser  OLE  Control, uses IE8 (8000) instead of IE7.
+	//---------Begin Added by (Appeon)Stephen 09.29.2017 for Unsupported browser Case#73181 Bug_id#5809--------
+	gnv_appeondll.of_registryget( 'HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Internet Explorer','svcVersion', ls_ie1)
+	gnv_appeondll.of_registryget( 'HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Internet Explorer','version', ls_ie2)
+	gnv_appeondll.of_registryget( 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer','svcVersion', ls_ie3)
+	gnv_appeondll.of_registryget( 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer','Version', ls_ie4)
+	If ls_ie1 <> '' and ls_ie = '' Then ls_ie = ls_ie1
+	If ls_ie2 <> '' and ls_ie = '' Then ls_ie = ls_ie2
+	If ls_ie3 <> '' and ls_ie = '' Then ls_ie = ls_ie3
+	If ls_ie4 <> '' and ls_ie = '' Then ls_ie = ls_ie4
+	If isnull(ls_ie) or trim(ls_ie ) = '' Then 
+		ll_ie_version = 8000		
+	else
+		choose case left(ls_ie, pos(ls_ie, '.') -1)
+			case '11'
+				ll_ie_version = 11000
+			case '10'
+				ll_ie_version = 10000
+			case '9'
+				ll_ie_version = 9000
+			case else
+				ll_ie_version = 8000
+		end choose
+	end if			
+	//---------End Added ------------------------------------------------------
+
+	ll_ret = RegistryGet("HKEY_LOCAL_MACHINE\Software\Microsoft\Internet Explorer\MAIN\FeatureControl\FEATURE_BROWSER_EMULATION","PB115.EXE",regulong!,ll_tst)
+	if ll_ret <> 1 or ll_tst <ll_ie_version  then //(Appeon)Stephen 09.29.2017 -Modify 8000 to ll_ie_version -- Unsupported browser Case#73181 Bug_id#5809
+		ll_tst = ll_ie_version
+		RegistrySet("HKEY_LOCAL_MACHINE\Software\Microsoft\Internet Explorer\MAIN\FeatureControl\FEATURE_BROWSER_EMULATION","PB115.EXE",regulong!,ll_tst)
+	end if	
+	
+	ll_ret = RegistryGet("HKEY_LOCAL_MACHINE\Software\Microsoft\Internet Explorer\MAIN\FeatureControl\FEATURE_BROWSER_EMULATION","INTELLICRED.EXE",regulong!,ll_tst)
+	if ll_ret <> 1 or ll_tst < ll_ie_version then //(Appeon)Stephen 09.29.2017 -Modify 8000 to ll_ie_version -- Unsupported browser Case#73181 Bug_id#5809
+		ll_tst = ll_ie_version
+		RegistrySet("HKEY_LOCAL_MACHINE\Software\Microsoft\Internet Explorer\MAIN\FeatureControl\FEATURE_BROWSER_EMULATION","INTELLICRED.EXE",regulong!,ll_tst)
+	end if
+	//------------------- APPEON END -------------------
+	
+End If
+//------------------- APPEON END -------------------
+
+If ls_error_all <> '' Then
+	ls_module_name = MidA(ls_module_name,1,LenA(ls_module_name) - 3)
+	ls_error_all = MidA(ls_error_all,1,LenA(ls_error_all) - 2)
+	gnv_reg_ocx.of_show_message( ls_module_name,ls_error_all)
+	lnv_sysinfo = Create n_cst_systeminfo //(Appeon)Alfee 06.26.2013 - V141 ISG-CLX
+	lnv_sysinfo.of_auto_fix_settings( ) //(Appeon)Alfee 06.26.2013 - V141 ISG-CLX
+End If
+
+If isvalid(lnv_sysinfo) Then Destroy lnv_sysinfo	 //(Appeon)Alfee 06.26.2013 - V141 ISG-CLX
+
+RETURN 1
+
+end function
+

@@ -1,0 +1,17 @@
+﻿$PBExportHeader$d_rpt_lij_prof_hosp.srd
+$PBExportComments$lij
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=160 color="536870912" )
+table(column=(type=char(100) updatewhereclause=yes name=address_lookup_entity_name dbname="address_lookup.entity_name" )
+ column=(type=long updatewhereclause=yes name=pd_hosp_affil_month_from dbname="pd_hosp_affil.month_from" )
+ column=(type=long updatewhereclause=yes name=pd_hosp_affil_year_from dbname="pd_hosp_affil.year_from" )
+ column=(type=long updatewhereclause=yes name=pd_hosp_affil_month_thru dbname="pd_hosp_affil.month_thru" )
+ column=(type=long updatewhereclause=yes name=pd_hosp_affil_year_thru dbname="pd_hosp_affil.year_thru" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"pd_hosp_affil~" )  TABLE(NAME=~"address_lookup~" ) COLUMN(NAME=~"address_lookup.entity_name~") COLUMN(NAME=~"pd_hosp_affil.month_from~") COLUMN(NAME=~"pd_hosp_affil.year_from~") COLUMN(NAME=~"pd_hosp_affil.month_thru~") COLUMN(NAME=~"pd_hosp_affil.year_thru~")    JOIN (LEFT=~"address_lookup.lookup_code~"    OP =~"=~"RIGHT=~"pd_hosp_affil.hospital_code~" )WHERE(    EXP1 =~"pd_hosp_affil.prac_id~"   OP =~"=~"    EXP2 =~":prac~" ) ) ARG(NAME = ~"prac~" TYPE = number) " arguments=(("prac", number)) )
+compute(band=detail alignment="0" expression="if( isNull( pd_hosp_affil_year_thru ), 'Current Affiliation', 'Prior Affiliation' )"border="0" color="0" x="14" y="0" height="52" width="626" format="[general]"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="101" y="56" height="52" width="1111" format="[general]"  name=address_lookup_entity_name edit.limit=100 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="'From:  ' + if( isNull(  pd_hosp_affil_month_from ),' ',  string( pd_hosp_affil_month_from )  )  + '/' +  if( isNull(  pd_hosp_affil_year_from   ),' ',  string(  pd_hosp_affil_year_from  )  )  + '   To: '  + if( isNull(   pd_hosp_affil_month_thru   ),' ',  string(  pd_hosp_affil_month_thru )  ) + '/' +   if( isNull(   pd_hosp_affil_year_thru   ),'',  string(  pd_hosp_affil_year_thru  )  )"border="0" color="0" x="101" y="112" height="52" width="1006" format="[general]"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

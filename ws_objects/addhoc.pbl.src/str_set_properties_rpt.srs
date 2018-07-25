@@ -1,0 +1,10 @@
+﻿$PBExportHeader$str_set_properties_rpt.srs
+$PBExportComments$(Appeon)Toney 06.11.2013 - V141 ISG-CLX
+global type str_set_properties_rpt from structure
+	u_cst_dw_design		lst_data_design
+	u_cst_dw_design_menu		lst_menu
+	u_cst_dw_band_painter		lst_band_painter
+	datawindow		dw_item
+	string		lst_code
+end type
+

@@ -1,0 +1,43 @@
+﻿$PBExportHeader$gf_clipboard.srf
+global type gf_clipboard from function_object
+end type
+
+forward prototypes
+global function string gf_clipboard (string as_copyto, integer ai_mode)
+end prototypes
+
+global function string gf_clipboard (string as_copyto, integer ai_mode);
+//////////////////////////////////////////////////////////////////////
+// $<function>gf_clipboard()
+//	$<arguments> value	string	as_CopyTo
+//	$<arguments> A string whose value is the text you want to place in the clipboard.
+//	$<arguments> value	integer	ai_Mode 
+//	$<arguments> 0 	Get the contents of the system clipboard.
+//	$<arguments> 1	replaces the contents of the system clipboard with text 
+// $<returns> long
+// $<description> Define the function for replace the ClipBoard function 
+//	$<description> of datawindow with it .
+//////////////////////////////////////////////////////////////////////
+// $<add> 2005-12-13 by Ye KaiChun
+//////////////////////////////////////////////////////////////////////
+
+string	ls_Return 
+
+//check argument
+if IsNull(ai_Mode) then 
+	ai_Mode = 0
+end if 	
+
+//Retrieves or replaces the contents of the system clipboard with text.
+if ai_Mode = 0 then
+	// Get the current contents of the clipboard .
+	ls_Return = ClipBoard()	
+else
+	//replaces the contents of the system clipboard with text
+	ls_Return = Clipboard(as_CopyTo)
+end if 	
+
+return ls_Return
+
+end function
+

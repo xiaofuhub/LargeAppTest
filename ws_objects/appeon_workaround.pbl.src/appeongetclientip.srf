@@ -1,0 +1,38 @@
+﻿$PBExportHeader$appeongetclientip.srf
+global type appeongetclientip from function_object
+end type
+
+forward prototypes
+global function string appeongetclientip ()
+end prototypes
+
+global function string appeongetclientip ();//==============================================================================
+// 
+// Copyright ? 2001-2006 Appeon, Inc. and its subsidiaries. All rights reserved.
+// 
+//------------------------------------------------------------------------------
+// Function: appeongetclientip()
+//------------------------------------------------------------------------------
+// Description: 
+// 				Returns the IP address of the Internet Explorer client.
+//	
+// Arguments:(None)
+//	
+// Returns:  string
+//------------------------------------------------------------------------------
+// Author:	APPEON		Date: 2005-11
+//------------------------------------------------------------------------------
+// Revision History: 
+//				1.0   Initial version
+//==============================================================================
+
+String strRet
+AppeonExtFuncs funs
+funs = Create AppeonExtFuncs
+
+strRet = funs.Of_GetClientIP()
+
+Destroy funs
+Return strRet
+end function
+

@@ -1,0 +1,56 @@
+﻿$PBExportHeader$of_calc_business_days.srf
+global type of_calc_business_days from function_object
+end type
+
+forward prototypes
+global function integer of_calc_business_days (datetime ad_from, datetime ad_to)
+end prototypes
+
+global function integer of_calc_business_days (datetime ad_from, datetime ad_to);//Start Code Change ----11.11.2009 #V10 maha - created to calculate business days for CVO report.
+integer li_holidays
+integer li_return = 0
+integer i
+integer ic
+string ls_count_weekend = "N"
+date ld_date
+date ld_start
+string ls_day
+
+//check to see if weekend days should be counted
+if of_get_app_setting("set_7","I") = 1 then ls_count_weekend = "Y"
+
+//get count of entered holidays in date range
+if ls_count_weekend = "Y" then
+	select count(hol_id ) into :li_holidays from sys_holidays where hol_date >= :ad_from and hol_date <= :ad_to;
+else
+	select count(hol_id ) into :li_holidays from sys_holidays where week_day not in ('Saturday','Sunday') and hol_date >= :ad_from and hol_date <= :ad_to;
+end if
+
+
+
+
+ic = DaysAfter ( date(ad_from), date(ad_to) )
+ld_start = date(ad_from)
+
+//calculate num of days
+for i = 0 to ic //count weekdays
+	ld_date = RelativeDate ( ld_start, i )
+	ls_day = DayName ( ld_date )
+	if ls_count_weekend = "Y" then
+		li_return++
+	else
+		choose case lower(ls_day)
+			case "saturday","sunday"
+				//don't add
+			case else
+				li_return++
+		end choose
+	end if
+next
+
+//subtract holidays
+li_return = li_return - li_holidays
+			
+return li_return
+end function
+

@@ -1,0 +1,199 @@
+﻿$PBExportHeader$of_get_reference_value.srf
+global type of_get_reference_value from function_object
+end type
+
+forward prototypes
+global function string of_get_reference_value (long al_screen, integer ai_row, n_ds adw_data, n_ds ads_screen_data)
+end prototypes
+
+global function string of_get_reference_value (long al_screen, integer ai_row, n_ds adw_data, n_ds ads_screen_data);//Start Code Change ----10.03 .2006 #622 maha
+//function created 092706 maha to genericaly get reference values for numerous functions.
+string ls_reference
+string ls_r1
+string ls_r2
+string ls_ref_1
+string ls_ref_2
+string ls_ref_3
+string ls_type1
+string ls_type2
+string ls_type3
+string ls_find
+string ls_screen  //03.26.2008  maha 
+integer li_mess
+integer li_retval
+integer li_found
+integer cnt
+integer ccnt
+datawindowchild dwchild
+
+cnt = adw_data.rowcount()
+ls_ref_1 = ads_screen_data.GetItemString( 1, "ref_field_1")
+ls_ref_2 = ads_screen_data.GetItemString( 1, "ref_field_2")
+ls_ref_3 = ads_screen_data.GetItemString( 1, "ref_field_3")
+ls_screen = ads_screen_data.GetItemString( 1, "screen_alias") //Start Code Change ----03.26.2008 #V8 maha 
+
+ls_type1 = ads_screen_data.GetItemString( 1, "ref_1_type")//maha102501
+ls_type2 = ads_screen_data.GetItemString( 1, "ref_2_type")//maha102501
+ls_type3 = ads_screen_data.GetItemString( 1, "ref_3_type")//maha102501
+
+//Start Code Change ----03.26.2008 #V8 maha -  user setup trap
+if isnull(ls_ref_1 ) and isnull(ls_ref_2 ) then
+	messagebox("Data notice (of_get_reference_value)","Screen" + ls_screen + " has no reference fields set .  Contact IntelliSoft support for assistance in correcting this.")
+	return ls_screen
+end if
+//End Code Change---03.26.2008
+
+//Start Code Change ----01.31.2010 #V11 maha - trap for linked screens
+if al_screen = 2 then
+	ls_ref_1 = "pd_address_" + ls_ref_1
+elseif al_screen = 31 then
+	ls_ref_1 = "pd_address_2_" + ls_ref_1
+elseif al_screen = 10 then
+	ls_ref_1 = "pd_hosp_affil_" + ls_ref_1
+end if
+
+if al_screen = 2 then
+	ls_ref_2 = "pd_address_" + ls_ref_2
+elseif al_screen = 31 then
+	ls_ref_2 = "pd_address_2_" + ls_ref_2
+elseif al_screen = 10 then
+	ls_ref_2 = "pd_hosp_affil_" + ls_ref_2
+end if
+
+if al_screen = 2 then
+	ls_ref_3 = "pd_address_" + ls_ref_3
+elseif al_screen = 31 then
+	ls_ref_3 = "pd_address_2_" + ls_ref_3
+elseif al_screen = 10 then
+	ls_ref_3 = "pd_hosp_affil_" + ls_ref_3
+end if
+//End Change Code 01.31.2011
+
+//get reference 1 data
+
+if adw_data.Describe(ls_ref_1 + ".ColType") = "!"  or ls_ref_1 = "" then //trap for invisible field maha 012104 
+	ls_r1 = ""
+	li_mess = 1
+else
+	adw_data.Setrow(ai_row) //Start Code Change ----12.11.2007 #V8 maha
+	li_retval = adw_data.SetColumn( ls_ref_1 )
+	choose case ls_type1
+		case "C","V"
+			ls_r1 = adw_data.getitemstring(ai_row,ls_ref_1)
+		case "N", "I" 
+			ls_r1 = string(adw_data.getitemnumber(ai_row,ls_ref_1))
+		case "D"
+			ls_r1 = string(date(adw_data.getitemdatetime(ai_row,ls_ref_1)))
+	end choose
+	IF IsNull( ls_r1) OR ls_r1 = "" THEN
+		li_mess = 2
+		ls_r1 = ""
+	else
+//Start Code Change ----12.07.2007 #V8 maha		
+		li_retval = adw_data.GetChild(ls_ref_1, dwchild)
+		IF li_retval = -1 THEN
+			//messagebox("Error in of_get_reference_value - getchild (1)", "Contact IntelliSoft Support: " + ls_ref_1 )		
+			//return ""		
+		ELSE
+			ccnt = dwchild.retrieve()
+			adw_data.SetColumn( ls_ref_1 )
+			//ls_find =  "lookup_code = " + adw_data.GetText()
+			ls_find =  "lookup_code = " + ls_r1 //Due to a web issue of datastore - alfee 11.24.2010
+			
+//			li_found = dwchild.Find(ls_find, 1, 100000 )	
+//			if li_found < 0 then
+//				messagebox("Error in of_get_reference_value - find", "Contact IntelliSoft Support")
+//				return ls_r1
+//			elseif li_found = 0 then
+//				ls_r1=  ""
+//			else
+				choose case adw_data.Describe( ls_ref_1 + ".dddw.displaycolumn")						
+					case "code" 
+					//	messagebox("field 1",ls_ref_1)
+						 ls_r1 = gnv_data.of_getitem("code_lookup","code",ls_find )
+						//ls_r1 = dwchild.GetItemString( li_found, "code" )
+					case "entity_name" 
+					//	ls_r1 = dwchild.GetItemString( li_found, "entity_name" )
+						 //ls_r1 = of_get_address_lookup_item(long(adw_data.GetText()),"entity_name" )  //Start Code Change ----12.11.2007 #V8 maha
+						 ls_r1 = of_get_address_lookup_item(long(ls_r1),"entity_name" )  //Due to a web issue of datastore - alfee 11.24.2010				 
+					case "description"
+						//ls_r1 = dwchild.GetItemString( li_found, "description" )	
+						 ls_r1 = gnv_data.of_getitem("code_lookup","description",ls_find )
+					case ELSE
+					//ls_r1 = adw_data.GetText() - commented by alfee 11.24.2010 due to a web issue of datastore
+				END Choose
+	//		end if
+		END IF
+	end if
+END IF
+
+//reference 2 data
+if adw_data.Describe(ls_ref_2 + ".ColType") = "!"  or ls_ref_2 = "" then //trap for invisible field maha 012104 
+	ls_r2 = ""
+	//li_mess = 
+else
+	li_retval = adw_data.SetColumn( ls_ref_2 )
+	choose case ls_type2
+		case "C","V"
+			ls_r2 = adw_data.getitemstring(ai_row,ls_ref_2)
+		case "N", "I" 
+			ls_r2 = string(adw_data.getitemnumber(ai_row,ls_ref_2))
+		case "D"
+			ls_r2 = string(date(adw_data.getitemdatetime(ai_row,ls_ref_2)))
+	end choose
+	IF IsNull( ls_r2) OR ls_r2 = "" THEN
+		//li_mess = 2
+		ls_r2 = ""
+	else
+		li_retval = adw_data.GetChild(ls_ref_2, dwchild)
+		IF li_retval = -1 THEN
+
+		ELSE
+			ccnt = dwchild.retrieve()
+			adw_data.SetColumn( ls_ref_2 )
+			//ls_find = "lookup_code = " + adw_data.GetText()
+			ls_find =  "lookup_code = " + ls_r2 //Due to a web issue of datastore - alfee 11.24.2010			
+//			li_found = dwchild.Find( "lookup_code = " + adw_data.GetText(), 1, 100000 )	
+//			if li_found < 0 then
+//				messagebox("Error in of_get_reference_value - find", "Contact IntelliSoft Support")
+//				return ls_r1
+//			end if
+				//messagebox("li_found",li_found)
+			choose case adw_data.Describe( ls_ref_2 + ".dddw.displaycolumn")
+				case "code" 
+					//ls_r2 = dwchild.GetItemString( li_found, "code" )
+					ls_r2 = gnv_data.of_getitem("code_lookup","code",ls_find )
+				case "entity_name" 
+			//		ls_r2 = dwchild.GetItemString( li_found, "entity_name" )
+					//ls_r2 = of_get_address_lookup_item(long(adw_data.GetText()),"entity_name" )  //Start Code Change ----12.11.2007 #V8 maha
+					 ls_r2 = of_get_address_lookup_item(long(ls_r2),"entity_name" )  //Due to a web issue of datastore - alfee 11.24.2010				 					
+				case "description"
+					ls_r2 = gnv_data.of_getitem("code_lookup","description",ls_find )
+					//ls_r2 = dwchild.GetItemString( li_found, "description" )				
+				case ELSE
+					//ls_r2 = adw_data.GetText() - commented by alfee 11.24.2010 due to a web issue of datastore		
+			END Choose
+		END IF
+//End Code Change---12.07.2007
+	end if
+END IF
+
+if LenA( ls_r1) > 0 then 
+	ls_reference = ls_r1 
+	if LenA(ls_r2) > 0 then ls_reference = ls_r1 + " - " + ls_r2
+else
+	if LenA(ls_r2) > 0 then
+		ls_reference = ls_r2
+	else
+		ls_reference = ls_screen  //Start Code Change ----08.17.2009 #V92 maha
+		//messagebox("Data notice (of_get_reference_value)","Unable to get data for data fields "  + upper(ls_ref_1) + " or " + upper(ls_ref_2) + " for this record the reference value will be blank.  To correct this, check your data or contact IntelliCred support")
+		//ls_reference = ""
+	end if
+end if
+
+			
+
+
+return ls_reference
+end function
+

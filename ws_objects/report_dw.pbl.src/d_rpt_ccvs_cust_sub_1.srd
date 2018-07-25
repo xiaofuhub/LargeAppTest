@@ -1,0 +1,65 @@
+﻿$PBExportHeader$d_rpt_ccvs_cust_sub_1.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=char(50) updatewhereclause=yes name=screen_alias dbname="data_view_screen.screen_alias" )
+ column=(type=char(255) updatewhereclause=yes name=pd_app_audit_fax_message dbname="pd_app_audit.fax_message" )
+ column=(type=datetime updatewhereclause=yes name=pd_app_audit_attempts_first_attempt dbname="pd_app_audit_attempts.first_attempt" )
+ column=(type=datetime updatewhereclause=yes name=pd_app_audit_attempts_last_attempt dbname="pd_app_audit_attempts.last_attempt" )
+ column=(type=long updatewhereclause=yes name=number_send dbname="number_send" )
+ retrieve="  SELECT DISTINCT  
+         data_view_screen.screen_alias, 
+         pd_app_audit.fax_message,   
+         pd_app_audit_attempts.date_attempted first_attempt,   
+	  pd_app_audit_attempts.date_attempted last_attempt, 
+         number_send = 1
+    FROM {oj pd_affil_stat affil_stat_ccvs LEFT OUTER JOIN pd_app_audit_attempts ON affil_stat_ccvs.rec_id = pd_app_audit_attempts.record_id}, {oj data_view_app_audit LEFT OUTER JOIN data_view_screen ON data_view_app_audit.screen_id = data_view_screen.screen_id},   
+         pd_app_audit
+
+   WHERE ( affil_stat_ccvs.rec_id = pd_app_audit.appt_stat_id ) and  
+         ( data_view_app_audit.app_audit_id = pd_app_audit.app_audit_id ) and  
+         ( ( pd_app_audit.date_completed is null ) AND  
+         ( affil_stat_ccvs.parent_facility_id = :facil) AND  
+		(pd_app_audit_attempts.date_attempted is not null)  and
+         ( affil_stat_ccvs.prac_id = :prac ) )    
+
+ Union
+
+  SELECT 
+         data_view_screen.screen_alias,      
+         verif_info.reference_value,   
+         verif_info.first_sent,   
+         verif_info.last_sent,   
+         verif_info.number_sent 
+    FROM 
+         verif_info,   
+         pd_affil_stat affil_stat_ccvs,   
+         data_view_screen 
+WHERE 
+         ( affil_stat_ccvs.prac_id = verif_info.prac_id ) and  
+         ( verif_info.facility_id = affil_stat_ccvs.parent_facility_id ) and  
+  		data_view_screen.screen_id > 0 and
+         ( verif_info.screen_id = data_view_screen.screen_id ) and  
+	verif_info.response_code is null   and
+	verif_info.active_status = 1 and
+	 affil_stat_ccvs.prac_id = :prac  and
+         ( affil_stat_ccvs.prac_id = :prac )
+
+
+
+
+ 
+" arguments=(("prac", number),("facil", number))  sort="screen_alias A pd_app_audit_fax_message A " )
+compute(band=detail alignment="0" expression=" if (isnull(  screen_alias  ),'Basic Information',  screen_alias )"border="0" color="33554432" x="91" y="8" height="52" width="654" format="[GENERAL]" html.valueishtml="0"  name=item_name visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="777" y="8" height="52" width="1234" format="[general]" html.valueishtml="0"  name=pd_app_audit_fax_message visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="46" y="136" height="52" width="1152" format="[general]" html.valueishtml="0"  name=screen_alias visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="2062" y="8" height="52" width="283" format="mm/dd/yyyy" html.valueishtml="0"  name=pd_app_audit_attempts_first_attempt visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="2395" y="8" height="52" width="311" format="mm/dd/yyyy" html.valueishtml="0"  name=pd_app_audit_attempts_last_attempt visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="if (isnull( number_send ), 0,number_send)"border="0" color="33554432" x="2798" y="12" height="52" width="183" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

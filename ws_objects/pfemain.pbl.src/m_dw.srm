@@ -1,0 +1,733 @@
+﻿$PBExportHeader$m_dw.srm
+$PBExportComments$Extension DataWindow menu class
+forward
+global type m_dw from pfc_m_dw
+end type
+type m_contractdetail from menu within m_table
+end type
+type m_email from menu within m_table
+end type
+type m_mailaspdf from menu within m_table
+end type
+type m_saveaspdf from menu within m_table
+end type
+type m_autobatchaddgroupaccess from menu within m_table
+end type
+type m_table from pfc_m_dw`m_table within m_dw
+m_contractdetail m_contractdetail
+m_email m_email
+m_mailaspdf m_mailaspdf
+m_saveaspdf m_saveaspdf
+m_autobatchaddgroupaccess m_autobatchaddgroupaccess
+end type
+end forward
+
+global type m_dw from pfc_m_dw
+end type
+global m_dw m_dw
+
+on m_dw.create
+m_dw=this
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_dw.destroy
+call super::destroy
+end on
+
+event clicked;call super::clicked;//--------------------------- APPEON BEGIN ---------------------------
+//$<add> 01.24.2007 By: Davis
+idw_parent.dynamic event pfc_contract_detail()
+//---------------------------- APPEON END ----------------------------
+
+
+end event
+
+type m_table from pfc_m_dw`m_table within m_dw
+m_contractdetail m_contractdetail
+m_email m_email
+m_mailaspdf m_mailaspdf
+m_saveaspdf m_saveaspdf
+m_autobatchaddgroupaccess m_autobatchaddgroupaccess
+end type
+
+on m_table.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_contractdetail=create m_contractdetail
+this.m_email=create m_email
+this.m_mailaspdf=create m_mailaspdf
+this.m_saveaspdf=create m_saveaspdf
+this.m_autobatchaddgroupaccess=create m_autobatchaddgroupaccess
+this.Item[UpperBound(this.Item)+1]=this.m_contractdetail
+this.Item[UpperBound(this.Item)+1]=this.m_email
+this.Item[UpperBound(this.Item)+1]=this.m_mailaspdf
+this.Item[UpperBound(this.Item)+1]=this.m_saveaspdf
+this.Item[UpperBound(this.Item)+1]=this.m_autobatchaddgroupaccess
+end on
+
+on m_table.destroy
+call super::destroy
+destroy(this.m_contractdetail)
+destroy(this.m_email)
+destroy(this.m_mailaspdf)
+destroy(this.m_saveaspdf)
+destroy(this.m_autobatchaddgroupaccess)
+end on
+
+type m_cut from pfc_m_dw`m_cut within m_table
+end type
+
+on m_cut.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_cut.destroy
+call super::destroy
+end on
+
+type m_copy from pfc_m_dw`m_copy within m_table
+end type
+
+on m_copy.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_copy.destroy
+call super::destroy
+end on
+
+type m_paste from pfc_m_dw`m_paste within m_table
+end type
+
+on m_paste.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_paste.destroy
+call super::destroy
+end on
+
+type m_selectall from pfc_m_dw`m_selectall within m_table
+end type
+
+on m_selectall.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_selectall.destroy
+call super::destroy
+end on
+
+type m_dash11 from pfc_m_dw`m_dash11 within m_table
+end type
+
+on m_dash11.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_dash11.destroy
+call super::destroy
+end on
+
+type m_insert from pfc_m_dw`m_insert within m_table
+end type
+
+on m_insert.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_insert.destroy
+call super::destroy
+end on
+
+type m_addrow from pfc_m_dw`m_addrow within m_table
+end type
+
+on m_addrow.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_addrow.destroy
+call super::destroy
+end on
+
+type m_delete from pfc_m_dw`m_delete within m_table
+end type
+
+on m_delete.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_delete.destroy
+call super::destroy
+end on
+
+type m_restorerow from pfc_m_dw`m_restorerow within m_table
+end type
+
+on m_restorerow.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_restorerow.destroy
+call super::destroy
+end on
+
+type m_dash12 from pfc_m_dw`m_dash12 within m_table
+end type
+
+on m_dash12.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_dash12.destroy
+call super::destroy
+end on
+
+type m_columns from pfc_m_dw`m_columns within m_table
+end type
+
+on m_columns.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_columns.destroy
+call super::destroy
+end on
+
+type m_functions from pfc_m_dw`m_functions within m_table
+end type
+
+on m_functions.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_functions.destroy
+call super::destroy
+end on
+
+type m_operators from pfc_m_dw`m_operators within m_table
+end type
+
+on m_operators.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_operators.destroy
+call super::destroy
+end on
+
+type m_values from pfc_m_dw`m_values within m_table
+end type
+
+on m_values.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_values.destroy
+call super::destroy
+end on
+
+type m_dash13 from pfc_m_dw`m_dash13 within m_table
+end type
+
+on m_dash13.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_dash13.destroy
+call super::destroy
+end on
+
+type m_debug from pfc_m_dw`m_debug within m_table
+end type
+
+on m_debug.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_debug.destroy
+call super::destroy
+end on
+
+type m_properties from pfc_m_dw`m_properties within m_table
+end type
+
+on m_properties.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_properties.destroy
+call super::destroy
+end on
+
+type m_contractdetail from menu within m_table
+end type
+
+event clicked;//--------------------------- APPEON BEGIN ---------------------------
+//$<add> 01.24.2007 By: Davis
+idw_parent.dynamic event pfc_contract_detail()
+//---------------------------- APPEON END ----------------------------
+
+
+end event
+
+on m_contractdetail.create
+call super::create
+this.visible = false
+this.text = "Contact Detail"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_contractdetail.destroy
+call super::destroy
+end on
+
+type m_email from menu within m_table
+end type
+
+event clicked;//---------Begin Added by (Appeon)Toney 06.04.2013 for V141 ISG-CLX--------
+idw_parent.dynamic event pfc_contract_email()
+//---------End Added ------------------------------------------------------------------
+
+end event
+
+on m_email.create
+call super::create
+this.visible = false
+this.text = "&Email"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_email.destroy
+call super::destroy
+end on
+
+type m_mailaspdf from menu within m_table
+end type
+
+on m_mailaspdf.create
+call super::create
+this.text = "Mail (as PDF)"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_mailaspdf.destroy
+call super::destroy
+end on
+
+event clicked;
+//--------------------------- APPEON BEGIN ---------------------------
+//$<modify> 04.25.2007 By: Jack
+//$<reason> Fix a defect.
+/*
+idw_parent.dynamic event ue_save_pdf_for_mailing()
+idw_parent.dynamic event ue_mail('','')
+*/
+If idw_parent.dynamic event ue_save_pdf_for_mailing() = 0 Then
+	idw_parent.dynamic event ue_mail('','')
+End If
+//---------------------------- APPEON END ----------------------------
+
+end event
+
+type m_saveaspdf from menu within m_table
+end type
+
+on m_saveaspdf.create
+call super::create
+this.text = "Save as PDF"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_saveaspdf.destroy
+call super::destroy
+end on
+
+event clicked;
+idw_parent.dynamic event ue_save_as_pdf()
+
+end event
+
+type m_autobatchaddgroupaccess from menu within m_table
+end type
+
+event clicked;//---------Begin Added by (Appeon)Toney 06.04.2013 for V141 ISG-CLX--------
+//--------------------------- APPEON BEGIN ---------------------------
+//$<add> 01.24.2007 By: Davis
+idw_parent.dynamic event ue_addgroupaccess( )
+//---------------------------- APPEON END ------------------
+//---------End Added ------------------------------------------------------------------
+
+end event
+
+on m_autobatchaddgroupaccess.create
+call super::create
+this.visible = false
+this.text = "Batch Add All Group"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_autobatchaddgroupaccess.destroy
+call super::destroy
+end on
+

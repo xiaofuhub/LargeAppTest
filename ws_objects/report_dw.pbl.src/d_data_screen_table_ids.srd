@@ -1,0 +1,28 @@
+﻿$PBExportHeader$d_data_screen_table_ids.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=112 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=sys_tables_table_id dbname="sys_tables.table_id" )
+ column=(type=long updatewhereclause=yes name=data_view_screen_screen_id dbname="data_view_screen.screen_id" )
+ column=(type=char(50) updatewhereclause=yes name=data_view_screen_screen_alias dbname="data_view_screen.screen_alias" )
+ column=(type=char(1) updatewhereclause=yes name=data_view_screen_multi_record dbname="data_view_screen.multi_record" )
+ column=(type=long updatewhereclause=yes name=sys_tables_facility_specific dbname="sys_tables.facility_specific" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"data_view_screen~" )  TABLE(NAME=~"sys_tables~" ) COLUMN(NAME=~"sys_tables.table_id~") COLUMN(NAME=~"data_view_screen.screen_id~") COLUMN(NAME=~"data_view_screen.screen_alias~") COLUMN(NAME=~"data_view_screen.multi_record~") COLUMN(NAME=~"sys_tables.facility_specific~")    JOIN (LEFT=~"data_view_screen.table_id~"    OP =~"=~"RIGHT=~"sys_tables.table_id~"    OUTER2 =~"sys_tables.table_id~" )WHERE(    EXP1 =~"data_view_screen.data_view_id~"   OP =~"=~"    EXP2 =~"1~" ) ) "  sort="data_view_screen_screen_alias A " )
+text(band=header alignment="2" text="Sys Tables
+Table Id"border="0" color="0" x="5" y="4" height="104" width="274"  name=sys_tables_table_id_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Data View Screen
+Screen Id"border="0" color="0" x="283" y="4" height="104" width="393"  name=data_view_screen_screen_id_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Data View Screen
+Screen Alias"border="0" color="0" x="681" y="4" height="104" width="1166"  name=data_view_screen_screen_alias_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Data View Screen
+Multi Record"border="0" color="0" x="1851" y="4" height="104" width="393"  name=data_view_screen_multi_record_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Facility Specific"border="0" color="0" x="2249" y="4" height="52" width="334"  name=sys_tables_facility_specific_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="0" x="5" y="4" height="64" width="274" format="[general]"  name=sys_tables_table_id edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="0" x="283" y="4" height="64" width="274" format="[general]"  name=data_view_screen_screen_id edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="681" y="4" height="64" width="1166" format="[general]"  name=data_view_screen_screen_alias edit.limit=50 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1851" y="4" height="64" width="46" format="[general]"  name=data_view_screen_multi_record edit.limit=1 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="0" x="2249" y="4" height="52" width="206" format="[General]"  name=sys_tables_facility_specific edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

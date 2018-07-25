@@ -1,0 +1,133 @@
+﻿$PBExportHeader$of_check_missing_trackids.srf
+global type of_check_missing_trackids from function_object
+end type
+
+forward prototypes
+global function integer of_check_missing_trackids (long al_prac)
+end prototypes
+
+global function integer of_check_missing_trackids (long al_prac); //Start Code Change ----03.23.2017 #V153 maha - moved from pfc_ia_cst_nv_net_dev_new object
+long ll_trac_cnt
+long ll_act_cnt
+long r
+long fc
+long nr
+long f
+long ll_prac
+long ll_fac
+long ll_app
+long ll_loc
+long ll_track
+long ll_rec
+long ll_audit
+datetime ldt_now
+string s
+n_ds lds_track
+n_ds lds_act
+n_ds lds_audit
+
+
+
+//check to see if any actions exist without track ids
+select count(rec_id) into :ll_act_cnt from net_dev_action_items where prac_id = :al_prac and active_status = 1 and track_id is null;
+//messagebox("before",ll_act_cnt)
+
+if ll_act_cnt = 0 then return 1
+
+//if there are any, correct them
+lds_track = create n_ds
+lds_act = create n_ds
+lds_audit = create n_ds
+
+lds_track.dataobject = "d_app_tracking_4_track_check"
+lds_act.dataobject = "d_net_dev_actions_prac_active"
+lds_audit.dataobject = "d_view_sys_audit_appl"
+
+lds_track.settransobject(sqlca)
+lds_act.settransobject(sqlca)
+lds_audit.settransobject(sqlca)
+
+ll_trac_cnt = lds_track.retrieve(al_prac)
+ll_act_cnt = lds_act.retrieve(al_prac)
+
+ldt_now = datetime(today(), Now())
+
+select max(audit_id) into :ll_audit from sys_audit_appl;
+If IsNull(ll_audit) Then ll_audit = 0 //Added by Appeon long.zhang 01.03.2017 (Issue: Database Error Requires Your Attention)
+update ids set sys_appaudit_id = :ll_audit where isnull(sys_appaudit_id,0) < :ll_audit;	 //(Appeon)Stephen 10.13.2017 - V15.3 Bug # 5832 - Keep getting Failed to update sys_audit table on Applications tab Case 73449
+
+for r = 1 to ll_trac_cnt
+	ll_track = lds_track.getitemnumber(r, "track_id")
+	ll_prac = lds_track.getitemnumber(r, "prac_id")
+	ll_fac = lds_track.getitemnumber(r, "facility_id")
+	ll_app = lds_track.getitemnumber(r, "app_id")
+	ll_loc = lds_track.getitemnumber(r, "gp_id")	
+	
+	s = "prac_id = " + string(ll_prac ) + " and facility_id = " + string(ll_fac ) +  " and app_id = " + string(ll_app ) +  " and gp_id = " + string(ll_loc )
+	fc = lds_act.setfilter(s)
+	lds_act.filter()
+	
+	fc = lds_act.rowcount()
+	if fc = 0 then continue
+	
+	for f = 1 to fc
+		lds_act.setitem(f,"track_id", ll_track)
+		ll_rec = lds_act.getitemnumber(f, "rec_id")
+		
+		nr = lds_audit.insertrow(0)
+		lds_audit.setitem(nr, "appl_rec_id" , ll_rec)
+		lds_audit.setitem(nr, "prac_id" , ll_prac)
+		lds_audit.setitem(nr, "facility_id" , ll_fac)
+		lds_audit.setitem(nr, "app_id" , ll_app)
+		lds_audit.setitem(nr, "gp_id" , ll_loc)
+		lds_audit.setitem(nr, "old_value" , "")
+		lds_audit.setitem(nr, "new_value" , string(ll_track) )
+		lds_audit.setitem(nr, "appl_track_id" , ll_track)
+		lds_audit.setitem(nr, "appl_name" , "")
+		lds_audit.setitem(nr, "table_name" , "net_dev_action_items")
+		lds_audit.setitem(nr, "field_name" , "track_id")
+		lds_audit.setitem(nr, "user_id" , "sys-" + gs_user_id )
+		lds_audit.setitem(nr, "date_time_modified" , ldt_now)
+		lds_audit.setitem(nr, "audit_type" , "E-S" )
+		lds_audit.setitem(nr, "table_id" , 51)
+//		lds_audit.setitem(nr, "field_id" , )
+	//---------Begin Commented by (Appeon)Stephen 10.13.2017 for V15.3 Bug # 5832 - Keep getting Failed to update sys_audit table on Applications tab Case 73449--------
+//		ll_audit++
+//		lds_audit.setitem(nr, "audit_id" ,ll_audit )
+	//---------End Commented ------------------------------------------------------
+
+		//and all the other fields
+	next
+	
+next
+
+//---------Begin Added by (Appeon)Stephen 10.12.2017 for V15.3 Bug # 5832 - Keep getting Failed to update sys_audit table on Applications tab Case 73449--------
+fc = lds_audit.rowcount()
+if fc > 0 then
+	gnv_appeondb.of_startqueue( )
+	select ids.sys_appaudit_id into :ll_audit from ids;
+	update ids set sys_appaudit_id = (isnull(sys_appaudit_id,0)  + :fc);	
+	gnv_appeondb.of_commitqueue( )
+	for nr = 1 to lds_audit.rowcount()
+		ll_audit = ll_audit +1
+		lds_audit.setitem(nr, "audit_id" ,ll_audit )
+	next
+	lds_audit.update()
+end if
+//---------End Added ------------------------------------------------------
+
+lds_act.setfilter("")
+lds_act.filter()
+
+lds_act.update()
+
+destroy lds_act
+destroy lds_track
+destroy lds_audit
+
+//select count(rec_id) into :ll_act_cnt from net_dev_action_items where prac_id = :al_prac and active_status = 1 and track_id is null;
+//messagebox("after",ll_act_cnt)
+
+return 1
+end function
+

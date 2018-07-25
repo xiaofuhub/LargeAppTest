@@ -1,0 +1,97 @@
+﻿$PBExportHeader$gf_opencontractfolder_base.srf
+global type gf_opencontractfolder_base from function_object
+end type
+
+forward prototypes
+global function integer gf_opencontractfolder_base (powerobject apo_parameter, boolean abl_showwin)
+end prototypes
+
+global function integer gf_opencontractfolder_base (powerobject apo_parameter, boolean abl_showwin);//////////////////////////////////////////////////////////////////////
+// $<function>  gf_opencontractfolder()
+// $<arguments> (None)
+// $<returns>   integer
+// $<description> Open contract folder
+//////////////////////////////////////////////////////////////////////
+// $<add> 10/29/2008 by Evan
+//////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+
+
+// Open Contract Folder if it's not opend
+if not IsValid(w_contract) then
+	//Move to here from top //Added By Ken.Guo 2010-09-06.
+	OpenWithParm(w_appeon_gifofwait, "Opening the contract folder, please wait...") //Jervis - 09.24.2010
+	w_mdi.SetRedraw(false) //jervis 08.24.2010
+	
+	OpenSheet(w_contract, w_mdi, 4, original!)
+	If Isvalid( w_contract.inv_resize ) Then w_contract.inv_resize.of_setcloseresize( true ) //added by gavins 20121224
+	 w_contract.of_hide() //Jervis - 08.24.2010
+elseif IsValid(gw_contract) then
+	gw_contract.visible = false //add by gavin 2012-01-09
+	//Added By Mark Lee 05/08/12
+//	if gb_restore_contract_state and ProfileString(gs_IniWindowState,"w_contract","Maximized",'1') <> '1' then	//add by jervis 09.10.2009
+//		If w_contract.WindowState = Minimized! Then w_contract.WindowState = Normal! //Added by Ken.Guo on 2009-01-20
+//	else
+//		If w_contract.WindowState = Minimized! Then w_contract.WindowState = Maximized! //Added by Ken.Guo on 2009-01-20
+//	end if
+	If w_contract.WindowState <> Maximized! Then w_contract.WindowState = Maximized!
+	
+	If abl_showwin Then w_contract.SetPosition(ToTop!)  //modify by gavin 2011-12-31
+	w_contract.SetFocus()	
+	gw_contract.visible = true//add by gavin 2012-01-09
+	Return -1
+end if
+If not isvalid( gw_contract ) and isvalid( w_contract ) then OpenWithParm(w_appeon_gifofwait, "Opening the contract folder, please wait...", w_mdi )	//add by gavin 2012-01-09
+// Set parameter of message object
+Message.PowerObjectParm = apo_Parameter
+
+// Execute Opens event and show Contract Folder
+//w_mdi.SetRedraw(false)
+w_contract.TriggerEvent("ue_show_preopen")
+w_contract.TriggerEvent("ue_show_open")
+//Hide contract folder before open - jervis 08.24.2010
+/*
+if gb_IsDocMode or gb_open_from_template then
+	w_contract.of_Hide()
+else
+	w_contract.of_Show()
+end if
+*/
+if gb_IsDocMode or gb_open_from_template then
+	w_contract.of_Hide()
+end if
+
+w_mdi.SetRedraw(true)
+
+w_contract.Post TriggerEvent("ue_show_postopen")
+
+//Display contract folder - jervis 08.24.2010
+if gb_IsDocMode = false and gb_open_from_template = false then 
+	If isvalid(w_appeon_gifofwait) Then post Close(w_appeon_gifofwait)
+	//w_contract.post SetRedraw(true)
+	If abl_showwin Then w_contract.post of_Show()//modify by gavin 2011-12-31
+end if
+
+//Open Contract folder from dashboard  -- jervis 02.23.2011
+if isvalid(apo_Parameter) then
+	if classname(apo_Parameter) = 'str_dashboard' then
+		str_dashboard str_para
+		str_para = apo_Parameter
+		if str_para.data_id >  0 then w_contract.post of_Dashboard(str_para.data_id)
+	end if
+end if
+
+if IsValid(w_SearchPage_Calendar) then w_SearchPage_Calendar.Show()
+if IsValid(w_todolist_contract) then w_todolist_contract.Show()									//Added By Mark Lee 12/25/2012
+if IsValid(w_tabpg_contract_doc_mgr) then w_tabpg_contract_doc_mgr.Show()				//Added By Mark Lee 11/09/2012
+IF IsValid(w_contract_email_folder) and w_contract.tab_contract_details.SelectedTab <> 12	Then			//Added By Mark Lee 03/14/2013
+	w_contract_email_folder.Hide()
+End IF 
+SetPointer(Arrow!)
+
+Return 1
+
+end function
+

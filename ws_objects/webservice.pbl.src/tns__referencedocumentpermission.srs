@@ -1,0 +1,10 @@
+﻿$PBExportHeader$tns__referencedocumentpermission.srs
+$PBExportComments$Proxy imported from Web service using Web Service Proxy Generator.
+global type tns__ReferenceDocumentPermission from structure
+   tns__ExtensionDataObject ExtensionData
+   string Email
+   integer Sequence
+   string Role
+   string Action
+end type
+

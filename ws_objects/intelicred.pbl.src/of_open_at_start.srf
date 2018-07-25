@@ -1,0 +1,205 @@
+﻿$PBExportHeader$of_open_at_start.srf
+global type of_open_at_start from function_object
+end type
+
+forward prototypes
+global function integer of_open_at_start ()
+end prototypes
+
+global function integer of_open_at_start ();//Start Code Change ----11.15.2008 #V8 maha -- new function opens selected window at app_fill open event (end)
+//Start Code Change ----12.19.2008 #V8 maha -- added security
+//Ken.Guo 2008-12-05. Use POST to open window. for Maximized opened window.
+integer i
+integer sec_1
+integer sec_2
+integer sec_3
+integer li_task
+integer li_open, li_launch 
+integer ii_getting_started //(Appeon)Alfee 06.26.2013 - V141 ISG-CLX
+
+
+gnv_appeondb.of_startqueue()
+select set_go_on_open, set_task, getting_started into :li_open, :li_task, :ii_getting_started from security_users where user_id = :gs_user_id; //Add getting_started - (Appeon)Alfee 06.26.2013 - V141 ISG-CLX
+select count(lp_id) into :li_launch from launch_pad where launch_status <> 'C' and assigned_user = :gs_user_id;
+gnv_appeondb.of_commitqueue()
+
+//Start Code Change ----02.01.2016 #V15 maha
+IF gb_home_visible AND NOT isValid(w_home_buttons) THEN
+	openwithparm(w_home_buttons, "LOGIN")
+	i = gi_openscreen
+END IF
+ 
+
+if gi_openscreen = 17 then  //main screen
+	i = li_open 
+else
+	i = gi_openscreen
+end if
+//End Code Change ----02.01.2016
+
+
+
+choose case i
+	case 1 ///prac folder
+		if gb_contract_version = false and  w_mdi.of_security_access( 40 ) > 0 then
+			w_mdi.Post triggerevent("pfc_cst_practitioner")
+		end if
+	case 2  //contract
+		if gb_contract_version = True or of_get_app_setting("set_cont","I") = 1 then
+			PowerObject lpo_NullParm
+			Post gf_OpenContractFolder(lpo_NullParm)			
+		end if
+	case 3 //action items
+		if w_mdi.of_security_access( 240 ) > 0 then 
+			w_mdi.Post triggerevent("pfc_cst_action_items")
+		end if	
+	case 4 //Reports
+		if w_mdi.of_security_access( 700 ) > 0 then
+			w_mdi.Post Triggerevent("pfc_cst_reports")
+		end if
+	case 5 //intellireport
+		if w_mdi.of_security_access( 1470 ) > 0 and gi_ireport_on = 1 then
+			Post OpenSheet( w_custom_report, w_mdi, 4, Original!)
+		end if
+	case 6  //App mapping
+		IF w_mdi.of_security_access( 1460 ) > 0 and gi_iapp_on = 1 then
+			Post OpenSheet( w_train_app, w_mdi, 4,Original!)
+		end if
+	case 7 //Export Painter
+		IF w_mdi.of_security_access( 550 ) > 0 and of_get_app_setting("set_iauto","I") = 1 THEN 
+			//------------------- APPEON BEGIN -------------------
+			//<$>added:long.zhang 01.12.2015
+			//<$>reason:V14.1 and V14.2 Bug # 4387 Some Pop up windows are trapped inside main screen when selected via Login or Home buttons
+			//w_mdi.Post triggerevent("pfc_cst_export_painter")
+			Post Open( w_export_painter )
+			//------------------- APPEON END -------------------	
+		end if
+	case 8 //import Painter 
+		IF  of_get_app_setting("set_import","I") = 1 and  w_mdi.of_security_access( 6928 ) > 0 THEN
+			Post OpenSheet(w_import_painter, w_mdi, 4, Original!)
+		end if
+	//Start Code Change ----05.21.2013 #V14 maha
+	case 9 //call log
+		opensheetwithparm(w_call_log,0, w_mdi, 4, Original!)
+	case 10 //privileges
+		OpenSheet(w_privilege_painter, w_mdi, 4, Original!)
+	case 11 //groups
+		//------------------- APPEON BEGIN -------------------
+		//<$>added:long.zhang 01.12.2015
+		//<$>reason:V14.1 and V14.2 Bug # 4387 Some Pop up windows are trapped inside main screen when selected via Login or Home buttons
+
+		//OpenSheet( w_group_practice, w_mdi, 4, Original!)
+		Post Open( w_group_practice)
+		//------------------- APPEON END -------------------
+	case 12 //app printing
+		//------------------- APPEON BEGIN -------------------
+		//<$>added:long.zhang 01.12.2015
+		//<$>reason:V14.1 and V14.2 Bug # 4387 Some Pop up windows are trapped inside main screen when selected via Login or Home buttons
+		//OpenSheet( w_intelliApp_print, w_mdi, 4, Original!)
+		Post Open( w_intelliApp_print )
+		//------------------- APPEON END -------------------
+		
+	case 13 //utilities
+		//------------------- APPEON BEGIN -------------------
+		//<$>added:long.zhang 01.12.2015
+		//<$>reason:V14.1 and V14.2 Bug # 4387 Some Pop up windows are trapped inside main screen when selected via Login or Home buttons
+//		if of_get_app_setting("set_9","I") = 4 then
+//			OpenSheet(w_utilities_contract, w_mdi, 4, Original!)
+//		elseif gs_cust_type = "I" then  
+//			OpenSheet(w_utilities_app, w_mdi, 4, Original!)
+//		else
+//			OpenSheet(w_utilities5, w_mdi, 4, Original!)
+//		end if		
+		if of_get_app_setting("set_9","I") = 4 then
+			post open(w_utilities_contract)
+		elseif gs_cust_type = "I" then  //Start Code Change ----06.29.2010 #V102 maha - app type utilities
+			post open(w_utilities_app)
+		else
+			post open(w_utilities5)
+		end if
+		//------------------- APPEON END -------------------
+	case 14 //setup
+		//------------------- APPEON BEGIN -------------------
+		//<$>added:long.zhang 01.12.2015
+		//<$>reason:V14.1 and V14.2 Bug # 4387 Some Pop up windows are trapped inside main screen when selected via Login or Home buttons
+
+//		if gb_contract_version then //contract
+//			OpenSheet(w_setup_central_cont, w_mdi, 4, Original!)
+//		elseif gb_sk_ver then //smart
+//			OpenSheet(w_setup_central_sk, w_mdi, 4, Original!)
+//		elseif gs_cust_type = 'I' then //app
+//			OpenSheet(w_setup_central_app , w_mdi, 4, Original!)
+//		else //cred
+//			OpenSheet(w_setup_central, w_mdi, 4, Original!)
+//		end if
+		if gb_contract_version then //contract
+			Post open(w_setup_central_cont)
+		elseif gb_sk_ver then //smart
+			Post open(w_setup_central_sk)
+		elseif gs_cust_type = 'I' then //app
+			Post open(w_setup_central_app)
+		else //cred
+			Post open(w_setup_central)
+		end if
+		//------------------- APPEON END -------------------	
+	case 15 //letters
+		//------------------- APPEON BEGIN -------------------
+		//<$>added:long.zhang 01.12.2015
+		//<$>reason:V14.1 and V14.2 Bug # 4387 Some Pop up windows are trapped inside main screen when selected via Login or Home buttons
+
+		//OpenSheet( w_letter_generator , w_mdi, 4, Original!)
+		Post Open( w_letter_generator )
+		//------------------- APPEON END -------------------	
+	case 16 //TD list
+		OpenSheet(w_todolist, w_mdi, 4, original!)
+	case 17 //main screen
+	//End Code Change ----05.21.2013 	
+	case 18 //Contact log actions  //Start Code Change ----11.18.2013 #V14 maha - added
+		opensheetwithparm(w_call_log_open_calls,0, w_mdi, 4, Original!)
+	case 19  //Recruitment //Start Code Change ----06.03.2015 #V15 maha
+		open(w_recruitment_data_tabs)
+	case 20
+		Open( w_utilities_support)
+//--------------------------RP added 1.21.2016--------------------------------------------
+//Start Code Change ----02.01.2016 #V15 maha - moved above case
+//	CASE ELSE
+//		IF gb_home_visible AND NOT isValid(w_home_buttons) THEN
+////			openSheet(w_home_buttons, w_mdi, 0, original!)
+//			open(w_home_buttons)
+//		END IF
+//EndCode Change ----02.01.2016		
+//--------------------------end RP added----------------------------------------------------
+end choose
+w_mdi.setfocus()  //Stephen 05.19.2011 --- Fixed a bug closing the Setup Launch Pad it also closes the Task List
+
+//Opem Launch Pad
+if li_launch > 0 then open(w_launch_pad)
+w_mdi.setfocus()  //Stephen 05.19.2011 --- Fixed a bug closing the Setup Launch Pad it also closes the Task List
+
+//---------Begin Added by (Appeon)Alfee 06.26.2013 for V141 ISG-CLX--------
+//Auto open contract folder and select the corresponding tab - 2009-03-06 By: Scofield
+if AppeonGetClientType() = 'WEB' and gb_contract_module  then
+	if gl_MoveToCtxID > 0 and gs_MoveToTabNo <> "" then
+		gf_OpenContractFolder(lpo_NullParm)
+		//---------Begin Modified by (Appeon)Harry 03.18.2014 for V142 ISG-CLX--------
+		//Post gf_GoTo_Contract(gl_MoveToCtxID,gs_MoveToTabNo,gl_MoveToDocID)
+		Post gf_GoTo_Contract(gl_MoveToCtxID,gs_MoveToTabNo,gl_MoveToDocID, 0, 0, '' )
+		//---------End Modfiied ------------------------------------------------------
+	end if
+end if
+	
+If w_mdi.of_security_access( 6980 ) = 1 and (isnull(ii_getting_started) or ii_getting_started = 1 and Not gb_IsDocMode and not gb_DocQuickView) Then	
+	//If gb_contract_version Then Post of_postopen_getting_started()
+	//(Appeon)Toney 09.04.2013 - V141 ISG-CLX Fix reintegration BugT081301 (PB&WEB P2 Toney)
+	If gb_contract_module Then Post of_postopen_getting_started()
+End If
+//---------End Added ------------------------------------------------------------------
+
+//OPEN TASK LIST
+IF gi_iapp_on = 1 And li_task = 1 THEN
+		Open( w_dash )
+END IF
+		
+return 1
+end function
+

@@ -1,0 +1,180 @@
+/************************************************************************************************************
+For Example:
+[R001]
+Modification Info:	Modified By Ken Appeon 12/01/2007
+Modification Position:	Test01.pbl@w_test.dw_1::clicked() 
+Modification Reason:	Fix BugK091302 about failed to save data after added import project. 
+************************************************************************************************************/
+
+[R001]
+Modification Info:	Modfiied by Harry appeon 10/23/2017
+Modification Position:	Painters.pbl@w_photo_data_settings.of_get_prac()
+Modification Reason:	For bug of Alpha Testing Bug # 5852 - Photo Profile Design: Test preview is not working 
+
+[R002]
+Modification Info:	Modified By Gavin Appeon 10/23/2017
+Modification Position:	action_items.pbl@w_action_items.dw_select_org_facility::itemchanged()
+			action_items.pbl@w_action_items.dw_user::itemchanged()
+Modification Reason:	For Alpha Testing V15.4 Bug # 5850
+
+[R003]
+Modification Info:	Modified By Gavin Appeon 10/23/2017
+Modification Position:	intellicred_comp.pbl@pfc_cst_u_data_entry.dw_select_section::pfc_after_select()
+Modification Reason:	Alpha Testing Bug # 5851 - Data Zoom-> Provider:  Data screens are not zoomed
+
+[R004]
+Modification Info:	Modfiied by stephen appeon 10/23/2017
+Modification Position:	security.pbl@w_security_user_personal_settings@dw_1.itemchanged()
+Modification Reason:	For bug of Alpha Testing V15.4 Cosmetic Bug # 5849 - Personal Settings->Zoom Setting info window:  Extra space in message
+
+[R005]
+Modification Info:	Modfiied by stephen appeon 10/25/2017
+Modification Position:	action_item_dw.pbl@d_copy_verification_missing
+Modification Reason:	For bug of V15.3 Bug # 5854 - Missing verifications, when added, are not populating a Created By entry
+
+[R006]
+Modification Info:	Modfiied by Harry appeon 10/26/2017
+Modification Position:	intellicontract_am.pbl@w_dm_image_cp.of_change_path()
+					       w_dm_image_cp.of_pdf2tifbw()
+					       w_dm_image_cp.of_pdf2tif()
+Modification Reason:	For bug of V15.3 Bug # 5855 - Can't delete PDF from desktop after uploading into program - file in use error
+
+[R007]
+Modification Info:	Modified By Gavin Appeon 10/26/2017
+Modification Position:	data_entry.pbl@pfc_cst_nv_data_entry_functions::of_create_dynamic_ds()
+Modification Reason:	FW: Application Mapping A client is getting the following syntax error message 
+
+[R008]
+Modification Info:	Modified By Gavin Appeon 10/30/2017
+Modification Position:	intellicred_comp.pbl@pfc_cst_u_data_entry::of_zoom()
+Modification Reason:	Alpha Testing Bug # 5851 - Data Zoom-> Provider: Data screens are not zoomed
+
+[R009]
+Modification Info:	Modified By Harry Appeon 10/31/2017
+Modification Position:	data_entry.pbl@pfc_cst_u_apptmnt_status.tab_view.tabpage.detail_1.dw_apptmnt_status.itemchanged()
+Modification Reason:	For bug of Alpha ID 5860 - 3.7 Appointment Status Changing SaaS V15.4 Build 10242017, C/S is okay.
+
+[R010]
+Modification Info:	Modfiied by Harry appeon 11/01/2017
+Modification Position:	Painters.pbl@w_photo_data_settings_test.dw_data.constructor
+Modification Reason:	For bug of Alpha Testing Bug # 5852 - Photo Profile Design: Test preview is not working 
+
+[R011]
+Modification Info:	Modfiied by stephen appeon 11/02/2017
+Modification Position:	group_practice.pbl@w_practice_to_addr_find@cb_1.clicked
+			group_practice.pbl@w_practice_to_addr_find@of_replace()
+Modification Reason:	For bug of  Alpha id 5867 - Groups 'Link Existing' Filter Search Error  SaaS build 15.4 Build 10242017, C/S 15.406 Build 10202017
+
+[R012]
+Modification Info:	Modfiied by stephen appeon 11/02/2017
+Modification Position:	group_practice.pbl@w_practice_to_addr_find_new@cb_filter.clicked
+			group_practice.pbl@w_practice_to_addr_find_new@of_search_groups()
+			group_practice.pbl@w_practice_to_addr_find_new@of_replace()
+Modification Reason:	For bug of Alpha id 5868 - Find Addresses Search Error  C/S 15.406 10202017, SaaS 
+
+[R013]
+Modification Info:	Modified By Gavin Appeon 11/06/2017
+Modification Position:	pfemain.pbl@u_dw::dropdown()
+Modification Reason:	Alpha Testing V15.4 Bug # 5870 - Drop downs are not being zoomed
+
+[R014]
+Modification Info:	Modfiied by Harry appeon 11/08/2017
+Modification Position:	Painters.pbl@w_photo_data_settings.of_get_prac()
+Modification Reason:	For bug of Alpha Testing Bug # 5852 - Photo Profile Design: Test preview is not working 
+
+[R015]
+Modification Info:	Modfiied by stephen appeon 11/07/2017
+Modification Position:	intellicred_comp.pbl@w_prac_data_1.pfc_save()
+			intellicred_comp.pbl@w_prac_data_1.of_setup_title()
+Modification Reason:	For bug of Alpha Testing Bug # 5871- IntelliApp-> Refresh issue: Adding a new provider still shows previous providers name at bottom instead of new
+
+[R016]
+Modification Info:	Modfiied by stephen appeon 11/09/2017
+Modification Position:	intelliapp.pbl@w_batch_add_apps_facilities.of_add_net_dev_ai_for_pt()
+Modification Reason:	For bug of V15.3 Bug # 5876 - Net Dev Action Items is populating Next Action Date as 1/1/1900
+
+[R017]
+Modification Info:	Modfiied by stephen appeon 11/13/2017
+Modification Position:	group_practice.pbl@w_group_practice@cb_link_loc.clicked()
+Modification Reason:	For bug of Alpha id 5867 - Groups 'Link Existing' Filter Search Error 
+
+[R018]
+Modification Info:	Modfiied by stephen appeon 11/14/2017
+Modification Position:	intelliappmods.pbl@d_net_dev_action_items_ai_sk
+			intelliappmods.pbl@d_net_dev_action_items_sk
+			intelliappmods.pbl@d_net_dev_action_items
+Modification Reason:	For bug of V15.3 Bug # 5878 - Error occurs with idle database when you start working in it
+
+[R019]
+Modification Info:	Modfiied by stephen appeon 11/22/2017
+Modification Position:	intellicontract_am.pbl@w_dm_image_cp.of_pdf2tif()
+			intellicontract_am.pbl@w_dm_image_cp.of_pdf2tifbw()
+Modification Reason:	For bug of Bug ID #5890 for Case #00074090 - Documents not printing the right size
+
+[R020]
+Modification Info:	Modfiied by stephen appeon 11/24/2017
+Modification Position:	appeon_workaround.pbl@n_cst_reg_control.of_check_ocx()
+			appeon_workaround.pbl@n_cst_reg_control.of_upgrade_ocxs()
+ 			gdiplus.dll / ImageViewer2.OCX / mfc42.dll / msvcrt.dll / TIFF2PDF.dll / viscomdocx.dll / viscomgifenc.dll / 			viscompdf.dll / viscompdfedit.dll / viscompdfreader.dll / viscompsd.dll
+			webcomponents_v153.exe/webcomponents.cab
+			vss:dictfiles\tessdata
+Modification Reason:	For bug of Bug ID #5880 for Case #00074053 - Contract Document Hangs
+
+[R021]
+Modification Info:	Modfiied by stephen appeon 11/28/2017
+Modification Position:	appeon_workaround.pbl@n_cst_reg_control.of_upgrade_ocxs()
+			intellicred.pbl@of_reg_dllocx_cmd()
+Modification Reason:	For image view cp upgrade
+
+[R022]
+Modification Info:	Modfiied by stephen appeon 11/29/2017
+Modification Position:	painters.pbl@w_lookup_maint@dw_detail.pfc_preupdate()
+Modification Reason:	For bug of Bug ID #5894 for Case #00074180 - Affiliation Status Lookup
+
+[R023]
+Modification Info:	Modfiied by stephen appeon 11/30/2017
+Modification Position:	data_entry.pbl@pfc_cst_u_verification_info.of_delete_verification()
+			data_entry.pbl@pfc_cst_u_verification_info.of_send_verif_to_history()
+Modification Reason:	For bug of V15.4 Bug # 5895 - Sending to history or deleting last verification prevents green checkmark and verif completed date
+
+[R024]
+Modification Info:	Modfiied by Harry appeon 12/04/2017
+Modification Position:	data_entry.pbl@pfc_cst_u_verification_info.tab_view.tabpage_recred.cb_init_recred.clicked
+Modification Reason:	For bug of V15.4 Bug # 5898 - Issue when re-credentialing 2 facilities at the same time
+
+[R025]
+Modification Info:	Modfiied by Harry appeon 12/05/2017
+Modification Position:	intellicred_dw.pbl@d_pd_notes_ent_browse_facil/d_pd_notes_ent_browse_loc/d_pd_notes_ent_browse_group/d_pd_notes_ent_browse_payor/d_pd_notes_ent_browse_organize
+Modification Reason:	For bug of Bug ID #5902 for Case #00074339 - Can no longer see all notes in the Group Screen
+
+[R026]
+Modification Info:	Modfiied by stephen appeon 12/05/2017
+Modification Position:	security.pbl@d_security_user_setup_4_wv
+			security.pbl@d_security_user_setup_wv_non_prac
+			security.pbl@pfc_cst_u_wv_user_add.of_set_prac()
+			security.pbl@pfc_cst_u_wv_user_add@cb_resetuser.clicked()
+Modification Reason:	For bug of V15.4 WebView Bug # 5899 - New WebView user accounts keeps saying password expires in X days even after changing it
+
+[R027]
+Modification Info:	Modified By Gavin Appeon 12/12/2017
+Modification Position:	addhoc.pbl@w_custom_report.dw_detail::buttonclicked()
+			addhoc.pbl@w_custom_report.cb_store::clicked()
+			addhoc.pbl@w_custom_report_manage.cb_export::clicked()
+			appeon_contract.pbl@n_cst_excel::of_saveas_excel()
+			appeon_contract.pbl@n_cst_excel::of_readtitlefromdw()
+			appeon_workaround.pbl@n_cst_datawindow::of_saveas()
+			auto_export.pbl@pfc_n_cst_ai_export_apb::of_copy_expdata()
+			report.pbl@w_activity_report_run.cb_export::clicked()
+			report.pbl@w_report.cb_store::clicked()
+			utilities.pbl@w_one_click_report::of_run()
+Modification Reason:	Fix Bug for RE: Export and excel support xlsx
+
+[R028]
+Modification Info:	Modified By Harry Appeon 12/13/2017
+Modification Position:	addhoc.pbl@ w_custom_report.open
+Modification Reason:	Fix Bug for V15.4 Bug # 5911 - Scheduler report fails 
+
+[R029]
+Modification Info:	Modified By Harry Appeon 12/20/2017
+Modification Position:	painters.pbl@ w_new_screen_painter.of_create_view.
+Modification Reason:	Fix Bug for Custom Screen Issues

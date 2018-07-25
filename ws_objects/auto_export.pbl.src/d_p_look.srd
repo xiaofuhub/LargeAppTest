@@ -1,0 +1,17 @@
+﻿$PBExportHeader$d_p_look.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=procd_id dbname="priv_core_procd.procd_id" )
+ column=(type=char(32766) update=yes updatewhereclause=no name=core_procd_description dbname="priv_core_procd.core_procd_description" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=procd_name dbname="priv_core_procd.procd_name" )
+ retrieve="PBSELECT(TABLE(NAME=~"priv_core_procd~") COLUMN(NAME=~"priv_core_procd.procd_id~")COLUMN(NAME=~"priv_core_procd.core_procd_description~")COLUMN(NAME=~"priv_core_procd.procd_name~"))" update="priv_core_procd" updatewhere=1 updatekeyinplace=no )
+text(band=header alignment="2" text="Procd Id" border="0" color="33554432" x="9" y="8" height="52" width="1024" html.valueishtml="0"  name=procd_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=10 border="0" color="33554432" x="9" y="8" height="64" width="1024" format="[general]" html.valueishtml="0"  name=procd_id visible="1" dddw.name=d_dddw_priv_core_procd dddw.displaycolumn=procd_name dddw.datacolumn=procd_id dddw.percentwidth=150 dddw.lines=5 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.hscrollbar=yes dddw.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

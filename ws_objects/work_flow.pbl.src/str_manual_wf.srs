@@ -1,0 +1,10 @@
+﻿$PBExportHeader$str_manual_wf.srs
+global type str_manual_wf from structure
+	string		is_module
+	long		il_prac_id
+	long		il_facility_id
+	long		ctx_action_item_id
+	long		ctx_id
+	long		doc_id
+end type
+

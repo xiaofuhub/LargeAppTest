@@ -1,0 +1,28 @@
+﻿$PBExportHeader$f_get_contract_action_type_word_document.srf
+$PBExportComments$Create by Jack 05/06/2007
+global type f_get_contract_action_type_word_document from function_object
+end type
+
+forward prototypes
+global function integer f_get_contract_action_type_word_document (long al_lookup_code)
+end prototypes
+
+global function integer f_get_contract_action_type_word_document (long al_lookup_code);//////////////////////////////////////////////////////////////////////
+// $<function>f_get_contract_action_type_word_document()
+// $<arguments>
+//		value	long	al_lookup_code		
+// $<returns> integer
+// $<description>
+// $<description>
+//////////////////////////////////////////////////////////////////////
+// $<add> 05.06.2007 by Jack
+//////////////////////////////////////////////////////////////////////
+string ls_word_document_name
+Select custom_6 into :ls_word_document_name from code_lookup where lookup_code = :al_lookup_code;
+If isnull(ls_word_document_name) Or ls_word_document_name = '' Then
+	return 0
+End If
+Return 1
+
+end function
+

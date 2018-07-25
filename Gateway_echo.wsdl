@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="TestPing">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="apiKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestPingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestPingResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendDocument">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="apiKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="recipients" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sign_type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sign_flow" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="file" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="ccs" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendDocumentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendDocumentResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocumentLink">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="apiKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="documentKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocumentLinkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDocumentLinkResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadSignedDoc">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="apiKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="documentKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadSignedDocResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadSignedDocResult" type="tns:SignedDocument" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SignedDocument">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="errorText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="document" type="s:base64Binary" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RemoveSignedDoc">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="apiKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="documentKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveSignedDocResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RemoveSignedDocResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="apiKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="documentKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFileInfoResult" type="tns:DocumentInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DocumentInformation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="documentName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="docSatus" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="errorMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="signature" type="tns:ArrayOfSignature" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSignature">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Signature" nillable="true" type="tns:Signature" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Signature">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="signerEmail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="nameSigned" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="signStatus" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="signerIP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="signedDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="roles" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="TestPingSoapIn">
+    <wsdl:part name="parameters" element="tns:TestPing" />
+  </wsdl:message>
+  <wsdl:message name="TestPingSoapOut">
+    <wsdl:part name="parameters" element="tns:TestPingResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendDocumentSoapIn">
+    <wsdl:part name="parameters" element="tns:SendDocument" />
+  </wsdl:message>
+  <wsdl:message name="SendDocumentSoapOut">
+    <wsdl:part name="parameters" element="tns:SendDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentLinkSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDocumentLink" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentLinkSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDocumentLinkResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadSignedDocSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadSignedDoc" />
+  </wsdl:message>
+  <wsdl:message name="DownloadSignedDocSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadSignedDocResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveSignedDocSoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveSignedDoc" />
+  </wsdl:message>
+  <wsdl:message name="RemoveSignedDocSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveSignedDocResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFileInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFileInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetFileInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFileInfoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="EchoSignSoap">
+    <wsdl:operation name="TestPing">
+      <wsdl:input message="tns:TestPingSoapIn" />
+      <wsdl:output message="tns:TestPingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendDocument">
+      <wsdl:input message="tns:SendDocumentSoapIn" />
+      <wsdl:output message="tns:SendDocumentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentLink">
+      <wsdl:input message="tns:GetDocumentLinkSoapIn" />
+      <wsdl:output message="tns:GetDocumentLinkSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadSignedDoc">
+      <wsdl:input message="tns:DownloadSignedDocSoapIn" />
+      <wsdl:output message="tns:DownloadSignedDocSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveSignedDoc">
+      <wsdl:input message="tns:RemoveSignedDocSoapIn" />
+      <wsdl:output message="tns:RemoveSignedDocSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileInfo">
+      <wsdl:input message="tns:GetFileInfoSoapIn" />
+      <wsdl:output message="tns:GetFileInfoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EchoSignSoap" type="tns:EchoSignSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TestPing">
+      <soap:operation soapAction="http://tempuri.org/TestPing" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendDocument">
+      <soap:operation soapAction="http://tempuri.org/SendDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentLink">
+      <soap:operation soapAction="http://tempuri.org/GetDocumentLink" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadSignedDoc">
+      <soap:operation soapAction="http://tempuri.org/DownloadSignedDoc" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveSignedDoc">
+      <soap:operation soapAction="http://tempuri.org/RemoveSignedDoc" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileInfo">
+      <soap:operation soapAction="http://tempuri.org/GetFileInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EchoSignSoap12" type="tns:EchoSignSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TestPing">
+      <soap12:operation soapAction="http://tempuri.org/TestPing" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendDocument">
+      <soap12:operation soapAction="http://tempuri.org/SendDocument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentLink">
+      <soap12:operation soapAction="http://tempuri.org/GetDocumentLink" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadSignedDoc">
+      <soap12:operation soapAction="http://tempuri.org/DownloadSignedDoc" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveSignedDoc">
+      <soap12:operation soapAction="http://tempuri.org/RemoveSignedDoc" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetFileInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EchoSign">
+    <wsdl:port name="EchoSignSoap" binding="tns:EchoSignSoap">
+      <soap:address location="http://clxintranet.contractlogix.com/echosign/signservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="EchoSignSoap12" binding="tns:EchoSignSoap12">
+      <soap12:address location="http://clxintranet.contractlogix.com/echosign/signservice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

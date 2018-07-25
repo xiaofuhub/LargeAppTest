@@ -1,0 +1,7 @@
+﻿$PBExportHeader$str_folder_handle.srs
+$PBExportComments$(Appeon)Eugene 06.25.2013 - V141 ISG-CLX
+global type str_folder_handle from structure
+	long		al_folder_id
+	long		al_tv_handle
+end type
+

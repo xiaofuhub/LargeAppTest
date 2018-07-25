@@ -1,0 +1,67 @@
+﻿$PBExportHeader$d_cntx_location_contact_all.srd
+$PBExportComments$[intellicontract] Location contact
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=68 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes name=loc_id dbname="ctx_location_contacts.loc_id" )
+ column=(type=long update=yes updatewhereclause=yes name=contact_id dbname="ctx_location_contacts.contact_id" )
+ column=(type=long updatewhereclause=yes name=ctx_contacts_contact_id dbname="ctx_contacts.contact_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=contact_type dbname="ctx_contacts.contact_type" )
+ column=(type=char(30) updatewhereclause=yes name=first_name dbname="ctx_contacts.first_name" )
+ column=(type=char(30) updatewhereclause=yes name=last_name dbname="ctx_contacts.last_name" )
+ column=(type=char(30) updatewhereclause=yes name=middle_name dbname="ctx_contacts.middle_name" )
+ column=(type=char(50) updatewhereclause=yes name=contact_title dbname="ctx_contacts.contact_title" )
+ column=(type=decimal(0) updatewhereclause=yes name=ctx_contacts_contact_department dbname="ctx_contacts.contact_department" )
+ column=(type=char(150) updatewhereclause=yes name=app_facility_street dbname="app_facility.street" )
+ column=(type=char(150) updatewhereclause=yes name=app_facility_street_2 dbname="app_facility.street_2" )
+ column=(type=char(150) updatewhereclause=yes name=app_facility_street_3 dbname="app_facility.street_3" )
+ column=(type=char(35) updatewhereclause=yes name=app_facility_city dbname="app_facility.city" )
+ column=(type=char(2) updatewhereclause=yes name=app_facility_state dbname="app_facility.state" )
+ column=(type=char(12) updatewhereclause=yes name=app_facility_zip dbname="app_facility.zip" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=record_id dbname="ctx_location_contacts.record_id" )
+ column=(type=long update=yes updatewhereclause=yes name=ctx_id dbname="ctx_location_contacts.ctx_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=parent_comp_id dbname="ctx_location_contacts.parent_comp_id" )
+ column=(type=char(1) updatewhereclause=yes name=contact_type2 dbname="contact_type2" )
+ column=(type=char(11) updatewhereclause=yes name=contact_phone dbname="contact_phone" )
+ retrieve="  SELECT ctx_location_contacts.loc_id,   
+         ctx_location_contacts.contact_id,   
+         ctx_contacts.contact_id,   
+         ctx_contacts.contact_type,   
+         ctx_contacts.first_name,   
+         ctx_contacts.last_name,   
+         ctx_contacts.middle_name,   
+         ctx_contacts.contact_title,   
+         ctx_contacts.contact_department,   
+         app_facility.street,   
+         app_facility.street_2,   
+         app_facility.street_3,   
+         app_facility.city,   
+         app_facility.state,   
+         app_facility.zip,   
+         ctx_location_contacts.record_id,   
+         ctx_location_contacts.ctx_id,   
+         ctx_location_contacts.parent_comp_id,
+         contact_type2 = app_facility.contact_type2,  
+			'           ' as contact_phone  
+    FROM ctx_contacts,   
+         ctx_location_contacts,
+			app_facility
+   WHERE ( ctx_contacts.contact_id = ctx_location_contacts.contact_id ) and
+			(app_facility.facility_id = ctx_contacts.facility_id)
+" )
+text(band=header alignment="2" text="First Name" border="6" color="33554432" x="379" y="8" height="52" width="709" html.valueishtml="0"  name=first_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Type" border="6" color="33554432" x="9" y="8" height="52" width="361" html.valueishtml="0"  name=contact_type_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Last Name" border="6" color="33554432" x="1097" y="8" height="52" width="709" html.valueishtml="0"  name=last_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Middle Name" border="6" color="33554432" x="1815" y="8" height="52" width="681" html.valueishtml="0"  name=middle_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="9" y="4" height="52" width="361" format="[general]" html.valueishtml="0"  name=contact_type visible="1" dddw.name=dddw_contact_type dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0 dddw.autoretrieve=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="33554432" x="379" y="4" height="52" width="709" format="[general]" html.valueishtml="0"  name=first_name visible="1" edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="33554432" x="1097" y="4" height="52" width="709" format="[general]" html.valueishtml="0"  name=last_name visible="1" edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="33554432" x="1815" y="4" height="52" width="681" format="[general]" html.valueishtml="0"  name=middle_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

@@ -1,0 +1,73 @@
+﻿$PBExportHeader$of_view_alias_add_missing_fields.srf
+global type of_view_alias_add_missing_fields from function_object
+end type
+
+forward prototypes
+global function integer of_view_alias_add_missing_fields (string as_view, long al_id, integer ai_dv_id)
+end prototypes
+
+global function integer of_view_alias_add_missing_fields (string as_view, long al_id, integer ai_dv_id);//Start Code Change ----05.22.2017 #V154 maha
+integer r
+integer rc
+integer ac
+integer nr
+integer f
+long cnt = 0
+string ls_field
+
+datastore ds_fields
+datastore ds_alias
+
+ds_fields = create datastore
+ds_alias = create datastore
+ 
+if gs_dbtype = "ASA" then
+	ds_fields.dataobject = "d_view_fields_for_view"
+	ds_fields.settransobject(sqlca)
+	rc = ds_fields.retrieve(al_id)
+else
+	ds_fields.dataobject = "d_view_fields_for_view_sql"
+	ds_fields.settransobject(sqlca)
+	rc = ds_fields.retrieve(as_view)
+end if
+
+ds_alias.dataobject = "d_view_alias_field_add"
+ds_alias.settransobject(sqlca)
+ac = ds_alias.retrieve(as_view)
+
+for r = 1 to rc
+	ls_field = ds_fields.getitemstring(r, "column_name")
+	f = ds_alias.find( "c_name = '" + ls_field + "'", 1, ac)
+	if f = 0 then
+		nr = ds_alias.insertrow(0)
+		ds_alias.setitem(nr, "v_name", as_view)
+		ds_alias.setitem(nr, "data_view_id", ai_dv_id )
+		ds_alias.setitem(nr, "c_name", ls_field)
+		ds_alias.setitem(nr, "field_name", ls_field)
+		ls_field =  of_strip_char( "_", ls_field, " ") 
+		ls_field =  of_strip_char("", ls_field, "@FIRSTCAP@")
+		ds_alias.setitem(nr, "c_alias", ls_field)
+		ds_alias.setitem(nr, "visible", 1)
+		cnt++
+	end if 
+next
+
+if cnt > 0 then ds_alias.update()
+
+destroy ds_fields
+destroy ds_alias
+
+if cnt > 0 then
+	messagebox( as_view, string(cnt) + " alias fields added.")
+else
+	messagebox( as_view, string(cnt) + "No missing alias fields found.")
+end if
+
+return 1
+
+
+
+
+	
+end function
+

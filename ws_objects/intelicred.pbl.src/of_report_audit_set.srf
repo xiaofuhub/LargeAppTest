@@ -1,0 +1,43 @@
+﻿$PBExportHeader$of_report_audit_set.srf
+global type of_report_audit_set from function_object
+end type
+
+forward prototypes
+global function integer of_report_audit_set (string as_data, u_dw adw_audit, boolean ab_save)
+end prototypes
+
+global function integer of_report_audit_set (string as_data, u_dw adw_audit, boolean ab_save);//Start Code Change ----06.15.2016 #V152 maha - added for audit
+string ls_field
+integer r
+
+choose case as_data
+	case 'P'  //properties
+		ls_field = "p_mod"
+	case 'T'  //tables
+		ls_field = "t_mod"
+	case 'L'  //links
+		ls_field = "l_mod"
+	case 'C' //fields
+		ls_field = "c_mod"
+	case 'F' //filters
+		ls_field = "f_mod"
+	case 'S'  //sort
+		ls_field = "s_mod"
+	case 'D'  //design
+		ls_field = "d_mod"
+end choose
+
+adw_audit.setitem(1, ls_field, 1)
+adw_audit.setitem(1, "mod_date", datetime(today(), Now()))
+
+if ab_save then
+	r = adw_audit.update()
+	if r < 1 then messagebox("of_report_audit_set","Report Audit Failed")
+end if
+
+
+return 1
+
+
+end function
+

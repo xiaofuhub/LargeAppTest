@@ -1,0 +1,91 @@
+﻿$PBExportHeader$f_browseforfolder.srf
+$PBExportComments$[intellicontract]
+global type f_browseforfolder from function_object
+end type
+
+forward prototypes
+global function string f_browseforfolder (string as_title, long al_handle)
+end prototypes
+
+global function string f_browseforfolder (string as_title, long al_handle);/*******************************************************************************************************************
+**  [PUBLIC]   wf_browseforfolder()
+**==================================================================================================================
+**  Purpose: 	 This function will open the browse folder  dialog window
+**==================================================================================================================
+**  Arguments :	[value]	al_handle - The handle of the requestiog window
+**                [value]	as_title  - Instruction to the user 
+**==================================================================================================================
+**  Returns: 	 [long]  
+**==================================================================================================================
+**  Created By Mike Skinner  04 february 2002     
+**==================================================================================================================
+**  Modification Log
+**   Changed By                            Change Date                 Reason
+** -------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+
+//--------------------------- APPEON BEGIN ---------------------------
+//$<modify> 04.19.2006 By: LeiWei
+//$<reason> Object SHBrowseForFolder Couldn't work.
+/*
+String		ls_null, ls_name, ls_title, ls_path, ls_folder
+long			ll_pidl, ll_rc, ll_null
+Integer		li_image
+boolean ab_fullpath 
+ab_fullpath = true
+
+CONSTANT uint BIF_RETURNONLYFSDIRS	= 1
+CONSTANT uint BIF_USENEWUI	= 100	//= 0
+
+// Create instance of structure
+str_browseinfo lstr_BrowseInfo
+
+
+SetNull( ls_null )
+SetNull( ll_Null )
+ls_name = Space( 256 )
+ls_title = as_title + char(0)
+
+lstr_BrowseInfo.hwnd =al_handle
+lstr_BrowseInfo.Root = ll_Null
+lstr_BrowseInfo.Display = ls_name
+lstr_BrowseInfo.Title = ls_title
+lstr_BrowseInfo.Flags = BIF_RETURNONLYFSDIRS + BIF_USENEWUI
+lstr_BrowseInfo.callback = ll_null
+lstr_BrowseInfo.lParam = ll_null
+lstr_BrowseInfo.iimage = li_image
+
+ll_pidl = SHBrowseForFolder( lstr_BrowseInfo )
+IF ll_pidl > 0 THEN
+	ls_path = Space( 256 )
+	SHGetPathFromIDList( ll_pidl, ls_path ) 
+		IF ab_fullpath THEN
+			ls_folder = ls_path
+		ELSE
+			ls_folder = lstr_BrowseInfo.Display
+		END IF
+		
+		RETURN ls_folder
+	
+ELSE
+	RETURN ls_null
+END IF
+*/
+
+String		ls_null, ls_folder
+Integer 		li_result
+
+SetNull( ls_null )
+
+li_result = GetFolder( as_title, ls_folder )
+
+IF li_result = 1 THEN
+	RETURN ls_folder
+ELSE
+	RETURN ls_null
+END IF
+
+//---------------------------- APPEON END ----------------------------
+
+end function
+

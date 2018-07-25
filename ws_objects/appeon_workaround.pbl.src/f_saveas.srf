@@ -1,0 +1,85 @@
+﻿$PBExportHeader$f_saveas.srf
+global type f_saveas from function_object
+end type
+
+forward prototypes
+global function integer f_saveas (ref datastore ads_save, string as_divideflag, string as_filename)
+end prototypes
+
+global function integer f_saveas (ref datastore ads_save, string as_divideflag, string as_filename);integer li_FileNum
+LONG i
+long j
+long ll_colnum
+string ls_variable
+string ls_temp
+string ls_type
+
+li_FileNum = FileOpen(as_filename,StreamMode!, Write!, LockWrite!, Replace!)
+
+if li_filenum < 1 then 
+	//messagebox("Prompt","Error occured when opening file.")
+	messagebox("Prompt","Error occurred when opening file.")
+	return -1
+end if
+
+if li_filenum > 0 then
+
+	//write the file title
+	ls_variable = ""
+	ll_colnum = long(ads_save.Describe("DataWindow.Column.Count"))
+	if ll_colnum < 1 then return -1
+	for i = 1 to ll_colnum
+		ls_temp = ads_save.Describe("#" + string(i) + ".Name")
+		if isnull(ls_temp) then ls_temp = ""
+		
+		if PosA(ls_temp,as_divideflag) > 0 then ls_temp = '"' + ls_temp + '"'
+		
+		if i < ll_colnum then
+			ls_variable = ls_variable + ls_temp + as_divideflag
+		else
+			ls_variable = ls_variable + ls_temp + CharA(13) + CharA(10)
+		end if
+	next
+	FileWrite (li_FileNum,ls_variable )
+	
+	//write the record
+	for i = 1 to ads_save.rowcount()
+		ls_variable = ""
+		for j = 1 to ll_colnum
+			ls_temp = ads_save.Describe("#" + string(j) + ".Name")
+			ls_type = ads_save.Describe("#" + string(j) + ".ColType")
+			choose case LeftA(ls_type,3)
+				case "str","cha"		
+					ls_temp = ads_save.getitemstring(i,ls_temp)
+				case "num","lon","int","dou"
+					ls_temp = string(ads_save.getitemnumber(i,ls_temp))
+				case "dat"
+					if ls_type = "datetime" then
+						ls_temp = string(ads_save.getitemdatetime(i,ls_temp))
+				   else
+						ls_temp = string(ads_save.getitemdate(i,ls_temp))
+					end if
+				case "dec"
+					ls_temp = string(ads_save.GetItemDecimal(i,ls_temp))
+				case "time"
+					ls_temp = string(ads_save.GetItemtime(i,ls_temp))
+			end choose
+			
+			if isnull(ls_temp ) then ls_temp = ""
+			if PosA(ls_temp,as_divideflag) > 0 then ls_temp = '"' + ls_temp + '"'
+			
+			if j < ll_colnum then
+				ls_variable = ls_variable + ls_temp + as_divideflag
+			else
+				ls_variable = ls_variable + ls_temp + CharA(13) + CharA(10)
+			end if
+		next	
+	
+		FileWrite (li_FileNum, ls_variable )
+	next
+end if
+FileClose(li_FileNum)
+
+return 1
+end function
+

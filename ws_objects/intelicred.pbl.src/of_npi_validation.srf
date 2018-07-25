@@ -1,0 +1,105 @@
+﻿$PBExportHeader$of_npi_validation.srf
+global type of_npi_validation from function_object
+end type
+
+forward prototypes
+global function integer of_npi_validation (string as_npi, string as_from)
+end prototypes
+
+global function integer of_npi_validation (string as_npi, string as_from);//function created maha 06.14.07 to validate npi numbers
+//Start Code Change ----05.04.2010 #V10 maha - modified to make clearer and simpler from 9.2 function
+//i = of_npi_validation(s,"test")
+////choose case i
+//	case 1
+//		mess = "Valid"
+//	case -1
+//		mess = "Invalid.  NPI number must be 10 Characters."
+//	case -2
+//		mess = "Invalid.  NPI number can contain Numerals only."
+//	case 1
+//		mess = "Invalid.  Not a valid NPI number"
+//end choose
+
+
+integer li_char[]
+integer c
+string ls_dnum
+integer li_dtot
+integer li_stot
+integer li_res
+integer ret
+integer i
+integer li_last
+string ls_npi
+string s
+
+ls_npi = as_npi
+debugbreak()
+//Start Code Change ----05.02.2013 #V12 maha - added ssn option to function
+if as_from = "SSN" then
+	ls_npi = of_strip_char("-", ls_npi , "" ) 
+	ls_npi = of_strip_char(" ", ls_npi , "" ) 
+	if LenA(ls_npi) <> 9 then 	return  -1
+else
+	if LenA(ls_npi) <> 10 then 	return  -1
+end if
+
+
+//check for all numeric values
+for i = 1 to LenA(ls_npi)
+	s = MidA(ls_npi,i,1) 
+	if  not isnumber(s) then
+		return -2
+	end if
+next
+//1234567893
+
+if  as_from = "SSN" then  //Start Code Change ----05.02.2013 #V12 maha - added ssn option to function
+	//skip this check
+	
+else
+	//add 80840 to the npi  note character 15 id the checksum number
+	//ls_npi = "80840" + ls_npi
+	
+	//store the numbers in array except for last
+	for c =  1 to 9
+		li_char[c] = integer(MidA(ls_npi,c,1))
+	next
+	
+	//get checksum character
+	li_last = integer(RightA(ls_npi,1))
+	
+	//double the odd numbers of the npi 
+	for c = 1 to 9 step 2
+		li_char[c] = 2 * li_char[c]
+	next
+	
+	//convert to a long string
+	for c = 1 to 9
+		ls_dnum+= string(li_char[c])
+	next
+	
+	li_dtot = 24 //the 80840 rendered for the checksum ie. 8 + doubled 0 (0) + 8 + doubled 4 (8) + 0
+	
+	//add all the digits together
+	for c = 1 to LenA(ls_dnum)
+		li_dtot = li_dtot + integer(MidA(ls_dnum,c,1))
+	next
+	
+	
+	//subtract from the next highest number ending in 0
+	//integer gets the non-mod value; add 1 and multiply by 10
+	li_res = (integer(li_dtot / 10) + 1) * 10 //ie. 67 = integer( 6.7) + 1 = 7.  X 10 = 70
+	
+	li_res = li_res - li_dtot //checksum test value
+	
+	//check for value of 10 
+	if li_res = 10 then li_res = 0   //Start Code Change ----05.04.2010 #V10 maha trap added for 10
+	
+	//compare computed value to checksum 
+	if li_last <> li_res then return -3
+end if
+
+return 1
+end function
+

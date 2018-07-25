@@ -1,0 +1,46 @@
+﻿$PBExportHeader$f_find_ctx_owner.srf
+global type f_find_ctx_owner from function_object
+end type
+
+forward prototypes
+global function string f_find_ctx_owner (integer al_ctx_id)
+end prototypes
+
+global function string f_find_ctx_owner (integer al_ctx_id);
+string ls_owner
+
+//--------------------------- APPEON BEGIN ---------------------------
+//$<ID> PT-01
+//$<modify> 06.21.2006 By: LeiWei
+//$<reason> Performance tuning
+//$<reason> Reduce client-server interactions to improve runtime performance.
+//$<modification> Write script to retrieve data from a cache instead of from the database.
+/*
+SELECT ctx_contacts.user_d 
+into   :ls_owner
+FROM   ctx_contacts,   
+       ctx_contract_contacts
+WHERE  (ctx_contract_contacts.contact_id = ctx_contacts.contact_id ) and  
+       (( ctx_contract_contacts.ctx_id = :al_ctx_id ) AND  
+       ( ctx_contract_contacts.owner = 'Y' ) );
+*/
+
+Long ll_row
+
+//------------------------------------------------------------------------
+// 2.24.2016 RP added
+IF gnv_data.of_retrieveIfNecessary("contract_search", FALSE) = -1 THEN
+	return ""
+END IF
+//------------------------------------------------------------------------
+
+ll_row = gnv_data.ids_contract_search.find( "ctx_id = " + String(al_ctx_id), 1, gnv_data.ids_contract_search.Rowcount() )
+IF ll_row > 0 THEN
+	ls_owner = gnv_data.ids_contract_search.GetitemString(ll_row, "user_d")
+END IF
+
+//---------------------------- APPEON END ----------------------------
+		 
+return  ls_owner
+end function
+

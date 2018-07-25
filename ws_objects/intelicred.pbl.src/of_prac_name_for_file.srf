@@ -1,0 +1,25 @@
+﻿$PBExportHeader$of_prac_name_for_file.srf
+global type of_prac_name_for_file from function_object
+end type
+
+forward prototypes
+global function string of_prac_name_for_file (long al_prac_id)
+end prototypes
+
+global function string of_prac_name_for_file (long al_prac_id);//Start Code Change ----11.14.2017 #V154 maha
+
+string ls_name
+
+select full_name into :ls_name from v_full_name where prac_id = :al_prac_id;
+
+ls_name = of_strip_char("'", ls_name, "")
+ls_name = of_strip_char(" ", ls_name, "-")
+ls_name = of_strip_char(".", ls_name, "-")
+ls_name = of_strip_char(",", ls_name, "")
+
+ls_name = ls_name + "-" + string(al_prac_id)
+
+return ls_name
+
+end function
+

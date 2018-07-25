@@ -1,0 +1,30 @@
+﻿$PBExportHeader$of_get_default_view.srf
+global type of_get_default_view from function_object
+end type
+
+forward prototypes
+global function integer of_get_default_view (string as_user, long al_facil)
+end prototypes
+
+global function integer of_get_default_view (string as_user, long al_facil); //Start Code Change ----03.09.2017 #V153 maha - added 
+ integer u
+ integer f
+ integer ll_view
+ 
+ select default_view into :u from security_users where user_id = :as_user;
+ select default_data_view_id into :f from facility where facility_id = :al_facil;
+ 
+ if isnull(u) then u = 0
+ if isnull(f) then f = 0
+ 
+ if u > 0 then
+	ll_view = u
+elseif f > 0 then
+	ll_view = f
+else
+	ll_view = 1
+end if
+ 
+return ll_view
+end function
+

@@ -1,0 +1,47 @@
+﻿$PBExportHeader$d_view_selected_sort_fields.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes key=yes name=field_id dbname="conv_view_fields.field_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=view_id dbname="conv_view_fields.view_id" )
+ column=(type=long updatewhereclause=yes name=project_id dbname="conv_view_fields.project_id" )
+ column=(type=char(30) updatewhereclause=yes name=field_options dbname="conv_view_fields.field_options" )
+ column=(type=char(30) updatewhereclause=yes name=field_alias dbname="conv_view_fields.field_alias" )
+ column=(type=long updatewhereclause=yes name=sel_table_id dbname="conv_view_fields.sel_table_id" )
+ column=(type=long updatewhereclause=yes name=sel_field_id dbname="conv_view_fields.sel_field_id" )
+ column=(type=long updatewhereclause=yes name=field_order dbname="conv_view_fields.field_order" )
+ column=(type=char(100) updatewhereclause=yes name=table_name dbname="conv_view_fields.table_name" )
+ column=(type=char(1000) updatewhereclause=yes name=field_name dbname="conv_view_fields.field_name" )
+ column=(type=char(4) updatewhereclause=yes name=field_display_width dbname="conv_view_fields.field_display_width" )
+ column=(type=decimal(0) updatewhereclause=yes name=field_x dbname="conv_view_fields.field_x" )
+ column=(type=char(30) updatewhereclause=yes name=field_wizard_name dbname="conv_view_fields.field_wizard_name" )
+ column=(type=char(1) updatewhereclause=yes name=field_wizard_type dbname="conv_view_fields.field_wizard_type" )
+ column=(type=long updatewhereclause=yes name=field_align dbname="conv_view_fields.field_align" )
+ column=(type=long updatewhereclause=yes name=label_align dbname="conv_view_fields.label_align" )
+ retrieve="  SELECT conv_view_fields.field_id,   
+         conv_view_fields.view_id,   
+         conv_view_fields.project_id,   
+         conv_view_fields.field_options,   
+         conv_view_fields.field_alias,   
+         conv_view_fields.sel_table_id,   
+         conv_view_fields.sel_field_id,   
+         conv_view_fields.field_order,   
+         conv_view_fields.table_name,   
+         conv_view_fields.field_name,   
+         conv_view_fields.field_display_width,   
+         conv_view_fields.field_x,   
+         conv_view_fields.field_wizard_name,   
+         conv_view_fields.field_wizard_type,   
+         conv_view_fields.field_align,   
+         conv_view_fields.label_align  
+    FROM conv_view_fields  
+   WHERE conv_view_fields.view_id = :view_id    
+" update="conv_view_fields" updatewhere=0 updatekeyinplace=no arguments=(("view_id", number))  sort="field_order A " )
+compute(band=detail alignment="0" expression="Lower( table_name + if(  sel_table_id =0,~"=~", ~".~") +  field_name  )"border="0" color="0" x="9" y="8" height="64" width="1001" format="[general]" html.valueishtml="0"  name=table_field visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

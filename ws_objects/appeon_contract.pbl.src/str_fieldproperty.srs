@@ -1,0 +1,22 @@
+﻿$PBExportHeader$str_fieldproperty.srs
+global type str_fieldproperty from structure
+	pfc_cst_u_contract_data_design		data_design
+	string		field_visible
+	string		label_color
+	string		label_bkcolor
+	string		label_alignment
+	string		label_border
+	string		field_required
+	string		field_mask
+	string		field_alignment
+	string		field_display_only
+	string		field_color
+	string		field_bkcolor
+	string		field_border
+	string		field_word_wrap
+	string		label_font_face
+	string		label_font_height
+	string		field_font_face
+	string		field_font_height
+end type
+

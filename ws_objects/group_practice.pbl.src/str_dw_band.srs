@@ -1,0 +1,6 @@
+﻿$PBExportHeader$str_dw_band.srs
+global type str_dw_band from structure
+	string		band
+	long		row
+end type
+

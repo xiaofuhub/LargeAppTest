@@ -1,0 +1,71 @@
+1	View Setup	I	E		3	1		1/1/2001 00:00:00	user1	"1) Click on Create View and give your view a name (usually your company name).
+2) Review the Practitioner Application/Profile and determine the order and applicable data screens you will use for your practitioners data. Add or Remove data screens as needed. Be sure to save!!"	USER2
+2	Facility Setup	I	B		8	2				"Facility Painter:
+1) Modify the name of the default facility (if applicable) be sure to include the physical address of the facility. 
+2) Enter the Return Address (Mailing) if different from the physical address.
+3) Click on the Settings tab to set the default view to your custom view and set the default letter path. This is where you will also set your default Audit Template(sets of required documents) and your Verifying Facility. Set the information for Reappointments such as, how far in advance you would like to be notified of reappoint for your practitioner. Set up your Reappointment verification information including incorporating the application and letters. Set up any Provisional appointment information and also your Allied Health information. 
+4) Click on the NPDB/OIG tab. Determine which method will be used: QPRAC (the manual method) or ITP (Interface Control Document Transfer Program). Set up the appropriate fields if ITP is selected.
+5) Click on the Verf. Rules Tab. Click through each data screen and determine when your verifying facility verifies and what method you use for the verification. Methods include but are not limited to: Web, Verification Letter, Hard Copy, Query.
+6) Click on the Committees tab and set up the committees that your practitioners will need to attend for approval.
+7) Click on the Department Chair tab and enter demographic information. 
+8) Add additional facilities that may be needed for tracking appointments."	
+3	Role Setup	I	E		1	3				"Role Painter: Establish security parameters for your users
+
+1) Determine if you will need additional roles other than Administrator, Lower or Read Only
+2) When creating additional roles, copy and/or create new roles and set access levels.
+	Full Access = dark black checkmark
+	No Access= blank box
+	Read Only= either a shaded checkmark or solid Green box"	
+4	User Setup	I	E		2	4				"User : Create your users, give them access to views and facilities. Assign them a role
+1) Create your user ID. 
+2) Give your user access to any/all of the Facilities and Views you have created
+    You do not need access to the default system view
+3) Assign your user a Role. 
+4) Set your default facility and your default view
+5) Set the page option to the page you would like to open at login
+6) Set the To Do list to No
+7) Set the Task List to Yes
+8) Remember to talk to your IT about setting up each user's Email Properties so that they will be able to email applications, images and letters directly from IntelliApp. 
+ 9) Add additional users if necessary."	
+5	Group Practice	I	B		12	5				"Group Practice: This will be the address book that will hold all of your group locations as well as billing addresses and credentialing address records. Once entered in Group Practices, you can use the Find button on the address d/e screen to retrieve the address.
+
+1) Go to the File Menu; choose Group Practices from the dropdown. 
+2) Click the Add Button.
+3) Complete the Location Detail , click Save.
+4) Click on Practice Data Tab add any Group information (Group NPI Number, Group Insurance information, Gender Limitations etc).
+5) Add any additional locations."	
+6	Email Templates	I	E		5	6				Email Painter	
+7	Checklist Setup	I	A		7	7				"Required Document Painter: Set up your list of required documents. This list will automatically be linked to all new practitioners. 
+ 	
+1) Change Item 1 to the first element in your list tab to the Letter Description field and type the description once again.
+2) Click the Add button and type your next description, tab to the Letter Description field which will already be populated.
+3) Continue to add your Required Document List. "	
+8	Checklist Setup	I	C		6	8				"App Audit Painter: Set up your list of required documents. This list will automatically be linked to all new practitioners. 
+
+1) Select the Facility on the left of the screen. Remember each Facility can have their own App Audit List(this may be necessary if each Facility requires different documentation)
+2) Change Item 1 to the first element in your list tab to the Letter Description field and type the description once again.   
+3) Click the Add button and type your next description, tab to the Letter Description field which will already be populated
+4) Click on the Reappointment Required Data tab. If the Reappointment Required Data elements are the same as the Initial List you may delete Item 1 and click the Copy Initial button. This will copy the Initial list you just created to the Reappointment tab. If there are items that need to be deleted for 5) Reappointment click in the field and click on the delete button.
+6) Review and set the Use as Verification, App Audit Auto Gen, Complete from D/E boxes."	
+9	Screen Design	I	E		4	9				"Screen Painter: Modify data entry screens (hide or reveal fields, move fields, use Custom fields). 
+1) Choose your Custom View
+2) Choose the Basic Information Screen
+3) Modify the screen setup:
+    Hide any fields you may not be using
+    Modify any labels
+    Do NOT hide or modify any Required (underlined) fields"	
+10	Document (Image) Type Setup	I	E		9	10				"Image Type Painter: Holds the list of the document types that you will need to scan for your providers.
+1) Modify the list of Scanned Documents: Delete the ones that you will not need. Add ones that you will need. Don't forget that each image type must be connected to a data screen.  If the document is not connected to a specific data screen, (for example a CV), connect it to the Basic Information Screen. 
+2) Modify the order: If you want to see the images in a specific order you will need to change the numbers. Make sure that you do not duplicate or leave out any numbers."	
+11	Letter Setup	I	E		11	11				"Letter Painter:  This is where you add the letters used for Practitioner correspondence (not verification letters).
+"	
+12	Letter Storage Area 	I	E		10	12				Letter Storage Painter: This is where all letters are stored in the database.	
+13	Lookup Setup	I	K		13	13				"Lookup Setup: This screen is for the editing of (most) of the items found in Drop Down lists in the program.  Lookup tables are divided into two types, Address (For Entities like Hospitals and Insurance Companies) and Code (for lists like Specialties and States). 
+1) To edit a table, select the lookup table name.  the list of records will be displayed.
+2) To add a lookup table for a custome field, Click New Lookup Table, select the Type, and enter the Table name.  Add entires as needed."	
+14	Expiring Data Settings	I	K		14	14					
+16	Provider Profile Design	I	K		16	16					
+17	Question Setup	I	K		17	17					
+18	To-Do-List Setup	I	K		18	18				The To-Do-List setup is where the different Action Types  are Created to appear in the To-Do-List.  Once Items are created, Security for them is set in the Role Setup.	
+19	Fax Templates	I	K		19	19					
+21	Profile Screen Design	I	K		21	21					

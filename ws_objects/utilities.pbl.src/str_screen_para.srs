@@ -1,0 +1,8 @@
+﻿$PBExportHeader$str_screen_para.srs
+global type str_screen_para from structure
+	string		para1
+	string		para2
+	string		para3
+	boolean		para4
+end type
+

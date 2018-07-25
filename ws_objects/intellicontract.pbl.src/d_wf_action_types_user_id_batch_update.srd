@@ -1,0 +1,38 @@
+﻿$PBExportHeader$d_wf_action_types_user_id_batch_update.srd
+$PBExportComments$Create by Jack 06/13/2007
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=120 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=wf_action_types_wf_id dbname="wf_action_types.wf_id" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=wf_action_types_step_id dbname="wf_action_types.step_id" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=to_user dbname="wf_action_types.to_user" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=by_user dbname="wf_action_types.by_user" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=send_to_user dbname="wf_action_types.send_to_user" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=cc_user dbname="wf_action_types.cc_user" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"wf_action_types~" )  TABLE(NAME=~"wf_workflow~" ) COLUMN(NAME=~"wf_action_types.wf_id~") COLUMN(NAME=~"wf_action_types.step_id~") COLUMN(NAME=~"wf_action_types.to_user~") COLUMN(NAME=~"wf_action_types.by_user~") COLUMN(NAME=~"wf_action_types.send_to_user~") COLUMN(NAME=~"wf_action_types.cc_user~")    JOIN (LEFT=~"wf_action_types.wf_id~"    OP =~"=~"RIGHT=~"wf_workflow.wf_id~" )WHERE(    EXP1 =~"wf_workflow.wf_module~"   OP =~"=~"    EXP2 =~"'03'~"    LOGIC =~"or~" ) WHERE(    EXP1 =~"wf_workflow.wf_module~"   OP =~"=~"    EXP2 =~"'04'~" ) ) " update="wf_action_types" updatewhere=1 updatekeyinplace=yes )
+text(band=header alignment="2" text="Wf Action Types
+Wf Id" border="0" color="33554432" x="9" y="8" height="104" width="361" html.valueishtml="0"  name=wf_action_types_wf_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Wf Action Types
+Step Id" border="0" color="33554432" x="379" y="8" height="104" width="361" html.valueishtml="0"  name=wf_action_types_step_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Wf Action Types
+To User" border="0" color="33554432" x="750" y="8" height="104" width="585" html.valueishtml="0"  name=wf_action_types_to_user_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Wf Action Types
+By User" border="0" color="33554432" x="1344" y="8" height="104" width="553" html.valueishtml="0"  name=wf_action_types_by_user_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Wf Action Types
+Send To User" border="0" color="33554432" x="1906" y="8" height="104" width="617" html.valueishtml="0"  name=wf_action_types_send_to_user_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Wf Action Types
+Cc User" border="0" color="33554432" x="2533" y="8" height="104" width="745" html.valueishtml="0"  name=wf_action_types_cc_user_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="33554432" x="9" y="8" height="64" width="361" format="[general]" html.valueishtml="0"  name=wf_action_types_wf_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="33554432" x="379" y="8" height="64" width="361" format="[general]" html.valueishtml="0"  name=wf_action_types_step_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="750" y="8" height="64" width="585" format="[general]" html.valueishtml="0"  name=to_user visible="1" edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="1344" y="8" height="64" width="553" format="[general]" html.valueishtml="0"  name=by_user visible="1" edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="33554432" x="1906" y="8" height="64" width="617" format="[general]" html.valueishtml="0"  name=send_to_user visible="1" edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="33554432" x="2533" y="8" height="64" width="745" format="[general]" html.valueishtml="0"  name=cc_user visible="1" edit.limit=255 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

@@ -1,0 +1,19 @@
+﻿$PBExportHeader$d_rpt_lij_prof_edu.srd
+$PBExportComments$lij
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=180 color="536870912" )
+table(column=(type=char(75) updatewhereclause=yes name=code_lookup_description dbname="pd_education.description" )
+ column=(type=char(15) updatewhereclause=yes name=code_lookup_code dbname="pd_education.code" )
+ column=(type=char(100) updatewhereclause=yes name=address_lookup_entity_name dbname="address_lookup.entity_name" )
+ column=(type=long updatewhereclause=yes name=pd_education_month_from dbname="pd_education.month_from" )
+ column=(type=long updatewhereclause=yes name=pd_education_year_from dbname="pd_education.year_from" )
+ column=(type=long updatewhereclause=yes name=pd_education_month_thru dbname="pd_education.month_thru" )
+ column=(type=long updatewhereclause=yes name=pd_education_year_thru dbname="pd_education.year_thru" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"pd_education~" )  TABLE(NAME=~"code_lookup~" ALIAS=~"code_lookup_a~" )  TABLE(NAME=~"code_lookup~" ALIAS=~"code_lookup_b~" )  TABLE(NAME=~"address_lookup~" ) COLUMN(NAME=~"code_lookup_b.description~") COLUMN(NAME=~"code_lookup_a.code~") COLUMN(NAME=~"address_lookup.entity_name~") COLUMN(NAME=~"pd_education.month_from~") COLUMN(NAME=~"pd_education.year_from~") COLUMN(NAME=~"pd_education.month_thru~") COLUMN(NAME=~"pd_education.year_thru~")    JOIN (LEFT=~"code_lookup_a.lookup_code~"    OP =~"=~"RIGHT=~"pd_education.degree~" )    JOIN (LEFT=~"address_lookup.lookup_code~"    OP =~"=~"RIGHT=~"pd_education.school_code~" )    JOIN (LEFT=~"pd_education.education_type~"    OP =~"=~"RIGHT=~"code_lookup_b.lookup_code~" )WHERE(    EXP1 =~"pd_education.prac_id~"   OP =~"=~"    EXP2 =~":prac~" ) ) ARG(NAME = ~"prac~" TYPE = number) " arguments=(("prac", number)) )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="4" height="56" width="1166" format="[general]"  name=code_lookup_description edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression=" address_lookup_entity_name + '  ' +  code_lookup_code "border="0" color="0" x="69" y="64" height="52" width="1106" format="[general]"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="'From:  ' + if( isNull( pd_education_month_from ),' ',  string(pd_education_month_from)  )  + '/' +  if( isNull(  pd_education_year_from  ),' ',  string( pd_education_year_from )  )  + '   To: '  + if( isNull(  pd_education_month_thru  ),' ',  string( pd_education_month_thru )  ) + '/' +   if( isNull(  pd_education_year_thru  ),'',  string( pd_education_year_thru )  )"border="0" color="0" x="69" y="120" height="56" width="1106" format="[general]"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

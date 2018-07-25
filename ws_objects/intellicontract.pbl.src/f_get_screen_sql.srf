@@ -1,0 +1,81 @@
+﻿$PBExportHeader$f_get_screen_sql.srf
+global type f_get_screen_sql from function_object
+end type
+
+forward prototypes
+global function string f_get_screen_sql (long al_data_view_id, long al_screen_id, boolean ab_obsyntax)
+end prototypes
+
+global function string f_get_screen_sql (long al_data_view_id, long al_screen_id, boolean ab_obsyntax);//Add ab_obsyntax argu - jervis 10.11.2011
+
+Long ll_data_length
+Integer li_counter
+Integer li_loops
+String ls_sql
+String ls_all_sql
+Long ll_start
+
+// Get file data from database
+if ab_obsyntax then
+	SELECT Datalength(dw_opsql)
+	INTO :ll_data_length
+	FROM ctx_screen
+	WHERE data_view_id = :al_data_view_id
+	AND screen_id = :al_screen_id;
+	
+	if ll_data_length = 0 OR Isnull(ll_data_length) then
+		SELECT Datalength(dw_sql)
+		INTO :ll_data_length
+		FROM ctx_screen
+		WHERE data_view_id = :al_data_view_id
+		AND screen_id = :al_screen_id;
+		ab_obsyntax = false
+	end if
+else
+	SELECT Datalength(dw_sql)
+	INTO :ll_data_length
+	FROM ctx_screen
+	WHERE data_view_id = :al_data_view_id
+	AND screen_id = :al_screen_id;
+end if
+
+IF ll_data_length = 0 OR Isnull(ll_data_length) THEN
+	Messagebox("Get sql error","Failed to get datawindow syntax from DB, Please report this to support.")
+	RETURN ''
+END IF
+
+IF ll_data_length > 8000 THEN 
+  	 IF Mod(ll_data_length,8000) = 0 THEN 
+        li_loops = ll_data_length/8000 
+    ELSE 
+  	     li_loops = (ll_data_length/8000) + 1 
+    END IF 
+ELSE 
+  	 li_loops = 1 
+END IF 
+
+FOR li_counter = 1 to li_loops
+	ll_start = (li_counter - 1) * 8000 + 1
+	if ab_obsyntax then
+		SELECT substring(dw_opsql,:ll_start,8000)
+		INTO :ls_sql
+		FROM ctx_screen 
+		WHERE data_view_id = :al_data_view_id 
+		AND screen_id = :al_screen_id;
+	else
+		SELECT substring(dw_sql,:ll_start,8000)
+		INTO :ls_sql
+		FROM ctx_screen 
+		WHERE data_view_id = :al_data_view_id 
+		AND screen_id = :al_screen_id;
+	end if
+
+	ls_all_sql += ls_sql
+NEXT 
+
+If not len(ls_all_sql) > 0 Then
+	Messagebox("Get sql error 1","Failed to get datawindow syntax from DB, Please report this to support.")
+End If
+Return ls_all_sql
+end function
+

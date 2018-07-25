@@ -1,0 +1,88 @@
+﻿$PBExportHeader$f_set_datawindow_protect.srf
+global type f_set_datawindow_protect from function_object
+end type
+
+forward prototypes
+global function integer f_set_datawindow_protect (datawindow adw[], string as_way[], string as_expression[])
+end prototypes
+
+global function integer f_set_datawindow_protect (datawindow adw[], string as_way[], string as_expression[]);//====================================================================
+// Function: f_set_datawindow_protect
+//--------------------------------------------------------------------
+// Description:
+//--------------------------------------------------------------------
+// Arguments:
+//                adw[]
+//                as_way[]
+//                as_expression[]
+//--------------------------------------------------------------------
+// Returns:  integer
+//--------------------------------------------------------------------
+// Author:	Mark Lee		Date: 09/10/12
+//--------------------------------------------------------------------
+//	Copyright (c) 2008-2012 Contract Logix,Inc. All rights reserved.
+//--------------------------------------------------------------------
+// Modify History:
+//
+//====================================================================
+Integer 		li_count, i, j , li_upperbound, li_return
+String 		ls_colname, ls_express, ls_modify, ls_err, ls_expression, ls_tmp
+n_cst_string		l_cst_string
+
+li_upperbound = UpperBound(adw)
+li_return =  0 
+
+If li_upperbound = 0 Then
+	Return li_return
+End If
+
+For i = 1 to li_upperbound
+	If isnull(as_expression[i]) Or  trim(as_expression[i]) = '' Then
+		Continue
+	End If
+	
+	//use "~'" replace "'" in the expression
+	ls_expression = as_expression[i]
+	If Pos(ls_expression,"'",2) > 0 Then
+		ls_tmp = Mid(ls_expression,Pos(ls_expression,"'",2) - 1 , 2)
+		If ls_tmp <> "~~'" Then 
+			ls_expression = l_cst_string.of_GlobalReplace(ls_expression,"'","~~'")
+		End If
+	End If 
+	
+	ls_modify = ''
+	li_count = Integer(adw[i].describe("DataWindow.Column.Count"))
+	For j = 1 to li_count
+		ls_colname = adw[i].describe("#"+string(j) +".name")
+		if long(adw[i].describe(ls_colname + ".height")) = 0 Or adw[i].describe(ls_colname + ".height") = '?' OR adw[i].describe(ls_colname + ".height") = '!' then 
+			Continue
+		End If
+		
+		if long(adw[i].describe(ls_colname + ".visible")) = 0 then 
+			Continue
+		End If
+		
+		If not isnull(as_way[i]) And as_way[i] = 'all' Then
+			ls_modify = ls_modify +ls_colname+".protect='0~t"+ls_expression+"' "
+		ElseIf not isnull(as_way[i]) And as_way[i] = 'part' Then
+			ls_express = adw[i].describe(ls_colname+".protect")
+			If ls_express = '0' or isnull(ls_express) or ls_express = '?' Or ls_express ='!' Then
+				ls_modify = ls_modify +ls_colname+".protect='0~t"+ls_expression+"' "
+			End If
+		Else
+			//
+		End If
+	Next 
+	
+	If not Isnull(ls_modify) And trim(ls_modify) <> '' Then
+		ls_err = adw[i].modify(ls_modify)
+		If ls_err <> '' Then
+			gnv_debug.of_output( True,string(adw[i].dataobject)+".mdofiy='"+ls_modify+"' was failure in the f_set_datawindow_protect() . ")
+			li_return = -1
+		End If
+	End If 
+Next 
+
+Return li_return
+end function
+

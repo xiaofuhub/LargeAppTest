@@ -1,0 +1,11 @@
+﻿$PBExportHeader$str_office_ocx.srs
+$PBExportComments$alfee 07.14.2009
+global type str_office_ocx from structure
+	string		call_from
+	string		file_name
+	string		file_ext
+	string		file_name_ori
+	boolean		read_only
+	blob		file_data
+end type
+

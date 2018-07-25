@@ -1,0 +1,50 @@
+﻿$PBExportHeader$of_appl_action_inactive.srf
+global type of_appl_action_inactive from function_object
+end type
+
+forward prototypes
+global function integer of_appl_action_inactive (long al_gp_id, long al_prac)
+end prototypes
+
+global function integer of_appl_action_inactive (long al_gp_id, long al_prac);//Start Code Change ----10.31.2016 #V152 maha - added called from DE preupdate and locations batch update
+datastore lds_track
+datastore lds_actions
+integer rc
+integer r
+integer li_set
+string ls_mes
+pfc_cst_nv_data_entry_functions lnv_data_entry
+
+lds_track = create datastore
+lds_track.dataobject = "d_pd_appl_tracking_4_audit"
+lds_track.settransobject(sqlca)
+lds_actions = create datastore
+lds_actions.dataobject = "d_net_dev_action_items_4_audit"
+lds_actions.settransobject(sqlca)
+	
+rc = lds_actions.retrieve( al_gp_id, al_prac)
+lds_track.retrieve(al_gp_id, al_prac)
+if rc = 0 then return 1
+	
+lnv_data_entry = create pfc_cst_nv_data_entry_functions
+	
+for r = 1 to rc
+	lds_actions.setitem(r, "active_status", 0)
+next
+for r = 1 to lds_track.rowcount()
+	lds_track.setitem(r, "active_status", 0)
+next
+
+lnv_data_entry.of_field_audit( lds_actions , ls_mes)
+lnv_data_entry.of_field_audit( lds_track , ls_mes)
+
+lds_actions.update()
+lds_track.update()
+	
+destroy  lnv_data_entry
+destroy lds_track
+destroy lds_actions
+
+return 1
+end function
+

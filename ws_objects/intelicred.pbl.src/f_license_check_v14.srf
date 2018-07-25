@@ -1,0 +1,170 @@
+﻿$PBExportHeader$f_license_check_v14.srf
+global type f_license_check_v14 from function_object
+end type
+
+forward prototypes
+global function integer f_license_check_14 (string as_license, ref string as_sb, ref string as_sc, ref string as_sd, ref string as_se, ref string as_sf, ref string as_sg, ref string as_sh)
+global function integer f_license_check_v14 (string as_license, ref string as_sb, ref string as_sc, ref string as_sd, ref string as_se, ref string as_sf, ref string as_sg, ref string as_sh, ref string as_sj, ref string as_sk, ref string as_sl)
+end prototypes
+
+global function integer f_license_check_14 (string as_license, ref string as_sb, ref string as_sc, ref string as_sd, ref string as_se, ref string as_sf, ref string as_sg, ref string as_sh);//////////////////////////////////////////////////////////////////////
+// $<function>f_license_check()
+// $<arguments>
+//		value	string	as_license		
+//		value	string	as_sb     		
+//		value	string	as_sc     		
+//		value	string	as_sd     		
+//		value	string	as_se     		
+//		value	string	as_sf     		
+//		value	string	as_sg     		
+//		value	string	as_sh     		
+// $<returns> integer
+// $<description>
+// $<description>	Check License
+//////////////////////////////////////////////////////////////////////
+// $<add> 08.26.2008 by Ken.Guo
+//////////////////////////////////////////////////////////////////////
+
+String s
+//String sa,sb,sc,sd,se,sf,sg,sh,
+String sa,si,si2,srrr
+Long ll_sum
+Integer li_mod
+integer li_len
+
+s = of_strip_char(" ", as_license,"")
+
+//Start Code Change ----08.25.2010 #V10 maha - modified for subscription key
+li_len = len(s)
+//Check length
+if li_len < 22 then
+	return -1
+elseif li_len > 22 then
+	if len(s) <> 34  then return -3    //Start Code Change ----03.29.2011 #V11 maha - changed from 35
+end if
+
+//Check first number
+if MidA(s,4,3) <> "090" then 
+	return -2
+end if
+
+//Check NUMBER
+sa = MidA(s,8,3)
+if Not isnumber(sa) then return -10
+as_sb = MidA(s,11,1)
+if Not isnumber(as_sb)  then return -10
+as_sc = MidA(s,12,1)
+if Not isnumber(as_sc)  then return -10
+as_sd = MidA(s,13,1)
+if Not isnumber(as_sd)  then return -10
+as_se = MidA(s,14,1)
+if Not isnumber(as_se)  then return -10
+srrr = MidA(s,15,3)
+if Not isnumber(srrr)  then return -10
+as_sf = MidA(s,18,1)
+if Not isnumber(as_sf)  then return -10
+as_sg = MidA(s,19,1)
+if Not isnumber(as_sg)  then return -10
+as_sh = MidA(s,20,1)
+if Not isnumber(as_sh)  then return -10
+si = MidA(s,21,1)
+if Not isnumber(si)  then return - 10
+si2 = MidA(s,22,1)
+if Not isnumber(si)  then return -10
+
+//checksum validation
+ll_sum = (integer(sa) + integer(as_sb) + integer(as_sc ) + integer(as_sd) + integer(as_se)) * ( integer(srrr) + integer(as_sf) + integer(as_sg) + integer(as_sh) )
+li_mod = mod(ll_sum,10)
+//messagebox("checksum 1",li_mod)
+
+if li_mod <> integer(si) then
+	return -11
+end if
+//checksum 2
+ll_sum = integer(sa) + integer(srrr) + 10
+li_mod = mod(ll_sum,9)
+//messagebox("checksum 2",li_mod)
+if li_mod <> integer(si2) then
+	return -12
+end if
+
+Return 1
+end function
+
+global function integer f_license_check_v14 (string as_license, ref string as_sb, ref string as_sc, ref string as_sd, ref string as_se, ref string as_sf, ref string as_sg, ref string as_sh, ref string as_sj, ref string as_sk, ref string as_sl);//Start Code Change ----06.24.2013 #V14 maha - copied from f_license_check and modified
+
+String s
+//String sa,sb,sc,sd,se,sf,sg,sh,
+String sa,si,si2,srrr
+Long ll_sum
+Integer li_mod
+integer li_len
+
+s = of_strip_char(" ", as_license,"")
+
+
+li_len = len(s)
+
+//Check length
+if li_len < 25 then
+	return -1
+elseif li_len > 25 then //subscription key
+	if len(s) <> 37  then return -3   
+end if
+
+//Check first number
+if MidA(s,4,3) <> "140" then 
+	return -2
+end if
+
+//Check NUMBER
+sa = MidA(s,8,3)
+if Not isnumber(sa) then return -10
+as_sb = MidA(s,11,1)
+if Not isnumber(as_sb)  then return -10
+as_sc = MidA(s,12,1)
+if Not isnumber(as_sc)  then return -10
+as_sd = MidA(s,13,1)
+if Not isnumber(as_sd)  then return -10
+as_se = MidA(s,14,1)
+if Not isnumber(as_se)  then return -10
+srrr = MidA(s,15,3)
+if Not isnumber(srrr)  then return -10
+as_sf = MidA(s,18,1)
+if Not isnumber(as_sf)  then return -10
+as_sg = MidA(s,19,1)
+if Not isnumber(as_sg)  then return -10
+as_sh = MidA(s,20,1)
+if Not isnumber(as_sh)  then return -10
+
+as_sj = MidA(s,21,1)
+if Not isnumber(as_sj)  then return -10
+as_sk = MidA(s,22,1)
+if Not isnumber(as_sk)  then return -10
+as_sl = MidA(s,23,1)
+if Not isnumber(as_sl)  then return -10
+
+si = MidA(s,24,1)
+if Not isnumber(si)  then return - 10
+si2 = MidA(s,25,1)
+if Not isnumber(si)  then return -10
+//debugbreak()
+//checksum validation
+ll_sum = (integer(sa) + integer(as_sb) + integer(as_sc ) + integer(as_sd) + integer(as_se)) * ( integer(srrr) + integer(as_sf) + integer(as_sg) + integer(as_sh) ) + (integer(as_sj) + integer(as_sk) + integer(as_sl ))
+li_mod = mod(ll_sum,10)
+//messagebox("checksum 1",li_mod)
+
+if li_mod <> integer(si) then
+	return -11
+end if
+//checksum 2
+ll_sum = integer(sa) + integer(srrr) + 10
+li_mod = mod(ll_sum,9)
+//messagebox("checksum 2",li_mod)
+if li_mod <> integer(si2) then
+	return -12
+end if
+
+Return 1
+end function
+

@@ -1,0 +1,6 @@
+﻿$PBExportHeader$str_selectobj_rpt.srs
+global type str_selectobj_rpt from structure
+	u_cst_dw_band		fband
+	string		fname
+end type
+

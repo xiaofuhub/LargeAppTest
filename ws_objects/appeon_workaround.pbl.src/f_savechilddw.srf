@@ -1,0 +1,26 @@
+﻿$PBExportHeader$f_savechilddw.srf
+global type f_savechilddw from function_object
+end type
+
+forward prototypes
+global function integer f_savechilddw (datawindowchild adw_data, string as_dataobject, string as_filename, string as_printername)
+end prototypes
+
+global function integer f_savechilddw (datawindowchild adw_data, string as_dataobject, string as_filename, string as_printername);datastore lds_1
+
+lds_1 = create datastore
+lds_1.dataobject = as_dataobject
+lds_1.settransobject(sqlca)
+
+adw_data.sharedata(lds_1)
+f_savedatastore(lds_1,as_filename,as_printername)
+
+//--------------------------- APPEON BEGIN ---------------------------
+//$<Add> 08.22.2007 By: Evan
+//$<Reason> Need to destroy object.
+if IsValid(lds_1) then Destroy lds_1
+//---------------------------- APPEON END ----------------------------
+
+return 1
+end function
+

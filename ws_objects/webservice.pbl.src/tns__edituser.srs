@@ -1,0 +1,11 @@
+﻿$PBExportHeader$tns__edituser.srs
+$PBExportComments$Proxy imported from Web service using Web Service Proxy Generator.
+global type tns__EditUser from structure
+   string pstr_APICode
+   string pstr_FileID
+   string pstr_OriginalEmail
+   string pstr_NewEmail
+   string pstr_SignerType
+   integer pshr_Sequence
+end type
+

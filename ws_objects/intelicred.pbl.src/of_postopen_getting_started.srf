@@ -1,0 +1,11 @@
+﻿$PBExportHeader$of_postopen_getting_started.srf
+global type of_postopen_getting_started from function_object
+end type
+
+forward prototypes
+global subroutine of_postopen_getting_started ()
+end prototypes
+
+global subroutine of_postopen_getting_started ();Post Open(w_getting_started)
+end subroutine
+

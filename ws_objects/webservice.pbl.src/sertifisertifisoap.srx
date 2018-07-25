@@ -1,0 +1,75 @@
+﻿$PBExportHeader$sertifisertifisoap.srx
+$PBExportComments$Proxy imported from Web service using Web Service Proxy Generator.
+global type sertifiSertifiSoap from NonVisualObject
+end type
+
+type variables
+Protected:
+   string xmlns = ""
+   string tm = "http://microsoft.com/wsdl/mime/textMatching/"
+   string soapenc = "http://schemas.xmlsoap.org/soap/encoding/"
+   string wsdl = "http://schemas.xmlsoap.org/wsdl/"
+   string http = "http://schemas.xmlsoap.org/wsdl/http/"
+   string mime = "http://schemas.xmlsoap.org/wsdl/mime/"
+   string soap = "http://schemas.xmlsoap.org/wsdl/soap/"
+   string soap12 = "http://schemas.xmlsoap.org/wsdl/soap12/"
+   string tns = "http://tempuri.org/"
+   string s = "http://www.w3.org/2001/XMLSchema"
+   string pb__TargetNamespace = "http://tempuri.org/"
+   string BindingStyle = ""
+
+   string endpoint = "http://qa.contractlogix.com/sertifiService/sertifi.asmx"
+   string __tns__ActionType = "kind=enumeration,base=s:string,value=('Hide','Show')"
+   string __tns__RoleType = "kind=enumeration,base=s:string,value=('Signer','CC')"
+   string __tns__ExtensionDataObject = "ExtensionDataObject()@tns#YES_QUALIFIED"
+   tns__ExtensionDataObject i__tns__ExtensionDataObject
+   string __tns__ReferenceDocumentPermission = "ReferenceDocumentPermission(tns:ExtensionDataObject ExtensionData,s:string Email,s:short Sequence,s:string Role,s:string Action)@tns#YES_QUALIFIED"
+   tns__ReferenceDocumentPermission i__tns__ReferenceDocumentPermission
+   string __tns__AddDocumentToRequest = "AddDocumentToRequest(s:string apiCode,s:string fileID,s:base64Binary byteFile,s:string fileName,s:string title,s:string xml)@tns#YES_QUALIFIED"
+   tns__AddDocumentToRequest i__tns__AddDocumentToRequest
+   string __tns__AddReferenceDocumentToRequest = "AddReferenceDocumentToRequest(s:string apiCode,s:string fileID,s:base64Binary byteFile,s:string fileName,s:string title,s:boolean returnId,tns:ReferenceDocumentPermission[ElementName=tns:ReferenceDocumentPermission] permission,s:string xml)@tns#YES_QUALIFIED"
+   tns__AddReferenceDocumentToRequest i__tns__AddReferenceDocumentToRequest
+   string __tns__AddSignerToRequest = "AddSignerToRequest(s:string apiCode,s:string fileID,s:string email,s:int sequence)@tns#YES_QUALIFIED"
+   tns__AddSignerToRequest i__tns__AddSignerToRequest
+   string __tns__ApplyTemplate = "ApplyTemplate(s:string apiCode,s:string fileID,s:string docID,s:string templateID,s:string signerEmail)@tns#YES_QUALIFIED"
+   tns__ApplyTemplate i__tns__ApplyTemplate
+   string __tns__CreateSignatureRequest = "CreateSignatureRequest(s:string apiCode,s:string sendEmail,s:string sender,s:string fileName,s:string firstSigner,s:string sencondSigner,s:string cc,s:string coSign,s:string signType,s:string passWord,s:string field1,s:string field2,s:string field3,s:string field4,s:string emailMessage)@tns#YES_QUALIFIED"
+   tns__CreateSignatureRequest i__tns__CreateSignatureRequest
+   string __tns__DownloadSignedDocument = "DownloadSignedDocument(s:string apiCode,s:string fileID,s:string docID)@tns#YES_QUALIFIED"
+   tns__DownloadSignedDocument i__tns__DownloadSignedDocument
+   string __tns__GetFileStatus = "GetFileStatus(s:string apiCode,s:string fileID,s:boolean includeDOCDBXML)@tns#YES_QUALIFIED"
+   tns__GetFileStatus i__tns__GetFileStatus
+   string __tns__GetMaintenanceLink = "GetMaintenanceLink(s:string apiCode,s:string fileID)@tns#YES_QUALIFIED"
+   tns__GetMaintenanceLink i__tns__GetMaintenanceLink
+   string __tns__GetSigningLink = "GetSigningLink(s:string apiCode,s:string fileID,s:string signerEmail)@tns#YES_QUALIFIED"
+   tns__GetSigningLink i__tns__GetSigningLink
+   string __tns__GetUserInfo = "GetUserInfo(s:string apiCode,s:string email)@tns#YES_QUALIFIED"
+   tns__GetUserInfo i__tns__GetUserInfo
+   string __tns__InviteSigner = "InviteSigner(s:string apiCode,s:string fileID,s:string emailMessage,s:string signer)@tns#YES_QUALIFIED"
+   tns__InviteSigner i__tns__InviteSigner
+   string __tns__InviteSigners = "InviteSigners(s:string apiCode,s:string fileID,s:string emailMessage)@tns#YES_QUALIFIED"
+   tns__InviteSigners i__tns__InviteSigners
+   string __tns__RemoveDocument = "RemoveDocument(s:string apiCode,s:string fileID,s:string docID)@tns#YES_QUALIFIED"
+   tns__RemoveDocument i__tns__RemoveDocument
+   string __tns__RemoveSignatureRequest = "RemoveSignatureRequest(s:string apiCode,s:string fileID)@tns#YES_QUALIFIED"
+   tns__RemoveSignatureRequest i__tns__RemoveSignatureRequest
+end variables
+
+forward prototypes
+public:
+function string AddDocumentToRequest (string apiCode, string fileID, blob byteFile, string fileName, string title, string xml) alias for "AddDocumentToRequest([in] s:string apiCode, [in] s:string fileID, [in] s:base64Binary byteFile, [in] s:string fileName, [in] s:string title, [in] s:string xml) return s:string AddDocumentToRequestResult@http://tempuri.org/@http://tempuri.org/AddDocumentToRequest*AddDocumentToRequest*http://tempuri.org/"
+function string AddReferenceDocumentToRequest (string apiCode, string fileID, blob byteFile, string fileName, string title, boolean returnId, tns__ReferenceDocumentPermission  permission[ ], string xml) alias for "AddReferenceDocumentToRequest([in] s:string apiCode, [in] s:string fileID, [in] s:base64Binary byteFile, [in] s:string fileName, [in] s:string title, [in] s:boolean returnId, [in] tns:ReferenceDocumentPermission[ElementName=tns:ReferenceDocumentPermission] permission, [in] s:string xml) return s:string AddReferenceDocumentToRequestResult@http://tempuri.org/@http://tempuri.org/AddReferenceDocumentToRequest*AddReferenceDocumentToRequest*http://tempuri.org/"
+function string AddSignerToRequest (string apiCode, string fileID, string email, long sequence) alias for "AddSignerToRequest([in] s:string apiCode, [in] s:string fileID, [in] s:string email, [in] s:int sequence) return s:string AddSignerToRequestResult@http://tempuri.org/@http://tempuri.org/AddSignerToRequest*AddSignerToRequest*http://tempuri.org/"
+function string ApplyTemplate (string apiCode, string fileID, string docID, string templateID, string signerEmail) alias for "ApplyTemplate([in] s:string apiCode, [in] s:string fileID, [in] s:string docID, [in] s:string templateID, [in] s:string signerEmail) return s:string ApplyTemplateResult@http://tempuri.org/@http://tempuri.org/ApplyTemplate*ApplyTemplate*http://tempuri.org/"
+function string CreateSignatureRequest (string apiCode, string sendEmail, string sender, string fileName, string firstSigner, string sencondSigner, string cc, string coSign, string signType, string passWord, string field1, string field2, string field3, string field4, string emailMessage) alias for "CreateSignatureRequest([in] s:string apiCode, [in] s:string sendEmail, [in] s:string sender, [in] s:string fileName, [in] s:string firstSigner, [in] s:string sencondSigner, [in] s:string cc, [in] s:string coSign, [in] s:string signType, [in] s:string passWord, [in] s:string field1, [in] s:string field2, [in] s:string field3, [in] s:string field4, [in] s:string emailMessage) return s:string CreateSignatureRequestResult@http://tempuri.org/@http://tempuri.org/CreateSignatureRequest*CreateSignatureRequest*http://tempuri.org/"
+function blob DownloadSignedDocument (string apiCode, string fileID, string docID) alias for "DownloadSignedDocument([in] s:string apiCode, [in] s:string fileID, [in] s:string docID) return s:base64Binary DownloadSignedDocumentResult@http://tempuri.org/@http://tempuri.org/DownloadSignedDocument*DownloadSignedDocument*http://tempuri.org/"
+function string GetFileStatus (string apiCode, string fileID, boolean includeDOCDBXML) alias for "GetFileStatus([in] s:string apiCode, [in] s:string fileID, [in] s:boolean includeDOCDBXML) return s:string GetFileStatusResult@http://tempuri.org/@http://tempuri.org/GetFileStatus*GetFileStatus*http://tempuri.org/"
+function string GetMaintenanceLink (string apiCode, string fileID) alias for "GetMaintenanceLink([in] s:string apiCode, [in] s:string fileID) return s:string GetMaintenanceLinkResult@http://tempuri.org/@http://tempuri.org/GetMaintenanceLink*GetMaintenanceLink*http://tempuri.org/"
+function string GetSigningLink (string apiCode, string fileID, string signerEmail) alias for "GetSigningLink([in] s:string apiCode, [in] s:string fileID, [in] s:string signerEmail) return s:string GetSigningLinkResult@http://tempuri.org/@http://tempuri.org/GetSigningLink*GetSigningLink*http://tempuri.org/"
+function string GetUserInfo (string apiCode, string email) alias for "GetUserInfo([in] s:string apiCode, [in] s:string email) return s:string GetUserInfoResult@http://tempuri.org/@http://tempuri.org/GetUserInfo*GetUserInfo*http://tempuri.org/"
+function string InviteSigner (string apiCode, string fileID, string emailMessage, string signer) alias for "InviteSigner([in] s:string apiCode, [in] s:string fileID, [in] s:string emailMessage, [in] s:string signer) return s:string InviteSignerResult@http://tempuri.org/@http://tempuri.org/InviteSigner*InviteSigner*http://tempuri.org/"
+function string InviteSigners (string apiCode, string fileID, string emailMessage) alias for "InviteSigners([in] s:string apiCode, [in] s:string fileID, [in] s:string emailMessage) return s:string InviteSignersResult@http://tempuri.org/@http://tempuri.org/InviteSigners*InviteSigners*http://tempuri.org/"
+function string RemoveDocument (string apiCode, string fileID, string docID) alias for "RemoveDocument([in] s:string apiCode, [in] s:string fileID, [in] s:string docID) return s:string RemoveDocumentResult@http://tempuri.org/@http://tempuri.org/RemoveDocument*RemoveDocument*http://tempuri.org/"
+function string RemoveSignatureRequest (string apiCode, string fileID) alias for "RemoveSignatureRequest([in] s:string apiCode, [in] s:string fileID) return s:string RemoveSignatureRequestResult@http://tempuri.org/@http://tempuri.org/RemoveSignatureRequest*RemoveSignatureRequest*http://tempuri.org/"
+end prototypes
+

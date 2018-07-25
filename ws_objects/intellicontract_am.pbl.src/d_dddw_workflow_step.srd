@@ -1,0 +1,28 @@
+﻿$PBExportHeader$d_dddw_workflow_step.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 grid.columnmove=no selected.mouse=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=ctx_am_action_item_wf_id dbname="ctx_am_action_item.wf_id" )
+ column=(type=long updatewhereclause=yes name=ctx_am_action_item_wf_action_type_id dbname="ctx_am_action_item.wf_action_type_id" )
+ column=(type=char(30) updatewhereclause=yes name=wf_action_types_step_name dbname="wf_action_types.step_name" )
+ column=(type=char(50) updatewhereclause=yes name=code_lookup_custom_1 dbname="code_lookup.custom_1" )
+ column=(type=decimal(0) updatewhereclause=yes name=ctx_am_action_item_action_status dbname="ctx_am_action_item.action_status" )
+ retrieve="SELECT ctx_am_action_item.wf_id,ctx_am_action_item.wf_action_type_id,wf_action_types.step_name,code_lookup.custom_1,ctx_am_action_item.Action_Status
+  FROM ctx_am_document,ctx_am_action_item,wf_action_types,code_lookup
+ WHERE ctx_am_document.doc_id = ctx_am_action_item.doc_id and
+       ctx_am_action_item.wf_id = wf_action_types.wf_id and
+       ctx_am_action_item.wf_action_type_id = wf_action_types.step_id and
+       wf_action_types.action_type_id = code_lookup.lookup_code and
+       ctx_am_document.doc_id = :al_doc_id and
+       ctx_am_action_item.action_user = :as_user_id and 
+       ctx_am_action_item.active_status >= 0 and 
+       ctx_am_action_item.wf_complete_flag <> 'Y'" arguments=(("al_doc_id", number),("as_user_id", string)) )
+text(band=header alignment="0" text="Code Lookup Custom 1" border="0" color="0" x="9" y="4" height="76" width="992" html.valueishtml="0"  name=code_lookup_custom_1_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="9" y="4" height="68" width="992" format="[general]" html.valueishtml="0"  name=code_lookup_custom_1 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

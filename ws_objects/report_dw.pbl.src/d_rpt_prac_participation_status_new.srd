@@ -1,0 +1,85 @@
+﻿$PBExportHeader$d_rpt_prac_participation_status_new.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 1 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=324 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=char(153) updatewhereclause=yes name=v_full_name_full_name dbname="v_full_name.full_name" )
+ column=(type=decimal(0) updatewhereclause=yes name=v_full_name_prac_id dbname="v_full_name.prac_id" )
+ column=(type=char(75) updatewhereclause=yes name=code_lookup_specialty dbname="net_dev_action_items.specialty" )
+ column=(type=datetime updatewhereclause=yes name=net_dev_action_items_action_date dbname="net_dev_action_items.action_date" )
+ column=(type=char(15) updatewhereclause=yes name=action_status dbname="net_dev_action_items.action_status" )
+ column=(type=char(15) updatewhereclause=yes name=code_lookup_action_type dbname="net_dev_action_items.action_type" )
+ column=(type=char(20) updatewhereclause=yes name=plan_assigned_id dbname="net_dev_ids.plan_assigned_id" )
+ column=(type=datetime updatewhereclause=yes name=net_dev_ids_start_date dbname="net_dev_ids.start_date" )
+ column=(type=char(100) updatewhereclause=yes name=facility_facility_name dbname="facility.facility_name" )
+ column=(type=char(100) updatewhereclause=yes name=v_full_name_last_name dbname="v_full_name.last_name" )
+ column=(type=char(75) updatewhereclause=yes name=division dbname="net_dev_action_items.division" )
+ column=(type=char(75) updatewhereclause=yes name=code_lookup_dep_desc dbname="net_dev_action_items.dep_desc" )
+ column=(type=char(15) updatewhereclause=yes name=department dbname="net_dev_action_items.dep" )
+ retrieve="  SELECT DISTINCT v_full_name.full_name,   
+			v_full_name.prac_id, 
+         code_lookup_d.description as specialty,   
+         net_dev_action_items.action_date,   
+         code_lookup_f.code as action_status,   
+         code_lookup_e.code as action_type,   
+         net_dev_ids.plan_assigned_id,   
+         net_dev_ids.start_date,   
+         facility.facility_name,   
+         v_full_name.last_name,   
+         code_lookup_b.description as division,   
+         code_lookup_a.description as dep_desc,   
+         code_lookup_a.code as dep  
+    FROM {oj net_dev_action_items  LEFT OUTER JOIN net_dev_ids  ON net_dev_action_items.prac_id = net_dev_ids.prac_id AND net_dev_action_items.facility_id = net_dev_ids.facility_id},   
+			{oj  pd_affil_stat  LEFT OUTER JOIN pd_affil_dept  ON pd_affil_stat.rec_id = pd_affil_dept.rec_id },      
+         pd_board_specialty,   
+         v_full_name,   
+         code_lookup code_lookup_a,   
+         code_lookup code_lookup_b,   
+         code_lookup code_lookup_c,   
+         code_lookup code_lookup_d,   
+         code_lookup code_lookup_e,   
+         code_lookup code_lookup_f,   
+			code_lookup code_lookup_g,
+         facility  
+   WHERE ( pd_affil_stat.prac_id = v_full_name.prac_id ) and  
+         ( pd_affil_stat.prac_id = pd_board_specialty.prac_id ) and  
+         ( pd_affil_stat.prac_id = net_dev_action_items.prac_id ) and  
+         ( pd_affil_stat.parent_facility_id = net_dev_action_items.facility_id ) and  
+         ( pd_board_specialty.specialty = code_lookup_d.lookup_code ) and  
+         ( pd_board_specialty.specialty_order = code_lookup_g.lookup_code ) and
+         ( net_dev_action_items.action_type = code_lookup_e.lookup_code ) and  
+         ( net_dev_action_items.action_status = code_lookup_f.lookup_code ) and  
+         ( facility.facility_id = pd_affil_stat.parent_facility_id ) and  
+         ( pd_affil_dept.department = code_lookup_a.lookup_code ) and 
+         ( pd_affil_dept.rank = code_lookup_b.lookup_code )   and
+			( code_lookup_g.code = 'Primary') 
+"  sort="v_full_name_last_name A facility_facility_name A " )
+group(level=1 header.height=176 trailer.height=0 by=("facility_facility_name" ) header.color="536870912" trailer.color="536870912" )
+compute(band=header alignment="0" expression="today()"border="0" color="0" x="73" y="92" height="76" width="407" format="mm/dd/yyyy"  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=header alignment="1" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="0" x="3927" y="100" height="76" width="453" format="[general]"  name=page  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+line(band=header x1="64" y1="300" x2="4494" y2="300" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+line(band=header x1="64" y1="268" x2="4494" y2="268" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+line(band=header x1="64" y1="80" x2="4494" y2="80" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+line(band=header x1="64" y1="44" x2="4494" y2="44" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+text(band=header alignment="2" text="Practitioner Plan Participation Status by Plan"border="0" color="0" x="1294" y="132" height="80" width="1477"  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header.1 alignment="0" text="Department"border="0" color="0" x="914" y="112" height="56" width="343"  name=code_lookup_department_t  font.face="Times New Roman" font.height="-8" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header.1 alignment="0" text="Physician Name"border="0" color="0" x="91" y="112" height="52" width="485"  name=v_full_name_full_name_t  font.face="Times New Roman" font.height="-8" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=header.1 x1="101" y1="172" x2="4530" y2="172" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+text(band=header.1 alignment="0" text="Division/Section"border="0" color="0" x="1426" y="112" height="56" width="485"  name=code_lookup_section_t  font.face="Times New Roman" font.height="-8" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header.1 alignment="0" text="Specialty"border="0" color="0" x="2066" y="112" height="56" width="274"  name=code_lookup_specialty_t  font.face="Times New Roman" font.height="-8" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header.1 alignment="0" text="Assigned ID"border="0" color="0" x="2971" y="112" height="56" width="334"  font.face="Times New Roman" font.height="-8" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header.1 alignment="0" text="Action"border="0" color="0" x="3351" y="112" height="52" width="178"  name=code_lookup_action_type_t  font.face="Times New Roman" font.height="-8" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header.1 alignment="0" text="Status"border="0" color="0" x="3822" y="112" height="52" width="187"  font.face="Times New Roman" font.height="-8" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header.1 alignment="0" text="Status Date"border="0" color="0" x="4192" y="112" height="56" width="302"  font.face="Times New Roman" font.height="-8" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header.1 id=9 alignment="0" tabsequence=32766 border="0" color="0" x="41" y="12" height="64" width="978" format="[general]"  name=facility_facility_name edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="91" y="8" height="64" width="800" format="[general]"  name=v_full_name_full_name edit.limit=153 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="0" x="910" y="8" height="64" width="498" format="[general]"  name=code_lookup_dep_desc edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="1426" y="8" height="64" width="622" format="[general]"  name=division edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="2071" y="8" height="64" width="887" format="[general]"  name=code_lookup_specialty edit.limit=75 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="2976" y="8" height="64" width="361" format="[general]"  name=plan_assigned_id edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="3355" y="8" height="64" width="448" format="[general]"  name=code_lookup_action_type edit.limit=75 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="3826" y="8" height="64" width="347" format="[general]"  name=action_status edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="4197" y="8" height="64" width="306" format="[shortdate] [time]"  name=net_dev_action_items_action_date editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

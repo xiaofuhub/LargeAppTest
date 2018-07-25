@@ -1,0 +1,11 @@
+﻿$PBExportHeader$gs_batch_search.srs
+global type gs_batch_search from structure
+	long		li_prac_id[]
+	string		ls_name[]
+	long		ll_facility[]
+	long		ll_app[]
+	string		ls_title
+	long		ll_loc_id[]
+	long		ll_state[]
+end type
+

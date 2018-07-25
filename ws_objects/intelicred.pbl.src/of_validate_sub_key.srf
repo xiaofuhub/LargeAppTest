@@ -1,0 +1,61 @@
+﻿$PBExportHeader$of_validate_sub_key.srf
+global type of_validate_sub_key from function_object
+end type
+
+forward prototypes
+global function string of_validate_sub_key (string as_key, string as_from)
+end prototypes
+
+global function string of_validate_sub_key (string as_key, string as_from);string s,k
+string c[]
+integer d[]
+integer i, s1, s2, i_year
+string ls_ret = "0"
+
+
+//debugbreak()
+//s = em_date.text
+k = as_key
+
+if len(k) <> 12 then 
+	messagebox("Validation failure","Improper length(12)")
+	return ls_ret
+end if
+
+//key is a string; fill string array, then copy to integer array for checksum
+for i = 1 to 12
+	c[i] = mid(k,i,1)
+	d[i] = integer(c[i])
+next
+
+//checksum 1
+s1 = d[10] + d[9] + d[8] + d[7] + d[6] + d[2] + d[1] + d[3] + d[5] + d[4] - 1
+s1 = mod(s1,10) 
+
+if s1 <> d[11] then
+	messagebox("Validation failure","checksum1")
+	return ls_ret
+end if
+
+//checksum 2
+s2 = d[8] + d[9] + d[10] + s1
+s2 = mod(s2,10)
+
+if s1 <> d[11] then
+	messagebox("Validation failure","Checksum2")
+	return ls_ret
+end if
+
+
+
+//12 3 45 67 8 90 12
+//YYzYYMMqDDcc
+i_year = d[8] - 2
+
+ls_ret = c[5] + c[4] + c[2] + c[1] + "/" + c[7] + c[6]  + "/" +  c[10] + c[9] + " - " + string(i_year) 
+
+messagebox("Validation ","Valid Key~r~r" + ls_ret)
+
+return ls_ret
+end function
+

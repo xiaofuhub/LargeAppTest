@@ -1,0 +1,11 @@
+﻿$PBExportHeader$gf_opencontractfolder.srf
+global type gf_opencontractfolder from function_object
+end type
+
+forward prototypes
+global function integer gf_opencontractfolder (powerobject apo_parameter)
+end prototypes
+
+global function integer gf_opencontractfolder (powerobject apo_parameter);Return gf_opencontractfolder_base( apo_parameter, true )
+end function
+

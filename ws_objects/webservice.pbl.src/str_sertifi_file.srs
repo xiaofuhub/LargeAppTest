@@ -1,0 +1,8 @@
+﻿$PBExportHeader$str_sertifi_file.srs
+global type str_sertifi_file from structure
+	string		code
+	string		name
+	string		status
+	str_sertifi_document		astr_sertifi_document[]
+end type
+

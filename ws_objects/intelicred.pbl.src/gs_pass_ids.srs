@@ -1,0 +1,42 @@
+﻿$PBExportHeader$gs_pass_ids.srs
+global type gs_pass_ids from structure
+	long		l_ids[]
+	string		s_ids[]
+	integer		i_ids[]
+	string		s_stringval
+	u_dw		dw
+	integer		facility_id
+	long		prac_id
+	integer		committee_id
+	integer		i_facility_ids[]
+	string		s_action_type[]
+	string		s_fax_subject
+	string		s_fax_message
+	string		s_fax_cover
+	string		s_fax_recipient
+	string		s_fax_company
+	string		s_fax_fax_number
+	long		l_app_id
+	string		ls_doc_id
+	boolean		ls_image_available
+	string		ls_from_window
+	string		ls_ref_value
+	string		ls_web_title
+	long		sl_verification_id
+	long		sl_action_status[]
+	long		sl_action_type[]
+	long		sl_prac_ids[]
+	long		ll_verification_id
+	string		sl_label1
+	string		sl_label2
+	string		sl_label3
+	string		s_doc_ids[]
+	datetime		dt_from[]
+	datetime		dt_to[]
+	u_email_edit		au_email_edit
+	blob		b_attach
+	string		s_attach_name
+	long		email_id
+	long		l_loc_ids[]
+end type
+

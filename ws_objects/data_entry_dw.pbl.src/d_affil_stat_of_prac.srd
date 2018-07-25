@@ -1,0 +1,18 @@
+﻿$PBExportHeader$d_affil_stat_of_prac.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=rec_id dbname="pd_affil_stat.rec_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=prac_id dbname="pd_affil_stat.prac_id" )
+ column=(type=long update=yes updatewhereclause=yes name=parent_facility_id dbname="pd_affil_stat.parent_facility_id" )
+ retrieve="PBSELECT( VERSION(400) DISTINCT ()TABLE(NAME=~"pd_affil_stat~" ) COLUMN(NAME=~"pd_affil_stat.rec_id~") COLUMN(NAME=~"pd_affil_stat.prac_id~") COLUMN(NAME=~"pd_affil_stat.parent_facility_id~")WHERE(    EXP1 =~"pd_affil_stat.prac_id~"   OP =~"=~"    EXP2 =~":ai_prac~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"pd_affil_stat.active_status~"   OP =~"=~"    EXP2 =~"1~" ) ) ARG(NAME = ~"ai_prac~" TYPE = number) " update="pd_affil_stat" updatewhere=1 updatekeyinplace=no arguments=(("ai_prac", number)) )
+text(band=header alignment="2" text="Rec Id"border="0" color="0" x="5" y="4" height="64" width="329"  name=rec_id_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Prac Id"border="0" color="0" x="338" y="4" height="64" width="329"  name=prac_id_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Parent Facility Id"border="0" color="0" x="672" y="4" height="64" width="448"  name=parent_facility_id_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=10 border="0" color="0" x="5" y="4" height="76" width="329" format="[general]"  name=rec_id edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=20 border="0" color="0" x="338" y="4" height="76" width="329" format="[general]"  name=prac_id edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="1" tabsequence=30 border="0" color="0" x="672" y="4" height="76" width="329" format="[general]"  name=parent_facility_id edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

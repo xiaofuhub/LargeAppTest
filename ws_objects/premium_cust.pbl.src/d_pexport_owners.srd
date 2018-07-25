@@ -1,0 +1,16 @@
+﻿$PBExportHeader$d_pexport_owners.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=rec_id dbname="pdc_owners_partners.rec_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=prac_id dbname="pdc_owners_partners.prac_id" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=own_name dbname="pdc_owners_partners.own_name" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=current_insurer dbname="pdc_owners_partners.current_insurer" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"dba.pdc_owners_partners~" ) COLUMN(NAME=~"dba.pdc_owners_partners.rec_id~") COLUMN(NAME=~"dba.pdc_owners_partners.prac_id~") COLUMN(NAME=~"dba.pdc_owners_partners.own_name~") COLUMN(NAME=~"dba.pdc_owners_partners.current_insurer~")WHERE(    EXP1 =~"dba.pdc_owners_partners.prac_id~"   OP =~"in~"    EXP2 =~":pracs~" ) ) ARG(NAME = ~"pracs~" TYPE = numberlist) " update="dba.pdc_owners_partners" updatewhere=1 updatekeyinplace=no arguments=(("pracs", numberlist)) )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="0" y="0" height="76" width="1376" format="[general]"  name=rec_id edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1376" y="0" height="76" width="1376" format="[general]"  name=prac_id edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="2752" y="0" height="76" width="1600" format="[general]"  name=own_name edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="4352" y="0" height="76" width="1600" format="[general]"  name=current_insurer edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,219 @@
+﻿$PBExportHeader$d_group_pending_browse_by_pk.srd
+release 11.5;
+datawindow ( units=0 timer_interval=0 processing=1 color=16777215 brushmode=0 transparency=0 gradient.color=8421504 gradient.transparency=0 gradient.angle=0 gradient.repetition.mode=0 gradient.repetition.count=0 gradient.repetition.length=100 gradient.focus=0 gradient.scale=100 gradient.spread=100 picture.file=""  picture.mode=0 picture.scale.x=100 picture.scale.y=100 picture.clip.left=0 picture.clip.right=0 picture.clip.top=0 picture.clip.bottom=0 picture.blur=0 picture.transparency=0 print.printername=""  print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=96 print.margin.bottom=96 print.paper.size=0 print.paper.source=0 print.canusedefaultprinter=yes grid.lines=0 selected.mouse=yes hidegrayline=no showbackcoloronxp=no)
+header(height=60 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.length="100" gradient.repetition.count="0" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+summary(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.length="100" gradient.repetition.count="0" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+footer(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.length="100" gradient.repetition.count="0" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+detail(height=80 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.length="100" gradient.repetition.count="0" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes name=rec_id dbname="group_change_pending.rec_id"  )
+column=(type=decimal(0) update=yes updatewhereclause=yes name=prac_id dbname="group_change_pending.prac_id"  )
+column=(type=long update=yes updatewhereclause=yes name=office_in_home dbname="group_change_pending.office_in_home"  )
+column=(type=long update=yes updatewhereclause=yes name=mailing_address dbname="group_change_pending.mailing_address"  )
+column=(type=decimal(0) update=yes updatewhereclause=yes name=practice_type dbname="group_change_pending.practice_type"  )
+column=(type=char(150) update=yes updatewhereclause=yes name=street dbname="group_change_pending.street"  )
+column=(type=char(25) update=yes updatewhereclause=yes name=city dbname="group_change_pending.city"  )
+column=(type=decimal(0) update=yes updatewhereclause=yes name=state dbname="group_change_pending.state"  )
+column=(type=decimal(0) update=yes updatewhereclause=yes name=country dbname="group_change_pending.country"  )
+column=(type=char(14) update=yes updatewhereclause=yes name=pager_number dbname="group_change_pending.pager_number"  )
+column=(type=char(25) update=yes updatewhereclause=yes name=phone dbname="group_change_pending.phone"  )
+column=(type=char(4) update=yes updatewhereclause=yes name=ext dbname="group_change_pending.ext"  )
+column=(type=char(25) update=yes updatewhereclause=yes name=fax dbname="group_change_pending.fax"  )
+column=(type=char(11) update=yes updatewhereclause=yes name=zip dbname="group_change_pending.zip"  )
+column=(type=decimal(0) update=yes updatewhereclause=yes name=county dbname="group_change_pending.county"  )
+column=(type=char(30) update=yes updatewhereclause=yes name=contact_person dbname="group_change_pending.contact_person"  )
+column=(type=char(30) update=yes updatewhereclause=yes name=tax_id dbname="group_change_pending.tax_id"  )
+column=(type=char(30) update=yes updatewhereclause=yes name=tax_id_other_1 dbname="group_change_pending.tax_id_other_1"  )
+column=(type=char(30) update=yes updatewhereclause=yes name=tax_id_other_2 dbname="group_change_pending.tax_id_other_2"  )
+column=(type=char(30) update=yes updatewhereclause=yes name=business_mgr dbname="group_change_pending.business_mgr"  )
+column=(type=char(30) update=yes updatewhereclause=yes name=office_mgr dbname="group_change_pending.office_mgr"  )
+column=(type=char(75) update=yes updatewhereclause=yes name=e_mail_address dbname="group_change_pending.e_mail_address"  )
+column=(type=char(75) update=yes updatewhereclause=yes name=web_address dbname="group_change_pending.web_address"  )
+column=(type=char(10) update=yes updatewhereclause=yes name=mon_from dbname="group_change_pending.mon_from"  )
+column=(type=char(10) update=yes updatewhereclause=yes name=mon_to dbname="group_change_pending.mon_to"  )
+column=(type=char(10) update=yes updatewhereclause=yes name=tue_from dbname="group_change_pending.tue_from"  )
+column=(type=char(10) update=yes updatewhereclause=yes name=tue_to dbname="group_change_pending.tue_to"  )
+column=(type=char(10) update=yes updatewhereclause=yes name=wed_from dbname="group_change_pending.wed_from"  )
+column=(type=char(10) update=yes updatewhereclause=yes name=thu_from dbname="group_change_pending.thu_from"  )
+column=(type=char(10) update=yes updatewhereclause=yes name=thu_to dbname="group_change_pending.thu_to"  )
+column=(type=char(10) update=yes updatewhereclause=yes name=fri_from dbname="group_change_pending.fri_from"  )
+column=(type=char(10) update=yes updatewhereclause=yes name=fri_to dbname="group_change_pending.fri_to"  )
+column=(type=char(10) update=yes updatewhereclause=yes name=sat_from dbname="group_change_pending.sat_from"  )
+column=(type=char(10) update=yes updatewhereclause=yes name=sat_to dbname="group_change_pending.sat_to"  )
+column=(type=char(10) update=yes updatewhereclause=yes name=sun_from dbname="group_change_pending.sun_from"  )
+column=(type=char(10) update=yes updatewhereclause=yes name=sun_to dbname="group_change_pending.sun_to"  )
+column=(type=char(10) update=yes updatewhereclause=yes name=mon_from2 dbname="group_change_pending.mon_from2"  )
+column=(type=char(10) update=yes updatewhereclause=yes name=mon_to2 dbname="group_change_pending.mon_to2"  )
+column=(type=char(10) update=yes updatewhereclause=yes name=tue_from2 dbname="group_change_pending.tue_from2"  )
+column=(type=char(10) update=yes updatewhereclause=yes name=tue_to2 dbname="group_change_pending.tue_to2"  )
+column=(type=char(10) update=yes updatewhereclause=yes name=wed_from2 dbname="group_change_pending.wed_from2"  )
+column=(type=char(10) update=yes updatewhereclause=yes name=wed_to2 dbname="group_change_pending.wed_to2"  )
+column=(type=char(10) update=yes updatewhereclause=yes name=thu_from2 dbname="group_change_pending.thu_from2"  )
+column=(type=char(10) update=yes updatewhereclause=yes name=thu_to2 dbname="group_change_pending.thu_to2"  )
+column=(type=char(10) update=yes updatewhereclause=yes name=fri_from2 dbname="group_change_pending.fri_from2"  )
+column=(type=char(10) update=yes updatewhereclause=yes name=fri_to2 dbname="group_change_pending.fri_to2"  )
+column=(type=char(10) update=yes updatewhereclause=yes name=sat_from2 dbname="group_change_pending.sat_from2"  )
+column=(type=char(10) update=yes updatewhereclause=yes name=sat_to2 dbname="group_change_pending.sat_to2"  )
+column=(type=char(10) update=yes updatewhereclause=yes name=sun_from2 dbname="group_change_pending.sun_from2"  )
+column=(type=char(10) update=yes updatewhereclause=yes name=sun_to2 dbname="group_change_pending.sun_to2"  )
+column=(type=char(10) update=yes updatewhereclause=yes name=wed_to dbname="group_change_pending.wed_to"  )
+column=(type=char(20) update=yes updatewhereclause=yes name=routine_visit_appt dbname="group_change_pending.routine_visit_appt"  )
+column=(type=char(20) update=yes updatewhereclause=yes name=urgent_visit_appt dbname="group_change_pending.urgent_visit_appt"  )
+column=(type=char(20) update=yes updatewhereclause=yes name=emergency_visit_appt dbname="group_change_pending.emergency_visit_appt"  )
+column=(type=char(20) update=yes updatewhereclause=yes name=non_emergency_appt dbname="group_change_pending.non_emergency_appt"  )
+column=(type=decimal(0) update=yes updatewhereclause=yes name=young_child dbname="group_change_pending.young_child"  )
+column=(type=decimal(0) update=yes updatewhereclause=yes name=child dbname="group_change_pending.child"  )
+column=(type=decimal(0) update=yes updatewhereclause=yes name=adolescent dbname="group_change_pending.adolescent"  )
+column=(type=decimal(0) update=yes updatewhereclause=yes name=adult dbname="group_change_pending.adult"  )
+column=(type=decimal(0) update=yes updatewhereclause=yes name=senior_adult dbname="group_change_pending.senior_adult"  )
+column=(type=long update=yes updatewhereclause=yes name=handicapped_access dbname="group_change_pending.handicapped_access"  )
+column=(type=long update=yes updatewhereclause=yes name=public_transportation dbname="group_change_pending.public_transportation"  )
+column=(type=char(150) update=yes updatewhereclause=yes name=cust_1 dbname="group_change_pending.cust_1"  )
+column=(type=char(150) update=yes updatewhereclause=yes name=cust_2 dbname="group_change_pending.cust_2"  )
+column=(type=char(150) update=yes updatewhereclause=yes name=cust_3 dbname="group_change_pending.cust_3"  )
+column=(type=char(150) update=yes updatewhereclause=yes name=cust_4 dbname="group_change_pending.cust_4"  )
+column=(type=char(150) update=yes updatewhereclause=yes name=cust_5 dbname="group_change_pending.cust_5"  )
+column=(type=char(150) update=yes updatewhereclause=yes name=street_2 dbname="group_change_pending.street_2"  )
+column=(type=long update=yes updatewhereclause=yes name=active_status dbname="group_change_pending.active_status"  )
+column=(type=decimal(0) update=yes updatewhereclause=yes name=accepting_new_patients dbname="group_change_pending.accepting_new_patients"  )
+column=(type=char(150) update=yes updatewhereclause=yes name=cust_6 dbname="group_change_pending.cust_6"  )
+column=(type=long update=yes updatewhereclause=yes name=facility_id dbname="group_change_pending.facility_id"  )
+column=(type=decimal(0) update=yes updatewhereclause=yes name=gp_id dbname="group_change_pending.gp_id"  )
+column=(type=long update=yes updatewhereclause=yes name=billing_address_flag dbname="group_change_pending.billing_address_flag"  )
+column=(type=char(50) update=yes updatewhereclause=yes name=suite_apart dbname="group_change_pending.suite_apart"  )
+column=(type=char(150) update=yes updatewhereclause=yes name=cust_7 dbname="group_change_pending.cust_7"  )
+column=(type=char(150) update=yes updatewhereclause=yes name=cust_8 dbname="group_change_pending.cust_8"  )
+column=(type=char(150) update=yes updatewhereclause=yes name=cust_9 dbname="group_change_pending.cust_9"  )
+column=(type=char(150) update=yes updatewhereclause=yes name=cust_10 dbname="group_change_pending.cust_10"  )
+column=(type=datetime update=yes updatewhereclause=yes name=cust_d1 dbname="group_change_pending.cust_d1"  )
+column=(type=datetime update=yes updatewhereclause=yes name=cust_d2 dbname="group_change_pending.cust_d2"  )
+column=(type=datetime update=yes updatewhereclause=yes name=effective_date dbname="group_change_pending.effective_date"  )
+column=(type=datetime update=yes updatewhereclause=yes name=push_date dbname="group_change_pending.push_date"  )
+column=(type=datetime update=yes updatewhereclause=yes name=create_date dbname="group_change_pending.create_date"  )
+column=(type=char(20) update=yes updatewhereclause=yes name=create_user dbname="group_change_pending.create_user"  )
+column=(type=decimal(0) key=yes update=yes updatewhereclause=yes name=pending_id dbname="group_change_pending.pending_id"  )
+column=(type=long update=yes updatewhereclause=yes initial="1" name=pending_status dbname="group_change_pending.pending_status" 
+ values="Pending	1/Applied	0/"  )
+column=(type=char(1) update=yes updatewhereclause=yes name=change_type dbname="group_change_pending.change_type"  )
+column=(type=long update=yes updatewhereclause=yes name=update_status dbname="group_change_pending.update_status" 
+ values="Success	1/Failure	0/"  )
+column=(type=char(250) update=yes updatewhereclause=yes name=error_info dbname="group_change_pending.error_info"  )
+ retrieve="  SELECT group_change_pending.rec_id,   
+         group_change_pending.prac_id,   
+         group_change_pending.office_in_home,   
+         group_change_pending.mailing_address,   
+         group_change_pending.practice_type,   
+         group_change_pending.street,   
+         group_change_pending.city,   
+         group_change_pending.state,   
+         group_change_pending.country,   
+         group_change_pending.pager_number,   
+         group_change_pending.phone,   
+         group_change_pending.ext,   
+         group_change_pending.fax,   
+         group_change_pending.zip,   
+         group_change_pending.county,   
+         group_change_pending.contact_person,   
+         group_change_pending.tax_id,   
+         group_change_pending.tax_id_other_1,   
+         group_change_pending.tax_id_other_2,   
+         group_change_pending.business_mgr,   
+         group_change_pending.office_mgr,   
+         group_change_pending.e_mail_address,   
+         group_change_pending.web_address,   
+         group_change_pending.mon_from,   
+         group_change_pending.mon_to,   
+         group_change_pending.tue_from,   
+         group_change_pending.tue_to,   
+         group_change_pending.wed_from,   
+         group_change_pending.thu_from,   
+         group_change_pending.thu_to,   
+         group_change_pending.fri_from,   
+         group_change_pending.fri_to,   
+         group_change_pending.sat_from,   
+         group_change_pending.sat_to,   
+         group_change_pending.sun_from,   
+         group_change_pending.sun_to,   
+         group_change_pending.mon_from2,   
+         group_change_pending.mon_to2,   
+         group_change_pending.tue_from2,   
+         group_change_pending.tue_to2,   
+         group_change_pending.wed_from2,   
+         group_change_pending.wed_to2,   
+         group_change_pending.thu_from2,   
+         group_change_pending.thu_to2,   
+         group_change_pending.fri_from2,   
+         group_change_pending.fri_to2,   
+         group_change_pending.sat_from2,   
+         group_change_pending.sat_to2,   
+         group_change_pending.sun_from2,   
+         group_change_pending.sun_to2,   
+         group_change_pending.wed_to,   
+         group_change_pending.routine_visit_appt,   
+         group_change_pending.urgent_visit_appt,   
+         group_change_pending.emergency_visit_appt,   
+         group_change_pending.non_emergency_appt,   
+         group_change_pending.young_child,   
+         group_change_pending.child,   
+         group_change_pending.adolescent,   
+         group_change_pending.adult,   
+         group_change_pending.senior_adult,   
+         group_change_pending.handicapped_access,   
+         group_change_pending.public_transportation,   
+         group_change_pending.cust_1,   
+         group_change_pending.cust_2,   
+         group_change_pending.cust_3,   
+         group_change_pending.cust_4,   
+         group_change_pending.cust_5,   
+         group_change_pending.street_2,   
+         group_change_pending.active_status,   
+         group_change_pending.accepting_new_patients,   
+         group_change_pending.cust_6,   
+         group_change_pending.facility_id,   
+         group_change_pending.gp_id,   
+         group_change_pending.billing_address_flag,   
+         group_change_pending.suite_apart,   
+         group_change_pending.cust_7,   
+         group_change_pending.cust_8,   
+         group_change_pending.cust_9,   
+         group_change_pending.cust_10,   
+         group_change_pending.cust_d1,   
+         group_change_pending.cust_d2,   
+         group_change_pending.effective_date,   
+         group_change_pending.push_date,   
+         group_change_pending.create_date,   
+         group_change_pending.create_user,   
+         group_change_pending.pending_id,   
+         group_change_pending.pending_status,   
+         group_change_pending.change_type,   
+         group_change_pending.update_status,   
+         group_change_pending.error_info  
+    FROM group_change_pending   where 
+group_change_pending.pending_id=:al_pending_id"
+  update="group_change_pending" updatewhere=0 updatekeyinplace=no
+  arguments=(("al_pending_id", number))
+ sort="effective_date A, create_date A"
+)
+text(name=effective_date_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tooltip.enabled="0" tooltip.isbubble="0" tooltip.textcolor="134217751" tooltip.backcolor="134217752" tooltip.icon="0" tooltip.maxwidth="0" tooltip.transparency="0" tooltip.delay.visible="32000" tooltip.delay.initial="0" tooltip.hasclosebutton="0" transparency="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.length="100" background.gradient.repetition.count="0" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" color="33554432" alignment="2" border="6" x="9" y="8" height="52" width="507" text="Effective Date" html.valueishtml="0" )
+text(name=push_date_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tooltip.enabled="0" tooltip.isbubble="0" tooltip.textcolor="134217751" tooltip.backcolor="134217752" tooltip.icon="0" tooltip.maxwidth="0" tooltip.transparency="0" tooltip.delay.visible="32000" tooltip.delay.initial="0" tooltip.hasclosebutton="0" transparency="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.length="100" background.gradient.repetition.count="0" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" color="33554432" alignment="2" border="6" x="526" y="8" height="52" width="503" text="Push Date" html.valueishtml="0" )
+text(name=create_date_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tooltip.enabled="0" tooltip.isbubble="0" tooltip.textcolor="134217751" tooltip.backcolor="134217752" tooltip.icon="0" tooltip.maxwidth="0" tooltip.transparency="0" tooltip.delay.visible="32000" tooltip.delay.initial="0" tooltip.hasclosebutton="0" transparency="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.length="100" background.gradient.repetition.count="0" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" color="33554432" alignment="2" border="6" x="1038" y="8" height="52" width="503" text="Create Date" html.valueishtml="0" )
+text(name=create_user_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tooltip.enabled="0" tooltip.isbubble="0" tooltip.textcolor="134217751" tooltip.backcolor="134217752" tooltip.icon="0" tooltip.maxwidth="0" tooltip.transparency="0" tooltip.delay.visible="32000" tooltip.delay.initial="0" tooltip.hasclosebutton="0" transparency="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.length="100" background.gradient.repetition.count="0" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" color="33554432" alignment="2" border="6" x="1550" y="8" height="52" width="480" text="Create User" html.valueishtml="0" )
+text(name=pending_status_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tooltip.enabled="0" tooltip.isbubble="0" tooltip.textcolor="134217751" tooltip.backcolor="134217752" tooltip.icon="0" tooltip.maxwidth="0" tooltip.transparency="0" tooltip.delay.visible="32000" tooltip.delay.initial="0" tooltip.hasclosebutton="0" transparency="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.length="100" background.gradient.repetition.count="0" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" color="33554432" alignment="2" border="6" x="2039" y="8" height="52" width="361" text="Pending Status" html.valueishtml="0" )
+text(name=update_status_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tooltip.enabled="0" tooltip.isbubble="0" tooltip.textcolor="0" tooltip.backcolor="0" tooltip.icon="0" tooltip.maxwidth="0" tooltip.transparency="0" tooltip.delay.visible="0" tooltip.delay.initial="0" tooltip.hasclosebutton="0" transparency="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="0" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.length="0" background.gradient.repetition.count="0" background.gradient.focus="0" background.gradient.scale="0" background.gradient.spread="0" color="0" alignment="0" border="6" x="2409" y="8" height="52" width="338" text="Update Status" html.valueishtml="0" )
+text(name=error_info_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tooltip.enabled="0" tooltip.isbubble="0" tooltip.textcolor="0" tooltip.backcolor="0" tooltip.icon="0" tooltip.maxwidth="0" tooltip.transparency="0" tooltip.delay.visible="0" tooltip.delay.initial="0" tooltip.hasclosebutton="0" transparency="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="0" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.length="0" background.gradient.repetition.count="0" background.gradient.focus="0" background.gradient.scale="0" background.gradient.spread="0" color="0" alignment="0" border="6" x="2757" y="8" height="52" width="1874" text="Error Info" html.valueishtml="0" )
+column(name=effective_date visible="1" band=detail id=82 x="9" y="4" height="64" width="507" color="33554432" border="0" alignment="0" format="[shortdate] [time]" html.valueishtml="0" editmask.focusrectangle=no editmask.autoskip=no editmask.required=no editmask.readonly=no editmask.codetable=no editmask.ddcalendar=no editmask.spin=no editmask.useformat=no editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.length="100" background.gradient.repetition.count="0" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" transparency="0" tooltip.enabled="0" tooltip.isbubble="0" tooltip.textcolor="134217751" tooltip.backcolor="134217752" tooltip.icon="0" tooltip.maxwidth="0" tooltip.transparency="0" tooltip.delay.visible="32000" tooltip.delay.initial="0" tooltip.hasclosebutton="0" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 )
+column(name=push_date visible="1" band=detail id=83 x="526" y="8" height="64" width="503" color="33554432" border="0" alignment="0" format="[shortdate] [time]" html.valueishtml="0" editmask.focusrectangle=no editmask.autoskip=no editmask.required=no editmask.readonly=no editmask.codetable=no editmask.ddcalendar=no editmask.spin=no editmask.useformat=no editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.length="100" background.gradient.repetition.count="0" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" transparency="0" tooltip.enabled="0" tooltip.isbubble="0" tooltip.textcolor="134217751" tooltip.backcolor="134217752" tooltip.icon="0" tooltip.maxwidth="0" tooltip.transparency="0" tooltip.delay.visible="32000" tooltip.delay.initial="0" tooltip.hasclosebutton="0" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 )
+column(name=create_date visible="1" band=detail id=84 x="1038" y="8" height="64" width="503" color="33554432" border="0" alignment="0" format="[shortdate] [time]" html.valueishtml="0" editmask.focusrectangle=no editmask.autoskip=no editmask.required=no editmask.readonly=no editmask.codetable=no editmask.ddcalendar=no editmask.spin=no editmask.useformat=no editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.length="100" background.gradient.repetition.count="0" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" transparency="0" tooltip.enabled="0" tooltip.isbubble="0" tooltip.textcolor="134217751" tooltip.backcolor="134217752" tooltip.icon="0" tooltip.maxwidth="0" tooltip.transparency="0" tooltip.delay.visible="32000" tooltip.delay.initial="0" tooltip.hasclosebutton="0" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 )
+column(name=create_user visible="1" band=detail id=85 x="1550" y="8" height="64" width="480" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=20 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.length="100" background.gradient.repetition.count="0" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" transparency="0" tooltip.enabled="0" tooltip.isbubble="0" tooltip.textcolor="134217751" tooltip.backcolor="134217752" tooltip.icon="0" tooltip.maxwidth="0" tooltip.transparency="0" tooltip.delay.visible="32000" tooltip.delay.initial="0" tooltip.hasclosebutton="0" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 )
+column(name=pending_status visible="1" band=detail id=87 x="2039" y="8" height="64" width="362" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" ddlb.allowedit=no ddlb.autohscroll=no ddlb.imemode=0 ddlb.limit=0 ddlb.showlist=no ddlb.sorted=no ddlb.useasborder=no ddlb.vscrollbar=no ddlb.nilisnull=no ddlb.required=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.length="100" background.gradient.repetition.count="0" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" transparency="0" tooltip.enabled="0" tooltip.isbubble="0" tooltip.textcolor="134217751" tooltip.backcolor="134217752" tooltip.icon="0" tooltip.maxwidth="0" tooltip.transparency="0" tooltip.delay.visible="32000" tooltip.delay.initial="0" tooltip.hasclosebutton="0" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 )
+column(name=error_info visible="1" band=detail id=90 x="2757" y="8" height="52" width="1874" color="0" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=no edit.autoselect=no edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.length="100" background.gradient.repetition.count="0" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" transparency="0" tooltip.enabled="0" tooltip.isbubble="0" tooltip.textcolor="134217751" tooltip.backcolor="134217752" tooltip.icon="0" tooltip.maxwidth="0" tooltip.transparency="0" tooltip.delay.visible="32000" tooltip.delay.initial="0" tooltip.hasclosebutton="0" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 )
+column(name=update_status visible="1" band=detail id=89 x="2409" y="12" height="52" width="339" color="0" border="0" alignment="0" format="[general]" html.valueishtml="0" ddlb.allowedit=no ddlb.autohscroll=no ddlb.imemode=0 ddlb.limit=0 ddlb.showlist=no ddlb.sorted=no ddlb.useasborder=no ddlb.vscrollbar=no ddlb.nilisnull=no ddlb.required=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.length="100" background.gradient.repetition.count="0" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" transparency="0" tooltip.enabled="0" tooltip.isbubble="0" tooltip.textcolor="134217751" tooltip.backcolor="134217752" tooltip.icon="0" tooltip.maxwidth="0" tooltip.transparency="0" tooltip.delay.visible="32000" tooltip.delay.initial="0" tooltip.hasclosebutton="0" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" encodeSelfLinkArgs="1" generateDDDWFrames="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen(sessionSpecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headGroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.customPostScript="0" xslfop.print="0" )
+export.xhtml()

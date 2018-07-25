@@ -1,0 +1,15 @@
+﻿$PBExportHeader$d_all_address_phones.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=64 color="536870912" )
+summary(height=80 color="536870912" )
+footer(height=96 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=char(25) updatewhereclause=yes name=phone dbname="pd_address.phone" )
+ retrieve="PBSELECT( VERSION(400) DISTINCT ()TABLE(NAME=~"pd_address~" )  TABLE(NAME=~"pd_address_link~" ) COLUMN(NAME=~"pd_address.phone~")    JOIN (LEFT=~"pd_address.rec_id~"    OP =~"=~"RIGHT=~"pd_address_link.address_id~" )WHERE(    EXP1 =~"pd_address_link.primary_office~"   OP =~"=~"    EXP2 =~"1~"    LOGIC =~"or~" ) WHERE(    EXP1 =~"pd_address_link.additional_office~"   OP =~"=~"    EXP2 =~"1~"    LOGIC =~"or~" ) WHERE(    EXP1 =~"pd_address_link.billing~"   OP =~"=~"    EXP2 =~"1~" ) ) " )
+text(band=header alignment="2" text="Phone #"border="0" color="0" x="55" y="4" height="52" width="242"  name=pd_address_phone_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="5" y="4" height="64" width="398" format="[general]"  name=phone edit.limit=25 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=summary alignment="0" expression=" count(phone for all) "border="0" color="0" x="5" y="4" height="64" width="398" format="[general]"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=summary x1="5" y1="0" x2="434" y2="0" pen.style="0" pen.width="5" pen.color="0"  background.mode="1" background.color="536870912" )
+button(band=footer text="Next"filename=""action="0" border="0" color="0" x="27" y="4" height="88" width="233" vtextalign="0" htextalign="0"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

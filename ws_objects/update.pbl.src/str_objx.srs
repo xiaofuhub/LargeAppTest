@@ -1,0 +1,6 @@
+﻿$PBExportHeader$str_objx.srs
+global type str_objx from structure
+	string		objname
+	long		x
+end type
+

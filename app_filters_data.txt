@@ -1,0 +1,27 @@
+1	Primary Address	2	address_type	=	647	
+2	Additional Office	2	address_type	=	256	
+3	Billing Address	2	address_type	=	24472	
+4	Home Address	2	address_type	=	648	
+5	Active License	4	active_status	=	1	
+6	License not active	4	active_status	<>	1	
+7	Primary Specialty	19	specialty_order	=	10041	
+8	Secondary Specialty	19	specialty_order	=	10042	
+9	Tertiary Specialty	19	specialty_order	=	10043	
+10	DEA - US	5	state	=	90	
+11	Active Insurance	15	active_status	=	1	
+12	Not active Insurance	15	active_status	<>	1	
+13	Training Type Internship	7	train_type	=	583	
+14	Training Type Residency	7	train_type	=	585	
+15	Training Type Fellowship	7	train_type	=	284	
+16	Education Medical	6	education_type	=	573	
+17	Hospital Primary	10	primary_hosp	=	581	
+18	Mailing Address	2	address_type	=	24477	
+19	Primary Department	32	primary_dept	= 	1	
+20	Not Primary Department	32	primary_dept	=	1	
+21	Education Graduate	6	education_type	=	10049	
+22	Education Post-Graduate	6	education_type	=	574	
+23	Education Undergraduate	6	education_type	=	24471	
+25	Medicare ID	23	id_type	=	669	
+26	Medicaid ID	23	id_type	=	670	
+27	UPIN	23	id_type	=	10037	
+24	Hospital not Primary	10	primary_hosp	<>	582	

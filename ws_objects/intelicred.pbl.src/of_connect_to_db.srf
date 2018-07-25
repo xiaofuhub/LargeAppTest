@@ -1,0 +1,150 @@
+﻿$PBExportHeader$of_connect_to_db.srf
+global type of_connect_to_db from function_object
+end type
+
+forward prototypes
+global function integer of_connect_to_db ()
+end prototypes
+
+global function integer of_connect_to_db ();//function created 06.18.07 maha for alternative dba password functionality
+// IMPORTANT Any changes here must be made to pfc_cst_u_create_app2:of_connections as well
+
+string ls_conn
+string ls_conn_fed //Start Code Change ---- 07.25.2007 #V7 maha
+string ls_conn_test //Start Code Change ---- 07.25.2007 #V7 maha
+string ls_log
+string ls_pass
+string ls_dbtype  //Start Code Change ----01.17.2008 #V8 maha
+integer i
+integer p1
+integer p2
+SQLCA.DBMS       = "ODBC"
+SQLCA.Lock       = "RU" // for sql server READ UNCOMMITED - PREVENT LOCKING
+SQLCA.AutoCommit = True
+
+//messagebox("path",gs_dir_path + "intellicred\intellicred.ini")
+
+for i = 1 to 4
+	choose case i
+	//first try SQL 
+		//Add PBNewSPInvocation parameter in the DBParm -  (Appeon)Alfee 06.26.2013 - V141 ISG-CLX
+		case 1
+			SQLCA.DBParm     = "ConnectString='DSN=" + gs_odbc + ";UID=dba;PWD=sql',DisableBind=1,PBUseProcOwner='Yes',RPCReBind=1,MsgTerse='Yes', " + & 
+																		"DelimitIdentifier='Yes',ConnectOption='SQL_DRIVER_CONNECT,SQL_DRIVER_NOPROMPT ',"+ & 
+																		"PBNewSPInvocation='Yes',PBTrimCharColumns='Yes',PBMaxBlobSize = '2147483647' ,PBMaxTextSize = '2147483647'"    
+		case 2								
+			SQLCA.DBParm     = "ConnectString='DSN=" + gs_odbc + ";UID=dba;PWD=Im@A^2c4U',DisableBind=1,PBUseProcOwner='Yes',RPCReBind=1,MsgTerse='Yes', " + & 
+																		"DelimitIdentifier='Yes',ConnectOption='SQL_DRIVER_CONNECT,SQL_DRIVER_NOPROMPT ',"+ & 
+																		"PBNewSPInvocation='Yes',PBTrimCharColumns='Yes',PBMaxBlobSize = '2147483647' ,PBMaxTextSize = '2147483647'"    
+		case 3		//this option can ONLY be used for ASA as mssql has no password to pass					
+			SQLCA.DBParm     = "ConnectString='DSN=" + gs_odbc + ";UID=dba;',DisableBind=1,PBUseProcOwner='Yes',RPCReBind=1,MsgTerse='Yes', " + & 
+																		"DelimitIdentifier='Yes',ConnectOption='SQL_DRIVER_CONNECT,SQL_DRIVER_NOPROMPT ',"+ & 
+																		"PBNewSPInvocation='Yes',PBTrimCharColumns='Yes',PBMaxBlobSize = '2147483647' ,PBMaxTextSize = '2147483647'"    
+		case 4	//this option can ONLY be used for MS SQL as ASA requires the dba login
+			//debugbreak()
+			//Checks for a value in the intellicred.ini file.  if found, decrypts using 153 as the key value, and tests the connection with the decrypted login and password
+			// The dbconndata setting is set from a separate program.
+			//to set up, customer must create the login in sql server and attach the login to the database as the owner.
+			ls_conn = ProfileString(gs_IniFilePathName, "Setup", "dbconndata", "None")
+			if ls_conn = "None" then
+				continue
+			else
+				p1 = PosA(ls_conn,"isoft")
+				p2 = PosA(ls_conn,"!!!")
+				if  p1 = 0 then continue
+				if  p2 = 0 then continue
+				ls_log = "isoft@@@" + MidA(ls_conn,6, p2 - 6)
+				ls_pass = "isoft@@@" + MidA(ls_conn,p2 + 3)
+				n_cst_encrypt lnvo_encrypt 
+//				invo_encrypt  = create n_cst_encrypt
+				ls_log = lnvo_encrypt.of_decrypt( ls_log)
+				ls_pass = lnvo_encrypt.of_decrypt( ls_pass)
+			end if
+			//Start Code Change ---- 07.25.2007 #V7 maha
+			//the following changed for Fedex to allow connecting without the additional connection parameters
+			ls_conn_fed = ProfileString(gs_IniFilePathName, "Setup", "dbconnset", "None")
+			ls_conn_test= ProfileString(gs_IniFilePathName, "Setup", "dbconntest", "None")
+			if ls_conn_test = "1" then messagebox("Connset", ls_conn_fed)
+			if ls_conn_fed = "1" then
+				SQLCA.DBParm     = "ConnectString='DSN=" + gs_odbc + ";UID=" + ls_log + ";PWD=" + ls_pass + "',DisableBind=1"
+			else
+				SQLCA.DBParm     = "ConnectString='DSN=" + gs_odbc + ";UID=" + ls_log + ";PWD=" + ls_pass + "',DisableBind=1,PBUseProcOwner='Yes',RPCReBind=1,MsgTerse='Yes', " + & 
+																		"DelimitIdentifier='Yes',ConnectOption='SQL_DRIVER_CONNECT,SQL_DRIVER_NOPROMPT ',"+ & 
+																		"PBTrimCharColumns='Yes',PBMaxBlobSize = '2147483647' ,PBMaxTextSize = '2147483647'"    
+			end if
+			//End Code Change---07.25.2007	
+	end choose	
+	
+	//--------------------------- APPEON BEGIN ---------------------------
+	//$< Add  > 2007-09-14 By: Scofield
+	//$<Reason> Set the connection cache dynamically on Web
+	if AppeonGetClientType() = 'WEB' then
+		SQLCA.DBMS = gs_CacheType
+		//---------Begin Added by (Appeon)Toney 10.10.2013 for V141 ISG-CLX--------
+		//$Reason:Append the DisableBind option to generate correct SQL Syntax
+		IF IsNull(gs_CacheSet) THEN
+			gs_CacheSet = "DisableBind=1"
+		ELSEIF gs_CacheSet = "" THEN
+			gs_CacheSet = "DisableBind=1"
+		ELSE
+			gs_CacheSet += ",DisableBind=1"
+		END IF		
+		//---------End Added ------------------------------------------------------------------
+		SQLCA.DBParm = gs_CacheSet
+	end if
+	//---------------------------- APPEON END ----------------------------
+
+	CONNECT USING SQLCA;
+	//messagebox(string (i),string(SQLCA.SQLCODE))
+	if SQLCA.SQLCODE = 0  THEN exit
+next
+
+//Start Code Change ----01.17.2008 #V8 maha
+//IF appeongetclienttype() = 'PB' THEN
+	IF SQLCA.SQLCODE = 0  THEN 
+		select top 1 @@version into :ls_dbtype from ids;
+		If PosA(upper(ls_dbtype) , 'SQL SERVER') > 0 Then
+			gs_dbType = 'SQL'
+		Else
+			gs_dbType = 'ASA'
+		End If
+		/*
+		CHOOSE CASE SQLCA.SQLreturndata
+			CASE 'Adaptive Server Anywhere'
+				  gs_dbType = 'ASA'
+			CASE 'Microsoft SQL Server'
+				  gs_dbType = 'SQL'
+			CASE ELSE 
+					f_system_error_handler ('Inital Login Failed!  ' +    SQLCA.sqlerrtext)
+					//SQLCA.sqldbcode
+					Return -1
+		END CHOOSE 
+		*/
+	ELSE 
+		// msskiner 10 March 2006 -- begin
+		// if the database is not runnning - separate message
+		if sqlca.sqldbcode = -100 then 
+			messageBOX("Login failure for " + gs_odbc,'The database server is not running. Contact your system administrator' )		
+		else
+			 messageBOX("Initial Login failure( " + gs_odbc + ")",'Unable to connect to the database. Contact your system administrator' )		
+			// f_system_error_handler ('Inital Login Failed!  ' +    SQLCA.sqlerrtext)
+		end if
+		// msskiner 10 March 2006 -- end 
+		//SQLCA.sqldbcode
+		Return -1
+	END IF
+/*
+ELSE //web deploy
+	select top 1 @@version into :ls_dbtype from ids;
+	If pos(upper(ls_dbtype) , 'SQL SERVER') > 0 Then
+		gs_dbType = 'SQL'
+	Else
+		gs_dbType = 'ASA'
+	End If
+END IF
+*/
+//End Code Change---01.17.2008
+
+RETURN 1
+end function
+

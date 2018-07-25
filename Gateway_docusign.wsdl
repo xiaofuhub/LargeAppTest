@@ -1,0 +1,1263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="ping">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="integratorKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="pingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="pingResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendEnvelope">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="integratorKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="envelopeId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendEnvelopeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendEnvelopeResult" type="tns:Status" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Status">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="envelopeID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="subject" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="errorText" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateEnvelopeFromTemplates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="integratorKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="templateid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="recipient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cc" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ActivateEnvelope" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="docfile" type="tns:DocuSignFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DocuSignFile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="filename" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="fileExtension" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="ltbtFile" type="tns:ArrayOfBase64Binary" />
+          <s:element minOccurs="1" maxOccurs="1" name="fileCount" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ltbtFile0" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="ltbtFile1" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="ltbtFile2" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="ltbtFile3" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="ltbtFile4" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="ltbtFile5" type="s:base64Binary" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfBase64Binary">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="base64Binary" nillable="true" type="s:base64Binary" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateEnvelopeFromTemplatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateEnvelopeFromTemplatesResult" type="tns:Status" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RequestTemplates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="integratorKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IncludeAdvancedTemplates" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RequestTemplatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestTemplatesResult" type="tns:DocuSignTemplates" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DocuSignTemplates">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="templateID" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="templateName" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="errorText" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateAndSendEnvelope">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="integratorKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="recipient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="docfile" type="tns:DocuSignFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateAndSendEnvelopeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateAndSendEnvelopeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CorrectAndResendEnvelope">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="integratorKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="envelopId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CorrectAndResendEnvelopeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CorrectAndResendEnvelopeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RequestCorrectToken">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="integratorKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="envelopId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="SuppressNavigation" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RequestCorrectTokenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestCorrectTokenResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAuthenticationToken">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="integratorKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="envelopId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAuthenticationTokenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAuthenticationTokenResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RequestEnvelope">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="integratorKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="envelopId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IncludeDocumentBytes" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="docId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RequestEnvelopeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestEnvelopeResult" type="tns:DocuSignedDocument" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DocuSignedDocument">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="errorText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="document" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="fileExtension" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="VoidEnvelope">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="integratorKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="envelopId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="reason" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VoidEnvelopeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VoidEnvelopeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteEnvelopes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="integratorKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="envelopId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteEnvelopesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteEnvelopesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RequestStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="integratorKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="envelopId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="docId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RequestStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestStatusResult" type="tns:DocuSignDocumentInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DocuSignDocumentInformation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="documentName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="errorMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="signature" type="tns:ArrayOfDocuSignature" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDocuSignature">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DocuSignature" nillable="true" type="tns:DocuSignature" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DocuSignature">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="signerEmail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="nameSigned" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="signStatus" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="signerIP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="signedDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="roles" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="docType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="routingOrder" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="signed" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RequestSenderToken">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="integratorKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="envelopId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RequestSenderTokenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestSenderTokenResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="Status" nillable="true" type="tns:Status" />
+      <s:element name="DocuSignTemplates" nillable="true" type="tns:DocuSignTemplates" />
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="DocuSignedDocument" nillable="true" type="tns:DocuSignedDocument" />
+      <s:element name="DocuSignDocumentInformation" nillable="true" type="tns:DocuSignDocumentInformation" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="pingSoapIn">
+    <wsdl:part name="parameters" element="tns:ping" />
+  </wsdl:message>
+  <wsdl:message name="pingSoapOut">
+    <wsdl:part name="parameters" element="tns:pingResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendEnvelopeSoapIn">
+    <wsdl:part name="parameters" element="tns:SendEnvelope" />
+  </wsdl:message>
+  <wsdl:message name="SendEnvelopeSoapOut">
+    <wsdl:part name="parameters" element="tns:SendEnvelopeResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateEnvelopeFromTemplatesSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateEnvelopeFromTemplates" />
+  </wsdl:message>
+  <wsdl:message name="CreateEnvelopeFromTemplatesSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateEnvelopeFromTemplatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="RequestTemplatesSoapIn">
+    <wsdl:part name="parameters" element="tns:RequestTemplates" />
+  </wsdl:message>
+  <wsdl:message name="RequestTemplatesSoapOut">
+    <wsdl:part name="parameters" element="tns:RequestTemplatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateAndSendEnvelopeSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateAndSendEnvelope" />
+  </wsdl:message>
+  <wsdl:message name="CreateAndSendEnvelopeSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateAndSendEnvelopeResponse" />
+  </wsdl:message>
+  <wsdl:message name="CorrectAndResendEnvelopeSoapIn">
+    <wsdl:part name="parameters" element="tns:CorrectAndResendEnvelope" />
+  </wsdl:message>
+  <wsdl:message name="CorrectAndResendEnvelopeSoapOut">
+    <wsdl:part name="parameters" element="tns:CorrectAndResendEnvelopeResponse" />
+  </wsdl:message>
+  <wsdl:message name="RequestCorrectTokenSoapIn">
+    <wsdl:part name="parameters" element="tns:RequestCorrectToken" />
+  </wsdl:message>
+  <wsdl:message name="RequestCorrectTokenSoapOut">
+    <wsdl:part name="parameters" element="tns:RequestCorrectTokenResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAuthenticationTokenSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAuthenticationToken" />
+  </wsdl:message>
+  <wsdl:message name="GetAuthenticationTokenSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAuthenticationTokenResponse" />
+  </wsdl:message>
+  <wsdl:message name="RequestEnvelopeSoapIn">
+    <wsdl:part name="parameters" element="tns:RequestEnvelope" />
+  </wsdl:message>
+  <wsdl:message name="RequestEnvelopeSoapOut">
+    <wsdl:part name="parameters" element="tns:RequestEnvelopeResponse" />
+  </wsdl:message>
+  <wsdl:message name="VoidEnvelopeSoapIn">
+    <wsdl:part name="parameters" element="tns:VoidEnvelope" />
+  </wsdl:message>
+  <wsdl:message name="VoidEnvelopeSoapOut">
+    <wsdl:part name="parameters" element="tns:VoidEnvelopeResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteEnvelopesSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteEnvelopes" />
+  </wsdl:message>
+  <wsdl:message name="DeleteEnvelopesSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteEnvelopesResponse" />
+  </wsdl:message>
+  <wsdl:message name="RequestStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:RequestStatus" />
+  </wsdl:message>
+  <wsdl:message name="RequestStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:RequestStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="RequestSenderTokenSoapIn">
+    <wsdl:part name="parameters" element="tns:RequestSenderToken" />
+  </wsdl:message>
+  <wsdl:message name="RequestSenderTokenSoapOut">
+    <wsdl:part name="parameters" element="tns:RequestSenderTokenResponse" />
+  </wsdl:message>
+  <wsdl:message name="pingHttpGetIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="integratorKey" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="pingHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="SendEnvelopeHttpGetIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="integratorKey" type="s:string" />
+    <wsdl:part name="accountId" type="s:string" />
+    <wsdl:part name="envelopeId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendEnvelopeHttpGetOut">
+    <wsdl:part name="Body" element="tns:Status" />
+  </wsdl:message>
+  <wsdl:message name="RequestTemplatesHttpGetIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="integratorKey" type="s:string" />
+    <wsdl:part name="accountid" type="s:string" />
+    <wsdl:part name="IncludeAdvancedTemplates" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RequestTemplatesHttpGetOut">
+    <wsdl:part name="Body" element="tns:DocuSignTemplates" />
+  </wsdl:message>
+  <wsdl:message name="CorrectAndResendEnvelopeHttpGetIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="integratorKey" type="s:string" />
+    <wsdl:part name="envelopId" type="s:string" />
+    <wsdl:part name="email" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CorrectAndResendEnvelopeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="RequestCorrectTokenHttpGetIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="integratorKey" type="s:string" />
+    <wsdl:part name="envelopId" type="s:string" />
+    <wsdl:part name="SuppressNavigation" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RequestCorrectTokenHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAuthenticationTokenHttpGetIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="integratorKey" type="s:string" />
+    <wsdl:part name="envelopId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAuthenticationTokenHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="RequestEnvelopeHttpGetIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="integratorKey" type="s:string" />
+    <wsdl:part name="envelopId" type="s:string" />
+    <wsdl:part name="IncludeDocumentBytes" type="s:string" />
+    <wsdl:part name="docId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RequestEnvelopeHttpGetOut">
+    <wsdl:part name="Body" element="tns:DocuSignedDocument" />
+  </wsdl:message>
+  <wsdl:message name="VoidEnvelopeHttpGetIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="integratorKey" type="s:string" />
+    <wsdl:part name="envelopId" type="s:string" />
+    <wsdl:part name="reason" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="VoidEnvelopeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteEnvelopesHttpGetIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="integratorKey" type="s:string" />
+    <wsdl:part name="envelopId" type="s:string" />
+    <wsdl:part name="accountId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteEnvelopesHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="RequestStatusHttpGetIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="integratorKey" type="s:string" />
+    <wsdl:part name="envelopId" type="s:string" />
+    <wsdl:part name="docId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RequestStatusHttpGetOut">
+    <wsdl:part name="Body" element="tns:DocuSignDocumentInformation" />
+  </wsdl:message>
+  <wsdl:message name="RequestSenderTokenHttpGetIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="integratorKey" type="s:string" />
+    <wsdl:part name="envelopId" type="s:string" />
+    <wsdl:part name="accountId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RequestSenderTokenHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="pingHttpPostIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="integratorKey" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="pingHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="SendEnvelopeHttpPostIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="integratorKey" type="s:string" />
+    <wsdl:part name="accountId" type="s:string" />
+    <wsdl:part name="envelopeId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendEnvelopeHttpPostOut">
+    <wsdl:part name="Body" element="tns:Status" />
+  </wsdl:message>
+  <wsdl:message name="RequestTemplatesHttpPostIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="integratorKey" type="s:string" />
+    <wsdl:part name="accountid" type="s:string" />
+    <wsdl:part name="IncludeAdvancedTemplates" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RequestTemplatesHttpPostOut">
+    <wsdl:part name="Body" element="tns:DocuSignTemplates" />
+  </wsdl:message>
+  <wsdl:message name="CorrectAndResendEnvelopeHttpPostIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="integratorKey" type="s:string" />
+    <wsdl:part name="envelopId" type="s:string" />
+    <wsdl:part name="email" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CorrectAndResendEnvelopeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="RequestCorrectTokenHttpPostIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="integratorKey" type="s:string" />
+    <wsdl:part name="envelopId" type="s:string" />
+    <wsdl:part name="SuppressNavigation" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RequestCorrectTokenHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAuthenticationTokenHttpPostIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="integratorKey" type="s:string" />
+    <wsdl:part name="envelopId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAuthenticationTokenHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="RequestEnvelopeHttpPostIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="integratorKey" type="s:string" />
+    <wsdl:part name="envelopId" type="s:string" />
+    <wsdl:part name="IncludeDocumentBytes" type="s:string" />
+    <wsdl:part name="docId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RequestEnvelopeHttpPostOut">
+    <wsdl:part name="Body" element="tns:DocuSignedDocument" />
+  </wsdl:message>
+  <wsdl:message name="VoidEnvelopeHttpPostIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="integratorKey" type="s:string" />
+    <wsdl:part name="envelopId" type="s:string" />
+    <wsdl:part name="reason" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="VoidEnvelopeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteEnvelopesHttpPostIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="integratorKey" type="s:string" />
+    <wsdl:part name="envelopId" type="s:string" />
+    <wsdl:part name="accountId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteEnvelopesHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="RequestStatusHttpPostIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="integratorKey" type="s:string" />
+    <wsdl:part name="envelopId" type="s:string" />
+    <wsdl:part name="docId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RequestStatusHttpPostOut">
+    <wsdl:part name="Body" element="tns:DocuSignDocumentInformation" />
+  </wsdl:message>
+  <wsdl:message name="RequestSenderTokenHttpPostIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="integratorKey" type="s:string" />
+    <wsdl:part name="envelopId" type="s:string" />
+    <wsdl:part name="accountId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RequestSenderTokenHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="ContractlogixDocusignSoap">
+    <wsdl:operation name="ping">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The Ping API method enables API users make a simple call to the API service to determine its active state.</wsdl:documentation>
+      <wsdl:input message="tns:pingSoapIn" />
+      <wsdl:output message="tns:pingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendEnvelope">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method is used to send draft envelopes. Refer to CreateAndSendEnvelope method for the sending rules that will be applied before the envelope can be sent.</wsdl:documentation>
+      <wsdl:input message="tns:SendEnvelopeSoapIn" />
+      <wsdl:output message="tns:SendEnvelopeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateEnvelopeFromTemplates">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">CreateEnvelopeFromTemplates uses templates as the basis for the definition of a signing ceremony.In contrast to the CreateAndSendEnvelope method, where the relationship of Tabs-to-Documents and Tabs-to-Recipients is passed in the request, CreateEnvelopeFromTemplates derives its Tab assignments from the pre-configured Template; and provides Recipient information to fulfill the Roles that are specified in the Template.</wsdl:documentation>
+      <wsdl:input message="tns:CreateEnvelopeFromTemplatesSoapIn" />
+      <wsdl:output message="tns:CreateEnvelopeFromTemplatesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestTemplates">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Request all the templates that this account has on file.</wsdl:documentation>
+      <wsdl:input message="tns:RequestTemplatesSoapIn" />
+      <wsdl:output message="tns:RequestTemplatesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateAndSendEnvelope">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The CreateAndSendEnvelope, which is used to create envelopes, specify recipients, documents and actions on those documents within that envelope.</wsdl:documentation>
+      <wsdl:input message="tns:CreateAndSendEnvelopeSoapIn" />
+      <wsdl:output message="tns:CreateAndSendEnvelopeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CorrectAndResendEnvelope">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The CorrectAndResendEnvelope API method enables API users to modify the attributes of envelope reminders, expirations and recipients, and then resend the envelope activation emails.</wsdl:documentation>
+      <wsdl:input message="tns:CorrectAndResendEnvelopeSoapIn" />
+      <wsdl:output message="tns:CorrectAndResendEnvelopeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestCorrectToken">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This call returns a token to place a user in a web session in Advanced Correct mode on an envelope.</wsdl:documentation>
+      <wsdl:input message="tns:RequestCorrectTokenSoapIn" />
+      <wsdl:output message="tns:RequestCorrectTokenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAuthenticationToken">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This methods can be used to get a onetime use URL with an authentication token to launch the DocuSign member system.</wsdl:documentation>
+      <wsdl:input message="tns:GetAuthenticationTokenSoapIn" />
+      <wsdl:output message="tns:GetAuthenticationTokenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestEnvelope">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The RequestEnvelope call returns an API Envelope object containing all the data of an envelope. The envelope must be owned by the API user.</wsdl:documentation>
+      <wsdl:input message="tns:RequestEnvelopeSoapIn" />
+      <wsdl:output message="tns:RequestEnvelopeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VoidEnvelope">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This section describes the method available to void envelopes. Only incomplete envelopes can be voided. VoidEnvelope method is used to void an envelope.</wsdl:documentation>
+      <wsdl:input message="tns:VoidEnvelopeSoapIn" />
+      <wsdl:output message="tns:VoidEnvelopeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEnvelopes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">DeleteEnvelopes deletes the specified envelopes from a folder.</wsdl:documentation>
+      <wsdl:input message="tns:DeleteEnvelopesSoapIn" />
+      <wsdl:output message="tns:DeleteEnvelopesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The RequestStatus methods can be used to query the status of existing envelopes.</wsdl:documentation>
+      <wsdl:input message="tns:RequestStatusSoapIn" />
+      <wsdl:output message="tns:RequestStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestSenderToken">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method is used to get a onetime use login token that allows the user to be placed into the DocuSign sending wizard. Upon sending completion the user is returned to the return URL provided by the API application.</wsdl:documentation>
+      <wsdl:input message="tns:RequestSenderTokenSoapIn" />
+      <wsdl:output message="tns:RequestSenderTokenSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ContractlogixDocusignHttpGet">
+    <wsdl:operation name="ping">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The Ping API method enables API users make a simple call to the API service to determine its active state.</wsdl:documentation>
+      <wsdl:input message="tns:pingHttpGetIn" />
+      <wsdl:output message="tns:pingHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendEnvelope">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method is used to send draft envelopes. Refer to CreateAndSendEnvelope method for the sending rules that will be applied before the envelope can be sent.</wsdl:documentation>
+      <wsdl:input message="tns:SendEnvelopeHttpGetIn" />
+      <wsdl:output message="tns:SendEnvelopeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestTemplates">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Request all the templates that this account has on file.</wsdl:documentation>
+      <wsdl:input message="tns:RequestTemplatesHttpGetIn" />
+      <wsdl:output message="tns:RequestTemplatesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CorrectAndResendEnvelope">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The CorrectAndResendEnvelope API method enables API users to modify the attributes of envelope reminders, expirations and recipients, and then resend the envelope activation emails.</wsdl:documentation>
+      <wsdl:input message="tns:CorrectAndResendEnvelopeHttpGetIn" />
+      <wsdl:output message="tns:CorrectAndResendEnvelopeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestCorrectToken">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This call returns a token to place a user in a web session in Advanced Correct mode on an envelope.</wsdl:documentation>
+      <wsdl:input message="tns:RequestCorrectTokenHttpGetIn" />
+      <wsdl:output message="tns:RequestCorrectTokenHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAuthenticationToken">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This methods can be used to get a onetime use URL with an authentication token to launch the DocuSign member system.</wsdl:documentation>
+      <wsdl:input message="tns:GetAuthenticationTokenHttpGetIn" />
+      <wsdl:output message="tns:GetAuthenticationTokenHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestEnvelope">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The RequestEnvelope call returns an API Envelope object containing all the data of an envelope. The envelope must be owned by the API user.</wsdl:documentation>
+      <wsdl:input message="tns:RequestEnvelopeHttpGetIn" />
+      <wsdl:output message="tns:RequestEnvelopeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VoidEnvelope">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This section describes the method available to void envelopes. Only incomplete envelopes can be voided. VoidEnvelope method is used to void an envelope.</wsdl:documentation>
+      <wsdl:input message="tns:VoidEnvelopeHttpGetIn" />
+      <wsdl:output message="tns:VoidEnvelopeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEnvelopes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">DeleteEnvelopes deletes the specified envelopes from a folder.</wsdl:documentation>
+      <wsdl:input message="tns:DeleteEnvelopesHttpGetIn" />
+      <wsdl:output message="tns:DeleteEnvelopesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The RequestStatus methods can be used to query the status of existing envelopes.</wsdl:documentation>
+      <wsdl:input message="tns:RequestStatusHttpGetIn" />
+      <wsdl:output message="tns:RequestStatusHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestSenderToken">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method is used to get a onetime use login token that allows the user to be placed into the DocuSign sending wizard. Upon sending completion the user is returned to the return URL provided by the API application.</wsdl:documentation>
+      <wsdl:input message="tns:RequestSenderTokenHttpGetIn" />
+      <wsdl:output message="tns:RequestSenderTokenHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ContractlogixDocusignHttpPost">
+    <wsdl:operation name="ping">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The Ping API method enables API users make a simple call to the API service to determine its active state.</wsdl:documentation>
+      <wsdl:input message="tns:pingHttpPostIn" />
+      <wsdl:output message="tns:pingHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendEnvelope">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method is used to send draft envelopes. Refer to CreateAndSendEnvelope method for the sending rules that will be applied before the envelope can be sent.</wsdl:documentation>
+      <wsdl:input message="tns:SendEnvelopeHttpPostIn" />
+      <wsdl:output message="tns:SendEnvelopeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestTemplates">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Request all the templates that this account has on file.</wsdl:documentation>
+      <wsdl:input message="tns:RequestTemplatesHttpPostIn" />
+      <wsdl:output message="tns:RequestTemplatesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CorrectAndResendEnvelope">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The CorrectAndResendEnvelope API method enables API users to modify the attributes of envelope reminders, expirations and recipients, and then resend the envelope activation emails.</wsdl:documentation>
+      <wsdl:input message="tns:CorrectAndResendEnvelopeHttpPostIn" />
+      <wsdl:output message="tns:CorrectAndResendEnvelopeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestCorrectToken">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This call returns a token to place a user in a web session in Advanced Correct mode on an envelope.</wsdl:documentation>
+      <wsdl:input message="tns:RequestCorrectTokenHttpPostIn" />
+      <wsdl:output message="tns:RequestCorrectTokenHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAuthenticationToken">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This methods can be used to get a onetime use URL with an authentication token to launch the DocuSign member system.</wsdl:documentation>
+      <wsdl:input message="tns:GetAuthenticationTokenHttpPostIn" />
+      <wsdl:output message="tns:GetAuthenticationTokenHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestEnvelope">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The RequestEnvelope call returns an API Envelope object containing all the data of an envelope. The envelope must be owned by the API user.</wsdl:documentation>
+      <wsdl:input message="tns:RequestEnvelopeHttpPostIn" />
+      <wsdl:output message="tns:RequestEnvelopeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VoidEnvelope">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This section describes the method available to void envelopes. Only incomplete envelopes can be voided. VoidEnvelope method is used to void an envelope.</wsdl:documentation>
+      <wsdl:input message="tns:VoidEnvelopeHttpPostIn" />
+      <wsdl:output message="tns:VoidEnvelopeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEnvelopes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">DeleteEnvelopes deletes the specified envelopes from a folder.</wsdl:documentation>
+      <wsdl:input message="tns:DeleteEnvelopesHttpPostIn" />
+      <wsdl:output message="tns:DeleteEnvelopesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The RequestStatus methods can be used to query the status of existing envelopes.</wsdl:documentation>
+      <wsdl:input message="tns:RequestStatusHttpPostIn" />
+      <wsdl:output message="tns:RequestStatusHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestSenderToken">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method is used to get a onetime use login token that allows the user to be placed into the DocuSign sending wizard. Upon sending completion the user is returned to the return URL provided by the API application.</wsdl:documentation>
+      <wsdl:input message="tns:RequestSenderTokenHttpPostIn" />
+      <wsdl:output message="tns:RequestSenderTokenHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ContractlogixDocusignSoap" type="tns:ContractlogixDocusignSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ping">
+      <soap:operation soapAction="http://tempuri.org/ping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendEnvelope">
+      <soap:operation soapAction="http://tempuri.org/SendEnvelope" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateEnvelopeFromTemplates">
+      <soap:operation soapAction="http://tempuri.org/CreateEnvelopeFromTemplates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestTemplates">
+      <soap:operation soapAction="http://tempuri.org/RequestTemplates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateAndSendEnvelope">
+      <soap:operation soapAction="http://tempuri.org/CreateAndSendEnvelope" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CorrectAndResendEnvelope">
+      <soap:operation soapAction="http://tempuri.org/CorrectAndResendEnvelope" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestCorrectToken">
+      <soap:operation soapAction="http://tempuri.org/RequestCorrectToken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAuthenticationToken">
+      <soap:operation soapAction="http://tempuri.org/GetAuthenticationToken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestEnvelope">
+      <soap:operation soapAction="http://tempuri.org/RequestEnvelope" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VoidEnvelope">
+      <soap:operation soapAction="http://tempuri.org/VoidEnvelope" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEnvelopes">
+      <soap:operation soapAction="http://tempuri.org/DeleteEnvelopes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestStatus">
+      <soap:operation soapAction="http://tempuri.org/RequestStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestSenderToken">
+      <soap:operation soapAction="http://tempuri.org/RequestSenderToken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ContractlogixDocusignSoap12" type="tns:ContractlogixDocusignSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ping">
+      <soap12:operation soapAction="http://tempuri.org/ping" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendEnvelope">
+      <soap12:operation soapAction="http://tempuri.org/SendEnvelope" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateEnvelopeFromTemplates">
+      <soap12:operation soapAction="http://tempuri.org/CreateEnvelopeFromTemplates" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestTemplates">
+      <soap12:operation soapAction="http://tempuri.org/RequestTemplates" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateAndSendEnvelope">
+      <soap12:operation soapAction="http://tempuri.org/CreateAndSendEnvelope" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CorrectAndResendEnvelope">
+      <soap12:operation soapAction="http://tempuri.org/CorrectAndResendEnvelope" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestCorrectToken">
+      <soap12:operation soapAction="http://tempuri.org/RequestCorrectToken" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAuthenticationToken">
+      <soap12:operation soapAction="http://tempuri.org/GetAuthenticationToken" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestEnvelope">
+      <soap12:operation soapAction="http://tempuri.org/RequestEnvelope" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VoidEnvelope">
+      <soap12:operation soapAction="http://tempuri.org/VoidEnvelope" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEnvelopes">
+      <soap12:operation soapAction="http://tempuri.org/DeleteEnvelopes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestStatus">
+      <soap12:operation soapAction="http://tempuri.org/RequestStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestSenderToken">
+      <soap12:operation soapAction="http://tempuri.org/RequestSenderToken" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ContractlogixDocusignHttpGet" type="tns:ContractlogixDocusignHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="ping">
+      <http:operation location="/ping" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendEnvelope">
+      <http:operation location="/SendEnvelope" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestTemplates">
+      <http:operation location="/RequestTemplates" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CorrectAndResendEnvelope">
+      <http:operation location="/CorrectAndResendEnvelope" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestCorrectToken">
+      <http:operation location="/RequestCorrectToken" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAuthenticationToken">
+      <http:operation location="/GetAuthenticationToken" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestEnvelope">
+      <http:operation location="/RequestEnvelope" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VoidEnvelope">
+      <http:operation location="/VoidEnvelope" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEnvelopes">
+      <http:operation location="/DeleteEnvelopes" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestStatus">
+      <http:operation location="/RequestStatus" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestSenderToken">
+      <http:operation location="/RequestSenderToken" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ContractlogixDocusignHttpPost" type="tns:ContractlogixDocusignHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="ping">
+      <http:operation location="/ping" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendEnvelope">
+      <http:operation location="/SendEnvelope" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestTemplates">
+      <http:operation location="/RequestTemplates" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CorrectAndResendEnvelope">
+      <http:operation location="/CorrectAndResendEnvelope" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestCorrectToken">
+      <http:operation location="/RequestCorrectToken" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAuthenticationToken">
+      <http:operation location="/GetAuthenticationToken" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestEnvelope">
+      <http:operation location="/RequestEnvelope" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VoidEnvelope">
+      <http:operation location="/VoidEnvelope" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEnvelopes">
+      <http:operation location="/DeleteEnvelopes" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestStatus">
+      <http:operation location="/RequestStatus" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestSenderToken">
+      <http:operation location="/RequestSenderToken" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ContractlogixDocusign">
+    <wsdl:port name="ContractlogixDocusignSoap" binding="tns:ContractlogixDocusignSoap">
+      <soap:address location="http://qa.contractlogix.com/contractlogixdocusign/ContractlogixDocusign.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ContractlogixDocusignSoap12" binding="tns:ContractlogixDocusignSoap12">
+      <soap12:address location="http://qa.contractlogix.com/contractlogixdocusign/ContractlogixDocusign.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ContractlogixDocusignHttpGet" binding="tns:ContractlogixDocusignHttpGet">
+      <http:address location="http://qa.contractlogix.com/contractlogixdocusign/ContractlogixDocusign.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ContractlogixDocusignHttpPost" binding="tns:ContractlogixDocusignHttpPost">
+      <http:address location="http://qa.contractlogix.com/contractlogixdocusign/ContractlogixDocusign.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

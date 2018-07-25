@@ -1,0 +1,7 @@
+﻿$PBExportHeader$gs_oig_return.srs
+global type gs_oig_return from structure
+	long		sl_prac
+	integer		si_cnt
+	string		ss_stype
+end type
+

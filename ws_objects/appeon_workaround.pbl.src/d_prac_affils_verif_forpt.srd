@@ -1,0 +1,46 @@
+﻿$PBExportHeader$d_prac_affils_verif_forpt.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=60 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=76 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes name=prac_id dbname="pd_affil_stat.prac_id" )
+ column=(type=long updatewhereclause=yes name=verifying_facility dbname="pd_affil_stat.verifying_facility" )
+ column=(type=long updatewhereclause=yes name=facility_ver_rules_screen_id dbname="facility_ver_rules.screen_id" )
+ column=(type=char(1) updatewhereclause=yes name=verify_data dbname="facility_ver_rules.verify_data" )
+ column=(type=decimal(0) updatewhereclause=yes name=default_verif_means dbname="facility_ver_rules.default_verif_means" )
+ column=(type=long updatewhereclause=yes name=exp_cred_que_letters_days dbname="facility_ver_rules.exp_cred_que_letters_days" )
+ column=(type=char(10) updatewhereclause=yes name=priority_user dbname="pd_affil_stat.priority_user" )
+ retrieve="  SELECT DISTINCT pd_affil_stat.prac_id,   
+         pd_affil_stat.verifying_facility,   
+         facility_ver_rules.screen_id,   
+         facility_ver_rules.verify_data,   
+         facility_ver_rules.default_verif_means,   
+         facility_ver_rules.exp_cred_que_letters_days,   
+         pd_affil_stat.priority_user  
+    FROM pd_affil_stat,   
+         facility_ver_rules  
+   WHERE ( pd_affil_stat.verifying_facility = facility_ver_rules.facility_id ) and  
+         ( ( pd_affil_stat.prac_id in (:pracid) ) AND  
+         ( pd_affil_stat.active_status in (1,4) ) AND  
+         ( facility_ver_rules.screen_id in (:screenid) ) AND  
+         ( facility_ver_rules.verify_data in ('I','B') ) )    
+" arguments=(("pracid", numberlist),("screenid", numberlist)) )
+text(band=header alignment="2" text="Rec Id" border="0" color="0" x="5" y="4" height="52" width="306" html.valueishtml="0"  name=rec_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Prac Id" border="0" color="0" x="315" y="4" height="52" width="306" html.valueishtml="0"  name=prac_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Verif Facility Id" border="0" color="0" x="585" y="4" height="52" width="439" html.valueishtml="0"  name=parent_facility_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Seq No" border="0" color="0" x="987" y="4" height="52" width="306" html.valueishtml="0"  name=seq_no_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=20 border="0" color="0" x="315" y="4" height="60" width="306" format="[general]" html.valueishtml="0"  name=prac_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="645" y="4" height="52" width="329" format="[general]" html.valueishtml="0"  name=verifying_facility visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="1294" y="0" height="52" width="987" format="[general]" html.valueishtml="0"  name=facility_ver_rules_screen_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="2331" y="8" height="52" width="23" format="[general]" html.valueishtml="0"  name=verify_data visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="2441" y="4" height="52" width="992" format="[general]" html.valueishtml="0"  name=default_verif_means visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="3433" y="0" height="52" width="992" format="[general]" html.valueishtml="0"  name=exp_cred_que_letters_days visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="4425" y="0" height="52" width="233" format="[general]" html.valueishtml="0"  name=priority_user visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=footer alignment="1" expression=" count(prac_id for all)"border="0" color="0" x="27" y="8" height="64" width="306" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

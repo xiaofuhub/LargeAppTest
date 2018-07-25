@@ -1,0 +1,49 @@
+﻿$PBExportHeader$d_dm_clause_selected.srd
+$PBExportComments$Create by alfee 11/06/2006
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=char(255) updatewhereclause=yes name=clause_name dbname="ctx_acp_clause.clause_name" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=doc_id dbname="ctx_am_document_clause.doc_id" )
+ column=(type=decimal(1) update=yes updatewhereclause=yes key=yes name=revision dbname="ctx_am_document_clause.revision" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=ctx_acp_clause_id dbname="ctx_am_document_clause.ctx_acp_clause_id" )
+ column=(type=long update=yes updatewhereclause=yes name=orders dbname="ctx_am_document_clause.orders" )
+ column=(type=datetime updatewhereclause=yes name=modify_date dbname="ctx_acp_clause.modify_date" )
+ column=(type=long updatewhereclause=yes name=disp_flag dbname="disp_flag" )
+ retrieve="  SELECT ctx_acp_clause.clause_name,   
+         ctx_am_document_clause.doc_id,   
+         ctx_am_document_clause.revision,   
+         ctx_am_document_clause.ctx_acp_clause_id,   
+         ctx_am_document_clause.orders,   
+         ctx_acp_clause.modify_date,
+			-1 as disp_flag 
+    FROM ctx_acp_clause,   
+         ctx_am_document_clause  
+   WHERE ( ctx_am_document_clause.ctx_acp_clause_id = ctx_acp_clause.ctx_acp_clause_id ) and  
+         ( ( ctx_am_document_clause.doc_id = :doc_id ) AND  
+         ( ctx_am_document_clause.revision = :revision )  )    
+" update="ctx_am_document_clause" updatewhere=0 updatekeyinplace=no arguments=(("doc_id", number),("revision", number)) )
+text(band=header alignment="2" text="Ctx Acp Clause
+Clause Name" border="0" color="33554432" x="5" y="4" height="104" width="3511" html.valueishtml="0"  name=ctx_acp_clause_clause_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Am Document Clause
+Doc Id" border="0" color="33554432" x="3520" y="4" height="104" width="549" html.valueishtml="0"  name=ctx_am_document_clause_doc_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Am Document Clause
+Revision" border="0" color="33554432" x="4073" y="4" height="104" width="549" html.valueishtml="0"  name=ctx_am_document_clause_revision_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Am Document Clause
+Ctx Acp Clause Id" border="0" color="33554432" x="4626" y="4" height="104" width="549" html.valueishtml="0"  name=ctx_am_document_clause_ctx_acp_clause_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Am Document Clause
+Orders" border="0" color="33554432" x="5184" y="4" height="104" width="549" html.valueishtml="0"  name=ctx_am_document_clause_orders_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="5" y="4" height="64" width="1339" format="[general]" html.valueishtml="0"  name=clause_name visible="1" edit.limit=255 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="33554432" x="1403" y="4" height="64" width="274" format="[general]" html.valueishtml="0"  name=doc_id visible="0" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="0" color="33554432" x="1737" y="4" height="64" width="274" format="[general]" html.valueishtml="0"  name=revision visible="0" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="1" tabsequence=32766 border="0" color="33554432" x="2107" y="4" height="64" width="274" format="[general]" html.valueishtml="0"  name=ctx_acp_clause_id visible="0" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="33554432" x="2523" y="0" height="64" width="274" format="[general]" html.valueishtml="0"  name=orders visible="0" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="33554432" x="2821" y="8" height="52" width="667" format="[shortdate] [time]" html.valueishtml="0"  name=modify_date visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="33554432" x="3520" y="12" height="52" width="293" format="[general]" html.valueishtml="0"  name=disp_flag visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

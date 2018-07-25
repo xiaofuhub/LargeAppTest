@@ -1,0 +1,178 @@
+﻿$PBExportHeader$f_wc_create_database.srf
+global type f_wc_create_database from function_object
+end type
+
+forward prototypes
+global function integer f_wc_create_database ()
+end prototypes
+
+global function integer f_wc_create_database ();/******************************************************************************************************************
+**  [PUBLIC]   : f_wc_create_database( )
+**==================================================================================================================
+**  Purpose   	: Used to create the webcrawler database
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 15 November 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+
+
+string  ls_sql_statments []
+long  ll_i
+
+//select COUNT(*) //maha removed 111605 because we do not want to drop the tables.  Once created modification must be done, not recreation.
+//INTO :LL_i
+//From sys.systable 
+//where table_name='wc_web_data_comparison' and 
+//table_type='BASE' and 
+//creator=user_id('DBA');
+//
+//if ll_i > 0 then
+//	ls_sql_statments[upperbound(ls_sql_statments) + 1] = "drop table wc_web_data_comparison " 
+//	ls_sql_statments[upperbound(ls_sql_statments) + 1] = "drop table wc_steps_extracted_data_comparison " 
+//	ls_sql_statments[upperbound(ls_sql_statments) + 1] = "drop table wc_steps " 
+//	ls_sql_statments[upperbound(ls_sql_statments) + 1] = "drop table wc_multi_entity_link " 
+//	ls_sql_statments[upperbound(ls_sql_statments) + 1] = "drop table wc_hdr " 
+//end if 
+
+
+ls_sql_statments[upperbound(ls_sql_statments) + 1] = "create table wc_hdr (wc_id                integer                        not null default NULL,wc_description       char(100)                      not null default NULL,wc_web_address       char(250)   null                    default NULL,wc_notes             long varchar        null                 default NULL,wc_screen_id_link    integer           null                   default NULL,wc_data_link_type    integer            null                  default NULL,web_site_account_number char(30)           null                  default NULL,web_site_user_id     char(30)         null                    default NULL,web_site_password    char(30)        null             default NULL,credit_card_info     integer        null                      default NULL,last_updated         timestamp     null                       default NULL,wc_screen_field_link numeric(8)      null                     default NULL,wc_screen_field_link_fixed_value VARCHAR(50)     null                     default NULL,wc_comparison_lookup_table char(30)         null                    default NULL,cc_type              char(10)           null                  default NULL,cc_number            char(20)                        default NULL,cc_expiration        char(5)            null                  default NULL,cc_name_on_card      char(50)            null                 default NULL,cc_billing_street_1  char(50)         null                    default NULL,cc_billing_street_2  char(50)           null                  default NULL,cc_billing_city      char(30)          null                   default NULL,cc_billing_state     char(2)          null     null                    default NULL,cc_billing_zip       char(12)                        default NULL,cc_code              char(6)         null                     default NULL,primary key (wc_id)); " 
+ls_sql_statments[upperbound(ls_sql_statments) + 1] = "create table wc_multi_entity_link (wc_id                integer                        not null default NULL,wc_lookup_code       numeric(8)                     not null default NULL,primary key (wc_id, wc_lookup_code),foreign key (wc_id)      references wc_hdr (wc_id)); " 
+ls_sql_statments[upperbound(ls_sql_statments) + 1] = "create table wc_steps (wc_id                integer                        not null default NULL,step_order           integer                        not null default NULL,step_action          char(50)         null                   default NULL,object_type          char(20)         null                    default NULL,data_object          char(20)          null                   default NULL,synonym_table_yes_no integer                 null             default NULL,macro_extract_tag    char(250)              null              default NULL,macro_name           char(50)       null                      default NULL,notes                long varchar            null             default NULL,test_value           char(50)          null                   default NULL,description          char(35)             null                default NULL,object_pos           integer               null               default NULL,object_name          char(50)      null                       default NULL,form_handler         char(50)      null                       default NULL,content_or_value     char(50)            null                 default NULL,web_data_comparison_yes_no integer            null                  default NULL,no_data_found_check  integer        null                      default NULL,no_data_found_text   char(250)        null                    default NULL,search_opens_seperate_win integer            null                 default NULL,primary key (wc_id, step_order),foreign key (wc_id)      references wc_hdr (wc_id)); " 
+ls_sql_statments[upperbound(ls_sql_statments) + 1] = "create table wc_steps_extracted_data_comparison (wc_id                integer                        not null default NULL,step_order           integer                        not null default NULL,extracted_data_value char(50)                       not null default NULL,verif_response_code_value char(50)                       not null default NULL,primary key (wc_id, step_order, extracted_data_value),foreign key (wc_id)      references wc_hdr (wc_id)); " 
+ls_sql_statments[upperbound(ls_sql_statments) + 1] = "create table wc_web_data_comparison (wc_id                integer                        not null default NULL,step_order           integer                        not null default NULL,web_site_data        char(100)                      not null default NULL,intellicred_data     char(100)                      not null default NULL,foreign key (wc_id)      references wc_hdr (wc_id)); " 
+
+//Start Code Change ---- 6.4.2007 #V7 maha  removed because it was deleting all the wc data
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "delete from  wc_web_data_comparison " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "delete from  wc_steps_extracted_data_comparison " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "delete from  wc_steps " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "delete from  wc_multi_entity_link " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "delete from  wc_hdr "
+//
+//
+//
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_hdr VALUES (1,'ABMS Board Verification','www.certifax.com',NULL,19,1,NULL,NULL,NULL,NULL,NULL,15,'','Boards',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_hdr VALUES (9,'Texas License Verification','http://www.foot.state.tx.us/verification.online_verification.htm',NULL,4,1,NULL,NULL,NULL,0,NULL,7654,'','License Authority',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_hdr VALUES (2,'ECFMG Verification',NULL,NULL,20,NULL,NULL,NULL,NULL,0,NULL,76,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_hdr VALUES (3,'NH License Verification','http://www.egov.nh.gov/medicineboard/disclaimer.asp',NULL,4,1,NULL,NULL,NULL,0,NULL,7654,'','License Authority',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_hdr VALUES (7,'Florida License Verification','https://ww2.doh.state.fl.us/IRM00PRAES/PRASLIST.ASP#theBottom',NULL,4,1,NULL,NULL,NULL,0,NULL,7654,'','License Authority',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_hdr VALUES (5,'US DEA Verification','www.deanumber.com',NULL,5,0,NULL,NULL,NULL,0,NULL,66,'US','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_hdr VALUES (6,'MA DEA Verification','www.ma.gov',NULL,5,0,NULL,NULL,NULL,0,NULL,66,'MA','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_hdr VALUES (4,'NY License Verification','http://www.op.nysed.gov/opsearches.htm#licno',NULL,4,1,NULL,NULL,NULL,0,NULL,330,'','License Authority',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_hdr VALUES (0,'AMA Profile','https://profiles.ama-assn.org/amaprofiles/info/pdf/sample.pdf',NULL,1,NULL,'1234123412341234',NULL,NULL,0,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (1,44,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Test 10',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (1,45,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Test 45',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (1,33,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'fdfasd',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (1,35,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'fdsfsadfsa 35',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (1,331,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'fsdafasfsa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (1,32,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'fdsaf',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (1,5,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,' Testing 1 2 3',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (1,342,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'42323',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (1,48,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'fdfas',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (1,22,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'43242',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (1,321,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'42342',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (1,124,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'4234',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (1,111,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'fdfadssadfsa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Step 1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (1,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Step 2',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (1,3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Step 3',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (3,10,'Go To Web Site URL',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Go to Web Site',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (3,20,'Fill In Edit Box',NULL,'Verif Reference 2',NULL,'',NULL,'''ENTER IN LIC NUMBER''TAG POS=1 TYPE=INPUT:TEXT FORM=ACTION:http://www.nysed.gov/COMS/OP001/OPSCR2 ATTR=NAME:plicno CONTENT=12345',NULL,'Type in License Number',1,'License','licensetypecode.asp','Verif Reference 2',NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (3,30,'Click Submit',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Click the Search Button',1,'Start','licensetypecode.asp','License',NULL,1,'No matching records found',NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (3,40,'Save Page as Image',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Capture Results',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (4,10,'Go To Web Site URL',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Go To Web Site',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (3,15,'Click Submit',NULL,NULL,NULL,NULL,NULL,'TAG POS=1 TYPE=INPUT:SUBMIT FORM=ACTION:licensecode.asp ATTR=NAME:Accept&&VALUE:Accept  ',NULL,'Click Accept Disclaimer Button',1,'Accept','licensecode.asp','Accept',NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (4,20,'Select From List Box',NULL,NULL,1,NULL,NULL,NULL,'Licensed Clinical Social Worker','Select the appropriate profession',1,'profcd','http://www.nysed.gov/COMS/OP001/OPSCR2','Professional Suffix',1,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (7,30,'Click Submit',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Click Search Button',1,'SEARCH','SEARCHFRM','Find Provider',NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (2,10,'Select From List Box',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'dfdsfa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (5,30,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'FDFSAF',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (5,15,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'DFDSAFDSAF',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (5,40,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'dfsdafsaf',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (5,12,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'FDFASDFSA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (5,17,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'17',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (2,20,'Select From Check Box',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'fdsfa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (4,30,'Fill In Edit Box',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Type in License Number',1,'plicno ','http://www.nysed.gov/COMS/OP001/OPSCR2','Verif Reference 2',NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (4,40,'Click Submit',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Click Search Button',1,'','http://www.nysed.gov/COMS/OP001/OPSCR2','Search',NULL,1,'no matching license number',NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (4,50,'Save Page as Image',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Capture Screen for Records',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (4,60,'Extract Verification Result',NULL,NULL,NULL,'> Status :</A></B> ',NULL,NULL,NULL,'Grab Status Field for Verif',1,NULL,NULL,'Verification Response',1,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (9,40,'Save Page as Image',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Grab Snapshot of Results',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (9,20,'Fill In Edit Box',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Type in License Number',1,'searchstring','/scripts/foot.pl','Verif Reference 2',NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (7,20,'Fill In Edit Box',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Enter in License Number',1,'LICENSEBOX','SEARCHFRM','Verif Reference 2',NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (9,30,'Click Submit',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Click Search Button',1,'','/scripts/foot.pl','Search',NULL,1,'Sorry',1) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (9,10,'Go To Web Site URL',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Go To Web Site',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (7,10,'Go To Web Site URL',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Go To Web Page',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (7,40,'Save Page as Image',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Capture Screen Shot',NULL,NULL,NULL,'',NULL,NULL,NULL,NULL) " 
+//
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (7,35,'Extract Verification Result',NULL,NULL,NULL,'CLEAR/ACTIVE)> ',NULL,NULL,NULL,'Figure out Verification Result',1,NULL,NULL,'Verification Response',1,NULL,NULL,NULL);"
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (0,30,'Fill In Edit Box',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Test',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (0,10,'Go To Web Site URL',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Go To Web Site',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (0,40,'Fill In Edit Box',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Test',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (0,20,'Save PDF File',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Save PDF File',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (0,50,'Fill In Edit Box',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Test',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps VALUES (0,60,'Fill In Edit Box',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Test',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_web_data_comparison VALUES (4,20,'Doctor (Physician)','MD') " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_web_data_comparison VALUES (4,60,'REGISTERED','Satisfactory/from Web') " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_web_data_comparison VALUES (4,60,'LICENSE SUSPENDED','Questions raised/from Web') " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_web_data_comparison VALUES (4,20,'Dentist','DDS') " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_web_data_comparison VALUES (4,20,'Licensed Clinical Social Worker','CRNP') " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_web_data_comparison VALUES (4,60,'LICENSE REVOKED','Questions raised/from Web') " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_web_data_comparison VALUES (4,60,'LICENSE SURRENDERED','Questions raised/from Web') " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_web_data_comparison VALUES (4,60,'NOT REGISTERED','Questions raised/from Web') " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_web_data_comparison VALUES (4,20,'Doctor (Physician)1','MD, PhD') " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_web_data_comparison VALUES (7,35,'CLEAR/ACTIVE','Satisfactory/from Web') " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps_extracted_data_comparison VALUES (1,1,'Active','326') " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_steps_extracted_data_comparison VALUES (1,1,'Inactive','326') " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_multi_entity_link VALUES (7,99027) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_multi_entity_link VALUES (3,99122) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_multi_entity_link VALUES (4,99146) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_multi_entity_link VALUES (9,99195) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_multi_entity_link VALUES (1,98499) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_multi_entity_link VALUES (1,98501) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_multi_entity_link VALUES (1,98503) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_multi_entity_link VALUES (1,98505) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_multi_entity_link VALUES (1,98507) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_multi_entity_link VALUES (1,98509) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_multi_entity_link VALUES (1,98498) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_multi_entity_link VALUES (1,98500) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_multi_entity_link VALUES (1,98502) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_multi_entity_link VALUES (1,98504) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_multi_entity_link VALUES (1,98506) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_multi_entity_link VALUES (1,98508) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_multi_entity_link VALUES (1,98510) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_multi_entity_link VALUES (1,98511) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_multi_entity_link VALUES (1,98512) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_multi_entity_link VALUES (1,98513) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_multi_entity_link VALUES (1,98514) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_multi_entity_link VALUES (1,98515) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_multi_entity_link VALUES (1,98516) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_multi_entity_link VALUES (1,98517) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_multi_entity_link VALUES (1,98518) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_multi_entity_link VALUES (1,98519) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_multi_entity_link VALUES (1,98520) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_multi_entity_link VALUES (1,98521) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_multi_entity_link VALUES (1,98522) " 
+//ls_sql_statments[upperbound(ls_sql_statments) + 1] = "INSERT INTO wc_multi_entity_link VALUES (1,98523) " 
+//End Code Change---6.04.2007
+
+FOR ll_i = 1 TO upperbound(ls_sql_statments)
+execute immediate :ls_sql_statments[LL_I] using sqlca;
+commit using sqlca;
+//IF len(sqlca.sqlerrtext) > 0 THEN 
+//            messagebox(string(LL_I), string(sqlca.sqlerrtext)  + error.object +    string(ls_sql_statments[LL_I])  + 'Please contact software vendor.' )
+//END IF
+NEXT
+
+return 0
+
+
+end function
+

@@ -1,0 +1,6 @@
+﻿$PBExportHeader$str_clause_filter.srs
+global type str_clause_filter from structure
+	long		value_id[]
+	string		Clause_Exp
+end type
+

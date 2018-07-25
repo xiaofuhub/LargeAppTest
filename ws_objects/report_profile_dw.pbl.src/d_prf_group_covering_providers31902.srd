@@ -1,0 +1,36 @@
+﻿$PBExportHeader$d_prf_group_covering_providers31902.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=184 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=160 color="536870912" )
+table(column=(type=char(50) updatewhereclause=yes name=provider_name dbname="provider_name" )
+ column=(type=char(75) updatewhereclause=yes name=covering_days dbname="covering_days" )
+ column=(type=char(100) updatewhereclause=yes name=entity_name dbname="entity_name" )
+ column=(type=char(75) updatewhereclause=yes name=description dbname="description" )
+ column=(type=char(15) updatewhereclause=yes name=code dbname="code" )
+ retrieve="  SELECT pd_group_providers.provider_name,   
+         pd_group_providers.covering_days,   
+         address_lookup_a.entity_name,   
+         code_lookup_a.description,   
+         code_lookup_b.code  
+    FROM {oj {oj {oj pd_group_providers  LEFT OUTER JOIN code_lookup code_lookup_a  ON pd_group_providers.specialty = code_lookup_a.lookup_code} LEFT OUTER JOIN address_lookup address_lookup_a  ON pd_group_providers.custom_1 = address_lookup_a.lookup_code} LEFT OUTER JOIN address_lookup address_lookup_b  ON pd_group_providers.provider_name = address_lookup_b.lookup_code},   
+         code_lookup code_lookup_b  
+   WHERE ( pd_group_providers.covering = code_lookup_b.lookup_code ) and  
+         ( code_lookup_b.lookup_code = address_lookup_b.lookup_code ) and  
+         ( ( pd_group_providers.prac_id = :prac_id ) AND  
+         ( pd_group_providers.facility_id = :facility_id ) )    
+" arguments=(("facility_id", number),("prac_id", number)) )
+text(band=header alignment="2" text="Group/Covering Providers"border="0" color="0" x="18" y="4" height="80" width="3301"  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="2" text="Provider Name"border="0" color="0" x="37" y="104" height="64" width="389"  name=provider_name_t  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Specialty"border="0" color="0" x="846" y="104" height="64" width="238"  name=specialty_t  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Covering"border="0" color="0" x="1989" y="104" height="64" width="233"  name=covering_t  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Covering Days"border="0" color="0" x="2345" y="104" height="64" width="357"  name=covering_days_t  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="2" text="Location"border="0" color="0" x="521" y="84" height="64" width="251"  name=custom_1_t  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="786" y="84" height="64" width="960" format="[general]"  name=entity_name edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="46" y="4" height="64" width="786" format="[general]"  name=provider_name edit.limit=50 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="855" y="4" height="64" width="1102" format="[general]"  name=description edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="1989" y="4" height="64" width="242" format="[general]"  name=code edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="2345" y="4" height="64" width="434" format="[general]"  name=covering_days edit.limit=75 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

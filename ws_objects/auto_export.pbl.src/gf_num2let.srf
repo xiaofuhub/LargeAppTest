@@ -1,0 +1,20 @@
+﻿$PBExportHeader$gf_num2let.srf
+$PBExportComments$(Appeon)Toney 06.19.2013 - V141 ISG-CLX
+global type gf_num2let from function_object
+end type
+
+forward prototypes
+global function string gf_num2let (decimal ade_num)
+end prototypes
+
+global function string gf_num2let (decimal ade_num);//Change number to words  -- jervis 05.26.2011
+string ls_letter
+
+
+DECLARE pNum2Let procedure for up_num2let(:ade_num);
+Execute pNum2Let;
+Fetch pNum2Let into :ls_letter;
+Close pNum2Let;
+return ls_letter
+end function
+

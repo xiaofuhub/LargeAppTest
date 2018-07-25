@@ -1,0 +1,45 @@
+﻿$PBExportHeader$d_dm_category_filtered.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=68 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=category_code dbname="category_code" )
+ column=(type=long updatewhereclause=yes name=category_type dbname="category_type" )
+ retrieve="SELECT category_code = ctx_acp_contract_management_right.category,
+		 category_type = ctx_acp_contract_management_right.types
+  FROM security_users ,
+       ctx_acp_contract_management_right
+ WHERE security_users.user_id = :user_id 
+	AND security_users.role_id = ctx_acp_contract_management_right.role_id
+   AND ctx_acp_contract_management_right.types = 3 
+   AND ctx_acp_contract_management_right.rights = '34'
+Union All
+SELECT category_code = ctx_acp_contract_management_right.category,
+		 category_type = ctx_acp_contract_management_right.types
+  FROM security_users ,
+       ctx_acp_contract_management_right
+ WHERE security_users.user_id = :user_id 
+	AND security_users.role_id = ctx_acp_contract_management_right.role_id
+   AND ctx_acp_contract_management_right.types = 4 
+   AND ctx_acp_contract_management_right.rights = '44'
+
+Union
+SELECT category_code = ctx_acp_contract_management_right.category,
+		 category_type = ctx_acp_contract_management_right.types
+  FROM security_users ,
+       ctx_acp_contract_management_right
+ WHERE security_users.user_id = :user_id 
+	AND security_users.role_id = ctx_acp_contract_management_right.role_id
+   AND ctx_acp_contract_management_right.types = 1 
+   AND ctx_acp_contract_management_right.rights = '13'" arguments=(("user_id", string)) )
+text(band=header alignment="0" text="Category Code" border="0" color="0" x="9" y="4" height="56" width="891" html.valueishtml="0"  name=category_code_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Category Type" border="0" color="0" x="910" y="4" height="56" width="571" html.valueishtml="0"  name=category_type_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="0" height="76" width="891" format="[general]" html.valueishtml="0"  name=category_code visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="910" y="0" height="76" width="571" format="[general]" html.valueishtml="0"  name=category_type visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

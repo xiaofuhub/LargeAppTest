@@ -1,0 +1,51 @@
+﻿$PBExportHeader$parse_sql2.srf
+global type parse_sql2 from function_object
+end type
+
+forward prototypes
+global subroutine parse_sql2 (readonly string original_string, ref string column_list, ref string where_clause, ref string group_by_clause, ref string order_by_clause, ref string having_clause)
+end prototypes
+
+global subroutine parse_sql2 (readonly string original_string, ref string column_list, ref string where_clause, ref string group_by_clause, ref string order_by_clause, ref string having_clause);string string2, ls_test, ls_test1, WHERE_CLAUSE_X, ls_test2, ls_test3, ls_clause
+integer	li_where_pos = 0, li_pos, li_count	=	-1
+/////////////////////////////
+order_by_clause		=	original_string
+ls_test					=	original_string
+if PosA(upper(ls_test), 'SELECT') > 0 then 
+	ls_clause 	=	'SELECT'
+Elseif PosA(upper(ls_test), 'UPDATE') > 0 then
+	ls_clause	=	'UPDATE'
+End If
+
+
+string2			=	trim(f_get_token(order_by_clause, ' ORDER BY ')) 	//ORDER_BY_clause becomes ORDER BY clause and 
+																					//empty string if there is none
+																							//string2 becomes original_string without ORDER BY clause
+//if order_by_clause <> '' then order_by_clause = 'O' + order_by_clause
+
+having_clause	=	string2
+string2	=	trim(f_get_token(having_clause, ' HAVING '))				//having_clause becomes HAVING clause and empty string if there is none
+//if having_clause <> '' then having_clause = 'H' + having_clause	//string2 becomes original_string minus ORDER BY and HAVING clauses
+group_by_clause = string2
+string2 	=	trim(f_get_token(group_by_clause, ' GROUP BY '))			//GROUP BY clause
+//IF group_by_clause <> '' then group_by_clause = 'G' + group_by_clause
+
+li_count			=	PosA(string2, ' WHERE ')
+if li_count = 0 then
+	li_count	=	f_last_pos(string2, ' WHERE ')									//Need to find position of last Where clause
+end if																					//WHERE_CLAUSE	 =	STRING2
+if li_count > 0 then
+	where_clause	=	trim(MidA(string2, li_count))
+	string2			=	trim(MidA(string2, 1, li_count - 1))
+	li_count			=	PosA(where_clause, ' WHERE ')
+	if li_count = 0 then
+		li_count	=	f_last_pos(where_clause, ' where ')
+	end if
+	if li_count > 1 then where_clause = MidA(where_clause, li_count)
+end if
+//table_list = string2																	//FROM clause
+//string2	=	trim(f_get_token(table_list, 'FROM'))
+//IF table_list <> '' THEN table_list = 'F' + table_list
+column_list = string2																//SELECT clause 
+end subroutine
+

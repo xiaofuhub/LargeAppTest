@@ -1,0 +1,10 @@
+﻿$PBExportHeader$str_sertifi_document.srs
+global type str_sertifi_document from structure
+	string		documentid
+	string		name
+	string		status
+	string		datecreated
+	string		datesigned
+	str_sertifi_signature		astr_sertifi_signature[]
+end type
+

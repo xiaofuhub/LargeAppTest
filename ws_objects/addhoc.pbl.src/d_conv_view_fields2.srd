@@ -1,0 +1,35 @@
+﻿$PBExportHeader$d_conv_view_fields2.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=84 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=char(128) updatewhereclause=yes name=table_name dbname="systable.table_name" )
+ column=(type=long updatewhereclause=yes name=table_id dbname="systable.table_id" )
+ column=(type=char(128) updatewhereclause=yes name=field_name dbname="syscolumns.cname" )
+ column=(type=long updatewhereclause=yes name=field_id dbname="syscolumns.colno" )
+ column=(type=char(128) updatewhereclause=yes name=syscolumns_coltype dbname="syscolumns.coltype" )
+ column=(type=long updatewhereclause=yes name=syscolumns_length dbname="syscolumns.length" )
+ column=(type=char(257) updatewhereclause=yes name=dbname dbname="dbname" )
+ retrieve="  SELECT sys.systable.table_name,   
+         sys.systable.table_id,   
+         sys.syscolumns.cname,   
+         sys.syscolumns.colno,   
+         sys.syscolumns.coltype,   
+         sys.syscolumns.length,
+			sys.systable.table_name + '.' + sys.syscolumns.cname dbname  
+    FROM sys.syscolumns,   
+         sys.systable  
+   WHERE ( sys.syscolumns.tname = sys.systable.table_name ) and  
+         ( ( sys.syscolumns.tname in ( :table_name ) ) )    
+" arguments=(("table_name", stringlist))  sort="table_name A field_name A " )
+column(band=detail id=7 alignment="0" tabsequence=0 border="0" color="0" x="14" y="8" height="72" width="1065" html.valueishtml="0"  name=dbname visible="1" dddw.name=d_dddw_view_fields_alias dddw.displaycolumn=fname dddw.datacolumn=dbname dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0 dddw.vscrollbar=yes dddw.autoretrieve=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Column Alias" border="6" color="0" x="14" y="12" height="60" width="1065" html.valueishtml="0"  name=dbname_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="2" text="Column Name" border="6" color="0" x="1097" y="12" height="60" width="1056" html.valueishtml="0"  name=table_field_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+compute(band=detail alignment="0" expression="table_name + ~".~" +  field_name"border="0" color="0" x="1106" y="4" height="72" width="1047" format="[general]" html.valueishtml="0"  name=table_field visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

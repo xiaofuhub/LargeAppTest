@@ -1,0 +1,9 @@
+﻿$PBExportHeader$str_email_general.srs
+$PBExportComments$SK Practitioner Folder - alfee 09.09.2010
+global type str_email_general from structure
+	string		as_email_address
+	string		as_subject
+	string		as_notetext
+	string		as_attach
+end type
+

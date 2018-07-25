@@ -1,0 +1,48 @@
+﻿$PBExportHeader$of_check_path.srf
+global type of_check_path from function_object
+end type
+
+forward prototypes
+global function string of_check_path (string as_path, integer ai_end)
+end prototypes
+
+global function string of_check_path (string as_path, integer ai_end);//Start Code Change ---- 02.28.2006 #300 maha
+// this function for testing unc paths as the program is escaping the double slash.
+string ls_ret
+integer p
+
+//--------------------------- APPEON BEGIN ---------------------------
+//$<add> 04/10/2008 By: Ken.Guo
+//$<reason> Deal with Null Value For Web. Otherwise, it will return 'null\' in Web.
+If isnull(as_path) then Return as_path
+//---------------------------- APPEON END ----------------------------
+
+
+ls_ret = as_path
+p = PosA(as_path,"\\",1)
+
+//if p > 0 then
+	//ls_ret = mid(as_path,p - 1,2) + "\\\\" + mid(as_path,p + 2)
+//end if
+
+if gs_dbtype = "ASA" then//Start Code Change ---- 05.17.2006 #469 maha
+	if MidA(as_path,1,4) = "\\\\" then
+		//skip
+	elseif MidA(as_path,1,2) = "\\" then
+		ls_ret = "\\\\" + MidA(as_path,3)
+	end if
+end if
+	
+if ai_end = 1 then
+	if LenA(ls_ret) = 0 then
+		//skip
+	elseIF RightA( ls_ret, 1 ) <> "\" THEN
+		ls_ret = ls_ret + "\"
+	END IF
+end if
+
+return ls_ret
+	
+//End Code Change---02.28.2006
+end function
+

@@ -1,0 +1,22 @@
+﻿$PBExportHeader$of_imagingwarning.srf
+global type of_imagingwarning from function_object
+end type
+
+forward prototypes
+global subroutine of_imagingwarning ()
+end prototypes
+
+global subroutine of_imagingwarning ();//Start Modify 02.04.2008 By Ken.Guo
+n_cst_imaging lnv_imaging
+If lnv_imaging.of_check_windows_imaging() Then Return 
+//End
+
+if AppeonGetClientType() = "WEB" then
+	//if gs_image_flag = '0' then
+	if gs_image_flag = '0'  and gb_AutoDwnReg	 then	//(v12.1 web component) Alfee 05.02.2012 
+		MessageBox('Warning','The "Install Imaging Professional" option is not enabled for the current user. ~r~nThis will cause you unable to view the image in the OLE control. ~r~n~r~nTo view image in OLE control, please ask technical support for help.',Exclamation!)		//Added by Scofield on 2007-09-18
+	end if
+end if
+
+end subroutine
+

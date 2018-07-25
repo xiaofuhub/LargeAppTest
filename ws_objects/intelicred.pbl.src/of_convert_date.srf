@@ -1,0 +1,26 @@
+﻿$PBExportHeader$of_convert_date.srf
+global type of_convert_date from function_object
+end type
+
+forward prototypes
+global function string of_convert_date (date ad_date)
+end prototypes
+
+global function string of_convert_date (date ad_date);//Start Code Change ----10.01.2010 #V10 maha - created for instsnces where the date has to be in a string format with the year first
+integer li_year
+integer li_day
+integer li_month
+string ls_ret
+
+li_year = year(ad_date)
+li_month = month(ad_date)
+li_day = day(ad_date)
+
+ls_ret = string(li_year) + "-" + string(li_month) + "-" + string(li_day) 
+return ls_ret
+
+
+
+
+end function
+

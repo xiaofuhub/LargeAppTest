@@ -1,0 +1,45 @@
+﻿$PBExportHeader$f_get_last_token.srf
+global type f_get_last_token from function_object
+end type
+
+forward prototypes
+global function string f_get_last_token (ref string source, string separator)
+end prototypes
+
+global function string f_get_last_token (ref string source, string separator);// String Function f_GET_last_TOKEN (ref string Source, string Separator)
+
+// The function f_get_last_Token receives, as arguments, the string from which
+// the token is to be stripped off, from the left, and the separator
+// character.  If the separator character does not appear in the string,
+// it returns the entire string.  Otherwise, it returns the token, not
+// including the separator character.  In either case, the source string
+// is truncated on the left, by the length of the token and separator
+// character, if any.
+
+
+int 			p
+string 	ret
+
+
+do while true
+p				=	PosA(lower(source), lower(separator))		// Get the position of the separator
+	
+if p = 0 then															// if no separator, 
+	ret 		=	source											// return the whole source string and
+	source 	=	""													// make the original source of zero length
+	exit
+else
+	ret 		+= MidA(source, 1, p - 1)							// otherwise, return just the token and
+	source 	=	MidA(source, p)									// strip it & the separator
+	p	=	PosA(lower(MidA(source,LenA(separator) + 1)), lower(separator))
+	if p > 0 then
+		ret 		+= MidA(source,1, p - 1)
+		source	=	MidA(source, p)
+	else
+		exit
+	end if
+end if
+loop
+return ret
+end function
+

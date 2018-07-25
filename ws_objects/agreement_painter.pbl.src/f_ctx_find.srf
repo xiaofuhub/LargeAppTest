@@ -1,0 +1,312 @@
+﻿$PBExportHeader$f_ctx_find.srf
+global type f_ctx_find from function_object
+end type
+
+forward prototypes
+global function integer f_ctx_find (long al_ctx_id, datastore ads_rules, string as_updatecol[], string as_type, ref string as_whereclause)
+end prototypes
+
+global function integer f_ctx_find (long al_ctx_id, datastore ads_rules, string as_updatecol[], string as_type, ref string as_whereclause);//////////////////////////////////////////////////////////////////////
+// $<function>f_ctx_find
+// $<arguments>
+//		long     	al_ctx_id		
+//		datastore	ads_rules		
+//		as_updatecols[]	Updated fields
+//		as_type	the call type, 1-Clause Rules, 2-Work Flow
+// $<returns> integer
+// $<description>
+// $<description> Find CTX whether exist with Clause rules or work flow rules.
+//////////////////////////////////////////////////////////////////////
+// $<add> 2009-07-16 by Ken.Guo
+// $<Modify> 2010-09-09 by Jervis
+//////////////////////////////////////////////////////////////////////
+
+Integer li_rtn
+Long ll_cnt, i, ll_rcnt[],j,ll_screen_id
+String ls_left_bracket, ls_table_name, ls_field_name, ls_operator, ls_value,ls_value_org 
+String ls_lookup_flag, ls_lookup_name, ls_value_display, ls_lookup_sql 
+String ls_logical, ls_coltype, ls_right_bracket, ls_rules_sql
+String ls_lbracket[], ls_rbracket[], ls_logic[]
+Long ll_ctx_id,ll_master_ctx_id
+Integer li_used_master_ctx 
+Boolean lb_exist_table
+n_cst_string_appeon lnv_string 
+String ls_from,ls_from_table[],ls_pre_table,ls_current_table,ls_sql,ls_table_where
+String ls_table_name_org
+boolean lb_UpdateFlag
+
+ll_cnt = ads_rules.RowCount()
+IF ll_cnt < 1 THEN RETURN 0
+
+SetPointer(HourGlass!) 
+
+//Warning!!! If you modified this function, you need modify the gf_ctx_find_ds function too.
+
+//Get Mater contract ID
+if as_type = '1' then	//Call by clause rules
+	Select master_contract_id into :ll_master_ctx_id from ctx_basic_info where ctx_id = :al_ctx_id;
+	If ll_master_ctx_id = 0 or isNUll(ll_master_ctx_id) Then
+		ll_master_ctx_id = al_ctx_id
+	End If
+	
+	li_used_master_ctx = ads_rules.GetItemNumber( 1 , 'used_master_ctx') 
+	//Set Master CTX ID If it is used.
+	If li_used_master_ctx = 1 Then
+		ll_ctx_id = ll_master_ctx_id
+	Else
+		ll_ctx_id = al_ctx_id
+	End If
+else	//Call by work flow
+	ll_ctx_id = al_ctx_id
+end if
+
+FOR i = 1 to ll_cnt
+	ll_screen_id 	 = ads_rules.GetItemNumber( i , 'screen_id')
+	ls_table_name   = ads_rules.GetItemString( i , 'table_name')
+	ls_lbracket[i]  = ads_rules.GetItemString( i , 'left_bracket')
+	ls_field_name 	 = ads_rules.GetItemString( i , 'field_name')
+	ls_operator	  	 = ads_rules.GetItemString( i , 'operator')
+	ls_value 		 = ads_rules.GetItemString( i , 'value')
+	ls_coltype		 = ads_rules.GetItemString( i , 'field_type')
+	ls_rbracket[i]  = ads_rules.GetItemString( i , 'right_bracket')
+	ls_logic[i]		 = ads_rules.GetItemString( i , 'logical')
+	If isnull(ls_lbracket[i]) Then ls_lbracket[i] = ''
+	If isnull(ls_rbracket[i]) Then ls_rbracket[i] = ''
+	
+	ls_table_name_org = ls_table_name
+	ls_value_org = ls_value
+	If i = ll_cnt Then ls_logic[i] = ''
+	//modified by gavins 20120731	
+	If ls_table_name = 'ctx_contacts' Then
+		If ll_screen_id = 6 Then //Contract Company
+			ls_table_name = 'ctx_contacts_ext'
+		ElseIf ll_screen_id = 7 Then //Out Company
+			ls_table_name = 'ctx_contacts_our'
+		Else //14,15,16
+			ls_table_name = 'ctx_contacts_other' //Other Contacts
+		End If
+	End If
+	
+	If ls_table_name = 'ctx_contract_contacts' Then
+		If ll_screen_id = 6 Then //Contract Company
+			ls_table_name = 'ctx_contract_contacts_ext'
+		ElseIf ll_screen_id = 7 Then //Out Company
+			ls_table_name = 'ctx_contract_contacts_our'
+		Else //14,15,16
+			ls_table_name =  'ctx_contract_contacts_other'
+		End If
+	End If		
+		
+	//Get From Table
+	lb_exist_table = False
+	For j = 1 to Upperbound(ls_from_table[])
+		If ls_table_name = 'ctx_contacts' Then
+			If ll_screen_id = 6 Then //Contract Company
+				ls_table_name = 'ctx_contacts_ext'
+			ElseIf ll_screen_id = 7 Then //Out Company
+				ls_table_name = 'ctx_contacts_our'
+			Else //14,15,16
+				ls_table_name = 'ctx_contacts_other' //Other Contacts
+			End If
+		End If
+		
+		If ls_table_name = 'ctx_contract_contacts' Then
+			If ll_screen_id = 6 Then //Contract Company
+				ls_table_name = 'ctx_contract_contacts_ext'
+			ElseIf ll_screen_id = 7 Then //Out Company
+				ls_table_name = 'ctx_contract_contacts_our'
+			Else //14,15,16
+				ls_table_name =  'ctx_contract_contacts_other'
+			End If
+		End If		
+		
+		If ls_table_name = ls_from_table[j] Then 
+			lb_exist_table = True
+			Exit
+		End If
+		If (ls_table_name = 'ctx_elements' or ls_table_name = 'ctx_req_tmplt_element' or ls_table_name = 'ctx_rqmnt_category' or ls_table_name = 'ctx_req_profile') And &
+			(ls_from_table[j] = 'ctx_elements' or ls_from_table[j] = 'ctx_req_tmplt_element' or ls_from_table[j] = 'ctx_rqmnt_category' or ls_from_table[j] = 'ctx_req_profile') Then
+			lb_exist_table = True
+			Exit
+		End If
+		If (ls_table_name = 'ctx_contacts_ext' or ls_table_name = 'ctx_contract_contacts_ext') And & 
+			(ls_from_table[j] = 'ctx_contacts_ext' or ls_from_table[j] = 'ctx_contract_contacts_ext') Then
+			lb_exist_table = True
+			Exit
+		End If
+		If (ls_table_name = 'ctx_contacts_our' or ls_table_name = 'ctx_contract_contacts_our') And & 
+			(ls_from_table[j] = 'ctx_contacts_our' or ls_from_table[j] = 'ctx_contract_contacts_our') Then
+			lb_exist_table = True
+			Exit
+		End If	
+		If (ls_table_name = 'group_practice' or ls_table_name = 'group_multi_loc' or ls_table_name = 'ctx_loc') And & 
+			(ls_from_table[j] = 'group_practice' or ls_from_table[j] = 'group_multi_loc' or ls_from_table[j] = 'ctx_loc') Then
+			lb_exist_table = True
+			Exit
+		End If
+		If (ls_table_name = 'ctx_orgs_contact' or ls_table_name = 'ctx_org_contact' or ls_table_name = 'ctx_orgs' ) And & 
+			(ls_from_table[j] = 'ctx_orgs_contact' or ls_from_table[j] = 'ctx_org_contact' or ls_from_table[j] = 'ctx_orgs') Then
+			lb_exist_table = True
+			Exit
+		End If			
+		If (ls_table_name = 'ctx_fee_sched_hdr' or ls_table_name = 'ctx_fee_sched_locations' or ls_table_name = 'ctx_fee_sched_data' ) And & 
+			(ls_from_table[j] = 'ctx_fee_sched_hdr' or ls_from_table[j] = 'ctx_fee_sched_locations' or ls_from_table[j] = 'ctx_fee_sched_data') Then
+			lb_exist_table = True
+			Exit
+		End If		
+
+	Next
+	
+	//Get From Clause
+	If Not lb_exist_table Then 
+		ls_from_table[Upperbound(ls_from_table) + 1] = ls_table_name
+		Choose Case ls_table_name
+			Case 'ctx_contacts_ext','ctx_contract_contacts_ext'
+				ls_from += "~r~n ctx_contract_contacts ctx_contract_contacts_ext Join ctx_contacts ctx_contacts_ext " +&
+							  "ON  (ctx_contract_contacts_ext.contact_id = ctx_contacts_ext.contact_id And ctx_contract_contacts_ext.ic_area = 'E' ) ,"				
+			Case 'ctx_contacts_our','ctx_contract_contacts_our'
+				ls_from += "~r~n ctx_contract_contacts ctx_contract_contacts_our Join ctx_contacts ctx_contacts_our " +&
+							  "ON  (ctx_contract_contacts_our.contact_id = ctx_contacts_our.contact_id And ctx_contract_contacts_our.ic_area = 'I' ) ,"								
+			Case 'ctx_elements','ctx_req_tmplt_element','ctx_rqmnt_category','ctx_req_profile'
+				ls_from +=	"~r~n ctx_elements " + &
+								"~r~n join ctx_req_profile_hdr on (ctx_elements.ctx_req_profile_hdr_id = ctx_req_profile_hdr.ctx_req_profile_hdr_id) " + &
+								"~r~n Join ctx_req_tmplt_element on(ctx_elements.ctx_req_tmplt_element_id = ctx_req_tmplt_element.ctx_req_tmplt_element_id) " + &
+								"~r~n Join ctx_rqmnt_category on (ctx_rqmnt_category.ctx_rqmnt_category_id = ctx_req_tmplt_element.ctx_rqmnt_category_id) " + & 
+								"~r~n Join ctx_req_profile on (ctx_req_profile_hdr.ctx_req_profile_id = ctx_req_profile.ctx_req_profile_id) ,"
+			Case 'group_practice' ,'group_multi_loc' ,'ctx_loc'
+				ls_from += "~r~n ctx_loc join group_practice on (ctx_loc.loc_id = group_practice.rec_id) " + &
+							  "join group_multi_loc on (group_multi_loc.rec_id = ctx_loc.parent_comp_id),"
+			Case 'ctx_orgs_contact','ctx_org_contact','ctx_orgs'
+				ls_from +=  "~r~n ctx_orgs_contact " + &
+								"~r~n Left Join ctx_org_contact on (ctx_orgs_contact.org_id = ctx_org_contact.org_id) " + &
+								"~r~n Left Join ctx_orgs on (ctx_orgs_contact.org_id = ctx_orgs.org_id) ," 
+			Case 'ctx_fee_sched_hdr','ctx_fee_sched_locations','ctx_fee_sched_data'
+				ls_from +=	"~r~n ctx_fee_sched_hdr " + &
+								"~r~n Left join ctx_fee_sched_locations ON (ctx_fee_sched_hdr.fee_sched_id = ctx_fee_sched_locations.fee_sched_id) " + &
+								"~r~n Left join ctx_fee_sched_data ON (ctx_fee_sched_locations.fee_sched_location_id = ctx_fee_sched_data.fee_sched_location_id) ,"
+			Case Else 
+				ls_from += '~r~n ' + ls_table_name + ','
+		End Choose
+		
+	End If
+
+	//Gen where clause with column/rule
+	ls_lookup_flag  = ads_rules.GetItemString( i , 'lookup_flag')
+	ls_lookup_name  = ads_rules.GetItemString( i , 'lookup_code')
+	ls_value_display = ads_rules.GetItemString( i , 'value_display')
+	IF IsNull(ls_lookup_name) THEN ls_lookup_name = ""
+	IF IsNull(ls_value_display) THEN ls_value_display = ""
+	
+	If Upper(ls_operator) = 'LIKE' Then ls_value = '%' + ls_value + '%'
+	
+	IF Upper(ls_operator) = 'IN' THEN 
+		ls_value = lnv_string.of_parse_incriteria(ls_value, ls_coltype)
+	Elseif (Upper(ls_operator) <> 'IS' and Upper(ls_operator) <> 'IS NOT') then	//Jervis 09.19.2010 //Added By Ken.Guo 03/08/2013. add 'IS NOT'
+		ls_value = lnv_string.of_parse_quote(ls_value, ls_coltype) 		
+	END IF
+	
+	IF Upper(ls_operator) = 'LIKE' and Upper(ls_lookup_flag) = 'Y' THEN
+		ls_lookup_sql = " (select distinct lookup_code from code_lookup where lookup_name = '" + &
+							ls_lookup_name + "' and code like '%" + ls_value_display + "%') "
+		ls_rules_sql += ls_lbracket[i] + ls_table_name + '.' + ls_field_name + " in " + ls_lookup_sql + ls_rbracket[i] + ' ' + ls_logic[i] + ' ' 
+	ELSE
+		CHOOSE CASE Upper(ls_coltype)
+			CASE 'C', 'D', 'I', 'N','S' //Character, date & time, number - 09.18.2008 
+					If Lower(ls_table_name) = 'ctx_elements' and ls_field_name = 'field_value' Then
+					If ls_operator = '<>' Then
+						ls_rules_sql += ls_lbracket[i] + "~r~n (" + "( ctx_elements.char_value " +  ls_operator + " " + ls_value + " ) And ( ctx_elements.field_value " +  ls_operator + " " + ls_value + " )  " 
+						If Isnumber(ls_value_org) Then
+							//ls_rules_sql += " And ( ctx_elements.integer_value " +  ls_operator + " " + ls_value + " ) " 
+							ls_rules_sql += " And ( ctx_elements.integer_value " +  ls_operator + " " + ls_value + " ) and ( ctx_elements.money_value " +  ls_operator + " " + ls_value + " ) " //jervis 08.10.2009
+						End If
+						If Isdate(ls_value_org) Then
+							ls_value = "'" + String(Date(ls_value_org),'YYYY-MM-DD') + "'"
+							ls_rules_sql += " And ( ctx_elements.date_value " +  ls_operator + " " + ls_value + " ) " 
+						End If
+						ls_rules_sql += ")" + ls_rbracket[i] + ' ' + ls_logic[i] + ' ' 
+					Else
+						ls_rules_sql += ls_lbracket[i] + "~r~n (" + "( ctx_elements.char_value " +  ls_operator + " " + ls_value + " ) Or ( ctx_elements.field_value " +  ls_operator + " " + ls_value + " )  " 
+						If Isnumber(ls_value_org) Then
+							//ls_rules_sql += " Or ( ctx_elements.integer_value " +  ls_operator + " " + ls_value + " ) " 
+							ls_rules_sql += " Or ( ctx_elements.integer_value " +  ls_operator + " " + ls_value + " ) Or ( ctx_elements.money_value " +  ls_operator + " " + ls_value + " ) " //jervis 08.10.2009
+						End If
+						If Isdate(ls_value_org) Then
+							ls_value = "'" + String(Date(ls_value_org),'YYYY-MM-DD') + "'"
+							ls_rules_sql += " Or ( ctx_elements.date_value " +  ls_operator + " " + ls_value + " ) " 
+						End If	
+						ls_rules_sql += ")" + ls_rbracket[i] + ' ' + ls_logic[i] + ' ' 
+					End If
+				Else
+					ls_rules_sql += '~r~n ' + ls_lbracket[i] + ls_table_name + '.' + ls_field_name + " " + ls_operator + " " + ls_value + ls_rbracket[i] + ' ' + ls_logic[i] + ' ' 			
+				End If
+			CASE ELSE
+				//
+		END CHOOSE
+	END IF 	
+	
+	//01.12.2009 by Jervis:if include the update columns
+	if UpperBound(as_UpdateCol) > 0 and ll_screen_id <= UpperBound(as_UpdateCol) then  //Jervis 08.31.2010
+		if pos(as_UpdateCol[ll_screen_id],"," + ls_field_name + ",") > 0 then lb_UpdateFlag = true	
+	end if
+					
+NEXT
+
+
+// It should ONLY trigger if the data in the fields that are in the Data Value Comparison-> Trigger Parameters of a work flow are changed to match criteria
+if UpperBound(as_UpdateCol) > 0  and lb_UpdateFlag = false then return 0  //Add "UpperBound(as_UpdateCol) > 0 " - jervis 08.31.2010
+	
+	
+//Cut last ',' for From Clause.
+ls_from = Mid(ls_from,1,len(ls_from) - 1)
+
+//Get where clause with tables
+For j = 1 to Upperbound(ls_from_table[])
+	Choose Case ls_from_table[j]
+		Case 'ctx_elements', 'ctx_req_tmplt_element','ctx_rqmnt_category','ctx_req_profile'
+			ls_current_table = 'ctx_req_profile_hdr'
+		Case 'group_practice' ,'group_multi_loc' ,'ctx_loc'
+			ls_current_table = 'ctx_loc'
+		Case 'ctx_contacts_ext','ctx_contract_contacts_ext'
+			ls_current_table = 'ctx_contract_contacts_ext'
+		Case 'ctx_contacts_our','ctx_contract_contacts_our'
+			ls_current_table = 'ctx_contract_contacts_our'
+		Case 'ctx_contacts_other','ctx_contract_contacts_other'		
+			ls_current_table = 'ctx_contract_contacts_other'
+		Case 'ctx_orgs_contact','ctx_org_contact','ctx_orgs'
+			ls_current_table = 'ctx_orgs_contact'
+		Case 'ctx_fee_sched_hdr','ctx_fee_sched_locations','ctx_fee_sched_data'
+			ls_current_table = 'ctx_fee_sched_hdr'
+		Case Else
+			ls_current_table = ls_from_table[j]
+	End Choose
+	If j > 1 Then
+		ls_table_where += ' And ~r~n ' + ls_current_table + '.ctx_id = ' + ls_pre_table + '.ctx_id '
+	End If
+	ls_pre_table = ls_current_table
+Next
+ls_table_where += ' And ~r~n ' + ls_pre_table + '.ctx_id = ' + String(ll_ctx_id)
+
+as_whereclause = ls_table_where + '~r~n And (' + ls_rules_sql + ') '
+
+//Set Total SQL	
+ls_sql = 'Select Count(1) From ' + ls_from + '~r~n Where 1 = 1 ' + ls_table_where + '~r~n And (' + ls_rules_sql + ') ;'
+
+
+//Execute the sql statement to get the result
+DECLARE my_cursor DYNAMIC CURSOR FOR SQLSA ;
+PREPARE SQLSA FROM :ls_sql Using SQLCA ;
+OPEN DYNAMIC my_cursor ;
+FETCH my_cursor INTO :li_rtn;
+IF SQLCA.SQLCODE = -1 THEN li_rtn = -1 
+CLOSE my_cursor ;			
+
+//Added By Ken.Guo 03/08/2013
+If li_rtn = -1 Then
+	gnv_debug.of_output( True, 'SQL Verify Error in f_ctx_find(): ' + sqlca.sqlerrtext + '~r~nSQL = ' + ls_sql )
+End If
+
+RETURN li_rtn	
+
+
+end function
+

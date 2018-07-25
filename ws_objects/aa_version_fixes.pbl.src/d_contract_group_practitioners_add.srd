@@ -1,0 +1,23 @@
+﻿$PBExportHeader$d_contract_group_practitioners_add.srd
+$PBExportComments$[intellicontract]
+release 9;
+datawindow(units=0 timer_interval=0 color=80269524 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=64 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=char(153) updatewhereclause=yes name=v_full_name_full_name dbname="v_full_name.full_name" )
+ column=(type=char(20) updatewhereclause=yes name=provider_id dbname="pd_basic.provider_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=record_id dbname="pd_basic.rec_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=prac_id dbname="pd_basic.prac_id" )
+ column=(type=char(1) updatewhereclause=yes name=inc_in_contract dbname="ctx_location_pracs.inc_in_contract" values="	Y/	N" )
+ retrieve="PBSELECT( VERSION(400) DISTINCT ()TABLE(NAME=~"v_full_name~" )  TABLE(NAME=~"pd_board_specialty~" )  TABLE(NAME=~"group_practice~" )  TABLE(NAME=~"pd_address~" )  TABLE(NAME=~"pd_basic~" )  TABLE(NAME=~"ctx_location_pracs~" ) COLUMN(NAME=~"v_full_name.full_name~") COLUMN(NAME=~"pd_basic.provider_id~") COLUMN(NAME=~"pd_basic.rec_id~") COLUMN(NAME=~"pd_basic.prac_id~") COLUMN(NAME=~"ctx_location_pracs.inc_in_contract~")    JOIN (LEFT=~"v_full_name.prac_id~"    OP =~"=~"RIGHT=~"pd_board_specialty.prac_id~"    OUTER1 =~"v_full_name.prac_id~" )    JOIN (LEFT=~"group_practice.rec_id~"    OP =~"=~"RIGHT=~"pd_address.gp_id~"    OUTER1 =~"group_practice.rec_id~" )    JOIN (LEFT=~"pd_address.prac_id~"    OP =~"=~"RIGHT=~"pd_basic.prac_id~"    OUTER2 =~"pd_basic.prac_id~" )    JOIN (LEFT=~"ctx_location_pracs.gp_rec_id~"    OP =~"=~"RIGHT=~"group_practice.rec_id~"    OUTER2 =~"group_practice.rec_id~" )    JOIN (LEFT=~"pd_address.prac_id~"    OP =~"=~"RIGHT=~"v_full_name.prac_id~" )WHERE(    EXP1 =~"( ( group_practice.rec_id~"   OP =~"=~"    EXP2 =~":ai_group ) )~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"pd_address.active_status~"   OP =~"in~"    EXP2 =~"( 1,4 )~" ) ) ARG(NAME = ~"ai_group~" TYPE = number) " arguments=(("ai_group", number))  sort="v_full_name_full_name A " )
+text(band=header alignment="2" text="Practitioner" border="6" color="0" x="160" y="8" height="48" width="1102" html.valueishtml="0"  name=v_full_name_full_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=20 border="0" color="0" x="27" y="4" height="52" width="82" format="[general]" html.valueishtml="0"  name=inc_in_contract visible="1" checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="160" y="4" height="52" width="1102" format="[general]" html.valueishtml="0"  name=v_full_name_full_name visible="1" edit.limit=153 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+
+sparse(names="v_full_name_full_name")htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

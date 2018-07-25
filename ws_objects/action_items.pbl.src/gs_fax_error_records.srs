@@ -1,0 +1,5 @@
+﻿$PBExportHeader$gs_fax_error_records.srs
+global type gs_fax_error_records from structure
+	integer		il_error_rec_num[]
+end type
+

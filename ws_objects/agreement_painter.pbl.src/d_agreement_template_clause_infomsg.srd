@@ -1,0 +1,20 @@
+﻿$PBExportHeader$d_agreement_template_clause_infomsg.srd
+$PBExportComments$Create by Jack 11/09/2006
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=1448 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes key=yes name=ctx_acp_clause_id dbname="ctx_acp_clause.ctx_acp_clause_id" )
+ column=(type=char(255) updatewhereclause=yes name=clause_name dbname="ctx_acp_clause.clause_name" )
+ column=(type=char(2000) updatewhereclause=yes name=information_message dbname="ctx_acp_clause.information_message" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"ctx_acp_clause~" ) COLUMN(NAME=~"ctx_acp_clause.ctx_acp_clause_id~") COLUMN(NAME=~"ctx_acp_clause.clause_name~") COLUMN(NAME=~"ctx_acp_clause.information_message~")WHERE(    EXP1 =~"ctx_acp_clause.ctx_acp_clause_id~"   OP =~"in~"    EXP2 =~":clauseid~"    LOGIC =~"And~" ) WHERE(    EXP1 =~"ctx_acp_clause.information_disp~"   OP =~"=~"    EXP2 =~"1~" ) ) ARG(NAME = ~"clauseid~" TYPE = numberlist) " update="ctx_acp_clause" updatewhere=0 updatekeyinplace=no filter="Len(Trim(information_message)) > 0"arguments=(("clauseid", numberlist)) )
+text(band=header alignment="0" text="Clause Information Message" border="0" color="0" x="0" y="4" height="60" width="654" html.valueishtml="0"  name=t_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="0" y="92" height="1352" width="1952" format="[general]" html.valueishtml="0"  name=information_message visible="1" edit.limit=4099 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autovscroll=yes edit.imemode=0 edit.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="getrow() +'.'"border="0" color="33554432" x="0" y="4" height="64" width="82" format="[General]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="82" y="4" height="64" width="1870" format="[general]" html.valueishtml="0"  name=clause_name visible="1" edit.limit=255 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

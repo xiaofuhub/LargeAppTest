@@ -1,0 +1,40 @@
+﻿$PBExportHeader$appeonpopmenuon.srf
+global type appeonpopmenuon from function_object
+end type
+
+forward prototypes
+global subroutine appeonpopmenuon (datawindow adw_dw, boolean ab_show)
+end prototypes
+
+global subroutine appeonpopmenuon (datawindow adw_dw, boolean ab_show);//==============================================================================
+// 
+// Copyright ? 2001-2006 Appeon, Inc. and its subsidiaries. All rights reserved.
+// 
+//------------------------------------------------------------------------------
+// Function: appeonpopmenuon()
+//------------------------------------------------------------------------------
+// Description: 
+//				Enabled/disabled status of the Appeon DataWindow right mouse button menu 
+//				on a specific DataWindow control
+// 
+//	
+// Arguments: 
+//		datawindow	adw_dw 		
+//		boolean   	ab_show		
+//	
+// Returns:  (none)
+//------------------------------------------------------------------------------
+// Author:	APPEON		Date: 2005-11
+//------------------------------------------------------------------------------
+// Revision History: 
+//				1.0   Initial version
+//==============================================================================
+
+AppeonExtFuncs funs
+funs = Create AppeonExtFuncs
+
+funs.Of_PopMenuOn(adw_dw, ab_show)
+
+Destroy funs
+end subroutine
+

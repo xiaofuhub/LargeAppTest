@@ -1,0 +1,120 @@
+﻿$PBExportHeader$m_dashboard_tab.srm
+forward
+global type m_dashboard_tab from menu
+end type
+type m_add from menu within m_dashboard_tab
+end type
+type m_edit from menu within m_dashboard_tab
+end type
+type m_delete from menu within m_dashboard_tab
+end type
+type m_refreshalltabs from menu within m_dashboard_tab
+end type
+global type m_dashboard_tab from menu
+m_add m_add
+m_edit m_edit
+m_delete m_delete
+m_refreshalltabs m_refreshalltabs
+end type
+end forward
+
+global type m_dashboard_tab from menu
+m_add m_add
+m_edit m_edit
+m_delete m_delete
+m_refreshalltabs m_refreshalltabs
+end type
+global m_dashboard_tab m_dashboard_tab
+
+on m_dashboard_tab.create
+m_dashboard_tab=this
+call super::create
+this.text = "m_dashborad_tab"
+this.m_add=create m_add
+this.m_edit=create m_edit
+this.m_delete=create m_delete
+this.m_refreshalltabs=create m_refreshalltabs
+this.Item[UpperBound(this.Item)+1]=this.m_add
+this.Item[UpperBound(this.Item)+1]=this.m_edit
+this.Item[UpperBound(this.Item)+1]=this.m_delete
+this.Item[UpperBound(this.Item)+1]=this.m_refreshalltabs
+end on
+
+on m_dashboard_tab.destroy
+call super::destroy
+destroy(this.m_add)
+destroy(this.m_edit)
+destroy(this.m_delete)
+destroy(this.m_refreshalltabs)
+end on
+
+type m_add from menu within m_dashboard_tab
+end type
+
+event clicked;If Not isvalid(w_dashboard) Then Return
+w_dashboard.of_add_tabpage()
+end event
+
+on m_add.create
+call super::create
+this.tag = "Add a tab"
+this.text = "&Add a tab"
+this.microhelp = "Add a tab"
+end on
+
+on m_add.destroy
+call super::destroy
+end on
+
+type m_edit from menu within m_dashboard_tab
+end type
+
+on m_edit.create
+call super::create
+this.tag = "Edit this tab"
+this.text = "&Edit this tab"
+this.microhelp = "Edit this tab"
+end on
+
+on m_edit.destroy
+call super::destroy
+end on
+
+event clicked;If Not isvalid(w_dashboard) Then Return
+w_dashboard.of_edit_tabpage(w_dashboard.tab_dashboard.Selectedtab)
+end event
+
+type m_delete from menu within m_dashboard_tab
+end type
+
+on m_delete.create
+call super::create
+this.tag = "Delete this tab"
+this.text = "&Delete this tab"
+this.microhelp = "Delete this tab"
+end on
+
+on m_delete.destroy
+call super::destroy
+end on
+
+event clicked;If Not isvalid(w_dashboard) Then Return
+w_dashboard.of_delete_tabpage(w_dashboard.tab_dashboard.Selectedtab)
+end event
+
+type m_refreshalltabs from menu within m_dashboard_tab
+end type
+
+event clicked;If Not isvalid(w_dashboard) Then Return
+w_dashboard.of_refres_all_tabs()
+end event
+
+on m_refreshalltabs.create
+call super::create
+this.text = "&Refresh all tabs"
+end on
+
+on m_refreshalltabs.destroy
+call super::destroy
+end on
+

@@ -1,0 +1,77 @@
+﻿$PBExportHeader$d_address_code_lookup.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=lookup_code dbname="address_lookup.lookup_code" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=lookup_name dbname="address_lookup.lookup_name" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=code dbname="address_lookup.code" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=entity_name dbname="address_lookup.entity_name" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=street1 dbname="address_lookup.street1" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=street2 dbname="address_lookup.street2" )
+ column=(type=char(35) update=yes updatewhereclause=yes name=city dbname="address_lookup.city" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=state dbname="address_lookup.state" )
+ column=(type=char(12) update=yes updatewhereclause=yes name=zip dbname="address_lookup.zip" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=country dbname="address_lookup.country" )
+ column=(type=char(25) update=yes updatewhereclause=yes name=phone dbname="address_lookup.phone" )
+ column=(type=char(25) update=yes updatewhereclause=yes name=fax dbname="address_lookup.fax" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=email_address dbname="address_lookup.email_address" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=web_address dbname="address_lookup.web_address" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=custom_1 dbname="address_lookup.custom_1" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=custom_2 dbname="address_lookup.custom_2" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=custom_3 dbname="address_lookup.custom_3" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=custom_4 dbname="address_lookup.custom_4" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=custom_5 dbname="address_lookup.custom_5" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=custom_6 dbname="address_lookup.custom_6" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=contact_name dbname="address_lookup.contact_name" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=contact_salutation dbname="address_lookup.contact_salutation" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=fee dbname="address_lookup.fee" )
+ column=(type=char(200) update=yes updatewhereclause=yes name=web_title dbname="address_lookup.web_title" )
+ column=(type=char(3) update=yes updatewhereclause=yes name=audit_flag dbname="address_lookup.audit_flag" )
+ column=(type=long update=yes updatewhereclause=yes name=caqh_code dbname="address_lookup.caqh_code" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ic_n dbname="address_lookup.ic_n" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=ic_c dbname="address_lookup.ic_c" )
+ retrieve="SELECT  address_lookup.lookup_code ,
+           address_lookup.lookup_name ,
+           address_lookup.code ,
+           address_lookup.entity_name ,
+           address_lookup.street1 ,
+           address_lookup.street2 ,
+           address_lookup.city ,
+           address_lookup.state ,
+           address_lookup.zip ,
+           address_lookup.country ,
+           address_lookup.phone ,
+           address_lookup.fax ,
+           address_lookup.email_address ,
+           address_lookup.web_address ,
+           address_lookup.custom_1 ,
+           address_lookup.custom_2 ,
+           address_lookup.custom_3 ,
+           address_lookup.custom_4 ,
+           address_lookup.custom_5 ,
+           address_lookup.custom_6 ,
+           address_lookup.contact_name ,
+           address_lookup.contact_salutation ,
+           address_lookup.fee ,
+           address_lookup.web_title ,
+           address_lookup.audit_flag ,
+           address_lookup.caqh_code ,
+           address_lookup.ic_n ,
+           address_lookup.ic_c     
+        FROM address_lookup    " update="address_lookup" updatewhere=0 updatekeyinplace=yes  sort="entity_name A " )
+text(band=header alignment="2" text="Lookup Name" border="6" color="0" x="9" y="8" height="56" width="576" html.valueishtml="0"  name=lookup_name_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="2" text="Code" border="6" color="0" x="594" y="8" height="56" width="439" html.valueishtml="0"  name=code_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="2" text="Entity Name" border="6" color="0" x="1042" y="8" height="56" width="1861" html.valueishtml="0"  name=entity_name_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="0" text="Lookup Code" border="6" color="0" x="2912" y="8" height="56" width="361" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="0" height="56" width="576" format="[general]" html.valueishtml="0"  name=lookup_name visible="1" edit.limit=20 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="594" y="0" height="56" width="439" format="[general]" html.valueishtml="0"  name=code visible="1" edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1042" y="0" height="56" width="1861" format="[general]" html.valueishtml="0"  name=entity_name visible="1" edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="2912" y="0" height="56" width="361" format="[general]" html.valueishtml="0"  name=lookup_code visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

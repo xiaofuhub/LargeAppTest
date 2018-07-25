@@ -1,0 +1,49 @@
+﻿$PBExportHeader$d_dashb_gadget_message_in_list.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=33554431 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 grid.columnmove=no selected.mouse=no )
+header(height=68 color="67108864" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=selected dbname="selected" values="	1/	0" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes identity=yes name=id dbname="dashboard_gadgets_message.id" )
+ column=(type=char(50) updatewhereclause=yes name=user_id dbname="dashboard_gadgets_message.user_id" )
+ column=(type=char(5000) updatewhereclause=yes name=message_body dbname="dashboard_gadgets_message.message_body" )
+ column=(type=long update=yes updatewhereclause=yes name=is_read dbname="dashboard_gadgets_message.is_read" )
+ column=(type=char(50) updatewhereclause=yes name=sender dbname="dashboard_gadgets_message.sender" )
+ column=(type=char(2000) updatewhereclause=yes name=send_to_roles dbname="dashboard_gadgets_message.send_to_roles" )
+ column=(type=char(2000) updatewhereclause=yes name=send_to_users dbname="dashboard_gadgets_message.send_to_users" )
+ column=(type=datetime updatewhereclause=yes name=send_date dbname="dashboard_gadgets_message.send_date" )
+ column=(type=decimal(0) updatewhereclause=yes name=root_message_id dbname="dashboard_gadgets_message.root_message_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=parent_message_id dbname="dashboard_gadgets_message.parent_message_id" )
+ retrieve="  SELECT 
+			0 selected,
+			dashboard_gadgets_message.id,   
+         dashboard_gadgets_message.user_id,   
+         dashboard_gadgets_message.message_body,   
+         dashboard_gadgets_message.is_read,   
+         dashboard_gadgets_message.sender,   
+         dashboard_gadgets_message.send_to_roles,   
+         dashboard_gadgets_message.send_to_users,   
+         dashboard_gadgets_message.send_date,   
+         dashboard_gadgets_message.root_message_id,   
+         dashboard_gadgets_message.parent_message_id  
+    FROM dashboard_gadgets_message  
+   WHERE ( dashboard_gadgets_message.user_id = :as_user_id ) 
+ORDER BY dashboard_gadgets_message.send_date DESC   
+" update="dashboard_gadgets_message" updatewhere=0 updatekeyinplace=no arguments=(("as_user_id", string)) )
+text(band=header alignment="0" text="Selected" border="0" color="0" x="9" y="4" height="76" width="210" html.valueishtml="0"  name=selected_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sent Date" border="0" color="33554432" x="1856" y="8" height="52" width="585" html.valueishtml="0"  name=send_date_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="From" border="0" color="33554432" x="229" y="8" height="52" width="274" html.valueishtml="0"  name=sender_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Message" border="0" color="0" x="512" y="12" height="52" width="1335" html.valueishtml="0"  name=message_preview_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="33554432" x="229" y="4" height="64" width="274" format="[general]" html.valueishtml="0"  name=sender pointer="HyperLink!" visible="1" edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=2  font.face="Segoe UI" font.height="-8" font.weight="400~tIf ( is_read =  1,400,700 )"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="If (Pos(message_body,'------------------',1) > 0,  mid(message_body,1,Pos(message_body,'------------------',1) - 1 ) , message_body ) "border="0" color="0" x="512" y="4" height="64" width="1335" format="[GENERAL]" html.valueishtml="0"  name=message_preview pointer="HyperLink!" visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400~tIf ( is_read =  1,400,700 )"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="33554432" x="1856" y="8" height="64" width="585" format="[shortdate] [time]" html.valueishtml="0"  name=send_date pointer="HyperLink!" visible="1" editmask.mask="mm/dd/yyyy hh:mm:ss" editmask.imemode=0 editmask.focusrectangle=no  font.face="Segoe UI" font.height="-8" font.weight="400~tIf ( is_read =  1,400,700 )"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="send_to_roles + If (send_to_roles = '' ,'',';') +send_to_users "border="0" color="0" x="2450" y="4" height="76" width="251" format="[GENERAL]" html.valueishtml="0"  name=to visible="0"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="2" tabsequence=10 border="0" color="33554432" x="9" y="4" height="52" width="210" format="[general]" html.valueishtml="0"  name=selected visible="1" checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=summary alignment="0" expression="Sum( selected )"border="0" color="0" x="9" y="28" height="76" width="210" format="[GENERAL]" html.valueishtml="0"  name=selected_cnt visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

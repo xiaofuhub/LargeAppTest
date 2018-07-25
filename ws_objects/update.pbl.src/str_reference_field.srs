@@ -1,0 +1,7 @@
+﻿$PBExportHeader$str_reference_field.srs
+global type str_reference_field from structure
+	string		reference_field
+	integer		table_id
+	string		field_name
+end type
+

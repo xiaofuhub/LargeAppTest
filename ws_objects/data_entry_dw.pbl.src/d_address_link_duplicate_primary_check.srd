@@ -1,0 +1,12 @@
+﻿$PBExportHeader$d_address_link_duplicate_primary_check.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=60 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=dup_count dbname="compute_0001" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"pd_address_link~" )  TABLE(NAME=~"pd_address~" ) COMPUTE(NAME=~"Count(address_id)~")    JOIN (LEFT=~"pd_address_link.prac_id~"    OP =~"=~"RIGHT=~"pd_address.prac_id~" )    JOIN (LEFT=~"pd_address_link.address_id~"    OP =~"=~"RIGHT=~"pd_address.rec_id~" )WHERE(    EXP1 =~"pd_address_link.facility_id~"   OP =~"=~"    EXP2 =~":facility_id~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"pd_address_link.address_id~"   OP =~"<>~"    EXP2 =~":address_id~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"pd_address_link.primary_office~"   OP =~"=~"    EXP2 =~"1~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"pd_address_link.prac_id~"   OP =~"=~"    EXP2 =~":prac_id~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"pd_address.active_status~"   OP =~"=~"    EXP2 =~"1~" ) ) ARG(NAME = ~"facility_id~" TYPE = number)  ARG(NAME = ~"address_id~" TYPE = number)  ARG(NAME = ~"prac_id~" TYPE = number) " arguments=(("facility_id", number),("address_id", number),("prac_id", number)) )
+text(band=header alignment="2" text="~"count~"(pd Address Link.address Id)"border="0" color="0" x="5" y="4" height="52" width="782"  name=compute_0001_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="0" x="5" y="4" height="64" width="274" format="[general]"  name=dup_count edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

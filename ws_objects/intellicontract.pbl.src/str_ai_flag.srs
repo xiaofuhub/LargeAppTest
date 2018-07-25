@@ -1,0 +1,10 @@
+﻿$PBExportHeader$str_ai_flag.srs
+global type str_ai_flag from structure
+	str_action_item		astr_action_item
+	string		as_to
+	string		as_cc
+	string		as_subject
+	string		as_attach_name
+	string		as_flag
+end type
+

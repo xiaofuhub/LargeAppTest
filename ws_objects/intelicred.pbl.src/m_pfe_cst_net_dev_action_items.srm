@@ -1,0 +1,3670 @@
+﻿$PBExportHeader$m_pfe_cst_net_dev_action_items.srm
+forward
+global type m_pfe_cst_net_dev_action_items from m_pfe_cst_net_dev
+end type
+type m_batchupdateactions from menu within m_file
+end type
+type m_file from m_pfe_cst_net_dev`m_file within m_pfe_cst_net_dev_action_items
+m_batchupdateactions m_batchupdateactions
+end type
+type m_8 from menu within m_view
+end type
+type m_intellibatch1 from menu within m_view
+end type
+type m_view from m_pfe_cst_net_dev`m_view within m_pfe_cst_net_dev_action_items
+m_8 m_8
+m_intellibatch1 m_intellibatch1
+end type
+type m_email_payor from menu within m_action
+end type
+type m_action from m_pfe_cst_net_dev`m_action within m_pfe_cst_net_dev_action_items
+m_email_payor m_email_payor
+end type
+end forward
+
+global type m_pfe_cst_net_dev_action_items from m_pfe_cst_net_dev
+end type
+global m_pfe_cst_net_dev_action_items m_pfe_cst_net_dev_action_items
+
+on m_pfe_cst_net_dev_action_items.create
+m_pfe_cst_net_dev_action_items=this
+call super::create
+end on
+
+on m_pfe_cst_net_dev_action_items.destroy
+call super::destroy
+end on
+
+type m_file from m_pfe_cst_net_dev`m_file within m_pfe_cst_net_dev_action_items
+m_batchupdateactions m_batchupdateactions
+end type
+
+on m_file.create
+call super::create
+this.m_batchupdateactions=create m_batchupdateactions
+this.Item[UpperBound(this.Item)+1]=this.m_batchupdateactions
+end on
+
+on m_file.destroy
+call super::destroy
+destroy(this.m_batchupdateactions)
+end on
+
+type m_actionitems from m_pfe_cst_net_dev`m_actionitems within m_file
+end type
+
+on m_actionitems.create
+call super::create
+end on
+
+on m_actionitems.destroy
+call super::destroy
+end on
+
+type m_calendar from m_pfe_cst_net_dev`m_calendar within m_file
+end type
+
+on m_calendar.create
+call super::create
+end on
+
+on m_calendar.destroy
+call super::destroy
+end on
+
+type m_caqhfileimport from m_pfe_cst_net_dev`m_caqhfileimport within m_file
+end type
+
+on m_caqhfileimport.create
+call super::create
+end on
+
+on m_caqhfileimport.destroy
+call super::destroy
+end on
+
+type m_casepeerreview from m_pfe_cst_net_dev`m_casepeerreview within m_file
+end type
+
+on m_casepeerreview.create
+call super::create
+end on
+
+on m_casepeerreview.destroy
+call super::destroy
+end on
+
+type m_contactlog from m_pfe_cst_net_dev`m_contactlog within m_file
+end type
+
+on m_contactlog.create
+call super::create
+end on
+
+on m_contactlog.destroy
+call super::destroy
+end on
+
+type m_contactopencalls from m_pfe_cst_net_dev`m_contactopencalls within m_file
+end type
+
+on m_contactopencalls.create
+call super::create
+end on
+
+on m_contactopencalls.destroy
+call super::destroy
+end on
+
+type m_contract from m_pfe_cst_net_dev`m_contract within m_file
+end type
+
+on m_contract.create
+call super::create
+end on
+
+on m_contract.destroy
+call super::destroy
+end on
+
+type m_contacts from m_pfe_cst_net_dev`m_contacts within m_file
+end type
+
+on m_contacts.create
+call super::create
+end on
+
+on m_contacts.destroy
+call super::destroy
+end on
+
+type m_dashboard0 from m_pfe_cst_net_dev`m_dashboard0 within m_file
+end type
+
+on m_dashboard0.create
+call super::create
+end on
+
+on m_dashboard0.destroy
+call super::destroy
+end on
+
+type m_documents from m_pfe_cst_net_dev`m_documents within m_file
+end type
+
+on m_documents.create
+call super::create
+end on
+
+on m_documents.destroy
+call super::destroy
+end on
+
+type m_facility from m_pfe_cst_net_dev`m_facility within m_file
+end type
+
+on m_facility.create
+call super::create
+end on
+
+on m_facility.destroy
+call super::destroy
+end on
+
+type m_contractglobalsearch from m_pfe_cst_net_dev`m_contractglobalsearch within m_file
+end type
+
+on m_contractglobalsearch.create
+call super::create
+end on
+
+on m_contractglobalsearch.destroy
+call super::destroy
+end on
+
+type m_grouppractices from m_pfe_cst_net_dev`m_grouppractices within m_file
+end type
+
+on m_grouppractices.create
+call super::create
+end on
+
+on m_grouppractices.destroy
+call super::destroy
+end on
+
+type m_home from m_pfe_cst_net_dev`m_home within m_file
+end type
+
+on m_home.create
+call super::create
+end on
+
+on m_home.destroy
+call super::destroy
+end on
+
+type m_invoices from m_pfe_cst_net_dev`m_invoices within m_file
+end type
+
+on m_invoices.create
+call super::create
+end on
+
+on m_invoices.destroy
+call super::destroy
+end on
+
+type m_launchpad from m_pfe_cst_net_dev`m_launchpad within m_file
+end type
+
+on m_launchpad.create
+call super::create
+end on
+
+on m_launchpad.destroy
+call super::destroy
+end on
+
+type m_meetings from m_pfe_cst_net_dev`m_meetings within m_file
+end type
+
+on m_meetings.create
+call super::create
+end on
+
+on m_meetings.destroy
+call super::destroy
+end on
+
+type m_ocr_appl from m_pfe_cst_net_dev`m_ocr_appl within m_file
+end type
+
+on m_ocr_appl.create
+call super::create
+end on
+
+on m_ocr_appl.destroy
+call super::destroy
+end on
+
+type m_privileging from m_pfe_cst_net_dev`m_privileging within m_file
+end type
+
+on m_privileging.create
+call super::create
+end on
+
+on m_privileging.destroy
+call super::destroy
+end on
+
+type m_practitioner from m_pfe_cst_net_dev`m_practitioner within m_file
+end type
+
+on m_practitioner.create
+call super::create
+end on
+
+on m_practitioner.destroy
+call super::destroy
+end on
+
+type m_additionalprovider from m_pfe_cst_net_dev`m_additionalprovider within m_file
+end type
+
+on m_additionalprovider.create
+call super::create
+end on
+
+on m_additionalprovider.destroy
+call super::destroy
+end on
+
+type m_qualityprofilemeasurements from m_pfe_cst_net_dev`m_qualityprofilemeasurements within m_file
+end type
+
+on m_qualityprofilemeasurements.create
+call super::create
+end on
+
+on m_qualityprofilemeasurements.destroy
+call super::destroy
+end on
+
+type m_recruitmentevaluations from m_pfe_cst_net_dev`m_recruitmentevaluations within m_file
+end type
+
+on m_recruitmentevaluations.create
+call super::create
+end on
+
+on m_recruitmentevaluations.destroy
+call super::destroy
+end on
+
+type m_sitesurvey from m_pfe_cst_net_dev`m_sitesurvey within m_file
+end type
+
+on m_sitesurvey.create
+call super::create
+end on
+
+on m_sitesurvey.destroy
+call super::destroy
+end on
+
+type m_todolist from m_pfe_cst_net_dev`m_todolist within m_file
+end type
+
+on m_todolist.create
+call super::create
+end on
+
+on m_todolist.destroy
+call super::destroy
+end on
+
+type m_4 from m_pfe_cst_net_dev`m_4 within m_file
+end type
+
+on m_4.create
+call super::create
+end on
+
+on m_4.destroy
+call super::destroy
+end on
+
+type m_new_mail_message from m_pfe_cst_net_dev`m_new_mail_message within m_file
+end type
+
+on m_new_mail_message.create
+call super::create
+end on
+
+on m_new_mail_message.destroy
+call super::destroy
+end on
+
+type m_dash11 from m_pfe_cst_net_dev`m_dash11 within m_file
+end type
+
+on m_dash11.create
+call super::create
+end on
+
+on m_dash11.destroy
+call super::destroy
+end on
+
+type m_save from m_pfe_cst_net_dev`m_save within m_file
+end type
+
+on m_save.create
+call super::create
+this.toolbaritembarindex = 0
+end on
+
+on m_save.destroy
+call super::destroy
+end on
+
+type m_dash12 from m_pfe_cst_net_dev`m_dash12 within m_file
+end type
+
+on m_dash12.create
+call super::create
+this.visible = false
+end on
+
+on m_dash12.destroy
+call super::destroy
+end on
+
+type m_print from m_pfe_cst_net_dev`m_print within m_file
+end type
+
+on m_print.create
+call super::create
+this.toolbaritemtext = "Print Rpt"
+this.toolbaritembarindex = 0
+end on
+
+on m_print.destroy
+call super::destroy
+end on
+
+type m_printpreview from m_pfe_cst_net_dev`m_printpreview within m_file
+end type
+
+on m_printpreview.create
+call super::create
+end on
+
+on m_printpreview.destroy
+call super::destroy
+end on
+
+type m_pagesetup from m_pfe_cst_net_dev`m_pagesetup within m_file
+end type
+
+on m_pagesetup.create
+call super::create
+end on
+
+on m_pagesetup.destroy
+call super::destroy
+end on
+
+type m_dash13 from m_pfe_cst_net_dev`m_dash13 within m_file
+end type
+
+on m_dash13.create
+call super::create
+end on
+
+on m_dash13.destroy
+call super::destroy
+end on
+
+type m_properties from m_pfe_cst_net_dev`m_properties within m_file
+end type
+
+on m_properties.create
+call super::create
+end on
+
+on m_properties.destroy
+call super::destroy
+end on
+
+type m_dash14 from m_pfe_cst_net_dev`m_dash14 within m_file
+end type
+
+on m_dash14.create
+call super::create
+this.visible = false
+end on
+
+on m_dash14.destroy
+call super::destroy
+end on
+
+type m_close from m_pfe_cst_net_dev`m_close within m_file
+end type
+
+on m_close.create
+call super::create
+end on
+
+on m_close.destroy
+call super::destroy
+end on
+
+type m_loginas from m_pfe_cst_net_dev`m_loginas within m_file
+end type
+
+on m_loginas.create
+call super::create
+end on
+
+on m_loginas.destroy
+call super::destroy
+end on
+
+type m_exit from m_pfe_cst_net_dev`m_exit within m_file
+end type
+
+on m_exit.create
+call super::create
+end on
+
+on m_exit.destroy
+call super::destroy
+end on
+
+type m_pfcmrudash1 from m_pfe_cst_net_dev`m_pfcmrudash1 within m_file
+end type
+
+on m_pfcmrudash1.create
+call super::create
+end on
+
+on m_pfcmrudash1.destroy
+call super::destroy
+end on
+
+type m_pfcmru2 from m_pfe_cst_net_dev`m_pfcmru2 within m_file
+end type
+
+on m_pfcmru2.create
+call super::create
+end on
+
+on m_pfcmru2.destroy
+call super::destroy
+end on
+
+type m_pfcmru3 from m_pfe_cst_net_dev`m_pfcmru3 within m_file
+end type
+
+on m_pfcmru3.create
+call super::create
+end on
+
+on m_pfcmru3.destroy
+call super::destroy
+end on
+
+type m_pfcmru4 from m_pfe_cst_net_dev`m_pfcmru4 within m_file
+end type
+
+on m_pfcmru4.create
+call super::create
+end on
+
+on m_pfcmru4.destroy
+call super::destroy
+end on
+
+type m_pfcmru5 from m_pfe_cst_net_dev`m_pfcmru5 within m_file
+end type
+
+on m_pfcmru5.create
+call super::create
+end on
+
+on m_pfcmru5.destroy
+call super::destroy
+end on
+
+type m_importdata from m_pfe_cst_net_dev`m_importdata within m_file
+end type
+
+on m_importdata.create
+call super::create
+end on
+
+on m_importdata.destroy
+call super::destroy
+end on
+
+type m_- from m_pfe_cst_net_dev`m_- within m_file
+end type
+
+on m_-.create
+call super::create
+end on
+
+on m_-.destroy
+call super::destroy
+end on
+
+type m_importphoto from m_pfe_cst_net_dev`m_importphoto within m_file
+end type
+
+on m_importphoto.create
+call super::create
+end on
+
+on m_importphoto.destroy
+call super::destroy
+end on
+
+type m_pracsignature from m_pfe_cst_net_dev`m_pracsignature within m_file
+end type
+
+on m_pracsignature.create
+call super::create
+end on
+
+on m_pracsignature.destroy
+call super::destroy
+end on
+
+type m_clearphoto from m_pfe_cst_net_dev`m_clearphoto within m_file
+end type
+
+on m_clearphoto.create
+call super::create
+end on
+
+on m_clearphoto.destroy
+call super::destroy
+end on
+
+type m_322 from m_pfe_cst_net_dev`m_322 within m_file
+end type
+
+on m_322.create
+call super::create
+end on
+
+on m_322.destroy
+call super::destroy
+end on
+
+type m_dataentrycomplete from m_pfe_cst_net_dev`m_dataentrycomplete within m_file
+end type
+
+on m_dataentrycomplete.create
+call super::create
+end on
+
+on m_dataentrycomplete.destroy
+call super::destroy
+end on
+
+type m_multiapp from m_pfe_cst_net_dev`m_multiapp within m_file
+end type
+
+on m_multiapp.create
+call super::create
+end on
+
+on m_multiapp.destroy
+call super::destroy
+end on
+
+type m_cvodata from m_pfe_cst_net_dev`m_cvodata within m_file
+end type
+
+on m_cvodata.create
+call super::create
+this.visible = false
+end on
+
+on m_cvodata.destroy
+call super::destroy
+end on
+
+type m_facilitydata from m_pfe_cst_net_dev`m_facilitydata within m_file
+end type
+
+on m_facilitydata.create
+call super::create
+end on
+
+on m_facilitydata.destroy
+call super::destroy
+end on
+
+type m_printapps from m_pfe_cst_net_dev`m_printapps within m_file
+end type
+
+on m_printapps.create
+call super::create
+this.visible = false
+this.toolbaritembarindex = 0
+end on
+
+on m_printapps.destroy
+call super::destroy
+end on
+
+type m_popwebsite from m_pfe_cst_net_dev`m_popwebsite within m_file
+end type
+
+on m_popwebsite.create
+call super::create
+this.toolbaritembarindex = 0
+end on
+
+on m_popwebsite.destroy
+call super::destroy
+end on
+
+type m_edit from m_pfe_cst_net_dev`m_edit within m_pfe_cst_net_dev_action_items
+end type
+
+on m_edit.create
+call super::create
+end on
+
+on m_edit.destroy
+call super::destroy
+end on
+
+type m_insert from m_pfe_cst_net_dev`m_insert within m_edit
+end type
+
+on m_insert.create
+call super::create
+this.visible = false
+end on
+
+on m_insert.destroy
+call super::destroy
+end on
+
+type m_delete1 from m_pfe_cst_net_dev`m_delete1 within m_edit
+end type
+
+on m_delete1.create
+call super::create
+this.visible = false
+end on
+
+on m_delete1.destroy
+call super::destroy
+end on
+
+type m_110 from m_pfe_cst_net_dev`m_110 within m_edit
+end type
+
+on m_110.create
+call super::create
+this.visible = false
+end on
+
+on m_110.destroy
+call super::destroy
+end on
+
+type m_clearchanges from m_pfe_cst_net_dev`m_clearchanges within m_edit
+end type
+
+on m_clearchanges.create
+call super::create
+end on
+
+on m_clearchanges.destroy
+call super::destroy
+end on
+
+type m_undo from m_pfe_cst_net_dev`m_undo within m_edit
+end type
+
+on m_undo.create
+call super::create
+end on
+
+on m_undo.destroy
+call super::destroy
+end on
+
+type m_dash21 from m_pfe_cst_net_dev`m_dash21 within m_edit
+end type
+
+on m_dash21.create
+call super::create
+end on
+
+on m_dash21.destroy
+call super::destroy
+end on
+
+type m_cut from m_pfe_cst_net_dev`m_cut within m_edit
+end type
+
+on m_cut.create
+call super::create
+end on
+
+on m_cut.destroy
+call super::destroy
+end on
+
+type m_copy from m_pfe_cst_net_dev`m_copy within m_edit
+end type
+
+on m_copy.create
+call super::create
+end on
+
+on m_copy.destroy
+call super::destroy
+end on
+
+type m_paste from m_pfe_cst_net_dev`m_paste within m_edit
+end type
+
+on m_paste.create
+call super::create
+end on
+
+on m_paste.destroy
+call super::destroy
+end on
+
+type m_pastespecial from m_pfe_cst_net_dev`m_pastespecial within m_edit
+end type
+
+on m_pastespecial.create
+call super::create
+end on
+
+on m_pastespecial.destroy
+call super::destroy
+end on
+
+type m_clear from m_pfe_cst_net_dev`m_clear within m_edit
+end type
+
+on m_clear.create
+call super::create
+end on
+
+on m_clear.destroy
+call super::destroy
+end on
+
+type m_dash22 from m_pfe_cst_net_dev`m_dash22 within m_edit
+end type
+
+on m_dash22.create
+call super::create
+end on
+
+on m_dash22.destroy
+call super::destroy
+end on
+
+type m_selectall from m_pfe_cst_net_dev`m_selectall within m_edit
+end type
+
+on m_selectall.create
+call super::create
+end on
+
+on m_selectall.destroy
+call super::destroy
+end on
+
+type m_dash23 from m_pfe_cst_net_dev`m_dash23 within m_edit
+end type
+
+on m_dash23.create
+call super::create
+end on
+
+on m_dash23.destroy
+call super::destroy
+end on
+
+type m_find from m_pfe_cst_net_dev`m_find within m_edit
+end type
+
+on m_find.create
+call super::create
+end on
+
+on m_find.destroy
+call super::destroy
+end on
+
+type m_replace from m_pfe_cst_net_dev`m_replace within m_edit
+end type
+
+on m_replace.create
+call super::create
+end on
+
+on m_replace.destroy
+call super::destroy
+end on
+
+type m_3 from m_pfe_cst_net_dev`m_3 within m_edit
+end type
+
+on m_3.create
+call super::create
+this.visible = false
+end on
+
+on m_3.destroy
+call super::destroy
+end on
+
+type m_restorerow from m_pfe_cst_net_dev`m_restorerow within m_edit
+end type
+
+on m_restorerow.create
+call super::create
+end on
+
+on m_restorerow.destroy
+call super::destroy
+end on
+
+type m_fielddefaultvalues from m_pfe_cst_net_dev`m_fielddefaultvalues within m_edit
+end type
+
+on m_fielddefaultvalues.create
+call super::create
+end on
+
+on m_fielddefaultvalues.destroy
+call super::destroy
+end on
+
+type m_7 from m_pfe_cst_net_dev`m_7 within m_edit
+end type
+
+on m_7.create
+call super::create
+end on
+
+on m_7.destroy
+call super::destroy
+end on
+
+type m_nextdataentryscreen from m_pfe_cst_net_dev`m_nextdataentryscreen within m_edit
+end type
+
+on m_nextdataentryscreen.create
+call super::create
+end on
+
+on m_nextdataentryscreen.destroy
+call super::destroy
+end on
+
+type m_previousdataentryscreen from m_pfe_cst_net_dev`m_previousdataentryscreen within m_edit
+end type
+
+on m_previousdataentryscreen.create
+call super::create
+end on
+
+on m_previousdataentryscreen.destroy
+call super::destroy
+end on
+
+type m_111 from m_pfe_cst_net_dev`m_111 within m_edit
+end type
+
+on m_111.create
+call super::create
+this.visible = false
+end on
+
+on m_111.destroy
+call super::destroy
+end on
+
+type m_refreshlookupdata from m_pfe_cst_net_dev`m_refreshlookupdata within m_edit
+end type
+
+on m_refreshlookupdata.create
+call super::create
+end on
+
+on m_refreshlookupdata.destroy
+call super::destroy
+end on
+
+type m_51 from m_pfe_cst_net_dev`m_51 within m_edit
+end type
+
+on m_51.create
+call super::create
+end on
+
+on m_51.destroy
+call super::destroy
+end on
+
+type m_lookupsearch from m_pfe_cst_net_dev`m_lookupsearch within m_edit
+end type
+
+on m_lookupsearch.create
+call super::create
+end on
+
+on m_lookupsearch.destroy
+call super::destroy
+end on
+
+type m_61 from m_pfe_cst_net_dev`m_61 within m_edit
+end type
+
+on m_61.create
+call super::create
+this.visible = false
+end on
+
+on m_61.destroy
+call super::destroy
+end on
+
+type m_addverificationentry from m_pfe_cst_net_dev`m_addverificationentry within m_edit
+end type
+
+on m_addverificationentry.create
+call super::create
+end on
+
+on m_addverificationentry.destroy
+call super::destroy
+end on
+
+type m_batchaddfacilities from m_pfe_cst_net_dev`m_batchaddfacilities within m_edit
+end type
+
+on m_batchaddfacilities.create
+call super::create
+end on
+
+on m_batchaddfacilities.destroy
+call super::destroy
+end on
+
+type m_practitionerinvoices from m_pfe_cst_net_dev`m_practitionerinvoices within m_edit
+end type
+
+on m_practitionerinvoices.create
+call super::create
+end on
+
+on m_practitionerinvoices.destroy
+call super::destroy
+end on
+
+type m_sendveriftohistory from m_pfe_cst_net_dev`m_sendveriftohistory within m_edit
+end type
+
+on m_sendveriftohistory.create
+call super::create
+end on
+
+on m_sendveriftohistory.destroy
+call super::destroy
+end on
+
+type m_view from m_pfe_cst_net_dev`m_view within m_pfe_cst_net_dev_action_items
+m_8 m_8
+m_intellibatch1 m_intellibatch1
+end type
+
+on m_view.create
+call super::create
+this.m_8=create m_8
+this.m_intellibatch1=create m_intellibatch1
+this.Item[UpperBound(this.Item)+1]=this.m_8
+this.Item[UpperBound(this.Item)+1]=this.m_intellibatch1
+end on
+
+on m_view.destroy
+call super::destroy
+destroy(this.m_8)
+destroy(this.m_intellibatch1)
+end on
+
+type m_ruler from m_pfe_cst_net_dev`m_ruler within m_view
+end type
+
+on m_ruler.create
+call super::create
+this.visible = false
+end on
+
+on m_ruler.destroy
+call super::destroy
+end on
+
+type m_dash31 from m_pfe_cst_net_dev`m_dash31 within m_view
+end type
+
+on m_dash31.create
+call super::create
+this.visible = false
+end on
+
+on m_dash31.destroy
+call super::destroy
+end on
+
+type m_largeicon from m_pfe_cst_net_dev`m_largeicon within m_view
+end type
+
+on m_largeicon.create
+call super::create
+end on
+
+on m_largeicon.destroy
+call super::destroy
+end on
+
+type m_smallicons from m_pfe_cst_net_dev`m_smallicons within m_view
+end type
+
+on m_smallicons.create
+call super::create
+end on
+
+on m_smallicons.destroy
+call super::destroy
+end on
+
+type m_list from m_pfe_cst_net_dev`m_list within m_view
+end type
+
+on m_list.create
+call super::create
+end on
+
+on m_list.destroy
+call super::destroy
+end on
+
+type m_details from m_pfe_cst_net_dev`m_details within m_view
+end type
+
+on m_details.create
+call super::create
+end on
+
+on m_details.destroy
+call super::destroy
+end on
+
+type m_dash32 from m_pfe_cst_net_dev`m_dash32 within m_view
+end type
+
+on m_dash32.create
+call super::create
+end on
+
+on m_dash32.destroy
+call super::destroy
+end on
+
+type m_arrangeicons from m_pfe_cst_net_dev`m_arrangeicons within m_view
+end type
+
+on m_arrangeicons.create
+call super::create
+end on
+
+on m_arrangeicons.destroy
+call super::destroy
+end on
+
+type m_by1 from m_pfe_cst_net_dev`m_by1 within m_arrangeicons
+end type
+
+on m_by1.create
+call super::create
+end on
+
+on m_by1.destroy
+call super::destroy
+end on
+
+type m_dash33 from m_pfe_cst_net_dev`m_dash33 within m_arrangeicons
+end type
+
+on m_dash33.create
+call super::create
+end on
+
+on m_dash33.destroy
+call super::destroy
+end on
+
+type m_autoarrange from m_pfe_cst_net_dev`m_autoarrange within m_arrangeicons
+end type
+
+on m_autoarrange.create
+call super::create
+end on
+
+on m_autoarrange.destroy
+call super::destroy
+end on
+
+type m_dash34 from m_pfe_cst_net_dev`m_dash34 within m_view
+end type
+
+on m_dash34.create
+call super::create
+this.visible = true
+end on
+
+on m_dash34.destroy
+call super::destroy
+end on
+
+type m_first from m_pfe_cst_net_dev`m_first within m_view
+end type
+
+on m_first.create
+call super::create
+end on
+
+on m_first.destroy
+call super::destroy
+end on
+
+type m_nextpage from m_pfe_cst_net_dev`m_nextpage within m_view
+end type
+
+on m_nextpage.create
+call super::create
+end on
+
+on m_nextpage.destroy
+call super::destroy
+end on
+
+type m_priorpage from m_pfe_cst_net_dev`m_priorpage within m_view
+end type
+
+on m_priorpage.create
+call super::create
+end on
+
+on m_priorpage.destroy
+call super::destroy
+end on
+
+type m_lastpage from m_pfe_cst_net_dev`m_lastpage within m_view
+end type
+
+on m_lastpage.create
+call super::create
+end on
+
+on m_lastpage.destroy
+call super::destroy
+end on
+
+type m_dash35 from m_pfe_cst_net_dev`m_dash35 within m_view
+end type
+
+on m_dash35.create
+call super::create
+end on
+
+on m_dash35.destroy
+call super::destroy
+end on
+
+type m_sort from m_pfe_cst_net_dev`m_sort within m_view
+end type
+
+on m_sort.create
+call super::create
+end on
+
+on m_sort.destroy
+call super::destroy
+end on
+
+type m_filter from m_pfe_cst_net_dev`m_filter within m_view
+end type
+
+on m_filter.create
+call super::create
+this.toolbaritembarindex = 0
+end on
+
+on m_filter.destroy
+call super::destroy
+end on
+
+type m_dash36 from m_pfe_cst_net_dev`m_dash36 within m_view
+end type
+
+on m_dash36.create
+call super::create
+end on
+
+on m_dash36.destroy
+call super::destroy
+end on
+
+type m_zoom from m_pfe_cst_net_dev`m_zoom within m_view
+end type
+
+on m_zoom.create
+call super::create
+end on
+
+on m_zoom.destroy
+call super::destroy
+end on
+
+type m_checkdaysbetween from m_pfe_cst_net_dev`m_checkdaysbetween within m_view
+end type
+
+on m_checkdaysbetween.create
+call super::create
+end on
+
+on m_checkdaysbetween.destroy
+call super::destroy
+end on
+
+type m_facilitynotes from m_pfe_cst_net_dev`m_facilitynotes within m_view
+end type
+
+on m_facilitynotes.create
+call super::create
+end on
+
+on m_facilitynotes.destroy
+call super::destroy
+end on
+
+type m_notes from m_pfe_cst_net_dev`m_notes within m_view
+end type
+
+on m_notes.create
+call super::create
+end on
+
+on m_notes.destroy
+call super::destroy
+end on
+
+type m_aptnote from m_pfe_cst_net_dev`m_aptnote within m_view
+end type
+
+on m_aptnote.create
+call super::create
+end on
+
+on m_aptnote.destroy
+call super::destroy
+end on
+
+type m_relationshipreport from m_pfe_cst_net_dev`m_relationshipreport within m_view
+end type
+
+on m_relationshipreport.create
+call super::create
+end on
+
+on m_relationshipreport.destroy
+call super::destroy
+end on
+
+type m_contract0 from m_pfe_cst_net_dev`m_contract0 within m_pfe_cst_net_dev_action_items
+end type
+
+on m_contract0.create
+call super::create
+end on
+
+on m_contract0.destroy
+call super::destroy
+end on
+
+type m_new_blank_contract_record from m_pfe_cst_net_dev`m_new_blank_contract_record within m_contract0
+end type
+
+on m_new_blank_contract_record.create
+call super::create
+end on
+
+on m_new_blank_contract_record.destroy
+call super::destroy
+end on
+
+type m_new_blank_sub_contract_record from m_pfe_cst_net_dev`m_new_blank_sub_contract_record within m_contract0
+end type
+
+on m_new_blank_sub_contract_record.create
+call super::create
+end on
+
+on m_new_blank_sub_contract_record.destroy
+call super::destroy
+end on
+
+type m_new_contract from m_pfe_cst_net_dev`m_new_contract within m_contract0
+end type
+
+on m_new_contract.create
+call super::create
+end on
+
+on m_new_contract.destroy
+call super::destroy
+end on
+
+type m_copy_contract_record from m_pfe_cst_net_dev`m_copy_contract_record within m_contract0
+end type
+
+on m_copy_contract_record.create
+call super::create
+end on
+
+on m_copy_contract_record.destroy
+call super::destroy
+end on
+
+type m_copy_create_sub_contract_record from m_pfe_cst_net_dev`m_copy_create_sub_contract_record within m_contract0
+end type
+
+on m_copy_create_sub_contract_record.create
+call super::create
+end on
+
+on m_copy_create_sub_contract_record.destroy
+call super::destroy
+end on
+
+type m_copy_contract from m_pfe_cst_net_dev`m_copy_contract within m_contract0
+end type
+
+on m_copy_contract.create
+call super::create
+end on
+
+on m_copy_contract.destroy
+call super::destroy
+end on
+
+type m_contract_templates from m_pfe_cst_net_dev`m_contract_templates within m_contract0
+end type
+
+on m_contract_templates.create
+call super::create
+end on
+
+on m_contract_templates.destroy
+call super::destroy
+end on
+
+type m_template_item from m_pfe_cst_net_dev`m_template_item within m_contract0
+end type
+
+on m_template_item.create
+call super::create
+end on
+
+on m_template_item.destroy
+call super::destroy
+end on
+
+type m_reports from m_pfe_cst_net_dev`m_reports within m_pfe_cst_net_dev_action_items
+end type
+
+on m_reports.create
+call super::create
+end on
+
+on m_reports.destroy
+call super::destroy
+end on
+
+type m_output from m_pfe_cst_net_dev`m_output within m_reports
+end type
+
+on m_output.create
+call super::create
+end on
+
+on m_output.destroy
+call super::destroy
+end on
+
+type m_120 from m_pfe_cst_net_dev`m_120 within m_reports
+end type
+
+on m_120.create
+call super::create
+end on
+
+on m_120.destroy
+call super::destroy
+end on
+
+type m_applications from m_pfe_cst_net_dev`m_applications within m_reports
+end type
+
+on m_applications.create
+call super::create
+end on
+
+on m_applications.destroy
+call super::destroy
+end on
+
+type m_runexport from m_pfe_cst_net_dev`m_runexport within m_reports
+end type
+
+on m_runexport.create
+call super::create
+end on
+
+on m_runexport.destroy
+call super::destroy
+end on
+
+type m_intellireport from m_pfe_cst_net_dev`m_intellireport within m_reports
+end type
+
+on m_intellireport.create
+call super::create
+end on
+
+on m_intellireport.destroy
+call super::destroy
+end on
+
+type m_letters from m_pfe_cst_net_dev`m_letters within m_reports
+end type
+
+on m_letters.create
+call super::create
+end on
+
+on m_letters.destroy
+call super::destroy
+end on
+
+type m_npdbreports from m_pfe_cst_net_dev`m_npdbreports within m_reports
+end type
+
+on m_npdbreports.create
+call super::create
+end on
+
+on m_npdbreports.destroy
+call super::destroy
+end on
+
+type m_oneclickreports from m_pfe_cst_net_dev`m_oneclickreports within m_reports
+end type
+
+on m_oneclickreports.create
+call super::create
+end on
+
+on m_oneclickreports.destroy
+call super::destroy
+end on
+
+type m_privilegelisting from m_pfe_cst_net_dev`m_privilegelisting within m_reports
+end type
+
+on m_privilegelisting.create
+call super::create
+end on
+
+on m_privilegelisting.destroy
+call super::destroy
+end on
+
+type m_reportsgraphs from m_pfe_cst_net_dev`m_reportsgraphs within m_reports
+end type
+
+on m_reportsgraphs.create
+call super::create
+end on
+
+on m_reportsgraphs.destroy
+call super::destroy
+end on
+
+type m_profilerpt from m_pfe_cst_net_dev`m_profilerpt within m_reports
+end type
+
+on m_profilerpt.create
+call super::create
+end on
+
+on m_profilerpt.destroy
+call super::destroy
+end on
+
+type m_system from m_pfe_cst_net_dev`m_system within m_pfe_cst_net_dev_action_items
+end type
+
+on m_system.create
+call super::create
+end on
+
+on m_system.destroy
+call super::destroy
+end on
+
+type m_applicationmapping from m_pfe_cst_net_dev`m_applicationmapping within m_system
+end type
+
+on m_applicationmapping.create
+call super::create
+end on
+
+on m_applicationmapping.destroy
+call super::destroy
+end on
+
+type m_2 from m_pfe_cst_net_dev`m_2 within m_system
+end type
+
+on m_2.create
+call super::create
+end on
+
+on m_2.destroy
+call super::destroy
+end on
+
+type m_audit from m_pfe_cst_net_dev`m_audit within m_system
+end type
+
+on m_audit.create
+call super::create
+end on
+
+on m_audit.destroy
+call super::destroy
+end on
+
+type m_audittrail from m_pfe_cst_net_dev`m_audittrail within m_system
+end type
+
+on m_audittrail.create
+call super::create
+end on
+
+on m_audittrail.destroy
+call super::destroy
+end on
+
+type m_batchaddapplications from m_pfe_cst_net_dev`m_batchaddapplications within m_system
+end type
+
+on m_batchaddapplications.create
+call super::create
+end on
+
+on m_batchaddapplications.destroy
+call super::destroy
+end on
+
+type m_batchupdate from m_pfe_cst_net_dev`m_batchupdate within m_system
+end type
+
+on m_batchupdate.create
+call super::create
+end on
+
+on m_batchupdate.destroy
+call super::destroy
+end on
+
+type m_addbatch from m_pfe_cst_net_dev`m_addbatch within m_batchupdate
+end type
+
+on m_addbatch.create
+call super::create
+end on
+
+on m_addbatch.destroy
+call super::destroy
+end on
+
+type m_batchpackage from m_pfe_cst_net_dev`m_batchpackage within m_batchupdate
+end type
+
+on m_batchpackage.create
+call super::create
+end on
+
+on m_batchpackage.destroy
+call super::destroy
+end on
+
+type m_privileges from m_pfe_cst_net_dev`m_privileges within m_batchupdate
+end type
+
+on m_privileges.create
+call super::create
+end on
+
+on m_privileges.destroy
+call super::destroy
+end on
+
+type m_staffcategory from m_pfe_cst_net_dev`m_staffcategory within m_batchupdate
+end type
+
+on m_staffcategory.create
+call super::create
+end on
+
+on m_staffcategory.destroy
+call super::destroy
+end on
+
+type m_updatebatch from m_pfe_cst_net_dev`m_updatebatch within m_batchupdate
+end type
+
+on m_updatebatch.create
+call super::create
+end on
+
+on m_updatebatch.destroy
+call super::destroy
+end on
+
+type m_updatepayorappl from m_pfe_cst_net_dev`m_updatepayorappl within m_batchupdate
+end type
+
+on m_updatepayorappl.create
+call super::create
+end on
+
+on m_updatepayorappl.destroy
+call super::destroy
+end on
+
+type m_bidq from m_pfe_cst_net_dev`m_bidq within m_system
+end type
+
+on m_bidq.create
+call super::create
+end on
+
+on m_bidq.destroy
+call super::destroy
+end on
+
+type m_browseweb from m_pfe_cst_net_dev`m_browseweb within m_system
+end type
+
+on m_browseweb.create
+call super::create
+end on
+
+on m_browseweb.destroy
+call super::destroy
+end on
+
+type m_communicationlogs from m_pfe_cst_net_dev`m_communicationlogs within m_system
+end type
+
+on m_communicationlogs.create
+call super::create
+end on
+
+on m_communicationlogs.destroy
+call super::destroy
+end on
+
+type m_eamillog from m_pfe_cst_net_dev`m_eamillog within m_communicationlogs
+end type
+
+on m_eamillog.create
+call super::create
+end on
+
+on m_eamillog.destroy
+call super::destroy
+end on
+
+type m_fax_log from m_pfe_cst_net_dev`m_fax_log within m_communicationlogs
+end type
+
+on m_fax_log.create
+call super::create
+end on
+
+on m_fax_log.destroy
+call super::destroy
+end on
+
+type m_packagelog from m_pfe_cst_net_dev`m_packagelog within m_communicationlogs
+end type
+
+on m_packagelog.create
+call super::create
+end on
+
+on m_packagelog.destroy
+call super::destroy
+end on
+
+type m_deletepractitioner from m_pfe_cst_net_dev`m_deletepractitioner within m_system
+end type
+
+on m_deletepractitioner.create
+call super::create
+end on
+
+on m_deletepractitioner.destroy
+call super::destroy
+end on
+
+type m_documentsbrowse from m_pfe_cst_net_dev`m_documentsbrowse within m_system
+end type
+
+on m_documentsbrowse.create
+call super::create
+end on
+
+on m_documentsbrowse.destroy
+call super::destroy
+end on
+
+type m_imp_audit from m_pfe_cst_net_dev`m_imp_audit within m_system
+end type
+
+on m_imp_audit.create
+call super::create
+end on
+
+on m_imp_audit.destroy
+call super::destroy
+end on
+
+type m_intellibatch from m_pfe_cst_net_dev`m_intellibatch within m_system
+end type
+
+on m_intellibatch.create
+call super::create
+end on
+
+on m_intellibatch.destroy
+call super::destroy
+end on
+
+type m_addredflagdata from m_pfe_cst_net_dev`m_addredflagdata within m_system
+end type
+
+on m_addredflagdata.create
+call super::create
+end on
+
+on m_addredflagdata.destroy
+call super::destroy
+end on
+
+type m_viewredflagdata from m_pfe_cst_net_dev`m_viewredflagdata within m_system
+end type
+
+on m_viewredflagdata.create
+call super::create
+end on
+
+on m_viewredflagdata.destroy
+call super::destroy
+end on
+
+type m_setup from m_pfe_cst_net_dev`m_setup within m_system
+end type
+
+on m_setup.create
+call super::create
+end on
+
+on m_setup.destroy
+call super::destroy
+end on
+
+type m_useridbatchupdate from m_pfe_cst_net_dev`m_useridbatchupdate within m_system
+end type
+
+on m_useridbatchupdate.create
+call super::create
+end on
+
+on m_useridbatchupdate.destroy
+call super::destroy
+end on
+
+type m_utilities from m_pfe_cst_net_dev`m_utilities within m_system
+end type
+
+on m_utilities.create
+call super::create
+end on
+
+on m_utilities.destroy
+call super::destroy
+end on
+
+type m_wc_data_audit from m_pfe_cst_net_dev`m_wc_data_audit within m_system
+end type
+
+on m_wc_data_audit.create
+call super::create
+end on
+
+on m_wc_data_audit.destroy
+call super::destroy
+end on
+
+type m_webviewfunctions from m_pfe_cst_net_dev`m_webviewfunctions within m_system
+end type
+
+on m_webviewfunctions.create
+call super::create
+end on
+
+on m_webviewfunctions.destroy
+call super::destroy
+end on
+
+type m_webviewauditing from m_pfe_cst_net_dev`m_webviewauditing within m_webviewfunctions
+end type
+
+on m_webviewauditing.create
+call super::create
+end on
+
+on m_webviewauditing.destroy
+call super::destroy
+end on
+
+type m_wvaffletterlog from m_pfe_cst_net_dev`m_wvaffletterlog within m_webviewfunctions
+end type
+
+on m_wvaffletterlog.create
+call super::create
+end on
+
+on m_wvaffletterlog.destroy
+call super::destroy
+end on
+
+type m_webviewesignlog from m_pfe_cst_net_dev`m_webviewesignlog within m_webviewfunctions
+end type
+
+on m_webviewesignlog.create
+call super::create
+end on
+
+on m_webviewesignlog.destroy
+call super::destroy
+end on
+
+type m_webviewtracking from m_pfe_cst_net_dev`m_webviewtracking within m_webviewfunctions
+end type
+
+on m_webviewtracking.create
+call super::create
+end on
+
+on m_webviewtracking.destroy
+call super::destroy
+end on
+
+type m_createwebviewuser from m_pfe_cst_net_dev`m_createwebviewuser within m_webviewfunctions
+end type
+
+on m_createwebviewuser.create
+call super::create
+end on
+
+on m_createwebviewuser.destroy
+call super::destroy
+end on
+
+type m_verificationbatchfunctions from m_pfe_cst_net_dev`m_verificationbatchfunctions within m_system
+end type
+
+on m_verificationbatchfunctions.create
+call super::create
+end on
+
+on m_verificationbatchfunctions.destroy
+call super::destroy
+end on
+
+type m_batchrecredential from m_pfe_cst_net_dev`m_batchrecredential within m_verificationbatchfunctions
+end type
+
+on m_batchrecredential.create
+call super::create
+end on
+
+on m_batchrecredential.destroy
+call super::destroy
+end on
+
+type m_importoigdata from m_pfe_cst_net_dev`m_importoigdata within m_verificationbatchfunctions
+end type
+
+on m_importoigdata.create
+call super::create
+end on
+
+on m_importoigdata.destroy
+call super::destroy
+end on
+
+type m_oiglog from m_pfe_cst_net_dev`m_oiglog within m_verificationbatchfunctions
+end type
+
+on m_oiglog.create
+call super::create
+end on
+
+on m_oiglog.destroy
+call super::destroy
+end on
+
+type m_batchoig from m_pfe_cst_net_dev`m_batchoig within m_verificationbatchfunctions
+end type
+
+on m_batchoig.create
+call super::create
+end on
+
+on m_batchoig.destroy
+call super::destroy
+end on
+
+type m_batchverifications from m_pfe_cst_net_dev`m_batchverifications within m_verificationbatchfunctions
+end type
+
+on m_batchverifications.create
+call super::create
+end on
+
+on m_batchverifications.destroy
+call super::destroy
+end on
+
+type m_verificationincomplete from m_pfe_cst_net_dev`m_verificationincomplete within m_verificationbatchfunctions
+end type
+
+on m_verificationincomplete.create
+call super::create
+end on
+
+on m_verificationincomplete.destroy
+call super::destroy
+end on
+
+type m_verificationbatchlog from m_pfe_cst_net_dev`m_verificationbatchlog within m_verificationbatchfunctions
+end type
+
+on m_verificationbatchlog.create
+call super::create
+end on
+
+on m_verificationbatchlog.destroy
+call super::destroy
+end on
+
+type m_1 from m_pfe_cst_net_dev`m_1 within m_system
+end type
+
+on m_1.create
+call super::create
+end on
+
+on m_1.destroy
+call super::destroy
+end on
+
+type m_painters from m_pfe_cst_net_dev`m_painters within m_system
+end type
+
+on m_painters.create
+call super::create
+end on
+
+on m_painters.destroy
+call super::destroy
+end on
+
+type m_automation from m_pfe_cst_net_dev`m_automation within m_painters
+end type
+
+on m_automation.create
+call super::create
+end on
+
+on m_automation.destroy
+call super::destroy
+end on
+
+type m_dataflowpainter from m_pfe_cst_net_dev`m_dataflowpainter within m_automation
+end type
+
+on m_dataflowpainter.create
+call super::create
+end on
+
+on m_dataflowpainter.destroy
+call super::destroy
+end on
+
+type m_notificationalertpainter from m_pfe_cst_net_dev`m_notificationalertpainter within m_automation
+end type
+
+on m_notificationalertpainter.create
+call super::create
+end on
+
+on m_notificationalertpainter.destroy
+call super::destroy
+end on
+
+type m_schedulerpainter from m_pfe_cst_net_dev`m_schedulerpainter within m_automation
+end type
+
+on m_schedulerpainter.create
+call super::create
+end on
+
+on m_schedulerpainter.destroy
+call super::destroy
+end on
+
+type m_contractrequirementprofile from m_pfe_cst_net_dev`m_contractrequirementprofile within m_painters
+end type
+
+on m_contractrequirementprofile.create
+call super::create
+end on
+
+on m_contractrequirementprofile.destroy
+call super::destroy
+end on
+
+type m_contractrequirementprofile0 from m_pfe_cst_net_dev`m_contractrequirementprofile0 within m_contractrequirementprofile
+end type
+
+on m_contractrequirementprofile0.create
+call super::create
+end on
+
+on m_contractrequirementprofile0.destroy
+call super::destroy
+end on
+
+type m_cptcode from m_pfe_cst_net_dev`m_cptcode within m_contractrequirementprofile
+end type
+
+on m_cptcode.create
+call super::create
+end on
+
+on m_cptcode.destroy
+call super::destroy
+end on
+
+type m_agreement from m_pfe_cst_net_dev`m_agreement within m_painters
+end type
+
+on m_agreement.create
+call super::create
+end on
+
+on m_agreement.destroy
+call super::destroy
+end on
+
+type m_clauselibrarypainter from m_pfe_cst_net_dev`m_clauselibrarypainter within m_agreement
+end type
+
+on m_clauselibrarypainter.create
+call super::create
+end on
+
+on m_clauselibrarypainter.destroy
+call super::destroy
+end on
+
+type m_documentlibrarypainter from m_pfe_cst_net_dev`m_documentlibrarypainter within m_agreement
+end type
+
+on m_documentlibrarypainter.create
+call super::create
+end on
+
+on m_documentlibrarypainter.destroy
+call super::destroy
+end on
+
+type m_documentlibrarypainter_l2 from m_pfe_cst_net_dev`m_documentlibrarypainter_l2 within m_agreement
+end type
+
+on m_documentlibrarypainter_l2.create
+call super::create
+end on
+
+on m_documentlibrarypainter_l2.destroy
+call super::destroy
+end on
+
+type m_templatelibrarypainter from m_pfe_cst_net_dev`m_templatelibrarypainter within m_agreement
+end type
+
+on m_templatelibrarypainter.create
+call super::create
+end on
+
+on m_templatelibrarypainter.destroy
+call super::destroy
+end on
+
+type m_communication from m_pfe_cst_net_dev`m_communication within m_painters
+end type
+
+on m_communication.create
+call super::create
+end on
+
+on m_communication.destroy
+call super::destroy
+end on
+
+type m_emailpainter from m_pfe_cst_net_dev`m_emailpainter within m_communication
+end type
+
+on m_emailpainter.create
+call super::create
+end on
+
+on m_emailpainter.destroy
+call super::destroy
+end on
+
+type m_faxemailtemplatepainter from m_pfe_cst_net_dev`m_faxemailtemplatepainter within m_communication
+end type
+
+on m_faxemailtemplatepainter.create
+call super::create
+end on
+
+on m_faxemailtemplatepainter.destroy
+call super::destroy
+end on
+
+type m_letterpainter from m_pfe_cst_net_dev`m_letterpainter within m_communication
+end type
+
+on m_letterpainter.create
+call super::create
+end on
+
+on m_letterpainter.destroy
+call super::destroy
+end on
+
+type m_letterstorageareapainter from m_pfe_cst_net_dev`m_letterstorageareapainter within m_communication
+end type
+
+on m_letterstorageareapainter.create
+call super::create
+end on
+
+on m_letterstorageareapainter.destroy
+call super::destroy
+end on
+
+type m_datatransfer from m_pfe_cst_net_dev`m_datatransfer within m_painters
+end type
+
+on m_datatransfer.create
+call super::create
+end on
+
+on m_datatransfer.destroy
+call super::destroy
+end on
+
+type m_outputpainter from m_pfe_cst_net_dev`m_outputpainter within m_datatransfer
+end type
+
+on m_outputpainter.create
+call super::create
+end on
+
+on m_outputpainter.destroy
+call super::destroy
+end on
+
+type m_importpainter from m_pfe_cst_net_dev`m_importpainter within m_datatransfer
+end type
+
+on m_importpainter.create
+call super::create
+end on
+
+on m_importpainter.destroy
+call super::destroy
+end on
+
+type m_lookups from m_pfe_cst_net_dev`m_lookups within m_painters
+end type
+
+on m_lookups.create
+call super::create
+end on
+
+on m_lookups.destroy
+call super::destroy
+end on
+
+type m_lookuppainter from m_pfe_cst_net_dev`m_lookuppainter within m_lookups
+end type
+
+on m_lookuppainter.create
+call super::create
+end on
+
+on m_lookuppainter.destroy
+call super::destroy
+end on
+
+type m_peerrefpainter from m_pfe_cst_net_dev`m_peerrefpainter within m_lookups
+end type
+
+on m_peerrefpainter.create
+call super::create
+end on
+
+on m_peerrefpainter.destroy
+call super::destroy
+end on
+
+type m_questionpainter from m_pfe_cst_net_dev`m_questionpainter within m_lookups
+end type
+
+on m_questionpainter.create
+call super::create
+end on
+
+on m_questionpainter.destroy
+call super::destroy
+end on
+
+type m_standingflagsettings from m_pfe_cst_net_dev`m_standingflagsettings within m_lookups
+end type
+
+on m_standingflagsettings.create
+call super::create
+end on
+
+on m_standingflagsettings.destroy
+call super::destroy
+end on
+
+type m_privilegesandqa from m_pfe_cst_net_dev`m_privilegesandqa within m_painters
+end type
+
+on m_privilegesandqa.create
+call super::create
+end on
+
+on m_privilegesandqa.destroy
+call super::destroy
+end on
+
+type m_procedurelookup from m_pfe_cst_net_dev`m_procedurelookup within m_privilegesandqa
+end type
+
+on m_procedurelookup.create
+call super::create
+end on
+
+on m_procedurelookup.destroy
+call super::destroy
+end on
+
+type m_privilegepainter from m_pfe_cst_net_dev`m_privilegepainter within m_privilegesandqa
+end type
+
+on m_privilegepainter.create
+call super::create
+end on
+
+on m_privilegepainter.destroy
+call super::destroy
+end on
+
+type m_processtemplates from m_pfe_cst_net_dev`m_processtemplates within m_privilegesandqa
+end type
+
+on m_processtemplates.create
+call super::create
+end on
+
+on m_processtemplates.destroy
+call super::destroy
+end on
+
+type m_reappointmentmeasurements from m_pfe_cst_net_dev`m_reappointmentmeasurements within m_privilegesandqa
+end type
+
+on m_reappointmentmeasurements.create
+call super::create
+end on
+
+on m_reappointmentmeasurements.destroy
+call super::destroy
+end on
+
+type m_qametriclookup from m_pfe_cst_net_dev`m_qametriclookup within m_privilegesandqa
+end type
+
+on m_qametriclookup.create
+call super::create
+end on
+
+on m_qametriclookup.destroy
+call super::destroy
+end on
+
+type m_fppeplantemplates from m_pfe_cst_net_dev`m_fppeplantemplates within m_privilegesandqa
+end type
+
+on m_fppeplantemplates.create
+call super::create
+end on
+
+on m_fppeplantemplates.destroy
+call super::destroy
+end on
+
+type m_profiles from m_pfe_cst_net_dev`m_profiles within m_painters
+end type
+
+on m_profiles.create
+call super::create
+end on
+
+on m_profiles.destroy
+call super::destroy
+end on
+
+type m_profilepainter from m_pfe_cst_net_dev`m_profilepainter within m_profiles
+end type
+
+on m_profilepainter.create
+call super::create
+end on
+
+on m_profilepainter.destroy
+call super::destroy
+end on
+
+type m_profilepainter1 from m_pfe_cst_net_dev`m_profilepainter1 within m_profiles
+end type
+
+on m_profilepainter1.create
+call super::create
+end on
+
+on m_profilepainter1.destroy
+call super::destroy
+end on
+
+type m_reportpainter from m_pfe_cst_net_dev`m_reportpainter within m_profiles
+end type
+
+on m_reportpainter.create
+call super::create
+end on
+
+on m_reportpainter.destroy
+call super::destroy
+end on
+
+type m_security from m_pfe_cst_net_dev`m_security within m_painters
+end type
+
+on m_security.create
+call super::create
+end on
+
+on m_security.destroy
+call super::destroy
+end on
+
+type m_rolepainter from m_pfe_cst_net_dev`m_rolepainter within m_security
+end type
+
+on m_rolepainter.create
+call super::create
+end on
+
+on m_rolepainter.destroy
+call super::destroy
+end on
+
+type m_securitysettings from m_pfe_cst_net_dev`m_securitysettings within m_security
+end type
+
+on m_securitysettings.create
+call super::create
+end on
+
+on m_securitysettings.destroy
+call super::destroy
+end on
+
+type m_userpainter from m_pfe_cst_net_dev`m_userpainter within m_security
+end type
+
+on m_userpainter.create
+call super::create
+end on
+
+on m_userpainter.destroy
+call super::destroy
+end on
+
+type m_screensetup from m_pfe_cst_net_dev`m_screensetup within m_painters
+end type
+
+on m_screensetup.create
+call super::create
+end on
+
+on m_screensetup.destroy
+call super::destroy
+end on
+
+type m_appointmentlabels from m_pfe_cst_net_dev`m_appointmentlabels within m_screensetup
+end type
+
+on m_appointmentlabels.create
+call super::create
+end on
+
+on m_appointmentlabels.destroy
+call super::destroy
+end on
+
+type m_groupdatalabels from m_pfe_cst_net_dev`m_groupdatalabels within m_screensetup
+end type
+
+on m_groupdatalabels.create
+call super::create
+end on
+
+on m_groupdatalabels.destroy
+call super::destroy
+end on
+
+type m_intelliapppainter from m_pfe_cst_net_dev`m_intelliapppainter within m_screensetup
+end type
+
+on m_intelliapppainter.create
+call super::create
+end on
+
+on m_intelliapppainter.destroy
+call super::destroy
+end on
+
+type m_contractdatascreenpainter from m_pfe_cst_net_dev`m_contractdatascreenpainter within m_screensetup
+end type
+
+on m_contractdatascreenpainter.create
+call super::create
+end on
+
+on m_contractdatascreenpainter.destroy
+call super::destroy
+end on
+
+type m_screenpainter from m_pfe_cst_net_dev`m_screenpainter within m_screensetup
+end type
+
+on m_screenpainter.create
+call super::create
+end on
+
+on m_screenpainter.destroy
+call super::destroy
+end on
+
+type m_contractviewpainter from m_pfe_cst_net_dev`m_contractviewpainter within m_screensetup
+end type
+
+on m_contractviewpainter.create
+call super::create
+end on
+
+on m_contractviewpainter.destroy
+call super::destroy
+end on
+
+type m_viewpainter from m_pfe_cst_net_dev`m_viewpainter within m_screensetup
+end type
+
+on m_viewpainter.create
+call super::create
+end on
+
+on m_viewpainter.destroy
+call super::destroy
+end on
+
+type m_systemsetup from m_pfe_cst_net_dev`m_systemsetup within m_painters
+end type
+
+on m_systemsetup.create
+call super::create
+end on
+
+on m_systemsetup.destroy
+call super::destroy
+end on
+
+type m_applicationtrackingsettings from m_pfe_cst_net_dev`m_applicationtrackingsettings within m_systemsetup
+end type
+
+on m_applicationtrackingsettings.create
+call super::create
+end on
+
+on m_applicationtrackingsettings.destroy
+call super::destroy
+end on
+
+type m_applicationauditpainter from m_pfe_cst_net_dev`m_applicationauditpainter within m_systemsetup
+end type
+
+on m_applicationauditpainter.create
+call super::create
+end on
+
+on m_applicationauditpainter.destroy
+call super::destroy
+end on
+
+type m_commimtstpainter from m_pfe_cst_net_dev`m_commimtstpainter within m_systemsetup
+end type
+
+on m_commimtstpainter.create
+call super::create
+end on
+
+on m_commimtstpainter.destroy
+call super::destroy
+end on
+
+type m_expiringlettersetting from m_pfe_cst_net_dev`m_expiringlettersetting within m_systemsetup
+end type
+
+on m_expiringlettersetting.create
+call super::create
+end on
+
+on m_expiringlettersetting.destroy
+call super::destroy
+end on
+
+type m_facilitypainter from m_pfe_cst_net_dev`m_facilitypainter within m_systemsetup
+end type
+
+on m_facilitypainter.create
+call super::create
+end on
+
+on m_facilitypainter.destroy
+call super::destroy
+end on
+
+type m_imagetypepainter from m_pfe_cst_net_dev`m_imagetypepainter within m_systemsetup
+end type
+
+on m_imagetypepainter.create
+call super::create
+end on
+
+on m_imagetypepainter.destroy
+call super::destroy
+end on
+
+type m_intellibatchpainter from m_pfe_cst_net_dev`m_intellibatchpainter within m_systemsetup
+end type
+
+on m_intellibatchpainter.create
+call super::create
+end on
+
+on m_intellibatchpainter.destroy
+call super::destroy
+end on
+
+type m_multiapppainter from m_pfe_cst_net_dev`m_multiapppainter within m_systemsetup
+end type
+
+on m_multiapppainter.create
+call super::create
+end on
+
+on m_multiapppainter.destroy
+call super::destroy
+end on
+
+type m_nonpractitioners from m_pfe_cst_net_dev`m_nonpractitioners within m_systemsetup
+end type
+
+on m_nonpractitioners.create
+call super::create
+end on
+
+on m_nonpractitioners.destroy
+call super::destroy
+end on
+
+type m_surveypainter from m_pfe_cst_net_dev`m_surveypainter within m_systemsetup
+end type
+
+on m_surveypainter.create
+call super::create
+end on
+
+on m_surveypainter.destroy
+call super::destroy
+end on
+
+type m_todolistpainter from m_pfe_cst_net_dev`m_todolistpainter within m_systemsetup
+end type
+
+on m_todolistpainter.create
+call super::create
+end on
+
+on m_todolistpainter.destroy
+call super::destroy
+end on
+
+type m_workflowpainter from m_pfe_cst_net_dev`m_workflowpainter within m_systemsetup
+end type
+
+on m_workflowpainter.create
+call super::create
+end on
+
+on m_workflowpainter.destroy
+call super::destroy
+end on
+
+type m_webcrawlersetup from m_pfe_cst_net_dev`m_webcrawlersetup within m_systemsetup
+end type
+
+on m_webcrawlersetup.create
+call super::create
+end on
+
+on m_webcrawlersetup.destroy
+call super::destroy
+end on
+
+type m_webview from m_pfe_cst_net_dev`m_webview within m_painters
+end type
+
+on m_webview.create
+call super::create
+end on
+
+on m_webview.destroy
+call super::destroy
+end on
+
+type m_esignatureagreements from m_pfe_cst_net_dev`m_esignatureagreements within m_webview
+end type
+
+on m_esignatureagreements.create
+call super::create
+end on
+
+on m_esignatureagreements.destroy
+call super::destroy
+end on
+
+type m_lettertemplatemaintenance from m_pfe_cst_net_dev`m_lettertemplatemaintenance within m_webview
+end type
+
+on m_lettertemplatemaintenance.create
+call super::create
+end on
+
+on m_lettertemplatemaintenance.destroy
+call super::destroy
+end on
+
+type m_logoimage from m_pfe_cst_net_dev`m_logoimage within m_webview
+end type
+
+on m_logoimage.create
+call super::create
+end on
+
+on m_logoimage.destroy
+call super::destroy
+end on
+
+type m_privilegeviewoptions from m_pfe_cst_net_dev`m_privilegeviewoptions within m_webview
+end type
+
+on m_privilegeviewoptions.create
+call super::create
+end on
+
+on m_privilegeviewoptions.destroy
+call super::destroy
+end on
+
+type m_webviewaccessrolemanagement from m_pfe_cst_net_dev`m_webviewaccessrolemanagement within m_webview
+end type
+
+on m_webviewaccessrolemanagement.create
+call super::create
+end on
+
+on m_webviewaccessrolemanagement.destroy
+call super::destroy
+end on
+
+type m_webviewagreementspainter from m_pfe_cst_net_dev`m_webviewagreementspainter within m_webview
+end type
+
+on m_webviewagreementspainter.create
+call super::create
+end on
+
+on m_webviewagreementspainter.destroy
+call super::destroy
+end on
+
+type m_webviewsettingsmaintenance from m_pfe_cst_net_dev`m_webviewsettingsmaintenance within m_webview
+end type
+
+on m_webviewsettingsmaintenance.create
+call super::create
+end on
+
+on m_webviewsettingsmaintenance.destroy
+call super::destroy
+end on
+
+type m_webviewuserpainter from m_pfe_cst_net_dev`m_webviewuserpainter within m_webview
+end type
+
+on m_webviewuserpainter.create
+call super::create
+end on
+
+on m_webviewuserpainter.destroy
+call super::destroy
+end on
+
+type m_webviewtemplatepainter from m_pfe_cst_net_dev`m_webviewtemplatepainter within m_webview
+end type
+
+on m_webviewtemplatepainter.create
+call super::create
+end on
+
+on m_webviewtemplatepainter.destroy
+call super::destroy
+end on
+
+type m_practitionerhelp from m_pfe_cst_net_dev`m_practitionerhelp within m_webview
+end type
+
+on m_practitionerhelp.create
+call super::create
+end on
+
+on m_practitionerhelp.destroy
+call super::destroy
+end on
+
+type m_changepassword from m_pfe_cst_net_dev`m_changepassword within m_system
+end type
+
+on m_changepassword.create
+call super::create
+end on
+
+on m_changepassword.destroy
+call super::destroy
+end on
+
+type m_emailsignature from m_pfe_cst_net_dev`m_emailsignature within m_system
+end type
+
+on m_emailsignature.create
+call super::create
+end on
+
+on m_emailsignature.destroy
+call super::destroy
+end on
+
+type m_personalaccount from m_pfe_cst_net_dev`m_personalaccount within m_emailsignature
+end type
+
+on m_personalaccount.create
+call super::create
+end on
+
+on m_personalaccount.destroy
+call super::destroy
+end on
+
+type m_emailsignature2 from m_pfe_cst_net_dev`m_emailsignature2 within m_emailsignature
+end type
+
+on m_emailsignature2.create
+call super::create
+end on
+
+on m_emailsignature2.destroy
+call super::destroy
+end on
+
+type m_emailsentitems from m_pfe_cst_net_dev`m_emailsentitems within m_emailsignature
+end type
+
+on m_emailsentitems.create
+call super::create
+end on
+
+on m_emailsentitems.destroy
+call super::destroy
+end on
+
+type m_clientsettings from m_pfe_cst_net_dev`m_clientsettings within m_emailsignature
+end type
+
+on m_clientsettings.create
+call super::create
+end on
+
+on m_clientsettings.destroy
+call super::destroy
+end on
+
+type m_mysettings from m_pfe_cst_net_dev`m_mysettings within m_emailsignature
+end type
+
+on m_mysettings.create
+call super::create
+end on
+
+on m_mysettings.destroy
+call super::destroy
+end on
+
+type m_autorefreshsettings from m_pfe_cst_net_dev`m_autorefreshsettings within m_emailsignature
+end type
+
+on m_autorefreshsettings.create
+call super::create
+end on
+
+on m_autorefreshsettings.destroy
+call super::destroy
+end on
+
+type m_userdocuments from m_pfe_cst_net_dev`m_userdocuments within m_emailsignature
+end type
+
+on m_userdocuments.create
+call super::create
+end on
+
+on m_userdocuments.destroy
+call super::destroy
+end on
+
+type m_6 from m_pfe_cst_net_dev`m_6 within m_system
+end type
+
+on m_6.create
+call super::create
+end on
+
+on m_6.destroy
+call super::destroy
+end on
+
+type m_newmailmessage from m_pfe_cst_net_dev`m_newmailmessage within m_system
+end type
+
+on m_newmailmessage.create
+call super::create
+end on
+
+on m_newmailmessage.destroy
+call super::destroy
+end on
+
+type m_5 from m_pfe_cst_net_dev`m_5 within m_system
+end type
+
+on m_5.create
+call super::create
+end on
+
+on m_5.destroy
+call super::destroy
+end on
+
+type m_refresh_sertifi from m_pfe_cst_net_dev`m_refresh_sertifi within m_system
+end type
+
+on m_refresh_sertifi.create
+call super::create
+end on
+
+on m_refresh_sertifi.destroy
+call super::destroy
+end on
+
+type m_refreshdocumentapprovaldata from m_pfe_cst_net_dev`m_refreshdocumentapprovaldata within m_system
+end type
+
+on m_refreshdocumentapprovaldata.create
+call super::create
+end on
+
+on m_refreshdocumentapprovaldata.destroy
+call super::destroy
+end on
+
+type m_refreshalldata from m_pfe_cst_net_dev`m_refreshalldata within m_system
+end type
+
+on m_refreshalldata.create
+call super::create
+end on
+
+on m_refreshalldata.destroy
+call super::destroy
+end on
+
+type m_runactionitemsquery_hyphen from m_pfe_cst_net_dev`m_runactionitemsquery_hyphen within m_system
+end type
+
+on m_runactionitemsquery_hyphen.create
+call super::create
+end on
+
+on m_runactionitemsquery_hyphen.destroy
+call super::destroy
+end on
+
+type m_runactionitemsquery from m_pfe_cst_net_dev`m_runactionitemsquery within m_system
+end type
+
+on m_runactionitemsquery.create
+call super::create
+end on
+
+on m_runactionitemsquery.destroy
+call super::destroy
+end on
+
+type m_nulldate from m_pfe_cst_net_dev`m_nulldate within m_system
+end type
+
+on m_nulldate.create
+call super::create
+end on
+
+on m_nulldate.destroy
+call super::destroy
+end on
+
+type m_checkdatalinks from m_pfe_cst_net_dev`m_checkdatalinks within m_system
+end type
+
+on m_checkdatalinks.create
+call super::create
+end on
+
+on m_checkdatalinks.destroy
+call super::destroy
+end on
+
+type m_window from m_pfe_cst_net_dev`m_window within m_pfe_cst_net_dev_action_items
+end type
+
+on m_window.create
+call super::create
+end on
+
+on m_window.destroy
+call super::destroy
+end on
+
+type m_cascade from m_pfe_cst_net_dev`m_cascade within m_window
+end type
+
+on m_cascade.create
+call super::create
+end on
+
+on m_cascade.destroy
+call super::destroy
+end on
+
+type m_tilehorizontal from m_pfe_cst_net_dev`m_tilehorizontal within m_window
+end type
+
+on m_tilehorizontal.create
+call super::create
+end on
+
+on m_tilehorizontal.destroy
+call super::destroy
+end on
+
+type m_tilevertical from m_pfe_cst_net_dev`m_tilevertical within m_window
+end type
+
+on m_tilevertical.create
+call super::create
+end on
+
+on m_tilevertical.destroy
+call super::destroy
+end on
+
+type m_layer from m_pfe_cst_net_dev`m_layer within m_window
+end type
+
+on m_layer.create
+call super::create
+end on
+
+on m_layer.destroy
+call super::destroy
+end on
+
+type m_dash51 from m_pfe_cst_net_dev`m_dash51 within m_window
+end type
+
+on m_dash51.create
+call super::create
+end on
+
+on m_dash51.destroy
+call super::destroy
+end on
+
+type m_minimizeall from m_pfe_cst_net_dev`m_minimizeall within m_window
+end type
+
+on m_minimizeall.create
+call super::create
+end on
+
+on m_minimizeall.destroy
+call super::destroy
+end on
+
+type m_undoarrange from m_pfe_cst_net_dev`m_undoarrange within m_window
+end type
+
+on m_undoarrange.create
+call super::create
+end on
+
+on m_undoarrange.destroy
+call super::destroy
+end on
+
+type m_5555 from m_pfe_cst_net_dev`m_5555 within m_window
+end type
+
+on m_5555.create
+call super::create
+end on
+
+on m_5555.destroy
+call super::destroy
+end on
+
+type m_autoresize from m_pfe_cst_net_dev`m_autoresize within m_window
+end type
+
+on m_autoresize.create
+call super::create
+end on
+
+on m_autoresize.destroy
+call super::destroy
+end on
+
+type m_preload from m_pfe_cst_net_dev`m_preload within m_window
+end type
+
+on m_preload.create
+call super::create
+end on
+
+on m_preload.destroy
+call super::destroy
+end on
+
+type m_savecontractfolderstate from m_pfe_cst_net_dev`m_savecontractfolderstate within m_window
+end type
+
+on m_savecontractfolderstate.create
+call super::create
+end on
+
+on m_savecontractfolderstate.destroy
+call super::destroy
+end on
+
+type m_showezmenu from m_pfe_cst_net_dev`m_showezmenu within m_window
+end type
+
+on m_showezmenu.create
+call super::create
+end on
+
+on m_showezmenu.destroy
+call super::destroy
+end on
+
+type m_toolbarattop from m_pfe_cst_net_dev`m_toolbarattop within m_window
+end type
+
+on m_toolbarattop.create
+call super::create
+end on
+
+on m_toolbarattop.destroy
+call super::destroy
+end on
+
+type m_toolbarshowtext from m_pfe_cst_net_dev`m_toolbarshowtext within m_window
+end type
+
+on m_toolbarshowtext.create
+call super::create
+end on
+
+on m_toolbarshowtext.destroy
+call super::destroy
+end on
+
+type m_toolbarhide from m_pfe_cst_net_dev`m_toolbarhide within m_window
+end type
+
+on m_toolbarhide.create
+call super::create
+end on
+
+on m_toolbarhide.destroy
+call super::destroy
+end on
+
+type m_dashboard from m_pfe_cst_net_dev`m_dashboard within m_window
+end type
+
+on m_dashboard.create
+call super::create
+end on
+
+on m_dashboard.destroy
+call super::destroy
+end on
+
+type m_help from m_pfe_cst_net_dev`m_help within m_pfe_cst_net_dev_action_items
+end type
+
+on m_help.create
+call super::create
+end on
+
+on m_help.destroy
+call super::destroy
+end on
+
+type m_about from m_pfe_cst_net_dev`m_about within m_help
+end type
+
+on m_about.create
+call super::create
+end on
+
+on m_about.destroy
+call super::destroy
+end on
+
+type m_evncheck from m_pfe_cst_net_dev`m_evncheck within m_help
+end type
+
+on m_evncheck.create
+call super::create
+end on
+
+on m_evncheck.destroy
+call super::destroy
+end on
+
+type m_gettingstarted from m_pfe_cst_net_dev`m_gettingstarted within m_help
+end type
+
+on m_gettingstarted.create
+call super::create
+end on
+
+on m_gettingstarted.destroy
+call super::destroy
+end on
+
+type m_onlinehelp from m_pfe_cst_net_dev`m_onlinehelp within m_help
+end type
+
+on m_onlinehelp.create
+call super::create
+end on
+
+on m_onlinehelp.destroy
+call super::destroy
+end on
+
+type m_helptopics from m_pfe_cst_net_dev`m_helptopics within m_help
+end type
+
+on m_helptopics.create
+call super::create
+end on
+
+on m_helptopics.destroy
+call super::destroy
+end on
+
+type m_isg_website from m_pfe_cst_net_dev`m_isg_website within m_help
+end type
+
+on m_isg_website.create
+call super::create
+end on
+
+on m_isg_website.destroy
+call super::destroy
+end on
+
+type m_dash61 from m_pfe_cst_net_dev`m_dash61 within m_help
+end type
+
+on m_dash61.create
+call super::create
+end on
+
+on m_dash61.destroy
+call super::destroy
+end on
+
+type m_newdevtesting from m_pfe_cst_net_dev`m_newdevtesting within m_help
+end type
+
+on m_newdevtesting.create
+call super::create
+end on
+
+on m_newdevtesting.destroy
+call super::destroy
+end on
+
+type m_updates from m_pfe_cst_net_dev`m_updates within m_help
+end type
+
+on m_updates.create
+call super::create
+end on
+
+on m_updates.destroy
+call super::destroy
+end on
+
+type m_viewlets from m_pfe_cst_net_dev`m_viewlets within m_help
+end type
+
+on m_viewlets.create
+call super::create
+end on
+
+on m_viewlets.destroy
+call super::destroy
+end on
+
+type m_currentobject from m_pfe_cst_net_dev`m_currentobject within m_help
+end type
+
+on m_currentobject.create
+call super::create
+end on
+
+on m_currentobject.destroy
+call super::destroy
+end on
+
+type m_curobj2 from m_pfe_cst_net_dev`m_curobj2 within m_help
+end type
+
+on m_curobj2.create
+call super::create
+end on
+
+on m_curobj2.destroy
+call super::destroy
+end on
+
+type m_iapply from m_pfe_cst_net_dev`m_iapply within m_help
+end type
+
+on m_iapply.create
+call super::create
+end on
+
+on m_iapply.destroy
+call super::destroy
+end on
+
+type m_11 from m_pfe_cst_net_dev`m_11 within m_help
+end type
+
+on m_11.create
+call super::create
+end on
+
+on m_11.destroy
+call super::destroy
+end on
+
+type m_conversion from m_pfe_cst_net_dev`m_conversion within m_help
+end type
+
+on m_conversion.create
+call super::create
+end on
+
+on m_conversion.destroy
+call super::destroy
+end on
+
+type m_action from m_pfe_cst_net_dev`m_action within m_pfe_cst_net_dev_action_items
+m_email_payor m_email_payor
+end type
+
+on m_action.create
+call super::create
+this.m_email_payor=create m_email_payor
+this.Item[UpperBound(this.Item)+1]=this.m_email_payor
+end on
+
+on m_action.destroy
+call super::destroy
+destroy(this.m_email_payor)
+end on
+
+type m_generateletter from m_pfe_cst_net_dev`m_generateletter within m_action
+end type
+
+on m_generateletter.create
+call super::create
+this.toolbaritembarindex = 0
+end on
+
+on m_generateletter.destroy
+call super::destroy
+end on
+
+type m_initiatereappointment from m_pfe_cst_net_dev`m_initiatereappointment within m_action
+end type
+
+on m_initiatereappointment.create
+call super::create
+this.toolbaritemvisible = false
+this.toolbaritembarindex = 0
+end on
+
+on m_initiatereappointment.destroy
+call super::destroy
+end on
+
+type m_makeinactive from m_pfe_cst_net_dev`m_makeinactive within m_action
+end type
+
+on m_makeinactive.create
+call super::create
+this.visible = false
+this.toolbaritemvisible = false
+end on
+
+on m_makeinactive.destroy
+call super::destroy
+end on
+
+type m_makeactive from m_pfe_cst_net_dev`m_makeactive within m_action
+end type
+
+on m_makeactive.create
+call super::create
+this.visible = false
+this.toolbaritemvisible = false
+end on
+
+on m_makeactive.destroy
+call super::destroy
+end on
+
+type m_workflow from m_pfe_cst_net_dev`m_workflow within m_action
+end type
+
+on m_workflow.create
+call super::create
+this.toolbaritembarindex = 0
+end on
+
+on m_workflow.destroy
+call super::destroy
+end on
+
+type m_zip from m_pfe_cst_net_dev`m_zip within m_action
+end type
+
+on m_zip.create
+call super::create
+end on
+
+on m_zip.destroy
+call super::destroy
+end on
+
+type mregentrackids from m_pfe_cst_net_dev`mregentrackids within m_action
+end type
+
+on mregentrackids.create
+call super::create
+this.visible = false
+end on
+
+on mregentrackids.destroy
+call super::destroy
+end on
+
+type m_batchupdateactions from menu within m_file
+end type
+
+on m_batchupdateactions.create
+call super::create
+this.text = "Batch Update"
+this.toolbaritemvisible = false
+this.toolbaritemname = "update!"
+this.toolbaritemtext = "Batch Update"
+this.toolbaritembarindex = 0
+this.toolbaritemorder = 250
+this.menuimage = "Update!"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_batchupdateactions.destroy
+call super::destroy
+end on
+
+event clicked;of_SendMessage("pfc_cst_batch_update")	//long.zhang 06.18.2012 v12.2 app batch update
+end event
+
+type m_8 from menu within m_view
+end type
+
+on m_8.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_8.destroy
+call super::destroy
+end on
+
+type m_intellibatch1 from menu within m_view
+end type
+
+event clicked;of_SendMessage ("pfc_cst_intellibatch_filter")
+end event
+
+on m_intellibatch1.create
+call super::create
+this.text = "IntelliBatch"
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_intellibatch1.destroy
+call super::destroy
+end on
+
+type m_email_payor from menu within m_action
+end type
+
+on m_email_payor.create
+call super::create
+this.visible = false
+this.text = "Email Payor"
+this.toolbaritemvisible = false
+this.toolbaritemname = "custom002!"
+this.toolbaritemdownname = "Custom002!"
+this.toolbaritemtext = "Email Payor"
+this.toolbaritembarindex = 0
+this.toolbaritemorder = 260
+this.menustyle = contemporarymenu!
+this.menubackcolor = 32764915
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Segoe UI"
+this.bitmapbackcolor = 31580641
+this.menubitmaps = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbarbackcolor = 32764915
+this.toolbarhighlightcolor = 134217741
+end on
+
+on m_email_payor.destroy
+call super::destroy
+end on
+
+event clicked;//====================================================================
+//$<Event>: clicked
+//$<Arguments>:
+// 	%ScriptArgs%
+//$<Return>:  (none)
+//$<Description>: 
+//$<Author>: (Appeon) Stephen 2013-08-21 (V141 Email/Fax Applications to Payors)
+//--------------------------------------------------------------------
+//$<Modify History>:
+//====================================================================
+of_SendMessage("pfc_email_payor")
+end event
+

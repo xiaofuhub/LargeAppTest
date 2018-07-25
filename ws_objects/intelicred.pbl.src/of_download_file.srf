@@ -1,0 +1,128 @@
+﻿$PBExportHeader$of_download_file.srf
+global type of_download_file from function_object
+end type
+
+forward prototypes
+global function blob of_download_file (string as_from, string as_filter, long al_filter)
+end prototypes
+
+global function blob of_download_file (string as_from, string as_filter, long al_filter);////Start Code Change ----07.08.2009 #V92 maha - created generic download function
+//Start Code Change ----08.16.2016 #V153 maha - added code for USERDOC
+//Start Code Change ----10.06.2016 #V153 maha - added code for LOC
+//Start Code Change ----01.10.2017 #V153 maha - added code for PRIVFORM
+Long ll_data_length
+Integer li_counter
+Integer li_loops
+Blob lb_data
+Blob lb_all_data
+blob lb_null
+Long ll_start
+
+// Set a wait cursor
+SetPointer(HourGlass!)
+
+setnull(lb_null)
+
+// Get file data from database
+if appeongetclienttype() <> 'PB' or gs_dbtype <> 'SQL' then  //alfee 07.14.2009
+	choose case as_from
+		case "OPPE"
+			SELECTBLOB doc_blob INTO :lb_all_data FROM pd_oppe_docs WHERE dcmt_id = :al_filter;
+		Case "USERDOC"
+			SELECTBLOB doc_data INTO :lb_all_data FROM sys_user_docs WHERE user_doc_id = :al_filter;
+		Case "LOC"  
+			SELECTBLOB doc_data INTO :lb_all_data FROM group_documents WHERE document_id = :al_filter;
+		Case "PRIVFORM"  
+			SELECTBLOB form_data INTO :lb_all_data FROM priv_ca_form WHERE clinical_area_id = :al_filter;
+		case "SRS" //(Appeon)Stephen 05.25.2017 - V15.4-WebView Reporting Functionality
+			SELECTBLOB report_data INTO :lb_all_data FROM sys_report_storage_files WHERE pk_id = :al_filter;
+	end choose
+	return lb_all_data
+end if
+
+//ELSE PB & SQL Server ...
+choose case as_from
+	case "OPPE"
+		SELECT Datalength(doc_blob)
+		INTO :ll_data_length
+		FROM pd_oppe_docs
+		WHERE dcmt_id = :al_filter;
+	Case "USERDOC"
+		SELECT Datalength(doc_data)
+		INTO :ll_data_length
+		FROM sys_user_docs
+		WHERE user_doc_id = :al_filter;	
+	Case "LOC"
+		SELECT Datalength(doc_data)
+		INTO :ll_data_length
+		FROM group_documents
+		WHERE document_id = :al_filter;	
+	Case "PRIVFORM"
+		SELECT Datalength(form_data)
+		INTO :ll_data_length
+		FROM priv_ca_form
+		WHERE clinical_area_id = :al_filter;
+	case "SRS" //(Appeon)Stephen 05.25.2017 - V15.4-WebView Reporting Functionality
+		SELECT Datalength(report_data)
+		INTO :ll_data_length
+		FROM sys_report_storage_files
+		WHERE pk_id = :al_filter;
+end choose
+
+IF ll_data_length = 0 OR Isnull(ll_data_length) THEN
+	return lb_null
+END IF
+
+IF ll_data_length > 8000 THEN 
+  	 IF Mod(ll_data_length,8000) = 0 THEN 
+        li_loops = ll_data_length/8000 
+    ELSE 
+  	     li_loops = (ll_data_length/8000) + 1 
+    END IF 
+ELSE 
+  	 li_loops = 1 
+END IF 
+
+FOR li_counter = 1 to li_loops
+	Yield()
+	SetPointer(HourGlass!)
+	
+	ll_start = (li_counter - 1) * 8000 + 1
+	
+	choose case as_from
+		case "OPPE"
+			SELECTBLOB substring(doc_blob,:ll_start,8000)
+			INTO :lb_data
+			FROM pd_oppe_docs
+			WHERE dcmt_id = :al_filter;
+		Case "USERDOC"
+			SELECTBLOB substring(doc_data,:ll_start,8000)
+			INTO :lb_data
+			FROM sys_user_docs
+			WHERE user_doc_id = :al_filter;	
+		Case "LOC"
+			SELECTBLOB substring(doc_data,:ll_start,8000)
+			INTO :lb_data
+			FROM group_documents
+			WHERE document_id = :al_filter;	
+		Case "PRIVFORM"
+			SELECTBLOB substring(form_data,:ll_start,8000)
+			INTO :lb_data
+			FROM priv_ca_form
+			WHERE clinical_area_id = :al_filter;
+		case "SRS" //(Appeon)Stephen 05.25.2017 - V15.4-WebView Reporting Functionality
+			SELECTBLOB substring(report_data,:ll_start,8000)
+			INTO :lb_data
+			FROM sys_report_storage_files
+			WHERE pk_id = :al_filter;
+	end choose
+
+	lb_all_data += lb_data
+NEXT 
+
+//lb_image_data = lb_all_data
+
+Return lb_all_data
+
+end function
+

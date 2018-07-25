@@ -1,0 +1,12 @@
+﻿$PBExportHeader$gf_get_picture_fullname.srf
+global type gf_get_picture_fullname from function_object
+end type
+
+forward prototypes
+global function string gf_get_picture_fullname (long al_pic_id, string as_pic_ext)
+end prototypes
+
+global function string gf_get_picture_fullname (long al_pic_id, string as_pic_ext);Return gs_dir_path + gs_DefDirName + "\Pictures\pic_" + String(al_pic_id) + '.' + as_pic_ext
+
+end function
+

@@ -1,0 +1,86 @@
+﻿$PBExportHeader$of_get_alpha_letter.srf
+global type of_get_alpha_letter from function_object
+end type
+
+forward prototypes
+global function string of_get_alpha_letter (integer ai_num)
+end prototypes
+
+global function string of_get_alpha_letter (integer ai_num);//Start Code Change ----05.06.2010 #V10 maha - created for use with random password generation
+string s
+
+if ai_num > 26 then ai_num = mod(ai_num,26)
+
+choose case ai_num
+	case 0
+		s = "A"
+	case 1
+		s = "Z"
+	case 2
+		s = "I"
+	case 3
+		s = "Q"
+	case 4
+		s = "Y"
+	case 5
+		s = "H"
+	case 6
+		s = "P"
+	case 7
+		s = "X"	
+	case 8
+		s = "G"
+	case 9
+		s = "O"																		
+	case 10
+		s = "W"									
+	case 11
+		s = "F"											
+	case 12
+		s = "N"
+	case 13
+		s = "V"
+	case 14
+		s = "E"
+	case 15
+		s = "R"
+	case 16
+		s = "M"
+	case 17
+		s = "D"	
+	case 18
+		s = "S"
+	case 19
+		s = "L"																		
+	case 20
+		s = "C"								
+	case 21
+		s = "T"											
+	case 22		
+		s = "K"
+	case 23
+		s = "B"
+	case 24
+		s = "U"
+	case 25
+		s = "J"
+	case 26
+		s = "A"
+end choose
+	
+return s
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+end function
+

@@ -1,0 +1,12 @@
+﻿$PBExportHeader$d_batch_items_prac_list.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=char(153) updatewhereclause=yes name=v_full_name_full_name dbname="v_full_name.full_name" )
+ column=(type=decimal(0) updatewhereclause=yes name=prac_id dbname="v_full_name.prac_id" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"sys_batch_items~" )  TABLE(NAME=~"v_full_name~" ) COLUMN(NAME=~"v_full_name.full_name~") COLUMN(NAME=~"v_full_name.prac_id~")    JOIN (LEFT=~"sys_batch_items.prac_id~"    OP =~"=~"RIGHT=~"v_full_name.prac_id~" )WHERE(    EXP1 =~"sys_batch_items.batch_id~"   OP =~"=~"    EXP2 =~":batch~" ) ) ARG(NAME = ~"batch~" TYPE = number) " arguments=(("batch", number)) )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="5" y="4" height="64" width="3511" format="[general]"  name=v_full_name_full_name edit.limit=153 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=0 border="0" color="0" x="3515" y="0" height="52" width="992"  name=prac_id  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,43 @@
+﻿$PBExportHeader$of_convert_excel_to_text.srf
+global type of_convert_excel_to_text from function_object
+end type
+
+forward prototypes
+global function integer of_convert_excel_to_text (string as_file)
+end prototypes
+
+global function integer of_convert_excel_to_text (string as_file); //Start Code Change ----03.11.2015 #V15 maha - created to convert excel file to tab delimited text file
+string ls_file
+string docpath
+string docname
+string ls_savefile
+integer li_rtn
+OLEObject myoleobject
+
+if as_file = "" then
+	li_rtn = GetFileOpenName("Select File",    docpath, docname, "DOC",  "EXCEL Files (*.XLS; *.xlxs),*.xls; *.xlsx," ,   "C:\", 18)
+	ls_file = docpath
+else
+	ls_file = as_file
+end if
+
+ls_savefile = gs_dir_path + "convertfile.txt"
+//ls_savefile = "c:\aatest\savedfile.txt"
+
+ myoleobject = CREATE OLEObject
+// //open the file
+li_rtn = myoleobject.ConnectToObject(ls_file,"excel.sheet.8") 
+ IF li_rtn = 0 THEN
+	myoleobject.Application.DisplayAlerts = False
+     myoleobject.application.workbooks(1).saveas(ls_savefile,21) 	 //this will save the file in text tab deliminited file
+	MyOleObject.Application.Workbooks(1).Close();  
+ End if
+
+ DESTROY myoleobject
+
+
+
+return 1
+
+end function
+

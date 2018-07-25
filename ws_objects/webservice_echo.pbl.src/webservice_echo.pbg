@@ -1,0 +1,17 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "webservice_echo.pbl" "";
+@end;
+@begin Objects 
+ "ws_pxy_echosign.srj" "webservice_echo.pbl";
+ "tns__documentinformation.srs" "webservice_echo.pbl";
+ "tns__downloadsigneddoc.srs" "webservice_echo.pbl";
+ "tns__getdocumentlink.srs" "webservice_echo.pbl";
+ "tns__getfileinfo.srs" "webservice_echo.pbl";
+ "tns__removesigneddoc.srs" "webservice_echo.pbl";
+ "tns__senddocument.srs" "webservice_echo.pbl";
+ "tns__signature.srs" "webservice_echo.pbl";
+ "tns__signeddocument.srs" "webservice_echo.pbl";
+ "n_cst_echosign.sru" "webservice_echo.pbl";
+ "echosignsoap.srx" "webservice_echo.pbl";
+@end;

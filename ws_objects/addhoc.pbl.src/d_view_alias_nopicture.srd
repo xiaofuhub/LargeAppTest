@@ -1,0 +1,39 @@
+﻿$PBExportHeader$d_view_alias_nopicture.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=68 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=module dbname="view_alias.module" )
+ column=(type=char(100) updatewhereclause=yes key=yes name=v_name dbname="view_alias.v_name" )
+ column=(type=char(255) updatewhereclause=yes name=v_alias dbname="view_alias.v_alias" )
+ column=(type=char(255) updatewhereclause=yes name=screen dbname="view_alias.screen" )
+ column=(type=char(1) updatewhereclause=yes name=sflag dbname="view_alias.sflag" )
+ column=(type=char(100) updatewhereclause=yes name=p_name dbname="view_alias.p_name" )
+ retrieve="  SELECT view_alias.module,   
+         view_alias.v_name,   
+         view_alias.v_alias,   
+         view_alias.screen,   
+         view_alias.sflag,   
+         view_alias.p_name  
+    FROM view_alias   
+	WHERE (isnull(p_name,'') <> '' and mflag=1 ) OR
+			(view_alias.v_name IN ('v_ctx_contacts_contacts','v_ctx_contacts_internal','v_ctx_contacts_external','v_ctx_basic_info_alarms'))
+
+			
+" update="view_alias" updatewhere=0 updatekeyinplace=no )
+text(band=header alignment="2" text="Module" border="0" color="33554432" x="9" y="8" height="52" width="553" html.valueishtml="0"  name=module_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="View Name" border="0" color="33554432" x="571" y="8" height="52" width="709" html.valueishtml="0"  name=v_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="View Alias" border="0" color="33554432" x="1289" y="8" height="52" width="791" html.valueishtml="0"  name=v_alias_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Picture Name" border="0" color="33554432" x="2089" y="8" height="52" width="462" html.valueishtml="0"  name=p_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=10 border="0" color="33554432" x="9" y="8" height="64" width="553" format="[general]" html.valueishtml="0"  name=module visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="33554432" x="571" y="8" height="64" width="709" format="[general]" html.valueishtml="0"  name=v_name visible="1" edit.limit=100 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="0" color="33554432" x="1289" y="8" height="64" width="791" format="[general]" html.valueishtml="0"  name=v_alias visible="1" edit.limit=255 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=6 alignment="0" tabsequence=40 border="0" color="33554432" x="2089" y="8" height="64" width="462" format="[general]" html.valueishtml="0"  name=p_name visible="1" edit.limit=100 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+
+sparse(names="module")htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

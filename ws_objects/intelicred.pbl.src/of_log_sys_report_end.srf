@@ -1,0 +1,20 @@
+﻿$PBExportHeader$of_log_sys_report_end.srf
+global type of_log_sys_report_end from function_object
+end type
+
+forward prototypes
+global function integer of_log_sys_report_end (long al_id, long al_rows, string as_name)
+end prototypes
+
+global function integer of_log_sys_report_end (long al_id, long al_rows, string as_name);datetime ldt_now
+
+ldt_now = datetime(today(),now())
+
+update sys_report_log set end_time = :ldt_now, row_count = :al_rows, prov_name = :as_name where log_id = :al_id;
+commit using sqlca;
+
+
+
+return 1
+end function
+

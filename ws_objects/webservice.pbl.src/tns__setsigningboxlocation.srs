@@ -1,0 +1,12 @@
+﻿$PBExportHeader$tns__setsigningboxlocation.srs
+$PBExportComments$Proxy imported from Web service using Web Service Proxy Generator.
+global type tns__SetSigningBoxLocation from structure
+   string pstr_APICode
+   string pstr_FileID
+   string pstr_DocumentID
+   long pint_Page
+   long pint_Top
+   long pint_Left
+   string pstr_SignerEmail
+end type
+

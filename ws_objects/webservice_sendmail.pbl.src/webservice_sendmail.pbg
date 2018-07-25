@@ -1,0 +1,10 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "webservice_sendmail.pbl" "";
+@end;
+@begin Objects 
+ "p_wsproxy_sendmail.srj" "webservice_sendmail.pbl";
+ "tns__of_sendmail.srs" "webservice_sendmail.pbl";
+ "n_cst_ws_sendmail.sru" "webservice_sendmail.pbl";
+ "sendmailsoap.srx" "webservice_sendmail.pbl";
+@end;

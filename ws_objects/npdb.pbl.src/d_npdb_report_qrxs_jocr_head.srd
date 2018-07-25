@@ -1,0 +1,487 @@
+﻿$PBExportHeader$d_npdb_report_qrxs_jocr_head.srd
+release 11.5;
+datawindow(units=0 timer_interval=0 color=1073741824 brushmode=0 transparency=0 gradient.angle=0 gradient.color=8421504 gradient.focus=0 gradient.repetition.count=0 gradient.repetition.length=100 gradient.repetition.mode=0 gradient.scale=100 gradient.spread=100 gradient.transparency=0 picture.blur=0 picture.clip.bottom=0 picture.clip.left=0 picture.clip.right=0 picture.clip.top=0 picture.mode=0 picture.scale.x=100 picture.scale.y=100 picture.transparency=0 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.background=no print.preview.background=no print.preview.outline=yes hidegrayline=no showbackcoloronxp=no picture.file="" )
+header(height=452 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+summary(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+footer(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+detail(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" height.autosize=yes )
+table(column=(type=long update=yes updatewhereclause=yes name=npdb_qrxs_hdr_npdb_hdr_id dbname="npdb_qrxs_hdr.npdb_hdr_id" )
+ column=(type=long update=yes updatewhereclause=yes name=npdb_qrxs_hdr_report_id dbname="npdb_qrxs_hdr.report_id" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=npdb_qrxs_hdr_doc_id dbname="npdb_qrxs_hdr.doc_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=npdb_qrxs_hdr_prac_id dbname="npdb_qrxs_hdr.prac_id" )
+ column=(type=char(40) update=yes updatewhereclause=yes name=npdb_qrxs_hdr_entity_dbid dbname="npdb_qrxs_hdr.entity_dbid" )
+ column=(type=char(40) update=yes updatewhereclause=yes name=npdb_qrxs_hdr_agent_dbid dbname="npdb_qrxs_hdr.agent_dbid" )
+ column=(type=char(40) update=yes updatewhereclause=yes name=npdb_qrxs_hdr_vendor_id dbname="npdb_qrxs_hdr.vendor_id" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=npdb_qrxs_hdr_submission_filename dbname="npdb_qrxs_hdr.submission_filename" )
+ column=(type=char(40) update=yes updatewhereclause=yes name=npdb_qrxs_hdr_cert_name dbname="npdb_qrxs_hdr.cert_name" )
+ column=(type=char(40) update=yes updatewhereclause=yes name=npdb_qrxs_hdr_cert_title dbname="npdb_qrxs_hdr.cert_title" )
+ column=(type=char(40) update=yes updatewhereclause=yes name=npdb_qrxs_hdr_cert_phone_number dbname="npdb_qrxs_hdr.cert_phone_number" )
+ column=(type=char(40) update=yes updatewhereclause=yes name=npdb_qrxs_hdr_cert_phone_extension dbname="npdb_qrxs_hdr.cert_phone_extension" )
+ column=(type=char(40) update=yes updatewhereclause=yes name=npdb_qrxs_hdr_cert_date dbname="npdb_qrxs_hdr.cert_date" )
+ column=(type=char(40) updatewhereclause=yes name=npdb_qrxs_status_dcn dbname="npdb_qrxs_status.dcn" )
+ column=(type=char(40) updatewhereclause=yes name=npdb_qrxs_status_process_date dbname="npdb_qrxs_status.process_date" )
+ column=(type=char(5) updatewhereclause=yes name=npdb_qrxs_status_successfully_processed dbname="npdb_qrxs_status.successfully_processed" )
+ column=(type=char(5) updatewhereclause=yes name=npdb_qrxs_status_error_code dbname="npdb_qrxs_status.error_code" )
+ column=(type=char(4000) updatewhereclause=yes name=npdb_qrxs_status_error_message dbname="npdb_qrxs_status.error_message" )
+ column=(type=char(10) updatewhereclause=yes name=npdb_qrxs_status_report_count dbname="npdb_qrxs_status.report_count" )
+ column=(type=char(40) updatewhereclause=yes name=ind_last_name dbname="npdb_qrxs_individual.last_name" )
+ column=(type=char(40) updatewhereclause=yes name=ind_first_name dbname="npdb_qrxs_individual.first_name" )
+ column=(type=char(40) updatewhereclause=yes name=ind_middle_name dbname="npdb_qrxs_individual.middle_name" )
+ column=(type=char(10) updatewhereclause=yes name=ind_suffix_name dbname="npdb_qrxs_individual.suffix_name" )
+ column=(type=char(40) updatewhereclause=yes name=ind_last_othername1 dbname="npdb_qrxs_individual.last_othername1" )
+ column=(type=char(40) updatewhereclause=yes name=ind_first_othername1 dbname="npdb_qrxs_individual.first_othername1" )
+ column=(type=char(40) updatewhereclause=yes name=ind_middle_othername1 dbname="npdb_qrxs_individual.middle_othername1" )
+ column=(type=char(10) updatewhereclause=yes name=ind_suffix_othername1 dbname="npdb_qrxs_individual.suffix_othername1" )
+ column=(type=char(5) updatewhereclause=yes name=ind_gender dbname="npdb_qrxs_individual.gender" values="Male	M/Female	F/Unknown	U/" )
+ column=(type=char(40) updatewhereclause=yes name=ind_birthdate dbname="npdb_qrxs_individual.birthdate" )
+ column=(type=char(50) updatewhereclause=yes name=ind_organization_name dbname="npdb_qrxs_individual.organization_name" )
+ column=(type=char(100) updatewhereclause=yes name=ind_work_address dbname="npdb_qrxs_individual.work_address" )
+ column=(type=char(100) updatewhereclause=yes name=ind_work_address2 dbname="npdb_qrxs_individual.work_address2" )
+ column=(type=char(40) updatewhereclause=yes name=ind_work_city dbname="npdb_qrxs_individual.work_city" )
+ column=(type=char(10) updatewhereclause=yes name=ind_work_state dbname="npdb_qrxs_individual.work_state" )
+ column=(type=char(10) updatewhereclause=yes name=ind_work_zip dbname="npdb_qrxs_individual.work_zip" )
+ column=(type=char(10) updatewhereclause=yes name=ind_work_zip4 dbname="npdb_qrxs_individual.work_zip4" )
+ column=(type=char(40) updatewhereclause=yes name=ind_work_country dbname="npdb_qrxs_individual.work_country" )
+ column=(type=char(100) updatewhereclause=yes name=ind_home_address dbname="npdb_qrxs_individual.home_address" )
+ column=(type=char(100) updatewhereclause=yes name=ind_home_address2 dbname="npdb_qrxs_individual.home_address2" )
+ column=(type=char(40) updatewhereclause=yes name=ind_home_city dbname="npdb_qrxs_individual.home_city" )
+ column=(type=char(10) updatewhereclause=yes name=ind_home_state dbname="npdb_qrxs_individual.home_state" )
+ column=(type=char(10) updatewhereclause=yes name=ind_home_zip dbname="npdb_qrxs_individual.home_zip" )
+ column=(type=char(10) updatewhereclause=yes name=ind_home_zip4 dbname="npdb_qrxs_individual.home_zip4" )
+ column=(type=char(40) updatewhereclause=yes name=ind_home_country dbname="npdb_qrxs_individual.home_country" )
+ column=(type=char(15) updatewhereclause=yes name=ind_ssn1 dbname="npdb_qrxs_individual.ssn1" )
+ column=(type=char(15) updatewhereclause=yes name=ind_ssn2 dbname="npdb_qrxs_individual.ssn2" )
+ column=(type=char(15) updatewhereclause=yes name=ind_ssn3 dbname="npdb_qrxs_individual.ssn3" )
+ column=(type=char(15) updatewhereclause=yes name=ind_ssn4 dbname="npdb_qrxs_individual.ssn4" )
+ column=(type=char(15) updatewhereclause=yes name=ind_fein1 dbname="npdb_qrxs_individual.fein1" )
+ column=(type=char(15) updatewhereclause=yes name=ind_fein2 dbname="npdb_qrxs_individual.fein2" )
+ column=(type=char(15) updatewhereclause=yes name=ind_fein3 dbname="npdb_qrxs_individual.fein3" )
+ column=(type=char(15) updatewhereclause=yes name=ind_fein4 dbname="npdb_qrxs_individual.fein4" )
+ column=(type=char(15) updatewhereclause=yes name=ind_npi1 dbname="npdb_qrxs_individual.npi1" )
+ column=(type=char(15) updatewhereclause=yes name=ind_npi2 dbname="npdb_qrxs_individual.npi2" )
+ column=(type=char(15) updatewhereclause=yes name=ind_npi3 dbname="npdb_qrxs_individual.npi3" )
+ column=(type=char(15) updatewhereclause=yes name=ind_npi4 dbname="npdb_qrxs_individual.npi4" )
+ column=(type=char(15) updatewhereclause=yes name=ind_dea1 dbname="npdb_qrxs_individual.dea1" )
+ column=(type=char(15) updatewhereclause=yes name=ind_dea2 dbname="npdb_qrxs_individual.dea2" )
+ column=(type=char(15) updatewhereclause=yes name=ind_dea3 dbname="npdb_qrxs_individual.dea3" )
+ column=(type=char(15) updatewhereclause=yes name=ind_dea4 dbname="npdb_qrxs_individual.dea4" )
+ column=(type=char(15) updatewhereclause=yes name=ind_upin1 dbname="npdb_qrxs_individual.upin1" )
+ column=(type=char(15) updatewhereclause=yes name=ind_upin2 dbname="npdb_qrxs_individual.upin2" )
+ column=(type=char(15) updatewhereclause=yes name=ind_upin3 dbname="npdb_qrxs_individual.upin3" )
+ column=(type=char(15) updatewhereclause=yes name=ind_upin4 dbname="npdb_qrxs_individual.upin4" )
+ column=(type=char(200) updatewhereclause=yes name=ind_prof_school1 dbname="npdb_qrxs_individual.prof_school1" )
+ column=(type=char(200) updatewhereclause=yes name=ind_prof_school2 dbname="npdb_qrxs_individual.prof_school2" )
+ column=(type=char(200) updatewhereclause=yes name=ind_prof_school3 dbname="npdb_qrxs_individual.prof_school3" )
+ column=(type=char(200) updatewhereclause=yes name=ind_prof_school4 dbname="npdb_qrxs_individual.prof_school4" )
+ column=(type=char(200) updatewhereclause=yes name=ind_prof_school5 dbname="npdb_qrxs_individual.prof_school5" )
+ column=(type=char(10) updatewhereclause=yes name=ind_prof_graduation_year1 dbname="npdb_qrxs_individual.prof_graduation_year1" )
+ column=(type=char(10) updatewhereclause=yes name=ind_prof_graduation_year2 dbname="npdb_qrxs_individual.prof_graduation_year2" )
+ column=(type=char(10) updatewhereclause=yes name=ind_prof_graduation_year3 dbname="npdb_qrxs_individual.prof_graduation_year3" )
+ column=(type=char(10) updatewhereclause=yes name=ind_prof_graduation_year4 dbname="npdb_qrxs_individual.prof_graduation_year4" )
+ column=(type=char(10) updatewhereclause=yes name=ind_prof_graduation_year5 dbname="npdb_qrxs_individual.prof_graduation_year5" )
+ column=(type=char(20) updatewhereclause=yes name=ind_oal_number dbname="npdb_qrxs_individual.oal_number" )
+ column=(type=char(5) updatewhereclause=yes name=ind_oal_no_license dbname="npdb_qrxs_individual.oal_no_license" )
+ column=(type=char(5) updatewhereclause=yes name=ind_oal_state dbname="npdb_qrxs_individual.oal_state" )
+ column=(type=char(5) updatewhereclause=yes name=ind_oal_field dbname="npdb_qrxs_individual.oal_field" )
+ column=(type=char(100) updatewhereclause=yes name=ind_oal_description dbname="npdb_qrxs_individual.oal_description" )
+ column=(type=char(5) updatewhereclause=yes name=ind_oal_specialty dbname="npdb_qrxs_individual.oal_specialty" )
+ column=(type=char(5) updatewhereclause=yes name=jocr_action dbname="npdb_qrxs_jocr.action" )
+ column=(type=char(5) updatewhereclause=yes name=jocr_jurisdiction dbname="npdb_qrxs_jocr.jurisdiction" values=" State//Local Court	S/Federal Court	F/" )
+ column=(type=char(40) updatewhereclause=yes name=jocr_venue_name dbname="npdb_qrxs_jocr.venue_name" )
+ column=(type=char(40) updatewhereclause=yes name=jocr_venue_city dbname="npdb_qrxs_jocr.venue_city" )
+ column=(type=char(5) updatewhereclause=yes name=jocr_venue_state dbname="npdb_qrxs_jocr.venue_state" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_file_number dbname="npdb_qrxs_jocr.file_number" )
+ column=(type=char(40) updatewhereclause=yes name=jocr_prosecutor dbname="npdb_qrxs_jocr.prosecutor" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_case_number dbname="npdb_qrxs_jocr.case_number" )
+ column=(type=char(40) updatewhereclause=yes name=jocr_ia_agency_name1 dbname="npdb_qrxs_jocr.ia_agency_name1" )
+ column=(type=char(40) updatewhereclause=yes name=jocr_ia_agency_name2 dbname="npdb_qrxs_jocr.ia_agency_name2" )
+ column=(type=char(40) updatewhereclause=yes name=jocr_ia_agency_name3 dbname="npdb_qrxs_jocr.ia_agency_name3" )
+ column=(type=char(40) updatewhereclause=yes name=jocr_ia_agency_name4 dbname="npdb_qrxs_jocr.ia_agency_name4" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_ia_case_number1 dbname="npdb_qrxs_jocr.ia_case_number1" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_ia_case_number2 dbname="npdb_qrxs_jocr.ia_case_number2" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_ia_case_number3 dbname="npdb_qrxs_jocr.ia_case_number3" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_ia_case_number4 dbname="npdb_qrxs_jocr.ia_case_number4" )
+ column=(type=char(80) updatewhereclause=yes name=jocr_sta_title_section1 dbname="npdb_qrxs_jocr.sta_title_section1" )
+ column=(type=char(80) updatewhereclause=yes name=jocr_sta_title_section2 dbname="npdb_qrxs_jocr.sta_title_section2" )
+ column=(type=char(80) updatewhereclause=yes name=jocr_sta_title_section3 dbname="npdb_qrxs_jocr.sta_title_section3" )
+ column=(type=char(80) updatewhereclause=yes name=jocr_sta_title_section4 dbname="npdb_qrxs_jocr.sta_title_section4" )
+ column=(type=char(80) updatewhereclause=yes name=jocr_sta_title_section5 dbname="npdb_qrxs_jocr.sta_title_section5" )
+ column=(type=char(80) updatewhereclause=yes name=jocr_sta_offense1 dbname="npdb_qrxs_jocr.sta_offense1" )
+ column=(type=char(80) updatewhereclause=yes name=jocr_sta_offense2 dbname="npdb_qrxs_jocr.sta_offense2" )
+ column=(type=char(80) updatewhereclause=yes name=jocr_sta_offense3 dbname="npdb_qrxs_jocr.sta_offense3" )
+ column=(type=char(80) updatewhereclause=yes name=jocr_sta_offense4 dbname="npdb_qrxs_jocr.sta_offense4" )
+ column=(type=char(80) updatewhereclause=yes name=jocr_sta_offense5 dbname="npdb_qrxs_jocr.sta_offense5" )
+ column=(type=char(5) updatewhereclause=yes name=jocr_sta_count1 dbname="npdb_qrxs_jocr.sta_count1" )
+ column=(type=char(5) updatewhereclause=yes name=jocr_sta_count2 dbname="npdb_qrxs_jocr.sta_count2" )
+ column=(type=char(5) updatewhereclause=yes name=jocr_sta_count3 dbname="npdb_qrxs_jocr.sta_count3" )
+ column=(type=char(5) updatewhereclause=yes name=jocr_sta_count4 dbname="npdb_qrxs_jocr.sta_count4" )
+ column=(type=char(5) updatewhereclause=yes name=jocr_sta_count5 dbname="npdb_qrxs_jocr.sta_count5" )
+ column=(type=char(4000) updatewhereclause=yes name=jocr_narrative dbname="npdb_qrxs_jocr.narrative" )
+ column=(type=char(5) updatewhereclause=yes name=jocr_act_omission_code1 dbname="npdb_qrxs_jocr.act_omission_code1" )
+ column=(type=char(5) updatewhereclause=yes name=jocr_act_omission_code2 dbname="npdb_qrxs_jocr.act_omission_code2" )
+ column=(type=char(5) updatewhereclause=yes name=jocr_act_omission_code3 dbname="npdb_qrxs_jocr.act_omission_code3" )
+ column=(type=char(5) updatewhereclause=yes name=jocr_act_omission_code4 dbname="npdb_qrxs_jocr.act_omission_code4" )
+ column=(type=char(5) updatewhereclause=yes name=jocr_act_omission_code5 dbname="npdb_qrxs_jocr.act_omission_code5" )
+ column=(type=char(40) updatewhereclause=yes name=jocr_act_omission_desc1 dbname="npdb_qrxs_jocr.act_omission_desc1" )
+ column=(type=char(40) updatewhereclause=yes name=jocr_act_omission_desc2 dbname="npdb_qrxs_jocr.act_omission_desc2" )
+ column=(type=char(40) updatewhereclause=yes name=jocr_act_omission_desc3 dbname="npdb_qrxs_jocr.act_omission_desc3" )
+ column=(type=char(40) updatewhereclause=yes name=jocr_act_omission_desc4 dbname="npdb_qrxs_jocr.act_omission_desc4" )
+ column=(type=char(40) updatewhereclause=yes name=jocr_act_omission_desc5 dbname="npdb_qrxs_jocr.act_omission_desc5" )
+ column=(type=char(40) updatewhereclause=yes name=jocr_judgment_or_sentence_date dbname="npdb_qrxs_jocr.judgment_or_sentence_date" )
+ column=(type=char(5) updatewhereclause=yes name=jocr_on_appeal dbname="npdb_qrxs_jocr.on_appeal" values="Subject identified in Section B has appealed the reported adverse action.	Y/Subject identified in Section B has appealed the reported adverse action.	0" )
+ column=(type=char(40) updatewhereclause=yes name=jocr_appeal_date dbname="npdb_qrxs_jocr.appeal_date" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_soj_res_amount1 dbname="npdb_qrxs_jocr.soj_res_amount1" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_soj_res_amount2 dbname="npdb_qrxs_jocr.soj_res_amount2" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_soj_res_amount3 dbname="npdb_qrxs_jocr.soj_res_amount3" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_soj_res_amount4 dbname="npdb_qrxs_jocr.soj_res_amount4" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_soj_res_amount5 dbname="npdb_qrxs_jocr.soj_res_amount5" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_soj_osj_amount1 dbname="npdb_qrxs_jocr.soj_osj_amount1" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_soj_osj_amount2 dbname="npdb_qrxs_jocr.soj_osj_amount2" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_soj_osj_amount3 dbname="npdb_qrxs_jocr.soj_osj_amount3" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_soj_osj_amount4 dbname="npdb_qrxs_jocr.soj_osj_amount4" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_soj_osj_amount5 dbname="npdb_qrxs_jocr.soj_osj_amount5" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_soj_inc_length1 dbname="npdb_qrxs_jocr.soj_inc_length1" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_soj_inc_length2 dbname="npdb_qrxs_jocr.soj_inc_length2" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_soj_inc_length3 dbname="npdb_qrxs_jocr.soj_inc_length3" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_soj_inc_length4 dbname="npdb_qrxs_jocr.soj_inc_length4" values="If box is checked, this report has been disputed by the subject identified in Section B.	1/If box is checked, this report has been disputed by the subject identified in Section B.	0" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_soj_inc_length5 dbname="npdb_qrxs_jocr.soj_inc_length5" values="	1/	0" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_soj_ss_length1 dbname="npdb_qrxs_jocr.soj_ss_length1" values="	1/	0" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_soj_ss_length2 dbname="npdb_qrxs_jocr.soj_ss_length2" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_soj_ss_length3 dbname="npdb_qrxs_jocr.soj_ss_length3" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_soj_ss_length4 dbname="npdb_qrxs_jocr.soj_ss_length4" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_soj_ss_length5 dbname="npdb_qrxs_jocr.soj_ss_length5" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_soj_hd_length1 dbname="npdb_qrxs_jocr.soj_hd_length1" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_soj_hd_length2 dbname="npdb_qrxs_jocr.soj_hd_length2" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_soj_hd_length3 dbname="npdb_qrxs_jocr.soj_hd_length3" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_soj_hd_length4 dbname="npdb_qrxs_jocr.soj_hd_length4" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_soj_hd_length5 dbname="npdb_qrxs_jocr.soj_hd_length5" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_soj_pr_length1 dbname="npdb_qrxs_jocr.soj_pr_length1" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_soj_pr_length2 dbname="npdb_qrxs_jocr.soj_pr_length2" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_soj_pr_length3 dbname="npdb_qrxs_jocr.soj_pr_length3" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_soj_pr_length4 dbname="npdb_qrxs_jocr.soj_pr_length4" )
+ column=(type=char(15) updatewhereclause=yes name=jocr_soj_pr_length5 dbname="npdb_qrxs_jocr.soj_pr_length5" )
+ column=(type=char(10) updatewhereclause=yes name=jocr_soj_cs_hours1 dbname="npdb_qrxs_jocr.soj_cs_hours1" )
+ column=(type=char(10) updatewhereclause=yes name=jocr_soj_cs_hours2 dbname="npdb_qrxs_jocr.soj_cs_hours2" )
+ column=(type=char(10) updatewhereclause=yes name=jocr_soj_cs_hours3 dbname="npdb_qrxs_jocr.soj_cs_hours3" )
+ column=(type=char(10) updatewhereclause=yes name=jocr_soj_cs_hours4 dbname="npdb_qrxs_jocr.soj_cs_hours4" )
+ column=(type=char(10) updatewhereclause=yes name=jocr_soj_cs_hours5 dbname="npdb_qrxs_jocr.soj_cs_hours5" )
+ column=(type=char(160) updatewhereclause=yes name=jocr_soj_oc_orders1 dbname="npdb_qrxs_jocr.soj_oc_orders1" )
+ column=(type=char(160) updatewhereclause=yes name=jocr_soj_oc_orders2 dbname="npdb_qrxs_jocr.soj_oc_orders2" )
+ column=(type=char(160) updatewhereclause=yes name=jocr_soj_oc_orders3 dbname="npdb_qrxs_jocr.soj_oc_orders3" )
+ column=(type=char(160) updatewhereclause=yes name=jocr_soj_oc_orders4 dbname="npdb_qrxs_jocr.soj_oc_orders4" )
+ column=(type=char(160) updatewhereclause=yes name=jocr_soj_oc_orders5 dbname="npdb_qrxs_jocr.soj_oc_orders5" )
+ column=(type=long updatewhereclause=yes name=npdb_qrxs_contact_npdb_hdr_id dbname="npdb_qrxs_contact.npdb_hdr_id" )
+ column=(type=long updatewhereclause=yes name=npdb_qrxs_contact_report_id dbname="npdb_qrxs_contact.report_id" )
+ column=(type=char(60) updatewhereclause=yes name=npdb_qrxs_contact_entity_name dbname="npdb_qrxs_contact.entity_name" )
+ column=(type=char(40) updatewhereclause=yes name=npdb_qrxs_contact_phone_number dbname="npdb_qrxs_contact.phone_number" )
+ column=(type=char(40) updatewhereclause=yes name=npdb_qrxs_contact_phone_extension dbname="npdb_qrxs_contact.phone_extension" )
+ column=(type=char(100) updatewhereclause=yes name=npdb_qrxs_contact_con_address dbname="npdb_qrxs_contact.con_address" )
+ column=(type=char(40) updatewhereclause=yes name=npdb_qrxs_contact_con_city dbname="npdb_qrxs_contact.con_city" )
+ column=(type=char(10) updatewhereclause=yes name=npdb_qrxs_contact_con_state dbname="npdb_qrxs_contact.con_state" )
+ column=(type=char(10) updatewhereclause=yes name=npdb_qrxs_contact_con_zip dbname="npdb_qrxs_contact.con_zip" )
+ column=(type=char(40) updatewhereclause=yes name=npdb_qrxs_contact_con_country dbname="npdb_qrxs_contact.con_country" )
+ column=(type=char(100) updatewhereclause=yes name=npdb_qrxs_contact_office_name dbname="npdb_qrxs_contact.office_name" )
+ column=(type=char(100) updatewhereclause=yes name=npdb_qrxs_contact_dept_title dbname="npdb_qrxs_contact.dept_title" )
+ column=(type=char(40) updatewhereclause=yes name=npdb_qrxs_contact_entity_ref dbname="npdb_qrxs_contact.entity_ref" )
+ column=(type=char(2) updatewhereclause=yes name=npdb_qrxs_contact_report_type dbname="npdb_qrxs_contact.report_type" )
+ column=(type=char(40) updatewhereclause=yes name=npdb_qrxs_contact_submit_date dbname="npdb_qrxs_contact.submit_date" )
+ column=(type=char(10) updatewhereclause=yes name=npdb_qrxs_contact_statement_version dbname="npdb_qrxs_contact.statement_version" )
+ column=(type=char(4000) updatewhereclause=yes name=npdb_qrxs_contact_subject_statement dbname="npdb_qrxs_contact.subject_statement" )
+ column=(type=char(40) updatewhereclause=yes name=npdb_qrxs_contact_secretary_submit_date dbname="npdb_qrxs_contact.secretary_submit_date" )
+ column=(type=char(10) updatewhereclause=yes name=npdb_qrxs_contact_secretary_version dbname="npdb_qrxs_contact.secretary_version" )
+ column=(type=char(4000) updatewhereclause=yes name=npdb_qrxs_contact_secretary_statement dbname="npdb_qrxs_contact.secretary_statement" )
+ column=(type=char(1) updatewhereclause=yes name=npdb_qrxs_contact_dispute_status dbname="npdb_qrxs_contact.dispute_status" )
+ column=(type=char(40) updatewhereclause=yes name=npdb_qrxs_contact_orig_submitdate dbname="npdb_qrxs_contact.orig_submitdate" )
+ column=(type=char(40) updatewhereclause=yes name=npdb_qrxs_contact_rec_changedate dbname="npdb_qrxs_contact.rec_changedate" )
+ column=(type=long updatewhereclause=yes name=npdb_titleiv dbname="npdb_titleiv" values="Title IV (NPDB)	1/Title IV (NPDB)	0" )
+ column=(type=long updatewhereclause=yes name=npdb_1921 dbname="npdb_1921" values="Section 1921 (NPDB)	1/Section 1921 (NPDB)	0" )
+ column=(type=long updatewhereclause=yes name=npdb_1128e dbname="npdb_1128e" values="Section 1128E (HIPDB)	1/Section 1128E (HIPDB)	0" )
+ column=(type=long updatewhereclause=yes name=in_dispute dbname="in_dispute" values="If box is checked, this report has been disputed by the subject identified in Section B.	1/If box is checked, this report has been disputed by the subject identified in Section B.	0" )
+ column=(type=long updatewhereclause=yes name=in_reviewing dbname="in_reviewing" values="	1/	0" )
+ column=(type=long updatewhereclause=yes name=in_reviewed dbname="in_reviewed" values="	1/	0" )
+ column=(type=char(20) updatewhereclause=yes name=npdb_qrxs_contact_report_provision1 dbname="npdb_qrxs_contact.report_provision1" )
+ column=(type=char(20) updatewhereclause=yes name=npdb_qrxs_contact_report_provision2 dbname="npdb_qrxs_contact.report_provision2" )
+ column=(type=char(20) updatewhereclause=yes name=npdb_qrxs_contact_report_provision3 dbname="npdb_qrxs_contact.report_provision3" )
+ column=(type=char(5) updatewhereclause=yes name=npdb_qrxs_individual_org_type_code dbname="npdb_qrxs_individual.org_type_code" )
+ column=(type=char(5) updatewhereclause=yes name=npdb_qrxs_individual_isdeceased dbname="npdb_qrxs_individual.isdeceased" )
+ column=(type=char(40) updatewhereclause=yes name=npdb_qrxs_individual_deceased_date dbname="npdb_qrxs_individual.deceased_date" )
+ column=(type=char(15) updatewhereclause=yes name=npdb_qrxs_individual_itin1 dbname="npdb_qrxs_individual.itin1" )
+ column=(type=char(15) updatewhereclause=yes name=npdb_qrxs_individual_itin2 dbname="npdb_qrxs_individual.itin2" )
+ column=(type=char(15) updatewhereclause=yes name=npdb_qrxs_individual_itin3 dbname="npdb_qrxs_individual.itin3" )
+ column=(type=char(15) updatewhereclause=yes name=npdb_qrxs_individual_itin4 dbname="npdb_qrxs_individual.itin4" )
+ column=(type=char(20) updatewhereclause=yes name=npdb_qrxs_individual_ooal_number1 dbname="npdb_qrxs_individual.ooal_number1" )
+ column=(type=char(5) updatewhereclause=yes name=npdb_qrxs_individual_ooal_no_license1 dbname="npdb_qrxs_individual.ooal_no_license1" )
+ column=(type=char(5) updatewhereclause=yes name=npdb_qrxs_individual_ooal_state1 dbname="npdb_qrxs_individual.ooal_state1" )
+ column=(type=char(5) updatewhereclause=yes name=npdb_qrxs_individual_ooal_field1 dbname="npdb_qrxs_individual.ooal_field1" )
+ column=(type=char(5) updatewhereclause=yes name=npdb_qrxs_individual_ooal_specialty1 dbname="npdb_qrxs_individual.ooal_specialty1" )
+ column=(type=char(100) updatewhereclause=yes name=npdb_qrxs_individual_ooal_description1 dbname="npdb_qrxs_individual.ooal_description1" )
+ column=(type=char(100) updatewhereclause=yes name=npdb_qrxs_individual_affi_address dbname="npdb_qrxs_individual.affi_address" )
+ column=(type=char(40) updatewhereclause=yes name=npdb_qrxs_individual_affi_city dbname="npdb_qrxs_individual.affi_city" )
+ column=(type=char(10) updatewhereclause=yes name=npdb_qrxs_individual_affi_state dbname="npdb_qrxs_individual.affi_state" )
+ column=(type=char(10) updatewhereclause=yes name=npdb_qrxs_individual_affi_zip dbname="npdb_qrxs_individual.affi_zip" )
+ column=(type=char(10) updatewhereclause=yes name=npdb_qrxs_individual_affi_nature_rela dbname="npdb_qrxs_individual.affi_nature_rela" )
+ column=(type=char(100) updatewhereclause=yes name=npdb_qrxs_individual_affi_other_nature dbname="npdb_qrxs_individual.affi_other_nature" )
+ column=(type=char(100) updatewhereclause=yes name=npdb_qrxs_individual_affi_name dbname="npdb_qrxs_individual.affi_name" )
+ column=(type=char(40) updatewhereclause=yes name=npdb_qrxs_individual_customer_use dbname="npdb_qrxs_individual.customer_use" )
+ column=(type=char(100) updatewhereclause=yes name=npdb_qrxs_individual_org_description dbname="npdb_qrxs_individual.org_description" )
+ column=(type=long updatewhereclause=yes name=npdb_qrxs_individual_report_id dbname="npdb_qrxs_individual.report_id" )
+ retrieve="  SELECT npdb_qrxs_hdr.npdb_hdr_id,   
+         npdb_qrxs_hdr.report_id,   
+         npdb_qrxs_hdr.doc_id,   
+         npdb_qrxs_hdr.prac_id,   
+         npdb_qrxs_hdr.entity_dbid,   
+         npdb_qrxs_hdr.agent_dbid,   
+         npdb_qrxs_hdr.vendor_id,   
+         npdb_qrxs_hdr.submission_filename,   
+         npdb_qrxs_hdr.cert_name,   
+         npdb_qrxs_hdr.cert_title,    
+         npdb_qrxs_hdr.cert_phone_number,   
+         npdb_qrxs_hdr.cert_phone_extension,   
+         npdb_qrxs_hdr.cert_date,   
+         npdb_qrxs_status.dcn,   
+         npdb_qrxs_status.process_date,   
+         npdb_qrxs_status.successfully_processed,   
+         npdb_qrxs_status.error_code,   
+         npdb_qrxs_status.error_message,   
+         npdb_qrxs_status.report_count,   
+         npdb_qrxs_individual.last_name,   
+         npdb_qrxs_individual.first_name,   
+         npdb_qrxs_individual.middle_name,   
+         npdb_qrxs_individual.suffix_name,   
+         npdb_qrxs_individual.last_othername1,   
+         npdb_qrxs_individual.first_othername1,   
+         npdb_qrxs_individual.middle_othername1,   
+         npdb_qrxs_individual.suffix_othername1,   
+         npdb_qrxs_individual.gender,   
+         npdb_qrxs_individual.birthdate,   
+         npdb_qrxs_individual.organization_name,   
+         npdb_qrxs_individual.work_address,   
+         npdb_qrxs_individual.work_address2,   
+         npdb_qrxs_individual.work_city,   
+         npdb_qrxs_individual.work_state,   
+         npdb_qrxs_individual.work_zip,   
+         npdb_qrxs_individual.work_zip4,   
+         npdb_qrxs_individual.work_country,   
+         npdb_qrxs_individual.home_address,   
+         npdb_qrxs_individual.home_address2,   
+         npdb_qrxs_individual.home_city,   
+         npdb_qrxs_individual.home_state,   
+         npdb_qrxs_individual.home_zip,   
+         npdb_qrxs_individual.home_zip4,   
+         npdb_qrxs_individual.home_country,   
+         npdb_qrxs_individual.ssn1,   
+         npdb_qrxs_individual.ssn2,   
+         npdb_qrxs_individual.ssn3,   
+         npdb_qrxs_individual.ssn4,   
+         npdb_qrxs_individual.fein1,   
+         npdb_qrxs_individual.fein2,   
+         npdb_qrxs_individual.fein3,   
+         npdb_qrxs_individual.fein4,   
+         npdb_qrxs_individual.npi1,   
+         npdb_qrxs_individual.npi2,   
+         npdb_qrxs_individual.npi3,   
+         npdb_qrxs_individual.npi4,   
+         npdb_qrxs_individual.dea1,   
+         npdb_qrxs_individual.dea2,   
+         npdb_qrxs_individual.dea3,   
+         npdb_qrxs_individual.dea4,   
+         npdb_qrxs_individual.upin1,   
+         npdb_qrxs_individual.upin2,   
+         npdb_qrxs_individual.upin3,   
+         npdb_qrxs_individual.upin4,   
+         npdb_qrxs_individual.prof_school1,   
+         npdb_qrxs_individual.prof_school2,   
+         npdb_qrxs_individual.prof_school3,   
+         npdb_qrxs_individual.prof_school4,   
+         npdb_qrxs_individual.prof_school5,   
+         npdb_qrxs_individual.prof_graduation_year1,   
+         npdb_qrxs_individual.prof_graduation_year2,   
+         npdb_qrxs_individual.prof_graduation_year3,   
+         npdb_qrxs_individual.prof_graduation_year4,   
+         npdb_qrxs_individual.prof_graduation_year5,   
+         npdb_qrxs_individual.oal_number,   
+         npdb_qrxs_individual.oal_no_license,   
+         npdb_qrxs_individual.oal_state,   
+         npdb_qrxs_individual.oal_field,   
+         npdb_qrxs_individual.oal_description,   
+         npdb_qrxs_individual.oal_specialty,   
+         npdb_qrxs_jocr.action,   
+         npdb_qrxs_jocr.jurisdiction,   
+         npdb_qrxs_jocr.venue_name,   
+         npdb_qrxs_jocr.venue_city,   
+         npdb_qrxs_jocr.venue_state,   
+         npdb_qrxs_jocr.file_number,   
+         npdb_qrxs_jocr.prosecutor,   
+         npdb_qrxs_jocr.case_number,   
+         npdb_qrxs_jocr.ia_agency_name1,   
+         npdb_qrxs_jocr.ia_agency_name2,   
+         npdb_qrxs_jocr.ia_agency_name3,   
+         npdb_qrxs_jocr.ia_agency_name4,   
+         npdb_qrxs_jocr.ia_case_number1,   
+         npdb_qrxs_jocr.ia_case_number2,   
+         npdb_qrxs_jocr.ia_case_number3,   
+         npdb_qrxs_jocr.ia_case_number4,   
+         npdb_qrxs_jocr.sta_title_section1,   
+         npdb_qrxs_jocr.sta_title_section2,   
+         npdb_qrxs_jocr.sta_title_section3,   
+         npdb_qrxs_jocr.sta_title_section4,   
+         npdb_qrxs_jocr.sta_title_section5,   
+         npdb_qrxs_jocr.sta_offense1,   
+         npdb_qrxs_jocr.sta_offense2,   
+         npdb_qrxs_jocr.sta_offense3,   
+         npdb_qrxs_jocr.sta_offense4,   
+         npdb_qrxs_jocr.sta_offense5,   
+         npdb_qrxs_jocr.sta_count1,   
+         npdb_qrxs_jocr.sta_count2,   
+         npdb_qrxs_jocr.sta_count3,   
+         npdb_qrxs_jocr.sta_count4,   
+         npdb_qrxs_jocr.sta_count5,   
+         npdb_qrxs_jocr.narrative,   
+         npdb_qrxs_jocr.act_omission_code1,   
+         npdb_qrxs_jocr.act_omission_code2,   
+         npdb_qrxs_jocr.act_omission_code3,   
+         npdb_qrxs_jocr.act_omission_code4,   
+         npdb_qrxs_jocr.act_omission_code5,   
+         npdb_qrxs_jocr.act_omission_desc1,   
+         npdb_qrxs_jocr.act_omission_desc2,   
+         npdb_qrxs_jocr.act_omission_desc3,   
+         npdb_qrxs_jocr.act_omission_desc4,   
+         npdb_qrxs_jocr.act_omission_desc5,   
+         npdb_qrxs_jocr.judgment_or_sentence_date,   
+         npdb_qrxs_jocr.on_appeal,   
+         npdb_qrxs_jocr.appeal_date,   
+         npdb_qrxs_jocr.soj_res_amount1,   
+         npdb_qrxs_jocr.soj_res_amount2,   
+         npdb_qrxs_jocr.soj_res_amount3,   
+         npdb_qrxs_jocr.soj_res_amount4,   
+         npdb_qrxs_jocr.soj_res_amount5,   
+         npdb_qrxs_jocr.soj_osj_amount1,   
+         npdb_qrxs_jocr.soj_osj_amount2,   
+         npdb_qrxs_jocr.soj_osj_amount3,   
+         npdb_qrxs_jocr.soj_osj_amount4,   
+         npdb_qrxs_jocr.soj_osj_amount5,   
+         npdb_qrxs_jocr.soj_inc_length1,   
+         npdb_qrxs_jocr.soj_inc_length2,   
+         npdb_qrxs_jocr.soj_inc_length3,   
+         npdb_qrxs_jocr.soj_inc_length4,   
+         npdb_qrxs_jocr.soj_inc_length5,   
+         npdb_qrxs_jocr.soj_ss_length1,   
+         npdb_qrxs_jocr.soj_ss_length2,   
+         npdb_qrxs_jocr.soj_ss_length3,   
+         npdb_qrxs_jocr.soj_ss_length4,   
+         npdb_qrxs_jocr.soj_ss_length5,   
+         npdb_qrxs_jocr.soj_hd_length1,   
+         npdb_qrxs_jocr.soj_hd_length2,   
+         npdb_qrxs_jocr.soj_hd_length3,   
+         npdb_qrxs_jocr.soj_hd_length4,   
+         npdb_qrxs_jocr.soj_hd_length5,   
+         npdb_qrxs_jocr.soj_pr_length1,   
+         npdb_qrxs_jocr.soj_pr_length2,   
+         npdb_qrxs_jocr.soj_pr_length3,   
+         npdb_qrxs_jocr.soj_pr_length4,   
+         npdb_qrxs_jocr.soj_pr_length5,   
+         npdb_qrxs_jocr.soj_cs_hours1,   
+         npdb_qrxs_jocr.soj_cs_hours2,   
+         npdb_qrxs_jocr.soj_cs_hours3,   
+         npdb_qrxs_jocr.soj_cs_hours4,   
+         npdb_qrxs_jocr.soj_cs_hours5,   
+         npdb_qrxs_jocr.soj_oc_orders1,   
+         npdb_qrxs_jocr.soj_oc_orders2,   
+         npdb_qrxs_jocr.soj_oc_orders3,   
+         npdb_qrxs_jocr.soj_oc_orders4,   
+         npdb_qrxs_jocr.soj_oc_orders5,   
+         npdb_qrxs_contact.npdb_hdr_id,   
+         npdb_qrxs_contact.report_id,   
+         npdb_qrxs_contact.entity_name,   
+         npdb_qrxs_contact.phone_number,   
+         npdb_qrxs_contact.phone_extension,   
+         npdb_qrxs_contact.con_address,   
+         npdb_qrxs_contact.con_city,   
+         npdb_qrxs_contact.con_state,   
+         npdb_qrxs_contact.con_zip,   
+         npdb_qrxs_contact.con_country,   
+         npdb_qrxs_contact.office_name,   
+         npdb_qrxs_contact.dept_title,   
+         npdb_qrxs_contact.entity_ref,   
+         npdb_qrxs_contact.report_type,   
+         npdb_qrxs_contact.submit_date,   
+         npdb_qrxs_contact.statement_version,   
+         npdb_qrxs_contact.subject_statement,   
+         npdb_qrxs_contact.secretary_submit_date,   
+         npdb_qrxs_contact.secretary_version,   
+         npdb_qrxs_contact.secretary_statement,   
+         npdb_qrxs_contact.dispute_status,   
+         npdb_qrxs_contact.orig_submitdate,   
+         npdb_qrxs_contact.rec_changedate,   
+         (Case npdb_qrxs_contact.report_provision1 when 'IV' then 1 else (case npdb_qrxs_contact.report_provision2 when 'IV' then 1 else( case npdb_qrxs_contact.report_provision3 when 'IV' then 1 else 0 end)end)end) npdb_titleIV,   
+         (Case npdb_qrxs_contact.report_provision1 when '1921' then 1 else (case npdb_qrxs_contact.report_provision2 when '1921' then 1 else( case npdb_qrxs_contact.report_provision3 when '1921' then 1 else 0 end)end)end) npdb_1921,   
+         (Case npdb_qrxs_contact.report_provision1 when '1128E' then 1 else (case npdb_qrxs_contact.report_provision2 when '1128E' then 1 else( case npdb_qrxs_contact.report_provision3 when '1128E' then 1 else 0 end)end)end) npdb_1128E,   
+         (case npdb_qrxs_contact.dispute_status when 'Y' then 1 else 0 end) in_dispute,   
+         (case npdb_qrxs_contact.dispute_status when 'S' then 1 else 0 end) in_reviewing,   
+         (case npdb_qrxs_contact.dispute_status when 'R' then 1 else 0 end) in_reviewed,   
+         npdb_qrxs_contact.report_provision1,   
+         npdb_qrxs_contact.report_provision2,   
+         npdb_qrxs_contact.report_provision3,   
+         npdb_qrxs_individual.org_type_code,   
+         npdb_qrxs_individual.isdeceased,   
+         npdb_qrxs_individual.deceased_date,   
+         npdb_qrxs_individual.itin1,   
+         npdb_qrxs_individual.itin2,   
+         npdb_qrxs_individual.itin3,   
+         npdb_qrxs_individual.itin4,   
+         npdb_qrxs_individual.ooal_number1,   
+         npdb_qrxs_individual.ooal_no_license1,   
+         npdb_qrxs_individual.ooal_state1,   
+         npdb_qrxs_individual.ooal_field1,   
+         npdb_qrxs_individual.ooal_specialty1,   
+         npdb_qrxs_individual.ooal_description1,   
+         npdb_qrxs_individual.affi_address,   
+         npdb_qrxs_individual.affi_city,   
+         npdb_qrxs_individual.affi_state,   
+         npdb_qrxs_individual.affi_zip,   
+         npdb_qrxs_individual.affi_nature_rela,   
+         npdb_qrxs_individual.affi_other_nature,   
+         npdb_qrxs_individual.affi_name,   
+         npdb_qrxs_individual.customer_use,   
+         npdb_qrxs_individual.org_description  ,
+         npdb_qrxs_individual.report_id
+    FROM npdb_qrxs_hdr,   
+         npdb_qrxs_status,  
+         npdb_qrxs_jocr  LEFT OUTER JOIN npdb_qrxs_contact ON npdb_qrxs_jocr.npdb_hdr_id = npdb_qrxs_contact.npdb_hdr_id and npdb_qrxs_jocr.report_id = npdb_qrxs_contact.report_id
+                                 LEFT OUTER JOIN npdb_qrxs_individual ON npdb_qrxs_jocr.npdb_hdr_id = npdb_qrxs_individual.npdb_hdr_id and npdb_qrxs_jocr.report_id = npdb_qrxs_individual.report_id
+   WHERE ( npdb_qrxs_hdr.npdb_hdr_id = npdb_qrxs_status.npdb_hdr_id ) and  
+         ( npdb_qrxs_status.npdb_hdr_id =  npdb_qrxs_jocr.npdb_hdr_id ) and  
+         ( ( npdb_qrxs_hdr.npdb_hdr_id = :al_npdb_hdr_id ) )    
+" arguments=(("al_npdb_hdr_id", number))  sort="npdb_qrxs_hdr_npdb_hdr_id A npdb_qrxs_individual_report_id A " )
+line(band=header x1="5" y1="448" x2="3378" y2="448"  name=l_7 visible="1" pen.style="0" pen.width="9" pen.color="0"  background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" )
+rectangle(band=header x="2062" y="24" height="416" width="1321"  name=r_1 visible="1" brush.hatch="6" brush.color="16777215" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="0" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" )
+text(band=header alignment="0" text="http://www.npdb-hipdb.hrsa.gov" border="0" color="0" x="23" y="372" height="60" width="818" html.valueishtml="0"  name=t_74 visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="0" text="Data Bank" border="0" color="0" x="160" y="32" height="160" width="741" html.valueishtml="0"  name=t_5 visible="1"  font.face="Segoe UI" font.height="-24" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="0" text="the" border="0" color="0" x="27" y="72" height="72" width="119" html.valueishtml="0"  name=t_19 visible="1"  font.face="NewCenturySchlbk" font.height="-12" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" font.italic="1" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="0" text="P.O. Box 10832" border="0" color="0" x="23" y="212" height="60" width="384" html.valueishtml="0"  name=t_72 visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="0" text="Chantilly, VA 20153-0832" border="0" color="0" x="23" y="280" height="60" width="841" html.valueishtml="0"  name=t_73 visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="0" text="DCN: " border="0" color="0" x="2075" y="36" height="52" width="137" html.valueishtml="0"  name=t_69 visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="0" text="Process Date:" border="0" color="0" x="2075" y="96" height="60" width="366" html.valueishtml="0"  name=t_68 visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=header id=14 alignment="0" tabsequence=32766 border="0" color="33554432" x="2222" y="36" height="52" width="1147" format="[general]" html.valueishtml="0"  name=npdb_qrxs_status_dcn_5 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+compute(band=header alignment="0" expression="date(datetime(  npdb_qrxs_status_process_date ))"border="0" color="33554432" x="2455" y="96" height="60" width="869" format="[SHORTDATE] " html.valueishtml="0"  name=compute_13 visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+compute(band=header alignment="0" expression="'Page ' +page() + ' of ' +  PageCount()"border="0" color="0" x="2075" y="164" height="60" width="1029" format="[General]" html.valueishtml="0"  name=compute_31 visible="0"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="0" text="For authorized use by:" border="0" color="0" x="2075" y="300" height="60" width="549" html.valueishtml="0"  name=t_75 visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+compute(band=header alignment="0" expression="IF (isnull(ind_last_name), '', ind_last_name + ' , ') + IF (isnull(ind_first_name), '', ind_first_name) + '  ' + IF (isnull(ind_middle_name), '', ind_middle_name) + '   ' + IF (isnull(ind_suffix_name ), '', ind_suffix_name)"border="0" color="33554432" x="2075" y="232" height="60" width="1298" format="[GENERAL]" html.valueishtml="0"  name=compute_32  tag="" visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+compute(band=header alignment="0" expression="f_facility_name_npdb_id( npdb_qrxs_hdr_entity_dbid )"border="0" color="0" x="2075" y="372" height="60" width="1298" format="[GENERAL]" html.valueishtml="0"  name=compute_51 visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=113 alignment="0" tabsequence=32766 border="0" color="0" x="50" y="10932" height="52" width="114" format="[general]" html.valueishtml="0"  name=jocr_act_omission_code1 visible="0" dddw.name=d_dddw_npdb_codelist dddw.displaycolumn=compute_1 dddw.datacolumn=npdb_list_code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.autoretrieve=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=114 alignment="0" tabsequence=32766 border="0" color="0" x="206" y="10932" height="52" width="114" format="[general]" html.valueishtml="0"  name=jocr_act_omission_code2 visible="0" dddw.name=d_dddw_npdb_codelist dddw.displaycolumn=compute_1 dddw.datacolumn=npdb_list_code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.autoretrieve=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=115 alignment="0" tabsequence=32766 border="0" color="0" x="361" y="10952" height="52" width="114" format="[general]" html.valueishtml="0"  name=jocr_act_omission_code3 visible="0" dddw.name=d_dddw_npdb_codelist dddw.displaycolumn=compute_1 dddw.datacolumn=npdb_list_code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.autoretrieve=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=116 alignment="0" tabsequence=32766 border="0" color="0" x="535" y="10984" height="52" width="114" format="[general]" html.valueishtml="0"  name=jocr_act_omission_code4 visible="0" dddw.name=d_dddw_npdb_codelist dddw.displaycolumn=compute_1 dddw.datacolumn=npdb_list_code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.autoretrieve=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=117 alignment="0" tabsequence=32766 border="0" color="0" x="681" y="10968" height="52" width="114" format="[general]" html.valueishtml="0"  name=jocr_act_omission_code5 visible="0" dddw.name=d_dddw_npdb_codelist dddw.displaycolumn=compute_1 dddw.datacolumn=npdb_list_code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.autoretrieve=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+compute(band=summary alignment="0" expression="date(datetime( npdb_qrxs_individual_deceased_date ))"border="0" color="0" x="192" y="0" height="52" width="183" format="[SHORTDATE]" html.valueishtml="0"  name=compute_48 visible="0"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

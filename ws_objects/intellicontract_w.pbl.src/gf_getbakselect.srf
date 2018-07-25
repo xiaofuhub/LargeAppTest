@@ -1,0 +1,41 @@
+﻿$PBExportHeader$gf_getbakselect.srf
+global type gf_getbakselect from function_object
+end type
+
+forward prototypes
+global function integer gf_getbakselect (string as_tag)
+end prototypes
+
+global function integer gf_getbakselect (string as_tag);//====================================================================
+// Event: .gf_getbakselect()
+//--------------------------------------------------------------------
+// Description:
+//--------------------------------------------------------------------
+// Arguments:
+// 	string	as_Tag	
+//--------------------------------------------------------------------
+// Returns:  integer
+//--------------------------------------------------------------------
+// Author:	Scofield		Date: 2009-01-13
+//--------------------------------------------------------------------
+//	Copyright (c) 2002-2009 Appeon, All rights reserved.
+//--------------------------------------------------------------------
+// Modify History:
+//
+//====================================================================
+
+String	ls_Tag
+long		ll_Pos
+
+ls_Tag = as_Tag
+if IsNull(ls_Tag) then ls_Tag = ""
+
+if ls_Tag = "" then
+	Return 0
+else
+	ll_Pos = LastPos(ls_Tag, "--")
+	Return long(Mid(ls_Tag,ll_Pos + 2 ))
+end if
+
+end function
+

@@ -1,0 +1,26 @@
+﻿$PBExportHeader$of_validate_crit.srf
+global type of_validate_crit from function_object
+end type
+
+forward prototypes
+global function string of_validate_crit (string ls_field, string ls_value)
+end prototypes
+
+global function string of_validate_crit (string ls_field, string ls_value);//Start Code Change ----01.16.2014 #V14 maha - added.  Called from Location and Provider searches
+choose case ls_field
+	case "NPI"  ,  "NPI #"
+		if not isnumber(ls_value) then return "NUM"
+		if len(ls_value) <> 10 then return "NPI"
+	case "tax_id", "Address - Tax Id"
+		if not isnumber(ls_value) then return  "NUM"
+		if len(ls_value) <> 9 then return "TAX"
+	case  "SS #"
+		if not isnumber(ls_value) then return  "NUM"
+		if len(ls_value) <> 9 then return "SSN"
+	case "Zip"
+		if not isnumber(ls_value) then return  "NUM"
+end choose
+
+return 'OK'
+end function
+

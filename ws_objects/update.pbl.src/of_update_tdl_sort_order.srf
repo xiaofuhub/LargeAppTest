@@ -1,0 +1,32 @@
+﻿$PBExportHeader$of_update_tdl_sort_order.srf
+global type of_update_tdl_sort_order from function_object
+end type
+
+forward prototypes
+global function integer of_update_tdl_sort_order ()
+end prototypes
+
+global function integer of_update_tdl_sort_order ();//Start Code Change ----07.27.2017 #V154 maha - designed for setting base sort values in the TDL 
+//called from DB updates (15.4)
+integer r
+integer rc
+n_ds lds_tdl
+
+lds_tdl = create n_ds
+
+lds_tdl.dataobject = "d_tdl_list_for_update"
+lds_tdl.settransobject(sqlca)
+rc = lds_tdl.retrieve()
+
+for r = 1 to rc
+	lds_tdl.setitem(r, "tdl_sort", r * 10)
+next
+
+lds_tdl.update()
+
+destroy lds_tdl
+
+
+return 1
+end function
+

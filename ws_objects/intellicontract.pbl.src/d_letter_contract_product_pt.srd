@@ -1,0 +1,46 @@
+﻿$PBExportHeader$d_letter_contract_product_pt.srd
+$PBExportComments$[intellicontract] The retrievel arg is an array USED IN LETTERS
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=68 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=ctx_id dbname="ctx_products.ctx_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=prod_id dbname="prod_id" )
+ column=(type=char(30) updatewhereclause=yes name=contract_det_product_name dbname="contract_det_product_name" )
+ column=(type=char(75) updatewhereclause=yes name=contract_det_product_name_desc dbname="contract_det_product_name_desc" )
+ column=(type=decimal(0) updatewhereclause=yes name=prod_type dbname="prod_type" )
+ column=(type=char(30) updatewhereclause=yes name=contract_det_product_type dbname="contract_det_product_type" )
+ column=(type=char(75) updatewhereclause=yes name=contract_det_product_type_desc dbname="contract_det_product_type_desc" )
+ retrieve="  SELECT ctx_id,
+			prod_id = ctx_products.product_id,   
+			contract_det_product_name = t1.code,
+			contract_det_product_name_desc = t1.description,
+         prod_type = ctx_products.product_type  ,
+			contract_det_product_type = t2.code,
+			contract_det_product_type_desc = t2.description
+    FROM ctx_products left outer join code_lookup t1 on (ctx_products.product_id = t1.lookup_code) 
+		left outer join code_lookup t2 on (ctx_products.product_type = t2.lookup_code) 
+   WHERE ctx_id in (:al_ctx_id)   
+ORDER BY ctx_products.ctx_id ASC   
+" arguments=(("al_ctx_id", numberlist)) )
+text(band=header alignment="0" text="Prod Id" border="0" color="0" x="9" y="4" height="76" width="1312" html.valueishtml="0"  name=prod_id_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Prod Type" border="0" color="0" x="1330" y="4" height="76" width="1367" html.valueishtml="0"  name=prod_type_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Contract Det Product Name" border="0" color="0" x="2706" y="4" height="76" width="471" html.valueishtml="0"  name=contract_det_product_name_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Contract Det Product Type" border="0" color="0" x="3186" y="4" height="76" width="471" html.valueishtml="0"  name=contract_det_product_type_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Ctx Products Ctx Id" border="0" color="0" x="3666" y="4" height="76" width="1367" html.valueishtml="0"  name=ctx_products_ctx_id_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="0" height="76" width="1312" format="[general]" html.valueishtml="0"  name=prod_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="1330" y="0" height="76" width="1367" format="[general]" html.valueishtml="0"  name=prod_type visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="2706" y="0" height="76" width="471" format="[general]" html.valueishtml="0"  name=contract_det_product_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="3186" y="0" height="76" width="471" format="[general]" html.valueishtml="0"  name=contract_det_product_type visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="3666" y="0" height="76" width="1367" format="[general]" html.valueishtml="0"  name=ctx_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=4 alignment="0" tabsequence=0 border="0" color="0" x="5047" y="0" height="76" width="2391" html.valueishtml="0"  name=contract_det_product_name_desc visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Contract Det Product Name Desc" border="0" color="0" x="5042" y="4" height="76" width="2395" html.valueishtml="0"  name=contract_det_product_name_desc_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=7 alignment="0" tabsequence=0 border="0" color="0" x="7451" y="0" height="76" width="2391" html.valueishtml="0"  name=contract_det_product_type_desc visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Contract Det Product Type Desc" border="0" color="0" x="7447" y="4" height="76" width="2395" html.valueishtml="0"  name=contract_det_product_type_desc_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

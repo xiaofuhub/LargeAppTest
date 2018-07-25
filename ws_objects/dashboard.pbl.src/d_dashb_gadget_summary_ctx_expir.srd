@@ -1,0 +1,99 @@
+﻿$PBExportHeader$d_dashb_gadget_summary_ctx_expir.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 grid.columnmove=no selected.mouse=no )
+header(height=68 color="553648127" )
+summary(height=68 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=char(30) updatewhereclause=yes name=code_lookup_category_name dbname="category_name" )
+ column=(type=long updatewhereclause=yes name=category_count dbname="category_count" )
+ retrieve="
+Select (Case when A.code is null then 'None' else a.code End) category_name,count(*) category_count
+From ctx_basic_info
+Left Outer Join code_lookup A on A.lookup_code = ctx_basic_info.category,
+(
+	SELECT DISTINCT TOP 100 Percent  ctx_id = ctx_contract_contacts.ctx_id, user_id = ctx_contacts.user_d, access = (CASE ctx_contract_contacts.owner WHEN 'Y' THEN 'F' ELSE ctx_contract_contacts.access END)
+	FROM ctx_contract_contacts Left Outer Join
+	(
+	Select ctx_contract_contacts1.ctx_id,ctx_contacts1.user_d 
+	From ctx_contract_contacts ctx_contract_contacts1 ,ctx_contacts ctx_contacts1
+	Where ctx_contract_contacts1.contact_id = ctx_contacts1.contact_id And ctx_contacts1.user_d = :as_user_id
+	Group By ctx_contract_contacts1.ctx_id,ctx_contacts1.user_d
+	Having Count(ctx_contract_contacts1.ctx_id) > 1
+	) ccc
+	On ctx_contract_contacts.ctx_id = ccc.ctx_id
+	,ctx_contacts
+	WHERE ctx_contacts.user_d = :as_user_id
+		AND (ccc.ctx_id is null or ctx_contract_contacts.access = 'F' )
+		AND ctx_contract_contacts.contact_id = ctx_contacts.contact_id 
+		AND ( ctx_contract_contacts.access IN ('F','R') 
+		OR ctx_contract_contacts.owner = 'Y' )
+		AND ctx_contract_contacts.ic_area = 'I'
+	
+	UNION 
+	
+	SELECT DISTINCT TOP 100 Percent ctx_id = ctx_group_access.ctx_id,user_id = security_group_users.user_id, access =  ctx_group_access.access
+	FROM 
+	ctx_group_access ,
+	security_group_users,
+	icred_settings
+	WHERE	security_group_users.user_id = :as_user_id
+		AND ctx_group_access.group_id = security_group_users.group_id
+		AND ctx_group_access.access = 
+			(Case When Exists (Select u1.user_id,a1.ctx_id,a1.access 
+			From ctx_group_access a1,security_group_users u1
+			Where a1.group_id = u1.group_id 
+			And a1.ctx_id = ctx_group_access.ctx_id
+			And u1.user_id = security_group_users.user_id	
+			And a1.access = 'F') Then 'F' Else 'R' End) 
+		AND icred_settings.group_access = 1
+		AND ctx_group_access.access in ('F','R')
+		AND NOT EXISTS	(SELECT 1 FROM ctx_contract_contacts, ctx_contacts  
+				WHERE ( ctx_contacts.contact_id = ctx_contract_contacts.contact_id ) 
+				AND ( ctx_contacts.user_d = security_group_users.user_id )
+				AND ( ctx_contract_contacts.ic_area = 'I' )
+				AND ( ctx_contract_contacts.ctx_id = ctx_group_access.ctx_id )
+				)
+
+
+	
+	UNION
+	
+	SELECT DISTINCT TOP 100 Percent ctx_id = ctx_basic_info.ctx_id, user_id = security_users.user_id, access = (CASE ctx_acp_contract_management_right.rights WHEN '11' THEN 'F' WHEN '12' THEN 'R' ELSE 'N' END)
+	FROM ctx_acp_contract_management_right, security_users, ctx_basic_info
+	WHERE security_users.user_id = :as_user_id
+		AND ctx_acp_contract_management_right.types = 1
+		AND ctx_acp_contract_management_right.role_id = security_users.role_id
+		AND ctx_acp_contract_management_right.category = ctx_basic_info.category
+		AND ctx_acp_contract_management_right.rights In ('11','12')
+		AND NOT EXISTS (SELECT 1 FROM ctx_contract_contacts, ctx_contacts  
+				WHERE ( ctx_contacts.contact_id = ctx_contract_contacts.contact_id ) 
+				AND ( ctx_contacts.user_d = security_users.user_id AND ctx_contract_contacts.ic_area = 'I') 
+				AND ( ctx_contract_contacts.ctx_id = ctx_basic_info.ctx_id ) 
+				UNION
+				SELECT 1 FROM ctx_group_access,security_group_users,icred_settings
+				WHERE icred_settings.group_access = 1
+				AND (ctx_group_access.group_id = security_group_users.group_id )
+				AND ( security_group_users.user_id = security_users.user_id )	
+				AND ( ctx_group_access.ctx_id = ctx_basic_info.ctx_id )
+				)
+) ctx_access_list
+Where ctx_access_list.ctx_id = ctx_basic_info.ctx_id
+and ctx_basic_info.is_template = 0 	
+and ctx_access_list.user_id = :as_user_id
+and ctx_basic_info.expriation_date > getdate()
+Group By A.code
+Order By A.code Asc" arguments=(("as_user_id", string)) )
+text(band=header alignment="2" text="Category" border="0" color="33554432" x="9" y="8" height="52" width="841" html.valueishtml="0"  name=code_lookup_category_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Count" border="0" color="33554432" x="859" y="8" height="52" width="256" html.valueishtml="0"  name=category_count_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Percent" border="0" color="0" x="1125" y="8" height="52" width="233" html.valueishtml="0"  name=percent_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="9" y="8" height="64" width="841" format="[general]" html.valueishtml="0"  name=code_lookup_category_name visible="1" edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="2" tabsequence=32766 border="0" color="33554432" x="859" y="8" height="64" width="256" format="[general]" html.valueishtml="0"  name=category_count visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="2" expression="String(( category_count  /  compute_all ) * 100,'0.00')+'%'"border="0" color="0" x="1125" y="8" height="64" width="233" format="[GENERAL]" html.valueishtml="0"  name=compute_percent visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=summary alignment="2" expression="Sum( category_count )"border="0" color="0" x="859" y="4" height="60" width="256" format="[GENERAL]" html.valueishtml="0"  name=compute_all visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

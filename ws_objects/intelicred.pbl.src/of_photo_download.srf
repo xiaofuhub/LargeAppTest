@@ -1,0 +1,99 @@
+﻿$PBExportHeader$of_photo_download.srf
+global type of_photo_download from function_object
+end type
+
+forward prototypes
+global function string of_photo_download (long al_pracid)
+end prototypes
+
+global function string of_photo_download (long al_pracid);//------------------------------------------------------------------------------
+// Function: of_Download_Photo()
+//------------------------------------------------------------------------------
+// Description: Download Photo from database
+// Arguments:
+//		1 -- Prac_id
+//		2 -- Down Directory
+// Return Value: 
+//	  -1 -- Failed
+//		1 -- Sucess
+//------------------------------------------------------------------------------
+// Author:	Scofield		Date: 2008-07-10
+//------------------------------------------------------------------------------
+// Revision History: 
+//				1.0   Initial version
+//==============================================================================
+
+String	ls_PicName,ls_Postfix, ls_PicPath
+long		ll_FileNo,ll_Cycle,ll_DataLen,ll_Count,ll_Start,ll_FileLen
+Blob		lblb_Buffer
+String	ls_Rtn
+
+long 		READ_ONE_COUNT = 8000
+
+ls_PicPath = TRIM(gnv_data.of_getitem("ids","picture_path",false))
+
+SELECT image_type INTO :ls_Postfix from pd_photo WHERE pd_photo.prac_id = :al_PracID ;
+if IsNull(ls_Postfix) or Trim(ls_Postfix) = "" then Return "None"
+
+gnv_appeondll.of_parsepath(ls_PicPath) //alfee 09.04.2014 - Bug #4176
+
+ls_Rtn = f_ExaWriteRight(ls_PicPath)
+if Len(ls_Rtn) > 0 then
+	MessageBox(gnv_app.iapp_object.DisplayName,ls_Rtn,Exclamation!)
+	Return "None"
+end if
+
+ls_PicName = ls_PicPath + String(al_PracID) + "-demo." + ls_Postfix
+//------------------- APPEON BEGIN -------------------
+//<$>added:long.zhang 06.12.2016
+//<$>reason:Restore original script. Bug ID #5197 for Case # 00064264: Trying to upload new photos for a Practitioner not saving
+
+////-----------------------RP modified 1.8.2016 for DEMO-------------------------------
+////if FileExists(ls_PicName) then ll_FileLen = FileLength(ls_PicName)
+//if FileExists(ls_PicName) then
+//	return ls_PicName
+//END IF
+
+if FileExists(ls_PicName) then ll_FileLen = FileLength(ls_PicName)
+//------------------- APPEON END -------------------
+
+SELECT Datalength(pd_photo.image_data)
+  INTO :ll_DataLen
+  FROM pd_photo
+ WHERE pd_photo.prac_id = :al_PracID ;
+
+if IsNull(ll_DataLen) or ll_DataLen <= 0 then Return "None"
+if ll_DataLen = ll_FileLen then Return ls_PicName
+
+ll_FileNo = FileOpen(ls_PicName,StreamMode!,Write!,LockReadWrite!,Replace!)
+if ll_FileNo <= 0 then Return "None"
+
+ll_Count = Ceiling(ll_DataLen/READ_ONE_COUNT)
+
+if AppeonGetClientType() = 'PB' and gs_dbtype = 'SQL' and ll_DataLen > READ_ONE_COUNT then
+	for ll_Cycle = 1 To ll_Count
+		ll_Start = (ll_Cycle - 1) * READ_ONE_COUNT + 1
+		SELECTBLOB SubString(image_data,:ll_Start,:READ_ONE_COUNT)
+		      INTO :lblb_Buffer
+		      FROM pd_photo
+		     WHERE pd_photo.prac_id = :al_PracID ;
+		
+		FileWrite(ll_FileNo,lblb_Buffer)
+	next
+else
+	SELECTBLOB image_data
+	      INTO :lblb_Buffer
+	      FROM pd_photo
+ 		  WHERE pd_photo.prac_id = :al_PracID ;
+			
+	for ll_Cycle = 1 To ll_Count
+		FileWrite(ll_FileNo,BlobMid(lblb_Buffer,(ll_Cycle - 1) * READ_ONE_COUNT + 1,READ_ONE_COUNT))
+	next
+end if
+
+FileClose(ll_FileNo)
+
+Return ls_PicName
+
+end function
+

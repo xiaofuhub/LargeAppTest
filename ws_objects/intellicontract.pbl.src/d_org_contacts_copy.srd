@@ -1,0 +1,49 @@
+﻿$PBExportHeader$d_org_contacts_copy.srd
+$PBExportComments$Create by Jack 06/19/2007
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=96 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes identity=yes name=org_contact_id dbname="ctx_org_contact.org_contact_id" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=org_id dbname="ctx_org_contact.org_id" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=contact_name dbname="ctx_org_contact.contact_name" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=department dbname="ctx_org_contact.department" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=via dbname="ctx_org_contact.via" )
+ column=(type=char(25) update=yes updatewhereclause=yes name=phone dbname="ctx_org_contact.phone" )
+ column=(type=char(128) updatewhereclause=yes name=inserted_by_user dbname="ctx_org_contact.inserted_by_user" )
+ column=(type=datetime updatewhereclause=yes name=inserted_at_date_time dbname="ctx_org_contact.inserted_at_date_time" )
+ column=(type=char(128) updatewhereclause=yes name=updated_by_user dbname="ctx_org_contact.updated_by_user" )
+ column=(type=datetime updatewhereclause=yes name=updated_at_date_time dbname="ctx_org_contact.updated_at_date_time" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=org_cnt_email dbname="ctx_org_contact.org_cnt_email" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=record_id dbname="ctx_org_contact.record_id" )
+ retrieve="  SELECT ctx_org_contact.org_contact_id,   
+         ctx_org_contact.org_id,   
+         ctx_org_contact.contact_name,   
+         ctx_org_contact.department,   
+         ctx_org_contact.via,   
+         ctx_org_contact.phone,   
+         ctx_org_contact.inserted_by_user,   
+         ctx_org_contact.inserted_at_date_time,   
+         ctx_org_contact.updated_by_user,   
+         ctx_org_contact.updated_at_date_time,   
+         ctx_org_contact.org_cnt_email,   
+         ctx_org_contact.record_id  
+    FROM ctx_org_contact  
+" update="ctx_org_contact" updatewhere=2 updatekeyinplace=yes )
+text(band=header alignment="2" text="Name" border="6" color="33554432" x="9" y="8" height="52" width="1093" html.valueishtml="0"  name=contact_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="2" text="Department" border="6" color="33554432" x="1111" y="8" height="52" width="846" html.valueishtml="0"  name=department_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="2" text="Via" border="6" color="33554432" x="1966" y="8" height="52" width="274" html.valueishtml="0"  name=via_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="2" text="Phone" border="6" color="33554432" x="2249" y="8" height="52" width="558" html.valueishtml="0"  name=phone_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="2" text="Email" border="6" color="33554432" x="2816" y="8" height="52" width="1993" html.valueishtml="0"  name=org_cnt_email_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=3 alignment="0" tabsequence=10 border="5" color="33554432" x="9" y="8" height="60" width="1093" format="[general]" html.valueishtml="0"  name=contact_name visible="1" edit.limit=75 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=4 alignment="0" tabsequence=20 border="5" color="33554432" x="1111" y="8" height="60" width="846" format="[general]" html.valueishtml="0"  name=department visible="1" edit.limit=75 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=6 alignment="0" tabsequence=40 border="5" color="33554432" x="2254" y="8" height="60" width="553" format="[general]" html.valueishtml="0"  name=phone visible="1" edit.limit=25 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=5 alignment="1" tabsequence=30 border="5" color="33554432" x="1966" y="8" height="60" width="274" format="[general]" html.valueishtml="0" protect="0~tif ( not isRowNew(),1,0)"  name=via  tag="Contract Contact VIA" visible="1" dddw.name=d_dddw_code_lookup dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=400 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.autoretrieve=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=11 alignment="0" tabsequence=50 border="5" color="33554432" x="2816" y="8" height="60" width="1993" format="[general]" html.valueishtml="0"  name=org_cnt_email visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

@@ -1,0 +1,45 @@
+﻿$PBExportHeader$d_dddw_cntx_images_list.srd
+$PBExportComments$[intellicontract] Images associated to the contract
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=60 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes name=ctx_id dbname="CTX_IMAGES.ctx_id" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=page_description dbname="CTX_IMAGES.page_description" )
+ column=(type=long update=yes updatewhereclause=yes name=page_start dbname="CTX_IMAGES.page_start" )
+ column=(type=long update=yes updatewhereclause=yes name=page_end dbname="CTX_IMAGES.page_end" )
+ column=(type=long update=yes updatewhereclause=yes name=image_id dbname="CTX_IMAGES.image_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=media_type dbname="CTX_IMAGES.media_type" initial="1" values="Scanned Image	1/Other	2/" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=file_name dbname="CTX_IMAGES.file_name" )
+ column=(type=long updatewhereclause=yes name=image_version dbname="CTX_IMAGE.image_version" initial="1" )
+ column=(type=char(128) updatewhereclause=yes name=ctx_image_inserted_by_user dbname="CTX_IMAGE.inserted_by_user" )
+ column=(type=datetime updatewhereclause=yes name=ctx_image_inserted_at_date_time dbname="CTX_IMAGE.inserted_at_date_time" )
+ column=(type=char(128) updatewhereclause=yes name=ctx_image_updated_by_user dbname="CTX_IMAGE.updated_by_user" )
+ column=(type=datetime updatewhereclause=yes name=ctx_image_updated_at_date_time dbname="CTX_IMAGE.updated_at_date_time" )
+ retrieve="  SELECT ctx_images.ctx_id,   
+         ctx_images.page_description,   
+         ctx_images.page_start,   
+         ctx_images.page_end,   
+         ctx_images.image_id,   
+         ctx_images.media_type,   
+         ctx_images.file_name,   
+         ctx_image.image_version,   
+         ctx_image.inserted_by_user,   
+         ctx_image.inserted_at_date_time,   
+         ctx_image.updated_by_user,   
+         ctx_image.updated_at_date_time  
+    FROM ctx_images,   
+         ctx_image  
+   WHERE ( ctx_images.image_id = ctx_image.image_id ) and  
+         ( ctx_images.ctx_id = :al_ctx_id ) and
+          ( CHARINDEX('tiff', ctx_images.file_name ) > 0 OR  CHARINDEX('tif', ctx_images.file_name ) > 0)
+
+" filter=" compute_1 = 'C'"arguments=(("al_ctx_id", number))  sort="page_description A image_version A " )
+column(band=detail id=2 alignment="0" tabsequence=10 border="5~tif (not isRowNew() ,0,5)" color="0" x="9" y="0" height="52" width="2053" format="[general]" html.valueishtml="0" protect="0~tif (not isRowNew() ,1,0)"  name=page_description visible="1" edit.limit=255 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="1073741824~tif (not isRowNew() ,78682240, 1087434968 )" )
+compute(band=detail alignment="2" expression="f_Set_record_status( image_id , image_version )"border="0" color="0" x="2071" y="0" height="52" width="178" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="0"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

@@ -1,0 +1,26 @@
+﻿$PBExportHeader$d_tv_prac_apps.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=char(100) updatewhereclause=yes name=application_name dbname="app_hdr.application_name" )
+ column=(type=char(75) updatewhereclause=yes name=code_lookup_description dbname="code_lookup.description" )
+ column=(type=char(75) updatewhereclause=yes name=code_lookup_description_1 dbname="code_lookup.description" )
+ column=(type=decimal(0) updatewhereclause=yes name=app_id dbname="net_dev_action_items.app_id" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"net_dev_action_items~" )  TABLE(NAME=~"code_lookup~" ALIAS=~"code_lookup_a~" )  TABLE(NAME=~"code_lookup~" ALIAS=~"code_lookup_b~" )  TABLE(NAME=~"app_hdr~" ) COLUMN(NAME=~"app_hdr.application_name~") COLUMN(NAME=~"code_lookup_a.description~") COLUMN(NAME=~"code_lookup_b.description~") COLUMN(NAME=~"net_dev_action_items.app_id~")    JOIN (LEFT=~"net_dev_action_items.action_type~"    OP =~"=~"RIGHT=~"code_lookup_a.lookup_code~" )    JOIN (LEFT=~"net_dev_action_items.action_status~"    OP =~"=~"RIGHT=~"code_lookup_b.lookup_code~" )    JOIN (LEFT=~"net_dev_action_items.facility_id~"    OP =~"=~"RIGHT=~"app_hdr.facility_id~" )WHERE(    EXP1 =~"~~~"net_dev_action_items~~~".~~~"prac_id~~~"~"   OP =~"=~"    EXP2 =~":ai_prac~" ) ) ARG(NAME = ~"ai_prac~" TYPE = number) " arguments=(("ai_prac", number)) )
+text(band=header alignment="2" text="App Hdr
+Application Name" border="0" color="33554432" x="5" y="4" height="104" width="2309" html.valueishtml="0"  name=app_hdr_application_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Code Lookup
+Description" border="0" color="33554432" x="2318" y="4" height="104" width="1737" html.valueishtml="0"  name=code_lookup_description_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Code Lookup
+Description" border="0" color="33554432" x="4059" y="4" height="104" width="1737" html.valueishtml="0"  name=code_lookup_description_t_1_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="5" y="4" height="64" width="2309" format="[general]" html.valueishtml="0"  name=application_name visible="1" edit.limit=100 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="2318" y="4" height="64" width="1737" format="[general]" html.valueishtml="0"  name=code_lookup_description visible="1" edit.limit=75 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="4059" y="4" height="64" width="1737" format="[general]" html.valueishtml="0"  name=code_lookup_description_1 visible="1" edit.limit=75 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=0 border="0" color="33554432" x="5797" y="0" height="52" width="987" html.valueishtml="0"  name=app_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

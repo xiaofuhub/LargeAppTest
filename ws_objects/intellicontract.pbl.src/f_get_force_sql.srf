@@ -1,0 +1,63 @@
+﻿$PBExportHeader$f_get_force_sql.srf
+global type f_get_force_sql from function_object
+end type
+
+forward prototypes
+global function string f_get_force_sql (long al_data_view_id, long al_screen_id)
+end prototypes
+
+global function string f_get_force_sql (long al_data_view_id, long al_screen_id);//====================================================================
+// Event: f_get_force_sql()
+//--------------------------------------------------------------------
+// Description:
+//--------------------------------------------------------------------
+// Arguments:
+// 	value	long	al_data_view_id	
+// 	value	long	al_screen_id   	
+//--------------------------------------------------------------------
+// Returns:  string
+//--------------------------------------------------------------------
+// Author:	Andy		Date: Oct 23,2007
+//--------------------------------------------------------------------
+// Modify History:
+//
+//====================================================================
+
+Long ll_data_length
+Integer li_counter
+Integer li_loops
+String ls_sql
+String ls_all_sql
+Long ll_start
+
+// Get file data from database
+SELECT Datalength(force_update)
+INTO :ll_data_length
+FROM ctx_screen
+WHERE data_view_id = :al_data_view_id
+AND screen_id = :al_screen_id;
+
+IF ll_data_length > 8000 THEN 
+  	 IF Mod(ll_data_length,8000) = 0 THEN 
+        li_loops = ll_data_length/8000 
+    ELSE 
+  	     li_loops = (ll_data_length/8000) + 1 
+    END IF 
+ELSE 
+  	 li_loops = 1 
+END IF 
+
+FOR li_counter = 1 to li_loops
+	ll_start = (li_counter - 1) * 8000 + 1
+	SELECT substring(force_update,:ll_start,8000)
+	INTO :ls_sql
+	FROM ctx_screen 
+	WHERE data_view_id = :al_data_view_id 
+	AND screen_id = :al_screen_id;
+
+	ls_all_sql += ls_sql
+NEXT 
+
+Return ls_all_sql
+end function
+

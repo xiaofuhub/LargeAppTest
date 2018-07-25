@@ -1,0 +1,99 @@
+﻿$PBExportHeader$d_view_selected_fields5.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=88 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=field_id dbname="conv_view_fields.field_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=view_id dbname="conv_view_fields.view_id" )
+ column=(type=long update=yes updatewhereclause=yes name=project_id dbname="conv_view_fields.project_id" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=field_options dbname="conv_view_fields.field_options" values=" 	 /Code	C/Description	D/" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=field_alias dbname="conv_view_fields.field_alias" )
+ column=(type=long update=yes updatewhereclause=yes name=sel_table_id dbname="conv_view_fields.sel_table_id" )
+ column=(type=long update=yes updatewhereclause=yes name=sel_field_id dbname="conv_view_fields.sel_field_id" )
+ column=(type=long update=yes updatewhereclause=yes name=field_order dbname="conv_view_fields.field_order" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=table_name dbname="conv_view_fields.table_name" )
+ column=(type=char(1000) update=yes updatewhereclause=yes name=field_name dbname="conv_view_fields.field_name" )
+ column=(type=char(4) update=yes updatewhereclause=yes name=field_display_width dbname="conv_view_fields.field_display_width" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=field_x dbname="conv_view_fields.field_x" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=field_wizard_name dbname="conv_view_fields.field_wizard_name" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=field_wizard_type dbname="conv_view_fields.field_wizard_type" )
+ column=(type=long update=yes updatewhereclause=yes name=field_align dbname="conv_view_fields.field_align" )
+ column=(type=long update=yes updatewhereclause=yes name=label_align dbname="conv_view_fields.label_align" )
+ column=(type=long updatewhereclause=yes name=field_visible dbname="field_visible" initial="1" values="	1/	0" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=label_text dbname="conv_view_fields.label_text" )
+ column=(type=long update=yes updatewhereclause=yes name=group_by_field dbname="conv_view_fields.group_by_field" values="	1/	0" )
+ column=(type=char(5) update=yes updatewhereclause=yes name=aggregate_type dbname="conv_view_fields.aggregate_type" values=" 	 /Group Level	GL/Summary Level	SL/Group and Summary Level	GLSL/" )
+ column=(type=long update=yes updatewhereclause=yes name=avg_fld dbname="conv_view_fields.avg_fld" values="	1/	0" )
+ column=(type=long update=yes updatewhereclause=yes name=sum_fld dbname="conv_view_fields.sum_fld" values="	1/	0" )
+ column=(type=long update=yes updatewhereclause=yes name=count_fld dbname="conv_view_fields.count_fld" values="	1/	0" )
+ column=(type=char(5) update=yes updatewhereclause=yes name=label_font_style dbname="conv_view_fields.label_font_style" )
+ column=(type=char(5) update=yes updatewhereclause=yes name=field_font_style dbname="conv_view_fields.field_font_style" )
+ column=(type=long update=yes updatewhereclause=yes name=field_y dbname="conv_view_fields.field_y" )
+ column=(type=long update=yes updatewhereclause=yes name=label_x dbname="conv_view_fields.label_x" )
+ column=(type=long update=yes updatewhereclause=yes name=label_y dbname="conv_view_fields.label_y" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=label_width dbname="conv_view_fields.label_width" )
+ column=(type=long update=yes updatewhereclause=yes name=field_height dbname="conv_view_fields.field_height" initial="64" )
+ column=(type=long update=yes updatewhereclause=yes name=label_height dbname="conv_view_fields.label_height" initial="64" )
+ retrieve="  SELECT conv_view_fields.field_id,   
+         conv_view_fields.view_id,   
+         conv_view_fields.project_id,   
+         conv_view_fields.field_options,   
+         conv_view_fields.field_alias,   
+         conv_view_fields.sel_table_id,   
+         conv_view_fields.sel_field_id,   
+         conv_view_fields.field_order,   
+         conv_view_fields.table_name,   
+         conv_view_fields.field_name,   
+         conv_view_fields.field_display_width,   
+         conv_view_fields.field_x,   
+         conv_view_fields.field_wizard_name,   
+         conv_view_fields.field_wizard_type,   
+         conv_view_fields.field_align,   
+         conv_view_fields.label_align,   
+         field_visible = 0,   
+         conv_view_fields.label_text,   
+         conv_view_fields.group_by_field,   
+         conv_view_fields.aggregate_type,   
+         conv_view_fields.avg_fld,   
+         conv_view_fields.sum_fld,   
+         conv_view_fields.count_fld,   
+         conv_view_fields.label_font_style,   
+         conv_view_fields.field_font_style,   
+         conv_view_fields.field_y,   
+         conv_view_fields.label_x,   
+         conv_view_fields.label_y,   
+         conv_view_fields.label_width,   
+         conv_view_fields.field_height,   
+         conv_view_fields.label_height  
+    FROM conv_view_fields  
+   WHERE ( conv_view_fields.view_id = :view_id )    
+" update="conv_view_fields" updatewhere=1 updatekeyinplace=yes arguments=(("view_id", number))  sort="field_order A " )
+text(band=header alignment="2" text="Display" border="6" color="0" x="9" y="12" height="60" width="165" html.valueishtml="0"  name=t_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="2" text="Field Name" border="6" color="0" x="192" y="12" height="60" width="722" html.valueishtml="0"  name=t_2 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="2" text="Alias" border="6" color="0" x="933" y="12" height="60" width="782" html.valueishtml="0"  name=t_3 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="2" text="Filter Wizard" border="6" color="0" x="1733" y="12" height="60" width="823" html.valueishtml="0"  name=t_4 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="2" text="Compare To" border="6" color="0" x="2578" y="12" height="60" width="357" html.valueishtml="0"  name=t_5 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="2" text="Group By" border="6" color="0" x="2953" y="12" height="60" width="297" html.valueishtml="0"  name=t_6 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="2" text=" Aggregate Type" border="6" color="0" x="3269" y="12" height="60" width="722" html.valueishtml="0"  name=t_7 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="2" text="Count" border="6" color="0" x="4009" y="12" height="56" width="169" html.valueishtml="0"  name=t_8 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="2" text="Sum" border="6" color="0" x="4197" y="12" height="56" width="169" html.valueishtml="0"  name=t_9 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="2" text="Avg" border="6" color="0" x="4384" y="12" height="56" width="169" html.valueishtml="0"  name=t_10 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="2" text="Table ->>Field Name" border="6" color="0" x="4571" y="8" height="60" width="997" html.valueishtml="0"  name=t_11 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=17 alignment="0" tabsequence=40 border="0" color="0" x="50" y="12" height="56" width="69" format="" html.valueishtml="0"  name=field_visible visible="1" checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+compute(band=detail alignment="0" expression="field_name"border="0" color="0" x="187" y="8" height="64" width="718" format="[general]" html.valueishtml="0"  name=table_field visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=10 border="5" color="0" x="933" y="8" height="64" width="777" format="[general]" html.valueishtml="0"  name=field_alias visible="1" edit.limit=38 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=13 alignment="0" tabsequence=20 border="5" color="0" x="1733" y="8" height="64" width="818" format="[general]" html.valueishtml="0"  name=field_wizard_name visible="1" dddw.name=d_dddw_lookup_select dddw.displaycolumn=lookup_name dddw.datacolumn=lookup_name dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=30 border="5" color="0" x="2578" y="8" height="64" width="361" format="[general]" html.valueishtml="0"  name=field_options visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.useasborder=yes ddlb.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=19 alignment="2" tabsequence=50 border="0" color="0" x="2962" y="12" height="64" width="288" format="[general]" html.valueishtml="0"  name=group_by_field visible="1" checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=20 alignment="0" tabsequence=60 border="5" color="0" x="3273" y="8" height="64" width="727" format="[general]" html.valueishtml="0"  name=aggregate_type visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.vscrollbar=yes ddlb.useasborder=yes ddlb.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=23 alignment="2" tabsequence=70 border="0" color="0" x="4027" y="16" height="52" width="142" format="[general]" html.valueishtml="0"  name=count_fld visible="1" checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=22 alignment="2" tabsequence=80 border="0" color="0" x="4210" y="16" height="52" width="146" format="[general]" html.valueishtml="0"  name=sum_fld visible="1" checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=21 alignment="2" tabsequence=90 border="0" color="0" x="4384" y="16" height="52" width="160" format="[general]" html.valueishtml="0"  name=avg_fld visible="1" checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+compute(band=detail alignment="0" expression="Lower( table_name + if(  sel_table_id =0,~"=~", ~".~") +  field_name  )"border="0" color="0" x="4567" y="8" height="64" width="1001" format="[general]" html.valueishtml="0"  name=compute_name visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

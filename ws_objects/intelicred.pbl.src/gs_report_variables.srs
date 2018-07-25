@@ -1,0 +1,10 @@
+﻿$PBExportHeader$gs_report_variables.srs
+global type gs_report_variables from structure
+	string		as_report_object
+	integer		ai_num_variables
+	string		as_var_type[]
+	string		as_value[]
+	string		as_single
+	boolean		ab_treeview
+end type
+

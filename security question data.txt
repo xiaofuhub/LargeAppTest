@@ -1,0 +1,31 @@
+1	What is the first name of your first boyfriend or girlfriend?	1	2015-12-31 00:00:00
+2	What was your favorite place to visit as a child?	1	2015-12-31 00:00:00
+3	"Who is your favorite actor, musician, or artist?"	1	2015-12-31 00:00:00
+4	What is the name of your first pet?	1	2015-12-31 00:00:00
+5	In what city were you born?	1	2015-12-31 00:00:00
+6	What is your mother's maiden name?	1	2015-12-31 00:00:00
+7	What street did you grow up on?	1	2015-12-31 00:00:00
+8	What was the model of your first car?	1	2015-12-31 00:00:00
+9	When is your anniversary?  (e.g mm-dd-yyyy)	1	2015-12-31 00:00:00
+10	What is the name of a college you applied to but didn't attend?	1	2015-12-31 00:00:00
+11	Where were you when you first heard about 9/11?	1	2015-12-31 00:00:00
+12	What was the name of your imaginary friend?	1	2015-12-31 00:00:00
+13	What was your high school mascot?	1	2015-12-31 00:00:00
+14	What was your childhood nickname?	1	2015-12-31 00:00:00
+15	In what city did you meet your spouse/significant other?	1	2015-12-31 00:00:00
+16	What is the name of your favorite childhood friend?	1	2015-12-31 00:00:00
+17	What street did you live on in third grade?	1	2015-12-31 00:00:00
+18	"What is your oldest sibling’s birthday month and year? (e.g., January 1900)"	1	2015-12-31 00:00:00
+19	What is the middle name of your oldest child?	1	2015-12-31 00:00:00
+20	What is your oldest sibling's middle name?	1	2015-12-31 00:00:00
+21	What school did you attend for sixth grade?	1	2015-12-31 00:00:00
+22	"What was your childhood phone number including area code? (e.g., 000-000-0000)"	1	2015-12-31 00:00:00
+23	What is your oldest cousin's first and last name?	1	2015-12-31 00:00:00
+24	What did you name your favorite stuffed animal?	1	2015-12-31 00:00:00
+25	In what city or town did your mother and father meet?	1	2015-12-31 00:00:00
+26	Where were you when you had your first kiss?	1	2015-12-31 00:00:00
+27	What is the first name of the boy or girl that you first kissed?	1	2015-12-31 00:00:00
+28	What is your maternal grandmother's maiden name?	1	2015-12-31 00:00:00
+29	In what city or town was your first job?	1	2015-12-31 00:00:00
+30	What is the name of the place your wedding reception was held?	1	2015-12-31 00:00:00
+31	What is the last name of your favorite grade school teacher?	1	2015-12-31 00:00:00

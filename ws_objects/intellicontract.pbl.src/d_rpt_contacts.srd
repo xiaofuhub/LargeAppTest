@@ -1,0 +1,107 @@
+﻿$PBExportHeader$d_rpt_contacts.srd
+$PBExportComments$[intellicontract] Report object
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=112 color="536870912" )
+summary(height=4 color="536870912" )
+footer(height=4 color="536870912" )
+detail(height=88 color="536870912"  height.autosize=yes)
+table(column=(type=long updatewhereclause=yes name=ctx_id dbname="ctx_contract_contacts.ctx_id" )
+ column=(type=long update=yes updatewhereclause=yes name=contact_id dbname="ctx_contract_contacts.contact_id" )
+ column=(type=char(100) updatewhereclause=yes name=ctx_contract_contacts_association dbname="ctx_contract_contacts.association" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=last_name dbname="ctx_contacts.last_name" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=first_name dbname="ctx_contacts.first_name" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=middle_name dbname="ctx_contacts.middle_name" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=type dbname="ctx_contacts.contact_type" )
+ column=(type=char(63) updatewhereclause=yes name=name dbname="name" )
+ column=(type=long update=yes updatewhereclause=yes name=contact_id dbname="ctx_contacts.contact_id" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=title dbname="ctx_contacts.contact_title" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=department dbname="ctx_contacts.contact_department" )
+ column=(type=char(150) update=yes updatewhereclause=yes name=street_1 dbname="app_facility.street" )
+ column=(type=char(150) update=yes updatewhereclause=yes name=street_2 dbname="app_facility.street_2" )
+ column=(type=char(150) update=yes updatewhereclause=yes name=street_3 dbname="app_facility.street_3" )
+ column=(type=char(35) update=yes updatewhereclause=yes name=city dbname="app_facility.city" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=state dbname="app_facility.state" )
+ column=(type=char(12) update=yes updatewhereclause=yes name=zip dbname="app_facility.zip" )
+ column=(type=char(75) updatewhereclause=yes name=custom_1 dbname="ctx_contacts.custom_1" )
+ column=(type=char(75) updatewhereclause=yes name=custom_2 dbname="ctx_contacts.custom_2" )
+ column=(type=char(75) updatewhereclause=yes name=custom_3 dbname="ctx_contacts.custom_3" )
+ column=(type=char(75) updatewhereclause=yes name=custom_4 dbname="ctx_contacts.custom_4" )
+ column=(type=char(75) updatewhereclause=yes name=custom_5 dbname="ctx_contacts.custom_5" )
+ column=(type=char(75) updatewhereclause=yes name=custom_6 dbname="ctx_contacts.custom_6" )
+ column=(type=char(75) updatewhereclause=yes name=custom_7 dbname="ctx_contacts.custom_7" )
+ column=(type=char(75) updatewhereclause=yes name=custom_8 dbname="ctx_contacts.custom_8" )
+ column=(type=char(75) updatewhereclause=yes name=custom_9 dbname="ctx_contacts.custom_9" )
+ column=(type=char(75) updatewhereclause=yes name=custom_10 dbname="ctx_contacts.custom_10" )
+ column=(type=char(1) updatewhereclause=yes name=contact_local dbname="ctx_contacts.contact_local" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=record_id dbname="ctx_contacts.record_id" )
+ column=(type=char(255) updatewhereclause=yes name=notes dbname="ctx_contract_contacts.notes" )
+ retrieve="  SELECT distinct ctx_contract_contacts.ctx_id,   
+         ctx_contract_contacts.contact_id,   
+         ctx_contract_contacts.association,   
+         ctx_contacts.last_name,   
+         ctx_contacts.first_name,   
+         ctx_contacts.middle_name,   
+         ctx_contacts.contact_type,   
+         ctx_contacts.last_name + ' , ' + ctx_contacts.first_name as name,   
+         ctx_contacts.contact_id,   
+         ctx_contacts.contact_title,   
+         ctx_contacts.contact_department,   
+         app_facility.street,   
+         app_facility.street_2,   
+         app_facility.street_3,   
+         app_facility.city,   
+         app_facility.state,   
+         app_facility.zip,   
+         ctx_contacts.custom_1,   
+         ctx_contacts.custom_2,   
+         ctx_contacts.custom_3,   
+         ctx_contacts.custom_4,   
+         ctx_contacts.custom_5,   
+         ctx_contacts.custom_6,   
+         ctx_contacts.custom_7,   
+         ctx_contacts.custom_8,   
+         ctx_contacts.custom_9,   
+         ctx_contacts.custom_10,   
+         ctx_contacts.contact_local,   
+         ctx_contacts.record_id,   
+         ctx_contract_contacts.notes  
+    FROM ctx_contacts,   
+         ctx_contract_contacts,  
+			app_facility 
+   WHERE ( ctx_contract_contacts.contact_id = ctx_contacts.contact_id ) and  
+			( ctx_contacts.facility_id = app_facility.facility_id) and 
+         ( ctx_contract_contacts.ctx_id = :al_ctx_id )    
+" arguments=(("al_ctx_id", number)) )
+text(band=header alignment="2" text="Contact Information" border="6" color="0" x="18" y="12" height="80" width="3223" html.valueishtml="0"  name=t_1 visible="1"  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=5 alignment="0" tabsequence=20 border="0" color="33554432" x="1381" y="148" height="52" width="690" format="[general]" html.valueishtml="0"  name=first_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=11 alignment="0" tabsequence=50 border="0" color="33554432" x="1381" y="284" height="52" width="1065" format="[general]" html.valueishtml="0"  name=department visible="1" dddw.name=dddw_contact_department dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=125 dddw.lines=25 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0 dddw.hscrollbar=yes dddw.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=30 border="0" color="33554432" x="2126" y="144" height="52" width="658" format="[general]" html.valueishtml="0"  name=last_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="0" tabsequence=10 border="0" color="33554432" x="347" y="152" height="52" width="997" format="[general]" html.valueishtml="0"  name=type visible="1" dddw.name=dddw_contact_type dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=200 dddw.lines=20 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0 dddw.hscrollbar=yes dddw.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=10 alignment="0" tabsequence=120 border="0" color="33554432" x="347" y="284" height="52" width="997" format="[general]" html.valueishtml="0"  name=title visible="1" dddw.name=dddw_contract_position_title dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=0 dddw.lines=25 dddw.limit=0 dddw.allowedit=yes dddw.useasborder=no dddw.case=any dddw.imemode=0 dddw.hscrollbar=yes dddw.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Department" border="0" color="33554432" x="1381" y="216" height="52" width="1065" html.valueishtml="0"  name=department_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Title" border="0" color="33554432" x="347" y="216" height="52" width="997" html.valueishtml="0"  name=title_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Contact Type" border="0" color="33554432" x="347" y="80" height="52" width="997" html.valueishtml="0"  name=type_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="First Name" border="0" color="33554432" x="1381" y="80" height="52" width="690" html.valueishtml="0"  name=first_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Last Name" border="0" color="33554432" x="2126" y="80" height="52" width="658" html.valueishtml="0"  name=last_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="2" expression="'Contact: ' + getrow() + ' of ' + rowcount()"border="1" color="33554432" x="187" y="8" height="60" width="731" format="[general]" html.valueishtml="0"  name=page_1 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+report(band=detail dataobject="d_rpt_contact_methods" x="352" y="632" height="172" width="1961" border="0"  height.autosize=yes criteria="" nest_arguments=((" contact_id ")) trail_footer = yes  name=dw_1 visible="1"  slideup=directlyabove )
+column(band=detail id=12 alignment="0" tabsequence=60 border="0" color="33554432" x="699" y="388" height="52" width="1829" format="[general]" html.valueishtml="0"  name=street_1 visible="1" edit.limit=150 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Street 2:" border="0" color="33554432" x="352" y="440" height="52" width="343" html.valueishtml="0"  name=street_2_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=70 border="0" color="33554432" x="699" y="440" height="52" width="1829" format="[general]" html.valueishtml="0"  name=street_2 visible="1" edit.limit=150 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Street 3:" border="0" color="33554432" x="352" y="492" height="52" width="343" html.valueishtml="0"  name=street_3_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=80 border="0" color="33554432" x="699" y="492" height="52" width="1829" format="[general]" html.valueishtml="0"  name=street_3 visible="1" edit.limit=150 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=15 alignment="0" tabsequence=90 border="0" color="33554432" x="699" y="544" height="52" width="823" format="[general]" html.valueishtml="0"  name=city visible="1" edit.limit=35 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="State:" border="0" color="33554432" x="1559" y="544" height="52" width="187" html.valueishtml="0"  name=state_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=100 border="0" color="33554432" x="1760" y="544" height="52" width="274" format="[general]" html.valueishtml="0"  name=state visible="1" edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Zip:" border="0" color="33554432" x="2089" y="544" height="52" width="119" html.valueishtml="0"  name=zip_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=110 border="0" color="33554432" x="2231" y="544" height="52" width="297" format="[general]" html.valueishtml="0"  name=zip visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Street 1:" border="0" color="33554432" x="352" y="388" height="52" width="343" html.valueishtml="0"  name=street_1_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Notes:" border="0" color="0" x="352" y="848" height="52" width="142" html.valueishtml="0"  name=t_2 visible="1~tif (f_validstr( notes ) , 1, 0)"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=30 alignment="0" tabsequence=130 border="0" color="33554432" x="352" y="904" height="296" width="2670" format="[general]" html.valueishtml="0"  name=notes visible="1~tif (f_validstr( notes ) , 1, 0)" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="City:" border="0" color="33554432" x="352" y="544" height="52" width="343" html.valueishtml="0"  name=city_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

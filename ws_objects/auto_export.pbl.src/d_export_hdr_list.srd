@@ -1,0 +1,11 @@
+﻿$PBExportHeader$d_export_hdr_list.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79680469 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=export_id dbname="export_header.export_id" )
+ column=(type=char(50) updatewhereclause=yes name=export_name dbname="export_header.export_name" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"export_header~" ) COLUMN(NAME=~"export_header.export_id~") COLUMN(NAME=~"export_header.export_name~")) "  sort="export_name A " )
+column(band=detail id=1 alignment="1" tabsequence=10 border="5" color="0" x="9" y="8" height="64" width="1029" format="[general]"  name=export_id dddw.name=d_dddw_export_files dddw.displaycolumn=export_name dddw.datacolumn=export_id dddw.percentwidth=150 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

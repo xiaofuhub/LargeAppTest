@@ -1,0 +1,14 @@
+﻿$PBExportHeader$str_batch_doc.srs
+global type str_batch_doc from structure
+	long		al_ctx_id[]
+	long		al_doc_id[]
+	decimal { 1 }		adec_revision[]
+	integer		ai_result[]
+	string		as_errtext[]
+	string		as_companyname[]
+	string		as_owner[]
+	string		as_category[]
+	string		as_from
+	long		al_default_category
+end type
+

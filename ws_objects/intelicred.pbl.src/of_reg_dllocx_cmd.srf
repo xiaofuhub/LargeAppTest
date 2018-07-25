@@ -1,0 +1,62 @@
+﻿$PBExportHeader$of_reg_dllocx_cmd.srf
+global type of_reg_dllocx_cmd from function_object
+end type
+
+forward prototypes
+global subroutine of_reg_dllocx_cmd ()
+end prototypes
+
+global subroutine of_reg_dllocx_cmd ();//////////////////////////////////////////////////////////////////////
+// $<event>clickedcb_register_cmd()
+// $<arguments>(None)
+// $<returns> long
+// $<description> User Command Line to Register current OCX files.
+// $<description> 
+//////////////////////////////////////////////////////////////////////
+// $<add> 2010-06-24 by Ken.Guo
+//////////////////////////////////////////////////////////////////////
+
+String ls_file 
+integer li_FileNum
+Integer i
+String ls_PluginDir
+//---------Begin Modified by (Appeon)Harry 03.18.2014 for V142 ISG-CLX--------
+//String ls_OCXList[] = {'imageviewer2.ocx','imagethumbnailcp.ocx','scanner.ocx','emsmtp.dll','empop3.dll','emmsg.dll','officecontrol.ocx', "emssl.dll" }
+String ls_OCXList[] = {'imageviewer2.ocx','imagethumbnailcp.ocx','scanner.ocx','emsmtp.dll','empop3.dll','emmsg.dll','officecontrol.ocx', "emssl.dll" , 'emimap4.dll', 'EAGetMailObj.dll', 'EASendMailObj.dll', 'wodFtpDLX.dll','wodHttp.ocx' } //wodFtpDLX.dll,wodHttp.ocx, Added by Appeon long.zhang 07.23.2015 (v15.1 CAQH Roster Automation)			
+//---------End Modfiied ------------------------------------------------------
+
+If AppeonGetClientType() = 'PB' Then
+	Run("register.bat")	
+Else
+	ls_file = gs_dir_path + gs_DefDirName + '\register.bat'
+	If FileExists(ls_file) Then
+		If Not FileDelete(ls_file) Then
+			Messagebox('Delete','Failed to delete the temp file ' + ls_file + ', please log off and then try again.')
+			Return 
+		End If
+	End If
+	li_FileNum = FileOpen(ls_file, LineMode!, Write!, LockWrite!, Replace!)
+	ls_PluginDir = AppeonGetCacheDir() + '\PlugIn\'
+	//---------Begin Added by (Appeon)Stephen 11.28.2017 for imageview cp upgrade--------
+	if not DirectoryExists(ls_PluginDir+"dictfiles") then
+		if fileexists(ls_PluginDir+"dictfiles.zip") then
+			ChangeDirectory(ls_PluginDir) 
+			run("7z x dictfiles.zip" , Minimized!)	
+			sleep(1000)
+			yield()
+			ChangeDirectory(gs_current_path)
+		end if	
+	end if
+	//---------End Added ------------------------------------------------------
+	
+	For i = 1 To UpperBound(ls_OCXList[])
+		FileWrite(li_FileNum, 'Regsvr32 "' + ls_PluginDir + ls_OCXList[i] + '"')
+	Next	
+	FileWrite(li_FileNum, 'Exit')
+	FileClose(li_FileNum)
+	Run(ls_file)
+End If
+
+Return
+end subroutine
+

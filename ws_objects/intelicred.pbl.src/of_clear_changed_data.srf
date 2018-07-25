@@ -1,0 +1,35 @@
+﻿$PBExportHeader$of_clear_changed_data.srf
+global type of_clear_changed_data from function_object
+end type
+
+forward prototypes
+global function integer of_clear_changed_data (datawindow adw_data, integer ai_row)
+end prototypes
+
+global function integer of_clear_changed_data (datawindow adw_data, integer ai_row);//Start Code Change ----003.18.2010 #V10 maha - created to clear changes on a screen
+//sets the status to unchanged and refreshes the data.
+any la_val
+integer i
+integer ic
+
+if adw_data.getitemstatus(ai_row,0,primary!) = datamodified! then
+	i = messagebox("Clear changes","Are you sure you want to clear the changes since the last Save?",question!,yesno!,1)
+	if i = 2 then return 1
+	debugbreak()
+	ic = integer(adw_data.object.datawindow.column.count)
+
+	for i = 1 to ic
+		if adw_data.getitemstatus(ai_row,i,primary!) = datamodified! then
+			//la_val = adw_data.GetItem (ai_row, i, primary!, true )
+			//adw_data.setitem(ai_row, i ,la_val)
+			adw_data.setitemstatus(ai_row,i,primary!,NotModified!	)
+		end if
+			
+	next
+	adw_data.setitemstatus(ai_row,0,primary!,NotModified!	)
+end if
+
+
+return 1
+end function
+

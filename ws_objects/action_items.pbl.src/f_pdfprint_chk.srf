@@ -1,0 +1,46 @@
+﻿$PBExportHeader$f_pdfprint_chk.srf
+global type f_pdfprint_chk from function_object
+end type
+
+forward prototypes
+global function integer f_pdfprint_chk (long al_time, ref boolean ab_msg)
+end prototypes
+
+global function integer f_pdfprint_chk (long al_time, ref boolean ab_msg);//====================================================================
+//$<Function>: f_pdfprint_chk
+//$<Arguments>:
+// 	%ScriptArgs%
+//$<Return>:  integer
+//$<Description>: 
+//$<Author>: (Appeon) Stephen 02.13.2014 (PDF Printer Issues)
+//--------------------------------------------------------------------
+//$<Modify History>:
+//====================================================================
+ 
+long   ll_cpu
+integer li_ret
+string ls_pdffile
+
+ls_pdffile = gs_temp_pdf
+IF not FileExists(ls_pdffile) THEN return 0
+if FileDelete(ls_pdffile) then return 0
+
+if ab_msg then
+	ll_cpu = cpu()
+	if (ll_cpu - al_time) > 10000 then
+		li_ret = messagebox("Prompt", "There’s a document being printed, would you like to wait in the queue ?", Question!, yesno!,1)
+		ab_msg = false
+		if li_ret = 1 then
+			return 1
+		else
+			return -1
+		end if
+	else
+		return 1
+	end if
+end if
+
+
+return 1
+end function
+

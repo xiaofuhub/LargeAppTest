@@ -1,0 +1,14 @@
+﻿$PBExportHeader$d_dddw_quick_filter.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=char(40) updatewhereclause=no name=filter_code dbname="filter_code" )
+ column=(type=char(100) updatewhereclause=no name=filter_description dbname="filter_description" )
+ column=(type=char(256) updatewhereclause=no name=filter_syntax dbname="filter_syntax" )
+ column=(type=number updatewhereclause=no name=filter_index dbname="filter_index" )
+ )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="0" x="9" y="4" height="64" width="1079" format="[general]"  name=filter_code edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="0" x="1093" y="4" height="64" width="2286" format="[general]"  name=filter_description edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

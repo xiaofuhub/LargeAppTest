@@ -1,0 +1,9 @@
+﻿$PBExportHeader$str_ama_searchrequest.srs
+global type str_ama_searchrequest from structure
+	string		firstname
+	string		lastname
+	datetime		dateofbirth
+	string		npinumber
+	string		stateOfPractice
+end type
+

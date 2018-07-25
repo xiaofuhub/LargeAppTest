@@ -1,0 +1,505 @@
+﻿$PBExportHeader$d_cal_notify_disp_list.srd
+release 11.5;
+datawindow(units=0 timer_interval=0 color=1073741824 brushmode=0 transparency=0 gradient.angle=0 gradient.color=8421504 gradient.focus=0 gradient.repetition.count=0 gradient.repetition.length=100 gradient.repetition.mode=0 gradient.scale=100 gradient.spread=100 gradient.transparency=0 picture.blur=0 picture.clip.bottom=0 picture.clip.left=0 picture.clip.right=0 picture.clip.top=0 picture.mode=0 picture.scale.x=100 picture.scale.y=100 picture.transparency=0 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.background=no print.preview.background=no print.preview.outline=yes hidegrayline=no showbackcoloronxp=no picture.file="" )
+header(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+summary(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+footer(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+detail(height=80 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+table(column=(type=long updatewhereclause=yes name=entry_type dbname="entry_type" )
+ column=(type=long updatewhereclause=yes name=ctx_id dbname="ctx_id" )
+ column=(type=long updatewhereclause=yes name=item_id dbname="item_id" )
+ column=(type=long updatewhereclause=yes name=doc_id dbname="doc_id" )
+ column=(type=long updatewhereclause=yes name=seq_id dbname="seq_id" )
+ column=(type=char(150) updatewhereclause=yes name=facility_name dbname="facility_name" )
+ column=(type=char(30) updatewhereclause=yes name=action_type_disp dbname="action_type_disp" )
+ column=(type=decimal(0) updatewhereclause=yes name=action_type_val dbname="action_type_val" )
+ column=(type=decimal(0) updatewhereclause=yes name=action_status dbname="action_status" )
+ column=(type=char(1) updatewhereclause=yes name=wf_complete_flag dbname="wf_complete_flag" )
+ column=(type=char(50) updatewhereclause=yes name=wf_assigned_by dbname="wf_assigned_by" )
+ column=(type=char(2000) updatewhereclause=yes name=action_user dbname="action_user" )
+ column=(type=long updatewhereclause=yes name=priority dbname="priority" )
+ column=(type=datetime updatewhereclause=yes name=currentdate dbname="currentdate" )
+ column=(type=long updatewhereclause=yes name=notify_days dbname="notify_days" )
+ column=(type=datetime updatewhereclause=yes name=start_date dbname="start_date" )
+ column=(type=datetime updatewhereclause=yes name=start_time dbname="start_time" )
+ column=(type=char(40) updatewhereclause=yes name=table_name dbname="table_name" )
+ column=(type=char(40) updatewhereclause=yes name=column_name dbname="column_name" )
+ column=(type=datetime updatewhereclause=yes name=alm_date dbname="alm_date" )
+ column=(type=char(40) updatewhereclause=yes name=column_title dbname="column_title" )
+ column=(type=datetime updatewhereclause=yes name=alm_due_date dbname="alm_due_date" )
+ retrieve="Select 
+A.Entry_Type,
+A.ctx_id,
+A.item_id,
+A.doc_id,
+A.seq_id,
+A.facility_name,
+A.action_type_disp,
+A.action_type_val,
+A.action_status,
+A.wf_complete_flag,
+A.wf_assigned_by,
+A.action_user,
+A.Priority,
+A.CurrentDate,
+A.Notify_Days,
+A.Start_Date,
+A.Start_Time,
+A.table_name,
+A.column_name,
+A.alm_date,
+A.column_title,
+A.alm_due_date
+
+ From
+(SELECT 11 AS Entry_Type,
+       ctx_basic_info.ctx_id AS ctx_id,
+       0 AS item_id,
+       0 AS doc_id,
+       0 AS seq_id,
+       app_facility.facility_name AS facility_name,
+       '' AS action_type_disp,
+       0  AS action_type_val,
+       0  AS action_status,
+       '' AS wf_complete_flag,
+       '' AS wf_assigned_by,
+       ctx_notification.alm_mailto AS action_user,
+       0  AS Priority,
+       CurrentDate = getdate(),
+       ctx_notification.alm_notification_days AS Notify_Days,
+       '1900-01-01 00:00:00' AS Start_Date,
+       '1900-01-01 00:00:00' AS Start_Time,
+       ctx_notification.alm_table AS table_name,
+       ctx_notification.alm_column AS column_name,
+		 ctx_notification.alm_date as alm_date,
+       IsNull(ctx_notification.alm_action_title,ctx_notification.alm_column) AS column_title,
+       CASE ctx_notification.alm_column
+            WHEN 'effective_date'  THEN ctx_basic_info.effective_date
+            WHEN 'expriation_date' THEN ctx_basic_info.expriation_date
+            WHEN 'last_revis_date' THEN ctx_basic_info.last_revis_date
+            WHEN 'other_date_1'    THEN ctx_basic_info.other_date_1
+            WHEN 'other_date_2'    THEN ctx_basic_info.other_date_2
+            WHEN 'review_date'     THEN ctx_basic_info.review_date
+            WHEN 'term_date'       THEN ctx_basic_info.term_date
+            WHEN 'version_date'    THEN ctx_basic_info.version_date
+            WHEN 'custom_date1'    THEN ctx_basic_info.custom_date1
+            WHEN 'custom_date2'    THEN ctx_basic_info.custom_date2
+            WHEN 'custom_date3'    THEN ctx_basic_info.custom_date3
+            WHEN 'custom_date4'    THEN ctx_basic_info.custom_date4
+            WHEN 'custom_date5'    THEN ctx_basic_info.custom_date5
+            WHEN 'custom_date6'    THEN ctx_basic_info.custom_date6
+            WHEN 'custom_date7'    THEN ctx_basic_info.custom_date7
+            WHEN 'custom_date8'    THEN ctx_basic_info.custom_date8
+            WHEN 'custom_date9'    THEN ctx_basic_info.custom_date9
+            WHEN 'custom_date10'   THEN ctx_basic_info.custom_date10
+            WHEN 'custom_date11'   THEN ctx_basic_info.custom_date11
+            WHEN 'custom_date12'   THEN ctx_basic_info.custom_date12
+            WHEN 'custom_date13'   THEN ctx_basic_info.custom_date13
+            WHEN 'custom_date14'   THEN ctx_basic_info.custom_date14
+            WHEN 'custom_date15'   THEN ctx_basic_info.custom_date15
+            WHEN 'custom_date16'   THEN ctx_basic_info.custom_date16
+            WHEN 'custom_date17'   THEN ctx_basic_info.custom_date17
+       END AS alm_due_date
+  FROM ctx_notification,ctx_basic_info,app_facility
+ WHERE ctx_notification.ctx_id = ctx_basic_info.ctx_id AND
+       ctx_basic_info.app_facility = app_facility.facility_id AND
+       ctx_notification.alm_enabled = '1' AND
+	ctx_notification.alm_table = 'ctx_basic_info' AND	
+       ctx_basic_info.is_template = 0
+UNION
+SELECT 12 AS Entry_Type,
+       ctx_basic_info.ctx_id AS ctx_id,
+       ctx_action_items.ctx_action_item_id AS item_id,
+       0 AS doc_id,
+       0 AS seq_id,
+       app_facility.facility_name AS facility_name,
+       '' AS action_type_disp,
+       0  AS action_type_val,
+       0  AS action_status,
+       '' AS wf_complete_flag,
+       '' AS wf_assigned_by,
+       ctx_ai_notification.alm_mailto AS action_user,
+       0  AS Priority,
+       CurrentDate = getdate(),
+       ctx_ai_notification.alm_notification_days AS Notify_Days,
+       '1900-01-01 00:00:00' AS Start_Date,
+       '1900-01-01 00:00:00' AS Start_Time,
+       ctx_ai_notification.alm_table AS table_name,
+       ctx_ai_notification.alm_column AS column_name,
+ctx_ai_notification.alm_date as alm_date,
+       IsNull(ctx_ai_notification.alm_action_title,ctx_ai_notification.alm_column) AS column_title,
+       CASE ctx_ai_notification.alm_column
+            WHEN 'action_date'           THEN ctx_action_items.action_date
+            WHEN 'due_date'              THEN ctx_action_items.due_date
+            WHEN 'escalation_last'       THEN ctx_action_items.escalation_last
+            WHEN 'first_attempt'         THEN ctx_action_items.first_attempt
+            WHEN 'inserted_at_date_time' THEN ctx_action_items.inserted_at_date_time
+            WHEN 'last_attempt'          THEN ctx_action_items.last_attempt
+            WHEN 'reminder_last'         THEN ctx_action_items.reminder_last
+            WHEN 'updated_at_date_time'  THEN ctx_action_items.updated_at_date_time
+       END AS alm_due_date
+  FROM ctx_ai_notification,ctx_action_items,ctx_basic_info,app_facility
+ WHERE ctx_ai_notification.ctx_id = ctx_action_items.ctx_id AND
+       ctx_ai_notification.ctx_action_item_id = ctx_action_items.ctx_action_item_id AND
+       ctx_ai_notification.ctx_id = ctx_basic_info.ctx_id AND
+       ctx_basic_info.app_facility = app_facility.facility_id AND
+       ctx_ai_notification.alm_enabled = '1' AND
+       ctx_basic_info.is_template = 0
+UNION
+SELECT 13 AS Entry_Type,
+       ctx_basic_info.ctx_id AS ctx_id,
+       0 AS item_id,
+       ctx_am_action_item.doc_id AS doc_id,
+       ctx_am_action_item.seq_id AS seq_id,
+       app_facility.facility_name AS facility_name,
+       '' AS action_type_disp,
+       0  AS action_type_val,
+       0  AS action_status,
+       '' AS wf_complete_flag,
+       '' AS wf_assigned_by,
+       ctx_am_ai_notification.alm_mailto AS action_user,
+       0  AS Priority,
+       CurrentDate = getdate(),
+       ctx_am_ai_notification.alm_notification_days AS Notify_Days,
+       '1900-01-01 00:00:00' AS Start_Date,
+       '1900-01-01 00:00:00' AS Start_Time,
+       ctx_am_ai_notification.alm_table AS table_name,
+       ctx_am_ai_notification.alm_column AS column_name,
+ctx_am_ai_notification.alm_date as alm_date,
+       IsNull(ctx_am_ai_notification.alm_action_title,ctx_am_ai_notification.alm_column) AS column_title,
+       CASE ctx_am_ai_notification.alm_column
+            WHEN 'Create_date'     THEN ctx_am_action_item.Create_date
+            WHEN 'Due_Date'        THEN ctx_am_action_item.Due_Date
+            WHEN 'First_Attempt'   THEN ctx_am_action_item.First_Attempt
+            WHEN 'Last_Attempt'    THEN ctx_am_action_item.Last_Attempt
+            WHEN 'Status_Date'     THEN ctx_am_action_item.Status_Date
+            WHEN 'escalation_last' THEN ctx_am_action_item.escalation_last
+            WHEN 'reminder_last'   THEN ctx_am_action_item.reminder_last
+       END AS alm_due_date
+  FROM ctx_am_ai_notification,ctx_am_action_item,ctx_am_document,ctx_basic_info,app_facility
+ WHERE ctx_am_ai_notification.doc_id = ctx_am_action_item.doc_id AND
+       ctx_am_ai_notification.seq_id = ctx_am_action_item.seq_id AND
+       ctx_am_document.doc_id = ctx_am_action_item.doc_id AND
+       ctx_am_document.ctx_id = ctx_basic_info.ctx_id AND
+       ctx_basic_info.app_facility = app_facility.facility_id AND
+       ctx_am_ai_notification.alm_enabled = '1' AND
+       ctx_basic_info.is_template = 0
+UNION
+
+SELECT 14 AS Entry_Type,
+       ctx_basic_info.ctx_id AS ctx_id,
+       0 AS item_id,
+       0 AS doc_id,
+       0 AS seq_id,
+       app_facility.facility_name AS facility_name,
+       '' AS action_type_disp,
+       0  AS action_type_val,
+       0  AS action_status,
+       '' AS wf_complete_flag,
+       '' AS wf_assigned_by,
+       ctx_notification.alm_mailto AS action_user,
+       0  AS Priority,
+       CurrentDate = getdate(),
+       ctx_notification.alm_notification_days AS Notify_Days,
+       '1900-01-01 00:00:00' AS Start_Date,
+       '1900-01-01 00:00:00' AS Start_Time,
+       ctx_notification.alm_table AS table_name,
+       ctx_notification.alm_column AS column_name,
+	ctx_notification.alm_date as alm_date,
+       IsNull(ctx_notification.alm_action_title,ctx_notification.alm_column) AS column_title,
+       CASE ctx_notification.alm_column
+            WHEN 'custom_date1'    THEN ctx_custom.custom_date1
+            WHEN 'custom_date2'    THEN ctx_custom.custom_date2
+            WHEN 'custom_date3'    THEN ctx_custom.custom_date3
+            WHEN 'custom_date4'    THEN ctx_custom.custom_date4
+            WHEN 'custom_date5'    THEN ctx_custom.custom_date5
+            WHEN 'custom_date6'    THEN ctx_custom.custom_date6
+            WHEN 'custom_date7'    THEN ctx_custom.custom_date7
+            WHEN 'custom_date8'    THEN ctx_custom.custom_date8
+            WHEN 'custom_date9'    THEN ctx_custom.custom_date9
+            WHEN 'custom_date10'   THEN ctx_custom.custom_date10
+            WHEN 'custom_date11'   THEN ctx_custom.custom_date11
+            WHEN 'custom_date12'   THEN ctx_custom.custom_date12
+            WHEN 'custom_date13'   THEN ctx_custom.custom_date13
+            WHEN 'custom_date14'   THEN ctx_custom.custom_date14
+            WHEN 'custom_date15'   THEN ctx_custom.custom_date15
+       END AS alm_due_date
+  FROM ctx_notification,ctx_basic_info,app_facility,ctx_custom
+ WHERE ctx_basic_info.ctx_id = ctx_custom.ctx_id AND
+	ctx_notification.ctx_id = ctx_basic_info.ctx_id AND
+	ctx_basic_info.app_facility = app_facility.facility_id AND
+	ctx_notification.alm_enabled = '1' AND
+	ctx_notification.alm_table = 'ctx_custom' AND
+	ctx_basic_info.is_template = 0
+UNION
+
+SELECT 15 AS Entry_Type,
+       ctx_basic_info.ctx_id AS ctx_id,
+       0 AS item_id,
+       ctx_all_notification.level_id1 AS doc_id,
+       0 AS seq_id,
+       app_facility.facility_name AS facility_name,
+       '' AS action_type_disp,
+       0  AS action_type_val,
+       0  AS action_status,
+       '' AS wf_complete_flag,
+       '' AS wf_assigned_by,
+       ctx_all_notification.alm_mailto AS action_user,
+       0  AS Priority,
+       CurrentDate = getdate(),
+       ctx_all_notification.alm_notification_days AS Notify_Days,
+       '1900-01-01 00:00:00' AS Start_Date,
+       '1900-01-01 00:00:00' AS Start_Time,
+       ctx_all_notification.alm_table AS table_name,
+       ctx_all_notification.alm_column AS column_name,
+	ctx_all_notification.alm_date as alm_date,
+       IsNull(ctx_all_notification.alm_action_title,ctx_all_notification.alm_column) AS column_title,
+       CASE ctx_all_notification.alm_column
+            WHEN 'custom_date1'    THEN ctx_custom_multi_hdr.custom_date1
+            WHEN 'custom_date2'    THEN ctx_custom_multi_hdr.custom_date2
+            WHEN 'custom_date3'    THEN ctx_custom_multi_hdr.custom_date3
+            WHEN 'custom_date4'    THEN ctx_custom_multi_hdr.custom_date4
+            WHEN 'custom_date5'    THEN ctx_custom_multi_hdr.custom_date5
+            WHEN 'custom_date6'    THEN ctx_custom_multi_hdr.custom_date6
+            WHEN 'custom_date7'    THEN ctx_custom_multi_hdr.custom_date7
+            WHEN 'custom_date8'    THEN ctx_custom_multi_hdr.custom_date8
+            WHEN 'custom_date9'    THEN ctx_custom_multi_hdr.custom_date9
+            WHEN 'custom_date10'   THEN ctx_custom_multi_hdr.custom_date10
+       END AS alm_due_date
+  FROM ctx_all_notification,ctx_basic_info,app_facility,ctx_custom_multi_hdr
+ WHERE ctx_basic_info.ctx_id = ctx_custom_multi_hdr.ctx_id AND
+	ctx_all_notification.ctx_id = ctx_basic_info.ctx_id AND
+       ctx_basic_info.app_facility = app_facility.facility_id AND
+       ctx_all_notification.alm_enabled = '1' AND
+	ctx_all_notification.alm_table = 'ctx_custom_multi_hdr' AND
+       ctx_basic_info.is_template = 0
+UNION
+
+SELECT 16 AS Entry_Type,
+       ctx_basic_info.ctx_id AS ctx_id,
+       0 AS item_id,
+      ctx_all_notification.level_id1 AS doc_id,
+       ctx_all_notification.level_id2 AS seq_id,
+       app_facility.facility_name AS facility_name,
+       '' AS action_type_disp,
+       0  AS action_type_val,
+       0  AS action_status,
+       '' AS wf_complete_flag,
+       '' AS wf_assigned_by,
+       ctx_all_notification.alm_mailto AS action_user,
+       0  AS Priority,
+       CurrentDate = getdate(),
+       ctx_all_notification.alm_notification_days AS Notify_Days,
+       '1900-01-01 00:00:00' AS Start_Date,
+       '1900-01-01 00:00:00' AS Start_Time,
+       ctx_all_notification.alm_table AS table_name,
+       ctx_all_notification.alm_column AS column_name,
+	ctx_all_notification.alm_date as alm_date,
+       IsNull(ctx_all_notification.alm_action_title,ctx_all_notification.alm_column) AS column_title,
+       CASE ctx_all_notification.alm_column
+            WHEN 'custom_date1'    THEN ctx_custom_multi_detail.custom_date1
+            WHEN 'custom_date2'    THEN ctx_custom_multi_detail.custom_date2
+            WHEN 'custom_date3'    THEN ctx_custom_multi_detail.custom_date3
+            WHEN 'custom_date4'    THEN ctx_custom_multi_detail.custom_date4
+            WHEN 'custom_date5'    THEN ctx_custom_multi_detail.custom_date5
+       END AS alm_due_date
+  FROM ctx_all_notification,ctx_basic_info,app_facility,ctx_custom_multi_detail
+ WHERE ctx_basic_info.ctx_id = ctx_custom_multi_detail.ctx_id AND
+	ctx_all_notification.ctx_id = ctx_basic_info.ctx_id AND
+       ctx_basic_info.app_facility = app_facility.facility_id AND
+       ctx_all_notification.alm_enabled = '1' AND
+	ctx_all_notification.alm_table = 'ctx_custom_multi_detail' AND
+       ctx_basic_info.is_template = 0
+UNION
+
+
+SELECT 17 AS Entry_Type,
+       ctx_basic_info.ctx_id AS ctx_id,
+       0 AS item_id,
+       ctx_all_notification.level_id1 AS doc_id,
+       0 AS seq_id,
+       app_facility.facility_name AS facility_name,
+       '' AS action_type_disp,
+       0  AS action_type_val,
+       0  AS action_status,
+       '' AS wf_complete_flag,
+       '' AS wf_assigned_by,
+       ctx_all_notification.alm_mailto AS action_user,
+       0  AS Priority,
+       CurrentDate = getdate(),
+       ctx_all_notification.alm_notification_days AS Notify_Days,
+       '1900-01-01 00:00:00' AS Start_Date,
+       '1900-01-01 00:00:00' AS Start_Time,
+       ctx_all_notification.alm_table AS table_name,
+       ctx_all_notification.alm_column AS column_name,
+	ctx_all_notification.alm_date as alm_date,
+       IsNull(ctx_all_notification.alm_action_title,ctx_all_notification.alm_column) AS column_title,
+       CASE ctx_all_notification.alm_column
+            WHEN 'custom_date1'    THEN ctx_fee_sched_nm.custom_date1
+            WHEN 'custom_date2'    THEN ctx_fee_sched_nm.custom_date2
+            WHEN 'custom_date3'    THEN ctx_fee_sched_nm.custom_date3
+            WHEN 'custom_date4'    THEN ctx_fee_sched_nm.custom_date4
+            WHEN 'custom_date5'    THEN ctx_fee_sched_nm.custom_date5
+       END AS alm_due_date
+  FROM ctx_all_notification,ctx_basic_info,app_facility,ctx_fee_sched_nm
+ WHERE ctx_basic_info.ctx_id = ctx_fee_sched_nm.ctx_id AND
+	ctx_all_notification.ctx_id = ctx_basic_info.ctx_id AND
+       ctx_basic_info.app_facility = app_facility.facility_id AND
+       ctx_all_notification.alm_enabled = '1' AND
+	ctx_all_notification.alm_table = 'ctx_fee_sched_nm' AND
+       ctx_basic_info.is_template = 0
+UNION
+
+
+SELECT 21 AS Entry_Type,
+       ctx_basic_info.ctx_id AS ctx_id,
+       ctx_action_items.ctx_action_item_id AS item_id,
+       0 AS doc_id,
+       0 AS seq_id,
+       app_facility.facility_name AS facility_name,
+       code_lookup_A.Code AS action_type_disp,
+       ctx_action_items.action_type AS action_type_val,
+       ctx_action_items.action_status AS action_status,
+       ctx_action_items.wf_complete_flag AS wf_complete_flag,
+       ctx_action_items.wf_assigned_by AS wf_assigned_by,
+       ctx_action_items.action_user AS action_user,
+       ctx_action_items.Priority AS Priority,
+       CurrentDate = getdate(),
+       0 AS Notify_Days,
+       ctx_action_items.Start_Date AS Start_Date,
+       ctx_action_items.Start_Time AS Start_Time,
+       '' AS table_name,
+       '' AS column_name,
+		 '1900-01-01 00:00:00' as alm_date,
+       '' AS column_title,
+       ctx_action_items.due_date AS alm_due_date
+  FROM ctx_action_items,ctx_basic_info,app_facility,code_lookup code_lookup_A,code_lookup code_lookup_B
+ WHERE ctx_action_items.ctx_id = ctx_basic_info.ctx_id AND
+       ctx_basic_info.app_facility = app_facility.facility_id AND
+       ctx_basic_info.is_template = 0 AND
+       ctx_action_items.action_type = code_lookup_A.lookup_code AND
+       ctx_action_items.alm_table is Null AND
+       ctx_action_items.alm_column is Null AND
+       (ctx_basic_info.status = code_lookup_B.lookup_code AND code_lookup_B.code <> 'Inactive')
+UNION
+SELECT 22 AS Entry_Type,
+       ctx_basic_info.ctx_id AS ctx_id,
+       0 AS item_id,
+       ctx_am_action_item.doc_id AS doc_id,
+       ctx_am_action_item.seq_id AS seq_id,
+       app_facility.facility_name AS facility_name,
+       code_lookup_A.Code AS action_type_disp,
+       ctx_am_action_item.action_type AS action_type_val,
+       ctx_am_action_item.action_status AS action_status,
+       ctx_am_action_item.wf_complete_flag AS wf_complete_flag,
+       ctx_am_action_item.wf_assigned_by AS wf_assigned_by,
+       ctx_am_action_item.action_user AS action_user,
+       ctx_am_action_item.Priority AS Priority,
+       CurrentDate = getdate(),
+       0 AS Notify_Days,
+       ctx_am_action_item.Start_Date AS Start_Date,
+       ctx_am_action_item.Start_Time AS Start_Time,
+       '' AS table_name,
+       '' AS column_name,
+		 '1900-01-01 00:00:00' as alm_date,
+       '' AS column_title,
+       ctx_am_action_item.due_date AS alm_due_date
+  FROM ctx_am_document,ctx_am_action_item,ctx_basic_info,app_facility,code_lookup code_lookup_A,code_lookup code_lookup_B
+ WHERE ctx_am_document.doc_id = ctx_am_action_item.doc_id AND
+       ctx_am_document.ctx_id = ctx_basic_info.ctx_id AND
+       ctx_basic_info.app_facility = app_facility.facility_id AND
+       ctx_basic_info.is_template = 0 AND
+       ctx_am_action_item.action_type = code_lookup_A.lookup_code AND
+       (ctx_basic_info.status = code_lookup_B.lookup_code AND code_lookup_B.code <> 'Inactive')
+)A
+,
+(
+	SELECT DISTINCT TOP 100 Percent  ctx_id = ctx_contract_contacts.ctx_id, user_id = ctx_contacts.user_d, access = (CASE ctx_contract_contacts.owner WHEN 'Y' THEN 'F' ELSE ctx_contract_contacts.access END)
+	FROM ctx_contract_contacts Left Outer Join
+	(
+	Select ctx_contract_contacts1.ctx_id,ctx_contacts1.user_d 
+	From ctx_contract_contacts ctx_contract_contacts1 ,ctx_contacts ctx_contacts1
+	Where ctx_contract_contacts1.contact_id = ctx_contacts1.contact_id And ctx_contacts1.user_d = :as_user_id
+	Group By ctx_contract_contacts1.ctx_id,ctx_contacts1.user_d
+	Having Count(ctx_contract_contacts1.ctx_id) > 1
+	) ccc
+	On ctx_contract_contacts.ctx_id = ccc.ctx_id
+	,ctx_contacts
+	WHERE ctx_contacts.user_d = :as_user_id
+		AND (ccc.ctx_id is null or ctx_contract_contacts.access = 'F' )
+		AND ctx_contract_contacts.contact_id = ctx_contacts.contact_id 
+		AND ( ctx_contract_contacts.access IN ('F','R') 
+		OR ctx_contract_contacts.owner = 'Y' )
+		AND ctx_contract_contacts.ic_area = 'I'
+	
+	UNION 
+	
+	SELECT DISTINCT TOP 100 Percent ctx_id = ctx_group_access.ctx_id,user_id = security_group_users.user_id, access =  ctx_group_access.access
+	FROM 
+	ctx_group_access ,
+	security_group_users,
+	icred_settings
+	WHERE	security_group_users.user_id = :as_user_id
+		AND ctx_group_access.group_id = security_group_users.group_id
+		AND ctx_group_access.access = 
+			(Case When Exists (Select u1.user_id,a1.ctx_id,a1.access 
+			From ctx_group_access a1,security_group_users u1
+			Where a1.group_id = u1.group_id 
+			And a1.ctx_id = ctx_group_access.ctx_id
+			And u1.user_id = security_group_users.user_id	
+			And a1.access = 'F') Then 'F' Else 'R' End) 
+		AND icred_settings.group_access = 1
+		AND ctx_group_access.access in ('F','R')
+		AND NOT EXISTS	(SELECT 1 FROM ctx_contract_contacts, ctx_contacts  
+				WHERE ( ctx_contacts.contact_id = ctx_contract_contacts.contact_id ) 
+				AND ( ctx_contacts.user_d = security_group_users.user_id )
+				AND ( ctx_contract_contacts.ic_area = 'I' )
+				AND ( ctx_contract_contacts.ctx_id = ctx_group_access.ctx_id )
+				)
+
+
+	
+	UNION
+	
+	SELECT DISTINCT TOP 100 Percent ctx_id = ctx_basic_info.ctx_id, user_id = security_users.user_id, access = (CASE ctx_acp_contract_management_right.rights WHEN '11' THEN 'F' WHEN '12' THEN 'R' ELSE 'N' END)
+	FROM ctx_acp_contract_management_right, security_users, ctx_basic_info
+	WHERE security_users.user_id = :as_user_id
+		AND ctx_acp_contract_management_right.types = 1
+		AND ctx_acp_contract_management_right.role_id = security_users.role_id
+		AND ctx_acp_contract_management_right.category = ctx_basic_info.category
+		AND ctx_acp_contract_management_right.rights In ('11','12')
+		AND NOT EXISTS (SELECT 1 FROM ctx_contract_contacts, ctx_contacts  
+				WHERE ( ctx_contacts.contact_id = ctx_contract_contacts.contact_id ) 
+				AND ( ctx_contacts.user_d = security_users.user_id AND ctx_contract_contacts.ic_area = 'I') 
+				AND ( ctx_contract_contacts.ctx_id = ctx_basic_info.ctx_id ) 
+				UNION
+				SELECT 1 FROM ctx_group_access,security_group_users,icred_settings
+				WHERE icred_settings.group_access = 1
+				AND (ctx_group_access.group_id = security_group_users.group_id )
+				AND ( security_group_users.user_id = security_users.user_id )	
+				AND ( ctx_group_access.ctx_id = ctx_basic_info.ctx_id )
+				)
+) ctx_access_list
+Where ctx_access_list.ctx_id = a.ctx_id" arguments=(("as_user_id", string)) )
+bitmap(band=detail filename="MonthDayItemBG.gif" x="23" y="0" height="76" width="443" border="0" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0"  name=p_small_background visible="1" transparency="0" )
+bitmap(band=detail filename="DayDayItemBG.gif" x="23" y="0" height="76" width="3543" border="0" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0"  name=p_large_background visible="0" transparency="0" )
+bitmap(band=detail filename="greenflag.bmp" x="37" y="8" height="60" width="73" border="0" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0"  name=p_alarm_green_flag visible="1~tif(entry_type < 20,if(CurrentDate >= RelativeDate(alm_due_date,0 - notify_days),0,1),0)" transparency="0" )
+bitmap(band=detail filename="GRAYflag.bmp" x="37" y="8" height="60" width="73" border="0" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0"  name=p_alarm_gray_flag visible="1~tif(entry_type < 20,if(ctx_id < 1 or IsNull(ctx_id),1,0),0)" transparency="0" )
+bitmap(band=detail filename="redflag.bmp" x="37" y="8" height="60" width="73" border="0" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0"  name=p_alarm_red_flag visible="1~tif(entry_type < 20,if(CurrentDate >= RelativeDate(alm_due_date,0 - notify_days),1,0),0)" transparency="0" )
+bitmap(band=detail filename="Watcom.gif" x="46" y="8" height="60" width="59" border="0" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0"  name=p_action_item_flag visible="1~tif(entry_type < 20,0,1)" transparency="0" )
+compute(band=detail alignment="0" expression="if(entry_type < 20,String(ctx_id) + ', ' + facility_name + ' - ' + column_title,
+if(IsNull(Start_Time) or Time(Start_Time) = Time('00:00:00'),'' , 
+(String(Time(Start_Time),'HH:MMa/p ')) + ', ') + String(ctx_id) + ', '+facility_name + ' - ' + action_type_disp + if  (isnull(action_user) or  action_user = '' , '' , ' - ' +  action_user  )   )"border="0" color="0~tif(entry_type < 20,0,if(wf_complete_flag = 'Y' or action_status < 0,8421504,if(alm_due_date < currentdate and wf_complete_flag = 'N',255,0)))" x="114" y="8" height="52" width="325" format="[General]" html.valueishtml="0"  name=disp_value visible="1"  font.face="Tahoma" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="0" color="0" x="3566" y="0" height="76" width="928" format="[shortdate] [time]" html.valueishtml="0"  name=alm_date visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+bitmap(band=footer filename="More_Gray.gif" x="375" y="24" height="36" width="59" border="0" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0"  name=p_more visible="1~tif(RowCount() <= Last(GetRow() for Page),0,1)" transparency="0" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0  template=(comment="" encoding="gb2312" name="eee" xml="<?xml version=~"1.0~" encoding=~"gb2312~" standalone=~"no~"?><untitled><untitled_row __pbband=~"detail~"><entry_type/><ctx_id/><item_id/><doc_id/><seq_id/><facility_name/><action_type_disp/><action_type_val/><action_status/><wf_complete_flag/><wf_assigned_by/><action_user/><priority/><start_date/><due_date/><table_name/><column_name/><column_title/><alm_date/></untitled_row></untitled>"))
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

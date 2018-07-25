@@ -1,0 +1,7 @@
+﻿$PBExportHeader$str_attach_mime.srs
+$PBExportComments$(Appeon)Eugene 06.25.2013 - V141 ISG-CLX
+global type str_attach_mime from structure
+	string		as_attachlist[]
+	string		as_mimelist[]
+end type
+

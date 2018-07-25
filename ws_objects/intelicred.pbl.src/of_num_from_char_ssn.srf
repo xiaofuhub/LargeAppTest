@@ -1,0 +1,69 @@
+﻿$PBExportHeader$of_num_from_char_ssn.srf
+global type of_num_from_char_ssn from function_object
+end type
+
+forward prototypes
+global function string of_num_from_char_ssn (string as_char)
+end prototypes
+
+global function string of_num_from_char_ssn (string as_char);//Start Code Change ----05.06.2010 #V10 maha - ssn decryption
+string s
+
+choose case as_char
+	case "A"
+		s = '0'
+	case "Z"
+		s = '1'
+	case "I"
+		s = '2'
+	case "Q"
+		s = '3'
+	case "Y"
+		s = '4'
+	case "H"
+		s = '5'
+	case "P"
+		s = '6'
+	case 'X'
+		s = '7'
+	case 'G'
+		s ='8'
+	case 'O'
+		s = '9'																	
+	case 'W'
+		s = '10'									
+	case 'F'
+		s = '11'											
+	case "N"
+		s = '12'
+	case 'V'
+		s = '13'
+	case 'E'
+		s = '14'
+	case 'R'
+		s = '15'
+	case 'M'
+		s = '16'
+	case 'D'
+		s = '17'	
+	case 'S'
+		s = '18'
+	case 'L'
+		s = '19'																	
+	case 'C'
+		s = '20'						
+	case 'T'
+		s = '21'											
+	case 'K'		
+		s = '22'
+	case 'B'
+		s = '23'
+	case 'U'
+		s = '24'
+	case 'J'
+		s = '25'
+end choose
+
+return s
+end function
+

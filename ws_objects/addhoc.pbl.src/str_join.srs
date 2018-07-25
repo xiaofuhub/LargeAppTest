@@ -1,0 +1,8 @@
+﻿$PBExportHeader$str_join.srs
+global type str_join from structure
+	string		key
+	string		Table1
+	string		Table2
+	string		Relation[]
+end type
+

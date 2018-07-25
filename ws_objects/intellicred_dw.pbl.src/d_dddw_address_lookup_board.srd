@@ -1,0 +1,120 @@
+﻿$PBExportHeader$d_dddw_address_lookup_board.srd
+release 11.5;
+datawindow(units=0 timer_interval=0 color=16777215 brushmode=0 transparency=0 gradient.angle=0 gradient.color=8421504 gradient.focus=0 gradient.repetition.count=0 gradient.repetition.length=100 gradient.repetition.mode=0 gradient.scale=100 gradient.spread=100 gradient.transparency=0 picture.blur=0 picture.clip.bottom=0 picture.clip.left=0 picture.clip.right=0 picture.clip.top=0 picture.mode=0 picture.scale.x=100 picture.scale.y=100 picture.transparency=0 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.background=no print.preview.background=no print.preview.outline=yes hidegrayline=no showbackcoloronxp=no picture.file="" )
+header(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+summary(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+footer(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+detail(height=76 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=lookup_code dbname="address_lookup.lookup_code" dbalias=".lookup_code" )
+ column=(type=char(15) updatewhereclause=yes name=code dbname="address_lookup.code" dbalias=".code" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=state dbname="address_lookup.state" dbalias=".state" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=lookup_name dbname="address_lookup.lookup_name" dbalias=".lookup_name" )
+ column=(type=char(12) updatewhereclause=yes name=zip dbname="address_lookup.zip" dbalias=".zip" )
+ column=(type=char(20) updatewhereclause=yes name=country dbname="address_lookup.country" dbalias=".country" )
+ column=(type=char(25) updatewhereclause=yes name=phone dbname="address_lookup.phone" dbalias=".phone" )
+ column=(type=char(25) updatewhereclause=yes name=fax dbname="address_lookup.fax" dbalias=".fax" )
+ column=(type=decimal(0) updatewhereclause=yes name=custom_1 dbname="address_lookup.custom_1" dbalias=".custom_1" )
+ column=(type=decimal(0) updatewhereclause=yes name=custom_2 dbname="address_lookup.custom_2" dbalias=".custom_2" )
+ column=(type=char(50) updatewhereclause=yes name=custom_3 dbname="address_lookup.custom_3" dbalias=".custom_3" )
+ column=(type=char(35) update=yes updatewhereclause=yes name=city dbname="address_lookup.city" dbalias=".city" )
+ column=(type=char(100) updatewhereclause=yes name=entity_name_original dbname="address_lookup.entity_name" dbalias=".entity_name" )
+ column=(type=char(100) updatewhereclause=yes name=street1 dbname="address_lookup.street1" dbalias=".street1" )
+ column=(type=char(100) updatewhereclause=yes name=street2 dbname="address_lookup.street2" dbalias=".street2" )
+ column=(type=char(255) updatewhereclause=yes name=web_address dbname="address_lookup.web_address" dbalias=".web_address" )
+ column=(type=char(50) updatewhereclause=yes name=email_address dbname="address_lookup.email_address" dbalias=".email_address" )
+ column=(type=char(50) updatewhereclause=yes name=custom_4 dbname="address_lookup.custom_4" dbalias=".custom_4" )
+ column=(type=char(50) updatewhereclause=yes name=custom_5 dbname="address_lookup.custom_5" dbalias=".custom_5" )
+ column=(type=char(50) updatewhereclause=yes name=custom_6 dbname="address_lookup.custom_6" dbalias=".custom_6" )
+ column=(type=char(50) updatewhereclause=yes name=contact_name dbname="address_lookup.contact_name" dbalias=".contact_name" )
+ column=(type=char(50) updatewhereclause=yes name=contact_salutation dbname="address_lookup.contact_salutation" dbalias=".contact_salutation" )
+ column=(type=decimal(2) updatewhereclause=yes name=fee dbname="address_lookup.fee" dbalias=".fee" )
+ column=(type=char(200) updatewhereclause=yes name=web_title dbname="address_lookup.web_title" dbalias=".web_title" )
+ column=(type=char(3) updatewhereclause=yes name=audit_flag dbname="address_lookup.audit_flag" dbalias=".audit_flag" )
+ column=(type=long updatewhereclause=yes name=caqh_code dbname="address_lookup.caqh_code" dbalias=".caqh_code" )
+ column=(type=decimal(0) updatewhereclause=yes name=ic_n dbname="address_lookup.ic_n" dbalias=".ic_n" )
+ column=(type=char(50) updatewhereclause=yes name=ic_c dbname="address_lookup.ic_c" dbalias=".ic_c" )
+ column=(type=char(2000) updatewhereclause=yes name=large_description_1 dbname="address_lookup.large_description_1" dbalias=".large_description_1" )
+ column=(type=char(2000) updatewhereclause=yes name=large_description_2 dbname="address_lookup.large_description_2" dbalias=".large_description_2" )
+ column=(type=decimal(2) updatewhereclause=yes name=money_1 dbname="address_lookup.money_1" dbalias=".money_1" )
+ column=(type=decimal(2) updatewhereclause=yes name=money_2 dbname="address_lookup.money_2" dbalias=".money_2" )
+ column=(type=long updatewhereclause=yes name=integer_1 dbname="address_lookup.integer_1" dbalias=".integer_1" )
+ column=(type=long updatewhereclause=yes name=integer_2 dbname="address_lookup.integer_2" dbalias=".integer_2" )
+ column=(type=long updatewhereclause=yes name=integer_3 dbname="address_lookup.integer_3" dbalias=".integer_3" )
+ column=(type=long updatewhereclause=yes name=integer_4 dbname="address_lookup.integer_4" dbalias=".integer_4" )
+ column=(type=long updatewhereclause=yes name=integer_5 dbname="address_lookup.integer_5" dbalias=".integer_5" )
+ column=(type=long updatewhereclause=yes name=integer_6 dbname="address_lookup.integer_6" dbalias=".integer_6" )
+ column=(type=long updatewhereclause=yes name=integer_7 dbname="address_lookup.integer_7" dbalias=".integer_7" )
+ column=(type=long updatewhereclause=yes name=integer_8 dbname="address_lookup.integer_8" dbalias=".integer_8" )
+ column=(type=datetime updatewhereclause=yes name=datetime_1 dbname="address_lookup.datetime_1" dbalias=".datetime_1" )
+ column=(type=datetime updatewhereclause=yes name=datetime_2 dbname="address_lookup.datetime_2" dbalias=".datetime_2" )
+ column=(type=char(122) updatewhereclause=yes name=entity_name dbname="entity_name_new" )
+ retrieve="  SELECT address_lookup.lookup_code,   
+         address_lookup.code,   
+         address_lookup.state,   
+         address_lookup.lookup_name,   
+         address_lookup.zip,   
+         address_lookup.country,   
+         address_lookup.phone,   
+         address_lookup.fax,   
+         address_lookup.custom_1,   
+         address_lookup.custom_2,   
+         address_lookup.custom_3,   
+         address_lookup.city,   
+         address_lookup.entity_name,   
+         address_lookup.street1,   
+         address_lookup.street2,   
+         address_lookup.web_address,   
+         address_lookup.email_address,   
+         address_lookup.custom_4,   
+         address_lookup.custom_5,   
+         address_lookup.custom_6,   
+         address_lookup.contact_name,   
+         address_lookup.contact_salutation,   
+         address_lookup.fee,   
+         address_lookup.web_title,   
+         address_lookup.audit_flag,   
+         address_lookup.caqh_code,   
+         address_lookup.ic_n,   
+         address_lookup.ic_c,   
+         address_lookup.large_description_1,   
+         address_lookup.large_description_2,
+			address_lookup.money_1,
+			address_lookup.money_2,
+			address_lookup.integer_1,
+			address_lookup.integer_2,
+			address_lookup.integer_3,
+			address_lookup.integer_4,
+			address_lookup.integer_5,
+			address_lookup.integer_6,
+			address_lookup.integer_7,
+			address_lookup.integer_8,
+			address_lookup.datetime_1,
+			address_lookup.datetime_2,
+         address_lookup.entity_name + '  -  (' + address_lookup.code + ')' as entity_name_new  
+    FROM address_lookup  
+   WHERE ( address_lookup.lookup_name = 'Boards' )    
+" update="address_lookup" updatewhere=1 updatekeyinplace=no  sort="entity_name_original A city A state A " )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="18" y="8" height="56" width="389" format="[general]" html.valueishtml="0"  name=code visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="0" x="425" y="8" height="60" width="1609" format="[general]" html.valueishtml="0"  name=entity_name_original visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="0" x="2053" y="8" height="52" width="1042" format="[general]" html.valueishtml="0"  name=street1 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=12 alignment="0" tabsequence=50 border="0" color="0" x="3118" y="8" height="56" width="695" format="[general]" html.valueishtml="0"  name=city visible="1" edit.limit=35 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=3 alignment="0" tabsequence=60 border="0" color="0" x="3835" y="8" height="56" width="87" format="[general]" html.valueishtml="0"  name=state visible="1" edit.limit=2 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="3936" y="8" height="52" width="279" format="[general]" html.valueishtml="0"  name=zip visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="4233" y="8" height="52" width="462" format="[general]" html.valueishtml="0"  name=country visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="4745" y="8" height="52" width="389" format="[general]" html.valueishtml="0"  name=phone visible="1" edit.limit=25 edit.case=any edit.autoselect=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="5207" y="8" height="52" width="384" format="[general]" html.valueishtml="0"  name=fax visible="1" edit.limit=25 edit.case=any edit.autoselect=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=43 alignment="0" tabsequence=70 border="0" color="0" x="8649" y="8" height="52" width="2807" format="[general]" html.valueishtml="0"  name=entity_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="5637" y="8" height="52" width="960" format="[general]" html.valueishtml="0"  name=custom_1 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="6638" y="8" height="52" width="992" format="[general]" html.valueishtml="0"  name=custom_2 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="7648" y="8" height="52" width="978" format="[general]" html.valueishtml="0"  name=custom_3 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

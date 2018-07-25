@@ -1,0 +1,89 @@
+﻿$PBExportHeader$f_document_manager_sql.srf
+$PBExportComments$Create by Jack 1/27/2007
+global type f_document_manager_sql from function_object
+end type
+
+forward prototypes
+global function integer f_document_manager_sql ()
+end prototypes
+
+global function integer f_document_manager_sql ();datastore lds_actions,lds_roles,lds_rights
+string ls_filter,ls_find
+long i,j,k,ll_module_id[],ll_sub_module_id[]
+long ll_find,ll_module_id1,ll_sub_module_id1,ll_role_id,ll_action_id,ll_rights_id
+long ll_row,ll_action_rowcount,ll_role_rowcount,ll_right_rowcount
+
+lds_actions = CREATE datastore
+lds_actions.DataObject = 'd_security_all_actions'
+lds_actions.SetTransObject( SQLCA )
+
+lds_roles = CREATE datastore
+lds_roles.dataobject = 'd_security_roles'
+lds_roles.settransobject(sqlca)
+
+lds_rights = CREATE datastore
+lds_rights.dataobject = 'd_security_roles_rights'
+lds_rights.settransobject(sqlca)
+
+gnv_appeondb.of_startqueue( )
+lds_actions.retrieve()
+lds_roles.retrieve()
+lds_rights.retrieve()
+Select Max( rights_id ) Into :ll_rights_id From security_roles_rights;
+gnv_appeondb.of_commitqueue( )
+
+If IsNull( ll_rights_id ) Then ll_rights_id = 0;
+ll_role_rowcount = lds_roles.rowcount()
+ll_right_rowcount = lds_rights.rowcount()
+
+ll_module_id[1] = 33  //Contract
+ll_module_id[2] = 58  //Clause Library Painter
+ll_module_id[3] = 59	 //Template Library Painter
+ll_module_id[4] = 60	 //Document Library Painter
+ll_module_id[5] = 9	 //Roles Painter
+//Add by Jack 06/14/2007
+ll_module_id[6] = 25	 //System
+
+ll_sub_module_id[1] = 370	//Document Manager
+ll_sub_module_id[2] = 580	//Main
+ll_sub_module_id[3] = 581	//Main
+ll_sub_module_id[4] = 582	//Main
+ll_sub_module_id[5] = 583	//Contract Management Rights
+//Add by Jack 06/14/2007
+ll_sub_module_id[6] = 552	//User ID Batch Update
+
+For i = 1 To upperbound(ll_module_id)
+	ll_module_id1 = ll_module_id[i]
+	ll_sub_module_id1 = ll_sub_module_id[i]
+	ls_filter = "module_id = " + string(ll_module_id1) + " And sub_module_id = " + string(ll_sub_module_id1)
+	lds_actions.setfilter(ls_filter)
+	lds_actions.filter()
+	ll_action_rowcount = lds_actions.rowcount()
+	For j = 1 To ll_role_rowcount
+		ll_role_id = lds_roles.getitemnumber(j,'role_id')				
+		For k = 1 To ll_action_rowcount
+			ll_action_id = lds_actions.getitemnumber(k,'action_id')
+			ls_find = "role_id = " + string(ll_role_id) + " and action_id = " + string(ll_action_id)
+			ll_find = lds_rights.find(ls_find,1,ll_right_rowcount)
+			If ll_find < 1 Then
+				ll_row = lds_rights.insertrow(0)
+				ll_rights_id ++
+				lds_rights.setitem(ll_row,'rights_id',ll_rights_id)
+				lds_rights.setitem(ll_row,'role_id',ll_role_id)
+				lds_rights.setitem(ll_row,'action_id',ll_action_id)
+				lds_rights.setitem(ll_row,'value_id',2)
+			End If
+		Next
+	Next
+Next
+gnv_appeondb.of_startqueue( )
+lds_rights.update()
+UPDATE ids SET rights_id = :ll_rights_id;	
+gnv_appeondb.of_commitqueue( )
+
+Destroy lds_actions
+Destroy lds_roles
+Destroy lds_rights
+Return 1
+end function
+

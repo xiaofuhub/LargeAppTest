@@ -1,0 +1,14 @@
+﻿$PBExportHeader$d_case_peer_profile_prac_level.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=0 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=case_number dbname="pd_peer_review_pracs.case_number" )
+ column=(type=char(15) updatewhereclause=yes name=code_lookup_code dbname="code_lookup.code" )
+ column=(type=char(50) updatewhereclause=yes name=custom_6 dbname="code_lookup.custom_6" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"pd_peer_review_pracs~" )  TABLE(NAME=~"code_lookup~" ) COLUMN(NAME=~"pd_peer_review_pracs.case_number~") COLUMN(NAME=~"code_lookup.code~") COLUMN(NAME=~"code_lookup.custom_6~")    JOIN (LEFT=~"pd_peer_review_pracs.severity_grade~"    OP =~"=~"RIGHT=~"code_lookup.lookup_code~"    OUTER1 =~"pd_peer_review_pracs.severity_grade~" )WHERE(    EXP1 =~"( pd_peer_review_pracs.prac_id~"   OP =~"=~"    EXP2 =~":prac_id )~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"( pd_peer_review_pracs.active_status~"   OP =~"=~"    EXP2 =~"1 )~" ) ) ARG(NAME = ~"prac_id~" TYPE = number) " arguments=(("prac_id", number))  sort="custom_6 A " )
+group(level=1 header.height=0 trailer.height=68 by=("code_lookup_code" ) header.color="536870912" trailer.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="64" y="44" height="52" width="343" format="[general]"  name=code_lookup_code edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=trailer.1 alignment="0" expression="Count(   code_lookup_code for group 1) "border="0" color="0" x="59" y="8" height="52" width="183" format="[general]"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,16 @@
+﻿$PBExportHeader$d_pfc_selected_custom_profile_reports.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=4 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=char(50) updatewhereclause=yes name=screen_name dbname="data_view_screen.screen_name" )
+ column=(type=long updatewhereclause=yes name=screen_id dbname="data_view_screen.screen_id" )
+ column=(type=long updatewhereclause=yes name=screen_order dbname="data_view_screen.screen_order" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"data_view~" )  TABLE(NAME=~"data_view_screen~" ) COLUMN(NAME=~"data_view_screen.screen_name~") COLUMN(NAME=~"data_view_screen.screen_id~") COLUMN(NAME=~"data_view_screen.screen_order~")    JOIN (LEFT=~"data_view.data_view_id~"    OP =~"=~"RIGHT=~"data_view_screen.data_view_id~" )WHERE(    EXP1 =~"data_view.data_view_id~"   OP =~"=~"    EXP2 =~":profile_view_id~" ) ) ARG(NAME = ~"profile_view_id~" TYPE = number) " arguments=(("profile_view_id", number))  sort="screen_order A " )
+bitmap(band=detail filename="section.bmp" x="9" y="4" height="60" width="73" border="0" )
+column(band=detail id=1 alignment="0" tabsequence=0 border="0" color="0" x="82" y="0" height="76" width="873"  name=screen_name  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=2 alignment="0" tabsequence=0 border="0" color="0" x="965" y="0" height="76" width="818"  name=screen_id  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=3 alignment="0" tabsequence=0 border="0" color="0" x="1801" y="0" height="76" width="777"  name=screen_order  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,39 @@
+﻿$PBExportHeader$appeongetappeonusername.srf
+global type appeongetappeonusername from function_object
+end type
+
+forward prototypes
+global function string appeongetappeonusername ()
+end prototypes
+
+global function string appeongetappeonusername ();//==============================================================================
+// 
+// Copyright ? 2001-2006 Appeon, Inc. and its subsidiaries. All rights reserved.
+//  
+//------------------------------------------------------------------------------
+// Function: appeongetappeonusername()
+//------------------------------------------------------------------------------
+// Description: 
+// 				Returns the User Name that a user types into the Appeon Web Login dialogue box.
+//	
+// Arguments:(None)
+//	
+// Returns:  string
+//------------------------------------------------------------------------------
+// Author:	APPEON		Date: 2005-11
+//------------------------------------------------------------------------------
+// Revision History: 
+//				1.0   Initial version
+//==============================================================================
+
+String strRet
+
+AppeonExtFuncs funs
+funs = Create AppeonExtFuncs
+
+strRet = funs.Of_GetAppeonUserName()
+
+Destroy funs
+Return strRet
+end function
+

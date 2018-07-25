@@ -1,0 +1,39 @@
+﻿$PBExportHeader$d_app_audit_browse_attempts_browse.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=1 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=68 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=record_id dbname="pd_app_audit_attempts.record_id" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=facility_id dbname="pd_app_audit_attempts.facility_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=prac_id dbname="pd_app_audit_attempts.prac_id" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_attempted dbname="pd_app_audit_attempts.date_attempted" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=user_name dbname="pd_app_audit_attempts.user_name" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=notes dbname="pd_app_audit_attempts.notes" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=method dbname="pd_app_audit_attempts.method" values="Letter	Letter/Fax	Fax/Phone Call	Phone Call/" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=seq_no dbname="pd_app_audit_attempts.seq_no" )
+ column=(type=long update=yes updatewhereclause=yes name=active_status dbname="pd_app_audit_attempts.active_status" values="H	0/C	1/" )
+ retrieve="  SELECT pd_app_audit_attempts.record_id,   
+         pd_app_audit_attempts.facility_id,   
+         pd_app_audit_attempts.prac_id,   
+         pd_app_audit_attempts.date_attempted,   
+         pd_app_audit_attempts.user_name,   
+         pd_app_audit_attempts.notes,   
+         pd_app_audit_attempts.method,   
+         pd_app_audit_attempts.seq_no,   
+         pd_app_audit_attempts.active_status  
+    FROM pd_app_audit_attempts  
+   WHERE pd_app_audit_attempts.record_id = :rec_id    
+" update="pd_app_audit_attempts" updatewhere=1 updatekeyinplace=no arguments=(("rec_id", number))  sort="date_attempted A " )
+column(band=detail id=4 alignment="0" tabsequence=40 border="0" color="0" x="206" y="8" height="64" width="411" format="mm/dd/yyyy"  name=date_attempted edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=50 border="0" color="0" x="626" y="8" height="64" width="251" format="[general]"  name=user_name edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=60 border="0" color="0" x="887" y="8" height="64" width="1125" format="[general]"  name=notes edit.limit=255 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=70 border="0" color="0" x="2025" y="8" height="64" width="293" format="[general]"  name=method ddlb.limit=0 ddlb.allowedit=no ddlb.case=any  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="2" tabsequence=0 border="0" color="0" x="9" y="8" height="52" width="183" format=""  name=active_status ddlb.limit=0 ddlb.allowedit=no ddlb.case=any  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Status"border="6" color="0" x="5" y="8" height="52" width="187"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Date Attempted"border="6" color="0" x="201" y="8" height="52" width="416"  name=date_attempted_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="User Name"border="6" color="0" x="626" y="8" height="52" width="251"  name=user_name_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Notes"border="6" color="0" x="887" y="8" height="52" width="1125"  name=notes_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Method"border="6" color="0" x="2021" y="8" height="52" width="297"  name=method_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

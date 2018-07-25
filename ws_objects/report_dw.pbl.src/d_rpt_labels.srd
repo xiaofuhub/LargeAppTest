@@ -1,0 +1,150 @@
+﻿$PBExportHeader$d_rpt_labels.srd
+release 11.5;
+datawindow(units=0 timer_interval=0 color=16777215 brushmode=0 transparency=0 gradient.angle=0 gradient.color=8421504 gradient.focus=0 gradient.repetition.count=0 gradient.repetition.length=100 gradient.repetition.mode=0 gradient.scale=100 gradient.spread=100 gradient.transparency=0 picture.blur=0 picture.clip.bottom=0 picture.clip.left=0 picture.clip.right=0 picture.clip.top=0 picture.mode=0 picture.scale.x=100 picture.scale.y=100 picture.transparency=0 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 60 print.margin.right = 60 print.margin.top = 60 print.margin.bottom = 60 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=yes print.buttons=yes print.preview.buttons=yes print.cliptext=no print.overrideprintjob=no print.collate=yes print.background=no print.preview.background=no print.preview.outline=yes hidegrayline=no showbackcoloronxp=no picture.file="" print.columns=3 print.columns.width=1200 )
+header(height=20 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+summary(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+footer(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+detail(height=368 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+table(column=(type=char(100) updatewhereclause=yes name=pd_basic_last_name dbname="pd_basic.last_name" )
+ column=(type=char(15) updatewhereclause=yes name=pd_basic_middle_name dbname="pd_basic.middle_name" )
+ column=(type=char(15) updatewhereclause=yes name=pd_basic_first_name dbname="pd_basic.first_name" )
+ column=(type=decimal(0) updatewhereclause=yes name=v_full_name_prac_id dbname="pd_basic.prac_id" )
+ column=(type=char(150) updatewhereclause=yes name=pd_basic_cust_1 dbname="pd_basic.cust_1" )
+ column=(type=char(150) updatewhereclause=yes name=pd_basic_cust_2 dbname="pd_basic.cust_2" )
+ column=(type=char(150) updatewhereclause=yes name=pd_basic_cust_3 dbname="pd_basic.cust_3" )
+ column=(type=char(150) updatewhereclause=yes name=pd_basic_cust_4 dbname="pd_basic.cust_4" )
+ column=(type=char(150) updatewhereclause=yes name=pd_basic_cust_5 dbname="pd_basic.cust_5" )
+ column=(type=char(150) updatewhereclause=yes name=pd_basic_cust_6 dbname="pd_basic.cust_6" )
+ column=(type=char(150) updatewhereclause=yes name=pd_basic_cust_2 dbname="pd_basic.cust_2" )
+ column=(type=char(150) updatewhereclause=yes name=pd_basic_cust_8 dbname="pd_basic.cust_8" )
+ column=(type=char(150) updatewhereclause=yes name=pd_basic_cust_9 dbname="pd_basic.cust_9" )
+ column=(type=char(150) updatewhereclause=yes name=pd_basic_cust_10 dbname="pd_basic.cust_10" )
+ column=(type=datetime updatewhereclause=yes name=pd_basic_cust_d1 dbname="pd_basic.cust_d1" )
+ column=(type=datetime updatewhereclause=yes name=pd_basic_cust_d2 dbname="pd_basic.cust_d2" )
+ column=(type=char(150) updatewhereclause=yes name=street_1 dbname="pd_address.street" )
+ column=(type=char(150) updatewhereclause=yes name=street_2 dbname="pd_address.street_2" )
+ column=(type=char(25) updatewhereclause=yes name=pd_address_city dbname="pd_address.city" )
+ column=(type=decimal(0) updatewhereclause=yes name=pd_address_state dbname="pd_address.state" )
+ column=(type=char(11) updatewhereclause=yes name=pd_address_zip dbname="pd_address.zip" )
+ column=(type=char(50) updatewhereclause=yes name=pd_address_suite_apart dbname="pd_address.suite_apart" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust1 dbname="pd_address.addr_cust1" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust2 dbname="pd_address.addr_cust2" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust3 dbname="pd_address.addr_cust3" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust4 dbname="pd_address.addr_cust4" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust5 dbname="pd_address.addr_cust5" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust6 dbname="pd_address.addr_cust6" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust7 dbname="pd_address.addr_cust7" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust8 dbname="pd_address.addr_cust8" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust9 dbname="pd_address.addr_cust9" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust10 dbname="pd_address.addr_cust10" )
+ column=(type=datetime updatewhereclause=yes name=pd_address_addr_custd1 dbname="pd_address.addr_custd1" )
+ column=(type=datetime updatewhereclause=yes name=pd_address_addr_custd2 dbname="pd_address.addr_custd2" )
+ column=(type=char(75) updatewhereclause=yes name=description dbname="description" )
+ column=(type=char(25) updatewhereclause=yes name=phone dbname="pd_address.phone" )
+ column=(type=char(25) updatewhereclause=yes name=pd_address_fax dbname="pd_address.fax" )
+ column=(type=char(75) updatewhereclause=yes name=pd_address_web_address dbname="pd_address.web_address" )
+ column=(type=char(30) updatewhereclause=yes name=code_lookup_practicing dbname="code_lookup.practicing" )
+ column=(type=char(30) updatewhereclause=yes name=code_lookup_states dbname="code_lookup.states" )
+ column=(type=char(75) updatewhereclause=yes name=code_lookup_state_full_name dbname="code_lookup.state_full_name" )
+ column=(type=char(30) updatewhereclause=yes name=code_lookup_prof_suffix dbname="code_lookup.prof_suffix" )
+ column=(type=char(57) updatewhereclause=yes name=ccity_state dbname="city_state" )
+ column=(type=char(69) updatewhereclause=yes name=ccity_state_zip dbname="city_state_zip" )
+ column=(type=char(30) updatewhereclause=yes name=code_lookup_name_suffix dbname="code_lookup.name_suffix" )
+ column=(type=char(20) updatewhereclause=yes name=provider_number dbname="pd_basic.provider_number" )
+ column=(type=char(30) updatewhereclause=yes name=accepting_new_patients dbname="code_lookup.accepting_new_patients" )
+ retrieve=" SELECT DISTINCT 
+	pd_basic.last_name,   
+   pd_basic.middle_name,   
+   pd_basic.first_name,
+	pd_basic.prac_id,   
+	pd_basic.cust_1,   
+	pd_basic.cust_2,   
+	pd_basic.cust_3,   
+	pd_basic.cust_4,   
+	pd_basic.cust_5, 
+	pd_basic.cust_6,   
+	pd_basic.cust_2,   
+	pd_basic.cust_8,   
+	pd_basic.cust_9,   
+	pd_basic.cust_10, 
+	pd_basic.cust_d1,   
+	pd_basic.cust_d2,       
+	pd_address.street,
+	pd_address.street_2,
+   pd_address.city,   
+   pd_address.state,   
+   pd_address.zip,
+	pd_address.suite_apart,
+ 	pd_address.cust_1 addr_cust1,
+	pd_address.cust_2 addr_cust2,
+	pd_address.cust_3 addr_cust3,
+	pd_address.cust_4 addr_cust4,
+	pd_address.cust_5 addr_cust5,
+	pd_address.cust_6 addr_cust6,
+	pd_address.cust_7 addr_cust7,
+	pd_address.cust_8 addr_cust8,
+	pd_address.cust_9 addr_cust9,
+	pd_address.cust_10 addr_cust10,
+	pd_address.cust_d1 addr_custd1,
+	pd_address.cust_d2 addr_custd2,  
+   (select  code_lookup_a.description 
+     from  code_lookup code_lookup_a
+     where pd_board_specialty.specialty = code_lookup_a.lookup_code )specialty,   
+   pd_address.phone,  
+	pd_address.fax,
+	pd_address.web_address, 
+   code_lookup_b.code practicing,   
+   code_lookup_d.code states,
+   code_lookup_d.description state_full_name,
+   code_lookup_e.code prof_suffix,
+	city_state = pd_address.city + ', ' + code_lookup_d.code,
+	city_state_zip = pd_address.city + ', ' + code_lookup_d.code + ' ' + pd_address.zip,
+	code_lookup_f.code name_suffix,
+	provider_number = pd_basic.provider_id,
+	accepting_new_patients = code_lookup_i.code
+    FROM {oj pd_basic  LEFT OUTER JOIN code_lookup code_lookup_f  ON pd_basic.name_suffix = code_lookup_f.lookup_code
+                       left outer join code_lookup code_lookup_e  on pd_basic.prof_suffix = code_lookup_e.lookup_code
+                       left outer join code_lookup code_lookup_h on pd_basic.provider_type = code_lookup_h.lookup_code},   
+    {oj pd_spec_facility_link left outer join code_lookup code_lookup_b on pd_spec_facility_link.practicing = code_lookup_b.lookup_code },
+	 {oj pd_address left outer join code_lookup code_lookup_d on pd_address.state = code_lookup_d.lookup_code 
+                        left outer join code_lookup code_lookup_i on pd_address.accepting_new_patients = code_lookup_i.lookup_code},  
+    {oj  pd_board_specialty left outer join code_lookup code_lookup_g on  pd_board_specialty.specialty_order = code_lookup_g.lookup_code}, 
+	 pd_affil_stat,
+	 pd_address_link,
+    facility
+   WHERE ( pd_address.prac_id = pd_basic.prac_id ) and
+	 ( pd_address.prac_id = pd_address_link.prac_id) and
+	 ( pd_address.rec_id = pd_address_link.address_id) and
+	 ( pd_address_link.facility_id = pd_affil_stat.parent_facility_id ) and
+	 ( pd_address_link.facility_id = facility.facility_id ) and
+	 ( pd_affil_stat.prac_id = pd_basic.prac_id ) and
+    ( pd_board_specialty.prac_id = pd_basic.prac_id ) and
+	 ( pd_board_specialty.rec_id = pd_spec_facility_link.specialty_id ) and 
+    ( pd_spec_facility_link.facility_id =  pd_affil_stat.parent_facility_id ) and
+	 ( pd_address_link.facility_id =  pd_affil_stat.parent_facility_id ) and 
+    (( pd_address.active_status = 1 ) and
+      ( code_lookup_b.code = 'YES' ) AND
+	  ( code_lookup_g.code = 'Primary'))
+"  sort="pd_basic_last_name A pd_basic_first_name A pd_basic_middle_name A " )
+compute(band=detail alignment="0" expression="IF ( Upper( accepting_new_patients) = 'YES', ~"*~", ~"~" ) +
+  pd_basic_first_name +
+ IF( isnull( pd_basic_middle_name ), ~"~",~" ~" + Left( pd_basic_middle_name,1 ) + ~".~") + ~" ~" +
+ pd_basic_last_name + ~" ~" +
+ IF( isnull(  code_lookup_name_suffix ), ~"~",  code_lookup_name_suffix + ~", ~") + ~"  ~"+
+ IF( isnull(   provider_number ), ~"~",   provider_number ) 
+"border="0" color="0" x="50" y="4" height="56" width="1029" format="[general]" html.valueishtml="0"  name=office_name visible="1"  slideup=directlyabove  font.face="Times New Roman" font.height="-8" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=44 alignment="0" tabsequence=32766 border="0" color="0" x="50" y="196" height="56" width="1029" format="[general]" html.valueishtml="0"  name=ccity_state_zip visible="1"  slideup=allabove edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=36 alignment="0" tabsequence=32766 border="0" color="0" x="50" y="260" height="56" width="1029" format="[general]" html.valueishtml="0"  name=phone visible="1"  slideup=allabove edit.limit=25 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="0" color="0" x="50" y="68" height="56" width="1029" format="[general]" html.valueishtml="0"  name=street_1 visible="1"  slideup=allabove edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+compute(band=detail alignment="0" expression=" if ( isnull( pd_address_suite_apart ),street_2 ,  street_2 + '  ' +  pd_address_suite_apart )"border="0" color="0" x="50" y="136" height="56" width="1029" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

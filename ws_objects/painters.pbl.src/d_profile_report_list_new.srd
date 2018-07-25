@@ -1,0 +1,48 @@
+﻿$PBExportHeader$d_profile_report_list_new.srd
+$PBExportComments$report select
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=char(50) update=yes updatewhereclause=yes name=cur_dw dbname="profile_report_dw.cur_dw" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=prf_dw dbname="profile_report_dw.prf_dw" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=scr_dw dbname="profile_report_dw.scr_dw" )
+ column=(type=long update=yes updatewhereclause=yes name=prf_id dbname="profile_report_dw.prf_id" )
+ column=(type=long update=yes updatewhereclause=yes name=scr_id dbname="profile_report_dw.scr_id" )
+ column=(type=long update=yes updatewhereclause=yes name=table_id dbname="profile_report_dw.table_id" )
+ column=(type=long update=yes updatewhereclause=yes name=report_id dbname="profile_report_dw.report_id" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=report_name dbname="profile_report_dw.dw_name" )
+ column=(type=long updatewhereclause=yes name=sort_order dbname="profile_view_reports.sort_order" )
+ column=(type=long update=yes updatewhereclause=yes name=profile_report_dw_data_view_id dbname="profile_report_dw.data_view_id" )
+ column=(type=long updatewhereclause=yes name=profile_view_reports_profile_view_id dbname="profile_view_reports.profile_view_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes identity=yes name=profile_report_dw_id dbname="profile_report_dw.id" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=retrieval_aruments dbname="profile_report_dw.retrieval_aruments" )
+ retrieve="  SELECT profile_report_dw.cur_dw,   
+         profile_report_dw.prf_dw,   
+         profile_report_dw.scr_dw,   
+         profile_report_dw.prf_id,   
+         profile_report_dw.scr_id,   
+         profile_report_dw.table_id,   
+         profile_report_dw.report_id,   
+         profile_report_dw.dw_name,   
+         profile_view_reports.sort_order,   
+         profile_report_dw.data_view_id,   
+         profile_view_reports.profile_view_id,   
+         profile_report_dw.id,   
+         profile_report_dw.retrieval_aruments  
+    FROM profile_view_reports,   
+         profile_report_dw  
+   WHERE ( profile_view_reports.profile_report_id = profile_report_dw.report_id ) and  
+         ( ( profile_report_dw.profile_view_id = profile_view_reports.profile_view_id ) AND  
+         ( profile_report_dw.data_view_id = :data_view_id ) AND  
+         ( profile_view_reports.profile_view_id = :profile_view_id ) )    
+" update="profile_report_dw" updatewhere=0 updatekeyinplace=no arguments=(("data_view_id", number),("profile_view_id", number))  sort="sort_order A " )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="33554432" x="101" y="4" height="60" width="873" format="[general]" html.valueishtml="0"  name=report_name visible="1" edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+bitmap(band=detail filename="section.bmp" x="9" y="4" height="60" width="73" border="0"  name=p_1 visible="1" )
+bitmap(band=detail filename="sectiongreen.bmp" x="910" y="4" height="60" width="73" border="0"  name=p_2 visible="1~tif ( datalen > 0 ,1,0 )" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

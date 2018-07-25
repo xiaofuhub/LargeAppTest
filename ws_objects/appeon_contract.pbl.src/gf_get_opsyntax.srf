@@ -1,0 +1,155 @@
+﻿$PBExportHeader$gf_get_opsyntax.srf
+global type gf_get_opsyntax from function_object
+end type
+
+forward prototypes
+global function integer gf_get_opsyntax (string as_orgsyntax, string as_opeclist, ref string as_opsyntax, ref string as_lookuplist)
+end prototypes
+
+global function integer gf_get_opsyntax (string as_orgsyntax, string as_opeclist, ref string as_opsyntax, ref string as_lookuplist);//Get Optimization Syntax - jervis 09.30.2011
+//returns 1 if it succeeds and -1 if an error occurs
+
+long ll_i, ll_count
+integer li_rtn
+string	ls_objlist[]
+string ls_modify
+string ls_protect
+string ls_band
+long ll_detail_height,ll_header_height
+long ll_y,ll_y1,ll_y2,ll_loop
+string ls_type
+string ls_dddw_name
+string ls_coltag
+string ls_computelist, ls_error
+n_cst_string lnv_string
+
+as_opsyntax = ''
+as_lookuplist = ''
+n_ds  lds_opsyntax
+
+lds_opsyntax = create n_ds
+
+lds_opsyntax.of_setbase( true)
+
+li_rtn = lds_opsyntax.Create( as_orgsyntax, ls_error )
+if li_rtn < 0 then 
+	IF IsValid(gnv_logservice)THEN 
+		gnv_logservice.of_setloglevel(2) //warning level
+		gnv_logservice.of_log_warning(ls_Error)
+		gb_upgrade_failed = TRUE
+	End If
+	If IsValid(lds_opsyntax ) Then  destroy lds_opsyntax
+	return li_rtn
+end if   
+
+
+
+li_rtn = lds_opsyntax.inv_base.of_getobjects( ls_objlist)
+if li_rtn < 0 then 
+	destroy lds_opsyntax
+	return 	li_rtn
+end if
+
+ll_detail_height = long(lds_opsyntax.Describe( "datawindow.Detail.Height"))
+ll_header_height = long(lds_opsyntax.describe( "datawindow.header.height"))
+
+ll_count = Upperbound(ls_objlist)
+/************************************************************/
+/* modify 2011 12 15  by gavin
+for ll_i = 1 to ll_count
+	ls_type = lds_opsyntax.Describe(ls_objlist[ll_i] +  ".type")
+	if ls_type = 'compute'  then 
+		ls_computelist += "," + lds_opsyntax.Describe(ls_objlist[ll_i] +  ".expression")
+	end if
+next
+
+//replace +,-,*,/,(,),,, to space
+ls_computelist = lnv_string.of_globalreplace( ls_computelist,'+'," ")
+ls_computelist = lnv_string.of_globalreplace( ls_computelist,'-'," ")
+ls_computelist = lnv_string.of_globalreplace( ls_computelist,'*'," ")
+ls_computelist = lnv_string.of_globalreplace( ls_computelist,'/'," ")
+ls_computelist = lnv_string.of_globalreplace( ls_computelist,'('," ")
+ls_computelist = lnv_string.of_globalreplace( ls_computelist,')'," ")
+ls_computelist = lnv_string.of_globalreplace( ls_computelist,','," ")
+*/
+/************************************************************/
+
+as_opeclist += ","
+for ll_i = 1 to ll_count
+	ls_type = lds_opsyntax.Describe(ls_objlist[ll_i] +  ".type")
+	if ls_type = '?' or ls_type = '!' or ls_type = 'compute'  then continue  // add ls_type =  'compute'  modify 2011 1215 by gavin
+	if lds_opsyntax.Describe(ls_objlist[ll_i] +  ".name") <> ls_objlist[ll_i]  then continue
+	
+	if ls_type = 'column' then
+		//Get lookup dddw list 
+		if  lds_opsyntax.Describe(ls_objlist[ll_i] +  ".edit.style") = 'dddw' then
+			ls_dddw_name = lds_opsyntax.describe( ls_objlist[ll_i] +  ".dddw.name")
+			if ls_dddw_name = 'd_dddw_code_lookup' then
+				ls_coltag =  Lower(lds_opsyntax.Describe(ls_objlist[ll_i] + ".TAG"))
+				if gnv_app.inv_dwcache.of_isregistered(ls_coltag) <> 1 then as_lookuplist += ls_coltag + "," 
+			end if
+		end if
+	end if
+
+	//Can't delete the special objects - jervis 10.17.2011 //Modified By Ken.Guo 07/18/2012. add id checked
+	if pos(as_opeclist,ls_objlist[ll_i] + "," ) > 0 or pos(ls_objlist[ll_i] , 'id' ) > 0 then continue
+	
+	//delete objects when visible = 0 and exists column object
+	if lds_opsyntax.Describe(ls_objlist[ll_i] + ".visible") = '0' and isnumber(lds_opsyntax.Describe(ls_objlist[ll_i] + ".x")) then
+			ls_modify += " destroy " + ls_objlist[ll_i]
+		continue
+	end if
+	
+	ls_band = lds_opsyntax.describe( ls_objlist[ll_i] +  ".band")
+	if ls_band = '?' or ls_band = '!' then continue
+
+//Commented By Ken.Guo 07/18/2012. move to top 
+//	if ls_type = 'column' or ls_type = 'compute' then
+//		//Can't delete the special objects - jervis 10.17.2011
+//		if pos(as_opeclist,ls_objlist[ll_i] + "," ) > 0 then continue
+////		if pos(ls_computelist," " + ls_objlist[ll_i] +" ") > 0 then continue        modify 20111215  by gavin
+//	end if
+	
+	choose case ls_type
+		case  'column' 
+			//delete objects when object.y > band.height
+			ll_y = long(lds_opsyntax.Describe(ls_objlist[ll_i] + ".y"))
+			if ls_band = 'detail' then
+				if ll_y > ll_detail_height then 
+					ls_modify += " destroy  " + ls_objlist[ll_i]
+					continue
+				end if
+			elseif ls_band = 'header' then
+				if ll_y > ll_header_height then
+					ls_modify += " destroy  " + ls_objlist[ll_i]
+					continue
+				end if
+			end if
+		case 'line'
+			if ls_band = 'detail' then
+				ll_y1 = long(lds_opsyntax.Describe(ls_objlist[ll_i] + ".y1"))
+				ll_y2 = long(lds_opsyntax.Describe(ls_objlist[ll_i] + ".y2"))
+				if ll_y1 > ll_detail_height and ll_y2 > ll_detail_height then
+					ls_modify += " destroy " + ls_objlist[ll_i]
+					continue
+				end if
+			end if
+
+		case 'other'
+			ll_y = long(lds_opsyntax.Describe(ls_objlist[ll_i] + ".y"))
+			if ls_band = 'detail' then
+				if ll_y > ll_detail_height then 
+					ls_modify += " destroy " + ls_objlist[ll_i]
+					continue
+				end if
+			end if
+	end choose
+next
+lds_opsyntax.modify( ls_modify)
+as_opsyntax = lds_opsyntax.describe( "datawindow.syntax")
+destroy lds_opsyntax
+return 1
+
+
+end function
+

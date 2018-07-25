@@ -1,0 +1,7 @@
+﻿$PBExportHeader$str_group_alarm.srs
+global type str_group_alarm from structure
+	string		as_email_address
+	str_alarm		astr_alarm[]
+	string		as_sender
+end type
+

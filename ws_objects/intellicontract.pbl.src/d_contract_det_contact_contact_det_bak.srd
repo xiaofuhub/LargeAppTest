@@ -1,0 +1,98 @@
+﻿$PBExportHeader$d_contract_det_contact_contact_det_bak.srd
+$PBExportComments$[intellicontract] contact tab contacts
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=716 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=ctx_id dbname="ctx_contract_contacts.ctx_id" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=contact_id dbname="ctx_contract_contacts.contact_id" )
+ column=(type=char(100) updatewhereclause=yes name=ctx_contract_contacts_association dbname="ctx_contract_contacts.association" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=last_name dbname="ctx_contacts.last_name" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=first_name dbname="ctx_contacts.first_name" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=middle_name dbname="ctx_contacts.middle_name" )
+ column=(type=char(1) updatewhereclause=yes name=ic_area dbname="ctx_contract_contacts.ic_area" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ctx_contacts_contact_type dbname="ctx_contacts.contact_type" )
+ column=(type=char(63) updatewhereclause=yes name=name dbname="name" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=contact_id dbname="ctx_contacts.contact_id" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=contact_title dbname="ctx_contacts.contact_title" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=contact_department dbname="ctx_contacts.contact_department" )
+ column=(type=char(150) update=yes updatewhereclause=yes name=street_1 dbname="ctx_contacts.street_1" )
+ column=(type=char(150) update=yes updatewhereclause=yes name=street_2 dbname="ctx_contacts.street_2" )
+ column=(type=char(150) update=yes updatewhereclause=yes name=street_3 dbname="ctx_contacts.street_3" )
+ column=(type=char(35) update=yes updatewhereclause=yes name=city dbname="ctx_contacts.city" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=state dbname="ctx_contacts.state" )
+ column=(type=char(12) update=yes updatewhereclause=yes name=zip dbname="ctx_contacts.zip" )
+ column=(type=char(75) updatewhereclause=yes name=custom_1 dbname="ctx_contacts.custom_1" )
+ column=(type=char(75) updatewhereclause=yes name=custom_2 dbname="ctx_contacts.custom_2" )
+ column=(type=char(75) updatewhereclause=yes name=custom_3 dbname="ctx_contacts.custom_3" )
+ column=(type=char(75) updatewhereclause=yes name=custom_4 dbname="ctx_contacts.custom_4" )
+ column=(type=char(75) updatewhereclause=yes name=custom_5 dbname="ctx_contacts.custom_5" )
+ column=(type=char(75) updatewhereclause=yes name=custom_6 dbname="ctx_contacts.custom_6" )
+ column=(type=char(75) updatewhereclause=yes name=custom_7 dbname="ctx_contacts.custom_7" )
+ column=(type=char(75) updatewhereclause=yes name=custom_8 dbname="ctx_contacts.custom_8" )
+ column=(type=char(75) updatewhereclause=yes name=custom_9 dbname="ctx_contacts.custom_9" )
+ column=(type=char(75) updatewhereclause=yes name=custom_10 dbname="ctx_contacts.custom_10" )
+ column=(type=char(1) updatewhereclause=yes name=contact_local dbname="ctx_contacts.contact_local" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=record_id dbname="ctx_contacts.record_id" )
+ retrieve="  SELECT ctx_contract_contacts.ctx_id,   
+         ctx_contract_contacts.contact_id,   
+         ctx_contract_contacts.association,   
+         ctx_contacts.last_name,   
+         ctx_contacts.first_name,   
+         ctx_contacts.middle_name,   
+         ctx_contract_contacts.ic_area,   
+         ctx_contacts.contact_type,   
+         ctx_contacts.last_name + ' , ' + ctx_contacts.first_name as name,   
+         ctx_contacts.contact_id,   
+         ctx_contacts.contact_title,   
+         ctx_contacts.contact_department,   
+         ctx_contacts.street_1,   
+         ctx_contacts.street_2,   
+         ctx_contacts.street_3,   
+         ctx_contacts.city,   
+         ctx_contacts.state,   
+         ctx_contacts.zip,   
+         ctx_contacts.custom_1,   
+         ctx_contacts.custom_2,   
+         ctx_contacts.custom_3,   
+         ctx_contacts.custom_4,   
+         ctx_contacts.custom_5,   
+         ctx_contacts.custom_6,   
+         ctx_contacts.custom_7,   
+         ctx_contacts.custom_8,   
+         ctx_contacts.custom_9,   
+         ctx_contacts.custom_10,   
+         ctx_contacts.contact_local,   
+         ctx_contacts.record_id  
+    FROM ctx_contacts,   
+         ctx_contract_contacts  
+   WHERE ( ctx_contract_contacts.contact_id = ctx_contacts.contact_id ) and  
+         ( ( ctx_contract_contacts.ctx_id = :al_ctx_id ) AND  
+         ( ctx_contract_contacts.ic_area = :as_ic_area ) ) AND  
+         ctx_contacts.contact_id = :al_contact_id    
+" update="ctx_contacts" updatewhere=2 updatekeyinplace=yes arguments=(("al_ctx_id", number),("as_ic_area", string),("al_contact_id", number)) )
+text(band=detail alignment="0" text="Title" border="0" color="33554432" x="64" y="160" height="52" width="448" html.valueishtml="0"  name=contact_title_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Contact Type" border="0" color="33554432" x="59" y="8" height="52" width="448" html.valueishtml="0"  name=ctx_contacts_contact_type_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="First Name" border="0" color="33554432" x="1097" y="8" height="52" width="448" html.valueishtml="0"  name=first_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=10 border="5" color="33554432" x="64" y="72" height="60" width="997" format="[general]" html.valueishtml="0"  name=ctx_contacts_contact_type  tag="Contract Contact Type" visible="1" dddw.name=d_dddw_code_lookup dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=200 dddw.lines=20 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.hscrollbar=yes dddw.vscrollbar=yes dddw.autoretrieve=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=11 alignment="0" tabsequence=110 border="5" color="33554432" x="73" y="232" height="60" width="997" format="[general]" html.valueishtml="0"  name=contact_title  tag="Title" visible="1" dddw.name=d_dddw_code_lookup dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=0 dddw.lines=25 dddw.limit=0 dddw.allowedit=yes dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.hscrollbar=yes dddw.vscrollbar=yes dddw.autoretrieve=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=5 alignment="0" tabsequence=20 border="5" color="33554432" x="1106" y="76" height="60" width="425" format="[general]" html.valueishtml="0"  name=first_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="0" text="Department" border="0" color="33554432" x="1097" y="160" height="52" width="448" html.valueishtml="0"  name=ctx_contacts_contact_department_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+groupbox(band=detail text="Address"border="6" color="128" x="64" y="308" height="396" width="2094"  name=gb_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=12 alignment="0" tabsequence=40 border="5" color="33554432" x="1102" y="232" height="60" width="1065" format="[general]" html.valueishtml="0"  name=contact_department  tag="Contract Department" visible="1" dddw.name=d_dddw_code_lookup dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=125 dddw.lines=25 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.hscrollbar=yes dddw.vscrollbar=yes dddw.autoretrieve=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="0" text="Last Name" border="0" color="33554432" x="1577" y="8" height="52" width="233" html.valueishtml="0"  name=last_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=30 border="5" color="33554432" x="1586" y="72" height="60" width="576" format="[general]" html.valueishtml="0"  name=last_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=13 alignment="0" tabsequence=50 border="5" color="33554432" x="101" y="372" height="60" width="2011" format="[general]" html.valueishtml="0"  name=ctx_contacts_street_1 visible="1" edit.limit=150 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=14 alignment="0" tabsequence=60 border="5" color="33554432" x="101" y="452" height="60" width="2011" format="[general]" html.valueishtml="0"  name=ctx_contacts_street_2 visible="1" edit.limit=150 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=15 alignment="0" tabsequence=70 border="5" color="33554432" x="101" y="532" height="60" width="2011" format="[general]" html.valueishtml="0"  name=ctx_contacts_street_3 visible="1" edit.limit=150 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=16 alignment="0" tabsequence=80 border="5" color="33554432" x="101" y="612" height="60" width="818" format="[general]" html.valueishtml="0"  name=ctx_contacts_city visible="1" edit.limit=35 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="1" text="State" border="0" color="33554432" x="1083" y="612" height="60" width="128" html.valueishtml="0"  name=ctx_contacts_state_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="1" tabsequence=90 border="5" color="33554432" x="1234" y="612" height="60" width="270" format="[general]" html.valueishtml="0"  name=ctx_contacts_state  tag="State" visible="1" dddw.name=d_dddw_code_lookup dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=400 dddw.lines=20 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.hscrollbar=yes dddw.vscrollbar=yes dddw.autoretrieve=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="1" text="Zip" border="0" color="33554432" x="1691" y="612" height="60" width="91" html.valueishtml="0"  name=ctx_contacts_zip_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="0" tabsequence=100 border="5" color="33554432" x="1806" y="612" height="60" width="302" format="[general]" html.valueishtml="0"  name=ctx_contacts_zip visible="1" edit.name="###-##-####" editmask.mask="#####-####" editmask.imemode=0 editmask.focusrectangle=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

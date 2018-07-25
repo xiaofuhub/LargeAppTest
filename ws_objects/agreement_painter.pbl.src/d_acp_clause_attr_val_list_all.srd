@@ -1,0 +1,45 @@
+﻿$PBExportHeader$d_acp_clause_attr_val_list_all.srd
+release 11.5;
+datawindow ( units=0 timer_interval=0 processing=1 color=1073741824 brushmode=0 transparency=0 gradient.color=8421504 gradient.transparency=0 gradient.angle=0 gradient.repetition.mode=0 gradient.repetition.count=0 gradient.repetition.length=100 gradient.focus=0 gradient.scale=100 gradient.spread=100 picture.mode=0 picture.scale.x=100 picture.scale.y=100 picture.clip.left=0 picture.clip.right=0 picture.clip.top=0 picture.clip.bottom=0 picture.blur=0 picture.transparency=0 print.printername=""  print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=96 print.margin.bottom=96 print.paper.size=0 print.paper.source=0 print.canusedefaultprinter=yes grid.lines=0 selected.mouse=yes hidegrayline=no showbackcoloronxp=no)
+header(height=64 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=ctx_acp_clause_id dbname="ctx_acp_clause_attribute.ctx_acp_clause_id"  )
+column=(type=decimal(0) updatewhereclause=yes name=clause_attribute_id dbname="ctx_acp_clause_attribute.clause_attribute_id"  )
+column=(type=char(255) updatewhereclause=yes name=clause_attribute_alias dbname="clause_attribute_alias"  )
+column=(type=decimal(0) updatewhereclause=yes name=clause_attribute_value_id dbname="ctx_acp_clause_attr_value.clause_attribute_value_id"  )
+column=(type=char(30) updatewhereclause=yes name=clause_attribute_value_code dbname="code_lookup.clause_attribute_value_code"  )
+ retrieve="SELECT ctx_acp_clause_attribute.ctx_acp_clause_id,
+       ctx_acp_clause_attribute.clause_attribute_id,
+       IsNull(ctx_acp_clause_attribute.clause_attribute_alias,code_lookup_A.description) clause_attribute_alias,
+       ctx_acp_clause_attr_value.clause_attribute_value_id,
+       code_lookup_B.code clause_attribute_value_code
+  FROM ctx_acp_clause_attribute,ctx_acp_clause_attr_value,code_lookup code_lookup_A,code_lookup code_lookup_B
+ WHERE ctx_acp_clause_attribute.ctx_acp_clause_id = ctx_acp_clause_attr_value.ctx_acp_clause_id AND
+       ctx_acp_clause_attribute.clause_attribute_id = ctx_acp_clause_attr_value.clause_attribute_id AND
+       ctx_acp_clause_attribute.clause_attribute_id = code_lookup_A.lookup_code AND
+       ctx_acp_clause_attr_value.clause_attribute_value_id = code_lookup_B.lookup_code 
+ORDER BY ctx_acp_clause_attribute.ctx_acp_clause_id,ctx_acp_clause_attribute.clause_attribute_id,ctx_acp_clause_attr_value.clause_attribute_value_id
+"
+ )
+text(name=ctx_acp_clause_id_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="9" y="4" height="56" width="521" text="Ctx Acp Clause Id" html.valueishtml="0" )
+text(name=clause_attribute_id_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="539" y="4" height="56" width="521" text="Clause Attribute Id" html.valueishtml="0" )
+text(name=clause_attribute_alias_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="1070" y="4" height="56" width="535" text="Clause Attribute Alias" html.valueishtml="0" )
+text(name=clause_attribute_value_id_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="1614" y="4" height="56" width="590" text="Clause Attribute Value Id" html.valueishtml="0" )
+text(name=clause_attribute_value_code_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="2213" y="4" height="56" width="667" text="Clause Attribute Value Code" html.valueishtml="0" )
+column(name=ctx_acp_clause_id visible="1" band=detail id=1 x="9" y="4" height="64" width="521" color="33554432" border="0" alignment="1" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 )
+column(name=clause_attribute_id visible="1" band=detail id=2 x="539" y="4" height="64" width="521" color="33554432" border="0" alignment="1" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 )
+column(name=clause_attribute_alias visible="1" band=detail id=3 x="1070" y="4" height="64" width="535" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=255 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 )
+column(name=clause_attribute_value_id visible="1" band=detail id=4 x="1614" y="4" height="64" width="590" color="33554432" border="0" alignment="1" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 )
+column(name=clause_attribute_value_code visible="1" band=detail id=5 x="2213" y="4" height="64" width="668" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=30 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" encodeSelfLinkArgs="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(headGroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.customPostScript="0" xslfop.print="0" )
+export.xhtml()

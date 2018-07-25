@@ -1,0 +1,18 @@
+﻿$PBExportHeader$d_rpt_ctx_wiz_status1.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=char(30) update=yes updatewhereclause=yes name=code dbname="code_lookup.code" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=description dbname="code_lookup.description" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=lookup_code dbname="code_lookup.lookup_code" )
+ column=(type=long updatewhereclause=yes name=selected dbname="selected" values="	1/	0" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"code_lookup~" ) COLUMN(NAME=~"code_lookup.code~") COLUMN(NAME=~"code_lookup.description~") COLUMN(NAME=~"code_lookup.lookup_code~") COMPUTE(NAME=~"0 as selected~")WHERE(    EXP1 =~"code_lookup.lookup_name~"   OP =~"=~"    EXP2 =~"'Contract Status'~" ) ) ORDER(NAME=~"code_lookup.code~" ASC=yes ) " update="code_lookup" updatewhere=1 updatekeyinplace=no )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="782" y="16" height="64" width="443" format="[general]" html.valueishtml="0"  name=code visible="1" edit.limit=30 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="2" tabsequence=10 border="0" color="33554432" x="649" y="24" height="64" width="123" format="[general]" html.valueishtml="0"  name=selected visible="1" checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

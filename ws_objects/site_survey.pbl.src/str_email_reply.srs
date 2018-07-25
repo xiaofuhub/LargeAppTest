@@ -1,0 +1,17 @@
+﻿$PBExportHeader$str_email_reply.srs
+$PBExportComments$(Appeon)Eugene 06.25.2013 - V141 ISG-CLX
+global type str_email_reply from structure
+	string		as_mail_from
+	string		as_mail_to
+	string		as_mail_cc
+	datetime		adt_mail_date
+	integer		ai_mail_importance
+	string		as_mail_subject
+	string		as_filename
+	string		as_mail_attach_name
+	string		as_mail_ctx_id
+	string		as_mail_doc_id
+	string		as_mail_action_item_id
+	string		as_mail_save_format
+end type
+

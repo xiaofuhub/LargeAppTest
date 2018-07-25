@@ -1,0 +1,5 @@
+﻿$PBExportHeader$str_sys_tracking_log_arr.srs
+global type str_sys_tracking_log_arr from structure
+	str_sys_tracking_log		astr_sys_tracking_log_arr[]
+end type
+

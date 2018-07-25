@@ -1,0 +1,6 @@
+﻿$PBExportHeader$str_gadget_message.srs
+global type str_gadget_message from structure
+	u_cst_gadget		suo_gadget
+	str_message		sstr_message
+end type
+

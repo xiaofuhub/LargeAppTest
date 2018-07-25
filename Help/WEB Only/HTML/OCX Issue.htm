@@ -1,0 +1,135 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="content-ie6.css" />
+<title>ActiveX controls(OCX) registering failed</title>
+
+</head>
+<body id="content_body">
+<!--googleoff: index-->
+<!-- BEGIN PAGE CONTENT WRAPPER -->
+<div id="pneumonic">
+  <h1 class="ColdFusion">IntelliSoft Group Inc.</h1>
+</div>
+<div id="page_content_wrapper">
+  <!-- BEGIN BREADCRUMBS -->
+  <div id="breadcrumb">
+    <!-- BEGIN BREADCRUMBS -->
+    <div class="nav">
+      <dl class="page">
+				<dd class="prev"><a accesskey="p" class="prev" href="ie_security.htm" title="IE Security Set"><img src="images/prev.gif" alt="Previous" /></a></dd><dd class="next"><a accesskey="n" class="next" href="" title="email error code"><img src="images/next.gif" alt="Next" /></a></dd>
+
+      </dl>
+    </div>
+    <div class="hierarchy"> <a href="index.htm">Intellisoft</a>/<a href="Troubleshooting.htm">Troubleshooting</a>/<a href="ActiveX_control.htm"><b>ActiveX controls(OCX) registering failed</b></a></div>
+    <!-- END BREADCRUMBS -->
+  </div>
+  <!-- END BREADCRUMBS -->
+  <!-- BEGIN PAGE TITLE -->
+  <!--googleon: index-->
+  <h3>ActiveX controls(OCX) registering failed</h3>
+  <br />
+  <!--googleoff: index-->
+  <!-- END PAGE TITLE -->
+  <!-- BEGIN CONTENT WRAPPER -->
+<div id="content_wrapper">
+    <!--googleon: index-->
+    <div>
+	 <br />
+        <h3>Symptoms</h3>
+       	  Failed to register OCX!<br />
+          Exception occurred when invoking the dllregisterserver function.<br />
+          Error: '%1S%' cannot be registered. Please click the Help icon to view the possible cause and solution.<br />
+		<h3>&nbsp;</h3>
+		<h3>Cause</h3>
+		<br />
+         . One or more of the necessary OLE DLLs is not in the path. <br />
+         . The control is loading a DLL other than the OLE DLL, and that DLL is not in the path.<br />
+         . The login user on this machine has no write permission to the download directory. Download failed. <br />
+         . The login user on this machine has no rights to write the register. Registering failed.<br />
+         . Registering OCX in Vista failed.<br />
+         . One or more DLLs may be the wrong version. 
+         <br />
+		<h3>&nbsp;</h3>
+		<h3>Resolution</h3>
+		<br />
+			To resolve this issue, follow these steps:
+<br />
+<ol>
+  <li>Verify that the following files are in the  following directory:
+    <blockquote>
+      <p align="left"><em>imageviewer2.ocx</em><br />
+        <em>imagethumbnailcp.ocx</em><br />
+        <em>officecontrol.ocx</em><br />
+        <em>scanner.ocx</em><br />
+        <em>emsmtp.dll</em></p>
+    </blockquote>
+    <ul>
+      <li>If you are using Windows application,  please check in the path which the application is installed.</li>
+      <li>If you are using Web application, please  check in the path: %drive%:\Documents and Settings\%user_name%\Application  Data\.</li>
+      <li>If these files exist, please <a href="activex_register.htm">register an ActiveX control (.ocx)  manually</a>, if error occurred, refer to the <a href="http://support.microsoft.com/kb/249873/en-us">regsv32 error message</a>.</li>
+      <li>if these files do not exist:</li>
+    </ul>
+  </li>
+
+  <ol>
+    <ol>
+      <li>for Web development for J2EE platform</li>
+    
+    <blockquote>
+      <p align="left">Verify that those OCX files</a> exist in  Appeon Server, using the following way: <br />
+          <a href="http://x.x.x.x/intelliprod85/plugin/emsmtp.dll">http://X.X.X.X\%user_name%\plugin\emsmtp.dll</a><br />
+        If the filedown  dialog displays, then files exist, otherwise, files do not exist.</p>
+    </blockquote>
+    
+      <li>for Web development for .NET platform</li>
+    
+    <blockquote>
+      <p align="left">Verify that those OCX files</a> exist in Appeon Server, using the following way:<br />
+          <a href="http://x.x.x.x/intelliprod85/plugin/emsmtp.dll">http://X.X.X.X\%user_name%\plugin\emsmtp.dll</a><br />
+        If the filedown  dialog displays, then files exist, otherwise, files do not exist.</p>
+    </blockquote>
+  
+      <li>If those OCX files</a> exist in  Appeon Server, please follow step 2 to check. </li>
+    </ol>
+  </ol>
+  <li>Verify that you logged on by using an  account that has appropriate registry user rights.</li>
+  <ol>
+    <li>If the login account does not have rights  to write the register, please log in to Windows as the administrator.</li>
+    <li>Re-run the Web application. When the  Intelli logon screen displays, close the Web application. Log off administrator  from Windows. Log in to Windows as the normal user again (for example: use1).</li>
+    <li>If the problem still exists, please follow  step 3 to check.</li>
+  </ol>
+  <li>Verify that you logged on by using an  account that has read and write rights for the special folder.</li>
+  <ol>
+    <li>If you are using Windows application,  verify that the login account has read and write rights to the folder: %drive%:\Program  Files\intellicred.</li>
+    <li>If you are using Web application, verify  that the login account has read and write rights to the folder: %drive%:\Documents  and Settings\%user_name%\Application Data\.</li>
+    <li>If the login account has no read and write  rights, please assign it with the rights. For details, please refer to Windows  help.</li>
+    <li>If the problem still exists, please follow  step 4 to check. </li>
+  </ol>
+  <li>If you are using the Vista OS,</li>
+  <ol>
+    <li>Please verify it¡¯s a 32-bit OS.  Registering will not succeed under 64-bit OS.</li>
+    <li>Please verify <a href="uac.htm">User Account Control (UAC)</a>  is off. Take the following steps to turn it off:</li>
+    <ol>
+      <li>Click <strong>Start</strong>, type <strong>User</strong> in the <strong>Start Search</strong> box, and then click <strong>User Accounts</strong> in the <strong>Programs</strong> list.</li>
+      <li>Click  Turn User Account Control on or off.<br />
+        If you are prompted for an administrator password or for confirmation, type  your password, or click Continue.</li>
+      <li>Click  to select the <a href="uac.htm">User Account Control (UAC)</a> to help protect your computer check box,  and then click OK.<br />
+          <br />
+        Note you may have to restart the computer to enable UAC.</li>
+    </ol>
+  </ol>
+  <li>Contact support if the problem still  exists after you follow the above steps.</li>
+</ol>
+<p align="left">&nbsp;</p>
+<h2 class="h2nobreak"><br clear="both" />
+</h2>
+</div>
+  </div>
+  </div>
+<div id="related"></div>
+<br clear="both" />
+</body>
+</html>

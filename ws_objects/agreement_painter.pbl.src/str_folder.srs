@@ -1,0 +1,17 @@
+﻿$PBExportHeader$str_folder.srs
+$PBExportComments$Create by Jack 11/20/2006
+global type str_folder from structure
+	string		as_type
+	long		al_folder_id
+	long		al_category
+	long		al_parent_folder_id
+	long		al_folder[]
+	long		al_clause_id
+	boolean		ab_recursive
+	u_tvs		atv_clause
+	long		al_handle
+	decimal { 1 }		adec_revision
+	datawindow		adw_clause
+	string		as_flag
+end type
+

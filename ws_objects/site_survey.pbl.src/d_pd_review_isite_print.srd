@@ -1,0 +1,85 @@
+﻿$PBExportHeader$d_pd_review_isite_print.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=188 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=real updatewhereclause=yes name=question_id dbname="pd_review_isite.question_id" )
+ column=(type=real updatewhereclause=yes name=review_id_hdr dbname="pd_review_isite.review_id_hdr" )
+ column=(type=char(255) updatewhereclause=yes name=question dbname="pd_review_isite.question" )
+ column=(type=real updatewhereclause=yes name=question_order dbname="pd_review_isite.question_order" )
+ column=(type=real updatewhereclause=yes name=group_id dbname="pd_review_isite.group_id" )
+ column=(type=real updatewhereclause=yes name=sub_group_id dbname="pd_review_isite.sub_group_id" )
+ column=(type=char(150) updatewhereclause=yes name=group_name dbname="pd_review_isite.group_name" )
+ column=(type=char(150) updatewhereclause=yes name=sub_group_name dbname="pd_review_isite.sub_group_name" )
+ column=(type=real updatewhereclause=yes name=review_id_quest dbname="pd_review_isite.review_id_quest" )
+ column=(type=real updatewhereclause=yes name=answer_id dbname="pd_review_isite.answer_id" )
+ column=(type=char(100) updatewhereclause=yes name=question_answer dbname="pd_review_isite.question_answer" )
+ column=(type=decimal(1) updatewhereclause=yes name=answer_score dbname="pd_review_isite.answer_score" )
+ column=(type=real updatewhereclause=yes name=answer_order dbname="pd_review_isite.answer_order" )
+ column=(type=decimal(0) updatewhereclause=yes name=survey_rec_id dbname="pd_review_isite.survey_rec_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=review_type dbname="pd_review_isite.review_type" )
+ column=(type=real updatewhereclause=yes name=review_id_pd dbname="pd_review_isite.review_id_pd" )
+ column=(type=char(100) updatewhereclause=yes name=review_description dbname="pd_review_isite.review_description" )
+ column=(type=real updatewhereclause=yes name=maximum_score dbname="pd_review_isite.maximum_score" )
+ column=(type=real updatewhereclause=yes name=minimum_passing_score dbname="pd_review_isite.minimum_passing_score" )
+ column=(type=decimal(0) updatewhereclause=yes name=site_rec_id dbname="pd_review_isite.site_rec_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=question_answer_id dbname="pd_review_isite.question_answer_id" )
+ column=(type=real updatewhereclause=yes name=answer_on_off dbname="pd_review_isite.answer_on_off" values="	1/	0" )
+ column=(type=real updatewhereclause=yes name=score dbname="pd_review_isite.score" )
+ column=(type=char(255) updatewhereclause=yes name=notes dbname="pd_review_isite.notes" )
+ column=(type=char(150) updatewhereclause=yes name=street dbname="pd_review_isite.street" )
+ column=(type=char(25) updatewhereclause=yes name=city dbname="pd_review_isite.city" )
+ column=(type=char(15) updatewhereclause=yes name=state dbname="pd_review_isite.state" )
+ column=(type=char(11) updatewhereclause=yes name=zip dbname="pd_review_isite.zip" )
+ column=(type=char(150) updatewhereclause=yes name=street_2 dbname="pd_review_isite.street_2" )
+ retrieve="  SELECT DISTINCT pd_review_isite.question_id,   
+         pd_review_isite.review_id_hdr,   
+         pd_review_isite.question,   
+         pd_review_isite.question_order,   
+         pd_review_isite.group_id,   
+         pd_review_isite.sub_group_id,   
+         pd_review_isite.group_name,   
+         pd_review_isite.sub_group_name,   
+         pd_review_isite.review_id_quest,   
+         pd_review_isite.answer_id,   
+         pd_review_isite.question_answer,   
+         pd_review_isite.answer_score,   
+         pd_review_isite.answer_order,   
+         pd_review_isite.survey_rec_id,   
+         pd_review_isite.review_type,   
+         pd_review_isite.review_id_pd,   
+         pd_review_isite.review_description,   
+         pd_review_isite.maximum_score,   
+         pd_review_isite.minimum_passing_score,   
+         pd_review_isite.site_rec_id,   
+         pd_review_isite.question_answer_id,   
+         pd_review_isite.answer_on_off,   
+         pd_review_isite.score,   
+         pd_review_isite.notes,   
+         pd_review_isite.street,   
+         pd_review_isite.city,   
+         pd_review_isite.state,   
+         pd_review_isite.zip,   
+         pd_review_isite.street_2  
+    FROM pd_review_isite  
+   WHERE pd_review_isite.site_rec_id = :rec_id   
+ORDER BY pd_review_isite.question_order ASC,   
+         pd_review_isite.answer_id ASC   
+" arguments=(("rec_id", number)) )
+group(level=1 header.height=68 trailer.height=88 by=("group_name" ) header.color="536870912" trailer.color="536870912" )
+group(level=2 header.height=56 trailer.height=0 by=("sub_group_name" ) header.color="536870912" trailer.color="536870912"  sort="count(group_name for group 2) A " )
+group(level=3 header.height=68 trailer.height=0 by=("question" ) header.color="536870912" trailer.color="536870912" )
+compute(band=header alignment="0" expression="today()"border="0" color="0" x="114" y="120" height="60" width="480" format="[general]"  font.face="Times New Roman" font.height="-8" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=header alignment="2" expression="Upper(review_description )+ ~"~~n~~r~" +  street +   ~"   ~" +  street_2   + ~"   ~" + city + ~", ~" + state  + ~" ~" + zip  "border="0" color="0" x="914" y="20" height="160" width="1472" format="[general]"  name=header  font.face="Times New Roman" font.height="-8" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=header alignment="1" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="0" x="2821" y="120" height="60" width="539" format="[general]"  font.face="Times New Roman" font.height="-8" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header.1 id=7 alignment="0" tabsequence=32766 border="0" color="0" x="101" y="4" height="60" width="3282" format="[general]"  name=group_name edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header.2 id=8 alignment="0" tabsequence=32766 border="0" color="128" x="160" y="0" height="52" width="3218" format="[general]"  name=sub_group_name edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+roundrectangle(band=header.3 ellipseheight="36" ellipsewidth="41"x="215" y="12" height="36" width="37" brush.hatch="6" brush.color="0" pen.style="0" pen.width="5" pen.color="16777215"  background.mode="2" background.color="0" )
+column(band=header.3 id=3 alignment="0" tabsequence=32766 border="0" color="0" x="288" y="8" height="52" width="3095" format="[general]"  name=question edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="2" background.color="16777215" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="384" y="4" height="64" width="3008" format="[general]"  name=question_answer edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=22 alignment="0" tabsequence=10 border="0" color="0" x="297" y="8" height="60" width="69" format="[general]"  name=answer_on_off checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+button(band=trailer.1 text="Notes..."filename=""action="0" border="0" color="0" x="270" y="4" height="68" width="229" vtextalign="0" htextalign="0"  name=notes  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=trailer.1 id=24 alignment="0" tabsequence=32766 border="0" color="0" x="517" y="4" height="76" width="2889" format="[general]" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,11 @@
+﻿$PBExportHeader$str_lookup_field.srs
+global type str_lookup_field from structure
+	string		lookup_type
+	string		lookup_field
+	string		lookup_code
+	string		lookup_field_name
+	integer		drop_down_width
+	integer		table_id
+	string		field_name
+end type
+

@@ -1,0 +1,6 @@
+﻿$PBExportHeader$gs_search.srs
+global type gs_search from structure
+	n_tr		stran_transaction
+	string		ls_open_for
+end type
+

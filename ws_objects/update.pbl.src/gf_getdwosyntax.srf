@@ -1,0 +1,131 @@
+﻿$PBExportHeader$gf_getdwosyntax.srf
+global type gf_getdwosyntax from function_object
+end type
+
+forward prototypes
+global function string gf_getdwosyntax (string as_dwsyntax, string as_objname)
+end prototypes
+
+global function string gf_getdwosyntax (string as_dwsyntax, string as_objname);//====================================================================
+// Function: gf_GetDWOSyntax()
+//--------------------------------------------------------------------
+// Description:
+//--------------------------------------------------------------------
+// Arguments:
+// 	value    string    as_dwSyntax
+// 	value    string    as_ObjName
+//--------------------------------------------------------------------
+// Returns:  string
+//--------------------------------------------------------------------
+// Author:	Scofield		Date: 2009-12-17
+//--------------------------------------------------------------------
+//	Copyright (c) 1999-2009 ContractLogix, All rights reserved.
+//--------------------------------------------------------------------
+// Modify History:
+//
+//====================================================================
+
+long		ll_Pos,ll_RowStart,ll_RowEnd
+long		ll_SecleftBraPos,ll_FirRighBraPos
+long		ll_LeftBracketCnts,ll_RightBracketCnts
+Long		ll_LastPos
+Integer	li_i
+
+String	ls_CurLetter,ls_dwoSyntax, ls_Standobjects
+
+ls_Standobjects =  "line(,text(,column(,ellipse(,bitmap(,groupbox(,rectangle(,button(,compute(,roundrectangle(,graph(,htmltable(,sparse("
+CONSTANT STRING ENTERCHAR = "~r~n"
+
+ll_LastPos = Pos(as_dwSyntax,"band=")
+If ll_LastPos > 0 then//modified by gavins 20120601
+	do 
+		ll_LastPos = LastPos(Left(as_dwSyntax,ll_LastPos ),ENTERCHAR )
+		If  Pos( ls_Standobjects, Mid( as_dwSyntax, ll_LastPos + 2, Pos( as_dwSyntax, '(', ll_LastPos ) - ll_LastPos - 1 )  ) > 0 Then
+			exit
+		Else
+			ll_LastPos = ll_LastPos - 1
+		End If
+	loop while ll_LastPos > 0
+	as_dwSyntax = Mid(as_dwSyntax,ll_LastPos + Len(ENTERCHAR))
+End If
+If Left( as_dwsyntax,2  ) <> ENTERCHAR Then as_dwsyntax = ENTERCHAR + as_dwsyntax 
+ll_Pos = 0
+do //modified by gavins 20120829
+	ll_Pos = ll_Pos + 1 
+	ll_Pos = Pos(as_dwSyntax,"name=" + Lower(as_ObjName) + " ", ll_Pos)
+	ll_LastPos = LastPos( as_dwSyntax, ENTERCHAR , ll_Pos )
+	//left
+	If Pos ( ls_Standobjects,  Mid( as_dwSyntax, ll_LastPos + 2, Pos( as_dwSyntax, '(' , ll_LastPos+ 2 ) -  ll_LastPos - 1 ) ) = 0 Then
+	
+	Else
+		ll_LeftBracketCnts =  ll_LastPos + 2
+	End If
+loop while ll_Pos > 0 And ll_LeftBracketCnts = 0 and ll_pos <= Len( as_dwSyntax )
+//right
+ll_LastPos =  Pos(as_dwSyntax, ENTERCHAR,  ll_LeftBracketCnts )
+If Pos ( ls_Standobjects,  Mid( as_dwSyntax, ll_LastPos + 2, Pos( as_dwSyntax, '(' , ll_LastPos+ 2 ) -  ll_LastPos - 1 ) ) = 0 Then
+	ll_LastPos = ll_LastPos + 1	
+	For   li_i = 1 To 100
+		ll_LastPos = Pos( as_dwSyntax, ENTERCHAR , ll_LastPos  )
+		If ll_LastPos >= Len( as_dwSyntax ) Then Exit
+		If Pos ( ls_Standobjects,  Mid( as_dwSyntax, ll_LastPos + 2, Pos( as_dwSyntax, '(' , ll_LastPos+ 2 ) -  ll_LastPos - 1 ) ) > 0 Then
+			ll_RightBracketCnts = ll_LastPos
+			exit
+		Else
+			ll_LastPos = ll_LastPos + 1			
+		End If
+	Next
+Else
+	ll_RightBracketCnts =  ll_LastPos
+End If
+If ll_LeftBracketCnts = 0 Or ll_RightBracketCnts = 0 Then
+	gnv_debug.of_output(true,   'Failed to get syntax  at "' + as_objname + '"' )	
+	ls_dwoSyntax = ''
+Else
+	ls_dwoSyntax = Mid(as_dwSyntax,ll_LeftBracketCnts,ll_RightBracketCnts - ll_LeftBracketCnts)
+End If
+
+Return ls_dwoSyntax
+
+/*
+
+ll_Pos = Pos(as_dwSyntax,"name=" + Lower(as_ObjName) + " ")
+if ll_Pos > 0 then
+	ll_RowStart = LastPos(Left(as_dwSyntax,ll_Pos),ENTERCHAR) + Len(ENTERCHAR)
+	if ll_RowStart = Len(ENTERCHAR) then ll_RowStart = 1
+	
+	ll_RowEnd = ll_RowStart
+	
+	ll_SecleftBraPos = Pos(as_dwSyntax,"(",Pos(as_dwSyntax,"(",ll_RowStart) + 1)
+	ll_FirRighBraPos = Pos(as_dwSyntax,")",ll_RowStart)
+	
+	if ll_SecleftBraPos > ll_FirRighBraPos then		//Adjust the performance
+		ll_RowEnd = ll_FirRighBraPos + 1
+		for li_i = 1 to 10000//added by gavins 20120719
+			if mid( as_dwSyntax, ll_RowEnd, 1 ) = '~r' then exit
+			ll_RowEnd ++
+		next	
+	else
+		ll_LeftBracketCnts = 0
+		ll_RightBracketCnts = 0
+		do while ll_LeftBracketCnts = 0 or ll_LeftBracketCnts <> ll_RightBracketCnts or Mid(as_dwSyntax,ll_RowEnd,2) <> ENTERCHAR
+			ls_CurLetter = Mid(as_dwSyntax,ll_RowEnd,1)
+			if ls_CurLetter = "(" then ll_LeftBracketCnts++
+			if ls_CurLetter = ")" then ll_RightBracketCnts++
+			ll_RowEnd++
+			
+			//Added By Ken.Guo 2011-02-28. Error.
+			If ll_RowEnd > Len(as_dwSyntax) Then 
+				gnv_debug.of_output( 'Error. Failed to Get dwo ' + as_objname )
+				Return '' 
+			End If
+		loop
+	end if
+
+	ls_dwoSyntax = Mid(as_dwSyntax,ll_RowStart,ll_RowEnd - ll_RowStart)
+end if
+
+Return ls_dwoSyntax
+*/
+end function
+

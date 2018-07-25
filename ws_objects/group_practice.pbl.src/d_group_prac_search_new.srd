@@ -1,0 +1,196 @@
+﻿$PBExportHeader$d_group_prac_search_new.srd
+release 11.5;
+datawindow(units=0 timer_interval=0 color=16777215 brushmode=0 transparency=0 gradient.angle=0 gradient.color=8421504 gradient.focus=0 gradient.repetition.count=0 gradient.repetition.length=100 gradient.repetition.mode=0 gradient.scale=100 gradient.spread=100 gradient.transparency=0 picture.blur=0 picture.clip.bottom=0 picture.clip.left=0 picture.clip.right=0 picture.clip.top=0 picture.mode=0 picture.scale.x=100 picture.scale.y=100 picture.transparency=0 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.background=no print.preview.background=no print.preview.outline=yes hidegrayline=no showbackcoloronxp=no picture.file="" )
+header(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+summary(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+footer(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+detail(height=144 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+table(column=(type=decimal(0) updatewhereclause=yes name=rec_id dbname="group_practice.rec_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=prac_id dbname="group_practice.prac_id" )
+ column=(type=long updatewhereclause=yes name=office_in_home dbname="group_practice.office_in_home" )
+ column=(type=long updatewhereclause=yes name=mailing_address dbname="group_practice.mailing_address" )
+ column=(type=decimal(0) updatewhereclause=yes name=practice_type dbname="group_practice.practice_type" )
+ column=(type=char(150) updatewhereclause=yes name=street dbname="group_practice.street" )
+ column=(type=char(25) updatewhereclause=yes name=city dbname="group_practice.city" )
+ column=(type=decimal(0) updatewhereclause=yes name=country dbname="group_practice.country" )
+ column=(type=char(14) updatewhereclause=yes name=pager_number dbname="group_practice.pager_number" )
+ column=(type=char(25) updatewhereclause=yes name=phone dbname="group_practice.phone" )
+ column=(type=char(4) updatewhereclause=yes name=ext dbname="group_practice.ext" )
+ column=(type=char(25) updatewhereclause=yes name=fax dbname="group_practice.fax" )
+ column=(type=char(11) updatewhereclause=yes name=zip dbname="group_practice.zip" )
+ column=(type=char(30) updatewhereclause=yes name=contact_person dbname="group_practice.contact_person" )
+ column=(type=char(30) updatewhereclause=yes name=tax_id dbname="group_practice.tax_id" )
+ column=(type=char(30) updatewhereclause=yes name=tax_id_other_1 dbname="group_practice.tax_id_other_1" )
+ column=(type=char(30) updatewhereclause=yes name=tax_id_other_2 dbname="group_practice.tax_id_other_2" )
+ column=(type=char(30) updatewhereclause=yes name=business_mgr dbname="group_practice.business_mgr" )
+ column=(type=char(30) updatewhereclause=yes name=office_mgr dbname="group_practice.office_mgr" )
+ column=(type=char(75) updatewhereclause=yes name=e_mail_address dbname="group_practice.e_mail_address" )
+ column=(type=char(75) updatewhereclause=yes name=web_address dbname="group_practice.web_address" )
+ column=(type=char(10) updatewhereclause=yes name=mon_from dbname="group_practice.mon_from" )
+ column=(type=char(10) updatewhereclause=yes name=mon_to dbname="group_practice.mon_to" )
+ column=(type=char(10) updatewhereclause=yes name=tue_from dbname="group_practice.tue_from" )
+ column=(type=char(10) updatewhereclause=yes name=tue_to dbname="group_practice.tue_to" )
+ column=(type=char(10) updatewhereclause=yes name=wed_from dbname="group_practice.wed_from" )
+ column=(type=char(10) updatewhereclause=yes name=thu_from dbname="group_practice.thu_from" )
+ column=(type=char(10) updatewhereclause=yes name=thu_to dbname="group_practice.thu_to" )
+ column=(type=char(10) updatewhereclause=yes name=fri_from dbname="group_practice.fri_from" )
+ column=(type=char(10) updatewhereclause=yes name=fri_to dbname="group_practice.fri_to" )
+ column=(type=char(10) updatewhereclause=yes name=sat_from dbname="group_practice.sat_from" )
+ column=(type=char(10) updatewhereclause=yes name=sat_to dbname="group_practice.sat_to" )
+ column=(type=char(10) updatewhereclause=yes name=sun_from dbname="group_practice.sun_from" )
+ column=(type=char(10) updatewhereclause=yes name=sun_to dbname="group_practice.sun_to" )
+ column=(type=char(10) updatewhereclause=yes name=mon_from2 dbname="group_practice.mon_from2" )
+ column=(type=char(10) updatewhereclause=yes name=mon_to2 dbname="group_practice.mon_to2" )
+ column=(type=char(10) updatewhereclause=yes name=tue_from2 dbname="group_practice.tue_from2" )
+ column=(type=char(10) updatewhereclause=yes name=tue_to2 dbname="group_practice.tue_to2" )
+ column=(type=char(10) updatewhereclause=yes name=wed_from2 dbname="group_practice.wed_from2" )
+ column=(type=char(10) updatewhereclause=yes name=wed_to2 dbname="group_practice.wed_to2" )
+ column=(type=char(10) updatewhereclause=yes name=thu_from2 dbname="group_practice.thu_from2" )
+ column=(type=char(10) updatewhereclause=yes name=thu_to2 dbname="group_practice.thu_to2" )
+ column=(type=char(10) updatewhereclause=yes name=fri_from2 dbname="group_practice.fri_from2" )
+ column=(type=char(10) updatewhereclause=yes name=fri_to2 dbname="group_practice.fri_to2" )
+ column=(type=char(10) updatewhereclause=yes name=sat_from2 dbname="group_practice.sat_from2" )
+ column=(type=char(10) updatewhereclause=yes name=sat_to2 dbname="group_practice.sat_to2" )
+ column=(type=char(10) updatewhereclause=yes name=sun_from2 dbname="group_practice.sun_from2" )
+ column=(type=char(10) updatewhereclause=yes name=sun_to2 dbname="group_practice.sun_to2" )
+ column=(type=char(10) updatewhereclause=yes name=wed_to dbname="group_practice.wed_to" )
+ column=(type=char(20) updatewhereclause=yes name=routine_visit_appt dbname="group_practice.routine_visit_appt" )
+ column=(type=char(20) updatewhereclause=yes name=urgent_visit_appt dbname="group_practice.urgent_visit_appt" )
+ column=(type=char(20) updatewhereclause=yes name=emergency_visit_appt dbname="group_practice.emergency_visit_appt" )
+ column=(type=char(20) updatewhereclause=yes name=non_emergency_appt dbname="group_practice.non_emergency_appt" )
+ column=(type=decimal(0) updatewhereclause=yes name=young_child dbname="group_practice.young_child" )
+ column=(type=decimal(0) updatewhereclause=yes name=child dbname="group_practice.child" )
+ column=(type=decimal(0) updatewhereclause=yes name=adolescent dbname="group_practice.adolescent" )
+ column=(type=decimal(0) updatewhereclause=yes name=adult dbname="group_practice.adult" )
+ column=(type=decimal(0) updatewhereclause=yes name=senior_adult dbname="group_practice.senior_adult" )
+ column=(type=long updatewhereclause=yes name=handicapped_access dbname="group_practice.handicapped_access" )
+ column=(type=long updatewhereclause=yes name=public_transportation dbname="group_practice.public_transportation" )
+ column=(type=char(150) updatewhereclause=yes name=cust_1 dbname="group_practice.cust_1" )
+ column=(type=char(150) updatewhereclause=yes name=cust_2 dbname="group_practice.cust_2" )
+ column=(type=char(150) updatewhereclause=yes name=cust_3 dbname="group_practice.cust_3" )
+ column=(type=char(150) updatewhereclause=yes name=cust_4 dbname="group_practice.cust_4" )
+ column=(type=char(150) updatewhereclause=yes name=cust_5 dbname="group_practice.cust_5" )
+ column=(type=char(150) updatewhereclause=yes name=street_2 dbname="group_practice.street_2" )
+ column=(type=long updatewhereclause=yes name=active_status dbname="group_practice.active_status" )
+ column=(type=decimal(0) updatewhereclause=yes name=accepting_new_patients dbname="group_practice.accepting_new_patients" )
+ column=(type=char(150) updatewhereclause=yes name=cust_6 dbname="group_practice.cust_6" )
+ column=(type=long updatewhereclause=yes name=facility_id dbname="group_practice.facility_id" )
+ column=(type=long updatewhereclause=yes name=gp_id dbname="group_practice.gp_id" )
+ column=(type=char(30) updatewhereclause=yes name=country_code dbname="country_code" )
+ column=(type=char(30) updatewhereclause=yes name=state_code dbname="state_code" )
+ column=(type=char(75) updatewhereclause=yes name=addr_type dbname="addr_type" )
+ column=(type=char(100) updatewhereclause=yes name=gp_name dbname="group_multi_loc.gp_name" )
+ column=(type=char(25) updatewhereclause=yes name=city dbname="group_multi_loc.city" )
+ column=(type=char(2) updatewhereclause=yes name=state dbname="group_multi_loc.state" )
+ column=(type=long updatewhereclause=yes name=selected dbname="selected" values="	1/	0" )
+ column=(type=char(50) updatewhereclause=yes name=suite_apart dbname="group_practice.suite_apart" )
+ retrieve="  SELECT DISTINCT group_practice.rec_id,   
+         group_practice.prac_id,   
+         group_practice.office_in_home,   
+         group_practice.mailing_address,   
+         group_practice.practice_type,   
+        group_practice.street,   
+		group_practice.city as city,   
+         group_practice.country,   
+         group_practice.pager_number,   
+         group_practice.phone,   
+         group_practice.ext,   
+         group_practice.fax,   
+         group_practice.zip,   
+         group_practice.contact_person,   
+         group_practice.tax_id,   
+         group_practice.tax_id_other_1,   
+         group_practice.tax_id_other_2,   
+         group_practice.business_mgr,   
+         group_practice.office_mgr,   
+         group_practice.e_mail_address,   
+         group_practice.web_address,   
+         group_practice.mon_from,   
+         group_practice.mon_to,   
+         group_practice.tue_from,   
+         group_practice.tue_to,   
+         group_practice.wed_from,   
+         group_practice.thu_from,   
+         group_practice.thu_to,   
+         group_practice.fri_from,   
+         group_practice.fri_to,   
+         group_practice.sat_from,   
+         group_practice.sat_to,   
+         group_practice.sun_from,   
+         group_practice.sun_to,   
+         group_practice.mon_from2,   
+         group_practice.mon_to2,   
+         group_practice.tue_from2,   
+         group_practice.tue_to2,   
+         group_practice.wed_from2,   
+         group_practice.wed_to2,   
+         group_practice.thu_from2,   
+         group_practice.thu_to2,   
+         group_practice.fri_from2,   
+         group_practice.fri_to2,   
+         group_practice.sat_from2,   
+         group_practice.sat_to2,   
+         group_practice.sun_from2,   
+         group_practice.sun_to2,   
+         group_practice.wed_to,   
+         group_practice.routine_visit_appt,   
+         group_practice.urgent_visit_appt,   
+         group_practice.emergency_visit_appt,   
+         group_practice.non_emergency_appt,   
+         group_practice.young_child,   
+         group_practice.child,   
+         group_practice.adolescent,   
+         group_practice.adult,   
+         group_practice.senior_adult,   
+         group_practice.handicapped_access,   
+         group_practice.public_transportation,   
+         group_practice.cust_1,   
+         group_practice.cust_2,   
+         group_practice.cust_3,   
+         group_practice.cust_4,   
+         group_practice.cust_5,   
+         group_practice.street_2,   
+         group_practice.active_status,   
+         group_practice.accepting_new_patients,   
+         group_practice.cust_6,   
+         group_practice.facility_id,   
+         group_practice.gp_id,   
+         country_code = code_lookup_a.code,   
+         state_code = code_lookup_b.code, 
+	addr_type =   code_lookup_c.description,    
+         group_multi_loc.gp_name,   
+         group_multi_loc.city,   
+         group_multi_loc.state,   
+         selected=0,   
+         group_practice.suite_apart  
+    FROM {oj group_practice LEFT OUTER JOIN code_lookup code_lookup_a ON group_practice.country = code_lookup_a.lookup_code LEFT OUTER JOIN group_loc_link ON group_practice.rec_id = group_loc_link.loc_id LEFT OUTER JOIN group_multi_loc ON group_loc_link.group_id = group_multi_loc.rec_id LEFT OUTER JOIN code_lookup code_lookup_c ON group_practice.mailing_address = code_lookup_c.lookup_code},   
+         code_lookup code_lookup_b  
+   WHERE ( group_practice.state = code_lookup_b.lookup_code )    and group_practice.active_status = 1
+"  sort="parent_facility A street A city A " )
+group(level=1 header.height=104 trailer.height=0 by=("gp_name" ) header.color="536870912" header.transparency="0" header.gradient.color="8421504" header.gradient.transparency="0" header.gradient.angle="0" header.brushmode="0" header.gradient.repetition.mode="0" header.gradient.repetition.count="0" header.gradient.repetition.length="100" header.gradient.focus="0" header.gradient.scale="100" header.gradient.spread="100" trailer.color="536870912" trailer.transparency="0" trailer.gradient.color="8421504" trailer.gradient.transparency="0" trailer.gradient.angle="0" trailer.brushmode="0" trailer.gradient.repetition.mode="0" trailer.gradient.repetition.count="0" trailer.gradient.repetition.length="100" trailer.gradient.focus="0" trailer.gradient.scale="100" trailer.gradient.spread="100" )
+column(band=header.1 id=14 alignment="0" tabsequence=32766 border="0" color="0" x="3067" y="140" height="64" width="709" format="[general]" html.valueishtml="0"  name=contact_person visible="1" edit.limit=30 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+compute(band=header.1 alignment="2" expression="if( isnull( gp_name), 'Not associated with a Group Practice', 'Group Practice = ' + gp_name )"border="2" color="0" x="18" y="20" height="72" width="3072" format="[general]" html.valueishtml="0"  name=parent_facility visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="33551856" background.transparency="0" background.gradient.color="12632256" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+rectangle(band=detail x="14" y="0" height="144" width="3081"  name=r_1 visible="1" brush.hatch="7" brush.color="617140436" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="0" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" )
+column(band=detail id=78 alignment="0" tabsequence=10 border="0" color="0" x="37" y="20" height="56" width="64" format="[general]" html.valueishtml="0"  name=selected visible="1" checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="0" x="2007" y="80" height="52" width="274" format="[general]" html.valueishtml="0"  name=zip visible="1" edit.limit=11 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=detail alignment="0" text="Type:" border="0" color="0" x="137" y="80" height="56" width="137" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=74 alignment="0" tabsequence=40 border="0" color="0" x="274" y="80" height="56" width="416" format="[general]" html.valueishtml="0"  name=addr_type visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=detail alignment="0" text="Phone:" border="0" color="0" x="741" y="80" height="56" width="210" html.valueishtml="0"  name=t_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="951" y="80" height="56" width="389" format="[general]" html.valueishtml="0"  name=phone visible="1" edit.limit=25 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=7 alignment="0" tabsequence=90 border="0" color="0" x="1358" y="80" height="56" width="521" format="[general]" html.valueishtml="0"  name=city visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=73 alignment="0" tabsequence=30 border="0" color="0" x="1897" y="80" height="56" width="87" format="[general]" html.valueishtml="0"  name=state_code visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=detail alignment="0" text="TIN:" border="0" color="0" x="2309" y="80" height="56" width="91" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=15 alignment="0" tabsequence=50 border="0" color="0" x="2423" y="80" height="56" width="645" format="[general]" html.valueishtml="0"  name=tax_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+compute(band=detail alignment="0" expression="street"border="0" color="0" x="137" y="16" height="64" width="1810" format="[general]" html.valueishtml="0"  name=full_address visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+compute(band=detail alignment="0" expression=" street_2 + if (isnull( suite_apart ),'', '  ' +  suite_apart )"border="0" color="0" x="1961" y="16" height="64" width="1097" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

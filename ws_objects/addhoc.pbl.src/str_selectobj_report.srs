@@ -1,0 +1,7 @@
+﻿$PBExportHeader$str_selectobj_report.srs
+$PBExportComments$(Appeon)Toney 06.10.2013 - V141 ISG-CLX
+global type str_selectobj_report from structure
+	pfc_cst_u_band_report		fband
+	string		fname
+end type
+

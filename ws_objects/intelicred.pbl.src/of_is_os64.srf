@@ -1,0 +1,33 @@
+﻿$PBExportHeader$of_is_os64.srf
+global type of_is_os64 from function_object
+end type
+
+forward prototypes
+global function boolean of_is_os64 ()
+end prototypes
+
+global function boolean of_is_os64 ();//====================================================================
+//$<Function>: of_is_os64()
+//$<Arguments>:
+//$<Return>:  Boolean 
+//$<Description>: Determine if it's a 64 bit OS.
+//$<Author>: (Appeon) Alfee 03.26.2014 (V142 ISG-CLX)
+//--------------------------------------------------------------------
+//$<Modify History>:
+//====================================================================
+Boolean lb_IS_OS64
+
+n_cst_systeminfo lnv_systeminfo
+lnv_systeminfo = CREATE n_cst_systeminfo
+
+IF lnv_systeminfo.of_get_envvar('ProgramW6432') <> '' OR lnv_systeminfo.of_get_envvar('ProgramFiles(x86)')  <> '' THEN
+	lb_IS_OS64 = TRUE;
+ELSE
+	lb_IS_OS64 = FALSE;
+END IF
+
+DESTROY lnv_systeminfo
+
+RETURN lb_IS_OS64
+end function
+

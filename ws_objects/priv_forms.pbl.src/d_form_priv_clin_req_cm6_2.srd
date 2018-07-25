@@ -1,0 +1,61 @@
+﻿$PBExportHeader$d_form_priv_clin_req_cm6_2.srd
+release 11.5;
+datawindow(units=0 timer_interval=0 color=16777215 brushmode=0 transparency=0 gradient.angle=0 gradient.color=8421504 gradient.focus=0 gradient.repetition.count=0 gradient.repetition.length=100 gradient.repetition.mode=0 gradient.scale=100 gradient.spread=100 gradient.transparency=0 picture.blur=0 picture.clip.bottom=0 picture.clip.left=0 picture.clip.right=0 picture.clip.top=0 picture.mode=0 picture.scale.x=100 picture.scale.y=100 picture.transparency=0 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.background=no print.preview.background=no print.preview.outline=yes hidegrayline=no showbackcoloronxp=no picture.file="" )
+header(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+summary(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+footer(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+detail(height=92 color="553648127" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" height.autosize=yes )
+table(column=(type=char(32766) updatewhereclause=no name=priv_clinical_area_spec_procd dbname="priv_clinical_area.spec_procd" )
+ column=(type=char(30) updatewhereclause=yes name=label_text dbname="label_text" )
+ column=(type=long updatewhereclause=yes name=sort_order dbname="sort_order" )
+ retrieve="  SELECT priv_clinical_area.spec_procd  ,   
+		label_text = 'Special Non-Core Procedures:',
+		sort_order = 1
+From priv_clinical_area
+Where priv_clinical_area.clinical_area_id = :ai_clin_id and
+ priv_clinical_area.spec_procd is not null
+
+
+union all
+
+  SELECT priv_clinical_area2.observations,
+		label_text =  'FPPE Requirements:',
+		sort_order = 2
+From priv_clinical_area2
+Where priv_clinical_area2.clinical_area_id = :ai_clin_id and
+priv_clinical_area2.observations is not null
+
+union all
+
+  SELECT priv_clinical_area2.reappoint_req,
+		label_text =  'Reappointment Requirements:',
+		sort_order = 3
+From priv_clinical_area2
+Where priv_clinical_area2.clinical_area_id = :ai_clin_id and
+priv_clinical_area2.reappoint_req is not null
+
+union all
+
+  SELECT priv_clinical_area_3.custom2  ,
+		label_text =  priv_clinical_area_3.custom2_label,
+		sort_order = 4
+From priv_clinical_area_3
+Where priv_clinical_area_3.clinical_area_id = :ai_clin_id and
+ priv_clinical_area_3.custom2 is not null
+
+
+" arguments=(("ai_clin_id", number))  sort="sort_order A " )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="96" y="48" height="28" width="3099" format="[general]" html.valueishtml="0"  name=priv_clinical_area_spec_procd visible="1~tif( isnull( priv_clinical_area_spec_procd ) or priv_clinical_area_spec_procd  = '', 0,1)"  slideup=allabove height.autosize=yes edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Times New Roman" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+line(band=detail x1="91" y1="84" x2="3191" y2="84"  name=l_1 visible="1~tif( sort_order = 2, 1,0)"  slideup=allabove pen.style="0" pen.width="9" pen.color="0"  background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="96" y="24" height="16" width="3099" format="[general]" html.valueishtml="0"  name=label_text visible="1~tif( lenA(  priv_clinical_area_spec_procd   ) > 0 , 1,0)"  slideup=allabove height.autosize=yes edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="31580641" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

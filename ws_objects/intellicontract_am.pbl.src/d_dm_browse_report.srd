@@ -1,0 +1,91 @@
+﻿$PBExportHeader$d_dm_browse_report.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=248 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="553648127" )
+table(column=(type=long updatewhereclause=yes name=ctx_am_document_doc_id dbname="ctx_am_document.doc_id" )
+ column=(type=long updatewhereclause=yes name=ctx_am_document_ctx_id dbname="ctx_am_document.ctx_id" )
+ column=(type=char(200) updatewhereclause=yes name=ctx_am_document_doc_name dbname="ctx_am_document.doc_name" )
+ column=(type=decimal(1) updatewhereclause=yes name=ctx_am_document_revision dbname="ctx_am_document.revision" )
+ column=(type=char(30) updatewhereclause=yes name=ctx_am_document_doc_type dbname="ctx_am_document.doc_type" values="Sell	S/Buy	B/" )
+ column=(type=char(10) updatewhereclause=yes name=ctx_am_document_doc_ext dbname="ctx_am_document.doc_ext" )
+ column=(type=decimal(0) updatewhereclause=yes name=ctx_am_document_category dbname="ctx_am_document.category" )
+ column=(type=char(10) updatewhereclause=yes name=ctx_am_document_create_by dbname="ctx_am_document.create_by" )
+ column=(type=datetime updatewhereclause=yes name=ctx_am_document_create_date dbname="ctx_am_document.create_date" )
+ column=(type=decimal(0) updatewhereclause=yes name=ctx_am_document_status dbname="ctx_am_document.status" )
+ column=(type=char(10) updatewhereclause=yes name=ctx_am_document_status_by dbname="ctx_am_document.status_by" )
+ column=(type=datetime updatewhereclause=yes name=ctx_am_document_status_date dbname="ctx_am_document.status_date" )
+ column=(type=char(255) updatewhereclause=yes name=ctx_am_document_notes dbname="ctx_am_document.notes" )
+ column=(type=char(10) updatewhereclause=yes name=ctx_am_document_checkout_by dbname="ctx_am_document.checkout_by" )
+ column=(type=datetime updatewhereclause=yes name=ctx_am_document_checkout_date dbname="ctx_am_document.checkout_date" )
+ column=(type=char(1) updatewhereclause=yes name=ctx_am_document_checkout_status dbname="ctx_am_document.checkout_status" )
+ column=(type=char(1) updatewhereclause=yes name=ctx_am_document_revision_control dbname="ctx_am_document.revision_control" )
+ column=(type=long updatewhereclause=yes name=ctx_am_doc_audit_doc_id dbname="ctx_am_doc_audit.doc_id" )
+ column=(type=long updatewhereclause=yes name=ctx_am_doc_audit_audit_id dbname="ctx_am_doc_audit.audit_id" )
+ column=(type=decimal(1) updatewhereclause=yes name=ctx_am_doc_audit_revision dbname="ctx_am_doc_audit.revision" )
+ column=(type=char(200) updatewhereclause=yes name=ctx_am_doc_audit_action dbname="ctx_am_doc_audit.action" )
+ column=(type=char(10) updatewhereclause=yes name=ctx_am_doc_audit_action_by dbname="ctx_am_doc_audit.action_by" )
+ column=(type=datetime updatewhereclause=yes name=ctx_am_doc_audit_action_date dbname="ctx_am_doc_audit.action_date" )
+ column=(type=char(255) updatewhereclause=yes name=ctx_am_doc_audit_notes dbname="ctx_am_doc_audit.notes" )
+ retrieve="  SELECT distinct ctx_am_document.doc_id,   
+         ctx_am_document.ctx_id,   
+         ctx_am_document.doc_name,   
+         ctx_am_document.revision,   
+         ctx_am_document.doc_type,   
+         ctx_am_document.doc_ext,   
+         ctx_am_document.category,  
+         ctx_am_document.create_by,   
+         ctx_am_document.create_date,   
+         ctx_am_document.status,   
+         ctx_am_document.status_by,   
+         ctx_am_document.status_date,  
+         ctx_am_document.notes,   
+         ctx_am_document.checkout_by,   
+         ctx_am_document.checkout_date,   
+         ctx_am_document.checkout_status,   
+         ctx_am_document.revision_control  ,
+  			ctx_am_doc_audit.doc_id,   
+         ctx_am_doc_audit.audit_id,   
+         ctx_am_doc_audit.revision,   
+         ctx_am_doc_audit.action,   
+         ctx_am_doc_audit.action_by,   
+         ctx_am_doc_audit.action_date,   
+         ctx_am_doc_audit.notes 
+    FROM ctx_am_doc_audit,ctx_am_document  
+   WHERE ctx_am_doc_audit.doc_id = ctx_am_document.doc_id    
+   AND 	ctx_am_document.ctx_id = :al_ctx_id" arguments=(("al_ctx_id", number))  sort="ctx_am_document_ctx_id A ctx_am_document_doc_id A ctx_am_doc_audit_audit_id A " )
+group(level=1 header.height=76 trailer.height=36 by=("ctx_am_document_doc_id" ) header.color="536870912" trailer.color="536870912" )
+text(band=header alignment="0" text="Document Report" border="0" color="33554432" x="14" y="40" height="80" width="1042" html.valueishtml="0"  name=t_2 visible="1"  font.face="Segoe UI" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+line(band=header x1="18" y1="144" x2="3209" y2="144"  name=l_1 visible="1" pen.style="0" pen.width="14" pen.color="33554432"  background.mode="2" background.color="16777215" )
+compute(band=header alignment="1" expression="'Page '+page()+' of '+pagecount()"border="0" color="33554432" x="2542" y="48" height="64" width="763" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Type - Category" border="0" color="33554432" x="18" y="184" height="52" width="603" html.valueishtml="0"  name=category_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Document Name" border="0" color="33554432" x="645" y="184" height="52" width="805" html.valueishtml="0"  name=doc_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Revision" border="0" color="33554432" x="1458" y="184" height="52" width="224" html.valueishtml="0"  name=current_version_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Created By" border="0" color="33554432" x="1723" y="184" height="52" width="297" html.valueishtml="0"  name=create_by_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Created Date" border="0" color="33554432" x="2039" y="184" height="52" width="366" html.valueishtml="0"  name=create_date_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Status" border="0" color="33554432" x="2418" y="184" height="52" width="229" html.valueishtml="0"  name=status_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Status By" border="0" color="33554432" x="2661" y="184" height="52" width="256" html.valueishtml="0"  name=status_by_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Status Date" border="0" color="33554432" x="2926" y="184" height="52" width="393" html.valueishtml="0"  name=status_date_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header.1 id=5 alignment="1" tabsequence=32766 border="0" color="33554432" x="27" y="4" height="64" width="119" format="[general]" html.valueishtml="0"  name=ctx_am_document_doc_type visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=header.1 id=7 alignment="0" tabsequence=32766 border="0" color="33554432" x="183" y="4" height="64" width="439" format="[general]" html.valueishtml="0"  name=ctx_am_document_category  tag="Contract Category" visible="1" dddw.name=d_dddw_code_lookup dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header.1 alignment="0" text="-" border="0" color="0" x="155" y="4" height="64" width="18" html.valueishtml="0"  name=t_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=header.1 id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="645" y="4" height="64" width="805" format="[general]" html.valueishtml="0"  name=ctx_am_document_doc_name visible="1" edit.limit=200 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=header.1 id=4 alignment="2" tabsequence=32766 border="0" color="33554432" x="1467" y="4" height="64" width="187" format="#,##0.0" html.valueishtml="0"  name=ctx_am_document_revision visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=header.1 id=8 alignment="2" tabsequence=32766 border="0" color="33554432" x="1691" y="4" height="64" width="329" format="[general]" html.valueishtml="0"  name=ctx_am_document_create_by visible="1" edit.limit=10 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=header.1 id=9 alignment="0" tabsequence=32766 border="0" color="33554432" x="2039" y="4" height="64" width="366" format="mm/dd/yyyy" html.valueishtml="0"  name=ctx_am_document_create_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=header.1 id=10 alignment="0" tabsequence=32766 border="0" color="33554432" x="2418" y="4" height="64" width="229" format="[general]" html.valueishtml="0"  name=ctx_am_document_status  tag="Contract Document Status" visible="1" dddw.name=d_dddw_code_lookup dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=header.1 id=11 alignment="0" tabsequence=32766 border="0" color="33554432" x="2661" y="4" height="64" width="256" format="[general]" html.valueishtml="0"  name=ctx_am_document_status_by visible="1" edit.limit=10 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=header.1 id=12 alignment="0" tabsequence=32766 border="0" color="33554432" x="2926" y="4" height="64" width="393" format="mm/dd/yyyy" html.valueishtml="0"  name=ctx_am_document_status_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=23 alignment="0" tabsequence=32766 border="0" color="33554432" x="855" y="4" height="76" width="645" format="mm/dd/yyyy - hh:mm:ss am/pm" html.valueishtml="0"  name=ctx_am_doc_audit_action_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="0" color="33554432" x="128" y="4" height="76" width="155" format="#,##0.0" html.valueishtml="0"  name=ctx_am_doc_audit_revision visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=21 alignment="0" tabsequence=32766 border="0" color="33554432" x="306" y="4" height="76" width="544" format="[general]" html.valueishtml="0"  name=ctx_am_doc_audit_action visible="1" edit.limit=200 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=22 alignment="0" tabsequence=32766 border="0" color="33554432" x="1522" y="4" height="76" width="402" format="[general]" html.valueishtml="0"  name=ctx_am_doc_audit_action_by visible="1" edit.limit=10 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=24 alignment="0" tabsequence=32766 border="0" color="33554432" x="1934" y="4" height="76" width="1403" format="[general]" html.valueishtml="0"  name=ctx_am_doc_audit_notes visible="1" edit.limit=255 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="1" font.charset="0" background.mode="1" background.color="553648127" )
+line(band=trailer.1 x1="64" y1="12" x2="3255" y2="12"  name=l_2 visible="1" pen.style="0" pen.width="9" pen.color="33554432"  background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

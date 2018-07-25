@@ -1,0 +1,36 @@
+﻿$PBExportHeader$gf_merge_file_name.srf
+global type gf_merge_file_name from function_object
+end type
+
+forward prototypes
+global function string gf_merge_file_name (string as_doc_name, string as_doc_ext, long al_doc_id, decimal adec_revision)
+end prototypes
+
+global function string gf_merge_file_name (string as_doc_name, string as_doc_ext, long al_doc_id, decimal adec_revision);//////////////////////////////////////////////////////////////////////
+// $<function>gf_merge_file_name()
+// $<arguments>
+//		value	string 	as_doc_name  		
+//		value	string 	as_doc_ext   		
+//		value	long   	al_doc_id    		
+//		value	decimal	adec_revision		
+// $<returns> string
+// $<description>
+//////////////////////////////////////////////////////////////////////
+// $<add> 2009-04-14 by Ken.Guo
+//////////////////////////////////////////////////////////////////////
+
+n_cst_dm_utils lnv_dm_utils
+
+Return lnv_dm_utils.of_merge_file_name( al_doc_id, adec_revision,as_doc_name,as_doc_ext, 1)
+
+/*
+String ls_doc_name
+If gnv_data.of_getitem( 'icred_settings','doc_name_format', False) = '1' Then //Added By Ken.Guo 2010-02-05.
+	ls_doc_name = as_doc_name + ' ' + String(al_doc_id) + '.' + String(adec_revision,'##0.0') + '.' + as_doc_ext
+Else
+	ls_doc_name = as_doc_name + '.' + as_doc_ext
+End If
+Return ls_doc_name
+*/
+end function
+

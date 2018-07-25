@@ -1,0 +1,40 @@
+﻿$PBExportHeader$of_getbrowserversion.srf
+global type of_getbrowserversion from function_object
+end type
+
+forward prototypes
+global function string of_getbrowserversion ()
+end prototypes
+
+global function string of_getbrowserversion ();//////////////////////////////////////////////////////////////////////
+// $<function>of_getbrowserversion( )
+// $<arguments>(None)
+// $<returns> (none)
+// $<description>Get the browser of logon.
+//////////////////////////////////////////////////////////////////////
+// $<add> 04/27/2015 by Harry
+// $Keep Everything under One Browser
+//////////////////////////////////////////////////////////////////////
+string ls_browser, ls_ret
+appeonextfuncs appfun
+
+if AppeonGetClientType() = "PB" then
+	ls_ret = "IEXPLORE"
+else
+	appfun = Create appeonextfuncs
+	ls_browser = Upper(appfun.of_getbrowserversion( ))
+	Destroy appfun
+	
+	if  pos(ls_browser, "CHROME") > 0 then
+		ls_ret = "CHROME"
+	elseif  pos(ls_browser, "FIREFOX") > 0 then
+		ls_ret = "FIREFOX"
+	Else
+		ls_ret = "IEXPLORE"
+	end if
+end if
+
+Return ls_ret
+
+end function
+

@@ -1,0 +1,67 @@
+﻿$PBExportHeader$f_convert_str_date.srf
+global type f_convert_str_date from function_object
+end type
+
+forward prototypes
+global function date f_convert_str_date (string as_date)
+end prototypes
+
+global function date f_convert_str_date (string as_date);//////////////////////////////////////////////////////////////////////
+// $<Function> f_convert_str_date
+// $<arguments> N/A
+// $<returns> integer
+// $<description>convert date  (V12.2 WebCrawler extract data)
+//////////////////////////////////////////////////////////////////////
+// $<add> 08.02.2012 by Stephen
+//////////////////////////////////////////////////////////////////////
+
+date     ld_date
+string    ls_month[12] ={'JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'}
+integer  li_pos, li_i
+boolean lb_date = false
+string     ls_mon, ls_day, ls_year
+
+//Start Code Change ----09.19.2013 #V14 maha - quick check of date validity
+	if isdate(as_date) then
+		return date(as_date)
+	end if
+//Start Code Change ----09.19.2013 
+
+as_date = trim(as_date)
+setnull(ld_date)
+for li_i = 1 to 12
+	if pos(upper(as_date), ls_month[li_i]) > 0 then
+		ls_mon = string(li_i)
+		lb_date = true
+		exit
+	end if
+next
+
+if lb_date = true then
+	ls_year = right(as_date,4)
+	as_date = left(as_date , len(as_date) -4)
+	
+	li_i = pos(upper(as_date), ls_month[integer(ls_mon)])
+	
+	if li_i > 1 then
+		ls_day = left(as_date,2)
+		if not isnumber(right(ls_day, 1)) then ls_day = left(ls_day,1)
+	else
+		li_i = pos(as_date, ' ')
+		if li_i < 1 then li_i = pos(as_date, ',')
+		if li_i > 1 then
+			ls_day = trim(mid(as_date, li_i + 1, 2))
+			if not isnumber(right(ls_day, 1)) then ls_day = left(ls_day,1)
+		else
+			lb_date = false
+		end if
+	end if
+end if
+if lb_date then
+	ld_date = date(ls_year +"-"+ls_mon+"-"+ls_day)
+end if
+
+return ld_date
+
+end function
+

@@ -1,0 +1,45 @@
+﻿$PBExportHeader$f_save_tif_file.srf
+global type f_save_tif_file from function_object
+end type
+
+forward prototypes
+global function integer f_save_tif_file (string as_filepath, string as_filename)
+end prototypes
+
+global function integer f_save_tif_file (string as_filepath, string as_filename);integer li_FileNo
+long ll_FileLen		
+string ls_File_Name
+
+li_FileNo = FileOpen(as_filepath, StreamMode!,read!, LockWrite!)
+ll_FileLen = FileLength(as_filepath)
+ 
+IF li_FileNo <> -1 THEN
+	integer li_FileNum, li_loops, i
+	long  ll_bytes_read
+	blob lblb_Data, lblb_tot_Data
+
+	IF ll_FileLen > 32767 THEN
+		IF Mod(ll_FileLen, 32767) = 0 THEN
+			li_loops = ll_FileLen/32767
+		ELSE
+			li_loops = (ll_FileLen/32767) + 1
+		END IF
+	ELSE
+		li_loops = 1
+	END IF
+	
+	FOR i = 1 to li_loops
+		 ll_bytes_read = FileRead(li_FileNo, lblb_Data)
+		 lblb_tot_Data = lblb_tot_Data + lblb_Data
+	NEXT
+	FileClose(li_FileNo)
+	select File_Name into :ls_File_Name from tif where File_Name = :as_filename;
+	if isnull(ls_File_Name) or ls_File_Name = '' then
+		insert into tif (File_Name) values (:as_filename);
+	end if
+	updateblob tif set File_Content = :lblb_tot_Data where File_Name = :as_filename;
+	commit;
+END IF
+return li_FileNo
+end function
+

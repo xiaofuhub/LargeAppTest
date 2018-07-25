@@ -1,0 +1,35 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "appeon_word2db.pbl" "";
+@end;
+@begin Objects 
+ "d_dddw_storage_area.srd" "appeon_word2db.pbl";
+ "d_dddw_storage_area_path.srd" "appeon_word2db.pbl";
+ "d_dddw_storage_docs.srd" "appeon_word2db.pbl";
+ "d_dddw_storage_docs_c.srd" "appeon_word2db.pbl";
+ "d_dddw_storage_docs_e.srd" "appeon_word2db.pbl";
+ "d_dddw_storage_docs_v.srd" "appeon_word2db.pbl";
+ "d_distinct_app_hdr.srd" "appeon_word2db.pbl";
+ "d_distinct_doc_list.srd" "appeon_word2db.pbl";
+ "d_distinct_facility_letter_path.srd" "appeon_word2db.pbl";
+ "d_select_storage_area.srd" "appeon_word2db.pbl";
+ "d_sys_storage_area.srd" "appeon_word2db.pbl";
+ "d_sys_storage_area_list.srd" "appeon_word2db.pbl";
+ "d_sys_storage_docs.srd" "appeon_word2db.pbl";
+ "d_sys_storage_docs_detail.srd" "appeon_word2db.pbl";
+ "d_sys_storage_docs_list.srd" "appeon_word2db.pbl";
+ "dd_question_template.srd" "appeon_word2db.pbl";
+ "of_get_image_ctx_image.srf" "appeon_word2db.pbl";
+ "of_get_image_pd_images.srf" "appeon_word2db.pbl";
+ "of_get_image_pd_images1.srf" "appeon_word2db.pbl";
+ "of_get_image_pd_images2.srf" "appeon_word2db.pbl";
+ "of_get_image_verif_batch.srf" "appeon_word2db.pbl";
+ "of_get_image_verif_info.srf" "appeon_word2db.pbl";
+ "n_appeon_storage_area.sru" "appeon_word2db.pbl";
+ "w_appeon_gifofwait.srw" "appeon_word2db.pbl";
+ "w_area_painter.srw" "appeon_word2db.pbl";
+ "w_select_storage_area.srw" "appeon_word2db.pbl";
+ "w_storage_area.srw" "appeon_word2db.pbl";
+ "w_storage_docs.srw" "appeon_word2db.pbl";
+ "w_storage_docs_edit.srw" "appeon_word2db.pbl";
+@end;

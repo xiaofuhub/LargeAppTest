@@ -1,0 +1,191 @@
+﻿$PBExportHeader$d_gp_criteria_select.srd
+release 11.5;
+datawindow(units=0 timer_interval=0 color=33551856 brushmode=0 transparency=0 gradient.angle=0 gradient.color=8421504 gradient.focus=0 gradient.repetition.count=0 gradient.repetition.length=100 gradient.repetition.mode=0 gradient.scale=100 gradient.spread=100 gradient.transparency=0 picture.blur=0 picture.clip.bottom=0 picture.clip.left=0 picture.clip.right=0 picture.clip.top=0 picture.mode=0 picture.scale.x=100 picture.scale.y=100 picture.transparency=0 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.background=no print.preview.background=no print.preview.outline=yes hidegrayline=no showbackcoloronxp=no picture.file="" )
+header(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+summary(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+footer(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+detail(height=284 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+table(column=(type=decimal(0) updatewhereclause=yes key=yes name=rec_id dbname="group_practice.rec_id" dbalias=".rec_id" )
+ column=(type=char(150) updatewhereclause=yes name=street dbname="group_practice.street" dbalias=".street" )
+ column=(type=char(25) updatewhereclause=yes name=phone dbname="group_practice.phone" dbalias=".phone" )
+ column=(type=char(150) updatewhereclause=yes name=street_2 dbname="group_practice.street_2" dbalias=".street_2" )
+ column=(type=char(150) updatewhereclause=yes name=cust_1 dbname="group_practice.cust_1" dbalias=".cust_1" values="Group	1/Group	0" )
+ column=(type=char(150) updatewhereclause=yes name=cust_2 dbname="group_practice.cust_2" dbalias=".cust_2" values="Street	1/Street	0" )
+ column=(type=char(150) updatewhereclause=yes name=cust_3 dbname="group_practice.cust_3" dbalias=".cust_3" values="Phone	1/Phone	0" )
+ column=(type=decimal(0) updatewhereclause=yes name=prac_id dbname="group_practice.prac_id" dbalias=".prac_id" )
+ column=(type=long updatewhereclause=yes name=office_in_home dbname="group_practice.office_in_home" dbalias=".office_in_home" )
+ column=(type=long updatewhereclause=yes name=mailing_address dbname="group_practice.mailing_address" dbalias=".mailing_address" )
+ column=(type=decimal(0) updatewhereclause=yes name=practice_type dbname="group_practice.practice_type" dbalias=".practice_type" )
+ column=(type=long updatewhereclause=yes name=billing_address_flag dbname="group_practice.billing_address_flag" dbalias=".billing_address_flag" )
+ column=(type=char(25) updatewhereclause=yes name=city dbname="group_practice.city" dbalias=".city" )
+ column=(type=decimal(0) updatewhereclause=yes name=state dbname="group_practice.state" dbalias=".state" )
+ column=(type=decimal(0) updatewhereclause=yes name=country dbname="group_practice.country" dbalias=".country" )
+ column=(type=char(14) updatewhereclause=yes name=pager_number dbname="group_practice.pager_number" dbalias=".pager_number" )
+ column=(type=char(10) updatewhereclause=yes name=ext dbname="group_practice.ext" dbalias=".ext" )
+ column=(type=char(25) updatewhereclause=yes name=fax dbname="group_practice.fax" dbalias=".fax" )
+ column=(type=char(11) updatewhereclause=yes name=zip dbname="group_practice.zip" dbalias=".zip" )
+ column=(type=decimal(0) updatewhereclause=yes name=county dbname="group_practice.county" dbalias=".county" )
+ column=(type=char(50) updatewhereclause=yes name=contact_person dbname="group_practice.contact_person" dbalias=".contact_person" )
+ column=(type=char(30) updatewhereclause=yes name=tax_id dbname="group_practice.tax_id" dbalias=".tax_id" )
+ column=(type=char(30) updatewhereclause=yes name=tax_id_other_1 dbname="group_practice.tax_id_other_1" dbalias=".tax_id_other_1" )
+ column=(type=char(30) updatewhereclause=yes name=tax_id_other_2 dbname="group_practice.tax_id_other_2" dbalias=".tax_id_other_2" )
+ column=(type=char(50) updatewhereclause=yes name=business_mgr dbname="group_practice.business_mgr" dbalias=".business_mgr" )
+ column=(type=char(50) updatewhereclause=yes name=office_mgr dbname="group_practice.office_mgr" dbalias=".office_mgr" )
+ column=(type=char(75) updatewhereclause=yes name=e_mail_address dbname="group_practice.e_mail_address" dbalias=".e_mail_address" )
+ column=(type=char(75) updatewhereclause=yes name=web_address dbname="group_practice.web_address" dbalias=".web_address" )
+ column=(type=char(10) updatewhereclause=yes name=mon_from dbname="group_practice.mon_from" dbalias=".mon_from" )
+ column=(type=char(10) updatewhereclause=yes name=mon_to dbname="group_practice.mon_to" dbalias=".mon_to" )
+ column=(type=char(10) updatewhereclause=yes name=tue_from dbname="group_practice.tue_from" dbalias=".tue_from" )
+ column=(type=char(10) updatewhereclause=yes name=tue_to dbname="group_practice.tue_to" dbalias=".tue_to" )
+ column=(type=char(10) updatewhereclause=yes name=wed_from dbname="group_practice.wed_from" dbalias=".wed_from" )
+ column=(type=char(10) updatewhereclause=yes name=thu_from dbname="group_practice.thu_from" dbalias=".thu_from" )
+ column=(type=char(10) updatewhereclause=yes name=thu_to dbname="group_practice.thu_to" dbalias=".thu_to" )
+ column=(type=char(10) updatewhereclause=yes name=fri_from dbname="group_practice.fri_from" dbalias=".fri_from" )
+ column=(type=char(10) updatewhereclause=yes name=fri_to dbname="group_practice.fri_to" dbalias=".fri_to" )
+ column=(type=char(10) updatewhereclause=yes name=sat_from dbname="group_practice.sat_from" dbalias=".sat_from" )
+ column=(type=char(10) updatewhereclause=yes name=sat_to dbname="group_practice.sat_to" dbalias=".sat_to" )
+ column=(type=char(10) updatewhereclause=yes name=sun_from dbname="group_practice.sun_from" dbalias=".sun_from" )
+ column=(type=char(10) updatewhereclause=yes name=sun_to dbname="group_practice.sun_to" dbalias=".sun_to" )
+ column=(type=char(10) updatewhereclause=yes name=mon_from2 dbname="group_practice.mon_from2" dbalias=".mon_from2" )
+ column=(type=char(10) updatewhereclause=yes name=mon_to2 dbname="group_practice.mon_to2" dbalias=".mon_to2" )
+ column=(type=char(10) updatewhereclause=yes name=tue_from2 dbname="group_practice.tue_from2" dbalias=".tue_from2" )
+ column=(type=char(10) updatewhereclause=yes name=tue_to2 dbname="group_practice.tue_to2" dbalias=".tue_to2" )
+ column=(type=char(10) updatewhereclause=yes name=wed_from2 dbname="group_practice.wed_from2" dbalias=".wed_from2" )
+ column=(type=char(10) updatewhereclause=yes name=wed_to2 dbname="group_practice.wed_to2" dbalias=".wed_to2" )
+ column=(type=char(10) updatewhereclause=yes name=thu_from2 dbname="group_practice.thu_from2" dbalias=".thu_from2" )
+ column=(type=char(10) updatewhereclause=yes name=thu_to2 dbname="group_practice.thu_to2" dbalias=".thu_to2" )
+ column=(type=char(10) updatewhereclause=yes name=fri_from2 dbname="group_practice.fri_from2" dbalias=".fri_from2" )
+ column=(type=char(10) updatewhereclause=yes name=fri_to2 dbname="group_practice.fri_to2" dbalias=".fri_to2" )
+ column=(type=char(10) updatewhereclause=yes name=sat_from2 dbname="group_practice.sat_from2" dbalias=".sat_from2" )
+ column=(type=char(10) updatewhereclause=yes name=sat_to2 dbname="group_practice.sat_to2" dbalias=".sat_to2" )
+ column=(type=char(10) updatewhereclause=yes name=sun_from2 dbname="group_practice.sun_from2" dbalias=".sun_from2" )
+ column=(type=char(10) updatewhereclause=yes name=sun_to2 dbname="group_practice.sun_to2" dbalias=".sun_to2" )
+ column=(type=char(10) updatewhereclause=yes name=wed_to dbname="group_practice.wed_to" dbalias=".wed_to" )
+ column=(type=char(20) updatewhereclause=yes name=routine_visit_appt dbname="group_practice.routine_visit_appt" dbalias=".routine_visit_appt" )
+ column=(type=char(20) updatewhereclause=yes name=urgent_visit_appt dbname="group_practice.urgent_visit_appt" dbalias=".urgent_visit_appt" )
+ column=(type=char(20) updatewhereclause=yes name=emergency_visit_appt dbname="group_practice.emergency_visit_appt" dbalias=".emergency_visit_appt" )
+ column=(type=char(20) updatewhereclause=yes name=non_emergency_appt dbname="group_practice.non_emergency_appt" dbalias=".non_emergency_appt" )
+ column=(type=decimal(0) updatewhereclause=yes name=young_child dbname="group_practice.young_child" dbalias=".young_child" )
+ column=(type=decimal(0) updatewhereclause=yes name=child dbname="group_practice.child" dbalias=".child" )
+ column=(type=decimal(0) updatewhereclause=yes name=adolescent dbname="group_practice.adolescent" dbalias=".adolescent" )
+ column=(type=decimal(0) updatewhereclause=yes name=adult dbname="group_practice.adult" dbalias=".adult" )
+ column=(type=decimal(0) updatewhereclause=yes name=senior_adult dbname="group_practice.senior_adult" dbalias=".senior_adult" )
+ column=(type=long updatewhereclause=yes name=handicapped_access dbname="group_practice.handicapped_access" dbalias=".handicapped_access" )
+ column=(type=long updatewhereclause=yes name=public_transportation dbname="group_practice.public_transportation" dbalias=".public_transportation" )
+ column=(type=char(150) updatewhereclause=yes name=cust_4 dbname="group_practice.cust_4" dbalias=".cust_4" )
+ column=(type=char(150) updatewhereclause=yes name=cust_5 dbname="group_practice.cust_5" dbalias=".cust_5" )
+ column=(type=long updatewhereclause=yes name=active_status dbname="group_practice.active_status" dbalias=".active_status" )
+ column=(type=decimal(0) updatewhereclause=yes name=accepting_new_patients dbname="group_practice.accepting_new_patients" dbalias=".accepting_new_patients" )
+ column=(type=char(150) updatewhereclause=yes name=cust_6 dbname="group_practice.cust_6" dbalias=".cust_6" )
+ column=(type=char(150) updatewhereclause=yes name=cust_7 dbname="group_practice.cust_7" dbalias=".cust_7" )
+ column=(type=char(150) updatewhereclause=yes name=cust_8 dbname="group_practice.cust_8" dbalias=".cust_8" )
+ column=(type=char(150) updatewhereclause=yes name=cust_9 dbname="group_practice.cust_9" dbalias=".cust_9" )
+ column=(type=char(150) updatewhereclause=yes name=cust_10 dbname="group_practice.cust_10" dbalias=".cust_10" )
+ column=(type=datetime updatewhereclause=yes name=cust_d1 dbname="group_practice.cust_d1" dbalias=".cust_d1" )
+ column=(type=datetime updatewhereclause=yes name=cust_d2 dbname="group_practice.cust_d2" dbalias=".cust_d2" )
+ column=(type=long updatewhereclause=yes name=facility_id dbname="group_practice.facility_id" dbalias=".facility_id" )
+ column=(type=long updatewhereclause=yes name=gp_id dbname="group_practice.gp_id" dbalias=".gp_id" )
+ column=(type=char(50) updatewhereclause=yes name=suite_apart dbname="group_practice.suite_apart" dbalias=".suite_apart" )
+ column=(type=char(50) updatewhereclause=yes name=alias_name dbname="group_practice.alias_name" dbalias=".alias_name" )
+ retrieve="  SELECT ~"group_practice~".~"rec_id~",   
+         ~"group_practice~".~"street~",   
+         ~"group_practice~".~"phone~",   
+         ~"group_practice~".~"street_2~",   
+         ~"group_practice~".~"cust_1~",   
+         ~"group_practice~".~"cust_2~",   
+         ~"group_practice~".~"cust_3~",   
+         ~"group_practice~".~"prac_id~",   
+         ~"group_practice~".~"office_in_home~",   
+         ~"group_practice~".~"mailing_address~",   
+         ~"group_practice~".~"practice_type~",   
+         ~"group_practice~".~"billing_address_flag~", 
+         ~"group_practice~".~"city~",   
+         ~"group_practice~".~"state~",   
+         ~"group_practice~".~"country~",   
+         ~"group_practice~".~"pager_number~",   
+         ~"group_practice~".~"ext~",   
+         ~"group_practice~".~"fax~",   
+         ~"group_practice~".~"zip~",   
+         ~"group_practice~".~"county~",   
+         ~"group_practice~".~"contact_person~",   
+         ~"group_practice~".~"tax_id~",   
+         ~"group_practice~".~"tax_id_other_1~",   
+         ~"group_practice~".~"tax_id_other_2~",   
+         ~"group_practice~".~"business_mgr~",   
+         ~"group_practice~".~"office_mgr~",   
+         ~"group_practice~".~"e_mail_address~",   
+         ~"group_practice~".~"web_address~",   
+         ~"group_practice~".~"mon_from~",   
+         ~"group_practice~".~"mon_to~",   
+         ~"group_practice~".~"tue_from~",   
+         ~"group_practice~".~"tue_to~",   
+         ~"group_practice~".~"wed_from~",   
+         ~"group_practice~".~"thu_from~",   
+         ~"group_practice~".~"thu_to~",   
+         ~"group_practice~".~"fri_from~",   
+         ~"group_practice~".~"fri_to~",   
+         ~"group_practice~".~"sat_from~",   
+         ~"group_practice~".~"sat_to~",   
+         ~"group_practice~".~"sun_from~",   
+         ~"group_practice~".~"sun_to~",   
+         ~"group_practice~".~"mon_from2~",   
+         ~"group_practice~".~"mon_to2~",   
+         ~"group_practice~".~"tue_from2~",   
+         ~"group_practice~".~"tue_to2~",   
+         ~"group_practice~".~"wed_from2~",   
+         ~"group_practice~".~"wed_to2~",   
+         ~"group_practice~".~"thu_from2~",   
+         ~"group_practice~".~"thu_to2~",   
+         ~"group_practice~".~"fri_from2~",   
+         ~"group_practice~".~"fri_to2~",   
+         ~"group_practice~".~"sat_from2~",   
+         ~"group_practice~".~"sat_to2~",   
+         ~"group_practice~".~"sun_from2~",   
+         ~"group_practice~".~"sun_to2~",   
+         ~"group_practice~".~"wed_to~",   
+         ~"group_practice~".~"routine_visit_appt~",   
+         ~"group_practice~".~"urgent_visit_appt~",   
+         ~"group_practice~".~"emergency_visit_appt~",   
+         ~"group_practice~".~"non_emergency_appt~",   
+         ~"group_practice~".~"young_child~",   
+         ~"group_practice~".~"child~",   
+         ~"group_practice~".~"adolescent~",   
+         ~"group_practice~".~"adult~",   
+         ~"group_practice~".~"senior_adult~",   
+         ~"group_practice~".~"handicapped_access~",   
+         ~"group_practice~".~"public_transportation~",   
+         ~"group_practice~".~"cust_4~",   
+         ~"group_practice~".~"cust_5~",   
+         ~"group_practice~".~"active_status~",   
+         ~"group_practice~".~"accepting_new_patients~",   
+         ~"group_practice~".~"cust_6~",
+		~"group_practice~".~"cust_7~",
+		~"group_practice~".~"cust_8~",
+		~"group_practice~".~"cust_9~",
+		~"group_practice~".~"cust_10~",
+		~"group_practice~".~"cust_d1~",
+		~"group_practice~".~"cust_d2~",
+         ~"group_practice~".~"facility_id~",   
+         ~"group_practice~".~"gp_id~",   
+         ~"group_practice~".~"suite_apart~" ,
+         ~"group_practice~".~"alias_name~" 
+    FROM ~"group_practice~"  
+   WHERE group_practice.rec_id = :gpid    
+" update="group_practice" updatewhere=0 updatekeyinplace=no arguments=(("gpid", number)) )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="0" x="1445" y="156" height="64" width="274" format="[general]" html.valueishtml="0"  name=rec_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=2 alignment="0" tabsequence=10 border="5" color="0" x="23" y="12" height="64" width="1317" format="[general]" html.valueishtml="0"  name=street visible="1" edit.limit=150 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=4 alignment="0" tabsequence=30 border="5" color="0" x="23" y="104" height="64" width="1317" format="[general]" html.valueishtml="0"  name=street_2 visible="1" edit.limit=150 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=3 alignment="0" tabsequence=20 border="5" color="0" x="23" y="192" height="64" width="1317" format="[general]" html.valueishtml="0"  name=phone visible="1" edit.limit=25 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=82 alignment="0" tabsequence=40 border="0" color="0" x="2162" y="112" height="52" width="1152" format="[general]" html.valueishtml="0"  name=alias_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=12 alignment="0" tabsequence=50 border="0" color="0" x="3314" y="0" height="52" width="2135" html.valueishtml="0"  name=billing_address_flag visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

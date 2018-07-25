@@ -1,0 +1,34 @@
+﻿$PBExportHeader$of_check_prac_facility_max.srf
+global type of_check_prac_facility_max from function_object
+end type
+
+forward prototypes
+global function integer of_check_prac_facility_max (string as_get)
+end prototypes
+
+global function integer of_check_prac_facility_max (string as_get);//Start Code Change ----05.28.2014 #V14.2 maha - function created
+integer cnt
+integer t
+
+
+if as_get = "P" then
+	t = of_get_app_setting("set_79","I")
+	if t = 0 then 
+		return 0
+	else
+		select count(prac_id) into : cnt from pd_basic where prac_id > 0;
+		if cnt < t then return 0
+	end if
+elseif as_get = "F" then
+	t = of_get_app_setting("set_78","I")
+	if t = 0 then 
+		return 0
+	else
+		select count(facility_id) into : cnt from facility;
+		if cnt < t then return 0
+	end if
+end if
+
+return t
+end function
+

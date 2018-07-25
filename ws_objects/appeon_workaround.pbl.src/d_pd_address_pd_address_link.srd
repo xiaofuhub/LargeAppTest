@@ -1,0 +1,34 @@
+﻿$PBExportHeader$d_pd_address_pd_address_link.srd
+release 11.5;
+datawindow ( units=0 timer_interval=0 processing=1 color=1073741824 brushmode=0 transparency=0 gradient.color=8421504 gradient.transparency=0 gradient.angle=0 gradient.repetition.mode=0 gradient.repetition.count=0 gradient.repetition.length=100 gradient.focus=0 gradient.scale=100 gradient.spread=100 picture.mode=0 picture.scale.x=100 picture.scale.y=100 picture.clip.left=0 picture.clip.right=0 picture.clip.top=0 picture.clip.bottom=0 picture.blur=0 picture.transparency=0 print.printername=""  print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=96 print.margin.bottom=96 print.paper.size=0 print.paper.source=0 print.canusedefaultprinter=yes grid.lines=0 selected.mouse=yes hidegrayline=no showbackcoloronxp=no)
+header(height=120 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=char(75) updatewhereclause=yes name=pd_address_e_mail_address dbname="pd_address.e_mail_address"  )
+column=(type=decimal(0) updatewhereclause=yes name=pd_address_link_prac_id dbname="pd_address_link.prac_id"  )
+column=(type=long updatewhereclause=yes name=pd_address_link_facility_id dbname="pd_address_link.facility_id"  )
+column=(type=char(25) updatewhereclause=yes name=pd_address_fax dbname="pd_address.fax"  )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"pd_address~" )  TABLE(NAME=~"pd_address_link~" ) COLUMN(NAME=~"pd_address.e_mail_address~") COLUMN(NAME=~"pd_address_link.prac_id~") COLUMN(NAME=~"pd_address_link.facility_id~") COLUMN(NAME=~"pd_address.fax~")    JOIN (LEFT=~"pd_address.rec_id~"    OP =~"=~"RIGHT=~"pd_address_link.address_id~" )WHERE(    EXP1 =~"pd_address_link.mailing~"   OP =~"=~"    EXP2 =~"1~" ) ) "
+ )
+text(name=pd_address_e_mail_address_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="9" y="8" height="104" width="1737" text="Pd Address
+E Mail Address" html.valueishtml="0" )
+text(name=pd_address_link_prac_id_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="1755" y="8" height="104" width="352" text="Pd Address Link
+Prac Id" html.valueishtml="0" )
+text(name=pd_address_link_facility_id_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="2117" y="8" height="104" width="352" text="Pd Address Link
+Facility Id" html.valueishtml="0" )
+text(name=pd_address_fax_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="1" background.color="536870912" color="33554432" alignment="0" border="0" x="2478" y="4" height="52" width="357" text="Pd Address Fax" html.valueishtml="0" )
+column(name=pd_address_e_mail_address visible="1" band=detail id=1 x="9" y="8" height="64" width="1737" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=75 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 )
+column(name=pd_address_link_prac_id visible="1" band=detail id=2 x="1755" y="8" height="64" width="352" color="33554432" border="0" alignment="1" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 )
+column(name=pd_address_link_facility_id visible="1" band=detail id=3 x="2117" y="8" height="64" width="352" color="33554432" border="0" alignment="1" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 )
+column(name=pd_address_fax visible="1" band=detail id=4 x="2478" y="8" height="52" width="357" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=no edit.autoselect=no edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=25 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" encodeSelfLinkArgs="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(headGroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.customPostScript="0" xslfop.print="0" )
+export.xhtml()

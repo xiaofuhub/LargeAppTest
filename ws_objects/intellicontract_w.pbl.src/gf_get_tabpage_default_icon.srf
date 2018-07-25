@@ -1,0 +1,153 @@
+﻿$PBExportHeader$gf_get_tabpage_default_icon.srf
+global type gf_get_tabpage_default_icon from function_object
+end type
+
+forward prototypes
+global function string gf_get_tabpage_default_icon (string as_tabpagename)
+end prototypes
+
+global function string gf_get_tabpage_default_icon (string as_tabpagename);String ls_icon
+
+Choose Case Lower(as_tabpagename)
+	Case 'tabpage_search'
+		ls_icon = 'Search!'
+		
+	Case 'tabpage_details'
+		ls_icon = 'ArrangeTables!'
+	Case 'tabpage_det_notes'
+		ls_icon = 'custom070!'
+	Case 'tabpage_det_custom'
+		ls_icon = 'Custom081!'
+	Case 'tabpage_det_audit'
+		ls_icon = 'custom082!'
+	Case 'tabpage_det_linked'
+		ls_icon = 'Custom085!'
+	Case 'tabpage_det_group'
+		ls_icon = 'ArrangeIcons!'
+		
+	Case 'tabpage_requirements'
+		ls_icon = 'DosEdit!'
+		
+	Case 'tabpage_contacts'
+		ls_icon = 'Picture!'
+		
+	Case 'tabpage_locations'
+		ls_icon = 'Globals!'
+		
+	Case 'tabpage_orgabizations'
+		ls_icon = 'SetDefaultClass!'
+		
+	Case 'tabpage_fee_schedules'
+		ls_icon = 'FormatDollar!'
+	Case 'tabpage_fee_browse'	
+		ls_icon = 'custom065!'
+	Case 'tabpage_fee_notes'
+		ls_icon = 'custom070!'
+		
+	Case 'tabpage_fee_sched2'
+		ls_icon = 'FormatDollar!'
+		
+	Case 'tabpage_images'
+		ls_icon = 'Custom083!'
+	Case 'tabpage_dm_document'
+		ls_icon = 'computepage!'
+	Case 'tabpage_dm_workflow'
+		ls_icon = 'compute!'
+	Case 'tabpage_dm_audit'
+		ls_icon = 'custom082!'
+		
+	Case 'tabpage_action_items'
+		ls_icon = 'watcom!'
+		
+	Case 'tabpage_qrg'
+		ls_icon = 'Report5!'
+		
+	Case 'tabpage_qrg_select'
+		ls_icon = 'selecttable!'
+		
+//Begin - Added By Mark Lee 05/31/12
+	Case 'tabpage_multi'
+		ls_icon = 'custom092!'
+//End - Added By Mark Lee 05/31/12
+	Case 'tabpage_email'						//Added By Mark Lee 02/05/2013
+		ls_icon = 'home.gif'
+
+End Choose
+
+Return ls_icon
+
+
+
+
+
+//Commented it, because it is very slow for Web Version. //Commented By Ken.Guo 2010-09-19
+//String ls_icon
+//u_tab_contract_details lu_tab_contract_details
+//lu_tab_contract_details = Create u_tab_contract_details
+//
+//Choose Case Lower(as_tabpagename)
+//	Case 'tabpage_search'
+//		ls_icon = lu_tab_contract_details.tabpage_search.picturename
+//		
+//	Case 'tabpage_details'
+//		ls_icon = lu_tab_contract_details.tabpage_details.picturename
+//	Case 'tabpage_det_notes'
+//		ls_icon = lu_tab_contract_details.tabpage_details.uo_1.tab_1.tabpage_notes.picturename
+//	Case 'tabpage_det_custom'
+//		ls_icon = lu_tab_contract_details.tabpage_details.uo_1.tab_1.tabpage_custom.picturename
+//	Case 'tabpage_det_audit'
+//		ls_icon = lu_tab_contract_details.tabpage_details.uo_1.tab_1.tabpage_1.picturename
+//	Case 'tabpage_det_linked'
+//		ls_icon = lu_tab_contract_details.tabpage_details.uo_1.tab_1.tabpage_2.picturename
+//	Case 'tabpage_det_group'
+//		ls_icon = lu_tab_contract_details.tabpage_details.uo_1.tab_1.tabpage_group_access.picturename
+//		
+//	Case 'tabpage_requirements'
+//		ls_icon = lu_tab_contract_details.tabpage_requirements.picturename
+//		
+//	Case 'tabpage_contacts'
+//		ls_icon = lu_tab_contract_details.tabpage_contacts.picturename
+//		
+//	Case 'tabpage_locations'
+//		ls_icon = lu_tab_contract_details.tabpage_locations.picturename
+//		
+//	Case 'tabpage_orgabizations'
+//		ls_icon = lu_tab_contract_details.tabpage_orgabizations.picturename
+//		
+//		
+//	Case 'tabpage_fee_schedules'
+//		ls_icon = lu_tab_contract_details.tabpage_fee_schedules.picturename
+//	Case 'tabpage_fee_browse'	
+//		ls_icon = lu_tab_contract_details.tabpage_fee_schedules.tab_1.tabpage_fee_browse.picturename
+//	Case 'tabpage_fee_notes'
+//		ls_icon = lu_tab_contract_details.tabpage_fee_schedules.tab_1.tabpage_fee_notes.picturename
+//		
+//	Case 'tabpage_fee_sched2'
+//		ls_icon = lu_tab_contract_details.tabpage_fee_sched2.picturename
+//		
+//	Case 'tabpage_images'
+//		ls_icon = lu_tab_contract_details.tabpage_images.picturename
+//	Case 'tabpage_dm_document'
+//		ls_icon = lu_tab_contract_details.tabpage_images.tab_1.tabpage_data.picturename
+//	Case 'tabpage_dm_workflow'
+//		ls_icon = lu_tab_contract_details.tabpage_images.tab_1.tabpage_action.picturename
+//	Case 'tabpage_dm_audit'
+//		ls_icon = lu_tab_contract_details.tabpage_images.tab_1.tabpage_audit.picturename
+//		
+//	Case 'tabpage_action_items'
+//		ls_icon = lu_tab_contract_details.tabpage_action_items.picturename
+//		
+//	Case 'tabpage_qrg'
+//		ls_icon = lu_tab_contract_details.tabpage_qrg.picturename
+//		
+//	Case 'tabpage_qrg_select'
+//		ls_icon = lu_tab_contract_details.tabpage_qrg.tab_1.tabpage_selection.picturename
+//
+//End Choose
+//
+//Return ls_icon
+//
+//
+//
+end function
+

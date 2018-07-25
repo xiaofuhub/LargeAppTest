@@ -1,0 +1,38 @@
+﻿$PBExportHeader$f_setminwindows.srf
+global type f_setminwindows from function_object
+end type
+
+forward prototypes
+global subroutine f_setminwindows ()
+end prototypes
+
+global subroutine f_setminwindows ();//////////////////////////////////////////////////////////////////////
+// $<function>f_SetMinWindows()
+// $<arguments>(None)
+// $<returns> (none)
+// $<description>
+// $<description> Minimized all other windows.
+//////////////////////////////////////////////////////////////////////
+// $<add> 05.25.2009 By Jervis
+//////////////////////////////////////////////////////////////////////
+
+//Move to here from w_dashboard.of_shop_top()
+
+if isvalid(gw_Contract) then gw_Contract.windowstate = Minimized! //05.26.2009 by jervis- First Minimized
+Window lw_sheet
+lw_sheet = w_mdi.GetfirstSheet()
+do while 1 = 1
+	If Isvalid(lw_sheet) Then
+		If lw_sheet.classname() = 'w_dashboard' then 
+			lw_sheet = w_mdi.GetNextSheet(lw_sheet)
+			continue
+		End If
+		If lw_sheet.windowstate <> Minimized! Then lw_sheet.windowstate = Minimized!
+	Else
+		Exit
+	End If
+	lw_sheet = w_mdi.GetNextSheet(lw_sheet)
+loop
+
+end subroutine
+

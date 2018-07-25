@@ -1,0 +1,2 @@
+﻿$PBExportHeader$q_test.srq
+PBSELECT( VERSION(400) TABLE(NAME="address_lookup" ) COLUMN(NAME="address_lookup.lookup_code") COLUMN(NAME="address_lookup.lookup_name") COLUMN(NAME="address_lookup.code") COLUMN(NAME="address_lookup.entity_name"))

@@ -1,0 +1,13 @@
+﻿$PBExportHeader$d_table_names_report.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=80269524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=char(128) updatewhereclause=yes name=table_name_orig dbname="sysobjects.name" )
+ column=(type=long updatewhereclause=yes name=table_id dbname="sysobjects.id" )
+ column=(type=char(2) updatewhereclause=yes name=type dbname="sysobjects.type" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"dbo.sysobjects~" ) COLUMN(NAME=~"dbo.sysobjects.name~") COLUMN(NAME=~"dbo.sysobjects.id~") COLUMN(NAME=~"dbo.sysobjects.type~")WHERE(    EXP1 =~"{fn substring(dbo.sysobjects.name,1,2)}~"   OP =~"=~"    EXP2 =~"'v_'~" ) ) "  sort="table_name_orig A " )
+column(band=header id=1 alignment="0" tabsequence=32766 border="0" color="16777215" x="1152" y="56" height="68" width="46" format="[general]"  name=table_name_orig edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="Mid( table_name_orig , 1, 100 )"border="0" color="0" x="18" y="8" height="64" width="1125" format="[general]"  name=table_name  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

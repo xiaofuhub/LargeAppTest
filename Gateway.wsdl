@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetUserInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="apiCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InviteSigners">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="apiCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="emailMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InviteSignersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InviteSignersResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InviteSigner">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="apiCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="emailMessage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="signer" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InviteSignerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InviteSignerResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMaintenanceLink">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="apiCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMaintenanceLinkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMaintenanceLinkResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadSignedDocument">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="apiCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="docID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadSignedDocumentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadSignedDocumentResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveSignatureRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="apiCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveSignatureRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RemoveSignatureRequestResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="apiCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="includeDOCDBXML" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFileStatusResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateSignatureRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="apiCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sendEmail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sender" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="firstSigner" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sencondSigner" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="coSign" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="signType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="passWord" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="field1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="field2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="field3" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="field4" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="emailMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateSignatureRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateSignatureRequestResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddDocumentToRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="apiCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="byteFile" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddDocumentToRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddDocumentToRequestResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddReferenceDocumentToRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="apiCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="byteFile" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="returnId" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="permission" type="tns:ArrayOfReferenceDocumentPermission" />
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfReferenceDocumentPermission">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ReferenceDocumentPermission" nillable="true" type="tns:ReferenceDocumentPermission" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ReferenceDocumentPermission">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ExtensionData" type="tns:ExtensionDataObject" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sequence" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="Role" type="tns:RoleType" />
+          <s:element minOccurs="1" maxOccurs="1" name="Action" type="tns:ActionType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ExtensionDataObject" />
+      <s:simpleType name="RoleType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Signer" />
+          <s:enumeration value="CC" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="ActionType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Hide" />
+          <s:enumeration value="Show" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="AddReferenceDocumentToRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddReferenceDocumentToRequestResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveDocument">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="apiCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="docID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveDocumentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RemoveDocumentResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddSignerToRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="apiCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="sequence" nillable="true" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddSignerToRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddSignerToRequestResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApplyTemplate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="apiCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="docID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="templateID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="signerEmail" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApplyTemplateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ApplyTemplateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSigningLink">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="apiCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="signerEmail" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSigningLinkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSigningLinkResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetUserInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="InviteSignersSoapIn">
+    <wsdl:part name="parameters" element="tns:InviteSigners" />
+  </wsdl:message>
+  <wsdl:message name="InviteSignersSoapOut">
+    <wsdl:part name="parameters" element="tns:InviteSignersResponse" />
+  </wsdl:message>
+  <wsdl:message name="InviteSignerSoapIn">
+    <wsdl:part name="parameters" element="tns:InviteSigner" />
+  </wsdl:message>
+  <wsdl:message name="InviteSignerSoapOut">
+    <wsdl:part name="parameters" element="tns:InviteSignerResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMaintenanceLinkSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMaintenanceLink" />
+  </wsdl:message>
+  <wsdl:message name="GetMaintenanceLinkSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMaintenanceLinkResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadSignedDocumentSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadSignedDocument" />
+  </wsdl:message>
+  <wsdl:message name="DownloadSignedDocumentSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadSignedDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveSignatureRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveSignatureRequest" />
+  </wsdl:message>
+  <wsdl:message name="RemoveSignatureRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveSignatureRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFileStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFileStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetFileStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFileStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateSignatureRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateSignatureRequest" />
+  </wsdl:message>
+  <wsdl:message name="CreateSignatureRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateSignatureRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddDocumentToRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:AddDocumentToRequest" />
+  </wsdl:message>
+  <wsdl:message name="AddDocumentToRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:AddDocumentToRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddReferenceDocumentToRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:AddReferenceDocumentToRequest" />
+  </wsdl:message>
+  <wsdl:message name="AddReferenceDocumentToRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:AddReferenceDocumentToRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveDocumentSoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveDocument" />
+  </wsdl:message>
+  <wsdl:message name="RemoveDocumentSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddSignerToRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:AddSignerToRequest" />
+  </wsdl:message>
+  <wsdl:message name="AddSignerToRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:AddSignerToRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="ApplyTemplateSoapIn">
+    <wsdl:part name="parameters" element="tns:ApplyTemplate" />
+  </wsdl:message>
+  <wsdl:message name="ApplyTemplateSoapOut">
+    <wsdl:part name="parameters" element="tns:ApplyTemplateResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSigningLinkSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSigningLink" />
+  </wsdl:message>
+  <wsdl:message name="GetSigningLinkSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSigningLinkResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SertifiSoap">
+    <wsdl:operation name="GetUserInfo">
+      <wsdl:input message="tns:GetUserInfoSoapIn" />
+      <wsdl:output message="tns:GetUserInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InviteSigners">
+      <wsdl:input message="tns:InviteSignersSoapIn" />
+      <wsdl:output message="tns:InviteSignersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InviteSigner">
+      <wsdl:input message="tns:InviteSignerSoapIn" />
+      <wsdl:output message="tns:InviteSignerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMaintenanceLink">
+      <wsdl:input message="tns:GetMaintenanceLinkSoapIn" />
+      <wsdl:output message="tns:GetMaintenanceLinkSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadSignedDocument">
+      <wsdl:input message="tns:DownloadSignedDocumentSoapIn" />
+      <wsdl:output message="tns:DownloadSignedDocumentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveSignatureRequest">
+      <wsdl:input message="tns:RemoveSignatureRequestSoapIn" />
+      <wsdl:output message="tns:RemoveSignatureRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileStatus">
+      <wsdl:input message="tns:GetFileStatusSoapIn" />
+      <wsdl:output message="tns:GetFileStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateSignatureRequest">
+      <wsdl:input message="tns:CreateSignatureRequestSoapIn" />
+      <wsdl:output message="tns:CreateSignatureRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddDocumentToRequest">
+      <wsdl:input message="tns:AddDocumentToRequestSoapIn" />
+      <wsdl:output message="tns:AddDocumentToRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddReferenceDocumentToRequest">
+      <wsdl:input message="tns:AddReferenceDocumentToRequestSoapIn" />
+      <wsdl:output message="tns:AddReferenceDocumentToRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveDocument">
+      <wsdl:input message="tns:RemoveDocumentSoapIn" />
+      <wsdl:output message="tns:RemoveDocumentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddSignerToRequest">
+      <wsdl:input message="tns:AddSignerToRequestSoapIn" />
+      <wsdl:output message="tns:AddSignerToRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ApplyTemplate">
+      <wsdl:input message="tns:ApplyTemplateSoapIn" />
+      <wsdl:output message="tns:ApplyTemplateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSigningLink">
+      <wsdl:input message="tns:GetSigningLinkSoapIn" />
+      <wsdl:output message="tns:GetSigningLinkSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SertifiSoap" type="tns:SertifiSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUserInfo">
+      <soap:operation soapAction="http://tempuri.org/GetUserInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InviteSigners">
+      <soap:operation soapAction="http://tempuri.org/InviteSigners" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InviteSigner">
+      <soap:operation soapAction="http://tempuri.org/InviteSigner" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMaintenanceLink">
+      <soap:operation soapAction="http://tempuri.org/GetMaintenanceLink" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadSignedDocument">
+      <soap:operation soapAction="http://tempuri.org/DownloadSignedDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveSignatureRequest">
+      <soap:operation soapAction="http://tempuri.org/RemoveSignatureRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileStatus">
+      <soap:operation soapAction="http://tempuri.org/GetFileStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateSignatureRequest">
+      <soap:operation soapAction="http://tempuri.org/CreateSignatureRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddDocumentToRequest">
+      <soap:operation soapAction="http://tempuri.org/AddDocumentToRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddReferenceDocumentToRequest">
+      <soap:operation soapAction="http://tempuri.org/AddReferenceDocumentToRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveDocument">
+      <soap:operation soapAction="http://tempuri.org/RemoveDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSignerToRequest">
+      <soap:operation soapAction="http://tempuri.org/AddSignerToRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApplyTemplate">
+      <soap:operation soapAction="http://tempuri.org/ApplyTemplate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSigningLink">
+      <soap:operation soapAction="http://tempuri.org/GetSigningLink" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SertifiSoap12" type="tns:SertifiSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUserInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetUserInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InviteSigners">
+      <soap12:operation soapAction="http://tempuri.org/InviteSigners" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InviteSigner">
+      <soap12:operation soapAction="http://tempuri.org/InviteSigner" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMaintenanceLink">
+      <soap12:operation soapAction="http://tempuri.org/GetMaintenanceLink" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadSignedDocument">
+      <soap12:operation soapAction="http://tempuri.org/DownloadSignedDocument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveSignatureRequest">
+      <soap12:operation soapAction="http://tempuri.org/RemoveSignatureRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileStatus">
+      <soap12:operation soapAction="http://tempuri.org/GetFileStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateSignatureRequest">
+      <soap12:operation soapAction="http://tempuri.org/CreateSignatureRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddDocumentToRequest">
+      <soap12:operation soapAction="http://tempuri.org/AddDocumentToRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddReferenceDocumentToRequest">
+      <soap12:operation soapAction="http://tempuri.org/AddReferenceDocumentToRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveDocument">
+      <soap12:operation soapAction="http://tempuri.org/RemoveDocument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSignerToRequest">
+      <soap12:operation soapAction="http://tempuri.org/AddSignerToRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApplyTemplate">
+      <soap12:operation soapAction="http://tempuri.org/ApplyTemplate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSigningLink">
+      <soap12:operation soapAction="http://tempuri.org/GetSigningLink" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Sertifi">
+    <wsdl:port name="SertifiSoap" binding="tns:SertifiSoap">
+      <soap:address location="http://qa.contractlogix.com/sertifiService/sertifi.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SertifiSoap12" binding="tns:SertifiSoap12">
+      <soap12:address location="http://qa.contractlogix.com/sertifiService/sertifi.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

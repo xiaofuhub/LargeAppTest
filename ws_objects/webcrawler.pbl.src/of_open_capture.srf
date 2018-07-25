@@ -1,0 +1,19 @@
+﻿$PBExportHeader$of_open_capture.srf
+global type of_open_capture from function_object
+end type
+
+forward prototypes
+global function integer of_open_capture (gs_pass_ids as_pass_ids)
+end prototypes
+
+global function integer of_open_capture (gs_pass_ids as_pass_ids);//if of_get_app_setting("set_13","I") = 1 then
+	IF Not IsValid( w_capture ) THEN
+		OpenWithParm( w_capture,  as_pass_ids )
+	ELSE
+		w_capture.of_setup( as_pass_ids )
+	END IF
+//end if
+
+return 1
+end function
+

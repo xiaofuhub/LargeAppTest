@@ -1,0 +1,8 @@
+﻿$PBExportHeader$tns__getfilesstatus.srs
+$PBExportComments$Proxy imported from Web service using Web Service Proxy Generator.
+global type tns__GetFilesStatus from structure
+   string pstr_APICode
+   string pstr_StartDate
+   string pstr_EndDate
+end type
+

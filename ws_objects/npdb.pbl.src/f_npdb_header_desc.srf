@@ -1,0 +1,67 @@
+﻿$PBExportHeader$f_npdb_header_desc.srf
+global type f_npdb_header_desc from function_object
+end type
+
+forward prototypes
+global function string f_npdb_header_desc (integer ai_iv, integer ai_1921, integer ai_1128e)
+end prototypes
+
+global function string f_npdb_header_desc (integer ai_iv, integer ai_1921, integer ai_1128e);//////////////////////////////////////////////////////////////////////
+// $<function> f_npdb_header_desc
+// $<arguments>
+//				NA
+// $<returns> string
+// $<description> v12.2 modify NPDB qrxs report
+//////////////////////////////////////////////////////////////////////
+// $<add> 09.11.2012 by Stephen
+//////////////////////////////////////////////////////////////////////
+ 
+string ls_desc
+boolean lb_mut
+
+if ai_iv = 1 then //npdb/titleIV
+	lb_mut = false
+	ls_desc = 'The information contained in this report is maintained by the National Practitioner Data Bank for restricted use under the provisions of Title IV of Public Law 99-660, as amended, and 45 CFR Part 60.'
+	if ai_1921 = 1 then
+		lb_mut = true
+		ls_desc = ls_desc + 'This report also is maintained in the National Practitioner Data Bank for restricted use under the provisions of Section 1921 of the Social Security Act, and 45 CFR Part 60.'
+	end if
+	if ai_1128e = 1 then
+		lb_mut = true
+		ls_desc = ls_desc + 'This report also is maintained in the Healthcare Integrity and Protection Data Bank, for restricted use under the provisions of Section 1128E of the Social Security Act, and 45 CFR Part 61.'
+	end if
+	if lb_mut = true then
+		ls_desc = ls_desc +'All information is confidential and may be used only for the purpose for which it was disclosed. Disclosure or use of confidential information for other purposes is a violation of Federal law.'
+		ls_desc = ls_desc +'For additional information or clarification, contact the reporting entity identified in Section A.'
+	else
+		ls_desc = ls_desc + 'All information is confidential and may be used only for the purpose for which it was disclosed. For additional information or clarification, contact the reporting entity identified in Section A.'
+	end if
+else
+	if ai_1921 = 1 then //npdb/section1921
+		ls_desc = 'The information contained in this report is maintained by the National Practitioner Data Bank for restricted use under the provisions of Section 1921 of the Social Security Act, and 45 CFR Part 60.'
+		lb_mut = false
+		if ai_1128e = 1 then
+			lb_mut = true
+			ls_desc = ls_desc + 'This report also is maintained in the Healthcare Integrity and Protection Data Bank, for restricted use under the provisions of Section 1128E of the Social Security Act, and 45 CFR Part 61.'
+		end if
+		if lb_mut = true then
+			ls_desc = ls_desc + 'All information is confidential and may be used only for the purpose for which it was disclosed. Disclosure or use of confidential information for other purposes is a violation of Federal law.'
+			ls_desc = ls_desc + 'For additional information or clarification, contact the reporting entity identified in Section A.'
+		else
+			ls_desc = ls_desc + 'All information is confidential and may be used only for the purpose for which it was disclosed. For additional information or clarification, contact the reporting entity identified in Section A.'
+		end if
+	else
+		if ai_1128e = 1 then //hipdb/section1128E
+			ls_desc = 'The information contained in this report is maintained by the Healthcare Integrity and Protection Data Bank for restricted use under the provisions of Section 1128E of the Social Security Act as codified in 45 CFR Part 61. All information is confidential and must be used solely for the purpose for which it was disclosed. For additional information or clarification, contact the reporting entity identified in Section A.'
+		end if
+	end if
+end if
+
+//add by stephen 10.10.2012
+if isnull(ls_desc) or ls_desc = '' then
+	ls_desc = 'The information contained in this report is maintained by the Healthcare Integrity and Protection Data Bank for restricted use under .... All information is confidential and must be used solely for the purpose for which it was disclosed. For additional information or clarification, contact the reporting entity identified in Section A.'
+end if
+
+return ls_desc
+end function
+

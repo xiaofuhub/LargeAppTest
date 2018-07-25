@@ -1,0 +1,26 @@
+﻿$PBExportHeader$f_show_message.srf
+global type f_show_message from function_object
+end type
+
+forward prototypes
+global subroutine f_show_message (string as_msg_id, string as_msg_replace, string as_repl1, string as_repl2, string as_repl3)
+end prototypes
+
+global subroutine f_show_message (string as_msg_id, string as_msg_replace, string as_repl1, string as_repl2, string as_repl3);//change n_cst_message to n_cst_xml_message - alfee 02.25.2010
+//---------Begin Modified by (Appeon)Eugene 06.27.2013 for V141 ISG-CLX--------
+  /*
+	n_cst_xml_message lnvo_message
+	lnvo_message = Create n_cst_xml_message
+	//get message file
+	lnvo_message.of_get_messagexml() 
+	//get message 
+	lnvo_message.of_get_error_message(as_msg_id,as_msg_replace,as_repl1,as_repl2,as_repl3) //Start Code Change ----01.26.2010 #V10 maha - removed was causing build error
+	//Destroy lds_xmlmessage
+	Destroy lnvo_message      
+  */  
+gnv_message.of_get_error_message(as_msg_id,as_msg_replace,as_repl1,as_repl2,as_repl3) 
+//---------End Modfiied ------------------------------------------------------------------
+
+
+end subroutine
+

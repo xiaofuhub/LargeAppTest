@@ -1,0 +1,81 @@
+﻿$PBExportHeader$d_contract_multi_group_browse.srd
+$PBExportComments$[intellicontract]
+release 9;
+datawindow(units=0 timer_interval=0 color=80269524 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=72 color="536870912" )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=rec_id dbname="group_multi_loc.rec_id" )
+ column=(type=char(100) updatewhereclause=yes name=gp_name dbname="group_multi_loc.gp_name" )
+ column=(type=char(100) updatewhereclause=yes name=street1 dbname="group_multi_loc.street1" )
+ column=(type=char(100) updatewhereclause=yes name=street2 dbname="group_multi_loc.street2" )
+ column=(type=char(25) updatewhereclause=yes name=city dbname="group_multi_loc.city" )
+ column=(type=char(2) updatewhereclause=yes name=state dbname="group_multi_loc.state" )
+ column=(type=char(25) updatewhereclause=yes name=phone dbname="group_multi_loc.phone" )
+ column=(type=char(11) updatewhereclause=yes name=zip dbname="group_multi_loc.zip" )
+ column=(type=char(30) updatewhereclause=yes name=contact_name dbname="group_multi_loc.contact_name" )
+ column=(type=char(50) updatewhereclause=yes name=info1 dbname="group_multi_loc.info1" )
+ column=(type=char(50) updatewhereclause=yes name=info2 dbname="group_multi_loc.info2" )
+ column=(type=char(50) updatewhereclause=yes name=info3 dbname="group_multi_loc.info3" )
+ column=(type=char(50) updatewhereclause=yes name=info4 dbname="group_multi_loc.info4" )
+ column=(type=char(50) updatewhereclause=yes name=info5 dbname="group_multi_loc.info5" )
+ column=(type=char(50) updatewhereclause=yes name=info6 dbname="group_multi_loc.info6" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=ctx_loc_custom_4 dbname="ctx_loc.custom_4" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=ctx_loc_custom_3 dbname="ctx_loc.custom_3" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=ctx_loc_custom_2 dbname="ctx_loc.custom_2" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=ctx_loc_custom_1 dbname="ctx_loc.custom_1" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=ctx_loc_local dbname="ctx_loc.local" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=ctx_loc_group_number dbname="ctx_loc.group_number" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=ctx_loc_loc_id dbname="ctx_loc.loc_id" initial="0" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=parent_comp_id dbname="ctx_loc.parent_comp_id" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=ctx_id dbname="ctx_loc.ctx_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=record_id dbname="ctx_loc.record_id" )
+ retrieve="  SELECT group_multi_loc.rec_id,   
+         group_multi_loc.gp_name,   
+         group_multi_loc.street1,   
+         group_multi_loc.street2,   
+         group_multi_loc.city,   
+         group_multi_loc.state,   
+         group_multi_loc.phone,   
+         group_multi_loc.zip,   
+         group_multi_loc.contact_name,   
+         group_multi_loc.info1,   
+         group_multi_loc.info2,   
+         group_multi_loc.info3,   
+         group_multi_loc.info4,   
+         group_multi_loc.info5,   
+         group_multi_loc.info6,   
+         ctx_loc.custom_4,   
+         ctx_loc.custom_3,   
+         ctx_loc.custom_2,   
+         ctx_loc.custom_1,   
+         ctx_loc.local,   
+         ctx_loc.group_number,   
+         ctx_loc.loc_id,   
+         ctx_loc.parent_comp_id,   
+         ctx_loc.ctx_id,   
+         ctx_loc.record_id  
+    FROM group_multi_loc,   
+         ctx_loc  
+   WHERE ( group_multi_loc.rec_id = ctx_loc.parent_comp_id ) and  
+         ( ctx_loc.ctx_id = :al_ctx_id ) AND  
+         ctx_loc.loc_id = 0    
+" update="ctx_loc" updatewhere=1 updatekeyinplace=yes arguments=(("al_ctx_id", number))  sort="gp_name A " )
+text(band=header alignment="0" text="Group Name" border="6" color="0" x="9" y="4" height="52" width="1317" html.valueishtml="0"  name=gp_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Street" border="6" color="0" x="1335" y="4" height="52" width="1106" html.valueishtml="0"  name=street1_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="City" border="6" color="0" x="2450" y="4" height="52" width="635" html.valueishtml="0"  name=city_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="State" border="6" color="0" x="3095" y="4" height="52" width="270" html.valueishtml="0"  name=state_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Zip" border="6" color="0" x="3374" y="4" height="52" width="293" html.valueishtml="0"  name=zip_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="4" height="52" width="1317" format="[general]" html.valueishtml="0"  name=gp_name visible="1" edit.limit=100 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="1335" y="4" height="52" width="1106" format="[general]" html.valueishtml="0"  name=street1 visible="1" edit.limit=100 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="2450" y="4" height="52" width="635" format="[general]" html.valueishtml="0"  name=city visible="1" edit.limit=25 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="3095" y="4" height="52" width="270" format="[general]" html.valueishtml="0"  name=state visible="1" edit.limit=2 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="3374" y="4" height="52" width="293" format="[general]" html.valueishtml="0"  name=zip visible="1" edit.limit=11 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression=" street1 "border="0" color="0" x="3675" y="4" height="52" width="256" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="0"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=22 alignment="0" tabsequence=32766 border="0" color="0" x="3941" y="4" height="52" width="512" format="[general]" html.valueishtml="0"  name=ctx_loc_loc_id visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

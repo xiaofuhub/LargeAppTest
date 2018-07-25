@@ -1,0 +1,48 @@
+﻿$PBExportHeader$gf_setbakselect.srf
+global type gf_setbakselect from function_object
+end type
+
+forward prototypes
+global subroutine gf_setbakselect (graphicobject ago_obj, integer ai_index)
+end prototypes
+
+global subroutine gf_setbakselect (graphicobject ago_obj, integer ai_index);//====================================================================
+// Event: .gf_setbakselect()
+//--------------------------------------------------------------------
+// Description:
+//--------------------------------------------------------------------
+// Arguments:
+// 	value	tab    	ago_obj	
+// 	value	integer	ai_Index	
+//--------------------------------------------------------------------
+// Returns:  (none)
+//--------------------------------------------------------------------
+// Author:	Scofield		Date: 2009-01-13
+//--------------------------------------------------------------------
+//	Copyright (c) 2002-2009 Appeon, All rights reserved.
+//--------------------------------------------------------------------
+// Modify History:
+//
+//====================================================================
+
+String	ls_Tag
+long		ll_Pos
+
+n_cst_String 	lnv_String
+
+if IsNull(ai_Index) then ai_Index = 0
+
+ls_Tag = ago_obj.tag
+if IsNull(ls_Tag) then ls_Tag = ""
+
+if ls_Tag = "" or Pos(ls_Tag,"--") = 0 then
+	ls_Tag += "--" + String(ai_Index)
+else
+	ll_Pos = lnv_String.of_lastPos( ls_Tag, "--")
+	ls_Tag = Mid(ls_Tag,1,ll_Pos + 1) + String(ai_Index)
+end if
+
+ago_obj.tag = ls_Tag
+
+end subroutine
+

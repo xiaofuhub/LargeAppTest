@@ -1,0 +1,34 @@
+﻿$PBExportHeader$of_highlight_color.srf
+global type of_highlight_color from function_object
+end type
+
+forward prototypes
+global function long of_highlight_color (string as_color)
+end prototypes
+
+global function long of_highlight_color (string as_color);string ls_color
+long ll_ret
+
+ls_color = upper(as_color)
+if isnull(ls_color) then ls_color = "YELLOW"
+
+choose case ls_color
+	case "YELLOW"
+		ll_ret  =  8257535
+	case "BLUE"
+		ll_ret  =  16773350
+	case "PURPLE"
+		ll_ret  =  16770800
+	case "ORANGE"
+		ll_ret  =  15134975
+	case "GREEN"
+		ll_ret  =  15138800
+	case "PINK"
+		ll_ret  =  15787775
+	case else
+		ll_ret =  8257535
+end choose
+
+return ll_ret
+end function
+

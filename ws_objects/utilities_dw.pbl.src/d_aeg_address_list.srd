@@ -1,0 +1,77 @@
+﻿$PBExportHeader$d_aeg_address_list.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=112 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=76 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=char(150) updatewhereclause=yes name=pd_address_street dbname="pd_address.street" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_street_2 dbname="pd_address.street_2" )
+ column=(type=char(25) updatewhereclause=yes name=pd_address_city dbname="pd_address.city" )
+ column=(type=decimal(0) updatewhereclause=yes name=pd_address_state dbname="pd_address.state" )
+ column=(type=decimal(0) updatewhereclause=yes name=pd_address_country dbname="pd_address.country" )
+ column=(type=char(25) updatewhereclause=yes name=pd_address_pager_number dbname="pd_address.pager_number" )
+ column=(type=char(25) updatewhereclause=yes name=pd_address_phone dbname="pd_address.phone" )
+ column=(type=char(10) updatewhereclause=yes name=pd_address_ext dbname="pd_address.ext" )
+ column=(type=char(25) updatewhereclause=yes name=pd_address_fax dbname="pd_address.fax" )
+ column=(type=char(11) updatewhereclause=yes name=pd_address_zip dbname="pd_address.zip" )
+ column=(type=decimal(0) updatewhereclause=yes name=pd_address_county dbname="pd_address.county" )
+ column=(type=char(30) updatewhereclause=yes name=pd_address_contact_person dbname="pd_address.contact_person" )
+ column=(type=char(30) updatewhereclause=yes name=pd_address_tax_id dbname="pd_address.tax_id" )
+ column=(type=char(30) updatewhereclause=yes name=pd_address_tax_id_other_1 dbname="pd_address.tax_id_other_1" )
+ column=(type=char(30) updatewhereclause=yes name=pd_address_tax_id_other_2 dbname="pd_address.tax_id_other_2" )
+ column=(type=char(30) updatewhereclause=yes name=pd_address_business_mgr dbname="pd_address.business_mgr" )
+ column=(type=char(30) updatewhereclause=yes name=pd_address_office_mgr dbname="pd_address.office_mgr" )
+ retrieve="PBSELECT( VERSION(400) DISTINCT ()TABLE(NAME=~"pd_address~" )  TABLE(NAME=~"pd_address_link~" ) COLUMN(NAME=~"pd_address.street~") COLUMN(NAME=~"pd_address.street_2~") COLUMN(NAME=~"pd_address.city~") COLUMN(NAME=~"pd_address.state~") COLUMN(NAME=~"pd_address.country~") COLUMN(NAME=~"pd_address.pager_number~") COLUMN(NAME=~"pd_address.phone~") COLUMN(NAME=~"pd_address.ext~") COLUMN(NAME=~"pd_address.fax~") COLUMN(NAME=~"pd_address.zip~") COLUMN(NAME=~"pd_address.county~") COLUMN(NAME=~"pd_address.contact_person~") COLUMN(NAME=~"pd_address.tax_id~") COLUMN(NAME=~"pd_address.tax_id_other_1~") COLUMN(NAME=~"pd_address.tax_id_other_2~") COLUMN(NAME=~"pd_address.business_mgr~") COLUMN(NAME=~"pd_address.office_mgr~")    JOIN (LEFT=~"pd_address.rec_id~"    OP =~"=~"RIGHT=~"pd_address_link.address_id~" )WHERE(    EXP1 =~"pd_address_link.additional_office~"   OP =~"=~"    EXP2 =~"1~"    LOGIC =~"or~" ) WHERE(    EXP1 =~"pd_address_link.primary_office~"   OP =~"=~"    EXP2 =~"1~" ) ) " )
+text(band=header alignment="2" text="Pd Address
+Street"border="0" color="0" x="14" y="4" height="104" width="1577"  name=pd_address_street_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Street2"border="0" color="0" x="1655" y="12" height="80" width="1385"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Address
+City"border="0" color="0" x="3131" y="4" height="104" width="594"  name=pd_address_city_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Address
+State"border="0" color="0" x="3730" y="4" height="104" width="274"  name=pd_address_state_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Address
+Country"border="0" color="0" x="4009" y="4" height="104" width="274"  name=pd_address_country_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Address
+Pager Number"border="0" color="0" x="4293" y="4" height="104" width="343"  name=pd_address_pager_number_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Address
+Phone"border="0" color="0" x="4640" y="4" height="104" width="343"  name=pd_address_phone_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Address
+Ext"border="0" color="0" x="4987" y="4" height="104" width="247"  name=pd_address_ext_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Address
+Fax"border="0" color="0" x="5239" y="4" height="104" width="343"  name=pd_address_fax_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Address
+Zip"border="0" color="0" x="5586" y="4" height="104" width="274"  name=pd_address_zip_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Address
+County"border="0" color="0" x="5865" y="4" height="104" width="274"  name=pd_address_county_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Address
+Contact Person"border="0" color="0" x="6144" y="4" height="104" width="709"  name=pd_address_contact_person_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Address
+Tax Id"border="0" color="0" x="6857" y="4" height="104" width="709"  name=pd_address_tax_id_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Address
+Tax Id Other 1"border="0" color="0" x="7570" y="4" height="104" width="713"  name=pd_address_tax_id_other_1_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Address
+Tax Id Other 2"border="0" color="0" x="8288" y="4" height="104" width="709"  name=pd_address_tax_id_other_2_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Address
+Business Mgr"border="0" color="0" x="9001" y="4" height="104" width="709"  name=pd_address_business_mgr_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Address
+Office Mgr"border="0" color="0" x="9714" y="4" height="104" width="709"  name=pd_address_office_mgr_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="14" y="4" height="64" width="1577" format="[general]"  name=pd_address_street edit.limit=150 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1605" y="4" height="64" width="1513" format="[general]"  name=pd_address_street_2 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="3131" y="4" height="64" width="594" format="[general]"  name=pd_address_city edit.limit=25 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="1" tabsequence=32766 border="0" color="0" x="3730" y="4" height="64" width="274" format="[general]"  name=pd_address_state edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="0" x="4009" y="4" height="64" width="274" format="[general]"  name=pd_address_country edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="4293" y="4" height="64" width="343" format="[general]"  name=pd_address_pager_number edit.limit=25 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="4640" y="4" height="64" width="343" format="[general]"  name=pd_address_phone edit.limit=25 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="4987" y="4" height="64" width="114" format="[general]"  name=pd_address_ext edit.limit=4 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="5239" y="4" height="64" width="343" format="[general]"  name=pd_address_fax edit.limit=25 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="5586" y="4" height="64" width="274" format="[general]"  name=pd_address_zip edit.limit=11 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="1" tabsequence=32766 border="0" color="0" x="5865" y="4" height="64" width="274" format="[general]"  name=pd_address_county edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="0" x="6144" y="4" height="64" width="709" format="[general]"  name=pd_address_contact_person edit.limit=30 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="0" x="6857" y="4" height="64" width="709" format="[general]"  name=pd_address_tax_id edit.limit=30 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="0" x="7570" y="4" height="64" width="713" format="[general]"  name=pd_address_tax_id_other_1 edit.limit=30 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="0" color="0" x="8288" y="4" height="64" width="709" format="[general]"  name=pd_address_tax_id_other_2 edit.limit=30 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="0" x="9001" y="4" height="64" width="709" format="[general]"  name=pd_address_business_mgr edit.limit=30 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="0" color="0" x="9714" y="4" height="64" width="709" format="[general]"  name=pd_address_office_mgr edit.limit=30 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=footer alignment="0" expression="count(pd_address_street for all)"border="0" color="0" x="0" y="8" height="64" width="398" format="[general]"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

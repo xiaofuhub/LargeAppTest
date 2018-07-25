@@ -1,0 +1,16 @@
+﻿$PBExportHeader$d_ezflow_setup.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes name=link_to_app_id dbname="image_type.link_to_app_id" )
+ column=(type=long update=yes updatewhereclause=yes name=parent_facility_id dbname="image_type.parent_facility_id" )
+ column=(type=real updatewhereclause=yes key=yes name=image_type_id dbname="image_type.image_type_id" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"image_type~" ) COLUMN(NAME=~"image_type.link_to_app_id~") COLUMN(NAME=~"image_type.parent_facility_id~") COLUMN(NAME=~"image_type.image_type_id~")WHERE(    EXP1 =~"image_type.image_type_id~"   OP =~"=~"    EXP2 =~":image_type_id~" ) ) ARG(NAME = ~"image_type_id~" TYPE = number) " update="image_type" updatewhere=0 updatekeyinplace=no arguments=(("image_type_id", number)) )
+text(band=header alignment="0" text="Application Link"border="0" color="0" x="14" y="12" height="52" width="466"  name=link_to_app_id_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Parent Facility"border="0" color="0" x="1335" y="12" height="52" width="425"  name=parent_facility_id_t  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=10 border="5" color="0" x="18" y="12" height="64" width="1266" format="[general]"  name=link_to_app_id dddw.name=d_dddw_apps dddw.displaycolumn=app_hdr_application_name dddw.datacolumn=app_hdr_app_id dddw.percentwidth=150 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="1" tabsequence=20 border="5" color="0" x="1335" y="12" height="64" width="1266" format="[general]"  name=parent_facility_id dddw.name=d_dddw_facility dddw.displaycolumn=facility_name dddw.datacolumn=facility_id dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

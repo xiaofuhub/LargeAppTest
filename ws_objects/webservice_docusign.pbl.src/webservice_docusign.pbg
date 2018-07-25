@@ -1,0 +1,28 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "webservice_docusign.pbl" "";
+@end;
+@begin Objects 
+ "ws_pxy_docusign.srj" "webservice_docusign.pbl";
+ "tns__correctandresendenvelope.srs" "webservice_docusign.pbl";
+ "tns__createandsendenvelope.srs" "webservice_docusign.pbl";
+ "tns__createenvelopefromtemplates.srs" "webservice_docusign.pbl";
+ "tns__deleteenvelopes.srs" "webservice_docusign.pbl";
+ "tns__docusignature.srs" "webservice_docusign.pbl";
+ "tns__docusigndocumentinformation.srs" "webservice_docusign.pbl";
+ "tns__docusigneddocument.srs" "webservice_docusign.pbl";
+ "tns__docusignfile.srs" "webservice_docusign.pbl";
+ "tns__docusigntemplates.srs" "webservice_docusign.pbl";
+ "tns__getauthenticationtoken.srs" "webservice_docusign.pbl";
+ "tns__ping.srs" "webservice_docusign.pbl";
+ "tns__requestcorrecttoken.srs" "webservice_docusign.pbl";
+ "tns__requestenvelope.srs" "webservice_docusign.pbl";
+ "tns__requestsendertoken.srs" "webservice_docusign.pbl";
+ "tns__requeststatus.srs" "webservice_docusign.pbl";
+ "tns__requesttemplates.srs" "webservice_docusign.pbl";
+ "tns__sendenvelope.srs" "webservice_docusign.pbl";
+ "tns__status.srs" "webservice_docusign.pbl";
+ "tns__voidenvelope.srs" "webservice_docusign.pbl";
+ "n_cst_docusign.sru" "webservice_docusign.pbl";
+ "contractlogixdocusignsoap.srx" "webservice_docusign.pbl";
+@end;

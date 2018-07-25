@@ -1,0 +1,54 @@
+﻿$PBExportHeader$of_filter_by_batch.srf
+global type of_filter_by_batch from function_object
+end type
+
+forward prototypes
+global function integer of_filter_by_batch (datawindow adw_data, string as_prac_field)
+end prototypes
+
+global function integer of_filter_by_batch (datawindow adw_data, string as_prac_field);//Start Code Change ----10.18.2016 #V152 maha - created generic function based on report code
+long ll_batch_id
+integer i
+integer ic
+long ll_pracs[]
+long p
+string ls_filt
+string ls_pracs
+integer test = 0
+gs_batch_search lst_search 
+
+open(w_practitioner_filter_choice_new)
+
+if message.stringparm = "C" then  //cancel
+	return -1
+else 
+	lst_search = message.powerobjectparm
+	ll_pracs[] = lst_search.li_prac_id
+end if	
+
+//create prac string
+for p = 1 to upperbound(ll_pracs[])
+	ls_pracs = ls_pracs + string(ll_pracs[p]) + ","
+next
+
+//remove comma
+ls_pracs = MidA(ls_pracs,1,LenA(ls_pracs) - 1)
+
+ls_filt =  as_prac_field + " in (" + ls_pracs + ")"
+adw_data.setfilter(ls_filt)
+adw_data.filter()
+//end if
+//messagebox("filt",ls_filt)
+
+adw_data.sort()
+adw_data.groupcalc( )
+
+
+//st_rec_cnt.Text = "Record Count: " + String(dw_report.RowCount() )//(Appeon)Toney 11.19.2013 - V141 ISG-CLX,Fix history BugT111301
+return 1
+
+
+
+
+end function
+

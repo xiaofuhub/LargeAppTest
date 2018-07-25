@@ -1,0 +1,31 @@
+﻿$PBExportHeader$f_setupscan.srf
+global type f_setupscan from function_object
+end type
+
+forward prototypes
+global function long f_setupscan (ref olecustomcontrol ao_scan_object)
+end prototypes
+
+global function long f_setupscan (ref olecustomcontrol ao_scan_object);/*****************************************************************************
+** 
+** Function:  f_setupscan
+**
+** Scope: Pubilc
+**
+**	Parameters: Ole control
+**
+** Return: Long
+**         
+** Description: 
+**   
+**   
+**   
+**	Modification History:
+**	Date			Who             	Change
+**	--------		--------------		---------------------------------------
+**
+*****************************************************************************/
+
+return ao_scan_object.object.ShowSelectScanner()
+end function
+

@@ -1,0 +1,15 @@
+﻿$PBExportHeader$d_exp_lookup_select.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79680469 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=char(35) update=yes updatewhereclause=yes name=lookup_name dbname="code_lookup.lookup_name" )
+ column=(type=char(1) updatewhereclause=yes name=type dbname="type" )
+ retrieve="SELECT DISTINCT  code_lookup.lookup_name ,type = 'C'    
+FROM code_lookup
+UNION 
+SELECT DISTINCT  address_lookup.lookup_name ,type = 'A' 
+FROM address_lookup"  sort="lookup_name A " )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="14" y="8" height="72" width="965" format="[general]"  name=lookup_name dddw.name=d_dddw_lookup_select dddw.displaycolumn=lookup_name dddw.datacolumn=lookup_name dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.vscrollbar=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,18 @@
+﻿$PBExportHeader$d_question_answers.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=review_id dbname="review_question_answer.review_id" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=question_id dbname="review_question_answer.question_id" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=answer_id dbname="review_question_answer.answer_id" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=question_answer dbname="review_question_answer.question_answer" )
+ column=(type=decimal(1) update=yes updatewhereclause=yes name=answer_score dbname="review_question_answer.answer_score" )
+ column=(type=long update=yes updatewhereclause=yes name=answer_order dbname="review_question_answer.answer_order" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=rec_id dbname="review_question_answer.rec_id" )
+ column=(type=long updatewhereclause=yes name=selected_answer dbname="selected_answer" values="	1/	0" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"review_question_answer~" ) COLUMN(NAME=~"review_question_answer.review_id~") COLUMN(NAME=~"review_question_answer.question_id~") COLUMN(NAME=~"review_question_answer.answer_id~") COLUMN(NAME=~"review_question_answer.question_answer~") COLUMN(NAME=~"review_question_answer.answer_score~") COLUMN(NAME=~"review_question_answer.answer_order~") COLUMN(NAME=~"review_question_answer.rec_id~") COMPUTE(NAME=~"selected_answer = 0~")WHERE(    EXP1 =~"review_question_answer.review_id~"   OP =~"=~"    EXP2 =~":review_id~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"review_question_answer.question_id~"   OP =~"=~"    EXP2 =~":question_id~" ) ) ARG(NAME = ~"review_id~" TYPE = number)  ARG(NAME = ~"question_id~" TYPE = number) " update="review_question_answer" updatewhere=1 updatekeyinplace=no arguments=(("review_id", number),("question_id", number)) )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="155" y="8" height="52" width="1893" format="[general]"  name=question_answer edit.limit=100 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=10 border="0" color="0" x="18" y="8" height="52" width="128" format="[general]"  name=selected_answer checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

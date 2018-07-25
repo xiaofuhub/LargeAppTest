@@ -1,0 +1,65 @@
+﻿$PBExportHeader$f_saveblob.srf
+$PBExportComments$Save BLOB data to a given file
+global type f_saveblob from function_object
+end type
+
+forward prototypes
+global function integer f_saveblob (string as_filename, blob ab_value)
+end prototypes
+
+global function integer f_saveblob (string as_filename, blob ab_value);//////////////////////////////////////////////////////////////////////
+// $<function>of_saveblob()
+// $<arguments>
+//		value    	string	as_filename		:Specified file name.
+//		value		   blob  	ab_value   		: The content value of the specified file.
+// $<returns> integer: 1 - Success
+//                     -1 - Failure
+// $<description>Save blob value to a specified file.
+// $<description>
+//////////////////////////////////////////////////////////////////////
+// $<add> 2006-12-04 by Frank.Gui
+//////////////////////////////////////////////////////////////////////
+
+long   ll_FileNum,ll_BlobLength,ll_Loop,ll_CurrentPos
+int  li
+blob   lb_temp
+
+if fileexists(as_filename) then 
+	if not filedelete(as_FileName) then
+		messagebox("f_saveblob()"," Failed to delete existing file "+as_FileName)
+		return -1
+	end if
+end if
+
+ll_BlobLength = LenA(ab_value)
+IF ll_BlobLength > 32765 THEN
+   IF Mod(ll_BlobLength, 32765) = 0 THEN
+      ll_Loop = ll_BlobLength/32765
+   ELSE
+     ll_Loop = (ll_BlobLength/32765) + 1
+   END IF
+ELSE
+   ll_Loop = 1
+END IF
+ll_FileNum = FileOpen(as_FileName,streammode!,write!,LockWrite!,replace!)
+
+if ll_FileNum< 0 then return -1
+
+ll_CurrentPos = 1
+
+for li=1 to ll_loop
+	 lb_temp = BlobMid(ab_value, ll_CurrentPos, 32765)
+	 ll_CurrentPos += 32765
+	 If FileWrite(ll_FileNum, lb_temp) = -1 Then
+		 Return -1
+	 End If
+next
+FileClose(ll_FileNum)
+
+//messagebox("of_saveblob()"," Save BLOB data to file "+as_FileName+" successfully. Its length is "+string(FileLength(as_FileName)))
+
+
+return 1
+
+end function
+

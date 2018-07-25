@@ -1,0 +1,47 @@
+﻿$PBExportHeader$appeongetsessioncount.srf
+global type appeongetsessioncount from function_object
+end type
+
+forward prototypes
+global function long appeongetsessioncount (string servername, string appname)
+end prototypes
+
+global function long appeongetsessioncount (string servername, string appname);//==============================================================================
+// 
+// Copyright ? 2001-2006 Appeon, Inc. and its subsidiaries. All rights reserved.
+// 
+//------------------------------------------------------------------------------
+// Function: appeongetsessioncount()
+//------------------------------------------------------------------------------
+// Description: 
+//				Returns the total number of active sessions currently on a cluster.
+//				If there is no cluster configured in AEM, it gets all the active sessions
+//				for a single named application or all applications in Appeon Server.
+//				
+//	
+// Arguments: 
+//		string	servername		
+//		string	appname   		
+//	
+// Returns:  long
+//------------------------------------------------------------------------------
+// Examples:
+//				ll_Ret = AppeonGetSessionCount("localhost","AppName")
+//------------------------------------------------------------------------------
+// Author:	APPEON		Date: 2005-11
+//------------------------------------------------------------------------------
+// Revision History: 
+//				1.0   Initial version
+//==============================================================================
+
+Long nRet
+AppeonExtFuncs funs
+funs = Create AppeonExtFuncs
+
+nRet = funs.Of_GetSessionCount(servername, appname)
+
+Destroy funs
+Return nRet
+
+end function
+

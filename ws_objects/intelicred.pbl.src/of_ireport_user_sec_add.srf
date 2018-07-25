@@ -1,0 +1,97 @@
+﻿$PBExportHeader$of_ireport_user_sec_add.srf
+global type of_ireport_user_sec_add from function_object
+end type
+
+forward prototypes
+global function integer of_ireport_user_sec_add (long al_report, string as_user)
+end prototypes
+
+global function integer of_ireport_user_sec_add (long al_report, string as_user);//Start Code Change ----05.25.2011 #V11 maha - added for creation of intellireport user security
+integer li_mode
+long ll_reports[]
+long ll_id
+long r
+long u
+string ls_sql_org
+string ls_sql
+string ls_where
+
+long rc = 0
+long uc = 0
+long ac
+string ls_users[]
+
+
+datastore lds_report
+datastore lds_user
+datastore lds_access
+
+lds_access = create datastore
+lds_access.dataobject = "d_ireport_user_secure_select"
+lds_access.settransobject(sqlca)
+lds_user = create datastore
+lds_user.dataobject = "d_user_select_list"
+lds_user.settransobject(sqlca)
+lds_report = create datastore
+lds_report.dataobject = "d_ireport_list"
+lds_report.settransobject(sqlca)
+
+//1 scan all reports all users
+//2 add report access for 1 user
+//3	 add users to 1 report
+
+if al_report = 0 and as_user = "-All-" then 
+	li_mode  = 1
+elseif al_report = 0 then // specific user
+	li_mode = 2
+else //as_user <> "-All-"  one report all users
+	li_mode = 3
+end if
+
+
+	
+choose case li_mode
+	case 1
+		rc = lds_report.retrieve()
+		uc = lds_user.retrieve()
+	case 2 
+		rc = lds_report.retrieve()
+	case 3
+		uc = lds_user.retrieve()
+end choose
+		
+if rc > 0 then
+	for r = 1 to rc
+		ll_reports[r] = lds_report.getitemnumber(r,"view_id")
+	next
+else
+	ll_reports[1] = al_report
+end if
+
+if uc > 0 then
+	for r = 1 to uc
+		ls_users[r] = lds_user.getitemstring(r,"user_id")
+	next
+else
+	ls_users[1] = as_user
+end if
+
+choose case li_mode
+	case 1,2
+//			for r = 1 to upperbound(ll_reports)
+//				ll_id = ll_reports[r]
+//				ac = lds_access.retrieve(ll_id)
+//				for u = 1 to  upperbound(ls_users)
+//					for a = 1 to ac
+	case 3
+			
+end choose
+
+
+destroy lds_user
+destroy lds_report
+
+
+return 1
+end function
+

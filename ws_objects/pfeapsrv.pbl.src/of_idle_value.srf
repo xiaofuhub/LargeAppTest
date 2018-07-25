@@ -1,0 +1,35 @@
+﻿$PBExportHeader$of_idle_value.srf
+global type of_idle_value from function_object
+end type
+
+forward prototypes
+global function long of_idle_value (long al_minutes)
+end prototypes
+
+global function long of_idle_value (long al_minutes);//Start Code Change ---- 02.15.2006 #288 maha
+//MAHA created 021506 to set idle time.  Called from app_filler open event as well as security settings utility.
+//qqqqq
+long ll_sec
+
+if not isvalid(gnv_app ) then return 0
+
+if al_minutes = 1 then
+	ll_sec = of_get_app_setting("set_43","I")
+else //0
+	ll_sec = al_minutes
+end if
+
+If ll_sec < 0 then
+	Return 1
+else
+	ll_sec = ll_sec * 60
+end if
+
+Idle(ll_sec)
+gnv_app.il_itle_time = ll_sec
+
+
+return 1
+//End Code Change---02.15.2006
+end function
+

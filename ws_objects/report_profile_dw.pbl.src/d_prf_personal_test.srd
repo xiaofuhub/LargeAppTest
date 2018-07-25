@@ -1,0 +1,78 @@
+﻿$PBExportHeader$d_prf_personal_test.srd
+$PBExportComments$Replaced DDDW with Left Outer Join at 05/07/2007 by Ken
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=96 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=376 color="536870912"  height.autosize=yes)
+table(column=(type=char(30) updatewhereclause=yes name=pd_basic_married dbname="code_lookup.married" )
+ column=(type=decimal(0) updatewhereclause=yes name=pd_basic_prac_id dbname="pd_basic.prac_id" )
+ column=(type=char(30) updatewhereclause=yes name=pd_basic_spouse_name dbname="pd_basic.spouse_name" )
+ column=(type=datetime updatewhereclause=yes name=pd_basic_date_of_birth dbname="pd_basic.date_of_birth" )
+ column=(type=char(30) updatewhereclause=yes name=sex dbname="code_lookup.sex" )
+ column=(type=char(11) updatewhereclause=yes name=pd_basic_ssn dbname="pd_basic.ssn" )
+ column=(type=decimal(0) updatewhereclause=yes name=pd_basic_prac_category dbname="pd_basic.prac_category" )
+ column=(type=char(50) updatewhereclause=yes name=pd_basic_maiden_other_name dbname="pd_basic.maiden_other_name" )
+ column=(type=char(25) updatewhereclause=yes name=pd_basic_pob_city dbname="pd_basic.pob_city" )
+ column=(type=char(25) updatewhereclause=yes name=cphone dbname="pd_basic.phone" )
+ column=(type=char(14) updatewhereclause=yes name=pd_basic_beeper_1 dbname="pd_basic.beeper_1" )
+ column=(type=char(14) updatewhereclause=yes name=pd_basic_beeper_2 dbname="pd_basic.beeper_2" )
+ column=(type=char(14) updatewhereclause=yes name=pd_basic_personal_pager dbname="pd_basic.personal_pager" )
+ column=(type=char(14) updatewhereclause=yes name=pd_basic_hospital_pager dbname="pd_basic.hospital_pager" )
+ column=(type=char(14) updatewhereclause=yes name=pd_basic_car_phone_1 dbname="pd_basic.car_phone_1" )
+ column=(type=char(14) updatewhereclause=yes name=pd_basic_car_phone_2 dbname="pd_basic.car_phone_2" )
+ column=(type=char(25) updatewhereclause=yes name=pd_basic_npi_number dbname="pd_basic.npi_number" )
+ column=(type=char(30) updatewhereclause=yes name=cpob_state dbname="code_lookup.pob_state" )
+ column=(type=char(75) updatewhereclause=yes name=cpob_country dbname="code_lookup.pob_country" )
+ retrieve="  SELECT DISTINCT 
+			code_lookup_c.code married,   
+	  pd_basic.prac_id, 
+         pd_basic.spouse_name,   
+         pd_basic.date_of_birth,   
+			code_lookup_d.code sex,
+         pd_basic.ssn,   
+         pd_basic.prac_category,   
+         pd_basic.maiden_other_name,   
+         pd_basic.pob_city,   
+         pd_basic.phone,   
+         pd_basic.beeper_1,   
+         pd_basic.beeper_2,   
+         pd_basic.personal_pager,   
+         pd_basic.hospital_pager,   
+         pd_basic.car_phone_1,   
+         pd_basic.car_phone_2, 
+			pd_basic.npi_number, 
+			code_lookup_a.code pob_state,   
+         code_lookup_b.description pob_country
+    FROM {oj pd_basic  
+	     LEFT OUTER JOIN code_lookup code_lookup_a  ON pd_basic.pob_state = code_lookup_a.lookup_code} 
+		  LEFT OUTER JOIN code_lookup code_lookup_b  ON pd_basic.pob_country = code_lookup_b.lookup_code  
+		  LEFT OUTER JOIN code_lookup code_lookup_c  ON pd_basic.married = code_lookup_c.lookup_code  
+		  LEFT OUTER JOIN code_lookup code_lookup_d  ON pd_basic.sex = code_lookup_d.lookup_code  
+
+   WHERE ( pd_basic.prac_id = :prac_id )
+order by rec_id
+" arguments=(("prac_id", number)) )
+text(band=header alignment="2" text="Personal Information" border="0" color="0" x="0" y="0" height="84" width="3333" html.valueishtml="0"  name=t_1 visible="1"  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="503" y="32" height="64" width="320" format="[general]" html.valueishtml="0"  name=pd_basic_ssn visible="1" editmask.mask="###-##-####" editmask.imemode=0 editmask.focusrectangle=no  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Date of Birth:" border="0" color="0" x="850" y="32" height="64" width="352" html.valueishtml="0"  name=t_2 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1221" y="32" height="64" width="293" format="MM/DD/YYYY" html.valueishtml="0"  name=pd_basic_date_of_birth visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Birth Place:" border="0" color="0" x="1527" y="32" height="64" width="343" html.valueishtml="0"  name=t_3 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="  if (isnull( pd_basic_pob_city ),~"~",pd_basic_pob_city +  ~"  ~") + if(isnull(cpob_state), ~"~", cpob_state  + ~"  ~" ) +    if (isnull(cpob_country),~"~", cpob_country)  "border="0" color="0" x="1879" y="32" height="64" width="1435" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+report(band=detail dataobject="d_prf_home_address" x="32" y="216" height="136" width="3246" border="0"  height.autosize=yes criteria="" nest_arguments=(("prac_id")) trail_footer = yes  name=dw_1 visible="1"  slideup=directlyabove )
+text(band=detail alignment="1" text="Social Security #:" border="0" color="0" x="41" y="32" height="64" width="448" html.valueishtml="0"  name=t_4 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Gender:" border="0" color="0" x="37" y="128" height="64" width="206" html.valueishtml="0"  name=t_5 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Spouse:" border="0" color="0" x="1618" y="132" height="64" width="242" html.valueishtml="0"  name=t_6 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="1874" y="132" height="64" width="809" format="[general]" html.valueishtml="0"  name=pd_basic_spouse_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Marital Status:" border="0" color="0" x="800" y="132" height="64" width="398" html.valueishtml="0"  name=t_7 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="1216" y="132" height="64" width="352" format="[general]" html.valueishtml="0"  name=pd_basic_married visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="0" color="0" x="2885" y="132" height="64" width="402" format="[general]" html.valueishtml="0"  name=pd_basic_npi_number visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="NPI #:" border="0" color="0" x="2702" y="132" height="64" width="178" html.valueishtml="0"  name=t_8 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="279" y="128" height="64" width="347" format="[general]" html.valueishtml="0"  name=sex visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=0 border="0" color="0" x="3333" y="0" height="64" width="992" html.valueishtml="0"  name=pd_basic_prac_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

@@ -1,0 +1,285 @@
+﻿$PBExportHeader$d_contract_det_notes.srd
+$PBExportComments$[intellicontract] This data window is shared. do not retrieve
+release 11.5;
+datawindow(units=0 timer_interval=0 color=67108864 brushmode=0 transparency=0 gradient.angle=0 gradient.color=8421504 gradient.focus=0 gradient.repetition.count=0 gradient.repetition.length=100 gradient.repetition.mode=0 gradient.scale=100 gradient.spread=100 gradient.transparency=0 picture.blur=0 picture.clip.bottom=0 picture.clip.left=0 picture.clip.right=0 picture.clip.top=0 picture.mode=0 picture.scale.x=100 picture.scale.y=100 picture.transparency=0 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.background=no print.preview.background=no print.preview.outline=yes hidegrayline=no showbackcoloronxp=no picture.file="" )
+header(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+summary(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+footer(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+detail(height=444 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=ctx_id dbname="ctx_basic_info.ctx_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=category dbname="ctx_basic_info.category" )
+ column=(type=decimal(0) updatewhereclause=yes name=status dbname="ctx_basic_info.status" )
+ column=(type=long updatewhereclause=yes name=facility_id dbname="ctx_basic_info.facility_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=contract_type dbname="ctx_basic_info.contract_type" )
+ column=(type=decimal(0) updatewhereclause=yes name=product_type dbname="ctx_basic_info.product_type" )
+ column=(type=char(150) updatewhereclause=yes name=product_name dbname="ctx_basic_info.product_name" )
+ column=(type=decimal(0) updatewhereclause=yes name=reimbursment_menth dbname="ctx_basic_info.reimbursment_menth" )
+ column=(type=char(150) updatewhereclause=yes name=file_location dbname="ctx_basic_info.file_location" )
+ column=(type=datetime updatewhereclause=yes name=effective_date dbname="ctx_basic_info.effective_date" )
+ column=(type=datetime updatewhereclause=yes name=expriation_date dbname="ctx_basic_info.expriation_date" )
+ column=(type=datetime updatewhereclause=yes name=review_date dbname="ctx_basic_info.review_date" )
+ column=(type=char(10) updatewhereclause=yes name=review_by dbname="ctx_basic_info.review_by" )
+ column=(type=datetime updatewhereclause=yes name=term_date dbname="ctx_basic_info.term_date" )
+ column=(type=decimal(0) updatewhereclause=yes name=term_reason dbname="ctx_basic_info.term_reason" )
+ column=(type=datetime updatewhereclause=yes name=last_revis_date dbname="ctx_basic_info.last_revis_date" )
+ column=(type=datetime updatewhereclause=yes name=other_date_1 dbname="ctx_basic_info.other_date_1" )
+ column=(type=datetime updatewhereclause=yes name=other_date_2 dbname="ctx_basic_info.other_date_2" )
+ column=(type=char(75) updatewhereclause=yes name=oc_signed_by dbname="ctx_basic_info.oc_signed_by" )
+ column=(type=decimal(0) updatewhereclause=yes name=oc_title dbname="ctx_basic_info.oc_title" )
+ column=(type=decimal(0) updatewhereclause=yes name=oc_department dbname="ctx_basic_info.oc_department" )
+ column=(type=char(75) updatewhereclause=yes name=oc_legal_rep dbname="ctx_basic_info.oc_legal_rep" )
+ column=(type=char(75) updatewhereclause=yes name=cc_signed_by dbname="ctx_basic_info.cc_signed_by" )
+ column=(type=char(75) updatewhereclause=yes name=cc_title dbname="ctx_basic_info.cc_title" )
+ column=(type=char(75) updatewhereclause=yes name=cc_department dbname="ctx_basic_info.cc_department" )
+ column=(type=char(75) updatewhereclause=yes name=cc_legal_rep dbname="ctx_basic_info.cc_legal_rep" )
+ column=(type=char(30) updatewhereclause=yes name=keyword dbname="ctx_basic_info.keyword" )
+ column=(type=decimal(0) updatewhereclause=yes name=dvision dbname="ctx_basic_info.dvision" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_1 dbname="ctx_basic_info.custom_1" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_2 dbname="ctx_basic_info.custom_2" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_3 dbname="ctx_basic_info.custom_3" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_4 dbname="ctx_basic_info.custom_4" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_5 dbname="ctx_basic_info.custom_5" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_6 dbname="ctx_basic_info.custom_6" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_7 dbname="ctx_basic_info.custom_7" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_8 dbname="ctx_basic_info.custom_8" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_9 dbname="ctx_basic_info.custom_9" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_10 dbname="ctx_basic_info.custom_10" )
+ column=(type=decimal(0) updatewhereclause=yes name=group_multi_loc_id dbname="ctx_basic_info.group_multi_loc_id" )
+ column=(type=char(255) updatewhereclause=yes name=revision_reason dbname="ctx_basic_info.revision_reason" )
+ column=(type=decimal(0) updatewhereclause=yes name=group_id dbname="ctx_basic_info.group_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=record_id dbname="ctx_basic_info.record_id" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_11 dbname="ctx_basic_info.custom_11" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_12 dbname="ctx_basic_info.custom_12" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_13 dbname="ctx_basic_info.custom_13" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_14 dbname="ctx_basic_info.custom_14" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_15 dbname="ctx_basic_info.custom_15" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_16 dbname="ctx_basic_info.custom_16" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_17 dbname="ctx_basic_info.custom_17" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_18 dbname="ctx_basic_info.custom_18" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_19 dbname="ctx_basic_info.custom_19" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_20 dbname="ctx_basic_info.custom_20" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date1 dbname="ctx_basic_info.custom_date1" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date2 dbname="ctx_basic_info.custom_date2" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date3 dbname="ctx_basic_info.custom_date3" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date4 dbname="ctx_basic_info.custom_date4" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date5 dbname="ctx_basic_info.custom_date5" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date6 dbname="ctx_basic_info.custom_date6" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date7 dbname="ctx_basic_info.custom_date7" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date8 dbname="ctx_basic_info.custom_date8" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date9 dbname="ctx_basic_info.custom_date9" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date10 dbname="ctx_basic_info.custom_date10" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date11 dbname="ctx_basic_info.custom_date11" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date12 dbname="ctx_basic_info.custom_date12" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date13 dbname="ctx_basic_info.custom_date13" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date14 dbname="ctx_basic_info.custom_date14" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date15 dbname="ctx_basic_info.custom_date15" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n1 dbname="ctx_basic_info.custom_n1" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n2 dbname="ctx_basic_info.custom_n2" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n3 dbname="ctx_basic_info.custom_n3" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n4 dbname="ctx_basic_info.custom_n4" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n5 dbname="ctx_basic_info.custom_n5" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n6 dbname="ctx_basic_info.custom_n6" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n7 dbname="ctx_basic_info.custom_n7" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n8 dbname="ctx_basic_info.custom_n8" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n9 dbname="ctx_basic_info.custom_n9" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n10 dbname="ctx_basic_info.custom_n10" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=version_number dbname="ctx_basic_info.version_number" )
+ column=(type=datetime update=yes updatewhereclause=yes name=version_date dbname="ctx_basic_info.version_date" )
+ column=(type=char(8000) update=yes updatewhereclause=yes name=notes dbname="ctx_basic_info.notes" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=app_facility dbname="ctx_basic_info.app_facility" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=master_contract_id dbname="ctx_basic_info.master_contract_id" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=master_contract_name dbname="ctx_basic_info.master_contract_name" )
+ column=(type=long updatewhereclause=yes name=total_processing_time dbname="total_processing_time" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n11 dbname="ctx_basic_info.custom_n11" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n12 dbname="ctx_basic_info.custom_n12" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n13 dbname="ctx_basic_info.custom_n13" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n14 dbname="ctx_basic_info.custom_n14" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n15 dbname="ctx_basic_info.custom_n15" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n16 dbname="ctx_basic_info.custom_n16" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n17 dbname="ctx_basic_info.custom_n17" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n18 dbname="ctx_basic_info.custom_n18" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n19 dbname="ctx_basic_info.custom_n19" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n20 dbname="ctx_basic_info.custom_n20" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n21 dbname="ctx_basic_info.custom_n21" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n22 dbname="ctx_basic_info.custom_n22" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n23 dbname="ctx_basic_info.custom_n23" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n24 dbname="ctx_basic_info.custom_n24" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n25 dbname="ctx_basic_info.custom_n25" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_21 dbname="ctx_basic_info.custom_21" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=custom_22 dbname="ctx_basic_info.custom_22" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n26 dbname="ctx_basic_info.custom_n26" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n27 dbname="ctx_basic_info.custom_n27" )
+ column=(type=char(8000) update=yes updatewhereclause=yes name=custom_notes_1 dbname="ctx_basic_info.custom_notes_1" )
+ column=(type=char(8000) update=yes updatewhereclause=yes name=custom_notes_2 dbname="ctx_basic_info.custom_notes_2" )
+ column=(type=char(8000) update=yes updatewhereclause=yes name=custom_notes_3 dbname="ctx_basic_info.custom_notes_3" )
+ column=(type=char(8000) update=yes updatewhereclause=yes name=custom_notes_4 dbname="ctx_basic_info.custom_notes_4" )
+ column=(type=char(8000) update=yes updatewhereclause=yes name=custom_notes_5 dbname="ctx_basic_info.custom_notes_5" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date16 dbname="ctx_basic_info.custom_date16" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date17 dbname="ctx_basic_info.custom_date17" )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=fee_sched_calc_field_1 dbname="ctx_basic_info.fee_sched_calc_field_1" )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=fee_sched_calc_field_2 dbname="ctx_basic_info.fee_sched_calc_field_2" )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=fee_sched_calc_field_3 dbname="ctx_basic_info.fee_sched_calc_field_3" )
+ column=(type=long updatewhereclause=yes name=unread_email_cnt dbname="unread_email_cnt" )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=custom_percent_1 dbname="ctx_basic_info.custom_percent_1" )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=custom_percent_2 dbname="ctx_basic_info.custom_percent_2" )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=custom_percent_3 dbname="ctx_basic_info.custom_percent_3" )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=custom_percent_4 dbname="ctx_basic_info.custom_percent_4" )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=custom_percent_5 dbname="ctx_basic_info.custom_percent_5" )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=custom_percent_6 dbname="ctx_basic_info.custom_percent_6" )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=custom_percent_7 dbname="ctx_basic_info.custom_percent_7" )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=custom_percent_8 dbname="ctx_basic_info.custom_percent_8" )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=custom_percent_9 dbname="ctx_basic_info.custom_percent_9" )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=custom_percent_10 dbname="ctx_basic_info.custom_percent_10" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=work_flow_n1 dbname="ctx_basic_info.work_flow_n1" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=work_flow_n2 dbname="ctx_basic_info.work_flow_n2" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=work_flow_n3 dbname="ctx_basic_info.work_flow_n3" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=work_flow_n4 dbname="ctx_basic_info.work_flow_n4" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=work_flow_n5 dbname="ctx_basic_info.work_flow_n5" )
+ column=(type=long update=yes updatewhereclause=yes name=custom_status1 dbname="ctx_basic_info.custom_status1" )
+ column=(type=long update=yes updatewhereclause=yes name=custom_status2 dbname="ctx_basic_info.custom_status2" )
+ retrieve="  SELECT ctx_basic_info.ctx_id,   
+         ctx_basic_info.category,   
+         ctx_basic_info.status,   
+         ctx_basic_info.facility_id,   
+         ctx_basic_info.contract_type,   
+         ctx_basic_info.product_type,   
+         ctx_basic_info.product_name,   
+         ctx_basic_info.reimbursment_menth,   
+         ctx_basic_info.file_location,   
+         ctx_basic_info.effective_date,   
+         ctx_basic_info.expriation_date,   
+         ctx_basic_info.review_date,   
+         ctx_basic_info.review_by,   
+         ctx_basic_info.term_date,   
+         ctx_basic_info.term_reason,   
+         ctx_basic_info.last_revis_date,   
+         ctx_basic_info.other_date_1,   
+         ctx_basic_info.other_date_2,   
+         ctx_basic_info.oc_signed_by,   
+         ctx_basic_info.oc_title,   
+         ctx_basic_info.oc_department,   
+         ctx_basic_info.oc_legal_rep,   
+         ctx_basic_info.cc_signed_by,   
+         ctx_basic_info.cc_title,   
+         ctx_basic_info.cc_department,   
+         ctx_basic_info.cc_legal_rep,   
+         ctx_basic_info.keyword,   
+         ctx_basic_info.dvision,   
+         ctx_basic_info.custom_1,   
+         ctx_basic_info.custom_2,   
+         ctx_basic_info.custom_3,   
+         ctx_basic_info.custom_4,   
+         ctx_basic_info.custom_5,   
+         ctx_basic_info.custom_6,   
+         ctx_basic_info.custom_7,   
+         ctx_basic_info.custom_8,   
+         ctx_basic_info.custom_9,   
+         ctx_basic_info.custom_10,   
+         ctx_basic_info.group_multi_loc_id,   
+         ctx_basic_info.revision_reason,   
+         ctx_basic_info.group_id,   
+         ctx_basic_info.record_id,   
+         ctx_basic_info.custom_11,   
+         ctx_basic_info.custom_12,   
+         ctx_basic_info.custom_13,   
+         ctx_basic_info.custom_14,   
+         ctx_basic_info.custom_15,   
+         ctx_basic_info.custom_16,   
+         ctx_basic_info.custom_17,   
+         ctx_basic_info.custom_18,   
+         ctx_basic_info.custom_19,   
+         ctx_basic_info.custom_20,   
+         ctx_basic_info.custom_date1,   
+         ctx_basic_info.custom_date2,   
+         ctx_basic_info.custom_date3,   
+         ctx_basic_info.custom_date4,   
+         ctx_basic_info.custom_date5,   
+         ctx_basic_info.custom_date6,   
+         ctx_basic_info.custom_date7,   
+         ctx_basic_info.custom_date8,   
+         ctx_basic_info.custom_date9,   
+         ctx_basic_info.custom_date10,
+			ctx_basic_info.custom_date11,
+         ctx_basic_info.custom_date12,
+         ctx_basic_info.custom_date13,
+         ctx_basic_info.custom_date14,
+         ctx_basic_info.custom_date15,    
+         ctx_basic_info.custom_n1,   
+         ctx_basic_info.custom_n2,   
+         ctx_basic_info.custom_n3,   
+         ctx_basic_info.custom_n4,   
+         ctx_basic_info.custom_n5,   
+         ctx_basic_info.custom_n6,   
+         ctx_basic_info.custom_n7,   
+         ctx_basic_info.custom_n8,   
+         ctx_basic_info.custom_n9,   
+         ctx_basic_info.custom_n10,   
+         ctx_basic_info.version_number,   
+         ctx_basic_info.version_date,   
+         ctx_basic_info.notes,   
+         ctx_basic_info.app_facility,  
+         ctx_basic_info.master_contract_id,  
+         ctx_basic_info.master_contract_name,  
+			Total_Processing_Time = IsNull((SELECT IsNull(SUM(DATEDIFF(DAY,B.start_time,A.start_time)),0) + IsNull((SELECT DATEDIFF(DAY,C.start_time, getdate()) FROM sys_StatusAudit C WHERE C.ctx_id = :al_ctx_id AND C.seq_no = (SELECT Max(D.seq_no) from sys_StatusAudit D where D.ctx_id = :al_ctx_id) AND C.status In (SELECT lookup_code FROM code_lookup WHERE code_lookup.lookup_name = 'Contract Status' AND code_lookup.custom_2 = 'On')),0) FROM sys_StatusAudit A,sys_StatusAudit B  WHERE A.ctx_id = B.ctx_id AND A.ctx_id = :al_ctx_id AND A.seq_no = B.seq_no + 1 AND B.status In (SELECT lookup_code FROM code_lookup WHERE code_lookup.lookup_name = 'Contract Status' AND code_lookup.custom_2 = 'On')),0),   
+         ctx_basic_info.custom_n11,
+         ctx_basic_info.custom_n12,			
+         ctx_basic_info.custom_n13,
+         ctx_basic_info.custom_n14,
+         ctx_basic_info.custom_n15,
+         ctx_basic_info.custom_n16,
+         ctx_basic_info.custom_n17,
+         ctx_basic_info.custom_n18,
+         ctx_basic_info.custom_n19,
+         ctx_basic_info.custom_n20,
+         ctx_basic_info.custom_n21,
+         ctx_basic_info.custom_n22,
+         ctx_basic_info.custom_n23,
+         ctx_basic_info.custom_n24,
+         ctx_basic_info.custom_n25,
+         ctx_basic_info.custom_21,
+         ctx_basic_info.custom_22,
+         ctx_basic_info.custom_n26,
+         ctx_basic_info.custom_n27,
+         ctx_basic_info.custom_notes_1,
+         ctx_basic_info.custom_notes_2,
+         ctx_basic_info.custom_notes_3,
+         ctx_basic_info.custom_notes_4,
+         ctx_basic_info.custom_notes_5,
+         ctx_basic_info.custom_date16,
+         ctx_basic_info.custom_date17,
+			ctx_basic_info.fee_sched_calc_field_1,
+			ctx_basic_info.fee_sched_calc_field_2,
+			ctx_basic_info.fee_sched_calc_field_3,
+			unread_email_cnt = 0,
+			ctx_basic_info.custom_percent_1,
+			ctx_basic_info.custom_percent_2,
+			ctx_basic_info.custom_percent_3,
+			ctx_basic_info.custom_percent_4,
+			ctx_basic_info.custom_percent_5,
+			ctx_basic_info.custom_percent_6,
+			ctx_basic_info.custom_percent_7,
+			ctx_basic_info.custom_percent_8,
+			ctx_basic_info.custom_percent_9,
+			ctx_basic_info.custom_percent_10,
+			ctx_basic_info.work_flow_n1,
+			ctx_basic_info.work_flow_n2,
+			ctx_basic_info.work_flow_n3,
+			ctx_basic_info.work_flow_n4,
+			ctx_basic_info.work_flow_n5,
+			ctx_basic_info.custom_status1,
+			ctx_basic_info.custom_status2
+    FROM ctx_basic_info  
+   WHERE ( ctx_basic_info.ctx_id = :al_ctx_id )  " update="ctx_basic_info" updatewhere=1 updatekeyinplace=no arguments=(("al_ctx_id", number)) )
+column(band=detail id=80 alignment="0" tabsequence=10 border="5" color="0" x="9" y="4" height="432" width="2597" format="[general]" html.valueishtml="0"  name=notes visible="1" edit.limit=8000 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.autovscroll=yes edit.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+button(band=detail text="I" enabled=yes action="0" border="0" color="0" x="2624" y="348" height="88" width="78" vtextalign="0" htextalign="0"  name=b_insert visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

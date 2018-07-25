@@ -1,0 +1,130 @@
+﻿$PBExportHeader$d_pd_affil_status_ia.srd
+release 11.5;
+datawindow(units=0 timer_interval=0 color=16777215 brushmode=0 transparency=0 gradient.angle=0 gradient.color=8421504 gradient.focus=0 gradient.repetition.count=0 gradient.repetition.length=100 gradient.repetition.mode=0 gradient.scale=100 gradient.spread=100 gradient.transparency=0 picture.blur=0 picture.clip.bottom=0 picture.clip.left=0 picture.clip.right=0 picture.clip.top=0 picture.mode=0 picture.scale.x=100 picture.scale.y=100 picture.transparency=0 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.background=no print.preview.background=no print.preview.outline=yes hidegrayline=no showbackcoloronxp=no picture.file="" )
+header(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+summary(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+footer(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+detail(height=268 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=rec_id dbname="pd_affil_stat.rec_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=prac_id dbname="pd_affil_stat.prac_id" )
+ column=(type=long update=yes updatewhereclause=yes name=parent_facility_id dbname="pd_affil_stat.parent_facility_id" )
+ column=(type=long update=yes updatewhereclause=yes name=seq_no dbname="pd_affil_stat.seq_no" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_rqst_rcvd dbname="pd_affil_stat.date_rqst_rcvd" initial="NULL" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_app_sent dbname="pd_affil_stat.date_app_sent" initial="NULL" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_app_signed dbname="pd_affil_stat.date_app_signed" initial="NULL" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_app_rcvd dbname="pd_affil_stat.date_app_rcvd" initial="NULL" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_app_audit_completed dbname="pd_affil_stat.date_app_audit_completed" initial="NULL" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_data_entry_completed dbname="pd_affil_stat.date_data_entry_completed" initial="NULL" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_verif_completed dbname="pd_affil_stat.date_verif_completed" initial="NULL" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_closed dbname="pd_affil_stat.date_comm_review_completed" initial="NULL" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_rls_form_exp dbname="pd_affil_stat.date_rls_form_exp" initial="NULL" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=apptmnt_type dbname="pd_affil_stat.apptmnt_type" initial="I" values="Initial	I/Reapp.	R/	/" )
+ column=(type=datetime update=yes updatewhereclause=yes name=apptmnt_start_date dbname="pd_affil_stat.apptmnt_start_date" initial="NULL" )
+ column=(type=datetime update=yes updatewhereclause=yes name=apptmnt_end_date dbname="pd_affil_stat.apptmnt_end_date" initial="NULL" )
+ column=(type=datetime update=yes updatewhereclause=yes name=affil_ended dbname="pd_affil_stat.affil_ended" initial="NULL" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=affil_ended_reason dbname="pd_affil_stat.affil_ended_reason" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cred_proccess_status dbname="pd_affil_stat.cred_proccess_status" )
+ column=(type=datetime update=yes updatewhereclause=yes name=init_prov_period_from dbname="pd_affil_stat.init_prov_period_from" initial="NULL" )
+ column=(type=datetime update=yes updatewhereclause=yes name=init_prov_period_to dbname="pd_affil_stat.init_prov_period_to" initial="NULL" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=leave_of_absence_reason dbname="pd_affil_stat.leave_of_absence_reason" )
+ column=(type=long update=yes updatewhereclause=yes name=leave_month_from dbname="pd_affil_stat.leave_month_from" )
+ column=(type=long update=yes updatewhereclause=yes name=leave_year_from dbname="pd_affil_stat.leave_year_from" )
+ column=(type=long update=yes updatewhereclause=yes name=leave_month_to dbname="pd_affil_stat.leave_month_to" )
+ column=(type=long update=yes updatewhereclause=yes name=leave_year_to dbname="pd_affil_stat.leave_year_to" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=staff_category dbname="pd_affil_stat.staff_category" )
+ column=(type=long update=yes updatewhereclause=yes name=active_status dbname="pd_affil_stat.active_status" initial="1" values="Active	1/Inactive	3/Purge	2/Pending	4/	/" )
+ column=(type=long update=yes updatewhereclause=yes name=verifying_facility dbname="pd_affil_stat.verifying_facility" )
+ column=(type=long update=yes updatewhereclause=yes name=application_audit_facility dbname="pd_affil_stat.application_audit_facility" )
+ column=(type=long update=yes updatewhereclause=yes name=approval_facility dbname="pd_affil_stat.approval_facility" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=fee dbname="pd_affil_stat.fee" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_invoiced dbname="pd_affil_stat.date_invoiced" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_paid dbname="pd_affil_stat.date_paid" )
+ column=(type=long update=yes updatewhereclause=yes name=priority dbname="pd_affil_stat.priority" initial="1" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=priority_user dbname="pd_affil_stat.priority_user" initial="PUBLIC" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=custom_1 dbname="pd_affil_stat.custom_1" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=custom_2 dbname="pd_affil_stat.custom_2" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=custom_3 dbname="pd_affil_stat.custom_3" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_4 dbname="pd_affil_stat.custom_4" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_5 dbname="pd_affil_stat.custom_5" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=affiliation_status dbname="pd_affil_stat.affiliation_status" )
+ column=(type=datetime update=yes updatewhereclause=yes name=check_date dbname="pd_affil_stat.check_date" )
+ column=(type=long updatewhereclause=yes name=access_rights dbname="security_user_facilities.access_rights" )
+ column=(type=datetime update=yes updatewhereclause=yes name=pd_affil_stat_inital_appmnt_date dbname="pd_affil_stat.inital_appmnt_date" )
+ column=(type=long update=yes updatewhereclause=yes name=pd_affil_stat_in_good_standing dbname="pd_affil_stat.in_good_standing" )
+ retrieve="  SELECT DISTINCT pd_affil_stat.rec_id,   
+         pd_affil_stat.prac_id,   
+         pd_affil_stat.parent_facility_id,   
+         pd_affil_stat.seq_no,   
+         pd_affil_stat.date_rqst_rcvd,   
+         pd_affil_stat.date_app_sent,   
+         pd_affil_stat.date_app_signed,   
+         pd_affil_stat.date_app_rcvd,   
+         pd_affil_stat.date_app_audit_completed,   
+         pd_affil_stat.date_data_entry_completed,   
+         pd_affil_stat.date_verif_completed,   
+         pd_affil_stat.date_comm_review_completed,   
+         pd_affil_stat.date_rls_form_exp,   
+         pd_affil_stat.apptmnt_type,   
+         pd_affil_stat.apptmnt_start_date,   
+         pd_affil_stat.apptmnt_end_date,   
+         pd_affil_stat.affil_ended,   
+         pd_affil_stat.affil_ended_reason,   
+         pd_affil_stat.cred_proccess_status,   
+         pd_affil_stat.init_prov_period_from,   
+         pd_affil_stat.init_prov_period_to,   
+         pd_affil_stat.leave_of_absence_reason,   
+         pd_affil_stat.leave_month_from,   
+         pd_affil_stat.leave_year_from,   
+         pd_affil_stat.leave_month_to,   
+         pd_affil_stat.leave_year_to,   
+         pd_affil_stat.staff_category,   
+         pd_affil_stat.active_status,   
+         pd_affil_stat.verifying_facility,   
+         pd_affil_stat.application_audit_facility,   
+         pd_affil_stat.approval_facility,   
+         pd_affil_stat.fee,   
+         pd_affil_stat.date_invoiced,   
+         pd_affil_stat.date_paid,   
+         pd_affil_stat.priority,   
+         pd_affil_stat.priority_user,   
+         pd_affil_stat.custom_1,   
+         pd_affil_stat.custom_2,   
+         pd_affil_stat.custom_3,   
+         pd_affil_stat.custom_4,   
+         pd_affil_stat.custom_5,   
+         pd_affil_stat.affiliation_status,   
+         pd_affil_stat.check_date,   
+         security_user_facilities.access_rights,   
+         pd_affil_stat.inital_appmnt_date,
+			pd_affil_stat.in_good_standing  
+    FROM pd_affil_stat,   
+         security_user_facilities  
+   WHERE ( pd_affil_stat.parent_facility_id = security_user_facilities.facility_id ) and  
+         ( pd_affil_stat.prac_id = :prac_id ) AND  
+         ( pd_affil_stat.parent_facility_id = :facility_id )    and 
+		(	pd_affil_stat.active_status <> 6  )
+" update="pd_affil_stat" updatewhere=0 updatekeyinplace=no arguments=(("prac_id", number),("facility_id", number))  sort="active_status D " )
+column(band=detail id=14 alignment="1" tabsequence=40 border="5" color="0" x="50" y="140" height="56" width="384" format="[general]" html.valueishtml="0" protect="0~tif( active_status = 0 OR active_status = 2 OR active_status = 3, 1, 0 )"  name=apptmnt_type visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.required=yes ddlb.nilisnull=yes ddlb.useasborder=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~tif( active_status = 0 OR active_status = 2  OR active_status = 3, 12632256, 16777215 )" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=28 alignment="0" tabsequence=210 border="5" color="0" x="2158" y="76" height="64" width="453" format="[general]" html.valueishtml="0" protect="0~tif( active_status = 0 , 1, 0 )"  name=active_status visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.useasborder=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~tif( active_status = 0 , 12632256, 16777215 )" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=detail alignment="0" text="App. Type" border="0" color="0" x="50" y="68" height="52" width="293" html.valueishtml="0"  name=apptmnt_type_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=detail alignment="0" text="Release Signed" border="0" color="0" x="480" y="68" height="52" width="448" html.valueishtml="0"  name=date_rls_form_exp_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=detail alignment="0" text="Begins" border="0" color="0" x="1093" y="68" height="52" width="210" html.valueishtml="0"  name=apptmnt_start_date_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=detail alignment="0" text="Expires" border="0" color="0" x="1545" y="68" height="52" width="229" html.valueishtml="0"  name=apptmnt_end_date_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=13 alignment="0" tabsequence=100 border="5" color="0" x="480" y="140" height="56" width="384" format="mm/dd/yyyy" html.valueishtml="0" protect="0~tif( active_status = 0 OR active_status = 2  OR active_status = 3, 1, 0 )"  name=date_rls_form_exp visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.nilisnull=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~tif( active_status = 0 OR active_status = 2  OR active_status = 3, 12632256, 16777215 )" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=15 alignment="0" tabsequence=150 border="5" color="0" x="1093" y="140" height="56" width="411" format="mm/dd/yyyy" html.valueishtml="0" protect="0~tif( active_status = 0 OR active_status = 2  OR active_status = 3, 1, 0 )"  name=apptmnt_start_date visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.nilisnull=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~tif( active_status = 0 OR active_status = 2  OR active_status = 3, 12632256, 16777215 )" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=16 alignment="0" tabsequence=160 border="5" color="0" x="1545" y="140" height="56" width="402" format="mm/dd/yyyy" html.valueishtml="0" protect="0~tif( active_status = 0 OR active_status = 2  OR active_status = 3, 1, 0 )"  name=apptmnt_end_date visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.nilisnull=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~tif( active_status = 0 OR active_status = 2 OR active_status = 3, 12632256, 16777215 )" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=46 alignment="0" tabsequence=220 border="5" color="0" x="2158" y="156" height="64" width="453" format="[general]" html.valueishtml="0"  name=pd_affil_stat_in_good_standing visible="1" dddw.name=d_dddw_standing_display_only dddw.displaycolumn=display_value dddw.datacolumn=lu_id dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="2500" tooltip.delay.visible="32000" tooltip.enabled="1" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="1" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.tip="The In Good Standing field is used for setting flags on the Search screen." tooltip.transparency="0" transparency="0" )
+groupbox(band=detail text="Record Status"border="5" color="8388608" x="2117" y="0" height="236" width="526"  name=gb_3 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+groupbox(band=detail text="Appointment Dates"border="5" color="8388608" x="1051" y="0" height="236" width="946"  name=gb_2 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+groupbox(band=detail text="Application Info"border="5" color="8388608" x="14" y="0" height="236" width="933"  name=gb_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

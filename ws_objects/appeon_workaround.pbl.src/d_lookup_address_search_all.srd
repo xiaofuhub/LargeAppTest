@@ -1,0 +1,26 @@
+﻿$PBExportHeader$d_lookup_address_search_all.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=60 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes key=yes name=lookup_code dbname="address_lookup.lookup_code" )
+ column=(type=char(15) updatewhereclause=yes name=code dbname="address_lookup.code" )
+ column=(type=char(100) updatewhereclause=yes name=entity_name dbname="address_lookup.entity_name" )
+ retrieve="  SELECT address_lookup.lookup_code,
+			address_lookup.code,   
+         address_lookup.entity_name  
+    FROM address_lookup  
+   WHERE address_lookup.lookup_code in (:lookup_code)
+" update="address_lookup" updatewhere=0 updatekeyinplace=no arguments=(("lookup_code", numberlist)) )
+text(band=header alignment="2" text="Code" border="0" color="0" x="5" y="4" height="52" width="366" html.valueishtml="0"  name=code_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Entity Name" border="0" color="0" x="375" y="4" height="52" width="1166" html.valueishtml="0"  name=entity_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="5" y="4" height="64" width="366" format="[general]" html.valueishtml="0"  name=code visible="1" edit.limit=15 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="375" y="4" height="64" width="1166" format="[general]" html.valueishtml="0"  name=entity_name visible="1" edit.limit=50 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=0 border="0" color="0" x="1541" y="0" height="64" width="992" format="[General]" html.valueishtml="0"  name=lookup_code visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

@@ -1,0 +1,9 @@
+﻿$PBExportHeader$tns__getauthenticationtoken.srs
+$PBExportComments$Proxy imported from Web service using Web Service Proxy Generator.
+global type tns__GetAuthenticationToken from structure
+   string userName
+   string password
+   string integratorKey
+   string envelopId
+end type
+

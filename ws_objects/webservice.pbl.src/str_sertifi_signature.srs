@@ -1,0 +1,14 @@
+﻿$PBExportHeader$str_sertifi_signature.srs
+global type str_sertifi_signature from structure
+	string		email
+	string		namesigned
+	string		ipaddress
+	string		signmethod
+	string		datesigned
+	string		signertype
+	string		customfield1
+	string		customfield2
+	string		customfield3
+	string		customfield4
+end type
+

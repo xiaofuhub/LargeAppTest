@@ -1,0 +1,18 @@
+﻿$PBExportHeader$d_clause_comparison_md.srd
+$PBExportComments$(Appeon)Toney 09.23.2013 - V141 ISG-CLX
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=ctx_acp_clause_id dbname="ctx_acp_clause.ctx_acp_clause_id" )
+ column=(type=datetime updatewhereclause=yes name=modify_date dbname="ctx_acp_clause.modify_date" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"ctx_acp_clause~" ) COLUMN(NAME=~"ctx_acp_clause.ctx_acp_clause_id~") COLUMN(NAME=~"ctx_acp_clause.modify_date~")WHERE(    EXP1 =~"ctx_acp_clause.ctx_acp_clause_id~"   OP =~"in~"    EXP2 =~":clauseid~" ) ) ORDER(NAME=~"ctx_acp_clause.ctx_acp_clause_id~" ASC=yes ) ARG(NAME = ~"clauseid~" TYPE = numberlist) " arguments=(("clauseid", numberlist)) )
+text(band=header alignment="2" text="Ctx Acp Clause Id" border="0" color="33554432" x="5" y="4" height="52" width="384" html.valueishtml="0"  name=ctx_acp_clause_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="33554432" x="5" y="0" height="84" width="489" format="[general]" html.valueishtml="0"  name=ctx_acp_clause_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="33554432" x="507" y="0" height="84" width="357" html.valueishtml="0"  name=modify_date visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

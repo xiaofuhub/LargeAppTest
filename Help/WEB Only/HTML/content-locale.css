@@ -1,0 +1,10 @@
+@charset 'UTF-8';
+
+/* ITALIC CLASSES */
+.fig,
+.fig .desc,
+.fig .dlentry,
+.keyword,
+.note, .important, .tip,
+.related-links:before, 
+#content_wrapper div.fignone dl dd { font-style: italic; }

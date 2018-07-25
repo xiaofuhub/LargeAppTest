@@ -1,0 +1,10 @@
+﻿$PBExportHeader$tns__removeformfromrequest.srs
+$PBExportComments$Proxy imported from Web service using Web Service Proxy Generator.
+global type tns__RemoveFormFromRequest from structure
+   string pstr_APICode
+   string pstr_FileID
+   string pstr_FormID
+   string pstr_Title
+   boolean pbln_MatchTitle
+end type
+

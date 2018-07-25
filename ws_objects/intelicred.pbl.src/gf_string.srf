@@ -1,0 +1,16 @@
+﻿$PBExportHeader$gf_string.srf
+global type gf_string from function_object
+end type
+
+forward prototypes
+global function string gf_string (any aa_value)
+end prototypes
+
+global function string gf_string (any aa_value);//Added By Ken.Guo 2011-04-21.
+If isnull(aa_value) Then
+	Return 'null'
+Else
+	Return String(aa_value)
+End If
+end function
+

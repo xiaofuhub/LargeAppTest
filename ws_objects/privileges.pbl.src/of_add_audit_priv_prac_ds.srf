@@ -1,0 +1,185 @@
+﻿$PBExportHeader$of_add_audit_priv_prac_ds.srf
+global type of_add_audit_priv_prac_ds from function_object
+end type
+
+forward prototypes
+global function integer of_add_audit_priv_prac_ds (string as_from, n_ds adw_cur, integer ai_del_row)
+end prototypes
+
+global function integer of_add_audit_priv_prac_ds (string as_from, n_ds adw_cur, integer ai_del_row);//Start Code Change ----12.07.2009 #V10 maha - added function
+long ll_auditid
+datetime ldt_now
+string ls_new
+string ls_old
+string ls_field
+string ls_table
+string ls_type
+string ls_value
+string sss
+integer nr
+long ll_row
+long i
+long c
+long cr
+integer li_col
+string ls_stat
+string ls_colstat
+long ll_dept
+long ll_sect
+long ll_procd
+integer li_null
+integer li_add
+integer ll_facility
+long ll_prac
+long ll_rec
+n_ds ldw_audit //Start Code Change ----02.21.2014 #V14 maha - changed from datastore
+
+//ldw_audit = adw_audit
+
+select max(audit_id) into :ll_auditid from sys_audit_priv_prac;
+if isnull(ll_auditid) then ll_auditid = 0
+ldt_now = datetime(today(),now())
+
+setnull(li_null)
+
+ldw_audit = create n_ds  //Start Code Change ----02.21.2014 #V14 maha - changed from datastore
+ldw_audit.dataobject = "d_priv_audit_prac"
+ldw_audit.settransobject(sqlca)
+
+//set defaults for table and field
+//choose case as_from
+//	case "DEPT"
+//end choose
+
+
+If as_from  = "PracDel" then //deleted record
+	i = ai_del_row
+	ll_prac = adw_cur.getitemnumber(i,"prac_id")
+	ll_rec = adw_cur.getitemnumber(i,"rec_id")
+	ll_dept = adw_cur.getitemnumber(i,"clinical_area_id")
+	ll_sect = adw_cur.getitemnumber(i,"priv_core_id")
+	ll_procd = adw_cur.getitemnumber(i,"procd_id")
+	ll_facility = adw_cur.getitemnumber(i,"facility_id")
+	
+	ls_new = adw_cur.getitemstring(i,"priv_core_procd_procd_name")
+	ll_auditid++
+	ls_type = "D"
+	nr = ldw_audit.insertrow(0)
+	
+	ldw_audit.setitem(nr,"audit_id",ll_auditid)
+	ldw_audit.setitem(nr,"facility_id",ll_facility )
+	ldw_audit.setitem(nr,"prac_id",ll_prac)
+	ldw_audit.setitem(nr,"rec_id",ll_rec)
+	ldw_audit.setitem(nr,"dept_id", ll_dept)
+	ldw_audit.setitem(nr,"sect_id",ll_sect)
+	ldw_audit.setitem(nr,"proc_id",ll_procd)				
+	ldw_audit.setitem(nr,"field_name",ls_field )
+	ldw_audit.setitem(nr,"old_value", ls_new)
+	ldw_audit.setitem(nr,"new_value","Record Deleted")
+	ldw_audit.setitem(nr,"mod_by",gs_user_id )
+	ldw_audit.setitem(nr,"date_time_modified",ldt_now)
+	ldw_audit.setitem(nr,"audit_type",ls_type)
+	
+else //add or update
+	for i = 1 to adw_cur.rowcount()
+		//check status of each record
+		ls_stat = of_get_row_status_ds(i,adw_cur,0)
+		if ls_stat = "NOT" or ls_stat = "N" then //not  modified or new
+			continue
+		else //new mod or data mod
+//Start Code Change ----02.21.2014 #V14 maha - changed field names
+			ll_prac = adw_cur.getitemnumber(i,"pd_priv_list_prac_id")
+			ll_rec = adw_cur.getitemnumber(i,"pd_priv_list_rec_id")
+			ll_dept = adw_cur.getitemnumber(i,"pd_priv_list_clinical_area_id")
+			ll_sect = adw_cur.getitemnumber(i,"pd_priv_list_priv_core_id")
+			ll_procd = adw_cur.getitemnumber(i,"pd_priv_list_procd_id")
+			ll_facility = adw_cur.getitemnumber(i,"pd_priv_list_facility_id")
+//End Code Change ----02.21.2014 	
+			if ls_stat = "NM" then //new modified
+				ls_type = "I"
+				select procd_name into :ls_new from priv_core_procd where procd_id = :ll_procd;
+				//ls_new = adw_cur.getitemstring(i,"priv_core_procd_procd_name")
+				
+				ll_auditid++
+				nr = ldw_audit.insertrow(0)
+				ldw_audit.setitem(nr,"audit_id",ll_auditid)
+				ldw_audit.setitem(nr,"facility_id",ll_facility )
+				ldw_audit.setitem(nr,"prac_id",ll_prac)
+				ldw_audit.setitem(nr,"rec_id",ll_rec)
+				ldw_audit.setitem(nr,"dept_id", ll_dept)
+				ldw_audit.setitem(nr,"sect_id",ll_sect)
+				ldw_audit.setitem(nr,"proc_id",ll_procd)
+				//ldw_audit.setitem(nr,"table_name", "pd_priv_list" )
+				ldw_audit.setitem(nr,"field_name",ls_field )
+				ldw_audit.setitem(nr,"old_value", "Record Inserted")
+				ldw_audit.setitem(nr,"new_value",ls_new)
+				ldw_audit.setitem(nr,"mod_by",gs_user_id )
+				ldw_audit.setitem(nr,"date_time_modified",ldt_now)
+				ldw_audit.setitem(nr,"audit_type",ls_type)
+			elseif ls_stat = "D" then //data modified //check each column
+				cr = long(adw_cur.Object.DataWindow.Column.Count)
+				
+				for c = 1 to cr//for each column
+					//debugbreak()
+					if c = 19 then continue //trap for active _status field abberation
+					ls_colstat = of_get_row_status_ds(i,adw_cur,c)
+					adw_cur.setcolumn(c)
+					sss = adw_cur.getcolumnname()
+					if ls_colstat = "D" then
+						ls_field = adw_cur.getcolumnname()
+						//messagebox(string(c) + "  " +  sss ,ls_field)
+						choose case ls_field //only add for listed fields
+							case  "notes"
+								li_add = 1
+								ls_new = adw_cur.getitemstring(i, ls_field)
+								if LenA(ls_new) > 2000 then ls_new = MidA(ls_new,1,1990 ) + "..."
+								ls_old = adw_cur.getitemstring(i, ls_field, primary!, true)
+								if LenA(ls_old) > 2000 then ls_old = MidA(ls_old,1,1990 ) + "..." 
+							case "status_code", "active_status", "ir_code"
+								li_add = 1
+								ls_new = string(adw_cur.getitemnumber(i, ls_field))
+								ls_old = string(adw_cur.getitemnumber(i, ls_field, primary!, true))
+							case "start_date","end_date"
+								li_add = 1
+								ls_new = string(date(adw_cur.getitemdatetime(i, ls_field)))
+								ls_old = string(date(adw_cur.getitemdatetime(i, ls_field, primary!, true)))
+							case else
+								li_add = 0
+						end choose
+						debugbreak()
+						if li_add = 1 then
+							ll_auditid++
+							ls_type = "E"
+							nr = ldw_audit.insertrow(0)
+							ldw_audit.setitem(nr,"audit_id",ll_auditid)
+							ldw_audit.setitem(nr,"rec_id",ll_rec)
+							ldw_audit.setitem(nr,"facility_id",ll_facility )
+							ldw_audit.setitem(nr,"dept_id", ll_dept)
+							ldw_audit.setitem(nr,"sect_id",ll_sect)
+							ldw_audit.setitem(nr,"proc_id",ll_procd)
+							ldw_audit.setitem(nr,"prac_id",ll_prac )
+							ldw_audit.setitem(nr,"field_name",ls_field )
+							ldw_audit.setitem(nr,"old_value", ls_old)
+							ldw_audit.setitem(nr,"new_value",ls_new)
+							ldw_audit.setitem(nr,"mod_by",gs_user_id )
+							ldw_audit.setitem(nr,"date_time_modified",ldt_now)
+							ldw_audit.setitem(nr,"audit_type",ls_type)
+						end if
+					end if
+				next
+			end if
+		end if
+		
+	next
+end if
+
+nr = ldw_audit.update()
+if nr < 0 then
+	MessageBox("Update error in audit creation", SQLCA.SQLERRTEXT )
+end if
+
+destroy ldw_audit
+
+return 1
+end function
+

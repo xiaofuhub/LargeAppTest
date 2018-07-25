@@ -1,0 +1,85 @@
+﻿$PBExportHeader$d_ctx_extended_search_list.srd
+$PBExportComments$[inellicontract]
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=120 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=char(15) updatewhereclause=yes name=pd_basic_first_name dbname="first_name" )
+ column=(type=char(15) updatewhereclause=yes name=pd_basic_middle_name dbname="middle_name" )
+ column=(type=decimal(0) updatewhereclause=yes name=pd_basic_title dbname="title" )
+ column=(type=decimal(0) updatewhereclause=yes name=pd_basic_name_suffix dbname="name_suffix" )
+ column=(type=decimal(0) updatewhereclause=yes name=pd_basic_prof_suffix dbname="prof_suffix" )
+ column=(type=char(11) updatewhereclause=yes name=pd_basic_ssn dbname="ssn" )
+ column=(type=decimal(0) updatewhereclause=yes name=pd_basic_sex dbname="sex" )
+ column=(type=decimal(0) updatewhereclause=yes name=pd_basic_prac_category dbname="prac_category" )
+ column=(type=datetime updatewhereclause=yes name=pd_basic_date_of_birth dbname="date_of_birth" )
+ column=(type=decimal(0) updatewhereclause=yes name=pd_basic_rec_id dbname="rec_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=pd_basic_prac_id dbname="prac_id" )
+ column=(type=char(100) updatewhereclause=yes name=pd_basic_last_name dbname="last_name" )
+ column=(type=char(15) updatewhereclause=yes name=code_lookup_code dbname="code" )
+ column=(type=long updatewhereclause=yes name=selected dbname="selected" )
+ retrieve="  SELECT pd_basic.first_name,   
+         pd_basic.middle_name,   
+         pd_basic.title,   
+         pd_basic.name_suffix,   
+         pd_basic.prof_suffix,   
+         pd_basic.ssn,   
+         pd_basic.sex,   
+         pd_basic.prac_category,   
+         pd_basic.date_of_birth,   
+         pd_basic.rec_id,   
+         pd_basic.prac_id,   
+         pd_basic.last_name,   
+         code_lookup.code,   
+         0 selected  
+    FROM (pd_basic LEFT OUTER JOIN code_lookup ON pd_basic.name_suffix = code_lookup.lookup_code)  
+ORDER BY pd_basic.last_name ASC   
+" )
+text(band=header alignment="2" text="Pd Basic
+First Name" border="0" color="33554432" x="9" y="8" height="104" width="366" html.valueishtml="0"  name=pd_basic_first_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Basic
+Middle Name" border="0" color="33554432" x="384" y="8" height="104" width="366" html.valueishtml="0"  name=pd_basic_middle_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Basic
+Title" border="0" color="33554432" x="759" y="8" height="104" width="274" html.valueishtml="0"  name=pd_basic_title_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Basic
+Name Suffix" border="0" color="33554432" x="1042" y="8" height="104" width="274" html.valueishtml="0"  name=pd_basic_name_suffix_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Basic
+Prof Suffix" border="0" color="33554432" x="1326" y="8" height="104" width="274" html.valueishtml="0"  name=pd_basic_prof_suffix_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Basic
+Ssn" border="0" color="33554432" x="1609" y="8" height="104" width="274" html.valueishtml="0"  name=pd_basic_ssn_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Basic
+Sex" border="0" color="33554432" x="1893" y="8" height="104" width="274" html.valueishtml="0"  name=pd_basic_sex_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Basic
+Prac Category" border="0" color="33554432" x="2176" y="8" height="104" width="306" html.valueishtml="0"  name=pd_basic_prac_category_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Basic
+Date Of Birth" border="0" color="33554432" x="2491" y="8" height="104" width="503" html.valueishtml="0"  name=pd_basic_date_of_birth_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Basic
+Rec Id" border="0" color="33554432" x="3003" y="8" height="104" width="274" html.valueishtml="0"  name=pd_basic_rec_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Basic
+Prac Id" border="0" color="33554432" x="3287" y="8" height="104" width="274" html.valueishtml="0"  name=pd_basic_prac_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Basic
+Last Name" border="0" color="33554432" x="3570" y="8" height="104" width="2309" html.valueishtml="0"  name=pd_basic_last_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Code Lookup
+Code" border="0" color="33554432" x="5888" y="8" height="104" width="366" html.valueishtml="0"  name=code_lookup_code_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Selected" border="0" color="33554432" x="6263" y="8" height="52" width="274" html.valueishtml="0"  name=selected_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="9" y="8" height="64" width="366" format="[general]" html.valueishtml="0"  name=pd_basic_first_name visible="1" edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="384" y="8" height="64" width="366" format="[general]" html.valueishtml="0"  name=pd_basic_middle_name visible="1" edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="0" color="33554432" x="759" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=pd_basic_title visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="1" tabsequence=32766 border="0" color="33554432" x="1042" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=pd_basic_name_suffix visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="33554432" x="1326" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=pd_basic_prof_suffix visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="33554432" x="1609" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=pd_basic_ssn visible="1" edit.limit=11 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="1" tabsequence=32766 border="0" color="33554432" x="1893" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=pd_basic_sex visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="1" tabsequence=32766 border="0" color="33554432" x="2176" y="8" height="64" width="306" format="[general]" html.valueishtml="0"  name=pd_basic_prac_category visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="33554432" x="2491" y="8" height="64" width="503" format="[shortdate] [time]" html.valueishtml="0"  name=pd_basic_date_of_birth visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="1" tabsequence=32766 border="0" color="33554432" x="3003" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=pd_basic_rec_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="1" tabsequence=32766 border="0" color="33554432" x="3287" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=pd_basic_prac_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="33554432" x="3570" y="8" height="64" width="2309" format="[general]" html.valueishtml="0"  name=pd_basic_last_name visible="1" edit.limit=100 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="33554432" x="5888" y="8" height="64" width="366" format="[general]" html.valueishtml="0"  name=code_lookup_code visible="1" edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="1" tabsequence=32766 border="0" color="33554432" x="6263" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=selected visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

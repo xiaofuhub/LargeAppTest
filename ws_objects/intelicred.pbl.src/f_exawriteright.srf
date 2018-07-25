@@ -1,0 +1,65 @@
+﻿$PBExportHeader$f_exawriteright.srf
+global type f_exawriteright from function_object
+end type
+
+forward prototypes
+global function string f_exawriteright (string as_pathname)
+end prototypes
+
+global function string f_exawriteright (string as_pathname);//------------------------------------------------------------------------------
+// Function: f_ExaWriteRight()
+//------------------------------------------------------------------------------
+// Description: Verify if the directory has write right for the current user
+// Arguments:
+//		1 -- Directory name
+// Return Value: 
+//		1 -- has write right
+//	  -1 -- has no write right
+//------------------------------------------------------------------------------
+// Author:	Scofield		Date: 2008-07-08
+//------------------------------------------------------------------------------
+// Revision History: 
+//				1.0   Initial version
+//==============================================================================
+
+long		ll_FileNo,ll_Rtn,ll_Rand
+String	ls_FileName,ls_ShortName,ls_DirName,ls_Rtn
+
+CONSTANT LONG MAXRAND = 32000
+CONSTANT STRING EXTNAME = ".txt"
+
+as_PathName = Trim(as_PathName)
+
+if IsNull(as_PathName) or Trim(as_PathName) = "" then
+	ls_Rtn = "Cannot save, because the name of the file to be saved is empty."
+	Return ls_Rtn
+end if
+
+if PosA(MidA(as_PathName,LastPos(as_PathName,"\") + 1),".") > 0 then
+	ls_DirName = LeftA(as_PathName,LastPos(as_PathName,"\"))
+else
+	if RightA(as_PathName,1) <> "\" then as_PathName += "\"
+	ls_DirName = as_PathName
+end if
+
+Randomize(0)
+
+ll_Rand = Rand(MAXRAND) 
+ls_FileName = ls_DirName + String(ll_Rand,"00000") + EXTNAME
+do while FileExists(ls_FileName)
+	ll_Rand = Rand(MAXRAND) 
+	ls_FileName = ls_DirName + String(ll_Rand,"00000") + EXTNAME
+loop
+
+ll_FileNo = FileOpen(ls_FileName,StreamMode!,Write!,LockReadWrite!,Replace!)
+if ll_FileNo < 0 then
+	ls_Rtn = as_PathName + " is not writable. You might not have write permission to it. Contact the administrator of this client to find out if you have write permissions."
+else
+	FileClose(ll_FileNo)
+	FileDelete(ls_FileName)
+end if
+
+Return ls_Rtn
+
+end function
+

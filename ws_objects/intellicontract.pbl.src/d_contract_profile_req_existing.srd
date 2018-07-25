@@ -1,0 +1,93 @@
+﻿$PBExportHeader$d_contract_profile_req_existing.srd
+$PBExportComments$[intellicontract] Requirements Painter for a known profile that has been saned
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=yes )
+summary(height=12 color="536870912" )
+footer(height=72 color="536870912" )
+detail(height=368 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=ctx_req_tmplt_element_ctx_req_tmplt_element_id dbname="ctx_req_tmplt_element.ctx_req_tmplt_element_id" )
+ column=(type=long updatewhereclause=yes name=ctx_req_tmplt_element_ctx_req_profile_id dbname="ctx_req_tmplt_element.ctx_req_profile_id" )
+ column=(type=long updatewhereclause=yes name=ctx_req_tmplt_element_ctx_rqmnt_category_id dbname="ctx_req_tmplt_element.ctx_rqmnt_category_id" )
+ column=(type=char(150) updatewhereclause=yes name=element_name dbname="ctx_req_tmplt_element.element_name" )
+ column=(type=long updatewhereclause=yes name=element_sort dbname="ctx_req_tmplt_element.element_sort" )
+ column=(type=long updatewhereclause=yes name=value_type dbname="ctx_req_tmplt_element.value_type" )
+ column=(type=char(40) updatewhereclause=yes name=dddw_name dbname="ctx_req_tmplt_element.dddw_name" )
+ column=(type=long updatewhereclause=yes name=ctx_req_tmplt_element_show_word_ico dbname="ctx_req_tmplt_element.show_word_ico" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=elements_id dbname="ctx_elements.ctx_elements_id" )
+ column=(type=long update=yes updatewhereclause=yes name=ctx_req_profile_hdr_id dbname="ctx_elements.ctx_req_profile_hdr_id" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=char_value dbname="ctx_elements.char_value" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=integer_value dbname="ctx_elements.integer_value" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=money_value dbname="ctx_elements.money_value" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_value dbname="ctx_elements.date_value" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=field_value dbname="ctx_elements.field_value" )
+ column=(type=char(2000) update=yes updatewhereclause=yes name=clause dbname="ctx_elements.clause" )
+ column=(type=long updatewhereclause=yes name=ctx_elements_ctc_hilgt_w dbname="ctx_elements.ctc_hilgt_w" )
+ column=(type=long updatewhereclause=yes name=ctx_elements_ctx_hilgt_h dbname="ctx_elements.ctx_hilgt_h" )
+ column=(type=long updatewhereclause=yes name=ctx_elements_ctx_hilgt_y dbname="ctx_elements.ctx_hilgt_y" )
+ column=(type=long updatewhereclause=yes name=ctx_elements_ctx_hilgt_x dbname="ctx_elements.ctx_hilgt_x" )
+ column=(type=long update=yes updatewhereclause=yes name=ctx_elements_ctx_page dbname="ctx_elements.ctx_page" )
+ column=(type=long update=yes updatewhereclause=yes name=ctx_req_tmplt_element_id dbname="ctx_elements.ctx_req_tmplt_element_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=record_id dbname="ctx_elements.record_id" )
+ column=(type=char(100) updatewhereclause=yes name=category_name dbname="ctx_rqmnt_category.category_name" )
+ column=(type=long updatewhereclause=yes name=image_length dbname="image_length" )
+ column=(type=char(100) updatewhereclause=yes name=ctx_req_profile_rqmnt_name dbname="ctx_req_profile.rqmnt_name" )
+ retrieve="  SELECT ctx_req_tmplt_element.ctx_req_tmplt_element_id,   
+         ctx_req_tmplt_element.ctx_req_profile_id,   
+         ctx_req_tmplt_element.ctx_rqmnt_category_id,   
+			ctx_req_tmplt_element.element_name,   
+         ctx_req_tmplt_element.element_sort,   
+         ctx_req_tmplt_element.value_type,   
+         ctx_req_tmplt_element.dddw_name,   
+			ctx_req_tmplt_element.show_word_ico,
+         ctx_elements.ctx_elements_id,   
+         ctx_elements.ctx_req_profile_hdr_id,   
+         ctx_elements.char_value,   
+         ctx_elements.integer_value,   
+         ctx_elements.money_value,   
+         ctx_elements.date_value,   
+         ctx_elements.field_value, 
+    		ctx_elements.clause,   
+        	ctx_elements.ctc_hilgt_w,   
+         ctx_elements.ctx_hilgt_h,   
+         ctx_elements.ctx_hilgt_y,   
+         ctx_elements.ctx_hilgt_x,   
+         ctx_elements.ctx_page , 
+			ctx_elements.ctx_req_tmplt_element_id,
+			ctx_elements.record_id ,  
+			ctx_rqmnt_category.category_name,
+         Image_Length = IsNull(Datalength(ctx_elements.image_file),0),
+			ctx_req_profile.rqmnt_name
+
+    FROM ctx_req_tmplt_element,   
+         ctx_elements  ,
+			ctx_req_profile,
+			ctx_req_profile_hdr,
+			ctx_rqmnt_category
+   WHERE 
+			( ctx_elements.ctx_req_profile_hdr_id = ctx_req_profile_hdr.ctx_req_profile_hdr_id ) and
+			( ctx_req_profile_hdr.ctx_req_profile_id = ctx_req_profile.ctx_req_profile_id ) and
+			( ctx_rqmnt_category.ctx_rqmnt_category_id = ctx_req_tmplt_element.ctx_rqmnt_category_id ) and
+			( ctx_elements.ctx_req_tmplt_element_id = ctx_req_tmplt_element.ctx_req_tmplt_element_id ) and  
+         ( ( ctx_elements.ctx_req_profile_hdr_id = :al_profile_id ) )    
+" update="ctx_elements" updatewhere=0 updatekeyinplace=no arguments=(("al_profile_id", number))  sort="ctx_req_tmplt_element_ctx_req_profile_id A ctx_req_tmplt_element_ctx_rqmnt_category_id A element_sort A " )
+group(level=1 header.height=76 trailer.height=0 by=("ctx_req_tmplt_element_ctx_rqmnt_category_id" ) header.color="536870912" trailer.color="536870912" )
+text(band=header.1 alignment="1" text="Value" border="0" color="33554432" x="2226" y="8" height="52" width="123" html.valueishtml="0"  name=t_1 visible="0"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=header.1 id=24 alignment="2" tabsequence=32766 border="0" color="8388608" x="41" y="8" height="56" width="3552" format="[general]" html.valueishtml="0"  name=category_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+groupbox(band=detail text=""border="5" color="0" x="37" y="12" height="88" width="3557"  name=gb_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="50" y="32" height="52" width="1605" format="[general]" html.valueishtml="0"  name=element_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+button(band=detail text="+" enabled=yes action="0" border="0" color="0" x="3502" y="20" height="76" width="87" vtextalign="0" htextalign="0"  name=b_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+bitmap(band=detail filename="note.bmp" x="2999" y="24" height="72" width="82" border="0"  name=p_1 visible="1~tif( value_type =  5,1,0)" )
+column(band=detail id=11 alignment="0" tabsequence=40 border="5" color="0" x="2231" y="32" height="52" width="32" format="[general]" html.valueishtml="0"  name=char_value visible="1~tif ( value_type = 3,1,0)" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=15 alignment="0" tabsequence=30 border="5" color="0" x="2231" y="32" height="52" width="759" format="[general]" html.valueishtml="0"  name=field_value visible="1~tif ( value_type = 2,1,if( value_type = 5,1, 0) )" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=14 alignment="0" tabsequence=50 border="5" color="0" x="2231" y="36" height="52" width="731" format="MM/DD/YYYY" html.valueishtml="0"  name=date_value visible="1~tif ( value_type = 1,1,0)" editmask.mask="MM/DD/YYYY" editmask.imemode=0 editmask.focusrectangle=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=16 alignment="0" tabsequence=10 border="5" color="33554432" x="41" y="116" height="224" width="3552" format="[general]" html.valueishtml="0"  name=clause visible="1"  slideup=allabove edit.limit=2000 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0 edit.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=12 alignment="0" tabsequence=20 border="5" color="0" x="2231" y="32" height="52" width="727" format="[general]" html.valueishtml="0"  name=integer_value visible="1~tif ( value_type = 4,1, 0       )" edit.name="###,###.00" editmask.mask="###,###.00" editmask.imemode=0 editmask.focusrectangle=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=13 alignment="0" tabsequence=60 border="5" color="0" x="2231" y="32" height="52" width="731" format="[general]" html.valueishtml="0"  name=money_value visible="1~tif( value_type =6,1,0)" editmask.mask="$###,###,###.00" editmask.imemode=0 editmask.focusrectangle=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+compute(band=footer alignment="0" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="0" x="14" y="4" height="68" width="823" format="[general]" html.valueishtml="0"  name=page_1 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+button(band=detail text="" filename="Word_IsEmpty.jpg" enabled=yes action="0" border="0" color="0" x="3607" y="8" height="104" width="119" vtextalign="0" htextalign="0"  name=b_editword_isempty visible="1~tif( ctx_req_tmplt_element_show_word_ico = 0 or isNull(elements_id) or IsNull(image_length) or image_length > 0,0,1)"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+button(band=detail text="" filename="Word_NotEmpty.jpg" enabled=yes action="0" border="0" color="0" x="3607" y="8" height="104" width="119" vtextalign="0" htextalign="0"  name=b_editword_notempty visible="1~tif( ctx_req_tmplt_element_show_word_ico = 0 or isNull(elements_id) or IsNull(image_length) or image_length <= 0,0,1)"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

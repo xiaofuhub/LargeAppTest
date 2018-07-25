@@ -1,0 +1,73 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="content-ie6.css" />
+<title>IE Security Set</title>
+
+</head>
+<body id="content_body">
+<!--googleoff: index-->
+<!-- BEGIN PAGE CONTENT WRAPPER -->
+<div id="pneumonic">
+  <h1 class="ColdFusion">IntelliSoft Group Inc.</h1>
+</div>
+<div id="page_content_wrapper">
+  <!-- BEGIN BREADCRUMBS -->
+  <div id="breadcrumb">
+    <!-- BEGIN BREADCRUMBS -->
+    <div class="nav">
+      <dl class="page">
+				<dd class="prev"><a accesskey="p" class="prev" href="troubleshooting.htm" title="troubleshooting"><img src="images/prev.gif" alt="Previous" /></a></dd><dd class="next"><a accesskey="n" class="next" href="OCX Issue.htm" title="ActiveX controls(OCX) registering failed"><img src="images/next.gif" alt="Next" /></a></dd>
+
+      </dl>
+    </div>
+    <div class="hierarchy"> <a href="index.htm">Intellisoft</a>/<a href="Troubleshooting.htm">Troubleshooting</a>/ <a href="ie_security.htm"><b>IE Security Set</b></a></div>
+    <!-- END BREADCRUMBS -->
+  </div>
+  <!-- END BREADCRUMBS -->
+  <!-- BEGIN PAGE TITLE -->
+  <!--googleon: index-->
+  <h1>IE security level set </h1>
+  <!--googleoff: index-->
+  <!-- END PAGE TITLE -->
+  <!-- BEGIN CONTENT WRAPPER -->
+  <div id="content_wrapper">
+    <!--googleon: index-->
+    <div>
+<h2>Symptoms</h2>
+<p align="left">Appeon  Xcelerator plug-in cannot be loaded</p>
+<h2>Cause</h2>
+<p align="left">This  issue occurs if ActiveX controls are prevented from running on your computer.  ActiveX controls may not run for one or both the following reasons:</p>
+<ol>
+  <li>Microsoft  Internet Explorer may be configured to block ActiveX controls from running.</li>
+  <li>A  firewall or a proxy server that exists between your computer and the Live  Meeting conference center may be configured to block ActiveX controls.</li>
+</ol>
+<h2>Resolution</h2>
+<p align="left">To  resolve this issue, enable ActiveX controls in Internet Explorer. ?To do this, follow these steps: </p>
+<ol>
+  <li>Start  Internet Explorer.</li>
+  <li>On  the <strong>Tools</strong> menu, click <strong>Internet Options</strong>.</li>
+  <li>In  the <strong>Internet  Options</strong> dialog box, click  the <strong>Security</strong> tab, and then click <strong>Internet</strong></li>
+  <li>Under <strong>Security  level for this zone</strong>,  click <strong>Custom Level</strong>.</li>
+  <li>Under <strong>ActiveX  controls and plug-ins</strong>,  set all the following options: </li>
+
+<p align="left"><strong>Download signed  ActiveX controls				Enable</strong> or <strong>Prompt</strong><br />
+    <strong>Run ActiveX controls  and plug-ins 					 Enable</strong> or <strong>Prompt</strong><br />
+    <strong>Script ActiveX  controls marked safe for scripting			 Enable</strong> or <strong>Prompt</strong> </p>
+
+  <li>Click  OK, click Yes, and then click OK.</li>
+</ol>
+<p align="left"><strong>Note:</strong><br />
+  If  you still receive the error message that is mentioned in the  &quot;Symptoms&quot; section after you follow these steps, it is likely that a  firewall or a proxy server that exists between your computer and the Live  Meeting conference center is blocking the ActiveX controls. In this scenario,  request that your Information Technology (IT) department stop blocking ActiveX  controls to your computer or that your IT department add *.placeware.com to the  list of trusted domains in the firewall or proxy server configuration.</p>
+<h2>&nbsp;</h2>
+      <h2 class="h2nobreak"><br clear="both" />
+</h2>
+</div>
+  </div>
+  </div>
+<div id="related"></div>
+<br clear="both" />
+</body>
+</html>

@@ -1,0 +1,23 @@
+﻿$PBExportHeader$d_security_roles_report.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 1 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no print.columns=2 print.columns.width=2601 )
+header(height=132 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=char(30) updatewhereclause=yes name=security_modules_module_name dbname="security_modules.module_name" )
+ column=(type=char(30) updatewhereclause=yes name=security_sub_module_sub_module_name dbname="security_sub_module.sub_module_name" )
+ column=(type=char(50) updatewhereclause=yes name=security_rights_action_action_name dbname="security_rights_action.action_name" )
+ column=(type=long updatewhereclause=yes name=security_roles_rights_value_id dbname="security_roles_rights.value_id" )
+ column=(type=char(50) updatewhereclause=yes name=security_roles_role_name dbname="security_roles.role_name" )
+ column=(type=long updatewhereclause=yes name=security_rights_action_dddw_type dbname="security_rights_action.dddw_type" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"security_modules~" )  TABLE(NAME=~"security_rights_action~" )  TABLE(NAME=~"security_sub_module~" )  TABLE(NAME=~"security_roles_rights~" )  TABLE(NAME=~"security_roles~" ) COLUMN(NAME=~"security_modules.module_name~") COLUMN(NAME=~"security_sub_module.sub_module_name~") COLUMN(NAME=~"security_rights_action.action_name~") COLUMN(NAME=~"security_roles_rights.value_id~") COLUMN(NAME=~"security_roles.role_name~") COLUMN(NAME=~"security_rights_action.dddw_type~")    JOIN (LEFT=~"security_rights_action.module_id~"    OP =~"=~"RIGHT=~"security_modules.module_id~" )    JOIN (LEFT=~"security_sub_module.sub_module_id~"    OP =~"=~"RIGHT=~"security_rights_action.sub_module_id~" )    JOIN (LEFT=~"security_sub_module.module_id~"    OP =~"=~"RIGHT=~"security_modules.module_id~" )    JOIN (LEFT=~"security_rights_action.action_id~"    OP =~"=~"RIGHT=~"security_roles_rights.action_id~" )    JOIN (LEFT=~"security_roles_rights.role_id~"    OP =~"=~"RIGHT=~"security_roles.role_id~" )WHERE(    EXP1 =~"security_roles.role_id~"   OP =~"=~"    EXP2 =~":role_id~" ) ) ARG(NAME = ~"role_id~" TYPE = number) " arguments=(("role_id", number)) )
+group(level=1 header.height=0 trailer.height=0 by=("security_modules_module_name" ) header.color="536870912" trailer.color="536870912" )
+group(level=2 header.height=64 trailer.height=0 by=("security_sub_module_sub_module_name" ) header.color="536870912" trailer.color="536870912" )
+compute(band=header.2 alignment="0" expression=" security_modules_module_name + ~" -> ~" +  security_sub_module_sub_module_name "border="0" color="0" x="64" y="4" height="56" width="1362" format="[general]"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="59" y="8" height="52" width="704" format="[general]"  name=security_rights_action_action_name edit.limit=50 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text=" Access Report For"border="0" color="0" x="59" y="24" height="96" width="850"  font.face="Segoe UI" font.height="-14" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="0" expression=" security_roles_role_name + ~" Role~""border="0" color="0" x="914" y="24" height="96" width="1106"  font.face="Segoe UI" font.height="-14" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="if( security_rights_action_dddw_type =1, if( security_roles_rights_value_id =1, 'Full Access', 'No Access' ), if(  security_roles_rights_value_id =0, 'No Access', if(  security_roles_rights_value_id = 1, 'Read Access', 'Read Write Access')))"border="0" color="0" x="937" y="8" height="52" width="503"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+
+sparse(names="security_rights_action_action_name")htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

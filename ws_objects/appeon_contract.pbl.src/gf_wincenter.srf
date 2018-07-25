@@ -1,0 +1,49 @@
+﻿$PBExportHeader$gf_wincenter.srf
+global type gf_wincenter from function_object
+end type
+
+forward prototypes
+global subroutine gf_wincenter (window aw_name)
+end prototypes
+
+global subroutine gf_wincenter (window aw_name);
+Environment lenv_System
+Integer li_ScrWidth,li_ScrHeight
+window	lw_parent
+long		ll_x, ll_y
+
+window	lw_MDI
+
+if aw_name.WindowState = Maximized! then return 
+
+GetEnvironment(lenv_System)
+
+li_ScrWidth = PixelsToUnits(lenv_System.ScreenWidth, XPixelsToUnits!)
+li_ScrHeight = PixelsToUnits(lenv_System.ScreenHeight, YPixelsToUnits!)
+
+choose case aw_name.WindowType
+	case Main!,Popup!,Child!
+		
+		lw_MDI = aw_name.parentwindow()
+		if isvalid(lw_mdi) then
+
+			if aw_name.WorkSpaceWidth() + 60 >= lw_mdi.workSpaceWidth() then
+				ll_x = 0
+			else
+				ll_x = (lw_MDI.workSpacewidth() - aw_name.workSpacewidth() - 55 )/2 
+			end if
+
+			if aw_name.WorkSpaceHeight() + 200 >= lw_mdi.workSpaceHeight() then
+				ll_y = 0
+			else
+				ll_y = (lw_MDI.workSpaceHeight() - aw_name.workspaceHeight() - 196 )/2
+			end if
+			aw_name.Move(ll_x , ll_y)
+		else
+			aw_name.Move((li_ScrWidth - aw_name.WorkspaceWidth())/2 , (li_ScrHeight - aw_name.workSpaceHeight())/2 )
+		end if
+	case MDI! , MDIHelp!,Response!
+		aw_name.Move((li_ScrWidth - aw_name.workspaceWidth())/2 , (li_ScrHeight - aw_name.WorkSpaceHeight())/2 )
+end choose
+end subroutine
+

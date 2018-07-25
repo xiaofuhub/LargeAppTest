@@ -1,0 +1,40 @@
+﻿$PBExportHeader$appeonpopmenu.srf
+global type appeonpopmenu from function_object
+end type
+
+forward prototypes
+global subroutine appeonpopmenu (datawindow adw_dw, integer nx, integer ny)
+end prototypes
+
+global subroutine appeonpopmenu (datawindow adw_dw, integer nx, integer ny);//==============================================================================
+// 
+// Copyright ? 2001-2006 Appeon, Inc. and its subsidiaries. All rights reserved.
+// 
+//------------------------------------------------------------------------------
+// Function: appeonpopmenu()
+//------------------------------------------------------------------------------
+// Description: 
+//				Programmatically invoke the Appeon DataWindow right mouse button menu 
+//				on a specific DataWindow control
+// 
+// Arguments: 
+//		datawindow	adw_dw		
+//		integer   	nx    		
+//		integer   	ny    		
+//	
+// Returns:  (none)
+//------------------------------------------------------------------------------
+// Author:	APPEON		Date: 2005-11
+//------------------------------------------------------------------------------
+// Revision History: 
+//				1.0   Initial version
+//==============================================================================
+
+AppeonExtFuncs funs
+funs = Create AppeonExtFuncs
+
+funs.Of_PopMenu(adw_dw, nx, ny)
+
+Destroy funs
+end subroutine
+

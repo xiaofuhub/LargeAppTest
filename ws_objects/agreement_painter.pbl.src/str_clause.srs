@@ -1,0 +1,14 @@
+﻿$PBExportHeader$str_clause.srs
+$PBExportComments$Create by Jack 11/20/2006
+global type str_clause from structure
+	long		al_clause_id
+	decimal { 1 }		adec_revision
+	string		as_clause_name
+	string		as_clause_file
+	integer		ai_type
+	integer		al_merge_field_count
+	integer		al_require_field_count
+	long		al_clause_id_arr[]
+	boolean		ab_batch_update
+end type
+

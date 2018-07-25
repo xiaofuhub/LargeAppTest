@@ -1,0 +1,14 @@
+﻿$PBExportHeader$str_add_audit.srs
+global type str_add_audit from structure
+	long		doc_id
+	decimal { 1 }		revision
+	string		action
+	string		filename
+	string		doc_from_type
+	string		doc_from_name
+	string		notes
+	string		doc_ext
+	str_sertifi_doc		astr_sertifi_doc
+	long		approve_id
+end type
+

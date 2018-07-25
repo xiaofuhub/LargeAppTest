@@ -1,0 +1,8 @@
+﻿$PBExportHeader$str_doc_info.srs
+global type str_doc_info from structure
+	decimal { 1 }		ver_num
+	date		ver_date
+	string		doc_name
+	string		create_by
+end type
+

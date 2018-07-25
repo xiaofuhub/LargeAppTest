@@ -1,0 +1,99 @@
+﻿$PBExportHeader$f_report_storage.srf
+global type f_report_storage from function_object
+end type
+
+forward prototypes
+global function any f_report_storage (long al_srs_id, string as_filepath, long al_rowcount, datetime adt_from, datetime adt_to, string as_note, string as_runfrom)
+end prototypes
+
+global function any f_report_storage (long al_srs_id, string as_filepath, long al_rowcount, datetime adt_from, datetime adt_to, string as_note, string as_runfrom);//====================================================================
+//$<Function>: f_report_storage
+//$<Arguments>:
+// 	%ScriptArgs%
+//$<Return>:  integer
+//$<Description>: 
+//$<Author>: (Appeon) Stephen 05.25.2017 (V15.4-WebView Reporting Functionality)
+//--------------------------------------------------------------------
+//$<Modify History>:
+//====================================================================
+integer  li_new, li_rtn, li_pos, li_rep
+long      ll_pk_id 
+string    ls_file_name
+string    ls_note
+string    ls_extend
+boolean lb_save
+datetime ldt_run
+
+ChangeDirectory(gs_current_path)
+select replace_exist, report_note  into :li_rep, :ls_note from sys_report_storage  where srs_id = :al_srs_id;
+if sqlca.sqlcode <> 0 then 
+	filedelete(as_filepath)
+	return -1
+end if
+if li_rep = 0 or isnull(li_rep) then 
+	li_new = 1
+else
+	li_new = 0
+end if
+
+ls_file_name = mid(as_filepath, lastpos(as_filepath, "\") +1)
+ls_extend = mid(as_filepath, lastpos(as_filepath, ".") +1)
+if pos(ls_file_name, ".") > 0 then
+	if mid(ls_file_name, lastpos(ls_file_name, '.') +1) = ls_extend then
+		ls_file_name = left(ls_file_name, lastpos(ls_file_name, '.') - 1)
+	end if
+end if
+lb_save = false
+ldt_run = datetime(today(), now())
+if not(as_note = "" or isnull(as_note)) then	ls_note = as_note
+if li_new = 0 then
+	select pk_id into :ll_pk_id from sys_report_storage_files where srs_id = :al_srs_id and do_not_delete  =0;
+	if ll_pk_id > 0 then
+		delete from sys_report_storage_files where srs_id = :al_srs_id and do_not_delete  =0 and pk_id <> :ll_pk_id;
+		update sys_report_storage_files
+			  set date_run = :ldt_run,
+					file_name = :ls_file_name,
+				  file_type = :ls_extend,
+				  file_note = :ls_note,				 
+				  run_from = :as_runfrom
+		 where pk_id = :ll_pk_id;
+		
+		lb_save = true
+	end if
+end if
+
+if li_new = 1 or (li_new = 0 and ll_pk_id< 1) then		
+	select max(pk_id) into :ll_pk_id from sys_report_storage_files;
+	if isnull(ll_pk_id) then ll_pk_id = 0 
+	ll_pk_id = ll_pk_id +1
+	insert into sys_report_storage_files(pk_id, srs_id, date_run, file_name, file_type, file_note, run_from, do_not_delete)
+			 values(:ll_pk_id, :al_srs_id, :ldt_run, :ls_file_name, :ls_extend, :ls_note, :as_runfrom, 0);
+	
+	lb_save = true
+end if		
+
+if lb_save = true then
+	gnv_appeondb.of_StartQueue()
+	if al_rowcount > 0 then
+		update sys_report_storage_files set rec_count = :al_rowcount where pk_id = :ll_pk_id using sqlca;		
+	end if
+	if not isnull(adt_from) and adt_from > datetime("1900-01-01" )then
+		update sys_report_storage_files set date_from =:adt_from , date_to=:adt_to where pk_id = :ll_pk_id using sqlca;		
+	end if
+	
+	n_appeon_storage_area lnv_storage_area
+	li_rtn = lnv_storage_area.of_upload_report_file(ll_pk_id, as_filepath)
+	if li_rtn >0 then
+		Messagebox("Upload Report File","Complete!")
+		commit using sqlca;
+		filedelete(as_filepath)
+	else
+		filedelete(as_filepath)
+		rollback using sqlca;
+		return -1
+	end if
+	gnv_appeondb.of_CommitQueue()
+end if
+return 1
+end function
+

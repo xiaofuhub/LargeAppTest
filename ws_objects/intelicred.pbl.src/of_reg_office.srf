@@ -1,0 +1,70 @@
+﻿$PBExportHeader$of_reg_office.srf
+global type of_reg_office from function_object
+end type
+
+forward prototypes
+global function integer of_reg_office ()
+end prototypes
+
+global function integer of_reg_office ();
+//////////////////////////////////////////////////////////////////////
+// Function: of_reg_office
+// Arguments:
+// 	N/M
+//--------------------------------------------------------------------
+// Return:  Integer
+//--------------------------------------------------------------------
+// Author:	 Harry 08.31.2016.
+//--------------------------------------------------------------------
+// Description:  Registry Editor for word2013 and above
+//--------------------------------------------------------------------
+//////////////////////////////////////////////////////////////////////
+
+Boolean lb_IS_OS64
+String ls_os64 =""
+String ls_reg_subkeys[]
+String ls_reg_key[]
+String ls_key_item
+Int i, j
+Int li_ret
+Boolean lb_exists_item
+
+If Integer(gs_word_version_num) < 15  Then Return 0 // word2013 and above
+
+lb_IS_OS64 = of_is_os64()
+
+If lb_IS_OS64 Then ls_os64 = "Wow6432Node\"  //64 bit OS
+
+ls_key_item = "DocObject"
+
+ls_reg_key[1] = "HKEY_CLASSES_ROOT\" + ls_os64 + "CLSID\{F4754C9B-64F5-4B40-8AF4-679732AC0607}"
+ls_reg_key[2] = "HKEY_CLASSES_ROOT\" + ls_os64 + "CLSID\{00020906-0000-0000-C000-000000000046}"
+ls_reg_key[3] = "HKEY_CLASSES_ROOT\" + ls_os64 + "CLSID\{00020820-0000-0000-C000-000000000046}"
+ls_reg_key[4] = "HKEY_CLASSES_ROOT\" + ls_os64 + "CLSID\{00020830-0000-0000-C000-000000000046}"
+ls_reg_key[5] = "HKEY_CLASSES_ROOT\Word.Document.12"
+ls_reg_key[6] = "HKEY_CLASSES_ROOT\Excel.Sheet.12"
+
+For i = 1 To UpperBound(ls_reg_key)
+	
+	li_ret = gnv_appeondll.of_RegistryKeys(ls_reg_key[i], ls_reg_subkeys)
+	
+	If li_ret = 1 Then
+		lb_exists_item = False
+		For j = 1 To UpperBound(ls_reg_subkeys)
+			If Lower( ls_reg_subkeys[j]) = Lower (ls_key_item) Then
+				lb_exists_item = True
+				Exit
+			End If
+		Next 
+		
+		If lb_exists_item Then Continue //Exists the key of DocObject
+		
+		// Register the key of DocObject
+		li_ret = gnv_appeondll.of_registryset(ls_reg_key[i]+ "\" + ls_key_item, "", RegString!, "")
+		if li_ret <> 1 Then Return -1
+	End If
+Next
+
+Return 1
+end function
+

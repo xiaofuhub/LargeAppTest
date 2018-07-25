@@ -1,0 +1,31 @@
+﻿$PBExportHeader$f_last_pos.srf
+$PBExportComments$Find last position of one string in another
+global type f_last_pos from function_object
+end type
+
+forward prototypes
+global function long f_last_pos (readonly string ls_string, readonly string ls_word)
+end prototypes
+
+global function long f_last_pos (readonly string ls_string, readonly string ls_word);string	ls_test1, ls_test2
+long	li_pos, li_count = -1
+//////////////////////////////////
+ls_test1	=	lower(trim(ls_string))
+li_pos	=	LenA(ls_test1)
+if PosA(ls_test1,ls_word) > 0 then
+	li_count	=	LenA(ls_word)
+	do while true
+		li_count	++
+		ls_test2	=	RightA(ls_test1, li_count)
+		li_pos	=	PosA(ls_test2, ls_word)
+		if li_pos > 0 then 
+			li_count	=	LenA(ls_test1) - li_count
+			return li_count
+			exit
+		end if
+	loop
+else
+	return 0
+end if
+end function
+

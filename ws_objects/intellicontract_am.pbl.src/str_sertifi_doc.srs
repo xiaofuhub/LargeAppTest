@@ -1,0 +1,15 @@
+﻿$PBExportHeader$str_sertifi_doc.srs
+global type str_sertifi_doc from structure
+	long		al_doc_id
+	string		as_es_apicode
+	string		as_es_fileid
+	string		as_es_docid
+	string		as_es_sender
+	string		as_es_email
+	boolean		ab_signed
+	string		as_type
+	string		as_checkout_status
+	string		as_checkout_by
+	string		as_filename
+end type
+

@@ -1,0 +1,10 @@
+﻿$PBExportHeader$d_rpt_par_numbers_app_out_to_md.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=datetime updatewhereclause=yes name=net_dev_action_items_action_date dbname="net_dev_action_items.action_date" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"net_dev_action_items~" )  TABLE(NAME=~"code_lookup~" ALIAS=~"code_lookup_a~" )  TABLE(NAME=~"code_lookup~" ALIAS=~"code_lookup_b~" ) COLUMN(NAME=~"net_dev_action_items.action_date~")    JOIN (LEFT=~"net_dev_action_items.action_type~"    OP =~"=~"RIGHT=~"code_lookup_a.lookup_code~" )    JOIN (LEFT=~"net_dev_action_items.action_status~"    OP =~"=~"RIGHT=~"code_lookup_b.lookup_code~" )WHERE(    EXP1 =~"( ( net_dev_action_items.prac_id~"   OP =~"=~"    EXP2 =~":prac_id )~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"(net_dev_action_items.app_id~"   OP =~"=~"    EXP2 =~":app_id)~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"( net_dev_action_items.active_status~"   OP =~"=~"    EXP2 =~"1 )~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"( code_lookup_a.code~"   OP =~"=~"    EXP2 =~"'App Out To MD' )~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"( code_lookup_b.code~"   OP =~"=~"    EXP2 =~"'Complete' ) )~" ) ) ARG(NAME = ~"prac_id~" TYPE = number)  ARG(NAME = ~"app_id~" TYPE = number) " arguments=(("prac_id", number),("app_id", number)) )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="18" y="4" height="64" width="503" format="mm/dd/yyyy"  name=net_dev_action_items_action_date edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

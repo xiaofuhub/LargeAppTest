@@ -1,0 +1,36 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "imaging.pbl" "";
+@end;
+@begin Objects 
+ "d_app_select.srd" "imaging.pbl";
+ "d_dddw_image_types.srd" "imaging.pbl";
+ "d_email_get_msg.srd" "imaging.pbl";
+ "d_ezflow_setup.srd" "imaging.pbl";
+ "d_image_found_records.srd" "imaging.pbl";
+ "d_image_painter.srd" "imaging.pbl";
+ "d_image_path.srd" "imaging.pbl";
+ "d_image_ver_summary_record_view.srd" "imaging.pbl";
+ "d_pd_image_list.srd" "imaging.pbl";
+ "d_pd_image_list_from_type.srd" "imaging.pbl";
+ "d_pd_image_list_required.srd" "imaging.pbl";
+ "d_pd_image_record_4_correct.srd" "imaging.pbl";
+ "f_open_image_from_database.srf" "imaging.pbl";
+ "m_pfe_cst_imaging.srm" "imaging.pbl";
+ "pfc_cst_u_image_preview.sru" "imaging.pbl";
+ "uo_image_tool.sru" "imaging.pbl";
+ "w_app_select.srw" "imaging.pbl";
+ "w_convert_format.srw" "imaging.pbl";
+ "w_ezflow_setup.srw" "imaging.pbl";
+ "w_get_image.srw" "imaging.pbl";
+ "w_image_convert_test_utl.srw" "imaging.pbl";
+ "w_image_correct.srw" "imaging.pbl";
+ "w_image_preview.srw" "imaging.pbl";
+ "w_image_type_painter.srw" "imaging.pbl";
+ "w_image_view_expand.srw" "imaging.pbl";
+ "w_license_agreement.srw" "imaging.pbl";
+ "w_overwrite_msg.srw" "imaging.pbl";
+ "w_overwrite_msg12.srw" "imaging.pbl";
+ "w_store_image_in_db.srw" "imaging.pbl";
+ "w_work_flow_setup.srw" "imaging.pbl";
+@end;

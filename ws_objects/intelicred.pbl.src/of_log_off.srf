@@ -1,0 +1,38 @@
+﻿$PBExportHeader$of_log_off.srf
+global type of_log_off from function_object
+end type
+
+forward prototypes
+global function integer of_log_off ()
+end prototypes
+
+global function integer of_log_off ();//Start Code Change ---- 10.05.2006 #687 maha
+//new function created 100506 maha.  Called from application close
+datetime ldt_date 
+ldt_date = datetime(today(),now())
+
+//---------Begin Modified by (Appeon)Alfee 06.26.2013 for V141 ISG-CLX--------
+//<$Reason>Get and Save Custom colors for current User - Ken.Guo 01.06.2009
+String ls_custom_colors
+Boolean lb_update_colors
+n_cst_string_appeon lnv_string_appeon
+If gl_custom_colors_org[] = gl_custom_colors[] Then
+	lb_update_colors = False
+Else
+	lb_update_colors = True
+	lnv_string_appeon.of_longarraytostring(gl_custom_colors[],';',False,ls_custom_colors)
+End If
+
+gnv_appeondb.of_startqueue( )
+	If lb_update_colors Then
+		Update security_users Set custom_colors = :ls_custom_colors Where user_id = :gs_user_id ; //Added by Ken.Guo on 2009-01-06
+	End If
+	insert into security_login_tracking(user_id,user_password,log_date,pass_fail,client_ip) values (:gs_user_id,'',:ldt_date,'LOG OFF',:gs_client_ip); //Evan 08.26.2009 --- Audit Client IP
+gnv_appeondb.of_commitqueue( )
+//insert into security_login_tracking(user_id,user_password,log_date,pass_fail,client_ip) values (:gs_user_id,'',:ldt_date,'LOG OFF',:gs_client_ip); //Evan 08.26.2009 --- Audit Client IP
+//commit using sqlca;
+//---------End Modified ------------------------------------------------------------------
+
+return 1
+end function
+

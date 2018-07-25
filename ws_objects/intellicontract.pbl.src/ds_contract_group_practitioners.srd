@@ -1,0 +1,50 @@
+﻿$PBExportHeader$ds_contract_group_practitioners.srd
+$PBExportComments$[intellicontract]
+release 9;
+datawindow(units=0 timer_interval=0 color=80269524 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=64 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=char(153) updatewhereclause=yes name=v_full_name_full_name dbname="v_full_name.full_name" )
+ column=(type=char(20) updatewhereclause=yes name=provider_id dbname="pd_basic.provider_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=record_id dbname="pd_basic.rec_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=prac_id dbname="pd_basic.prac_id" )
+ column=(type=long update=yes updatewhereclause=yes name=ctx_id dbname="ctx_location_pracs.ctx_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=parent_comp_id dbname="ctx_location_pracs.parent_comp_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=loc_id dbname="ctx_location_pracs.loc_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ctx_location_pracs_status dbname="ctx_location_pracs.status" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=pracs_gp_rec_id dbname="ctx_location_pracs.gp_rec_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ctx_location_pracs_record_id dbname="ctx_location_pracs.record_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=group_practice_rec_id dbname="group_practice.rec_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ctx_location_pracs_prac_id dbname="ctx_location_pracs.prac_id" )
+ retrieve="  SELECT DISTINCT v_full_name.full_name,   
+         pd_basic.provider_id,   
+         pd_basic.rec_id,   
+         pd_basic.prac_id,   
+         ctx_location_pracs.ctx_id,   
+         ctx_location_pracs.parent_comp_id,   
+         ctx_location_pracs.loc_id,   
+         ctx_location_pracs.status,   
+         ctx_location_pracs.gp_rec_id,   
+         ctx_location_pracs.record_id,   
+         group_practice.rec_id,   
+         ctx_location_pracs.prac_id  
+    FROM v_full_name LEFT OUTER JOIN pd_board_specialty ON v_full_name.prac_id = pd_board_specialty.prac_id, 
+			group_practice LEFT OUTER JOIN pd_address ON group_practice.rec_id = pd_address.gp_id 
+			               LEFT OUTER JOIN ctx_location_pracs ON group_practice.rec_id = ctx_location_pracs.gp_rec_id,   
+         pd_basic  
+   WHERE ( pd_address.prac_id = pd_basic.prac_id ) and  
+         ( pd_address.prac_id = v_full_name.prac_id ) and  
+         ( ( group_practice.rec_id = :ai_group ) )    
+" arguments=(("ai_group", number))  sort="v_full_name_full_name A " )
+text(band=header alignment="2" text="Practitioner" border="6" color="0" x="5" y="8" height="48" width="987" html.valueishtml="0"  name=v_full_name_full_name_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Status" border="6" color="0" x="1006" y="8" height="48" width="731" html.valueishtml="0"  name=status_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="5" y="4" height="52" width="987" format="[general]" html.valueishtml="0"  name=v_full_name_full_name visible="1" edit.limit=153 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=10 border="5" color="0" x="1006" y="4" height="52" width="731" format="[general]" html.valueishtml="0"  name=ctx_location_pracs_status visible="1" dddw.name=dddw_contract_practitioner_contract_stat dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.hscrollbar=yes dddw.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+
+sparse(names="v_full_name_full_name")htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

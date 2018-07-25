@@ -1,0 +1,106 @@
+﻿$PBExportHeader$d_alarm_am_ai_notification_users.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=120 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=doc_id dbname="ctx_am_ai_notification.doc_id" )
+ column=(type=long updatewhereclause=yes name=seq_id dbname="ctx_am_ai_notification.seq_id" )
+ column=(type=char(255) updatewhereclause=yes name=alm_message dbname="ctx_am_ai_notification.alm_message" )
+ column=(type=char(1) updatewhereclause=yes name=alm_enabled dbname="ctx_am_ai_notification.alm_enabled" )
+ column=(type=char(40) updatewhereclause=yes name=alm_table dbname="ctx_am_ai_notification.alm_table" )
+ column=(type=char(40) updatewhereclause=yes name=alm_column dbname="ctx_am_ai_notification.alm_column" )
+ column=(type=long updatewhereclause=yes name=alm_notification_days dbname="ctx_am_ai_notification.alm_notification_days" )
+ column=(type=datetime updatewhereclause=yes name=alm_last_notification_sent dbname="ctx_am_ai_notification.alm_last_notification_sent" )
+ column=(type=long updatewhereclause=yes name=alm_post_notification_days dbname="ctx_am_ai_notification.alm_post_notification_days" )
+ column=(type=long updatewhereclause=yes name=alm_total_tries dbname="ctx_am_ai_notification.alm_total_tries" )
+ column=(type=long updatewhereclause=yes name=alm_action_item_posted dbname="ctx_am_ai_notification.alm_action_item_posted" )
+ column=(type=long updatewhereclause=yes name=alm_total_tries_counter dbname="ctx_am_ai_notification.alm_total_tries_counter" )
+ column=(type=long updatewhereclause=yes name=alm_frequency dbname="ctx_am_ai_notification.alm_frequency" )
+ column=(type=char(50) updatewhereclause=yes name=email_id dbname="security_users.email_id" )
+ column=(type=char(10) updatewhereclause=yes name=user_id dbname="ctx_am_ai_notification_users.user_id" )
+ column=(type=long updatewhereclause=yes name=ctx_id dbname="ctx_am_document.ctx_id" )
+ column=(type=char(200) updatewhereclause=yes name=doc_name dbname="ctx_am_document.doc_name" )
+ retrieve=" SELECT  ctx_am_ai_notification.doc_id,   
+ 	      ctx_am_ai_notification.seq_id,   
+         ctx_am_ai_notification.alm_message,   
+         ctx_am_ai_notification.alm_enabled,   
+         ctx_am_ai_notification.alm_table,   
+         ctx_am_ai_notification.alm_column,   
+         ctx_am_ai_notification.alm_notification_days,   
+         ctx_am_ai_notification.alm_last_notification_sent,   
+         ctx_am_ai_notification.alm_post_notification_days,   
+         ctx_am_ai_notification.alm_total_tries,   
+         ctx_am_ai_notification.alm_action_item_posted,   
+         ctx_am_ai_notification.alm_total_tries_counter,   
+         ctx_am_ai_notification.alm_frequency,   
+         security_users.email_id,   
+         ctx_am_ai_notification_users.user_id,
+			ctx_am_document.ctx_id,  
+			ctx_am_document.doc_name
+    FROM ctx_am_ai_notification,   
+         ctx_am_ai_notification_users,   
+         security_users,
+			ctx_am_document  
+   WHERE ( ctx_am_ai_notification_users.doc_id = ctx_am_ai_notification.doc_id ) and  
+   	   ( ctx_am_ai_notification_users.seq_id = ctx_am_ai_notification.seq_id ) and  
+         ( ctx_am_ai_notification_users.alm_table = ctx_am_ai_notification.alm_table ) and  
+         ( ctx_am_ai_notification_users.alm_column = ctx_am_ai_notification.alm_column ) and  
+			( ctx_am_ai_notification_users.doc_id = ctx_am_document.doc_id ) and 
+         ( ctx_am_ai_notification_users.user_id = security_users.user_id ) and   
+         ( ( ctx_am_ai_notification.alm_enabled = '1' ) )   " )
+text(band=header alignment="2" text="Ctx Am Ai Notification
+Doc Id" border="0" color="33554432" x="9" y="8" height="104" width="224" html.valueishtml="0"  name=ctx_am_ai_notification_doc_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Am Ai Notification
+Seq Id" border="0" color="33554432" x="242" y="8" height="104" width="192" html.valueishtml="0"  name=ctx_am_ai_notification_seq_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Am Ai Notification
+Alm Message" border="0" color="33554432" x="443" y="8" height="104" width="389" html.valueishtml="0"  name=ctx_am_ai_notification_alm_message_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Am Ai Notification
+Alm Enabled" border="0" color="33554432" x="841" y="8" height="104" width="462" html.valueishtml="0"  name=ctx_am_ai_notification_alm_enabled_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Am Ai Notification
+Alm Table" border="0" color="33554432" x="1312" y="8" height="104" width="242" html.valueishtml="0"  name=ctx_am_ai_notification_alm_table_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Am Ai Notification
+Alm Column" border="0" color="33554432" x="1563" y="8" height="104" width="302" html.valueishtml="0"  name=ctx_am_ai_notification_alm_column_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Am Ai Notification
+Alm Notification Days" border="0" color="33554432" x="1874" y="8" height="104" width="462" html.valueishtml="0"  name=ctx_am_ai_notification_alm_notification_days_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Am Ai Notification
+Alm Last Notification Sent" border="0" color="33554432" x="2345" y="8" height="104" width="553" html.valueishtml="0"  name=ctx_am_ai_notification_alm_last_notification_sent_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Am Ai Notification
+Alm Post Notification Days" border="0" color="33554432" x="2907" y="8" height="104" width="567" html.valueishtml="0"  name=ctx_am_ai_notification_alm_post_notification_days_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Am Ai Notification
+Alm Total Tries" border="0" color="33554432" x="3483" y="8" height="104" width="462" html.valueishtml="0"  name=ctx_am_ai_notification_alm_total_tries_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Am Ai Notification
+Alm Action Item Posted" border="0" color="33554432" x="3954" y="8" height="104" width="498" html.valueishtml="0"  name=ctx_am_ai_notification_alm_action_item_posted_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Am Ai Notification
+Alm Total Tries Counter" border="0" color="33554432" x="4462" y="8" height="104" width="503" html.valueishtml="0"  name=ctx_am_ai_notification_alm_total_tries_counter_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Am Ai Notification
+Alm Frequency" border="0" color="33554432" x="4974" y="8" height="104" width="462" html.valueishtml="0"  name=ctx_am_ai_notification_alm_frequency_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Security Users
+Email Id" border="0" color="33554432" x="5445" y="8" height="104" width="261" html.valueishtml="0"  name=security_users_email_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Am Ai Notification Users
+User Id" border="0" color="33554432" x="5714" y="8" height="104" width="293" html.valueishtml="0"  name=ctx_am_ai_notification_users_user_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Ctx Am Document Ctx Id" border="0" color="0" x="6016" y="4" height="56" width="293" html.valueishtml="0"  name=ctx_am_document_ctx_id_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="33554432" x="9" y="8" height="64" width="224" format="[general]" html.valueishtml="0"  name=doc_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="33554432" x="242" y="8" height="64" width="192" format="[general]" html.valueishtml="0"  name=seq_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="443" y="8" height="64" width="389" format="[general]" html.valueishtml="0"  name=alm_message visible="1" edit.limit=255 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="841" y="8" height="64" width="462" format="[general]" html.valueishtml="0"  name=alm_enabled visible="1" edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="33554432" x="1312" y="8" height="64" width="242" format="[general]" html.valueishtml="0"  name=alm_table visible="1" edit.limit=40 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="33554432" x="1563" y="8" height="64" width="302" format="[general]" html.valueishtml="0"  name=alm_column visible="1" edit.limit=40 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="1" tabsequence=32766 border="0" color="33554432" x="1874" y="8" height="64" width="462" format="[general]" html.valueishtml="0"  name=alm_notification_days visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="33554432" x="2345" y="8" height="64" width="553" format="[shortdate] [time]" html.valueishtml="0"  name=alm_last_notification_sent visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="1" tabsequence=32766 border="0" color="33554432" x="2907" y="8" height="64" width="567" format="[general]" html.valueishtml="0"  name=alm_post_notification_days visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="1" tabsequence=32766 border="0" color="33554432" x="3483" y="8" height="64" width="462" format="[general]" html.valueishtml="0"  name=alm_total_tries visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="1" tabsequence=32766 border="0" color="33554432" x="3954" y="8" height="64" width="498" format="[general]" html.valueishtml="0"  name=alm_action_item_posted visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="1" tabsequence=32766 border="0" color="33554432" x="4462" y="8" height="64" width="503" format="[general]" html.valueishtml="0"  name=alm_total_tries_counter visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="1" tabsequence=32766 border="0" color="33554432" x="4974" y="8" height="64" width="462" format="[general]" html.valueishtml="0"  name=alm_frequency visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="33554432" x="5445" y="8" height="64" width="261" format="[general]" html.valueishtml="0"  name=email_id visible="1" edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="0" color="33554432" x="5714" y="8" height="64" width="293" format="[general]" html.valueishtml="0"  name=user_id visible="1" edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="33554432" x="6016" y="12" height="52" width="293" format="[general]" html.valueishtml="0"  name=ctx_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=0 border="0" color="33554432" x="6322" y="16" height="52" width="393" html.valueishtml="0"  name=doc_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Ctx Am Document Doc Name" border="0" color="0" x="6318" y="4" height="56" width="398" html.valueishtml="0"  name=ctx_am_document_doc_name_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

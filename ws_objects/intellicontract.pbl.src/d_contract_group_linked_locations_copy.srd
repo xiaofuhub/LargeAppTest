@@ -1,0 +1,74 @@
+﻿$PBExportHeader$d_contract_group_linked_locations_copy.srd
+$PBExportComments$Create by Jack 06/19/2007
+release 9;
+datawindow(units=0 timer_interval=0 color=80269524 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=68 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=200 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=practice_type dbname="group_practice.practice_type" )
+ column=(type=char(150) updatewhereclause=yes name=group_practice_street dbname="group_practice.street" )
+ column=(type=char(150) updatewhereclause=yes name=group_practice_street_2 dbname="group_practice.street_2" )
+ column=(type=char(25) updatewhereclause=yes name=group_practice_city dbname="group_practice.city" )
+ column=(type=decimal(0) updatewhereclause=yes name=state dbname="group_practice.state" )
+ column=(type=char(11) updatewhereclause=yes name=group_practice_zip dbname="group_practice.zip" )
+ column=(type=char(30) updatewhereclause=yes name=tax_id dbname="group_practice.tax_id" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=group_number dbname="ctx_loc.group_number" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=local dbname="ctx_loc.local" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=custom_1 dbname="ctx_loc.custom_1" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=custom_2 dbname="ctx_loc.custom_2" )
+ column=(type=long update=yes updatewhereclause=yes name=ctx_id dbname="ctx_loc.ctx_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=parent_comp_id dbname="ctx_loc.parent_comp_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=rec_id dbname="group_practice.rec_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=loc_id dbname="ctx_loc.loc_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=record_id dbname="ctx_loc.record_id" )
+ column=(type=long updatewhereclause=yes name=selected dbname="selected" )
+ retrieve="  SELECT group_practice.practice_type,   
+         group_practice.street,   
+         group_practice.street_2,   
+         group_practice.city,   
+         group_practice.state,   
+         group_practice.zip,   
+         group_practice.tax_id,   
+         ctx_loc.group_number,   
+         ctx_loc.local,    
+         ctx_loc.custom_1,    
+         ctx_loc.custom_2,   
+         ctx_loc.ctx_id,   
+         ctx_loc.parent_comp_id,   
+         group_practice.rec_id,   
+         ctx_loc.loc_id,   
+         ctx_loc.record_id,
+			0 as selected  
+    FROM group_practice,   
+         ctx_loc  
+   WHERE ( ctx_loc.loc_id = group_practice.rec_id ) and  
+         ( ( ctx_loc.ctx_id = :ctx_id )) AND  
+          ctx_loc.loc_id <> 0    
+" arguments=(("ctx_id", number))  sort="group_practice_street A " )
+text(band=header alignment="0" text="Contact" border="6" color="33554432" x="14" y="8" height="52" width="224" html.valueishtml="0"  name=t_3 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Address" border="6" color="33554432" x="251" y="8" height="52" width="923" html.valueishtml="0"  name=t_2 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Tax ID" border="6" color="33554432" x="1189" y="8" height="52" width="507" html.valueishtml="0"  name=tax_id_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Group #" border="6" color="33554432" x="1710" y="8" height="52" width="507" html.valueishtml="0"  name=group_number_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Locale" border="6" color="33554432" x="2231" y="8" height="52" width="507" html.valueishtml="0"  name=local_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Custom 1" border="6" color="33554432" x="2752" y="8" height="52" width="507" html.valueishtml="0"  name=custom_1_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Custom 2" border="6" color="33554432" x="3273" y="8" height="52" width="974" html.valueishtml="0"  name=custom_2_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+bitmap(band=detail filename="Module-Contract-detail_grey.bmp" x="37" y="36" height="128" width="146" border="6"  name=p_contact_info pointer="Help!" visible="0~tif( selected = 0,1,0)" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="33554432" x="864" y="128" height="52" width="256" format="[general]" html.valueishtml="0"  name=group_practice_zip visible="1" edit.name="###-##-####" editmask.mask="#####-####" editmask.imemode=0 editmask.focusrectangle=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="247" y="128" height="64" width="448" format="[general]" html.valueishtml="0"  name=group_practice_city visible="1" edit.limit=25 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="0" x="704" y="128" height="64" width="155" format="[general]" html.valueishtml="0"  name=state  tag="State" visible="1" dddw.name=d_dddw_code_lookup dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0 dddw.autoretrieve=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="247" y="68" height="52" width="869" format="[general]" html.valueishtml="0"  name=group_practice_street_2 visible="1" edit.limit=150 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=8 alignment="0" tabsequence=10 border="5" color="33554432" x="1705" y="64" height="60" width="507" format="[general]" html.valueishtml="0"  name=group_number visible="1" edit.name="###-##-####" editmask.mask="#################" editmask.imemode=0 editmask.focusrectangle=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=9 alignment="0" tabsequence=20 border="5" color="33554432" x="2226" y="64" height="60" width="507" format="[general]" html.valueishtml="0"  name=local pointer="Size!" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=10 alignment="0" tabsequence=30 border="5" color="33554432" x="2747" y="64" height="60" width="507" format="[general]" html.valueishtml="0"  name=custom_1 pointer="Size!" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=11 alignment="0" tabsequence=40 border="5" color="33554432" x="3269" y="64" height="60" width="974" format="[general]" html.valueishtml="0"  name=custom_2 pointer="Size!" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=15 alignment="0" tabsequence=50 border="0" color="0" x="247" y="236" height="76" width="517" format="[general]" html.valueishtml="0"  name=loc_id visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=13 alignment="0" tabsequence=60 border="0" color="0" x="795" y="232" height="76" width="512" format="[general]" html.valueishtml="0"  name=parent_comp_id visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+bitmap(band=detail filename="Module-Contract-detail_green.bmp" x="37" y="36" height="128" width="146" border="6"  name=p_contact_info_1 pointer="Help!" visible="0~tif( selected = 1,1,0)" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="247" y="8" height="64" width="869" format="[general]" html.valueishtml="0"  name=group_practice_street visible="1" edit.limit=150 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="33554432" x="1184" y="64" height="60" width="507" format="[general]" html.valueishtml="0"  name=tax_id visible="1" edit.name="###-##-####" editmask.mask="##-#########" editmask.imemode=0 editmask.focusrectangle=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

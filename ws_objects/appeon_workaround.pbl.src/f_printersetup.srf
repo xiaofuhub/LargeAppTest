@@ -1,0 +1,211 @@
+﻿$PBExportHeader$f_printersetup.srf
+global type f_printersetup from function_object
+end type
+
+forward prototypes
+global function long f_printersetup (integer ai_check)
+end prototypes
+
+global function long f_printersetup (integer ai_check);//------------------------------------------------------------------------------
+// Function: f_printersetup()
+//------------------------------------------------------------------------------
+// Description: Setup Printers
+// Arguments:
+//		1 -- Check if Customer PDFPrinter is setuped
+//		2 -- Check if IntelliSoft PDF Writer is setuped
+//		3 -- Check if Both Customer PDFPrinter and IntelliSoft PDF Writer are setuped
+// Return Value: 
+//		0 -- The Printer which Checked has been setuped
+//		1 -- Customer PDFPrinter has not been setuped and don't select setup
+//		2 -- IntelliSoft PDF Writer has not been setuped and don't select setup
+//		3 -- 1 and 2
+//		4 -- Customer PDFPrinter has not been setuped but select setup
+//		6 -- 2 and 4
+//		8 -- IntelliSoft PDF Writer has not been setuped but select setup
+//		9 -- 1 and 8
+//   12 -- 4 and 8
+//------------------------------------------------------------------------------
+// Author:	Scofield		Date: 2007-11-08
+//------------------------------------------------------------------------------
+// Revision History: 
+//				1.0   Initial version
+//==============================================================================
+
+String	ls_Printers,ls_Pnt[],ls_CusPdfPntPath,ls_IntePdfPntPath,ls_DownDir,ls_PntDlPath
+long		ll_TabPos,ll_EnterPos,ll_Cycle,ll_Count,ll_Rtn,ll_RetVal
+Boolean	lb_BorwseFolder
+
+n_appeon_download lnv_download
+
+Constant	String CUSTOM_PDF_PNT_NAME = "Customer PDFPrinter"
+Constant	String CUSTOM_PDF_PNT_FILE = "Customer PDFPrinter.exe"
+
+Constant	String INTELLISOFT_PDF_WRITER_NAME = "IntelliSoft PDF Writer"
+Constant	String INTELLISOFT_PDF_WRITER_FILE = "PDFPrinter.exe"
+
+Long ll_null
+String ls_null
+
+SetNull(ll_null)
+SetNull(ls_null)
+
+if AppeonGetClientType() = "WEB" then
+	//---------Begin Modified by (Appeon)Stephen 02.17.2014 for file paths modify --------
+	//ls_DownDir = gs_dir_path + "intellicred\"
+	ls_DownDir = gs_dir_path + gs_DefDirName+ "\"
+	//---------End Modfiied ------------------------------------------------------
+else
+	ls_DownDir = Gs_Current_Directory + "\"
+end if
+
+ls_Printers = PrintGetPrinters() + "~n"
+
+//----------Begin Modified ------------------------------------------------------
+//<$Reason>The PrintGetPrinter() fun can get unicode printer names in PB11.5
+do While Len(ls_Printers) > 0
+	ll_TabPos = Pos(ls_Printers,"~t")
+	ll_EnterPos = Pos(ls_Printers,"~n")
+	
+	if ll_TabPos <= 0 or ll_EnterPos <= 0 then exit
+
+	ls_Pnt[UpperBound(ls_Pnt) + 1] = Left(ls_Printers,ll_TabPos - 1)
+	ls_Printers = Mid(ls_Printers, ll_EnterPos + 1)
+loop
+//do While LenA(ls_Printers) > 0
+//	ll_TabPos = PosA(ls_Printers,"~t")
+//	ll_EnterPos = PosA(ls_Printers,"~n")
+//	
+//	if ll_TabPos <= 0 or ll_EnterPos <= 0 then exit
+//
+//	ls_Pnt[UpperBound(ls_Pnt) + 1] = LeftA(ls_Printers,ll_TabPos - 1)
+//	ls_Printers = MidA(ls_Printers, ll_EnterPos + 1)
+//loop
+//----------End Modified ------------------------------------------------------
+
+//////////////////////////////////////////////////////////////////////////////////
+ll_Count = UpperBound(ls_Pnt)
+
+Select PntDownLoadPath into :ls_PntDlPath from icred_settings;
+
+if IsNull(ls_PntDlPath) then ls_PntDlPath = ""
+
+if ai_Check = 1 or ai_Check = 3 then
+	for ll_Cycle = 1 to ll_Count
+		if CUSTOM_PDF_PNT_NAME = ls_Pnt[ll_Cycle] then Exit
+	next
+	
+	if ll_Cycle > ll_Count then
+		ll_RetVal += 1
+		ls_CusPdfPntPath = ls_DownDir + CUSTOM_PDF_PNT_FILE
+
+		/*if Not FileExists(ls_CusPdfPntPath) then*/
+		//-----------Begin Added by Alfee on 12.24.2008 --------------------------------
+		//<$Reason>Setup PDF Printer for Windows version 
+		if AppeonGetClientType() = "PB" AND FileExists(ls_CusPdfPntPath) THEN
+			ll_Rtn = MessageBox(gnv_app.iapp_object.DisplayName,"The local machine has no " + CUSTOM_PDF_PNT_NAME + " installed. ~r~n~r~nDo you want to install it now?",Question!,YesNo!)
+			if ll_Rtn = 1 then
+				ll_RetVal += 3 
+				//Run(ls_CusPdfPntPath)				
+				ShellExecuteA (ll_null, "open",ls_CusPdfPntPath, ls_Null, ls_Null, 4)	//Bug 3406 -  Alfee 02.07.2013	
+			else
+				lb_BorwseFolder = true
+			end if
+		else
+		//-----------End Added ---------------------------------------------------------
+			ll_Rtn = MessageBox(gnv_app.iapp_object.DisplayName,"The local machine has no " + CUSTOM_PDF_PNT_NAME + " installed. ~r~n~r~nDo you want to download it now?",Question!,YesNo!)
+			if ll_Rtn = 1 then
+				OpenWithParm(w_appeon_gifofwait,CUSTOM_PDF_PNT_FILE + " is being downloaded...")
+				//w_appeon_gifofwait.p_1.PictureName = ls_DndPicName
+				ll_Rtn = lnv_download.of_downloadfile(ls_PntDlPath, ls_CusPdfPntPath)
+				Close(w_appeon_gifofwait)
+				if ll_Rtn <> 0 then
+					MessageBox(gnv_app.iapp_object.DisplayName,"Failed to download " + CUSTOM_PDF_PNT_FILE + ". Please call support. ",Exclamation!)
+				else
+					ll_Rtn = MessageBox(gnv_app.iapp_object.DisplayName,CUSTOM_PDF_PNT_FILE + " has been successfully downloaded ~r~nto the '" + ls_DownDir + "' folder.~r~n~r~nDo you want to install it now?",Question!,YesNo!)
+					if ll_Rtn = 1 then
+						ll_RetVal += 3
+						//Run(ls_CusPdfPntPath)
+						ShellExecuteA (ll_null, "open",ls_CusPdfPntPath, ls_Null, ls_Null, 4)	//Bug 3406 -  Alfee 02.07.2013	
+					else
+						lb_BorwseFolder = true
+					end if
+				end if
+			end if
+		end if //alfee 12.24.2008
+		/*else
+			ll_Rtn = MessageBox(gnv_app.iapp_object.DisplayName,"The local machine has no " + CUSTOM_PDF_PNT_NAME + " installed. Do you want to unzip and then install it?",Question!,YesNo!)
+			if ll_Rtn = 1 then
+				ll_RetVal += 3
+				Run(ls_CusPdfPntPath)
+			end if
+		end if*/
+	end if
+end if
+//////////////////////////////////////////////////////////////////////////////////
+
+if ai_Check = 2 or ai_Check = 3 then
+	for ll_Cycle = 1 to ll_Count
+		//if INTELLISOFT_PDF_WRITER_NAME = ls_Pnt[ll_Cycle] then Exit
+		//---------Begin Modified by (Appeon)Stephen 02.17.2014 for file paths modify --------
+		//if INTELLISOFT_PDF_WRITER_NAME = ls_Pnt[ll_Cycle] and DirectoryExists("C:\Intellicred\PDFPrinter") then Exit	//long.zhang 10.12.2011
+		//if INTELLISOFT_PDF_WRITER_NAME = ls_Pnt[ll_Cycle] and DirectoryExists(gs_dir_path + gs_DefDirName+"\PDFPrinter") then Exit
+		if INTELLISOFT_PDF_WRITER_NAME = ls_Pnt[ll_Cycle] and DirectoryExists(Mid(gs_temp_pdf, 1, Len(gs_temp_pdf) - Len("\temp\SampleOut.PDF"))) then Exit //alfee 04.04.2014	
+		//---------End Modfiied ------------------------------------------------------
+	next
+	
+	if ll_Cycle > ll_Count then
+		ll_RetVal += 2
+		ls_IntePdfPntPath = ls_DownDir + INTELLISOFT_PDF_WRITER_FILE
+		
+		/*if Not FileExists(ls_IntePdfPntPath) then*/
+		//-----------Begin Added by Alfee on 12.24.2008 --------------------------------
+		//<$Reason>Setup PDF Printer for Windows version 
+		if AppeonGetClientType() = "PB" AND FileExists(ls_IntePdfPntPath) THEN
+			ll_Rtn = MessageBox(gnv_app.iapp_object.DisplayName,"The local machine has no " + INTELLISOFT_PDF_WRITER_NAME + " installed. ~r~n~r~nDo you want to install it now?",Question!,YesNo!)
+			if ll_Rtn = 1 then
+				ll_RetVal += 6 
+				//Run(ls_IntePdfPntPath)
+				ShellExecuteA (ll_null, "open",ls_IntePdfPntPath, ls_Null, ls_Null, 4)	//Bug 3406 -  Alfee 02.07.2013	
+			else
+				lb_BorwseFolder = true
+			end if
+		else
+		//-----------End Added ---------------------------------------------------------		
+			ll_Rtn = MessageBox(gnv_app.iapp_object.DisplayName,"The local machine has no " + INTELLISOFT_PDF_WRITER_NAME + " installed. ~r~n~r~nDo you want to download it now?",Question!,YesNo!)
+			if ll_Rtn = 1 then
+				OpenWithParm(w_appeon_gifofwait,INTELLISOFT_PDF_WRITER_FILE + " is being downloaded...")
+				//w_appeon_gifofwait.p_1.PictureName = ls_DndPicName
+				ll_Rtn = lnv_download.of_downloadfile(ls_PntDlPath, ls_IntePdfPntPath)
+				Close(w_appeon_gifofwait)
+				if ll_Rtn <> 0 then
+					MessageBox(gnv_app.iapp_object.DisplayName,"Failed to download " + INTELLISOFT_PDF_WRITER_FILE + ". Please call support. ",Exclamation!)
+				else
+					ll_Rtn = MessageBox(gnv_app.iapp_object.DisplayName,INTELLISOFT_PDF_WRITER_FILE + " has been successfully downloaded ~r~nto the '" + ls_DownDir + "' folder.~r~n~r~nDo you want to install it now?",Question!,YesNo!)
+					if ll_Rtn = 1 then
+						ll_RetVal += 6
+						//Run(ls_IntePdfPntPath)
+						ShellExecuteA (ll_null, "open",ls_IntePdfPntPath, ls_Null, ls_Null, 4)	//Bug 3406 -  Alfee 02.07.2013	
+					else
+						lb_BorwseFolder = true
+					end if
+				end if
+			end if
+		end if //alfee 12.24.2008
+		/*else
+			ll_Rtn = MessageBox(gnv_app.iapp_object.DisplayName,"The local machine has no " + INTELLISOFT_PDF_WRITER_NAME + " installed. ~r~n~r~nDo you want to install it?",Question!,YesNo!)
+			if ll_Rtn = 1 then
+				ll_RetVal += 6
+				Run(ls_IntePdfPntPath)
+			end if
+		end if*/
+	end if
+end if
+
+if lb_BorwseFolder then
+	Run("explorer.exe " + ls_DownDir)
+end if
+
+return ll_RetVal
+
+end function
+

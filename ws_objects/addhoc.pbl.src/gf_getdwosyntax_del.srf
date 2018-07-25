@@ -1,0 +1,70 @@
+﻿$PBExportHeader$gf_getdwosyntax_del.srf
+$PBExportComments$(Appeon)Toney 06.10.2013 - V141 ISG-CLX
+global type gf_getdwosyntax_del from function_object
+end type
+
+forward prototypes
+global function string gf_getdwosyntax_del (string as_dwsyntax, string as_objname)
+end prototypes
+
+global function string gf_getdwosyntax_del (string as_dwsyntax, string as_objname);//====================================================================
+// Function: gf_GetDWOSyntax()
+//--------------------------------------------------------------------
+// Description:
+//--------------------------------------------------------------------
+// Arguments:
+// 	value    string    as_dwSyntax
+// 	value    string    as_ObjName
+//--------------------------------------------------------------------
+// Returns:  string
+//--------------------------------------------------------------------
+// Author:	Scofield		Date: 2009-12-17
+//--------------------------------------------------------------------
+//	Copyright (c) 1999-2009 ContractLogix, All rights reserved.
+//--------------------------------------------------------------------
+// Modify History:
+//
+//====================================================================
+
+long		ll_Pos,ll_RowStart,ll_RowEnd
+long		ll_SecleftBraPos,ll_FirRighBraPos
+long		ll_LeftBracketCnts,ll_RightBracketCnts
+
+String	ls_CurLetter,ls_dwoSyntax
+
+CONSTANT STRING ENTERCHAR = "~r~n"
+
+if PosA(as_dwSyntax,"band=") > 0 then
+	as_dwSyntax = MidA(as_dwSyntax,LastPos(LeftA(as_dwSyntax,PosA(as_dwSyntax,"band=")),ENTERCHAR) + LenA(ENTERCHAR))
+end if
+
+ll_Pos = PosA(as_dwSyntax,"name=" + Lower(as_ObjName) + " ")
+if ll_Pos > 0 then
+	ll_RowStart = LastPos(LeftA(as_dwSyntax,ll_Pos),ENTERCHAR) + LenA(ENTERCHAR)
+	if ll_RowStart = LenA(ENTERCHAR) then ll_RowStart = 1
+	
+	ll_RowEnd = ll_RowStart
+	
+	ll_SecleftBraPos = PosA(as_dwSyntax,"(",PosA(as_dwSyntax,"(",ll_RowStart) + 1)
+	ll_FirRighBraPos = PosA(as_dwSyntax,")",ll_RowStart)
+	
+	if ll_SecleftBraPos > ll_FirRighBraPos then		//Adjust the performance
+		ll_RowEnd = ll_FirRighBraPos + 1
+	else
+		ll_LeftBracketCnts = 0
+		ll_RightBracketCnts = 0
+		do while ll_LeftBracketCnts = 0 or ll_LeftBracketCnts <> ll_RightBracketCnts or MidA(as_dwSyntax,ll_RowEnd,2) <> ENTERCHAR
+			ls_CurLetter = MidA(as_dwSyntax,ll_RowEnd,1)
+			if ls_CurLetter = "(" then ll_LeftBracketCnts++
+			if ls_CurLetter = ")" then ll_RightBracketCnts++
+			ll_RowEnd++
+		loop
+	end if
+
+	ls_dwoSyntax = MidA(as_dwSyntax,ll_RowStart,ll_RowEnd - ll_RowStart)
+end if
+
+Return ls_dwoSyntax
+
+end function
+

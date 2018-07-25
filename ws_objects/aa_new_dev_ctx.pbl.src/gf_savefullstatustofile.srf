@@ -1,0 +1,65 @@
+﻿$PBExportHeader$gf_savefullstatustofile.srf
+global type gf_savefullstatustofile from function_object
+end type
+
+forward prototypes
+global function long gf_savefullstatustofile (string as_filepath, powerobject apo_source)
+end prototypes
+
+global function long gf_savefullstatustofile (string as_filepath, powerobject apo_source);// (Appeon)Harry 06.04.2013 - V141 ISG-CLX
+//====================================================================
+// Function: gf_savefullstatustofile()
+//--------------------------------------------------------------------
+// Description:
+//--------------------------------------------------------------------
+// Arguments:
+// 	value    string         as_filepath
+// 	value    powerobject    apo_source
+//--------------------------------------------------------------------
+// Returns:  long
+//--------------------------------------------------------------------
+// Author:	Scofield		Date: 2010-01-14
+//--------------------------------------------------------------------
+//	Copyright (c) 1999-2009 ContractLogix, All rights reserved.
+//--------------------------------------------------------------------
+// Modify History:
+//
+//====================================================================
+
+long	ll_FileNo,ll_Cycle,ll_WriteCnts
+Blob	lblb_Context
+
+Object	lobj_Type
+
+DataWindow	ldw_Source
+DataStore	lds_Source
+
+CONSTANT LONG ONCE_COUNT = 32760
+
+lobj_Type = apo_Source.Typeof()
+
+if lobj_Type = DataWindow! then
+	ldw_Source = apo_Source
+	if ldw_Source.GetFullState(lblb_Context) < 0 then Return -1
+elseif lobj_Type = DataStore! then
+	lds_Source = apo_Source
+	if lds_Source.GetFullState(lblb_Context) < 0 then Return -1
+else
+	Return -1
+end if
+
+ll_FileNo = FileOpen(as_FilePath,StreamMode!,Write!,LockReadWrite!,Replace!)
+if ll_FileNo <= 0 then Return -1
+
+ll_WriteCnts = Ceiling(Len(lblb_Context) * 1.0 / ONCE_COUNT)
+
+for ll_Cycle = 1 to ll_WriteCnts
+	FileWrite(ll_FileNo,BlobMid(lblb_Context,(ll_Cycle - 1) * ONCE_COUNT + 1,ONCE_COUNT))
+next
+
+FileClose(ll_FileNo)
+
+Return 1
+
+end function
+

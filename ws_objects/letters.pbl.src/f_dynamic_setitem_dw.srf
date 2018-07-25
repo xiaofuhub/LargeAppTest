@@ -1,0 +1,68 @@
+﻿$PBExportHeader$f_dynamic_setitem_dw.srf
+$PBExportComments$[letters] Set item dynamically
+global type f_dynamic_setitem_dw from function_object
+end type
+
+forward prototypes
+global function integer f_dynamic_setitem_dw (u_dw adw, string as_column, string as_data, long al_row)
+end prototypes
+
+global function integer f_dynamic_setitem_dw (u_dw adw, string as_column, string as_data, long al_row);/******************************************************************************************************************
+**  [PUBLIC]   : f_dynamic_setitem_dw( /*u_dw adw*/, /*string as_column*/, /*string as_data*/, /*long al_row */)
+**==================================================================================================================
+**  Purpose   	: Since we are using dynamin datawindows and datastores we cannot be sure of the exact name of column.
+**               This function was created to replace existing code that did a check based on the login type (master etc). 
+**               This function will find the coulmn in the datastore/window that best fits it and set the value. This function may be 
+**               slower. 
+**==================================================================================================================
+**  Arguments 	: [u_dw]   adw         The requestor
+**    	      : [string] AS_COULMN   The name of the column
+**   	         : [string] AS_DATA     The data to be set
+**   	         : [long]   al_row      The row of which the data is to be set 
+**==================================================================================================================
+**  Returns   	: [long]     0 = Success, -1 Failure
+**              
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 27 December 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+
+LONG   ll_column_count
+LONG   LL_I
+STRING ls_coulumn_name
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+// check for nulls
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+if not f_validstr(as_column) or not f_validstr(string(al_row)) or not isvalid(adw) then 
+	return -1
+end if 
+
+//--------------------------- APPEON BEGIN ---------------------------
+//$<Delete> 08.23.2007 By: Evan
+//$<Reason> No use this object for this function.
+//n_cst_dwsrv lnv_cst_dwsrv
+//lnv_cst_dwsrv =  CREATE n_cst_dwsrv
+//---------------------------- APPEON END ----------------------------
+
+n_cst_dwsrv.of_setrequestor(adw)
+
+ll_column_count = long(adw.Describe("DataWindow.Column.Count"))
+FOR LL_i = 1 to ll_column_count
+	// get the column name
+	ls_coulumn_name = adw.Describe("#" + string(ll_i)+ ".Name")
+	if PosA(as_column,ls_coulumn_name) > 0 then 
+		n_cst_dwsrv.of_setItem(al_row,ls_coulumn_name,as_data)
+		return 0
+	end if 
+next
+
+return 0
+end function
+

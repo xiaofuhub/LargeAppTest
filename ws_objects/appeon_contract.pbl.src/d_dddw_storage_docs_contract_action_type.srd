@@ -1,0 +1,26 @@
+﻿$PBExportHeader$d_dddw_storage_docs_contract_action_type.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=1 grid.columnmove=no selected.mouse=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=char(75) updatewhereclause=yes name=sys_storage_docs_doc_name dbname="sys_storage_docs.doc_name" )
+ column=(type=long updatewhereclause=yes name=area_id dbname="sys_storage_docs.area_id" )
+ retrieve="  SELECT sys_storage_docs.doc_name,   
+         sys_storage_docs.area_id  
+    FROM facility,   
+         sys_storage_docs  
+   WHERE ( facility.facility_id = sys_storage_docs.area_id ) and  
+         (  facility.facility_id = 1 ) AND  
+         ( sys_storage_docs.doc_name IS NOT NULL) AND 
+         ( substring(sys_storage_docs.doc_name,1,5) <> 'case_' ) AND
+         ( substring(sys_storage_docs.doc_name,1,4) <> 'ind_' ) AND
+         ( substring(sys_storage_docs.doc_name,1,15) <> 'mailing_labels_' )
+ORDER BY sys_storage_docs.doc_name ASC   
+" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="9" y="0" height="56" width="1673" format="[general]" html.valueishtml="0"  name=sys_storage_docs_doc_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

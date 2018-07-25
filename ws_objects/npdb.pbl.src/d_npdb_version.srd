@@ -1,0 +1,18 @@
+﻿$PBExportHeader$d_npdb_version.srd
+$PBExportComments$used to let the user select a version
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=96 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=100 color="536870912" )
+table(column=(type=char(20) updatewhereclause=yes name=npdb_hdr_submission_filedate dbname="npdb_hdr.submission_filedate" )
+ column=(type=long updatewhereclause=yes name=npdb_hdr_id dbname="npdb_hdr.npdb_hdr_id" )
+ retrieve="PBSELECT( VERSION(400) DISTINCT ()TABLE(NAME=~"npdb_hdr~" )  TABLE(NAME=~"npdb_qrsd~" ) COLUMN(NAME=~"npdb_hdr.submission_filedate~") COLUMN(NAME=~"npdb_hdr.npdb_hdr_id~")    JOIN (LEFT=~"npdb_hdr.npdb_hdr_id~"    OP =~"=~"RIGHT=~"npdb_qrsd.npdb_hdr_id~" )WHERE(    EXP1 =~"npdb_hdr.prac_id~"   OP =~"=~"    EXP2 =~":al_prac_id~" ) ) ARG(NAME = ~"al_prac_id~" TYPE = number) " arguments=(("al_prac_id", number)) )
+text(band=header alignment="2" text="Version Date" border="0" color="0" x="9" y="4" height="92" width="1559" html.valueishtml="0"  name=npdb_hdr_submission_filedate_t visible="1"  font.face="Arial" font.height="-14" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="9" y="0" height="124" width="1559" format="[general]" html.valueishtml="0"  name=npdb_hdr_submission_filedate visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-14" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

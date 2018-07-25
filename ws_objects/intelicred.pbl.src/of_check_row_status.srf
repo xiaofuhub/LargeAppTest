@@ -1,0 +1,29 @@
+﻿$PBExportHeader$of_check_row_status.srf
+global type of_check_row_status from function_object
+end type
+
+forward prototypes
+global function string of_check_row_status (datawindow adw_data, long al_row)
+end prototypes
+
+global function string of_check_row_status (datawindow adw_data, long al_row);//Start Code Change ----10.14.2008 #V85 maha - new function created to get item status
+string ls_return
+integer i
+//debugbreak()
+//i = adw_data.getitemstatus(al_row,0,primary!)
+if adw_data.getitemstatus(al_row,0,primary!) = NewModified! then
+	ls_return = "new"
+elseif adw_data.getitemstatus(al_row,0,primary!) = New! then
+	ls_return = "newmod"
+elseif adw_data.getitemstatus(al_row,0,primary!) = DataModified!	 then
+	ls_return = "mod"
+elseif adw_data.getitemstatus(al_row,0,primary!) = NotModified!	 then
+	ls_return = "not"
+elseif isnull(adw_data.getitemstatus(al_row,0,primary!))	 then
+	ls_return = "null"
+end if
+
+return ls_return
+	
+end function
+

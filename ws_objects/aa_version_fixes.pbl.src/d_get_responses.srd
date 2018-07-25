@@ -1,0 +1,61 @@
+﻿$PBExportHeader$d_get_responses.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=68 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=60 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes name=npdb_hdr_id dbname="npdb_hdr.npdb_hdr_id" )
+ column=(type=long update=yes updatewhereclause=yes name=report_id dbname="npdb_hdr.report_id" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=doc_id dbname="npdb_hdr.doc_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=prac_id dbname="npdb_hdr.prac_id" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=entity_dbid dbname="npdb_hdr.entity_dbid" )
+ column=(type=char(14) update=yes updatewhereclause=yes name=passwd dbname="npdb_hdr.passwd" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=trans_cd dbname="npdb_hdr.trans_cd" )
+ column=(type=char(4) update=yes updatewhereclause=yes name=ver_num dbname="npdb_hdr.ver_num" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=submission_filename dbname="npdb_hdr.submission_filename" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=agent_dbid dbname="npdb_hdr.agent_dbid" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=submission_filedate dbname="npdb_hdr.submission_filedate" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=user_id dbname="npdb_hdr.user_id" )
+ column=(type=char(30) updatewhereclause=yes name=npdb_isubj_lname dbname="npdb_isubj.lname" )
+ column=(type=char(30) updatewhereclause=yes name=npdb_isubj_fname dbname="npdb_isubj.fname" )
+ column=(type=char(30) updatewhereclause=yes name=npdb_isubj_mname dbname="npdb_isubj.mname" )
+ column=(type=char(5) updatewhereclause=yes name=npdb_isubj_suffix dbname="npdb_isubj.suffix" )
+ column=(type=char(1) updatewhereclause=yes name=npdb_isubj_gender dbname="npdb_isubj.gender" )
+ column=(type=long updatewhereclause=yes name=reports_aval dbname="reports_aval" )
+ column=(type=decimal(0) updatewhereclause=yes name=verification_complete dbname="verification_complete" )
+ retrieve="  SELECT DISTINCT npdb_hdr.npdb_hdr_id,   
+         npdb_hdr.report_id,   
+         npdb_hdr.doc_id,   
+         npdb_hdr.prac_id,   
+         npdb_hdr.entity_dbid,   
+         npdb_hdr.passwd,   
+         npdb_hdr.trans_cd,   
+         npdb_hdr.ver_num,   
+         npdb_hdr.submission_filename,   
+         npdb_hdr.agent_dbid,   
+         npdb_hdr.submission_filedate,   
+         npdb_hdr.user_id,   
+         npdb_isubj.lname,   
+         npdb_isubj.fname,   
+         npdb_isubj.mname,   
+         npdb_isubj.suffix,   
+         npdb_isubj.gender, 
+          reports_aval = ( select count(*) from npdb_qrsd where npdb_qrsd.npdb_hdr_id = npdb_hdr.npdb_hdr_id and npdb_qrsd.report_id = npdb_hdr.report_id) 
+         ,verification_complete = (select response_code from verif_info where verif_info.doc_id = npdb_hdr.doc_id  )
+    FROM npdb_hdr,   
+         npdb_isubj  
+   WHERE ( npdb_hdr.npdb_hdr_id = npdb_isubj.npdb_hdr_id ) and  
+         ( npdb_hdr.report_id = npdb_isubj.report_id )    
+" )
+text(band=header alignment="2" text="Reports Aval" border="6" color="33554432" x="1234" y="8" height="52" width="640" html.valueishtml="0"  name=reports_aval_t visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="2" text="Practitioner Name" border="6" color="0" x="9" y="8" height="52" width="1216" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="2" text="Verification Complete" border="6" color="33554432" x="1883" y="8" height="52" width="576" html.valueishtml="0"  name=t_2 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+compute(band=detail alignment="0" expression=" npdb_isubj_lname +' , ' + npdb_isubj_fname "border="0" color="0" x="9" y="0" height="52" width="1216" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=18 alignment="0" tabsequence=32766 border="0" color="33554432" x="1234" y="0" height="52" width="640" format="[general]" html.valueishtml="0"  name=reports_aval visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="if (  isnull(verification_complete) , 'N0'   , 'YES')"border="0" color="33554432" x="1883" y="0" height="52" width="576" format="[GENERAL]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

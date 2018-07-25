@@ -1,0 +1,12 @@
+﻿$PBExportHeader$str_import_msg.srs
+$PBExportComments$(Appeon)Eugene 06.25.2013 - V141 ISG-CLX
+global type str_import_msg from structure
+	long		al_folder_id
+	long		al_sub_folder_id
+	string		as_filename[]
+	long		al_ctx_id
+	long		al_doc_id
+	long		al_ai_id
+	string		as_paste_way
+end type
+

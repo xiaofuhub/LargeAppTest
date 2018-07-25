@@ -1,0 +1,16 @@
+﻿$PBExportHeader$gf_selectscreen.srf
+global type gf_selectscreen from function_object
+end type
+
+forward prototypes
+global function integer gf_selectscreen (long al_data_view_id, ref long al_screen_id)
+end prototypes
+
+global function integer gf_selectscreen (long al_data_view_id, ref long al_screen_id);OpenWithParm(w_contract_selectscreen, al_data_view_id)
+
+if Message.DoubleParm = -1 then Return -1
+al_screen_id = Message.DoubleParm
+
+Return 1
+end function
+

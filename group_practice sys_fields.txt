@@ -1,0 +1,70 @@
+86	190000	0	prac_id	N	8	prac_id																8	0		
+86	190002	0	gp_id	I	5	Practice						N					N				0	10	0		
+86	190001	0	rec_id	N	8	rec_id																8	0		
+86	190003	1	mailing_address	N	6	Address Type	A	C	N	Address Type	description	Y					N				150	6	0		
+86	190004	20	street	C	150	Name/Street 1											Y					150	0		
+86	190005	25	street_2	C	150	Street											Y					150	0		
+86	190006	30	city	C	25	City											Y					25	0		
+86	190007	40	state	N	6	State		C	Y	State	Code	Y					Y				200	6	0		
+86	190008	45	zip	C	11	Zip											Y					11	0		
+86	190009	48	county	N	25	County		C	Y	County	Code	Y					Y				250	25	0		
+86	190010	50	country	N	6	Country		C	Y	Country	description	Y					Y				300	6	0		
+86	190011	54	phone	C	14	Phone							INTPHONE				Y					14	0		
+86	190012	55	ext	C	4	Ext											Y					4	0		
+86	190013	56	fax	C	14	Fax							INTPHONE				Y					14	0		
+86	190014	60	contact_person	C	6	Contact Person											Y					6	0		
+86	190015	70	tax_id	C	30	Tax ID											Y					30	0		
+86	190016	80	tax_id_other_1	C	30	Tax ID Other 1											Y					30	0		
+86	190017	90	tax_id_other_2	C	30	Tax ID Other 2											Y					30	0		
+86	190018	100	business_mgr	C	30	Business Manager											Y					30	0		
+86	190019	110	office_mgr	C	30	Office Manager											Y					30	0		
+86	190020	130	e_mail_address	C	75	Email Address											Y					75	0		
+86	190021	140	web_address	C	75	Web Address											Y					75	0		
+86	190022	150	mon_from	C	10	Mon From											Y					6	0		
+86	190023	160	mon_to	C	10	Mon To											Y					6	0		
+86	190024	170	tue_from	C	10	Tue From											Y					6	0		
+86	190025	180	tue_to	C	10	Tue To											Y					6	0		
+86	190026	190	wed_from	C	10	Wed From											Y					6	0		
+86	190027	200	wed_to	C	10	Wed To											Y					6	0		
+86	190028	210	thu_from	C	10	Thu From											Y					6	0		
+86	190029	220	thu_to	C	10	Thu To											Y					6	0		
+86	190030	230	fri_from	C	10	Fri From											Y					6	0		
+86	190031	240	fri_to	C	10	Fri To											Y					6	0		
+86	190032	250	sat_from	C	10	Sat From											Y					6	0		
+86	190033	260	sat_to	C	10	Sat To											Y					6	0		
+86	190034	270	sun_from	C	10	Sun From											Y					6	0		
+86	190035	280	sun_to	C	10	Sun To											Y					6	0		
+86	190036	290	mon_from2	C	10	Mon from 2											Y					6	0		
+86	190037	300	mon_to2	C	10	Mon to 2											Y					6	0		
+86	190038	301	cust_6	C	30	Custom 6																25			
+86	190039	310	tue_from2	C	10	Tue From 2											Y					6	0		
+86	190040	311	cust_7	C	30	Custom 7																25			
+86	190041	320	tue_to2	C	10	Tue To 2											Y					6	0		
+86	190042	321	cust_8	C	30	Custom 8																25			
+86	190043	330	wed_from2	C	10	Wed From 2											Y					6	0		
+86	190044	331	cust_9	C	30	Custom 9																25			
+86	190045	340	wed_to2	C	10	Wed To 2											Y					6	0		
+86	190046	341	cust_10	C	30	Custom 10																25			
+86	190047	350	thu_from2	C	10	Thu From 2											Y					6	0		
+86	190048	351	cust_d1	D	10	Custom Date 1																10			
+86	190049	360	thu_to2	C	10	Thu To 2											Y					6	0		
+86	190050	361	cust_d2	D	10	Custom Date 2																10			
+86	190051	370	fri_from2	C	10	Fri From 2											Y					6	0		
+86	190052	380	fri_to2	C	10	Fri to 2											Y					6	0		
+86	190053	387	suite_apart	C	100	Suite/Apt No																25			
+86	190054	390	sat_from2	C	10	Sat From 2											Y					6	0		
+86	190055	400	sat_to2	C	10	Sat To 2											Y					6	0		
+86	190056	410	sun_from2	C	10	Sun From 2											Y					6	0		
+86	190057	420	sun_to2	C	10	Sun From 2											Y					6	0		
+86	190058	430	routine_visit_appt	C	20	Routine Visit											Y					20	0		
+86	190059	440	urgent_visit_appt	C	20	Urgen Visit											Y					20	0		
+86	190060	450	emergency_visit_appt	C	20	Emergency Visit											Y					20	0		
+86	190061	460	non_emergency_appt	C	20	Non Emergency Visit											Y					20	0		
+86	190062	520	handicapped_access	N	5	Handicapped Access		C	Y	Yes/No	Code	Y					Y				100	5	0		
+86	190063	530	public_transportation	I	5	Public Transportation						Y					Y				100	5	0		
+86	190064	540	cust_1	C	30	Custom 1							INTPHONE				Y					30	0		
+86	190065	550	cust_2	C	30	Custom 2			N				INTPHONE				Y					30	0		
+86	190066	560	cust_3	C	30	Custom 3											Y					30	0		
+86	190067	570	cust_4	C	30	Custom 4											Y					30	0		
+86	190068	580	cust_5	C	30	Custom 5											Y					30	0		
+86	190069	5000	office_in_home	N	1	Office In Home						Y					Y				100	1	0		

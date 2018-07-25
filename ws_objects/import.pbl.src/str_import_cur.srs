@@ -1,0 +1,8 @@
+﻿$PBExportHeader$str_import_cur.srs
+global type str_import_cur from structure
+	string		s_name
+	n_import_ds		ds_rep
+	datawindow		dw_rep
+	string		s_type
+end type
+

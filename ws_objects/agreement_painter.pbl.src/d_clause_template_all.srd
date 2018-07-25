@@ -1,0 +1,31 @@
+﻿$PBExportHeader$d_clause_template_all.srd
+$PBExportComments$Create by Jack 11/16/2006
+release 11.5;
+datawindow ( units=0 timer_interval=0 processing=1 color=1073741824 brushmode=0 transparency=0 gradient.color=8421504 gradient.transparency=0 gradient.angle=0 gradient.repetition.mode=0 gradient.repetition.count=0 gradient.repetition.length=100 gradient.focus=0 gradient.scale=100 gradient.spread=100 picture.mode=0 picture.scale.x=100 picture.scale.y=100 picture.clip.left=0 picture.clip.right=0 picture.clip.top=0 picture.clip.bottom=0 picture.blur=0 picture.transparency=0 print.printername=""  print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=96 print.margin.bottom=96 print.paper.size=0 print.paper.source=0 print.canusedefaultprinter=yes grid.lines=0 selected.mouse=yes hidegrayline=no showbackcoloronxp=no)
+header(height=68 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=decimal(0) key=yes update=yes updatewhereclause=yes name=ctx_acp_template_id dbname="ctx_acp_template_clause.ctx_acp_template_id"  )
+column=(type=decimal(0) key=yes update=yes updatewhereclause=yes name=ctx_acp_clause_id dbname="ctx_acp_template_clause.ctx_acp_clause_id"  )
+column=(type=long update=yes updatewhereclause=yes name=orders dbname="ctx_acp_template_clause.orders"  )
+ retrieve="PBSELECT(TABLE(NAME=~"ctx_acp_template_clause~") COLUMN(NAME=~"ctx_acp_template_clause.ctx_acp_template_id~")COLUMN(NAME=~"ctx_acp_template_clause.ctx_acp_clause_id~")COLUMN(NAME=~"ctx_acp_template_clause.orders~"))"
+  update="ctx_acp_template_clause" updatewhere=1 updatekeyinplace=no
+  sort="ctx_acp_template_id A, orders A"
+)
+text(name=ctx_acp_template_id_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="9" y="8" height="52" width="462" text="Ctx Acp Template Id" html.valueishtml="0" )
+text(name=ctx_acp_clause_id_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="763" y="8" height="52" width="407" text="Ctx Acp Clause Id" html.valueishtml="0" )
+text(name=orders_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="480" y="8" height="52" width="274" text="Orders" html.valueishtml="0" )
+column(name=ctx_acp_template_id visible="1" band=detail id=1 x="9" y="8" height="64" width="462" color="33554432" border="0" alignment="1" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=10 )
+column(name=ctx_acp_clause_id visible="1" band=detail id=2 x="763" y="8" height="64" width="407" color="33554432" border="0" alignment="1" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=30 )
+column(name=orders visible="1" band=detail id=3 x="480" y="8" height="64" width="274" color="33554432" border="0" alignment="1" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=20 )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" encodeSelfLinkArgs="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(headGroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.customPostScript="0" xslfop.print="0" )
+export.xhtml()

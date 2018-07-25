@@ -1,0 +1,35 @@
+﻿$PBExportHeader$d_rpt_contact_methods.srd
+$PBExportComments$[intellicontract]
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="536870912" )
+footer(height=4 color="536870912" )
+detail(height=60 color="536870912"  height.autosize=yes)
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=contact_id dbname="CTX_CONTACTS_NUMBERS.contact_id" )
+ column=(type=long update=yes updatewhereclause=yes key=yes identity=yes name=contact_num_id dbname="CTX_CONTACTS_NUMBERS.contact_num_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=via dbname="CTX_CONTACTS_NUMBERS.via" )
+ column=(type=char(25) update=yes updatewhereclause=yes name=phone dbname="CTX_CONTACTS_NUMBERS.phone" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=ext dbname="CTX_CONTACTS_NUMBERS.ext" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=contact_email dbname="CTX_CONTACTS_NUMBERS.contact_email" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=record_id dbname="CTX_CONTACTS_NUMBERS.record_id" )
+ column=(type=long updatewhereclause=yes name=ctx_id dbname="ctx_id" )
+ retrieve="SELECT     ctx_contacts_numbers.contact_id ,
+           ctx_contacts_numbers.contact_num_id ,
+           ctx_contacts_numbers.via ,
+           ctx_contacts_numbers.phone ,
+           ctx_contacts_numbers.ext ,
+           ctx_contacts_numbers.contact_email ,
+           ctx_contacts_numbers.record_id ,
+           0 ctx_id    
+        FROM ctx_contacts_numbers      
+        WHERE ( ctx_contacts_numbers.contact_id = :al_contact_id )   " update="ctx_contacts_numbers" updatewhere=1 updatekeyinplace=yes arguments=(("al_contact_id", number)) )
+column(band=detail id=4 alignment="0" tabsequence=20 border="0" color="33554432" x="526" y="4" height="52" width="526" format="[general]" html.valueishtml="0"  name=phone visible="1~tif ( f_validstr( (string( phone) )) ,1,0)" edit.limit=25 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text=" Ext:" border="0" color="0" x="1065" y="4" height="52" width="96" html.valueishtml="0"  name=t_1 visible="1~tif ( f_validstr( (string( phone) )) ,1,0)"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=30 border="0" color="33554432" x="1179" y="4" height="52" width="274" format="[general]" html.valueishtml="0"  name=ext visible="1~tif ( f_validstr( (string( phone) )) ,1,0)" editmask.mask="####" editmask.imemode=0 editmask.focusrectangle=no  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="0" tabsequence=40 border="0" color="33554432" x="530" y="4" height="52" width="1211" format="[general]" html.valueishtml="0"  name=contact_email visible="1~tif ( f_validstr( (string( phone) )) ,0,1)" edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=10 border="0" color="33554432" x="183" y="4" height="52" width="334" format="[general]" html.valueishtml="0"  name=via pointer="Size!" visible="1" dddw.name=dddw_contact_via dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=400 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0 dddw.hscrollbar=yes dddw.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

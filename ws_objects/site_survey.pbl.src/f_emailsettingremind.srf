@@ -1,0 +1,123 @@
+﻿$PBExportHeader$f_emailsettingremind.srf
+global type f_emailsettingremind from function_object
+end type
+
+forward prototypes
+global function integer f_emailsettingremind (boolean ab_iscurruser)
+end prototypes
+
+global function integer f_emailsettingremind (boolean ab_iscurruser);//---------Begin Modified by (Appeon)Eugene 06.27.2013 for V141 ISG-CLX--------
+  /*
+	string as_Server
+	string as_Account
+	string as_Email
+	long   al_Port
+	long   al_AuthMode
+	string ls_Message
+	
+	if ab_IsCurrUser then
+		// Get default account information of current user
+		SELECT server, port, account, email, authmode INTO :as_Server, :al_Port, :as_Account, :as_Email, :al_AuthMode
+				 FROM em_smtp_accounts
+				 WHERE (user_id = :gs_user_id) AND (is_default = 'Y');
+	
+		// if not need to prompt
+		//BEGIN---Modify by Evan on 06/05/2008
+		if al_AuthMode = 1 then
+			if LenA(Trim(as_Server)) > 0 and al_Port > 0 and &
+				LenA(Trim(as_Account)) > 0 and LenA(Trim(as_Email)) > 0 &
+			then
+				Return 1
+			end if
+		else
+			if LenA(Trim(as_Server)) > 0 and al_Port > 0 and LenA(Trim(as_Email)) > 0 then
+				Return 1
+			end if
+		end if
+		//END---Modify by Evan on 06/05/2008
+		
+		// Show current user in maintenance window
+		ls_Message = "The system detects that your email account configuration is incomplete, this will make you unable to use the email functionality in the system.  Would you like to re-configure your email account?"
+		if MessageBox("Email setting reminder", ls_Message, Question!, YesNo!) = 1 then
+			OpenWithParm(w_email_account_edit, "PERSONAL|" + gs_user_id)
+		end if
+	else
+		// Show all user in maintenance window
+		ls_Message = "If the user email account configuration is incomplete, then the user will not be able to use the email functionality in the system.  Would you like to check email accounts for all users now?"
+		if MessageBox("Email setting reminder", ls_Message, Question!, YesNo!) = 1 then
+			OpenWithParm(w_email_account_edit, "ALL|")
+		end if
+	end if
+	
+	Return 1
+  */
+string as_Server
+string as_Account
+string as_Email
+long   al_Port
+long   al_AuthMode
+string ls_Message
+n_cst_easymail_smtp lnv_smtp //Added By Ken.Guo 2010-03-10.
+
+//Check the email address whether empty.
+if ab_IsCurrUser then
+	// Get default account information of current user
+	SELECT server, port, account, email, authmode INTO :as_Server, :al_Port, :as_Account, :as_Email, :al_AuthMode
+	       FROM em_smtp_accounts
+	       WHERE (user_id = :gs_user_id) AND (is_default = 'Y');
+
+	// if not need to prompt
+	//BEGIN---Modify by Evan on 06/05/2008
+	if al_AuthMode = 1 then
+		if LenA(Trim(as_Server)) > 0 and al_Port > 0 and &
+			LenA(Trim(as_Account)) > 0 and LenA(Trim(as_Email)) > 0 &
+		then
+		
+			//ping the email configuration. //Added By Ken.Guo 2010-03-10.
+			If Not lnv_smtp.of_pingserver(gs_user_id) Then
+				ls_Message = "The system detects that your email account configuration is invalid, this could be due to an invalid user name and/or password or other invalid email configuration parameters.  Would you like to re-configure your email account now?"
+				if MessageBox("Email Setting Reminder", ls_Message, Question!, YesNo!) = 1 then
+					OpenWithParm(w_email_account_edit, "PERSONAL|" + gs_user_id)
+				end if	
+				Return -3
+			End If	
+			
+			Return 1
+		end if
+	else
+		if LenA(Trim(as_Server)) > 0 and al_Port > 0 and LenA(Trim(as_Email)) > 0 then
+			
+			//ping the email configuration.//Added By Ken.Guo 2010-03-10.
+			If Not lnv_smtp.of_pingserver(gs_user_id) Then
+				ls_Message = "The system detects that your email account configuration is invalid, this could be due to an invalid user name and/or password or other invalid email configuration parameters.  Would you like to re-configure your email account now?"
+				if MessageBox("Email Setting Reminder", ls_Message, Question!, YesNo!) = 1 then
+					OpenWithParm(w_email_account_edit, "PERSONAL|" + gs_user_id)
+				end if	
+				Return -3
+			End If		
+			
+			Return 1
+		end if
+	end if
+	//END---Modify by Evan on 06/05/2008
+	
+	// Show current user in maintenance window
+	ls_Message = "The system detects that your email account configuration is incomplete, this will make you unable to use the email functionality in the system.  Would you like to re-configure your email account?"
+	if MessageBox("Email Setting Reminder", ls_Message, Question!, YesNo!) = 1 then
+		OpenWithParm(w_email_account_edit, "PERSONAL|" + gs_user_id)
+	end if
+	Return -1
+else
+	// Show all user in maintenance window
+	ls_Message = "If the user email account configuration is incomplete, then the user will not be able to use the email functionality in the system.  Would you like to check email accounts for all users now?"
+	if MessageBox("Email Setting Reminder", ls_Message, Question!, YesNo!) = 1 then
+		OpenWithParm(w_email_account_edit, "ALL|")
+	end if
+	Return -2
+end if
+
+Return 1 
+//---------End Modfiied ------------------------------------------------------------------
+
+end function
+

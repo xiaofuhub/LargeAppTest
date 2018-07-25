@@ -1,0 +1,18 @@
+﻿$PBExportHeader$d_table_names_report_utl.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=79680469 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 grid.columnmove=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=char(128) updatewhereclause=yes name=table_name_orig dbname="sysobjects.name" )
+ column=(type=long updatewhereclause=yes name=table_id dbname="sysobjects.id" )
+ column=(type=char(2) updatewhereclause=yes name=type dbname="sysobjects.type" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"dbo.sysobjects~" ) COLUMN(NAME=~"dbo.sysobjects.name~") COLUMN(NAME=~"dbo.sysobjects.id~") COLUMN(NAME=~"dbo.sysobjects.type~")WHERE(    EXP1 =~"{fn substring(dbo.sysobjects.name,1,2)}~"   OP =~"=~"    EXP2 =~"'v_'~" ) ) "  sort="table_name_orig A " )
+text(band=header alignment="0" text="Table Name Orig" border="0" color="0" x="9" y="4" height="56" width="873" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="79680469" x="891" y="0" height="68" width="46" format="[general]" html.valueishtml="0"  name=table_name_orig visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79680469" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="9" y="4" height="56" width="873" format="[general]" html.valueishtml="0"  name=table_name_orig_1 visible="1" dddw.name=d_table_names_report dddw.displaycolumn=table_name dddw.datacolumn=table_id dddw.percentwidth=100 dddw.lines=10 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.vscrollbar=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

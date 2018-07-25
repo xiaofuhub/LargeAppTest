@@ -1,0 +1,82 @@
+﻿$PBExportHeader$d_priv_list_profile.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=80269524 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=516 color="536870912"  height.autosize=yes)
+table(column=(type=decimal(0) update=yes updatewhereclause=yes name=rec_id dbname="pd_priv_list.rec_id" )
+ column=(type=long update=yes updatewhereclause=yes name=facility_id dbname="pd_priv_list.facility_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=prac_id dbname="pd_priv_list.prac_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=clinical_area_id dbname="pd_priv_list.clinical_area_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=priv_core_id dbname="pd_priv_list.priv_core_id" )
+ column=(type=long update=yes updatewhereclause=yes name=ir_code dbname="pd_priv_list.ir_code" values="Inital	1/Renew	2/" )
+ column=(type=datetime update=yes updatewhereclause=yes name=start_date dbname="pd_priv_list.start_date" )
+ column=(type=datetime update=yes updatewhereclause=yes name=end_date dbname="pd_priv_list.end_date" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=status_code dbname="pd_priv_list.status_code" )
+ column=(type=char(32766) update=yes updatewhereclause=no name=notes dbname="pd_priv_list.notes" )
+ column=(type=long update=yes updatewhereclause=yes name=active_status dbname="pd_priv_list.active_status" values="Active	1/History	0/" )
+ column=(type=char(100) updatewhereclause=yes name=priv_core_priv_core_description dbname="priv_core.priv_core_description" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=procd_id dbname="pd_priv_list.procd_id" )
+ column=(type=char(32766) update=yes updatewhereclause=no name=pd_priv_list_priv_text dbname="pd_priv_list.priv_text" )
+ column=(type=char(30) updatewhereclause=yes name=code_lookup_code dbname="code_lookup.code" )
+ column=(type=char(50) updatewhereclause=yes name=priv_core_procd_procd_name dbname="priv_core_procd.procd_name" )
+ column=(type=decimal(0) updatewhereclause=yes name=priv_core_clinical_area_id dbname="priv_core.clinical_area_id" )
+ column=(type=char(32766) updatewhereclause=no name=priv_core_procd_core_procd_description dbname="priv_core_procd.core_procd_description" )
+ column=(type=char(100) updatewhereclause=yes name=priv_clinical_area_clinical_area_descrip dbname="priv_clinical_area.clinical_area_description" )
+ column=(type=datetime update=yes updatewhereclause=yes name=enter_date dbname="pd_priv_list.enter_date" )
+ column=(type=long updatewhereclause=yes name=priv_core_procd_sort_order dbname="priv_core_procd.sort_order" )
+ column=(type=long updatewhereclause=yes name=sort_order dbname="priv_core.sort_order" )
+ retrieve="  SELECT pd_priv_list.rec_id,   
+         pd_priv_list.facility_id,   
+         pd_priv_list.prac_id,   
+         pd_priv_list.clinical_area_id,   
+         pd_priv_list.priv_core_id,   
+         pd_priv_list.ir_code,   
+         pd_priv_list.start_date,   
+         pd_priv_list.end_date,   
+         pd_priv_list.status_code,   
+         pd_priv_list.notes,   
+         pd_priv_list.active_status,   
+         priv_core.priv_core_description,   
+         pd_priv_list.procd_id,   
+         pd_priv_list.priv_text,   
+         code_lookup.code,   
+         priv_core_procd.procd_name,   
+         priv_core.clinical_area_id,   
+         priv_core_procd.core_procd_description,   
+         priv_clinical_area.clinical_area_description,   
+         pd_priv_list.enter_date,   
+         priv_core_procd.sort_order,   
+         priv_core.sort_order  
+    FROM pd_priv_list LEFT OUTER JOIN priv_core_procd ON pd_priv_list.procd_id = priv_core_procd.procd_id LEFT OUTER JOIN code_lookup ON pd_priv_list.status_code = code_lookup.lookup_code,   
+         priv_core,   
+         priv_clinical_area  
+   WHERE ( priv_core.priv_core_id = pd_priv_list.priv_core_id ) and  
+         ( pd_priv_list.clinical_area_id = priv_clinical_area.clinical_area_id ) and  
+	(pd_priv_list.active_status = 1) and
+         ( ( pd_priv_list.facility_id = :ai_facil ) AND  
+         ( pd_priv_list.prac_id = :ai_prac_id ) )    
+" arguments=(("ai_prac_id", number),("ai_facil", number))  sort="priv_clinical_area_clinical_area_descrip A sort_order A priv_core_id A priv_core_procd_sort_order A " )
+column(band=detail id=21 alignment="0" tabsequence=32766 border="0" color="0" x="3840" y="168" height="52" width="987" format="[general]" html.valueishtml="0"  name=priv_core_procd_sort_order visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=22 alignment="0" tabsequence=32766 border="0" color="0" x="3771" y="272" height="52" width="987" format="[general]" html.valueishtml="0"  name=sort_order visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="0" x="37" y="80" height="60" width="1655" format="[general]" html.valueishtml="0"  name=priv_core_procd_procd_name visible="1"  slideup=allabove edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression=" priv_clinical_area_clinical_area_descrip  + ' - ' +  priv_core_priv_core_description  "border="0" color="0" x="27" y="20" height="56" width="2738" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  slideup=allabove  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=18 alignment="0" tabsequence=32766 border="0" color="0" x="41" y="156" height="68" width="2775" format="[general]" html.valueishtml="0"  name=priv_core_procd_core_procd_description visible="1"  slideup=allabove height.autosize=yes edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0 edit.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="1861" y="320" height="64" width="325" format="[general]" html.valueishtml="0"  name=active_status visible="1"  slideup=allabove ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=detail alignment="0" text="Notes:" border="0" color="0" x="46" y="420" height="52" width="197" html.valueishtml="0"  name=notes_t visible="1"  slideup=allabove  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="247" y="420" height="64" width="2560" format="[general]" html.valueishtml="0"  name=notes visible="1"  slideup=allabove edit.limit=32000 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autovscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="50" y="320" height="64" width="393" format="[general]" html.valueishtml="0"  name=status_code visible="1"  slideup=allabove dddw.name=d_priv_status_code dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0 dddw.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="512" y="320" height="64" width="375" format="mm/dd/yyyy" html.valueishtml="0"  name=start_date visible="1"  slideup=allabove ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="923" y="320" height="64" width="384" format="mm/dd/yyyy" html.valueishtml="0"  name=end_date visible="1"  slideup=allabove ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=6 alignment="2" tabsequence=32766 border="0" color="0" x="1339" y="324" height="64" width="293" format="[general]" html.valueishtml="0"  name=ir_code visible="1"  slideup=allabove ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=detail alignment="0" text="Record Status" border="0" color="0" x="1865" y="256" height="52" width="430" html.valueishtml="0"  name=t_2 visible="1"  slideup=allabove  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Status:" border="0" color="0" x="46" y="256" height="52" width="215" html.valueishtml="0"  name=active_status_t visible="1"  slideup=allabove  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Effective from:" border="0" color="0" x="507" y="256" height="52" width="448" html.valueishtml="0"  name=start_date_t visible="1"  slideup=allabove  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Effective Until:" border="0" color="0" x="923" y="256" height="52" width="462" html.valueishtml="0"  name=end_date_t visible="1"  slideup=allabove  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Appt Type" border="0" color="0" x="1339" y="256" height="52" width="352" html.valueishtml="0"  name=ir_code_t visible="1"  slideup=allabove  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=detail x1="32" y1="488" x2="2830" y2="488"  name=l_1 visible="1"  slideup=allabove pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

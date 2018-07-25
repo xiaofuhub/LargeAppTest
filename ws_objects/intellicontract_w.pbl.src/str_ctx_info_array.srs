@@ -1,0 +1,5 @@
+﻿$PBExportHeader$str_ctx_info_array.srs
+global type str_ctx_info_array from structure
+	str_ctx_info		astr_ctx_info[]
+end type
+

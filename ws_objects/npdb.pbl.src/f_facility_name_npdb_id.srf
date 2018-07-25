@@ -1,0 +1,30 @@
+﻿$PBExportHeader$f_facility_name_npdb_id.srf
+global type f_facility_name_npdb_id from function_object
+end type
+
+forward prototypes
+global function string f_facility_name_npdb_id (string as_npdb_id)
+end prototypes
+
+global function string f_facility_name_npdb_id (string as_npdb_id);//////////////////////////////////////////////////////////////////////
+// $<function> f_facility_name_npdb_id
+// $<arguments>
+//               string as_npdb_id
+// $<returns> (string)
+// $<description> Get the facility.facility_name that matches the entity dbid
+//////////////////////////////////////////////////////////////////////
+// Add by Appeon: Stephen 11.16.2012
+//////////////////////////////////////////////////////////////////////
+
+string ls_facility_name
+
+select top 1 facility_name
+   into :ls_facility_name
+  from facility
+where npdb_entity_dbid = :as_npdb_id;
+
+if ls_facility_name='' or isnull(ls_facility_name) then ls_facility_name = ''
+
+return ls_facility_name
+end function
+

@@ -1,0 +1,30 @@
+﻿$PBExportHeader$f_get_outlook_64bit.srf
+global type f_get_outlook_64bit from function_object
+end type
+
+forward prototypes
+global function integer f_get_outlook_64bit ()
+end prototypes
+
+global function integer f_get_outlook_64bit ();//====================================================================
+//$<Function>: f_get_outlook_64bit
+//$<Arguments>:
+// 	%ScriptArgs%
+//$<Return>:  integer
+//$<Description>: 
+//$<Author>: (Appeon) Stephen 04.28.2014 (Emailing out of Intellicred in office 2010 64 bit)
+//--------------------------------------------------------------------
+//$<Modify History>:
+//====================================================================
+
+string ls_64bit
+
+if long(gs_word_version_num) < 13 then
+	gb_outlook_64bit = false
+else
+	RegistryGet("HKEY_LOCAL_MACHINE\Software\microsoft\office\"+gs_word_version_num+"\outlook",  "bitness", RegString!, ls_64bit)
+	if ls_64bit = 'x64' then gb_outlook_64bit = true
+end if
+return 0
+end function
+

@@ -1,0 +1,10 @@
+﻿$PBExportHeader$str_batch_alarms.srs
+global type str_batch_alarms from structure
+	long		al_screen_id
+	long		al_handle
+	string		as_alm_table
+	string		as_alm_column
+	string		as_notification_table
+	string		as_column_label
+end type
+

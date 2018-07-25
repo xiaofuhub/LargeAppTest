@@ -1,0 +1,48 @@
+﻿$PBExportHeader$of_get_pic_fromdb.srf
+global type of_get_pic_fromdb from function_object
+end type
+
+forward prototypes
+global function blob of_get_pic_fromdb ()
+end prototypes
+
+global function blob of_get_pic_fromdb ();Blob lb_data
+Blob lb_all_data
+Long ll_data_length
+Long ll_start
+Long ll_counter
+Long ll_loops
+
+IF gs_dbtype = "ASA"  THEN
+	SelectBlob splash_picture Into :lb_all_data
+	From ids_image Where id = 1; //Modify by Evan on 02.05.2009
+	
+ELSE
+	SELECT DataLength(splash_picture) INTO :ll_data_length
+	From ids_image Where id = 1; //Modify by Evan on 02.05.2009
+	
+	IF IsNull(ll_data_length) THEN ll_data_length = 0
+	
+	IF ll_data_length > 8000 THEN
+		IF Mod(ll_data_length,8000) = 0 THEN
+			ll_loops = ll_data_length / 8000
+		ELSE
+			ll_loops = (ll_data_length / 8000) + 1
+		END IF
+	ELSEIF ll_data_length > 0 THEN
+		ll_loops = 1
+	END IF
+	
+	FOR ll_counter = 1 To ll_loops
+		ll_start = (ll_counter - 1) * 8000 + 1
+		SelectBlob substring(splash_picture,:ll_start,8000) Into :lb_data
+		From ids_image Where id = 1; //Modify by Evan on 02.05.2009
+		
+		lb_all_data += lb_data
+	NEXT
+END IF
+
+RETURN lb_all_data
+
+end function
+

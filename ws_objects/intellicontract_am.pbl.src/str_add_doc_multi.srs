@@ -1,0 +1,5 @@
+﻿$PBExportHeader$str_add_doc_multi.srs
+global type str_add_doc_multi from structure
+	str_add_doc		astr_add_doc[]
+end type
+

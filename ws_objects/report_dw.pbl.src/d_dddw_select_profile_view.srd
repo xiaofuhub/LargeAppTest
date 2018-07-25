@@ -1,0 +1,11 @@
+﻿$PBExportHeader$d_dddw_select_profile_view.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=profile_view_id dbname="profile_view.profile_view_id" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=profile_view_name dbname="profile_view.profile_view_name" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"profile_view~" ) COLUMN(NAME=~"profile_view.profile_view_id~") COLUMN(NAME=~"profile_view.profile_view_name~")) " update="profile_view" updatewhere=1 updatekeyinplace=no )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="0" x="9" y="4" height="64" width="1166" format="[general]"  name=profile_view_name edit.limit=50 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

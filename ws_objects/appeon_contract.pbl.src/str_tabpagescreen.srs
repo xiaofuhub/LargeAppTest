@@ -1,0 +1,9 @@
+﻿$PBExportHeader$str_tabpagescreen.srs
+global type str_tabpagescreen from structure
+	Boolean		ab_DispEmpty
+	DataStore		ads_TabPageScreen
+	long		al_view_id
+	String		as_TabPage[]
+	long		as_Screen[]
+end type
+

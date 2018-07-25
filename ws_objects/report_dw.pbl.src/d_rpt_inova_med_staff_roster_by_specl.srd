@@ -1,0 +1,94 @@
+﻿$PBExportHeader$d_rpt_inova_med_staff_roster_by_specl.srd
+$PBExportComments$inova 9-03
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=372 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=252 color="536870912" )
+table(column=(type=char(153) updatewhereclause=yes name=v_full_name_full_name dbname="v_full_name.full_name" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_street_2 dbname="pd_address.street_2" )
+ column=(type=char(25) updatewhereclause=yes name=pd_address_city dbname="pd_address.city" )
+ column=(type=char(15) updatewhereclause=yes name=code_lookup_code dbname="pd_address.code" )
+ column=(type=char(11) updatewhereclause=yes name=pd_address_zip dbname="pd_address.zip" )
+ column=(type=char(30) updatewhereclause=yes name=pd_address_cust_3 dbname="pd_address.cust_3" )
+ column=(type=char(25) updatewhereclause=yes name=pd_address_phone dbname="pd_address.phone" )
+ column=(type=char(75) updatewhereclause=yes name=code_lookup_dept_name dbname="pd_address.dept_name" )
+ column=(type=char(15) updatewhereclause=yes name=code_lookup_dep dbname="pd_address.dep" )
+ column=(type=char(75) updatewhereclause=yes name=code_lookup_staff_cat_name dbname="pd_address.staff_cat_name" )
+ column=(type=char(75) updatewhereclause=yes name=code_lookup_specialty_name dbname="pd_address.specialty_name" )
+ column=(type=char(20) updatewhereclause=yes name=pd_basic_provider_id dbname="pd_basic.provider_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=board_code dbname="pd_board_specialty.board_code" )
+ column=(type=datetime updatewhereclause=yes name=pd_affil_stat_inital_appmnt_date dbname="pd_affil_stat.inital_appmnt_date" )
+ retrieve="  SELECT v_full_name.full_name,   
+         pd_address.street_2,   
+         pd_address.city,   
+         code_lookup_c.code,   
+         pd_address.zip,
+			pd_address.cust_3,   
+         pd_address.phone,   
+         code_lookup_b.description dept_name,
+			code_lookup_b.code dep,   
+         code_lookup_a.description staff_cat_name,   
+         code_lookup_d.description specialty_name,   
+         pd_basic.provider_id,   
+         pd_board_specialty.board_code,   
+         pd_affil_stat.inital_appmnt_date  
+    FROM pd_address,   
+         pd_address_link,   
+         pd_affil_dept,   
+         pd_affil_staff_cat,   
+         pd_affil_stat,   
+         v_full_name,   
+         code_lookup code_lookup_a,   
+         code_lookup code_lookup_b,   
+         code_lookup code_lookup_c,   
+         code_lookup code_lookup_d,   
+         pd_board_specialty,   
+         pd_basic,   
+         code_lookup code_lookup_e  
+   WHERE ( v_full_name.prac_id = pd_affil_stat.prac_id ) and  
+         ( pd_affil_stat.rec_id = pd_affil_dept.rec_id ) and  
+         ( pd_affil_stat.rec_id = pd_affil_staff_cat.rec_id ) and  
+         ( v_full_name.prac_id = pd_address.prac_id ) and  
+         ( pd_address.rec_id = pd_address_link.address_id ) and  
+         ( pd_affil_stat.parent_facility_id = pd_address_link.facility_id ) and  
+         ( pd_affil_dept.department = code_lookup_b.lookup_code ) and  
+         ( pd_affil_staff_cat.staff_category = code_lookup_a.lookup_code ) and  
+         ( pd_address.state = code_lookup_c.lookup_code ) and  
+         ( v_full_name.prac_id = pd_board_specialty.prac_id ) and  
+         ( pd_board_specialty.specialty = code_lookup_d.lookup_code ) and  
+         ( v_full_name.prac_id = pd_basic.prac_id ) and  
+         ( pd_board_specialty.specialty_order = code_lookup_e.lookup_code ) and  
+         ( ( pd_address_link.primary_office = 1 ) AND  
+         ( pd_affil_dept.primary_dept = 1 ) AND  
+         ( code_lookup_e.code = 'Primary'  ) ) "  sort="code_lookup_specialty_name A code_lookup_staff_cat_name A v_full_name_full_name A " )
+group(level=1 header.height=72 trailer.height=0 by=("code_lookup_specialty_name" ) header.color="536870912" trailer.color="536870912" )
+group(level=2 header.height=172 trailer.height=0 by=("code_lookup_staff_cat_name" ) header.color="536870912" trailer.color="536870912" )
+compute(band=header alignment="0" expression="today()"border="0" color="0" x="256" y="264" height="84" width="329" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Segoe UI" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="0" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="0" x="2848" y="264" height="72" width="773" format="[general]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Segoe UI" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Medical Staff Roster by Specialty and Staff Category" border="0" color="0" x="837" y="100" height="80" width="2016" html.valueishtml="0"  name=pd_address_street_2_t visible="1"  font.face="Segoe UI" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="" border="0" color="0" x="1065" y="196" height="64" width="1559" html.valueishtml="0"  name=selected_facility_t visible="1"  font.face="Segoe UI" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header.1 alignment="1" text="Specialty:" border="0" color="0" x="782" y="4" height="52" width="293" html.valueishtml="0"  name=t_1 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header.1 id=11 alignment="0" tabsequence=32766 border="0" color="0" x="1093" y="4" height="52" width="1728" format="[general]" html.valueishtml="0"  name=code_lookup_specialty_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header.2 alignment="1" text="Staff Category:" border="0" color="0" x="640" y="4" height="52" width="434" html.valueishtml="0"  name=t_2 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header.2 alignment="0" text="DR NAME and ADDRESS" border="0" color="0" x="9" y="120" height="52" width="731" html.valueishtml="0"  name=t_3 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header.2 alignment="0" text="PROVIDER ID" border="0" color="0" x="1883" y="120" height="52" width="402" html.valueishtml="0"  name=t_4 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header.2 alignment="2" text="BOARD
+CERT" border="0" color="0" x="2674" y="68" height="104" width="219" html.valueishtml="0"  name=t_5 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header.2 alignment="0" text="INITIAL APPOINTMENT" border="0" color="0" x="2926" y="120" height="52" width="672" html.valueishtml="0"  name=t_6 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=header.2 x1="14" y1="176" x2="3685" y2="176"  name=l_1 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="1" background.color="536870912" )
+text(band=header.2 alignment="0" text="Phone" border="0" color="0" x="1198" y="120" height="52" width="187" html.valueishtml="0"  name=t_7 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header.2 id=10 alignment="0" tabsequence=32766 border="0" color="0" x="1088" y="4" height="52" width="1728" format="[general]" html.valueishtml="0"  name=code_lookup_staff_cat_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="4" height="64" width="1138" format="[general]" html.valueishtml="0"  name=v_full_name_full_name visible="1" edit.limit=153 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression=" pd_address_city + ~",  ~" +  code_lookup_code  + ~"  ~" +  pd_address_zip "border="0" color="0" x="9" y="140" height="64" width="1143" format="[general]" html.valueishtml="0"  name=city_state visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="2" expression="if(isnull( board_code ),~"N~",~"Y~")"border="0" color="0" x="2697" y="8" height="52" width="183" format="[general]" html.valueishtml="0"  name=compute_3 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="0" x="2939" y="8" height="64" width="384" format="mm/dd/yyyy" html.valueishtml="0"  name=pd_affil_stat_inital_appmnt_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="0" x="1888" y="4" height="64" width="741" format="[general]" html.valueishtml="0"  name=pd_basic_provider_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="1179" y="4" height="64" width="434" format="" html.valueishtml="0"  name=pd_address_phone visible="1" edit.limit=25 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression=" pd_address_street_2 + if (isnull( pd_address_cust_3 ),'', ' ' + pd_address_cust_3 )"border="0" color="0" x="9" y="76" height="52" width="1138" format="[general]" html.valueishtml="0"  name=compute_4 visible="1"  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

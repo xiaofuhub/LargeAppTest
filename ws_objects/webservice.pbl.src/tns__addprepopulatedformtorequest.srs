@@ -1,0 +1,10 @@
+﻿$PBExportHeader$tns__addprepopulatedformtorequest.srs
+$PBExportComments$Proxy imported from Web service using Web Service Proxy Generator.
+global type tns__AddPrepopulatedFormToRequest from structure
+   string pstr_APICode
+   string pstr_FileID
+   string pstr_FormID
+   string pstr_Title
+   string pstr_Xml
+end type
+

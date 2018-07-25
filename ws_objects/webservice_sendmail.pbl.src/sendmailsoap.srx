@@ -1,0 +1,31 @@
+﻿$PBExportHeader$sendmailsoap.srx
+$PBExportComments$Proxy imported from Web service using Web Service Proxy Generator.
+global type sendmailSoap from NonVisualObject
+end type
+
+type variables
+Protected:
+   string xmlns = ""
+   string tm = "http://microsoft.com/wsdl/mime/textMatching/"
+   string soapenc = "http://schemas.xmlsoap.org/soap/encoding/"
+   string wsdl = "http://schemas.xmlsoap.org/wsdl/"
+   string http = "http://schemas.xmlsoap.org/wsdl/http/"
+   string mime = "http://schemas.xmlsoap.org/wsdl/mime/"
+   string soap = "http://schemas.xmlsoap.org/wsdl/soap/"
+   string soap12 = "http://schemas.xmlsoap.org/wsdl/soap12/"
+   string tns = "http://wssendmail.intellisoftgroup.com"
+   string s = "http://www.w3.org/2001/XMLSchema"
+   string pb__TargetNamespace = "http://wssendmail.intellisoftgroup.com"
+   string BindingStyle = ""
+
+   string endpoint = "http://192.0.2.230:8081/webservice/sendmail.asmx"
+   string __tns__of_sendmail = "of_sendmail(s:string as_subject,s:boolean ab_isbodyhtml,s:string as_body,s:string as_validation)@tns#YES_QUALIFIED"
+   tns__of_sendmail i__tns__of_sendmail
+end variables
+
+forward prototypes
+public:
+function integer of_sendmail (string as_subject, boolean ab_isbodyhtml, string as_body, string as_validation) alias for "of_sendmail([in] s:string as_subject, [in] s:boolean ab_isbodyhtml, [in] s:string as_body, [in] s:string as_validation) return s:short of_sendmailResult@http://wssendmail.intellisoftgroup.com@http://wssendmail.intellisoftgroup.com/of_sendmail*of_sendmail*http://wssendmail.intellisoftgroup.com"
+function integer of_testping (integer ai_flag) alias for "of_testping([in] s:short ai_flag) return s:short of_testpingResult@http://wssendmail.intellisoftgroup.com@http://wssendmail.intellisoftgroup.com/of_testping*of_testping*http://wssendmail.intellisoftgroup.com"
+end prototypes
+

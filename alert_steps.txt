@@ -1,0 +1,12 @@
+1	1	60 Days before Insurance expires.	2	60			1	1
+2	1	25 Days after Insurance Expiration	5	-25			1	1
+3	1	20 Days before Insurance Expiration	3	20			1	1
+4	1	10 Days After Expiration	4	-10			1	1
+5	1	120 Days before Insurance Expiration	1	120			1	1
+6	2	Send Notice of meeting	1	10			1	1
+7	3	Create Action Item	1	20			1	0
+8	4	send email	1	30			1	0
+9	5	Create App	1		-3	153		
+10	6	Status email	1	30	-1653		1	0
+11	7	Send email	1	30			1	0
+12	8	Send email	1	10			1	0

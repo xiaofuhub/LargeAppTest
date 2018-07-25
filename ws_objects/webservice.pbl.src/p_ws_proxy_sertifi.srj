@@ -1,0 +1,12 @@
+﻿$PBExportHeader$p_ws_proxy_sertifi.srj
+$PBExportComments$Generated Web Service Proxy Project
+GeneratorID:{1B1DCEE2-E514-11D1-B30A-006008925BD4}GENBC00000000
+
+WSDLLOCATION:Gateway.wsdl	
+COMPONENT:0
+PACKAGE:16	Sertifi	tns__AddDocumentToRequest	tns__AddReferenceDocumentToRequest	tns__AddSignerToRequest	tns__ApplyTemplate	tns__CreateSignatureRequest	tns__DownloadSignedDocument	tns__ExtensionDataObject	tns__GetFileStatus	tns__GetMaintenanceLink	tns__GetUserInfo	tns__InviteSigner	tns__InviteSigners	tns__ReferenceDocumentPermission	tns__RemoveDocument	tns__RemoveSignatureRequest
+COMMENT:Web Service Proxy Generator
+DEPLOYMENT:webservice.pbl	0	0
+PROJECT:p_ws_proxy_sertifi
+PREFIX:sertifi
+ASSEMBLY:0	0	

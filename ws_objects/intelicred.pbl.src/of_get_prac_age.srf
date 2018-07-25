@@ -1,0 +1,25 @@
+﻿$PBExportHeader$of_get_prac_age.srf
+global type of_get_prac_age from function_object
+end type
+
+forward prototypes
+global function integer of_get_prac_age (long al_pracid)
+end prototypes
+
+global function integer of_get_prac_age (long al_pracid);//Start Code Change ----10.24.2012 #V12 maha - created
+//Start Code Change ----01.31.2013 #V12 maha - rewrote with function call
+datetime ld_dob
+integer li_age
+n_cst_datetime ln_date
+
+select date_of_birth into :ld_dob from pd_basic where prac_id = :al_pracid;
+if isnull(ld_dob) then return -9999
+
+li_age = ln_date.of_yearsafter(date(ld_dob),today())
+
+//li_age = round (  ( daysafter( date( ld_dob ),today()) ) /365,0 ) 
+
+
+return li_age
+end function
+

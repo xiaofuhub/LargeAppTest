@@ -1,0 +1,8 @@
+﻿$PBExportHeader$str_doc_search.srs
+global type str_doc_search from structure
+	string		s_filename[]
+	string		s_pathname[]
+	long		l_count
+	long		doc_id[]
+end type
+

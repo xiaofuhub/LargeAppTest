@@ -1,0 +1,6 @@
+﻿$PBExportHeader$npdb.srj
+EXE:c:\development\version 1.5.3\npdb.exe,,0,1
+CMP:0,0,0,2,0,0
+PBD:C:\Development\Version 1.5.3\NPDB.pbl,,1
+OBJ:C:\Development\Version 1.5.3\NPDB.pbl,pfc_n_cst_npdb,u
+OBJ:C:\Development\Version 1.5.3\npdb.pbl,npdb,a

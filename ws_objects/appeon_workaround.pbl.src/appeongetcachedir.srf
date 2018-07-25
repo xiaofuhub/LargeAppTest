@@ -1,0 +1,39 @@
+﻿$PBExportHeader$appeongetcachedir.srf
+global type appeongetcachedir from function_object
+end type
+
+forward prototypes
+global function string appeongetcachedir ()
+end prototypes
+
+global function string appeongetcachedir ();//==============================================================================
+// 
+// Copyright ? 2001-2006 Appeon, Inc. and its subsidiaries. All rights reserved.
+// 
+//------------------------------------------------------------------------------
+// Function: appeongetcachedir()
+//------------------------------------------------------------------------------
+// Description: 
+// 				Returns IE Cache Directory. Only useful in B/S mode.
+//	
+// Arguments:(None)
+//	
+// Returns:  string
+//------------------------------------------------------------------------------
+// Author:	APPEON		Date: 2008-2
+//------------------------------------------------------------------------------
+// Revision History: 
+//				1.0   Initial version
+//==============================================================================
+
+String strRet
+AppeonExtFuncs funs
+funs = Create AppeonExtFuncs
+
+strRet = funs.of_GetCacheDir()
+
+Destroy funs
+Return strRet
+
+end function
+

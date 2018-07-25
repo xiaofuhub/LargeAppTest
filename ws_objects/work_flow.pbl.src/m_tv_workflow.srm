@@ -1,0 +1,220 @@
+﻿$PBExportHeader$m_tv_workflow.srm
+forward
+global type m_tv_workflow from m_tvs
+end type
+type m_types from menu within m_viewitem
+end type
+type m_status from menu within m_viewitem
+end type
+type m_viewitem from m_tvs`m_viewitem within m_tv_workflow
+m_types m_types
+m_status m_status
+end type
+end forward
+
+global type m_tv_workflow from m_tvs
+end type
+global m_tv_workflow m_tv_workflow
+
+on m_tv_workflow.create
+m_tv_workflow=this
+call super::create
+this.text = "m_tv_workflow_tree"
+end on
+
+on m_tv_workflow.destroy
+call super::destroy
+end on
+
+type m_viewitem from m_tvs`m_viewitem within m_tv_workflow
+m_types m_types
+m_status m_status
+end type
+
+on m_viewitem.create
+call super::create
+this.m_types=create m_types
+this.m_status=create m_status
+this.Item[UpperBound(this.Item)+1]=this.m_types
+this.Item[UpperBound(this.Item)+1]=this.m_status
+end on
+
+on m_viewitem.destroy
+call super::destroy
+destroy(this.m_types)
+destroy(this.m_status)
+end on
+
+type m_open from m_tvs`m_open within m_viewitem
+end type
+
+on m_open.create
+call super::create
+end on
+
+on m_open.destroy
+call super::destroy
+end on
+
+type m_find from m_tvs`m_find within m_viewitem
+end type
+
+on m_find.create
+call super::create
+end on
+
+on m_find.destroy
+call super::destroy
+end on
+
+type m_dash14 from m_tvs`m_dash14 within m_viewitem
+end type
+
+on m_dash14.create
+call super::create
+end on
+
+on m_dash14.destroy
+call super::destroy
+end on
+
+type m_cut from m_tvs`m_cut within m_viewitem
+end type
+
+on m_cut.create
+call super::create
+end on
+
+on m_cut.destroy
+call super::destroy
+end on
+
+type m_copy from m_tvs`m_copy within m_viewitem
+end type
+
+on m_copy.create
+call super::create
+end on
+
+on m_copy.destroy
+call super::destroy
+end on
+
+type m_paste from m_tvs`m_paste within m_viewitem
+end type
+
+on m_paste.create
+call super::create
+end on
+
+on m_paste.destroy
+call super::destroy
+end on
+
+type m_clear from m_tvs`m_clear within m_viewitem
+end type
+
+on m_clear.create
+call super::create
+end on
+
+on m_clear.destroy
+call super::destroy
+end on
+
+type m_dash15 from m_tvs`m_dash15 within m_viewitem
+end type
+
+on m_dash15.create
+call super::create
+end on
+
+on m_dash15.destroy
+call super::destroy
+end on
+
+type m_new from m_tvs`m_new within m_viewitem
+end type
+
+on m_new.create
+call super::create
+end on
+
+on m_new.destroy
+call super::destroy
+end on
+
+type m_delete from m_tvs`m_delete within m_viewitem
+end type
+
+on m_delete.create
+call super::create
+end on
+
+on m_delete.destroy
+call super::destroy
+end on
+
+type m_rename from m_tvs`m_rename within m_viewitem
+end type
+
+on m_rename.create
+call super::create
+end on
+
+on m_rename.destroy
+call super::destroy
+end on
+
+type m_dash16 from m_tvs`m_dash16 within m_viewitem
+end type
+
+on m_dash16.create
+call super::create
+end on
+
+on m_dash16.destroy
+call super::destroy
+end on
+
+type m_properties from m_tvs`m_properties within m_viewitem
+end type
+
+on m_properties.create
+call super::create
+end on
+
+on m_properties.destroy
+call super::destroy
+end on
+
+type m_types from menu within m_viewitem
+end type
+
+event clicked;itv_parent.dynamic event ue_newtypes()
+end event
+
+on m_types.create
+call super::create
+this.text = "Add Action &Types"
+end on
+
+on m_types.destroy
+call super::destroy
+end on
+
+type m_status from menu within m_viewitem
+end type
+
+on m_status.create
+call super::create
+this.text = "Add Action &Status"
+end on
+
+on m_status.destroy
+call super::destroy
+end on
+
+event clicked;itv_parent.dynamic event ue_newstatus()
+end event
+

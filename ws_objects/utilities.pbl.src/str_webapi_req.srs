@@ -1,0 +1,26 @@
+﻿$PBExportHeader$str_webapi_req.srs
+global type str_webapi_req from structure
+	string		hostname
+	long		port
+	long		timeout
+	string		httpversion
+	long		secure
+	long		authentication
+	string		login
+	string		password
+	long		proxy_type
+	string		proxy_hostname
+	long		proxy_port
+	long		proxy_authentication
+	string		proxy_login
+	string		proxy_password
+	long		req_method
+	string		req_uri
+	string		response_filename
+	string		req_header_name[]
+	string		req_header_value[]
+	long		req_body_type[]
+	string		req_body_name[]
+	string		req_body_value[]
+end type
+

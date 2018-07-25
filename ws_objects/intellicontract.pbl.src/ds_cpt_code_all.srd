@@ -1,0 +1,54 @@
+﻿$PBExportHeader$ds_cpt_code_all.srd
+$PBExportComments$[INTELLICONTRACT]
+release 11.5;
+datawindow ( units=0 timer_interval=0 processing=1 color=1073741824 brushmode=0 transparency=0 gradient.color=8421504 gradient.transparency=0 gradient.angle=0 gradient.repetition.mode=0 gradient.repetition.count=0 gradient.repetition.length=100 gradient.focus=0 gradient.scale=100 gradient.spread=100 picture.mode=0 picture.scale.x=100 picture.scale.y=100 picture.clip.left=0 picture.clip.right=0 picture.clip.top=0 picture.clip.bottom=0 picture.blur=0 picture.transparency=0 print.printername=""  print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=96 print.margin.bottom=96 print.paper.size=0 print.paper.source=0 print.canusedefaultprinter=yes grid.lines=0 selected.mouse=yes hidegrayline=no showbackcoloronxp=no)
+header(height=68 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=long key=yes update=yes updatewhereclause=yes name=cpt_code_id dbname="CTX_CPT_CODES.cpt_code_id"  )
+column=(type=char(10) key=yes update=yes updatewhereclause=yes name=cpt_code dbname="CTX_CPT_CODES.cpt_code"  )
+column=(type=char(4099) update=yes updatewhereclause=yes name=cpt_code_description dbname="CTX_CPT_CODES.cpt_code_description"  )
+column=(type=decimal(0) update=yes updatewhereclause=yes name=base_price dbname="CTX_CPT_CODES.base_price"  )
+column=(type=long updatewhereclause=yes name=s dbname="CTX_CPT_CODES.s"  )
+column=(type=long updatewhereclause=yes name=t dbname="CTX_CPT_CODES.t"  )
+column=(type=decimal(1) updatewhereclause=yes name=u dbname="u"  )
+column=(type=long updatewhereclause=yes name=v dbname="CTX_CPT_CODES.v"  )
+ retrieve="  SELECT ctx_cpt_codes.cpt_code_id,   
+         ctx_cpt_codes.cpt_code,   
+         ctx_cpt_codes.cpt_code_description,   
+         ctx_cpt_codes.base_price ,
+          null   s ,
+          null   t,
+          0.0 u,
+          null   v
+    FROM ctx_cpt_codes   
+"
+  update="ctx_cpt_codes" updatewhere=1 updatekeyinplace=no
+ )
+text(name=cpt_code_id_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="9" y="8" height="52" width="283" text="Cpt Code Id" html.valueishtml="0" )
+text(name=cpt_code_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="302" y="8" height="52" width="251" text="Cpt Code" html.valueishtml="0" )
+text(name=cpt_code_description_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="562" y="8" height="52" width="4389" text="Cpt Code Description" html.valueishtml="0" )
+text(name=base_price_t visible="1" band=header font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="4960" y="8" height="52" width="274" text="Base Price" html.valueishtml="0" )
+text(name=s_t visible="1" band=header font.charset="0" font.face="Arial" font.family="2" font.height="-12" font.pitch="2" font.weight="400" background.mode="2" background.color="12639424" color="0" alignment="0" border="0" x="5243" y="4" height="76" width="978" text="S" html.valueishtml="0" )
+text(name=t_t visible="1" band=header font.charset="0" font.face="Arial" font.family="2" font.height="-12" font.pitch="2" font.weight="400" background.mode="2" background.color="12639424" color="0" alignment="0" border="0" x="6231" y="4" height="76" width="978" text="T" html.valueishtml="0" )
+text(name=u_t visible="1" band=header font.charset="0" font.face="Arial" font.family="2" font.height="-12" font.pitch="2" font.weight="400" background.mode="2" background.color="12639424" color="0" alignment="0" border="0" x="7218" y="4" height="76" width="978" text="U" html.valueishtml="0" )
+text(name=v_t visible="1" band=header font.charset="0" font.face="Arial" font.family="2" font.height="-12" font.pitch="2" font.weight="400" background.mode="2" background.color="12639424" color="0" alignment="0" border="0" x="8206" y="4" height="76" width="978" text="V" html.valueishtml="0" )
+column(name=cpt_code_id visible="1" band=detail id=1 x="9" y="8" height="64" width="284" color="33554432" border="0" alignment="1" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=10 )
+column(name=cpt_code visible="1" band=detail id=2 x="302" y="8" height="64" width="251" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=10 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=20 )
+column(name=cpt_code_description visible="1" band=detail id=3 x="562" y="8" height="64" width="4389" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=2000 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=30 )
+column(name=base_price visible="1" band=detail id=4 x="4960" y="8" height="64" width="274" color="33554432" border="0" alignment="1" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=40 )
+column(name=s visible="1" band=detail id=5 x="5243" y="0" height="52" width="978" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=no edit.autoselect=no edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=50 )
+column(name=t visible="1" band=detail id=6 x="6231" y="0" height="52" width="978" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=no edit.autoselect=no edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=60 )
+column(name=u visible="1" band=detail id=7 x="7218" y="0" height="52" width="978" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=no edit.autoselect=no edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=70 )
+column(name=v visible="1" band=detail id=8 x="8206" y="0" height="52" width="978" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=no edit.autoselect=no edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Segoe UI" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=80 )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" encodeSelfLinkArgs="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(headGroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.customPostScript="0" xslfop.print="0" )
+export.xhtml()

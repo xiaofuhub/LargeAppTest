@@ -1,0 +1,56 @@
+﻿$PBExportHeader$f_get_server_dtm.srf
+global type f_get_server_dtm from function_object
+end type
+
+forward prototypes
+global function datetime f_get_server_dtm ()
+end prototypes
+
+global function datetime f_get_server_dtm ();/******************************************************************************************************************
+**  [PUBLIC]   : f_get_server_dtm 
+**==================================================================================================================
+**  Purpose   	: gets the server datetime
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: Michael B. Skinner 20 October 2005  © Intellisoftgroup, Inc
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************/
+
+
+datetime ldtServerDate
+//--------------------------- APPEON BEGIN ---------------------------
+//$<modify> 2005-12-05 By: Cao YongWang
+//$<reason> 
+//select getdate() 
+//into :ldtServerDate
+//from dummy
+//using SQLCA;
+Choose Case gs_dbType
+	Case 'ASA'
+		select getdate() 
+		into :ldtServerDate
+		from dummy
+		using SQLCA;
+	Case 'SQL'
+		select getdate() 
+		into :ldtServerDate
+		from ids
+		using SQLCA;
+End Choose
+//---------------------------- APPEON END ----------------------------
+
+
+
+
+return ldtServerDate
+
+end function
+

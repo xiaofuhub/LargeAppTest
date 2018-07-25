@@ -1,0 +1,15 @@
+﻿$PBExportHeader$f_get_gb_workflow.srf
+global type f_get_gb_workflow from function_object
+end type
+
+forward prototypes
+global function boolean f_get_gb_workflow ()
+end prototypes
+
+global function boolean f_get_gb_workflow ();//--------------------------- APPEON BEGIN ---------------------------
+//$<modify> 04.05.2007 By: Machongmin
+//$<reason> Fix a defect.	
+return gb_workflow
+//---------------------------- APPEON END ----------------------------
+end function
+

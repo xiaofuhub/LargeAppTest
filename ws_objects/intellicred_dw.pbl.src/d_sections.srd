@@ -1,0 +1,10 @@
+﻿$PBExportHeader$d_sections.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=number updatewhereclause=no name=section dbname="section" )
+ )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="18" y="12" height="60" width="978" format="[general]"  name=section dddw.name=d_dddw_sections_sorted_by_order dddw.displaycolumn=section_name dddw.datacolumn=section_id dddw.percentwidth=100 dddw.lines=30 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.vscrollbar=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

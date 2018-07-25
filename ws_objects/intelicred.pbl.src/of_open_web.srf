@@ -1,0 +1,85 @@
+﻿$PBExportHeader$of_open_web.srf
+global type of_open_web from function_object
+end type
+
+forward prototypes
+global function integer of_open_web (string as_link)
+end prototypes
+
+global function integer of_open_web (string as_link);//function maha created 040505 for generic web connection
+//called from w_import_oig, of_connecttoweb in pfc_n_cst_printletters, pfc_cst_npdb_export_old in pfc_cst_n_verification_info,   w_import_apps,w_web_browse 
+// w_oig_on_demand
+//Start Code Change ---- 01.30.2006 #226 maha
+integer i
+oleobject iole_exp
+string ls_browser_path
+string ls_null
+inet iinet_base
+//debugbreak()
+
+if isnull(as_link) or as_link = "" then return 0
+
+i = of_get_app_setting("set_41","I")
+//messagebox("",i)
+choose case i
+		
+	case 0  //default
+		iole_exp = CREATE oleobject
+		if iole_exp.ConnectToNewObject("InternetExplorer.Application") <> 0 then
+			messagebox('Client Error', 'This application could not connect to Internet Explorer. Please make sure it is properly installed and user has access.')
+			return -1
+		end if
+		iole_exp.left=10
+		iole_exp.top=10
+		iole_exp.height=600
+		iole_exp.width=800
+		iole_exp.menubar=0
+		iole_exp.toolbar=1
+		iole_exp.statusBar=0
+		iole_exp.navigate(as_link)
+		iole_exp.visible=1
+		//iole_exp.bringtofront=true
+	case 1
+		ls_browser_path = ProfileString(gs_IniFilePathName, "Paths","browser", "None")
+		if ls_browser_path = "None" then messagebox("Of_open_web","Unable to find Browser path at " + gs_IniFilePathName)
+		if not fileexists(ls_browser_path) then messagebox("Of_open_web","Unable to start Browser at: " + gs_IniFilePathName)
+		Run( ls_browser_path + " " + as_link)
+	case 2
+		setnull(ls_null)
+		//--------------------------- APPEON BEGIN ---------------------------
+		//$<ID> UM-01
+		//$<modify> 03.14.2006 By: LiuHongXin
+		//$<reason> Handle(This) is unsupported.
+		/*
+		ShellExecuteA ( Handle( This ), "open", as_link , ls_Null, ls_Null, 4)
+		*/
+		//---------Begin Modified by (Appeon)Harry 04.27.2015 for Keep Everything under One Browser--------
+		//ShellExecuteA ( Handle(GetApplication()), "open", 'IEXPLORE', as_link , ls_Null, 4)
+		ShellExecuteA (Handle(GetApplication()), "open", of_getbrowserversion( ), as_link , ls_Null, 4)
+		//---------End Modfiied ------------------------------------------------------
+		//---------------------------- APPEON END ----------------------------
+	case 3
+		//--------------------------- APPEON BEGIN ---------------------------
+		//$<modify> 06.18.2007 By: Jack
+		//$<reason> GetContextService is currently unsupported. 
+		/*
+		GetContextService("Internet", iinet_base)
+		iinet_base.HyperlinkToURL(as_link)
+		*/
+		If appeongetclienttype() = 'PB' Then
+			GetContextService("Internet", iinet_base)
+			iinet_base.HyperlinkToURL(as_link)
+		Else	
+			setnull(ls_null)
+			//---------Begin Modified by (Appeon)Harry 04.27.2015 for Keep Everything under One Browser--------
+			//ShellExecuteA ( Handle(GetApplication()), "open", 'IEXPLORE', as_link , ls_Null, 4)
+			ShellExecuteA (Handle(GetApplication()), "open", of_getbrowserversion( ), as_link , ls_Null, 4)
+			//---------End Modfiied ------------------------------------------------------
+		End If
+		//---------------------------- APPEON END ----------------------------	
+end choose
+//End Code Change---01.30.2006 
+
+return 1
+end function
+

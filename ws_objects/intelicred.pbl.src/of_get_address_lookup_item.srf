@@ -1,0 +1,38 @@
+﻿$PBExportHeader$of_get_address_lookup_item.srf
+global type of_get_address_lookup_item from function_object
+end type
+
+forward prototypes
+global function string of_get_address_lookup_item (long al_lookup_code, string as_columnname)
+end prototypes
+
+global function string of_get_address_lookup_item (long al_lookup_code, string as_columnname);//of_get_address_lookup_item
+//Start Code Change ----12.11.2007 #V8 maha -- created for getting specific lookup values from address lookup
+string ls_ret
+long ll_ret
+long ll_code[]
+n_ds lds
+
+lds = create n_ds
+lds.dataobject = "d_dddw_address_lookup_for_lookup_code"
+lds.settransobject(sqlca)
+
+ll_ret = lds.retrieve(al_lookup_code)
+
+if ll_ret < 1 then
+	messagebox("Program error in function of_get_address_lookup_item","retrieve failed")
+	return ''
+end if
+
+if lds.Describe( as_columnname + ".ColType") <> "!" then
+	ls_ret = lds.getitemstring(1,as_columnname )
+ else
+	messagebox("Program error in function of_get_address_lookup_item " ,"This function not designed to get data from the "  + as_columnname + " field.  Contact IntelliSoft support")
+	return ''
+end if
+
+destroy lds
+
+return ls_ret
+end function
+

@@ -1,0 +1,12 @@
+﻿$PBExportHeader$d_apprvl_code_batch.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=80269524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=lookup_code dbname="code_lookup.lookup_code" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=description dbname="code_lookup.description" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"code_lookup~" ) COLUMN(NAME=~"code_lookup.lookup_code~") COLUMN(NAME=~"code_lookup.description~")WHERE(    EXP1 =~"code_lookup.lookup_name~"   OP =~"=~"    EXP2 =~"'Approval Code'~" ) ) " update="code_lookup" updatewhere=1 updatekeyinplace=no )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="0" x="2405" y="4" height="64" width="274" format="[general]"  name=lookup_code edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=10 border="5" color="0" x="9" y="8" height="64" width="869" format="[general]"  name=description dddw.name=d_dddw_code_lookup dddw.displaycolumn=description dddw.datacolumn=lookup_code dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any  font.face="Segoe UI" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,78 @@
+﻿$PBExportHeader$of_send_text.srf
+global type of_send_text from function_object
+end type
+
+forward prototypes
+global function integer of_send_text (string as_mobile, string as_carrier, string as_text)
+end prototypes
+
+global function integer of_send_text (string as_mobile, string as_carrier, string as_text);//Start Code Change ----02.10.2017 #V153 maha
+string s
+string ls_subject
+string ls_notetext
+string ls_attach
+long ll_return
+string ls_mobile
+string ls_carrier
+string ls_addresser
+
+if isnull(as_mobile) or len(as_mobile) = 0 then
+	//MessageBox("Texting", "This provider does not have a Mobile Number.")
+	return -1
+end if
+	
+if isnull(as_carrier) or len(as_carrier) = 0 then
+	//MessageBox("Texting", "This provider does not have a Mobile Carrier.")
+	return -1
+end if
+	
+ls_mobile = of_strip_char("",as_mobile ,"@NUM@" )   //Start Code Change ----02.16.2017 #V153 maha
+	
+ls_mobile = ls_mobile + "@" + as_carrier
+	
+ls_subject = "Text sent"
+ls_notetext = as_text	
+	
+if  gi_email_type = 0 then //easymail 
+	n_cst_easymail_smtp 	lnv_Mail
+
+	IF lnv_Mail.of_CreateObject() = -1 THEN
+		f_show_message('create Email object','','','','')
+		RETURN -1
+	END IF
+	
+	lnv_Mail.ib_combine_mail = false //Commented by (Appeon)Harry 06.10.2013 - V141 ISG-CLX
+	ll_Return = lnv_Mail.of_SendText(GS_USER_ID, ls_mobile, "", "","", ls_notetext, "")
+
+	IF ll_Return <> 0 THEN
+		If lnv_Mail.is_sendprotocol = 'SMTP' Then
+			f_show_message('error_code_'+string(ll_Return),'%1S%',String(ll_Return),'','')
+		Else
+			f_show_message('error_code_'+string(ll_Return),'ALL',lnv_Mail.of_getemailerror(ll_Return),'','')
+		End If
+	End if
+			
+	lnv_Mail.of_DeleteObject()
+
+elseif gi_email_type = 1 then
+	n_cst_outlook lnv_Outlook
+		
+	if lnv_Outlook.of_Logon() = -1 then
+		MessageBox("Text", "Mail Logon failed.  Check to make sure you have an email id setup in the user painter.")
+		Return -1
+	end if
+	
+	ls_attach = ""
+	ll_Return = lnv_Outlook.of_Send(ls_mobile, "", "", ls_subject, ls_notetext, ls_attach)
+	lnv_Outlook.of_Logoff()
+	if ll_Return <> 1 then
+		//MessageBox("Text Send", "Text not sent.")
+		Return -1
+	end if	
+end if //email type
+
+return 1  
+
+
+end function
+

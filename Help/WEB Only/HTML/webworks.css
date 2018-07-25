@@ -1,0 +1,53 @@
+/* For WebWorks output */
+
+.subbullet {
+	text-indent: -0.1em;
+	margin-left: 3.5em;
+	list-style-type: square;
+	display: list-item;
+}
+.bullet {
+	display: list-item;
+	list-style-type: square;
+	text-indent: -0.1em;
+	margin-left: 2em;
+}
+.number_step {
+	text-indent: -1.5em;
+	margin-left: 1.5em;
+}
+.substep {
+	text-indent: -1.5em;
+	margin-left: 2.5em;
+}
+
+#content_body #page_content_wrapper #content_wrapper .h1nobreak {
+	margin-left: 0em;
+	font-size: 160%;
+	padding: 0 0px 0px 0;
+	margin-top: 5px;
+	margin-bottom: 8px;
+}
+
+#content_body #page_content_wrapper #content_wrapper .h2nobreak {
+	margin-left: 0em;
+	font-size: 130%;
+	margin-top: 5px;
+	margin-bottom: -14px;
+	font-style: italic;
+}
+
+#content_wrapper dl dd { 
+  margin-top: 2px;
+  padding-top: 2px;
+  line-height: 150%;
+}
+
+/* Legacy Macromedia note tables */
+
+div#content_wrapper table.notesidebar, div#content_wrapper table.notesidebar th, div#content_wrapper table.notesidebar td {
+	margin: 0px 0px;
+	padding: 2px 2px;
+	border-width: 0;
+	border: none;
+}

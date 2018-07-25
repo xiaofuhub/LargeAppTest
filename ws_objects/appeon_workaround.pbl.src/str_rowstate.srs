@@ -1,0 +1,8 @@
+﻿$PBExportHeader$str_rowstate.srs
+global type str_rowstate from structure
+	long		l_mapid
+	long		l_column
+	string		s_state
+	string		s_oridata
+end type
+
